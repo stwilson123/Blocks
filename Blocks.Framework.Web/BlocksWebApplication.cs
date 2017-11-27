@@ -13,12 +13,7 @@ namespace Blocks.Framework.Web
 {
     public abstract class BlocksWebApplication<TStartupModule> : AbpWebApplication<TStartupModule> where TStartupModule : AbpModule
     {
-        /// <summary>
-        /// Gets a reference to the <see cref="P:Abp.Web.AbpWebApplication`1.AbpBootstrapper" /> instance.
-        /// </summary>
-        public static AbpBootstrapper AbpBootstrapper { get; } = AbpBootstrapper.Create<TStartupModule>((Action<AbpBootstrapperOptions>) null);
-
-        protected virtual void Application_Start(object sender, EventArgs e)
+        protected  virtual void Application_Start(object sender, EventArgs e)
         {
             ThreadCultureSanitizer.Sanitize();
 
