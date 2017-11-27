@@ -10,7 +10,9 @@ namespace Blocks
     public class BlocksDataModule : AbpModule
     {
         public override void PreInitialize()
-        {
+        {   
+            
+            
             Database.SetInitializer(new CreateDatabaseIfNotExists<BlocksDbContext>());
 
             Configuration.DefaultNameOrConnectionString = "Default";
