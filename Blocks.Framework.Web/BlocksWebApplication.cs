@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using Abp;
 using Abp.Dependency;
 using Abp.Modules;
@@ -15,6 +16,7 @@ namespace Blocks.Framework.Web
     {
         protected  virtual void Application_Start(object sender, EventArgs e)
         {
+            
             ThreadCultureSanitizer.Sanitize();
 
             IVirtualPathProvider pathProvider = new DefaultVirtualPathProvider();
