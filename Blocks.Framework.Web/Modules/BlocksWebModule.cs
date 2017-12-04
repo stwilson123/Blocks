@@ -9,6 +9,7 @@ using System.Text;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Blocks.Framework.Web.Mvc.ViewEngines.ThemeAwareness;
 
 namespace Blocks.Framework.Modules
 {
@@ -55,6 +56,9 @@ namespace Blocks.Framework.Modules
             IocManager.Resolve<IHttpRouteProvider>().GetRoutes(listRouteDesc, this.GetType().Assembly.GetName().Name);
 
             IocManager.Resolve<IRoutePublisher>().Publish(listRouteDesc);
+            ViewEngines.Engines.Clear();
+            ViewEngines.Engines.Add(new ThemeAwareViewEngineShim(IocManager));
+
         }
     }
 }

@@ -33,21 +33,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Abp, Version=3.2.4.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\Abp.3.2.4\lib\netstandard2.0\Abp.dll</HintPath>
-    </Reference>
-    <Reference Include="Abp.Web, Version=3.2.4.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\Abp.Web.3.2.4\lib\net461\Abp.Web.dll</HintPath>
-    </Reference>
-    <Reference Include="Abp.Web.Api, Version=3.2.4.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\Abp.Web.Api.3.2.4\lib\net461\Abp.Web.Api.dll</HintPath>
-    </Reference>
-    <Reference Include="Abp.Web.Common, Version=3.2.4.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\Abp.Web.Common.3.2.4\lib\netstandard2.0\Abp.Web.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="Abp.Web.Mvc, Version=3.2.4.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\Abp.Web.Mvc.3.2.4\lib\net461\Abp.Web.Mvc.dll</HintPath>
-    </Reference>
     <Reference Include="Castle.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc">
       <HintPath>..\packages\Castle.Core.4.2.1\lib\net45\Castle.Core.dll</HintPath>
     </Reference>
@@ -108,9 +93,6 @@
     </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Data.Common, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-      <HintPath>..\packages\System.Data.Common.4.3.0\lib\net451\System.Data.Common.dll</HintPath>
-    </Reference>
     <Reference Include="System.Linq.Dynamic.Core, Version=0.0.0.0, Culture=neutral, PublicKeyToken=0f07ec44de6ac832">
       <HintPath>..\packages\System.Linq.Dynamic.Core.1.0.7.12\lib\net46\System.Linq.Dynamic.Core.dll</HintPath>
     </Reference>
@@ -120,21 +102,15 @@
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.4.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
-    <Reference Include="System.Runtime.Serialization.Formatters, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-      <HintPath>..\packages\System.Runtime.Serialization.Formatters.4.3.0\lib\net46\System.Runtime.Serialization.Formatters.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Runtime.Serialization.Primitives, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-      <HintPath>..\packages\System.Runtime.Serialization.Primitives.4.3.0\lib\net46\System.Runtime.Serialization.Primitives.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Security.Claims, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-      <HintPath>..\packages\System.Security.Claims.4.3.0\lib\net46\System.Security.Claims.dll</HintPath>
-    </Reference>
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.Owin, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Owin.5.2.3\lib\net45\System.Web.Http.Owin.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
@@ -155,30 +131,65 @@
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml" />
-    <Reference Include="System.Xml.XmlDocument, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-      <HintPath>..\packages\System.Xml.XmlDocument.4.3.0\lib\net46\System.Xml.XmlDocument.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Xml.XPath, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-      <HintPath>..\packages\System.Xml.XPath.4.3.0\lib\net46\System.Xml.XPath.dll</HintPath>
-    </Reference>
     <Reference Include="System.Xml.XPath.XmlDocument, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <HintPath>..\packages\System.Xml.XPath.XmlDocument.4.3.0\lib\net46\System.Xml.XPath.XmlDocument.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\Controllers\BlockWebApiController.cs" />
+    <Compile Include="Api\Controllers\Selectors\BlocksHttpControllerSelector.cs" />
     <Compile Include="BlocksWebApplication.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="FileSystems\VirtualPath\DefaultVirtualPathProvider.cs" />
+    <Compile Include="Modules\BlocksFrameworkWebModule.cs" />
+    <Compile Include="Modules\BlocksWebModule.cs" />
+    <Compile Include="Mvc\Controllers\BlocksWebMvcControllerFactory.cs" />
+    <Compile Include="Mvc\Controllers\BlockWebController.cs" />
+    <Compile Include="Mvc\ViewEngines\IViewEngineProvider.cs" />
+    <Compile Include="Mvc\ViewEngines\Razor\RazorViewEngineProvider.cs" />
+    <Compile Include="Mvc\ViewEngines\ThemeAwareness\ConfiguredEnginesCache.cs" />
+    <Compile Include="Mvc\ViewEngines\ThemeAwareness\IConfiguredEnginesCache.cs" />
+    <Compile Include="Mvc\ViewEngines\ThemeAwareness\IThemeAwareViewEngine.cs" />
+    <Compile Include="Mvc\ViewEngines\ThemeAwareness\ThemeAwareViewEngine.cs" />
+    <Compile Include="Mvc\ViewEngines\ThemeAwareness\ThemeAwareViewEngineShim.cs" />
+    <Compile Include="Mvc\ViewEngines\ThemeAwareness\ThemeViewLocationCache.cs" />
+    <Compile Include="Mvc\ViewEngines\ThemeAwareness\ViewEngineCollectionWrapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Route\IHttpRouteProvider.cs" />
+    <Compile Include="Route\IRouteProvider.cs" />
+    <Compile Include="Route\IRoutePublisher.cs" />
+    <Compile Include="Route\RouteDescriptor.cs" />
+    <Compile Include="Route\RoutePublisher.cs" />
+    <Compile Include="Route\StandardExtensionHttpRouteProvider.cs" />
+    <Compile Include="Route\StandardExtensionRouteProvider.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Adp\Abp.Web.Api\Abp.Web.Api.csproj">
+      <Project>{e896ce38-6d25-45bb-bfae-0ebe00f58edb}</Project>
+      <Name>Abp.Web.Api</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Adp\Abp.Web.Common\Abp.Web.Common.csproj">
+      <Project>{e8fde65c-63ab-4b45-aca4-3369a9411236}</Project>
+      <Name>Abp.Web.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Adp\Abp.Web.Mvc\Abp.Web.Mvc.csproj">
+      <Project>{f25d3bc1-3070-422b-a0c5-f8478d9542da}</Project>
+      <Name>Abp.Web.Mvc</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Adp\Abp.Web\Abp.Web.csproj">
+      <Project>{d7355480-1c71-47d5-b7a3-023cdc5941f3}</Project>
+      <Name>Abp.Web</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Adp\Abp\Abp.csproj">
+      <Project>{0f98c63c-d019-4f38-9ac3-f5d7bcad9107}</Project>
+      <Name>Abp</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Blocks.Framework\Blocks.Framework.csproj">
-      <Project>{d4afa4cf-2316-40dc-9f8c-5fad31c2cc57}</Project>
+      <Project>{d5acbcf7-a7a7-449e-9dca-c1fcde36b7b6}</Project>
       <Name>Blocks.Framework</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
