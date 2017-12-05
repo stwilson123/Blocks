@@ -64,7 +64,7 @@ namespace Abp.Modules
             Logger.Debug("Loading Abp modules...");
 
             List<Type> plugInModuleTypes;
-            var moduleTypes = FindAllModuleTypes(out plugInModuleTypes).Distinct().ToList();
+            var moduleTypes = FindAllModuleTypes(out plugInModuleTypes).Distinct(new AssemblyTypeEqualityComparer()).ToList();
 
             Logger.Debug("Found " + moduleTypes.Count + " ABP modules in total.");
 
@@ -150,6 +150,25 @@ namespace Abp.Modules
                         moduleInfo.Dependencies.Add(dependedModuleInfo);
                     }
                 }
+            }
+        }
+        
+        internal class  AssemblyTypeEqualityComparer : IEqualityComparer<Type>
+        {
+
+            public bool Equals(Type x, Type y)
+            {
+                if (x == y || (x != null && y != null && x.FullName == y.FullName))
+                {
+                    return true;
+                }
+                 
+                return Equals(x.Name, y.Name);
+            }
+
+            public int GetHashCode(Type type)
+            {
+                return type.Name.GetHashCode();
             }
         }
     }

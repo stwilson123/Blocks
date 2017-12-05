@@ -44,6 +44,10 @@ using Abp;
 [assembly: InternalsVisibleTo("Abp.ZeroCore")]
 [assembly: InternalsVisibleTo("Abp.ZeroCore.EntityFrameworkCore")]
 
+
+[assembly: InternalsVisibleTo("Blocks.Framework")]
+[assembly: InternalsVisibleTo("Blocks.Framework.Web")]
+
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 
 // COM, set the ComVisible attribute to true on that type.

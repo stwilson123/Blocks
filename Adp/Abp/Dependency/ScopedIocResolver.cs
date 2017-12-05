@@ -86,9 +86,20 @@ namespace Abp.Dependency
             return IsRegistered(typeof(T));
         }
 
+        public bool IsRegistered(string key)
+        {
+            return IsRegistered(key);
+        }
         public void Dispose()
         {
             _resolvedObjects.ForEach(_iocResolver.Release);
         }
+
+        public T Resolve<T>(string key)
+        {
+            return _iocResolver.Resolve<T>(key);
+        }
+
+      
     }
 }

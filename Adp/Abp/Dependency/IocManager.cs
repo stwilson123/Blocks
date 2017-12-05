@@ -42,7 +42,6 @@ namespace Abp.Dependency
         {
             IocContainer = new WindsorContainer();
             _conventionalRegistrars = new List<IConventionalDependencyRegistrar>();
-
             //Register self!
             IocContainer.Register(
                 Component.For<IocManager, IIocManager, IIocRegistrar, IIocResolver>().UsingFactoryMethod(() => this)
@@ -117,7 +116,11 @@ namespace Abp.Dependency
             where TType : class
             where TImpl : class, TType
         {
-            IocContainer.Register(ApplyLifestyle(Component.For<TType, TImpl>().ImplementedBy<TImpl>(), lifeStyle));
+            IocContainer.Register(ApplyLifestyle(Component.For<TType, TImpl>().ImplementedBy<TImpl>().OnCreate((k,instance) => {
+                instance.
+                
+                
+            }), lifeStyle));
         }
 
         /// <summary>
@@ -129,6 +132,7 @@ namespace Abp.Dependency
         public void Register(Type type, Type impl, DependencyLifeStyle lifeStyle = DependencyLifeStyle.Singleton)
         {
             IocContainer.Register(ApplyLifestyle(Component.For(type, impl).ImplementedBy(impl), lifeStyle));
+
         }
 
         /// <summary>
@@ -149,6 +153,11 @@ namespace Abp.Dependency
             return IocContainer.Kernel.HasComponent(typeof(TType));
         }
 
+        public bool IsRegistered(string key)
+        {
+            return IocContainer.Kernel.HasComponent(key);
+
+        }
         /// <summary>
         /// Gets an object from IOC container.
         /// Returning object must be Released (see <see cref="IIocResolver.Release"/>) after usage.
@@ -259,5 +268,17 @@ namespace Abp.Dependency
                     return registration;
             }
         }
+
+        public T Resolve<T>(string key)
+        {
+           return  (T)IocContainer.Resolve<T>(key);
+        }
+
+        public void Register<T>(T instance, DependencyLifeStyle lifeStyle = DependencyLifeStyle.Singleton) where T : class
+        {
+            IocContainer.Register(ApplyLifestyle(Component.For<T>().Instance(instance), lifeStyle));
+        }
+
+      
     }
 }

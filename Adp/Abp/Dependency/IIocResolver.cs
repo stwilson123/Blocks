@@ -24,6 +24,22 @@ namespace Abp.Dependency
         /// <returns>The object instance</returns>
         T Resolve<T>(Type type);
 
+
+        // Summary:
+        //     Returns a component instance by the key
+        //
+        // Parameters:
+        //   key:
+        //     Component's key
+        //
+        // Type parameters:
+        //   T:
+        //     Service type
+        //
+        // Returns:
+        //     The Component instance
+        T Resolve<T>(string key);
+
         /// <summary>
         /// Gets an object from IOC container.
         /// Returning object must be Released (see <see cref="Release"/>) after usage.
@@ -84,6 +100,7 @@ namespace Abp.Dependency
         /// <returns>Object instances</returns>
         object[] ResolveAll(Type type, object argumentsAsAnonymousType);
 
+
         /// <summary>
         /// Releases a pre-resolved object. See Resolve methods.
         /// </summary>
@@ -101,5 +118,11 @@ namespace Abp.Dependency
         /// </summary>
         /// <typeparam name="T">Type to check</typeparam>
         bool IsRegistered<T>();
+
+        /// <summary>
+        /// Checks whether given type is registered before.
+        /// </summary>
+        /// <param name="key">component key to check</param>
+        bool IsRegistered(string key);
     }
 }

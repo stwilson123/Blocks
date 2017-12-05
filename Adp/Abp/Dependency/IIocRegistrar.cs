@@ -36,6 +36,17 @@ namespace Abp.Dependency
             where T : class;
 
         /// <summary>
+        /// Registers a instance as self registration.
+        /// </summary>
+        /// <typeparam name="T">Type of the class</typeparam>
+        /// <param name="instance">Register instance</param>
+        /// <param name="lifeStyle">Lifestyle of the objects of this type</param>
+        void Register<T>(T instance ,DependencyLifeStyle lifeStyle = DependencyLifeStyle.Singleton)
+            where T : class;
+
+
+
+        /// <summary>
         /// Registers a type as self registration.
         /// </summary>
         /// <param name="type">Type of the class</param>
@@ -60,6 +71,8 @@ namespace Abp.Dependency
         /// <param name="lifeStyle">Lifestyle of the objects of this type</param>
         void Register(Type type, Type impl, DependencyLifeStyle lifeStyle = DependencyLifeStyle.Singleton);
 
+       
+        
         /// <summary>
         /// Checks whether given type is registered before.
         /// </summary>
@@ -71,5 +84,12 @@ namespace Abp.Dependency
         /// </summary>
         /// <typeparam name="TType">Type to check</typeparam>
         bool IsRegistered<TType>();
+
+
+        /// <summary>
+        /// Checks whether given type is registered before.
+        /// </summary>
+        /// <param name="key">component key to check</param>
+        bool IsRegistered(string key);
     }
 }

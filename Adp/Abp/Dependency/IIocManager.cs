@@ -24,5 +24,12 @@ namespace Abp.Dependency
         /// </summary>
         /// <typeparam name="T">Type to check</typeparam>
         new bool IsRegistered<T>();
+
+
+        /// <summary>
+        /// Checks whether given type is registered before.
+        /// </summary>
+        /// <param name="key">component key to check</param>
+        new bool IsRegistered(string key);
     }
 }

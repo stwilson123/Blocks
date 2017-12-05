@@ -12,7 +12,7 @@ namespace Abp.Reflection
         {
             var assemblyFiles = Directory
                 .EnumerateFiles(folderPath, "*.*", searchOption)
-                .Where(s => s.EndsWith(".dll") || s.EndsWith(".exe"));
+                .Where(s => (s.EndsWith(".dll") || s.EndsWith(".exe")) && s.EndsWith("Module.dll") || s.EndsWith("Module.exe"));
 
             return assemblyFiles.Select(
                 Assembly.LoadFile
