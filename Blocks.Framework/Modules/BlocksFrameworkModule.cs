@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Reflection;
 using Abp.Modules;
+using Blocks.Framework.Caching;
 using Castle.MicroKernel.Resolvers.SpecializedResolvers;
 
 namespace Blocks.Framework.Modules
 {
+    [DependsOn(typeof(CacheModule))]
     public class BlocksFrameworkModule: AbpModule
     {
         public override void PreInitialize()
@@ -18,7 +21,7 @@ namespace Blocks.Framework.Modules
 
         public override void Initialize()
         {
-             
+            IocManager.RegisterAssemblyByConvention(Assembly.GetExecutingAssembly());
         }
     }
 }
