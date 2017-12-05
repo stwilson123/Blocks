@@ -3,6 +3,7 @@ using Castle.Facilities.Logging;
 using Abp.Castle.Logging.Log4Net;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Security;
@@ -18,7 +19,7 @@ using Blocks.Framework.Web.FileSystems.VirtualPath;
 
 namespace Blocks.Web
 {
-    public class Global : HttpApplication
+    public class MvcApplication : HttpApplication
     {
 
         /// <summary>
@@ -33,11 +34,8 @@ namespace Blocks.Web
             
             IVirtualPathProvider pathProvider = new DefaultVirtualPathProvider();
             if (pathProvider.DirectoryExists(@"~\Modules"))
-            {
-                foreach(var directory in pathProvider.ListDirectories(@"~\Modules"))
-                    AbpBootstrapper.PlugInSources.AddFolder(pathProvider.MapPath(directory));
-
-            }
+                AbpBootstrapper.PlugInSources.AddFolder(pathProvider.MapPath(@"~\Modules"),
+                    SearchOption.AllDirectories);
             AbpBootstrapper.Initialize();
         }
 

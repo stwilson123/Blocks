@@ -13,6 +13,8 @@ using Blocks.Api;
 using Castle.MicroKernel.Registration;
 using Hangfire;
 using Microsoft.Owin.Security;
+using Blocks.Framework.Modules;
+using Blocks.Framework.Web.Modules;
 
 namespace Blocks.Web
 {
@@ -22,7 +24,8 @@ namespace Blocks.Web
         typeof(BlocksWebApiModule),
         typeof(AbpWebSignalRModule),
         //typeof(AbpHangfireModule), - ENABLE TO USE HANGFIRE INSTEAD OF DEFAULT JOB MANAGER
-        typeof(AbpWebMvcModule))]
+     //   typeof(AbpWebMvcModule),
+        typeof(BlocksFrameworkWebModule))]
     public class BlocksWebModule : AbpModule
     {
         public override void PreInitialize()
@@ -32,6 +35,8 @@ namespace Blocks.Web
 
             //Configure navigation/menu
             Configuration.Navigation.Providers.Add<BlocksNavigationProvider>();
+
+            IocManager.Register<RouteCollection>(RouteTable.Routes);
 
             //Configure Hangfire - ENABLE TO USE HANGFIRE INSTEAD OF DEFAULT JOB MANAGER
             //Configuration.BackgroundJobs.UseHangfire(configuration =>
@@ -43,6 +48,7 @@ namespace Blocks.Web
         public override void Initialize()
         {
             IocManager.RegisterAssemblyByConvention(Assembly.GetExecutingAssembly());
+
 
             IocManager.IocContainer.Register(
                 Component

@@ -35,27 +35,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Abp">
-      <HintPath>..\packages\Abp.3.2.4\lib\netstandard2.0\Abp.dll</HintPath>
-    </Reference>
-    <Reference Include="Abp.AutoMapper, Version=3.2.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Abp.AutoMapper.3.2.4\lib\netstandard2.0\Abp.AutoMapper.dll</HintPath>
-    </Reference>
-    <Reference Include="Abp.Web, Version=3.2.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Abp.Web.3.2.4\lib\net461\Abp.Web.dll</HintPath>
-    </Reference>
-    <Reference Include="Abp.Web.Api, Version=3.2.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Abp.Web.Api.3.2.4\lib\net461\Abp.Web.Api.dll</HintPath>
-    </Reference>
-    <Reference Include="Abp.Web.Common, Version=3.2.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Abp.Web.Common.3.2.4\lib\netstandard2.0\Abp.Web.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="Abp.Zero, Version=3.2.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Abp.Zero.3.2.4\lib\net461\Abp.Zero.dll</HintPath>
-    </Reference>
-    <Reference Include="Abp.Zero.Common, Version=3.2.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Abp.Zero.Common.3.2.4\lib\netstandard2.0\Abp.Zero.Common.dll</HintPath>
-    </Reference>
     <Reference Include="AutoMapper, Version=6.2.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <HintPath>..\packages\AutoMapper.6.2.1\lib\net45\AutoMapper.dll</HintPath>
     </Reference>
@@ -207,10 +186,40 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Adp\Abp.AutoMapper\Abp.AutoMapper.csproj">
+      <Project>{44ee7b2b-c3e5-42b9-95d9-79f8742d6129}</Project>
+      <Name>Abp.AutoMapper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Adp\Abp.Web.Api\Abp.Web.Api.csproj">
+      <Project>{e896ce38-6d25-45bb-bfae-0ebe00f58edb}</Project>
+      <Name>Abp.Web.Api</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Adp\Abp.Web.Common\Abp.Web.Common.csproj">
+      <Project>{e8fde65c-63ab-4b45-aca4-3369a9411236}</Project>
+      <Name>Abp.Web.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Adp\Abp.Web\Abp.Web.csproj">
+      <Project>{d7355480-1c71-47d5-b7a3-023cdc5941f3}</Project>
+      <Name>Abp.Web</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Adp\Abp.Zero.Common\Abp.Zero.Common.csproj">
+      <Project>{2f5783ee-a022-45a5-928f-2588cb5f6c8e}</Project>
+      <Name>Abp.Zero.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Adp\Abp.Zero\Abp.Zero.csproj">
+      <Project>{22f38673-d59e-4d44-92cd-1e0fb37e7858}</Project>
+      <Name>Abp.Zero</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Adp\Abp\Abp.csproj">
+      <Project>{0f98c63c-d019-4f38-9ac3-f5d7bcad9107}</Project>
+      <Name>Abp</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Blocks.Application\Blocks.Application.csproj">
       <Project>{edf5d964-4c0f-4f19-b674-58a38a5e5401}</Project>
       <Name>Blocks.Application</Name>

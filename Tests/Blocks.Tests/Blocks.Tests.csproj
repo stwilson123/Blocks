@@ -52,15 +52,6 @@
     <Reference Include="Abp.TestBase, Version=3.2.4.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Abp.TestBase.3.2.4\lib\netstandard2.0\Abp.TestBase.dll</HintPath>
     </Reference>
-    <Reference Include="Abp.Zero, Version=3.2.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Abp.Zero.3.2.4\lib\net461\Abp.Zero.dll</HintPath>
-    </Reference>
-    <Reference Include="Abp.Zero.Common, Version=3.2.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Abp.Zero.Common.3.2.4\lib\netstandard2.0\Abp.Zero.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="Abp.Zero.EntityFramework, Version=3.2.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Abp.Zero.EntityFramework.3.2.4\lib\net461\Abp.Zero.EntityFramework.dll</HintPath>
-    </Reference>
     <Reference Include="AutoMapper, Version=6.2.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <HintPath>..\..\packages\AutoMapper.6.2.1\lib\net45\AutoMapper.dll</HintPath>
     </Reference>
@@ -227,6 +218,18 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Adp\Abp.Zero.Common\Abp.Zero.Common.csproj">
+      <Project>{2f5783ee-a022-45a5-928f-2588cb5f6c8e}</Project>
+      <Name>Abp.Zero.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Adp\Abp.Zero.EntityFramework\Abp.Zero.EntityFramework.csproj">
+      <Project>{35263b8a-2f09-4ac6-8f5e-c02f15d5361e}</Project>
+      <Name>Abp.Zero.EntityFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Adp\Abp.Zero\Abp.Zero.csproj">
+      <Project>{22f38673-d59e-4d44-92cd-1e0fb37e7858}</Project>
+      <Name>Abp.Zero</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Blocks.Application\Blocks.Application.csproj">
       <Project>{EDF5D964-4C0F-4F19-B674-58A38A5E5401}</Project>
       <Name>Blocks.Application</Name>
