@@ -8,7 +8,7 @@ using Castle.Core.Logging;
 namespace Blocks.Framework.Web.Mvc.ViewEngines.Razor
 {
    public class RazorViewEngineProvider : IViewEngineProvider { //, IShapeTemplateViewEngine {
-        public RazorViewEngineProvider() {
+         public RazorViewEngineProvider() {
             Logger = NullLogger.Instance;
            // RazorCompilationEventsShim.EnsureInitialized();
         }

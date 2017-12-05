@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using Abp.Web.Mvc.Extensions;
+using Blocks.Framework.Environment.Extensions;
+using Blocks.Framework.Environment.Extensions.Models;
+using Blocks.Framework.FileSystems.Extensions;
+using Blocks.Framework.Web.Mvc.Route;
 using Castle.Core.Logging;
 
 namespace Blocks.Framework.Web.Mvc.ViewEngines.ThemeAwareness
@@ -10,21 +15,21 @@ namespace Blocks.Framework.Web.Mvc.ViewEngines.ThemeAwareness
      //   private readonly WorkContext _workContext;
         private readonly IEnumerable<IViewEngineProvider> _viewEngineProviders;
         private readonly IConfiguredEnginesCache _configuredEnginesCache;
-//        private readonly IExtensionManager _extensionManager;
+        private readonly IExtensionManager _extensionManager;
 //        private readonly ShellDescriptor _shellDescriptor;
-        private readonly IViewEngine _nullEngines = new ViewEngineCollectionWrapper(Enumerable.Empty<IViewEngine>());
+        private readonly IViewEngine _nullEngines = new ViewEngineCollectionWrapper(Enumerable.Empty<IViewEngine>().Concat(new[]{ new RazorViewEngine()}));
 
         public ThemeAwareViewEngine(
            // WorkContext workContext,
             IEnumerable<IViewEngineProvider> viewEngineProviders,
-            IConfiguredEnginesCache configuredEnginesCache
-         //   IExtensionManager extensionManager,
+            IConfiguredEnginesCache configuredEnginesCache,
+            IExtensionManager extensionManager
            // ShellDescriptor shellDescriptor) {
         ) {
            // _workContext = workContext;
             _viewEngineProviders = viewEngineProviders;
             _configuredEnginesCache = configuredEnginesCache;
-//            _extensionManager = extensionManager;
+            _extensionManager = extensionManager;
 //            _shellDescriptor = shellDescriptor;
 
             Logger = NullLogger.Instance;
@@ -54,7 +59,11 @@ namespace Blocks.Framework.Web.Mvc.ViewEngines.ThemeAwareness
 //            else if (_workContext.CurrentTheme != null) {
 //                engines = useDeepPaths ? DeepEngines(_workContext.CurrentTheme) : ShallowEngines(_workContext.CurrentTheme);
 //            }
-
+            var areaName = controllerContext.RouteData.GetAreaName();
+            if (!string.IsNullOrEmpty(areaName))
+            {
+                   engines = useDeepPaths ? DeepEngines(areaName) : ShallowEngines(areaName);
+            }
             return engines.FindView(controllerContext, viewName, masterName, useCache);
         }
 
@@ -63,30 +72,32 @@ namespace Blocks.Framework.Web.Mvc.ViewEngines.ThemeAwareness
             return _configuredEnginesCache.BindBareEngines(() => new ViewEngineCollectionWrapper(_viewEngineProviders.Select(vep => vep.CreateBareViewEngine())));
         }
 
-//        private IViewEngine ShallowEngines(ExtensionDescriptor theme) {
-//            //return _configuredEnginesCache.BindShallowEngines(theme.ThemeName, () => new ViewEngineCollectionWrapper(_viewEngineProviders.Select(vep => vep.CreateBareViewEngine())));
-//            return DeepEngines(theme);
-//        }
-//
-//        private IViewEngine DeepEngines(ExtensionDescriptor theme) {
-//            return _configuredEnginesCache.BindDeepEngines(theme.Id, () => {
-//                // The order for searching for views is:
-//                // 1. Current "theme"
-//                // 2. Base themes of the current theme (in "base" order)
-//                // 3. Active features from modules in dependency order
-//
-//                var engines = Enumerable.Empty<IViewEngine>();
-//                // 1. current theme
-//                engines = engines.Concat(CreateThemeViewEngines(theme));
-//
-//                // 2. Base themes of the current theme (in "base" order)
-//                engines = GetBaseThemes(theme).Aggregate(engines, (current, baseTheme) => current.Concat(CreateThemeViewEngines(baseTheme)));
-//
-//                // 3. Active features from modules in dependency order
+        private IViewEngine ShallowEngines(string areaName) {
+            //return _configuredEnginesCache.BindShallowEngines(theme.ThemeName, () => new ViewEngineCollectionWrapper(_viewEngineProviders.Select(vep => vep.CreateBareViewEngine())));
+            return DeepEngines(areaName);
+        }
+
+        private IViewEngine DeepEngines(string areaName) {
+            // return _configuredEnginesCache.BindDeepEngines("Theme", () => {
+
+            return _configuredEnginesCache.BindDeepEngines(areaName, () => {
+                // The order for searching for views is:
+                // 1. Current "theme"
+                // 2. Base themes of the current theme (in "base" order)
+                // 3. Active features from modules in dependency order
+
+                var engines = Enumerable.Empty<IViewEngine>();
+                // 1. current theme
+             //   engines = engines.Concat(CreateThemeViewEngines(theme));
+
+                // 2. Base themes of the current theme (in "base" order)
+              //  engines = GetBaseThemes(theme).Aggregate(engines, (current, baseTheme) => current.Concat(CreateThemeViewEngines(baseTheme)));
+
+                // 3. Active features from modules in dependency order
 //                var enabledModules = _extensionManager.EnabledFeatures(_shellDescriptor)
 //                    .Reverse()  // reverse from (C <= B <= A) to (A => B => C)
 //                    .Where(fd => DefaultExtensionTypes.IsModule(fd.Extension.ExtensionType));
-//
+
 //                var moduleVirtualPaths = enabledModules
 //                    .Select(fd => fd.Extension.VirtualPath)
 //                    .Distinct(StringComparer.OrdinalIgnoreCase) // is Distinct guaranty to keep order?
@@ -96,14 +107,29 @@ namespace Blocks.Framework.Web.Mvc.ViewEngines.ThemeAwareness
 //                    .Select(fd => fd.Extension.Location)
 //                    .Distinct(StringComparer.OrdinalIgnoreCase) 
 //                    .ToList();
-//
-//                var moduleParams = new CreateModulesViewEngineParams { VirtualPaths = moduleVirtualPaths, ExtensionLocations = moduleLocations };
-//                engines = engines.Concat(_viewEngineProviders.Select(vep => vep.CreateModulesViewEngine(moduleParams)));
-//
-//                return new ViewEngineCollectionWrapper(engines);
-//            });
-//        }
-//
+
+                // 3. Active features from modules in dependency order
+                var enabledModules = _extensionManager.EnabledFeatures(areaName)
+                    .Reverse()  // reverse from (C <= B <= A) to (A => B => C)
+                    .Where(fd => DefaultExtensionTypes.IsModule(fd.Extension.ExtensionType));
+
+                var moduleVirtualPaths = enabledModules
+                    .Select(fd => fd.Extension.VirtualPath)
+                    .Distinct(StringComparer.OrdinalIgnoreCase) // is Distinct guaranty to keep order?
+                    .ToList();
+
+                var moduleLocations = enabledModules
+                    .Select(fd => fd.Extension.Location)
+                    .Distinct(StringComparer.OrdinalIgnoreCase) 
+                    .ToList();
+                
+                var moduleParams = new CreateModulesViewEngineParams { VirtualPaths = moduleVirtualPaths, ExtensionLocations = moduleLocations };
+                engines = engines.Concat(_viewEngineProviders.Select(vep => vep.CreateModulesViewEngine(moduleParams)));
+
+                return new ViewEngineCollectionWrapper(engines);
+            });
+        }
+
 //        private IEnumerable<IViewEngine> CreateThemeViewEngines(ExtensionDescriptor theme) {
 //            var themeLocation = theme.Location + "/" + theme.Id;
 //            var themeParams = new CreateThemeViewEngineParams {VirtualPath = themeLocation};

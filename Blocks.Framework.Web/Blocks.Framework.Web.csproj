@@ -145,6 +145,7 @@
     <Compile Include="Modules\BlocksWebModule.cs" />
     <Compile Include="Mvc\Controllers\BlocksWebMvcControllerFactory.cs" />
     <Compile Include="Mvc\Controllers\BlockWebController.cs" />
+    <Compile Include="Mvc\Route\RouteExtension.cs" />
     <Compile Include="Mvc\ViewEngines\IViewEngineProvider.cs" />
     <Compile Include="Mvc\ViewEngines\Razor\RazorViewEngineProvider.cs" />
     <Compile Include="Mvc\ViewEngines\ThemeAwareness\ConfiguredEnginesCache.cs" />

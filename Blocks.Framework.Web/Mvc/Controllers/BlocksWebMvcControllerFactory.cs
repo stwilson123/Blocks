@@ -3,6 +3,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using Abp.Dependency;
 using Abp.Web.Mvc.Extensions;
+using Blocks.Framework.Web.Mvc.Route;
 
 namespace Blocks.Framework.Web.Mvc
 {
