@@ -5,8 +5,9 @@ namespace Blocks.WebAPIModules.API.Controllers
 {
     public class AccountTestController : AbpApiController
     {
+        
         [HttpGet]
-        public string Authenticate(string loginModel)
+        public string Get111(string id)
         {
             return "hellp";
 
