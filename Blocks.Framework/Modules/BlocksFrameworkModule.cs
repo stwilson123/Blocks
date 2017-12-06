@@ -3,10 +3,16 @@ using System.Reflection;
 using Abp.Modules;
 using Blocks.Framework.Caching;
 using Castle.MicroKernel.Resolvers.SpecializedResolvers;
+using Blocks.Framework.Environment.Extensions.Folders;
+using Castle.MicroKernel;
+using System.Collections;
+using Blocks.Framework.Environment;
+using Blocks.Framework.Environment.Configuration;
 
 namespace Blocks.Framework.Modules
 {
     [DependsOn(typeof(CacheModule))]
+    [DependsOn(typeof(EnvironmentModule))]
     public class BlocksFrameworkModule: AbpModule
     {
         public override void PreInitialize()
@@ -21,7 +27,10 @@ namespace Blocks.Framework.Modules
 
         public override void Initialize()
         {
+
             IocManager.RegisterAssemblyByConvention(Assembly.GetExecutingAssembly());
+
+           
         }
     }
 }

@@ -36,9 +36,6 @@
     <Reference Include="AutoMapper, Version=6.2.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005">
       <HintPath>..\packages\AutoMapper.6.2.1\lib\net45\AutoMapper.dll</HintPath>
     </Reference>
-    <Reference Include="Blocks.Framework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\Blocks.Web\Modules\Blocks.BussenssWebModule\Bin\Blocks.Framework.dll</HintPath>
-    </Reference>
     <Reference Include="Castle.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc">
       <HintPath>..\packages\Castle.Core.4.2.0\lib\net45\Castle.Core.dll</HintPath>
     </Reference>
@@ -49,6 +46,7 @@
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
@@ -103,6 +101,9 @@
     <Compile Include="Collections\DependencyOrdering.cs" />
     <Compile Include="Collections\LazyConcurrentDictionary.cs" />
     <Compile Include="Collections\ReadOnlyCollectionExtensions.cs" />
+    <Compile Include="Environment\Configuration\ExtensionLocations.cs" />
+    <Compile Include="Environment\Configuration\IAppConfigurationAccessor.cs" />
+    <Compile Include="Environment\EnvironmentModule.cs" />
     <Compile Include="Environment\Extensions\Attributes\BlocksFeatureAttribute.cs" />
     <Compile Include="Environment\Extensions\DefaultCriticalErrorProvider.cs" />
     <Compile Include="Environment\Extensions\ExtensionEntry.cs" />
@@ -127,9 +128,6 @@
     <Compile Include="FileSystems\VirtualPath\IVirtualPathProvider.cs" />
     <Compile Include="FileSystems\WebSite\IWebSiteFolder.cs" />
     <Compile Include="FileSystems\WebSite\WebSiteFolder.cs" />
-    <Compile Include="Ioc\ComponentActivatorNew.cs" />
-    <Compile Include="Ioc\ModuleFacility.cs" />
-    <Compile Include="Ioc\RequireLoggerProperties.cs" />
     <Compile Include="Localization\BlocksFrameworkLocalizationSource.cs" />
     <Compile Include="Modules\BlocksFrameworkModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

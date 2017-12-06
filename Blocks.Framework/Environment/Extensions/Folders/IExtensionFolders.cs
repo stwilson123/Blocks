@@ -4,7 +4,7 @@ using Blocks.Framework.Environment.Extensions.Models;
 
 namespace Blocks.Framework.Environment.Extensions.Folders
 {
-    public interface IExtensionFolders : ISingletonDependency{
+    public interface IExtensionFolders  {
         IEnumerable<ExtensionDescriptor> AvailableExtensions();
     }
 }
