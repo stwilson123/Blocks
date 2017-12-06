@@ -17,7 +17,11 @@ namespace Blocks.Framework.Caching {
 
             IocManager.Register<IParallelCacheContext, DefaultParallelCacheContext>();
 
-            IocManager.Register<ICacheManager,DefaultCacheManager>(DependencyLifeStyle.Transient);
+            IocManager.Register<ICacheManager,DefaultCacheManager>((kernel, componentModel, creationContext) =>
+            {
+                return (DefaultCacheManager)kernel.Resolve<ICacheManager>(new { component = typeof(string), cacheHolder = kernel.Resolve<ICacheHolder>()});
+
+            },DependencyLifeStyle.Transient);
         }
 
 //        protected override void AttachToComponentRegistration(Autofac.Core.IComponentRegistry componentRegistry, Autofac.Core.IComponentRegistration registration) {

@@ -29,12 +29,15 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="AutoMapper, Version=6.2.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005">
       <HintPath>..\packages\AutoMapper.6.2.1\lib\net45\AutoMapper.dll</HintPath>
     </Reference>
-    <Reference Include="Castle.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc">
-      <HintPath>..\packages\Castle.Core.4.2.1\lib\net45\Castle.Core.dll</HintPath>
+    <Reference Include="Blocks.Framework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\Blocks.Web\Modules\Blocks.BussenssWebModule\Bin\Blocks.Framework.dll</HintPath>
     </Reference>
     <Reference Include="Castle.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc">
       <HintPath>..\packages\Castle.Core.4.2.0\lib\net45\Castle.Core.dll</HintPath>
@@ -51,7 +54,6 @@
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
     </Reference>
-    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
     <Reference Include="System.Web.Http.Owin, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Owin.5.2.3\lib\net45\System.Web.Http.Owin.dll</HintPath>
     </Reference>
@@ -125,6 +127,9 @@
     <Compile Include="FileSystems\VirtualPath\IVirtualPathProvider.cs" />
     <Compile Include="FileSystems\WebSite\IWebSiteFolder.cs" />
     <Compile Include="FileSystems\WebSite\WebSiteFolder.cs" />
+    <Compile Include="Ioc\ComponentActivatorNew.cs" />
+    <Compile Include="Ioc\ModuleFacility.cs" />
+    <Compile Include="Ioc\RequireLoggerProperties.cs" />
     <Compile Include="Localization\BlocksFrameworkLocalizationSource.cs" />
     <Compile Include="Modules\BlocksFrameworkModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -162,8 +167,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Ioc\Providers" />
-    <Folder Include="Web" />
+    <Folder Include="Ioc\Providers\" />
+    <Folder Include="Web\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
