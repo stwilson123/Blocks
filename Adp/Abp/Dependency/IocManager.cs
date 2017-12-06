@@ -134,6 +134,26 @@ namespace Abp.Dependency
         {
             IocContainer.Register(ApplyLifestyle(Component.For<TType, TImpl>().ImplementedBy<TImpl>().UsingFactoryMethod(factoryMethod), lifeStyle));
         }
+
+
+
+        /// <summary>
+        /// Registers a type with it's implementation.
+        /// </summary>
+        /// <typeparam name="TType">Registering type</typeparam>
+        /// <typeparam name="TImpl">The type that implements <see cref="TType"/></typeparam>
+        /// <param name="lifeStyle">Lifestyle of the objects of this type</param>
+        public void Register<TType, TImpl>(DynamicParametersDelegate resolve, DependencyLifeStyle lifeStyle = DependencyLifeStyle.Singleton)
+            where TType : class
+            where TImpl : class, TType
+        {
+
+
+
+            IocContainer.Register(ApplyLifestyle(Component.For<TType, TImpl>().ImplementedBy<TImpl>().DependsOn(resolve), lifeStyle));
+        }
+
+
         /// <summary>
         /// Registers a type with it's implementation.
         /// </summary>
