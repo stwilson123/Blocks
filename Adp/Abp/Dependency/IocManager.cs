@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Castle.MicroKernel;
+using Castle.MicroKernel.Context;
 using Castle.MicroKernel.Registration;
 using Castle.Windsor;
 using Castle.Windsor.Installer;
@@ -41,6 +43,7 @@ namespace Abp.Dependency
         public IocManager()
         {
             IocContainer = new WindsorContainer();
+           
             _conventionalRegistrars = new List<IConventionalDependencyRegistrar>();
             //Register self!
             IocContainer.Register(
@@ -116,13 +119,21 @@ namespace Abp.Dependency
             where TType : class
             where TImpl : class, TType
         {
-            IocContainer.Register(ApplyLifestyle(Component.For<TType, TImpl>().ImplementedBy<TImpl>().OnCreate((k,instance) => {
-                instance.
-                
-                
-            }), lifeStyle));
+            IocContainer.Register(ApplyLifestyle(Component.For<TType, TImpl>().ImplementedBy<TImpl>(), lifeStyle));
         }
 
+        /// <summary>
+        /// Registers a type with it's implementation.
+        /// </summary>
+        /// <typeparam name="TType">Registering type</typeparam>
+        /// <typeparam name="TImpl">The type that implements <see cref="TType"/></typeparam>
+        /// <param name="lifeStyle">Lifestyle of the objects of this type</param>
+        public void Register<TType, TImpl>(Func<IKernel, Castle.Core.ComponentModel, CreationContext, TImpl> factoryMethod, DependencyLifeStyle lifeStyle = DependencyLifeStyle.Singleton)
+            where TType : class
+            where TImpl : class, TType
+        {
+            IocContainer.Register(ApplyLifestyle(Component.For<TType, TImpl>().ImplementedBy<TImpl>().UsingFactoryMethod(factoryMethod), lifeStyle));
+        }
         /// <summary>
         /// Registers a type with it's implementation.
         /// </summary>

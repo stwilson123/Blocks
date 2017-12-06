@@ -1,5 +1,7 @@
 using System;
 using System.Reflection;
+using Castle.MicroKernel;
+using Castle.MicroKernel.Context;
 
 namespace Abp.Dependency
 {
@@ -63,6 +65,18 @@ namespace Abp.Dependency
             where TType : class
             where TImpl : class, TType;
 
+        /// <summary>
+        /// Registers a type with it's implementation.
+        /// </summary>
+        /// <typeparam name="TType">Registering type</typeparam>
+        /// <typeparam name="TImpl">The type that implements <see cref="TType"/></typeparam>
+        /// <param name="lifeStyle">Lifestyle of the objects of this type</param>
+        void Register<TType, TImpl>(Func<IKernel, Castle.Core.ComponentModel, CreationContext, TImpl> factoryMethod, DependencyLifeStyle lifeStyle = DependencyLifeStyle.Singleton)
+            where TType : class
+            where TImpl : class, TType;
+        
+
+        
         /// <summary>
         /// Registers a type with it's implementation.
         /// </summary>
