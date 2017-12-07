@@ -30,10 +30,11 @@ using Abp.Web.Mvc.Helpers;
 using Abp.Web.Mvc.Models;
 using Castle.Core.Logging;
 
+
 namespace Blocks.Framework.Web.Mvc
 {
     public abstract class BlockWebController : Controller 
-    {
+    { 
         /// <summary>
         /// Gets current session information.
         /// </summary>

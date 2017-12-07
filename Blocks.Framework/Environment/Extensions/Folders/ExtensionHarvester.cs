@@ -9,8 +9,10 @@ using Blocks.Framework.Environment.Extensions.Models;
 using Blocks.Framework.Exceptions;
 using Blocks.Framework.FileSystems.WebSite;
 using Blocks.Framework.Localization;
+using Blocks.Framework.Tools.Json;
 using Blocks.Framework.Untility.Extensions;
 using Castle.Core.Logging;
+using System.Text.RegularExpressions;
 
 namespace Blocks.Framework.Environment.Extensions.Folders
 {
@@ -135,7 +137,7 @@ namespace Blocks.Framework.Environment.Extensions.Folders
 //                LifecycleStatus = GetValue(manifest, LifecycleStatusSection, LifecycleStatus.Production)
 //            };
 //            extensionDescriptor.Features = GetFeaturesForExtension(manifest, extensionDescriptor);
-            var extensionDescriptor = JsonSerializationHelper.DeserializeWithType<ExtensionDescriptor>(manifestText);
+            var extensionDescriptor = JsonHelper.DeserializeObject<ExtensionDescriptor>(manifestText ?? Regex.Replace(manifestText, @"[/n/r]", "") );
             return extensionDescriptor;
         }
 

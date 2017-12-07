@@ -8,7 +8,7 @@ namespace Blocks.Framework.Localization
     public class BlocksFrameworkLocalizationSource : ITransientDependency
     {
         private readonly ILocalizationManager _localizationManager;
-        private readonly string LocalizationSourceName = "BlocksFramework";
+        public static readonly string LocalizationSourceName = "BlocksFramework";
 
         public BlocksFrameworkLocalizationSource(ILocalizationManager LocalizationManager)
         {

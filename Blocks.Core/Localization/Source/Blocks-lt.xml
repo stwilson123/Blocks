@@ -13,7 +13,7 @@
     <text name="TenantIsNotActive" value="Savininkas {0} nėra aktyvus." />
     <text name="UserIsNotActiveAndCanNotLogin" value="Vartotojas {0} nėra aktyvus ir todėl negali prisijungti." />
     <text name="UserEmailIsNotConfirmedAndCanNotLogin">Jūsų el. pašto adresas nepatvirtintas. Jūs negalite prisijungti</text>
-    <text name="UserLockedOutMessage">Vartotojo paskyra užblokuota. Pabandykite vėliau.</text>
+    <text name="UserLockedOutMessage">Vartotojo paskyra užblokuota. Pabandykite vė  `liau.</text>
     <text name="PleaseEnterLoginInformation" value="Įveskite prisijungimo informaciją" />
     <text name="TenancyName" value="Savininko pavadinimas" />
     <text name="UserNameOrEmail" value="Vartotojo vardas ar slaptažodis" />

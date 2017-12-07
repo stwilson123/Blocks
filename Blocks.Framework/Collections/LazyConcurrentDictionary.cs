@@ -15,7 +15,7 @@ namespace Blocks.Framework.Collections
 
         public TValue GetOrAdd(TKey key, Func<TKey, TValue> valueFactory)
         {
-            var lazyResult = this.concurrentDictionary.GetOrAdd(key, k => new Lazy<TValue>(() => valueFactory(k), LazyThreadSafetyMode.ExecutionAndPublication));
+            var lazyResult = this.concurrentDictionary.GetOrAdd(key, k => new Lazy<TValue>(() => valueFactory(k), LazyThreadSafetyMode.PublicationOnly));
 
             return lazyResult.Value;
         }

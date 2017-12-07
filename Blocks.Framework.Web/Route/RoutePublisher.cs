@@ -67,6 +67,7 @@ namespace Blocks.Framework.Web.Route
 
                     var area = extensionId != null ? extensionId.ToString() : string.Empty;
                     if(!namedMap.Any(t => t.Key == area))
+
                     {
                         if (routeDescriptor.Route != null)
                             _routeCollection.Add(routeDescriptor.Route);
