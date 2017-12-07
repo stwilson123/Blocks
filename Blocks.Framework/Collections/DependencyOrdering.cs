@@ -17,7 +17,7 @@ namespace Blocks.Framework.Collections
         /// so that a given element in the sequence doesn't depend on any other element further in the sequence.
         /// </summary>
         public static IEnumerable<T> OrderByDependenciesAndPriorities<T>(this IEnumerable<T> elements, Func<T, T, bool> hasDependency, Func<T, int> getPriority) {
-            var population = elements.Select(d => new Linkage<T> {
+            var population =  elements.Select(d => new Linkage<T> {
                 Element = d
             }).OrderBy(item => getPriority(item.Element)).ToArray(); // Performing an initial sorting by priorities may optimize performance
 

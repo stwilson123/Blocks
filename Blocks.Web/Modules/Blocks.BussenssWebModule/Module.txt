@@ -5,7 +5,7 @@
     "Website": "http://xxx.net",
     "Version": 0.1,
     "BlocksVersion": 0.1,
-    "Description": "Test"
+    "Description": "Test",
     "Features": [
         {
             "Name": "Blocks.BussenssWebModule",

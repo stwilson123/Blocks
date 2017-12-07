@@ -137,7 +137,26 @@ namespace Blocks.Framework.Environment.Extensions.Folders
 //                LifecycleStatus = GetValue(manifest, LifecycleStatusSection, LifecycleStatus.Production)
 //            };
 //            extensionDescriptor.Features = GetFeaturesForExtension(manifest, extensionDescriptor);
-            var extensionDescriptor = JsonHelper.DeserializeObject<ExtensionDescriptor>(manifestText ?? Regex.Replace(manifestText, @"[/n/r]", "") );
+            var extensionDescriptor = JsonHelper.DeserializeObject<ExtensionDescriptor>(Regex.Replace(manifestText, @"[/n/r]", "") );
+            extensionDescriptor.Location = locationPath;
+            extensionDescriptor.Id = extensionId;
+            extensionDescriptor.ExtensionType = extensionType;
+            if (!(extensionDescriptor.Features != null &&
+                  extensionDescriptor.Features.Any(t => t.Id == extensionDescriptor.Id)))
+            {
+                var defaultFeature = new FeatureDescriptor()
+                {
+                    Id = extensionDescriptor.Id,
+                    Name = extensionDescriptor.Name,
+                    Priority = 0,
+                    Description = string.Empty,
+                    //Dependencies = ParseFeatureDependenciesEntry(GetValue(manifest, DependenciesSection)),
+                    Extension = extensionDescriptor,
+                    //Category = GetValue(manifest, CategorySection)
+                };
+                
+                extensionDescriptor.Features  = new List<FeatureDescriptor>(){  defaultFeature};
+            }
             return extensionDescriptor;
         }
 

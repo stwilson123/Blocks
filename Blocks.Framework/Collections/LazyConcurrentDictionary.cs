@@ -24,7 +24,21 @@ namespace Blocks.Framework.Collections
         {
             var lazyResult = this.concurrentDictionary.AddOrUpdate(key, 
                 k => new Lazy<TValue>(() => addValueFactory(k)),
-                (k,lazyV) => new Lazy<TValue>(() => updateValueFactory(k,lazyV.Value)));
+                (k,lazyV) => new Lazy<TValue>(() =>
+                {
+                    var lastValue = default(TValue);
+                    try
+                    {
+                        lastValue = lazyV.Value;
+
+                    }
+                    catch 
+                    {
+                        
+                    }
+                    return updateValueFactory(k, lastValue);
+                     
+                }));
 
             return lazyResult.Value;
         }

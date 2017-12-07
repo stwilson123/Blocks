@@ -6,6 +6,7 @@ using Castle.MicroKernel.Resolvers.SpecializedResolvers;
 using Blocks.Framework.Environment.Extensions.Folders;
 using Castle.MicroKernel;
 using System.Collections;
+using Abp.Localization.Dictionaries;
 using Blocks.Framework.Environment;
 using Blocks.Framework.Environment.Configuration;
 using Abp.Localization.Sources;
@@ -29,8 +30,9 @@ namespace Blocks.Framework.Modules
             //            var iocProvider = IocManager.Resolve<WindsorInstanceProvier>(IocManager);
             //            iocProvider.RegisterKernelCompoentEvnet();
 
-            Configuration.Localization.Sources.Extensions.Add(
-               new LocalizationSourceExtensionInfo(
+
+            Configuration.Localization.Sources.Add(
+               new DictionaryBasedLocalizationSource(
                    BlocksFrameworkLocalizationSource.LocalizationSourceName,
                    new XmlEmbeddedFileLocalizationDictionaryProvider(
                        Assembly.GetExecutingAssembly(), "Blocks.Framework.Localization.Source"

@@ -174,7 +174,10 @@
     <Folder Include="Web\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Localization\Source\BlocksFramework-zh-CN.xml" />
+    <Content Include="Localization\Source\BlocksFramework-zh-CN.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Localization\Source\BlocksFramework.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

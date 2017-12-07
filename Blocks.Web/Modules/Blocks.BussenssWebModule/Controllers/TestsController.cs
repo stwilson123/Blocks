@@ -18,7 +18,7 @@ namespace Blocks.BussenssWebModule.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            return View(new { aaa = 1 });
         }
     }
 }
