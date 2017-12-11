@@ -119,7 +119,7 @@
     <Compile Include="Environment\Extensions\Folders\ThemeFolders.cs" />
     <Compile Include="Environment\Extensions\ICriticalErrorProvider.cs" />
     <Compile Include="Environment\Extensions\IExtensionManager.cs" />
-    <Compile Include="Environment\Extensions\IFearue.cs" />
+    <Compile Include="Environment\Extensions\IFeature.cs" />
     <Compile Include="Environment\Extensions\Models\DefaultExtensionTypes.cs" />
     <Compile Include="Environment\Extensions\Models\ExtensionDescriptor.cs" />
     <Compile Include="Environment\Extensions\Models\FeatureDescriptor.cs" />

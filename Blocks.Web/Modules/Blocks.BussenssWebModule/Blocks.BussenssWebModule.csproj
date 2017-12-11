@@ -103,7 +103,7 @@
     <Compile Include="Controllers\TestsController.cs" />
     <Compile Include="Models\DefaultModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ResourceManifest.cs" />
+    <Compile Include="ResourceManifestProvider.cs" />
     <Compile Include="TestBlocksWebApiModule.cs" />
   </ItemGroup>
   <ItemGroup>

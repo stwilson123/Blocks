@@ -5,6 +5,7 @@ using System.Web.Mvc;
 using System.Web.WebPages;
 using Abp.Dependency;
 using Blocks.Framework.Environment.Configuration;
+using Blocks.Framework.Web.Mvc.Spooling;
 using Blocks.Framework.Web.Mvc.UI.Resources;
 
 namespace Blocks.Framework.Web.Mvc.ViewEngines.Razor {
@@ -209,12 +210,12 @@ namespace Blocks.Framework.Web.Mvc.ViewEngines.Razor {
             public CaptureScope(WebPageBase viewPage, Action<IHtmlString> callback) {
                 _viewPage = viewPage;
                 _callback = callback;
-               // _viewPage.OutputStack.Push(new HtmlStringWriter());
+                 _viewPage.OutputStack.Push(new HtmlStringWriter());
             }
 
             void IDisposable.Dispose() {
-//                var writer = (HtmlStringWriter)_viewPage.OutputStack.Pop();
-//                _callback(writer);
+                var writer = (HtmlStringWriter)_viewPage.OutputStack.Pop();
+                _callback(writer);
             }
         }
 

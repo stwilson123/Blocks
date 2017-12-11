@@ -145,8 +145,11 @@
     <Compile Include="Modules\BlocksWebModule.cs" />
     <Compile Include="Mvc\Controllers\BlocksWebMvcControllerFactory.cs" />
     <Compile Include="Mvc\Controllers\BlockWebController.cs" />
+    <Compile Include="Mvc\Filters\BlocksWebMvcFilterProvider.cs" />
+    <Compile Include="Mvc\Filters\IFilterProvider.cs" />
     <Compile Include="Mvc\IBlocksViewPage.cs" />
     <Compile Include="Mvc\Route\RouteExtension.cs" />
+    <Compile Include="Mvc\Spooling\HtmlStringWriter.cs" />
     <Compile Include="Mvc\UI\Resources\IResourceManager.cs" />
     <Compile Include="Mvc\UI\Resources\IResourceManifest.cs" />
     <Compile Include="Mvc\UI\Resources\IResourceManifestProvider.cs" />
@@ -177,6 +180,7 @@
     <Compile Include="Route\IRoutePublisher.cs" />
     <Compile Include="Route\RouteDescriptor.cs" />
     <Compile Include="Route\RoutePublisher.cs" />
+    <Compile Include="Route\ShellRoute.cs" />
     <Compile Include="Route\StandardExtensionHttpRouteProvider.cs" />
     <Compile Include="Route\StandardExtensionRouteProvider.cs" />
     <Compile Include="WorkContextExtensions.cs" />

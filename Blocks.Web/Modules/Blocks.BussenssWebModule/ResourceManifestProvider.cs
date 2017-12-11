@@ -1,10 +1,11 @@
 ﻿ 
 
+using System;
 using Blocks.Framework.Environment.Extensions.Models;
 using Blocks.Framework.Web.Mvc.UI.Resources;
 
 namespace Blocks.BussenssWebModule {
-    public class ResourceManifest : IResourceManifestProvider {
+    public class ResourceManifestProvider : IResourceManifestProvider {
         public void BuildManifests(ResourceManifestBuilder builder)
         {
             var manifest = builder.Add();
@@ -15,6 +16,6 @@ namespace Blocks.BussenssWebModule {
                 "//ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.4.js", true);
         }
 
-        public FeatureDescriptor Feature { get; }
+        public Lazy<FeatureDescriptor> Feature { get; }
     }
 }

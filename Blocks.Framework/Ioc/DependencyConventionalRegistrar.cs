@@ -1,8 +1,10 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Reflection;
 using Abp.Dependency;
 using Abp.Extensions;
 using Blocks.Framework.Environment.Extensions;
+using Blocks.Framework.Environment.Extensions.Models;
 using Blocks.Framework.Ioc.Dependency;
 using Castle.MicroKernel.Registration;
 using ISingletonDependency = Blocks.Framework.Ioc.Dependency.ISingletonDependency;
@@ -15,27 +17,33 @@ namespace Blocks.Framework.Ioc
     /// </summary>
     public class DependencyConventionalRegistrar : IConventionalDependencyRegistrar
     {
-        private IExtensionManager _extensionManager;
+        private IIocManager _iIocManager;
 
-        public DependencyConventionalRegistrar(IExtensionManager extensionManager)
+        public DependencyConventionalRegistrar(IIocManager iIocManager)
         {
-            _extensionManager = extensionManager;
+            _iIocManager = iIocManager;
         }
 
         public void RegisterAssembly(IConventionalRegistrationContext context)
         {
             context.IocManager.IocContainer.Register(
                 Classes.FromAssembly(context.Assembly)
-                    .Where(t => t.IsAssignableFrom(typeof(IDependency)) && !t.IsAssignableFrom(typeof(ISingletonDependency)) && 
-                                !t.IsAssignableFrom(typeof(ITransientDependency))  
-                                )
+                    .Where(t => t.IsAssignableFrom(typeof(IDependency)) &&
+                                !t.IsAssignableFrom(typeof(ISingletonDependency)) &&
+                                !t.IsAssignableFrom(typeof(ITransientDependency))
+                    )
                     .If(type => !type.GetTypeInfo().IsGenericTypeDefinition)
-                    .ConfigureIf(t => t.Implementation.IsAssignableFrom(typeof(IDependency)) ,t => t.DependsOn((kernel, param) =>
-                    {
-                        param.Add("Feature",
-                            _extensionManager.AvailableFeatures()
-                                .FirstOrDefault(f => f.Id == context.Assembly.GetName().Name));
-                    }))
+                    .ConfigureIf(t => t.Implementation.IsAssignableFrom(typeof(IDependency)), t =>
+                        t.DependsOn((kernel, param) =>
+                        {
+                            param.Add("Feature",
+                                new Lazy<FeatureDescriptor>(() =>
+
+                                    _iIocManager.Resolve<IExtensionManager>().AvailableFeatures()
+                                        .FirstOrDefault(f => f.Id == context.Assembly.GetName().Name)));
+                        }))
+                    .WithService.Self()
+                    .WithService.DefaultInterfaces()
                     .LifestyleTransient()
             );
         }

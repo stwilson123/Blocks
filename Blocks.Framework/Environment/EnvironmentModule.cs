@@ -26,14 +26,14 @@ namespace Blocks.Framework.Environment
                 parameters.Add("paths", extensionLocations.ThemeLocations);
             });
             
-            IocManager.AddConventionalRegistrar(new DependencyConventionalRegistrar(IocManager.Resolve<IExtensionManager>())); 
 
         }
 
         public override void Initialize()
         {
             
-            
+            IocManager.AddConventionalRegistrar(new DependencyConventionalRegistrar(IocManager)); 
+
           
         }
     }

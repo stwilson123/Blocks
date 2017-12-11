@@ -11,6 +11,7 @@ using Abp.WebApi.Controllers.Dynamic.Selectors;
 using Blocks.Framework.Modules;
 using Blocks.Framework.Web.Api.Controllers.Selectors;
 using Blocks.Framework.Web.Mvc;
+using Blocks.Framework.Web.Mvc.Filters;
 using Blocks.Framework.Web.Mvc.ViewEngines;
 using Blocks.Framework.Web.Mvc.ViewEngines.ThemeAwareness;
 using Blocks.Framework.Web.Route;
@@ -39,6 +40,8 @@ namespace Blocks.Framework.Web.Modules
 
             //Config WebMvc
             ControllerBuilder.Current.SetControllerFactory(new BlocksWebMvcControllerFactory(IocManager));
+            FilterProviders.Providers.Add(new BlocksWebMvcFilterProvider());
+
             ViewEngines.Engines.Clear();
             ViewEngines.Engines.Add(new ThemeAwareViewEngineShim(IocManager));
 

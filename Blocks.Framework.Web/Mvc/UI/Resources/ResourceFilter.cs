@@ -1,33 +1,37 @@
+ 
+
 using System.Web.Mvc;
+using Abp.Dependency;
+using IFilterProvider = Blocks.Framework.Web.Mvc.Filters.IFilterProvider;
 
 namespace Blocks.Framework.Web.Mvc.UI.Resources {
-//    public class ResourceFilter : FilterProvider, IResultFilter {
-//        private readonly IWorkContextAccessor _workContextAccessor;
-//        private readonly dynamic _shapeFactory;
-//
-//        public ResourceFilter(
-//            IWorkContextAccessor workContextAccessor, 
-//            IShapeFactory shapeFactory) {
-//            _workContextAccessor = workContextAccessor;
-//            _shapeFactory = shapeFactory;
-//        }
-//
-//        public void OnResultExecuting(ResultExecutingContext filterContext) {
-//            // should only run on a full view rendering result
-//            if (!(filterContext.Result is ViewResult))
-//                return;
-//
-//            var ctx = _workContextAccessor.GetContext();
-//            var head = ctx.Layout.Head;
-//            var tail = ctx.Layout.Tail;
-//            head.Add(_shapeFactory.Metas());
-//            head.Add(_shapeFactory.HeadLinks());
-//            head.Add(_shapeFactory.StylesheetLinks());
-//            head.Add(_shapeFactory.HeadScripts());
-//            tail.Add(_shapeFactory.FootScripts());
-//        }
-//
-//        public void OnResultExecuted(ResultExecutedContext filterContext) {
-//        }
-//    }
+    public class ResourceFilter : IFilterProvider, IResultFilter {
+        private readonly IIocManager _iocManager;
+        private readonly dynamic _shapeFactory;
+
+        public ResourceFilter(
+            IIocManager workContextAccessor, 
+            IShapeFactory shapeFactory) {
+            _iocManager = workContextAccessor;
+            _shapeFactory = shapeFactory;
+        }
+
+        public void OnResultExecuting(ResultExecutingContext filterContext) {
+            // should only run on a full view rendering result
+            if (!(filterContext.Result is ViewResult))
+                return;
+
+            var ctx = _workContextAccessor.GetContext();
+            var head = ctx.Layout.Head;
+            var tail = ctx.Layout.Tail;
+            head.Add(_shapeFactory.Metas());
+            head.Add(_shapeFactory.HeadLinks());
+            head.Add(_shapeFactory.StylesheetLinks());
+            head.Add(_shapeFactory.HeadScripts());
+            tail.Add(_shapeFactory.FootScripts());
+        }
+
+        public void OnResultExecuted(ResultExecutedContext filterContext) {
+        }
+    }
 }

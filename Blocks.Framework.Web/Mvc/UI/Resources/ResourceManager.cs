@@ -89,6 +89,7 @@ namespace Blocks.Framework.Web.Mvc.UI.Resources {
 
         public ResourceManager(IEnumerable<IResourceManifestProvider> resourceProviders) {
             _providers = resourceProviders;
+           
         }
 
         public IEnumerable<IResourceManifest> ResourceProviders {
@@ -97,7 +98,7 @@ namespace Blocks.Framework.Web.Mvc.UI.Resources {
                     var builder = new ResourceManifestBuilder();
                     foreach (var provider in _providers)
                     {
-                        builder.Feature = provider.Feature;
+                        builder.Feature = provider.Feature.Value;
                            
                         provider.BuildManifests(builder);
                     }

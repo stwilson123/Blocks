@@ -7,15 +7,18 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Routing;
 using System.Web.SessionState;
+using Abp.Dependency;
 
 namespace Blocks.Framework.Web.Route
 {
     public class RoutePublisher : IRoutePublisher
     {
         private readonly RouteCollection _routeCollection;
-        public RoutePublisher(RouteCollection routeCollection)
+        private readonly IIocManager _iocManager;
+        public RoutePublisher(RouteCollection routeCollection, IIocManager iocManager)
         {
             _routeCollection = routeCollection;
+            _iocManager = iocManager;
         }
 
         public void Publish(IEnumerable<RouteDescriptor> routes, Func<IDictionary<string, object>, Task> pipeline = null)
@@ -64,13 +67,16 @@ namespace Blocks.Framework.Web.Route
                             //extensionDescriptor = _extensionManager.GetExtension(extensionId.ToString());
                         }
                     }
-
+                    var shellRoute = new ShellRoute(routeDescriptor.Route, _iocManager, pipeline) {
+                        IsHttpRoute = routeDescriptor is HttpRouteDescriptor,
+                       // SessionState = sessionStateBehavior
+                    };
                     var area = extensionId != null ? extensionId.ToString() : string.Empty;
                     if(!namedMap.Any(t => t.Key == area))
 
                     {
                         if (routeDescriptor.Route != null)
-                            _routeCollection.Add(routeDescriptor.Route);
+                            _routeCollection.Add(shellRoute);
                         namedMap[routeDescriptor.Name] = routeDescriptor.Route;
                     }
                 }
