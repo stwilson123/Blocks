@@ -23,12 +23,7 @@ namespace Blocks.Framework.Modules
 
         public override void PreInitialize()
         {
-            //Rigister WebApi
-            IocManager.Register<IHttpRouteProvider, StandardExtensionHttpRouteProvider>();
-            IocManager.Register<IRouteProvider, StandardExtensionRouteProvider>();
-
-            //Rigister WebMvc
-            IocManager.Register<IRoutePublisher, RoutePublisher>();
+           
          
         }
 
@@ -42,12 +37,7 @@ namespace Blocks.Framework.Modules
         {
             IocManager.RegisterAssemblyByConvention(this.GetType().Assembly);
 
-            //Config WebMvc
-            ControllerBuilder.Current.SetControllerFactory(new BlocksWebMvcControllerFactory(IocManager));
-
-            //Config WebApi
-            var httpConfiguration = IocManager.Resolve<IAbpWebApiConfiguration>().HttpConfiguration;
-            httpConfiguration.Services.Replace(typeof(IHttpControllerSelector), new BlocksHttpControllerSelector(httpConfiguration, IocManager.Resolve<DynamicApiControllerManager>(), IocManager));
+          
 
             //Configuration.Modules.AbpWebApi().DynamicApiControllerBuilder
             //    .ForAll<IApplicationService>(typeof(BlocksApplicationModule).Assembly, "app")
@@ -79,9 +69,7 @@ namespace Blocks.Framework.Modules
             IocManager.Resolve<IHttpRouteProvider>().GetRoutes(listRouteDesc, this.GetType().Assembly.GetName().Name);
 
             IocManager.Resolve<IRoutePublisher>().Publish(listRouteDesc);
-            ViewEngines.Engines.Clear();
-            ViewEngines.Engines.Add(new ThemeAwareViewEngineShim(IocManager));
-
+           
         }
     }
 }

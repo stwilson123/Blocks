@@ -12,6 +12,8 @@ using Blocks.Framework.Environment.Configuration;
 using Abp.Localization.Sources;
 using Blocks.Framework.Localization;
 using Abp.Localization.Dictionaries.Xml;
+using Blocks.Framework.Environment.Extensions;
+using Blocks.Framework.Ioc;
 
 namespace Blocks.Framework.Modules
 {
@@ -43,7 +45,6 @@ namespace Blocks.Framework.Modules
 
         public override void Initialize()
         {
-
             IocManager.RegisterAssemblyByConvention(Assembly.GetExecutingAssembly());
 
            

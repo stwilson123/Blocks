@@ -119,6 +119,7 @@
     <Compile Include="Environment\Extensions\Folders\ThemeFolders.cs" />
     <Compile Include="Environment\Extensions\ICriticalErrorProvider.cs" />
     <Compile Include="Environment\Extensions\IExtensionManager.cs" />
+    <Compile Include="Environment\Extensions\IFearue.cs" />
     <Compile Include="Environment\Extensions\Models\DefaultExtensionTypes.cs" />
     <Compile Include="Environment\Extensions\Models\ExtensionDescriptor.cs" />
     <Compile Include="Environment\Extensions\Models\FeatureDescriptor.cs" />
@@ -132,6 +133,9 @@
     <Compile Include="FileSystems\VirtualPath\IVirtualPathProvider.cs" />
     <Compile Include="FileSystems\WebSite\IWebSiteFolder.cs" />
     <Compile Include="FileSystems\WebSite\WebSiteFolder.cs" />
+    <Compile Include="Ioc\DependencyConventionalRegistrar.cs" />
+    <Compile Include="Ioc\Dependency\IDependency.cs" />
+    <Compile Include="Ioc\IocManagersExtensions.cs" />
     <Compile Include="Localization\BlocksFrameworkLocalizationSource.cs" />
     <Compile Include="Modules\BlocksFrameworkModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

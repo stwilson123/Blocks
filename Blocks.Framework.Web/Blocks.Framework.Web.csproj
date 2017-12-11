@@ -145,9 +145,25 @@
     <Compile Include="Modules\BlocksWebModule.cs" />
     <Compile Include="Mvc\Controllers\BlocksWebMvcControllerFactory.cs" />
     <Compile Include="Mvc\Controllers\BlockWebController.cs" />
+    <Compile Include="Mvc\IBlocksViewPage.cs" />
     <Compile Include="Mvc\Route\RouteExtension.cs" />
+    <Compile Include="Mvc\UI\Resources\IResourceManager.cs" />
+    <Compile Include="Mvc\UI\Resources\IResourceManifest.cs" />
+    <Compile Include="Mvc\UI\Resources\IResourceManifestProvider.cs" />
+    <Compile Include="Mvc\UI\Resources\LinkEntry.cs" />
+    <Compile Include="Mvc\UI\Resources\MetaEntry.cs" />
+    <Compile Include="Mvc\UI\Resources\RequireSettings.cs" />
+    <Compile Include="Mvc\UI\Resources\ResourceDefinition.cs" />
+    <Compile Include="Mvc\UI\Resources\ResourceFilter.cs" />
+    <Compile Include="Mvc\UI\Resources\ResourceLocation.cs" />
+    <Compile Include="Mvc\UI\Resources\ResourceManager.cs" />
+    <Compile Include="Mvc\UI\Resources\ResourceManifest.cs" />
+    <Compile Include="Mvc\UI\Resources\ResourceManifestBuilder.cs" />
+    <Compile Include="Mvc\UI\Resources\ResourceRegister.cs" />
+    <Compile Include="Mvc\UI\Resources\ResourceRequiredContext.cs" />
     <Compile Include="Mvc\ViewEngines\IViewEngineProvider.cs" />
     <Compile Include="Mvc\ViewEngines\Razor\RazorViewEngineProvider.cs" />
+    <Compile Include="Mvc\ViewEngines\Razor\WebViewPage.cs" />
     <Compile Include="Mvc\ViewEngines\ThemeAwareness\ConfiguredEnginesCache.cs" />
     <Compile Include="Mvc\ViewEngines\ThemeAwareness\IConfiguredEnginesCache.cs" />
     <Compile Include="Mvc\ViewEngines\ThemeAwareness\IThemeAwareViewEngine.cs" />
@@ -163,6 +179,7 @@
     <Compile Include="Route\RoutePublisher.cs" />
     <Compile Include="Route\StandardExtensionHttpRouteProvider.cs" />
     <Compile Include="Route\StandardExtensionRouteProvider.cs" />
+    <Compile Include="WorkContextExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Adp\Abp.Web.Api\Abp.Web.Api.csproj">
