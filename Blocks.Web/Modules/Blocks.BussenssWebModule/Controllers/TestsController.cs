@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using Blocks.Framework.Web.Mvc;
+using Blocks.BussenssWebModule.Models;
 
 namespace Blocks.BussenssWebModule.Controllers
 {
@@ -18,7 +19,8 @@ namespace Blocks.BussenssWebModule.Controllers
 
         public ActionResult Index()
         {
-            return View(new { aaa = 1 });
+            ViewBag.Index = "123123123aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+            return View();
         }
     }
 }
