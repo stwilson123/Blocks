@@ -27,6 +27,8 @@ namespace Blocks.Framework.Modules
         {
             //TODO it should be move to more early first Config, but it is belong to Adp
             IocManager.IocContainer.Kernel.Resolver.AddSubResolver(new CollectionResolver(IocManager.IocContainer.Kernel));
+             
+
             //            IocManager.Register<WindsorInstanceProvier,WindsorInstanceProvier>();
             //
             //            var iocProvider = IocManager.Resolve<WindsorInstanceProvier>(IocManager);

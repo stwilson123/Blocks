@@ -45,6 +45,7 @@
     <Reference Include="JetBrains.Annotations, Version=11.1.0.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325">
       <HintPath>..\packages\JetBrains.Annotations.11.1.0\lib\net20\JetBrains.Annotations.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Extensions.Caching.Abstractions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60">
       <HintPath>..\packages\Microsoft.Extensions.Caching.Abstractions.2.0.0\lib\netstandard2.0\Microsoft.Extensions.Caching.Abstractions.dll</HintPath>
     </Reference>
@@ -150,6 +151,7 @@
     <Compile Include="Mvc\IBlocksViewPage.cs" />
     <Compile Include="Mvc\Route\RouteExtension.cs" />
     <Compile Include="Mvc\Spooling\HtmlStringWriter.cs" />
+    <Compile Include="Mvc\UI\Extensions\ViewBagExtensions.cs" />
     <Compile Include="Mvc\UI\Resources\IResourceManager.cs" />
     <Compile Include="Mvc\UI\Resources\IResourceManifest.cs" />
     <Compile Include="Mvc\UI\Resources\IResourceManifestProvider.cs" />

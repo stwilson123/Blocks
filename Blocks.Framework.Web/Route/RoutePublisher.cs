@@ -77,7 +77,7 @@ namespace Blocks.Framework.Web.Route
                     {
                         if (routeDescriptor.Route != null)
                             _routeCollection.Add(shellRoute);
-                        namedMap[routeDescriptor.Name] = routeDescriptor.Route;
+                        namedMap[routeDescriptor.Name] = shellRoute;
                     }
                 }
             }

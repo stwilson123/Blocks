@@ -6,6 +6,6 @@ namespace Blocks.Framework.Environment.Extensions
 {
     public interface IFeature : IDependency
     {
-       
+        Lazy<FeatureDescriptor> Feature { get; }
     }
 }

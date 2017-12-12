@@ -28,12 +28,16 @@ namespace Blocks.Framework.Ioc
         {
             context.IocManager.IocContainer.Register(
                 Classes.FromAssembly(context.Assembly)
-                    .Where(t => t.IsAssignableFrom(typeof(IDependency)) &&
-                                !t.IsAssignableFrom(typeof(ISingletonDependency)) &&
-                                !t.IsAssignableFrom(typeof(ITransientDependency))
+                    .Where(t => typeof(IDependency).IsAssignableFrom(t) &&
+                                !typeof(ISingletonDependency).IsAssignableFrom(t) &&
+                                !typeof(ITransientDependency).IsAssignableFrom(t) && 
+                                !typeof(Abp.Dependency.ISingletonDependency).IsAssignableFrom(t) && 
+                                !typeof(Abp.Dependency.ITransientDependency).IsAssignableFrom(t)
                     )
                     .If(type => !type.GetTypeInfo().IsGenericTypeDefinition)
-                    .ConfigureIf(t => t.Implementation.IsAssignableFrom(typeof(IDependency)), t =>
+                    .WithService.Self()
+                    .WithService.DefaultInterfaces()
+                    .ConfigureIf(t => typeof(IFeature).IsAssignableFrom(t.Implementation), t =>
                         t.DependsOn((kernel, param) =>
                         {
                             param.Add("Feature",
@@ -42,8 +46,7 @@ namespace Blocks.Framework.Ioc
                                     _iIocManager.Resolve<IExtensionManager>().AvailableFeatures()
                                         .FirstOrDefault(f => f.Id == context.Assembly.GetName().Name)));
                         }))
-                    .WithService.Self()
-                    .WithService.DefaultInterfaces()
+                 
                     .LifestyleTransient()
             );
         }
