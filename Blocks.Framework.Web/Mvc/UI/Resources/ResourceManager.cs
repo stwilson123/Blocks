@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls.WebParts;
 using Abp.Dependency;
 
 namespace Blocks.Framework.Web.Mvc.UI.Resources {
@@ -336,5 +337,53 @@ namespace Blocks.Framework.Web.Mvc.UI.Resources {
             _metas[index] = meta;
         }
 
+        public void WriteResources()
+        {
+            var defaultSettings = new RequireSettings {
+                DebugMode = false,
+                CdnMode = false,
+                Culture = ""//_workContext.Value.CurrentCulture,
+            };
+            
+            var httpContext = HttpContext.Current;
+            var appPath = httpContext == null || httpContext.Request == null
+                ? null
+                : httpContext.Request.ApplicationPath;
+            
+            var requiredResources = this.BuildRequiredResources("script");
+            requiredResources?.Concat(this.BuildRequiredResources("stylesheet"));
+
+            foreach (var context in requiredResources)
+            {
+                var path = context.GetResourceUrl(defaultSettings, appPath);
+                var condition = context.Settings.Condition;
+                var attributes = context.Settings.HasAttributes ? context.Settings.Attributes : null;
+
+                if (context.Resource.Type == "script")
+                {
+                    switch (context.Settings.Location)
+                    {
+                        case ResourceLocation.Foot: this.RegisterFootScript(path); break;
+                        case ResourceLocation.Head: this.RegisterHeadScript(path);break;
+                    }
+                }
+                else if (context.Resource.Type == "stylesheet")
+                {
+                    this.RegisterLink(new LinkEntry(){  Rel = "stylesheet", Type = "text/css", Href =path });
+                }
+               
+//                IHtmlString result;
+//                if (resourceType == "stylesheet") {
+//                    result = Display.Style(Url: path, Condition: condition, Resource: context.Resource, TagAttributes: attributes);
+//                }
+//                else if (resourceType == "script") { 
+//                    result = Display.Script(Url: path, Condition: condition, Resource: context.Resource, TagAttributes: attributes);
+//                }
+//                else {
+//                    result = Display.Resource(Url: path, Condition: condition, Resource: context.Resource, TagAttributes: attributes);
+//                }
+//                Output.Write(result);
+            }
+        }
     }
 }

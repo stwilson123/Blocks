@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Abp.Application.Features;
-using Abp.Dependency;
 using Blocks.Framework.Environment.Extensions.Models;
+using Blocks.Framework.Ioc.Dependency;
 
 namespace Blocks.Framework.Environment.Extensions
 {

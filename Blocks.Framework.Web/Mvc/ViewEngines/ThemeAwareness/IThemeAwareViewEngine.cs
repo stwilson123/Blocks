@@ -1,5 +1,5 @@
 ﻿using System.Web.Mvc;
-using Abp.Dependency;
+using Blocks.Framework.Ioc.Dependency;
 
 namespace Blocks.Framework.Web.Mvc.ViewEngines.ThemeAwareness
 {

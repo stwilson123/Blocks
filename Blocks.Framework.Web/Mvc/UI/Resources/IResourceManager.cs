@@ -21,5 +21,7 @@ namespace Blocks.Framework.Web.Mvc.UI.Resources {
         void RegisterLink(LinkEntry link);
         void SetMeta(MetaEntry meta);
         void AppendMeta(MetaEntry meta, string contentSeparator);
+
+        void WriteResources();
     }
 }

@@ -28,27 +28,60 @@ namespace Blocks.Framework.Ioc
         {
             context.IocManager.IocContainer.Register(
                 Classes.FromAssembly(context.Assembly)
-                    .Where(t => typeof(IDependency).IsAssignableFrom(t) &&
+                    .BasedOn<ISingletonDependency>()
+                    .If(type => !type.GetTypeInfo().IsGenericTypeDefinition)
+                    .ConfigureSpecial(_iIocManager,context.Assembly.GetName().Name)
+                    .WithService.Self()
+                    .WithService.DefaultInterfaces()
+                    .LifestyleSingleton()
+            );
+            
+            context.IocManager.IocContainer.Register(
+                Classes.FromAssembly(context.Assembly)
+                    .BasedOn<ITransientDependency>()
+                    .If(type => !type.GetTypeInfo().IsGenericTypeDefinition)
+                    .ConfigureSpecial(_iIocManager,context.Assembly.GetName().Name)
+                    .WithService.Self()
+                    .WithService.DefaultInterfaces()
+                    .LifestyleTransient()
+            );
+            
+            
+            
+            
+            context.IocManager.IocContainer.Register(
+                Classes.FromAssembly(context.Assembly)
+                    .Where(t => typeof(IDependency).IsAssignableFrom(t.GetTypeInfo()) &&
                                 !typeof(ISingletonDependency).IsAssignableFrom(t) &&
                                 !typeof(ITransientDependency).IsAssignableFrom(t) && 
                                 !typeof(Abp.Dependency.ISingletonDependency).IsAssignableFrom(t) && 
                                 !typeof(Abp.Dependency.ITransientDependency).IsAssignableFrom(t)
                     )
+                    .ConfigureSpecial(_iIocManager,context.Assembly.GetName().Name)
                     .If(type => !type.GetTypeInfo().IsGenericTypeDefinition)
                     .WithService.Self()
                     .WithService.DefaultInterfaces()
-                    .ConfigureIf(t => typeof(IFeature).IsAssignableFrom(t.Implementation), t =>
-                        t.DependsOn((kernel, param) =>
-                        {
-                            param.Add("Feature",
-                                new Lazy<FeatureDescriptor>(() =>
-
-                                    _iIocManager.Resolve<IExtensionManager>().AvailableFeatures()
-                                        .FirstOrDefault(f => f.Id == context.Assembly.GetName().Name)));
-                        }))
-                 
                     .LifestyleTransient()
             );
+        }
+
+       
+    }
+
+    static class  RegisterEx
+    {
+        public static  BasedOnDescriptor ConfigureSpecial(this BasedOnDescriptor baseOnDescriptor,IIocManager _iIocManager,string ModuleID)
+        {
+            return baseOnDescriptor.ConfigureIf(t => typeof(IFeature).IsAssignableFrom(t.Implementation), t =>
+            {
+                t.DependsOn(Castle.MicroKernel.Registration.Dependency.OnValue("Feature", new Lazy<FeatureDescriptor>(
+                    () =>
+                    {
+                        return _iIocManager.Resolve<IExtensionManager>().AvailableFeatures()
+                            .FirstOrDefault(f => f.Id == ModuleID);
+                    })));
+
+            });
         }
     }
 }

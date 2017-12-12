@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using Abp.Dependency;
 using Abp.Localization;
+using Blocks.Framework.Ioc.Dependency;
 
 namespace Blocks.Framework.Environment.Extensions
 {

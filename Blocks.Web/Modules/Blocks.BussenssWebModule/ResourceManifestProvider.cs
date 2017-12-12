@@ -14,8 +14,9 @@ namespace Blocks.BussenssWebModule {
             manifest.DefineScript("jQuery").SetUrl("jquery.min.js", "jquery.js").SetVersion("2.1.4").SetCdn(
                 "//ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.4.min.js",
                 "//ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.4.js", true);
+           
         }
 
-        public Lazy<FeatureDescriptor> Feature { get; }
+        public Lazy<FeatureDescriptor> Feature { get; set; }
     }
 }

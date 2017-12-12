@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
-using Abp.Dependency;
+using Blocks.Framework.Ioc.Dependency;
+
 
 namespace Blocks.Framework.Environment.Configuration
 {

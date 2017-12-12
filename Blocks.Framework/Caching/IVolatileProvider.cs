@@ -1,4 +1,5 @@
-﻿using Abp.Dependency;
+﻿
+using Blocks.Framework.Ioc.Dependency;
 
 namespace Blocks.Framework.Caching
 {

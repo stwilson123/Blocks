@@ -9,7 +9,7 @@
     /// <summary>
     /// Base interface for services that are instantiated per shell/tenant.
     /// </summary>
-    public interface ISingletonDependency : IDependency, Abp.Dependency.ISingletonDependency {
+    public interface ISingletonDependency : IDependency  {
     }
 
 //    /// <summary>
@@ -22,7 +22,7 @@
     /// <summary>
     /// Base interface for services that are instantiated per usage.
     /// </summary>
-    public interface ITransientDependency : IDependency, Abp.Dependency.ITransientDependency {
+    public interface ITransientDependency : IDependency  {
     }
 
 

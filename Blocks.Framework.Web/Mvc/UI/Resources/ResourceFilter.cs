@@ -1,5 +1,7 @@
  
 
+using System.Collections.Generic;
+using System.Web;
 using System.Web.Mvc;
 using Abp.Dependency;
 using Blocks.Framework.Web.Mvc.UI.Extensions;
@@ -42,15 +44,23 @@ namespace Blocks.Framework.Web.Mvc.UI.Resources {
             if (resourceManager != null)
             {
 
-                var a = resourceManager.BuildRequiredResources("script");
-                resourceManager.GetRegisteredHeadScripts();
-                resourceManager.GetRegisteredFootScripts();
-                resourceManager.GetRegisteredLinks();
-                resourceManager.GetRegisteredMetas();
+                resourceManager.WriteResources();
+                foreach (var registeredHeadScript in resourceManager.GetRegisteredHeadScripts())
+                {
+                    filterContext.HttpContext.Response.AppendHeader("script",registeredHeadScript);
+                }
+//                foreach (var registeredFootScript in resourceManager.GetRegisteredFootScripts())
+//                {
+//                     filterContext.HttpContext.Response.Output("script",registeredHeadScript);
+//                }
+//                resourceManager.GetRegisteredLinks();
+//                resourceManager.GetRegisteredMetas();
 
 
                 // resourceManager.
             }
         }
+
+        
     }
 }
