@@ -34,4 +34,7 @@
     <Reference Include="System.Transactions" />
     <Reference Include="System.Web" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Web\Mvc\Filters" />
+  </ItemGroup>
 </Project>

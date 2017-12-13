@@ -45,7 +45,7 @@ namespace Abp.Modules
         /// </summary>
         public virtual void PreInitialize()
         {
-
+           
         }
 
         /// <summary>

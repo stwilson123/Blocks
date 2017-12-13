@@ -353,8 +353,9 @@ namespace Blocks.Framework.Web.Mvc.UI.Resources {
                 select new ResourceRequiredContext { Resource = (ResourceDefinition)entry.Key, Settings = (RequireSettings)entry.Value }).ToList();
         }
 
-        public string GetTemplateNotCache(string resourceName)
-        { 
+        public string GetTemplateNotCache(string resourceName,string viewVirtualPath)
+        {
+            string resourceType = "template";
             var defaultSettings = new RequireSettings
             {
                 DebugMode = false,
@@ -367,11 +368,14 @@ namespace Blocks.Framework.Web.Mvc.UI.Resources {
                 ? null
                 : httpContext.Request.ApplicationPath;
 
-            var requiredResources = this.GetResources("template");
+            var requiredResources = this.GetResources(resourceType);
             requiredResources = requiredResources.Where(t => t.Resource.Name == resourceName).ToList();
             var listTemplateTmp = new List<string>();
             foreach (var context in requiredResources)
             {
+                if (viewVirtualPath != null) {
+                    context.Settings.WithBasePath(ResourceDefinition.GetBasePathFromViewPath(resourceType, viewVirtualPath));
+                }
                 var path = context.GetResourceUrl(defaultSettings, appPath);
                 var condition = context.Settings.Condition;
                 var attributes = context.Settings.HasAttributes ? context.Settings.Attributes : null;
