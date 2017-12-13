@@ -22,5 +22,11 @@ namespace Blocks.BussenssWebModule.Controllers
             ViewBag.Index = "123123123aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
             return View();
         }
+        
+        public ActionResult Index2()
+        {
+            ViewBag.Index = "123123123aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+            return View();
+        }
     }
 }

@@ -23,5 +23,6 @@ namespace Blocks.Framework.Web.Mvc.UI.Resources {
         void AppendMeta(MetaEntry meta, string contentSeparator);
 
         void WriteResources();
+        string GetTemplateNotCache(string resourceName);
     }
 }

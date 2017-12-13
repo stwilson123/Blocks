@@ -12,7 +12,7 @@ namespace Blocks.Framework.Web.Mvc {
         ScriptRegister Script { get;  }
         ResourceRegister Style { get; }
         dynamic Display { get; }
-        dynamic Layout { get; }
+        dynamic Layout1 { get; }
 //        IHtmlString DisplayChildren(object shape);
 //        WorkContext WorkContext { get; }
         //IDisposable Capture(Action<IHtmlString> callback);

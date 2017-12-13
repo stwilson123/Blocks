@@ -23,6 +23,8 @@ namespace Blocks.Framework.Web.Mvc.UI.Resources {
         private ResourceManifest _dynamicManifest;
         private List<String> _headScripts;
         private List<String> _footScripts;
+        
+        public  List<string> Templates { set; get; } = new List<string>();
         private IEnumerable<IResourceManifest> _manifests;
 
         private const string NotIE = "!IE";
@@ -337,6 +339,52 @@ namespace Blocks.Framework.Web.Mvc.UI.Resources {
             _metas[index] = meta;
         }
 
+        public IList<ResourceRequiredContext> GetResources(string resourceType)
+        {
+            var allResources = new OrderedDictionary();
+            foreach (var settings in GetRequiredResources(resourceType)) {
+                var resource = FindResource(settings);
+                if (resource == null) {
+                    throw new InvalidOperationException(String.Format(CultureInfo.CurrentCulture, "A '{1}' named '{0}' could not be found.", settings.Name, settings.Type));
+                }
+                ExpandDependencies(resource, settings, allResources);
+            }
+            return (from DictionaryEntry entry in allResources
+                select new ResourceRequiredContext { Resource = (ResourceDefinition)entry.Key, Settings = (RequireSettings)entry.Value }).ToList();
+        }
+
+        public string GetTemplateNotCache(string resourceName)
+        { 
+            var defaultSettings = new RequireSettings
+            {
+                DebugMode = false,
+                CdnMode = false,
+                Culture = "" //_workContext.Value.CurrentCulture,
+            };
+            Require("template",resourceName);
+            var httpContext = HttpContext.Current;
+            var appPath = httpContext == null || httpContext.Request == null
+                ? null
+                : httpContext.Request.ApplicationPath;
+
+            var requiredResources = this.GetResources("template");
+            requiredResources = requiredResources.Where(t => t.Resource.Name == resourceName).ToList();
+            var listTemplateTmp = new List<string>();
+            foreach (var context in requiredResources)
+            {
+                var path = context.GetResourceUrl(defaultSettings, appPath);
+                var condition = context.Settings.Condition;
+                var attributes = context.Settings.HasAttributes ? context.Settings.Attributes : null;
+
+                listTemplateTmp.Add(path);
+            }
+            if (listTemplateTmp == null || !listTemplateTmp.Any())
+                throw new Exception($"no found {resourceName} View Template");
+            
+       
+            return listTemplateTmp.FirstOrDefault();
+        }
+
         public void WriteResources()
         {
             var defaultSettings = new RequireSettings {
@@ -344,7 +392,7 @@ namespace Blocks.Framework.Web.Mvc.UI.Resources {
                 CdnMode = false,
                 Culture = ""//_workContext.Value.CurrentCulture,
             };
-            
+           
             var httpContext = HttpContext.Current;
             var appPath = httpContext == null || httpContext.Request == null
                 ? null
@@ -352,6 +400,7 @@ namespace Blocks.Framework.Web.Mvc.UI.Resources {
             
             var requiredResources = this.BuildRequiredResources("script");
             requiredResources?.Concat(this.BuildRequiredResources("stylesheet"));
+            requiredResources?.Concat(this.BuildRequiredResources("template"));
 
             foreach (var context in requiredResources)
             {
@@ -371,7 +420,11 @@ namespace Blocks.Framework.Web.Mvc.UI.Resources {
                 {
                     this.RegisterLink(new LinkEntry(){  Rel = "stylesheet", Type = "text/css", Href =path });
                 }
-               
+                 
+                else if (context.Resource.Type == "template")
+                {
+                    this.Templates.Add(path);
+                }
 //                IHtmlString result;
 //                if (resourceType == "stylesheet") {
 //                    result = Display.Style(Url: path, Condition: condition, Resource: context.Resource, TagAttributes: attributes);

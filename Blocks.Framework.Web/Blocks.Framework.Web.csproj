@@ -146,6 +146,7 @@
     <Compile Include="Modules\BlocksWebModule.cs" />
     <Compile Include="Mvc\Controllers\BlocksWebMvcControllerFactory.cs" />
     <Compile Include="Mvc\Controllers\BlockWebController.cs" />
+    <Compile Include="Mvc\Extensions\HtmlHelperResourceExtensions.cs" />
     <Compile Include="Mvc\Filters\BlocksWebMvcFilterProvider.cs" />
     <Compile Include="Mvc\Filters\IFilterProvider.cs" />
     <Compile Include="Mvc\IBlocksViewPage.cs" />

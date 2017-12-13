@@ -44,12 +44,15 @@ namespace Blocks.Framework.Web.Mvc.ViewEngines.Razor
         public IResourceManager ResourceManager
         {
             get
-            {
+            { 
                 if (_resourceManager != null)
                     return _resourceManager;
 
                 _resourceManager = WorkContext.Resolve<IResourceManager>();
-              
+                this.Page.Head = "123123";
+                //HtmlStringWriter w = new HtmlStringWriter();
+                //w.WriteLine("1111111111111");
+                //this.RenderBody().WriteTo(w);
                 ViewBagExtensions.SetResourceManager(Context,_resourceManager);
                 
                 return _resourceManager;
@@ -97,7 +100,7 @@ namespace Blocks.Framework.Web.Mvc.ViewEngines.Razor
         public dynamic Display => _display;
 
         // review: (heskew) is it going to be a problem?
-        public new dynamic Layout => _layout;
+        public new dynamic Layout1 => _layout;
 
 //        public dynamic New { get { return ShapeFactory; } }
 

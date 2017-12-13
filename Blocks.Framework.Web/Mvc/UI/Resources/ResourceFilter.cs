@@ -39,26 +39,27 @@ namespace Blocks.Framework.Web.Mvc.UI.Resources {
             
             if (!(filterContext.Result is ViewResult))
                 return;
-
-            IResourceManager resourceManager = ViewBagExtensions.GetResourceManager(filterContext.HttpContext);
-            if (resourceManager != null)
-            {
-
-                resourceManager.WriteResources();
-                foreach (var registeredHeadScript in resourceManager.GetRegisteredHeadScripts())
-                {
-                    filterContext.HttpContext.Response.AppendHeader("script",registeredHeadScript);
-                }
-//                foreach (var registeredFootScript in resourceManager.GetRegisteredFootScripts())
+//
+//            IResourceManager resourceManager = ViewBagExtensions.GetResourceManager(filterContext.HttpContext);
+//            if (resourceManager != null)
+//            {
+//
+//                resourceManager.WriteResources();
+//                foreach (var registeredHeadScript in resourceManager.GetRegisteredHeadScripts())
 //                {
-//                     filterContext.HttpContext.Response.Output("script",registeredHeadScript);
+//                    filterContext.HttpContext.Response.AppendHeader("script",registeredHeadScript);
+//                    filterContext.HttpContext.Response.Output.WriteLine($"<script>{registeredHeadScript}</script>");
 //                }
-//                resourceManager.GetRegisteredLinks();
-//                resourceManager.GetRegisteredMetas();
-
-
-                // resourceManager.
-            }
+////                foreach (var registeredFootScript in resourceManager.GetRegisteredFootScripts())
+////                {
+////                     filterContext.HttpContext.Response.Output("script",registeredHeadScript);
+////                }
+////                resourceManager.GetRegisteredLinks();
+////                resourceManager.GetRegisteredMetas();
+//
+//
+//                // resourceManager.
+//            }
         }
 
         

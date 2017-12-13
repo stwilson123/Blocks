@@ -101,6 +101,7 @@
     <Compile Include="Caching\IVolatileToken.cs" />
     <Compile Include="Caching\Weak.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="Collections\CollectionLInqExtend.cs" />
     <Compile Include="Collections\DependencyOrdering.cs" />
     <Compile Include="Collections\LazyConcurrentDictionary.cs" />
     <Compile Include="Collections\ReadOnlyCollectionExtensions.cs" />
@@ -126,6 +127,7 @@
     <Compile Include="Environment\Extensions\Models\LifecycleStatus.cs" />
     <Compile Include="Exceptions\BlocksException.cs" />
     <Compile Include="Exceptions\ExceptionExtensions.cs" />
+    <Compile Include="Exceptions\Helper\ExceptionHelper.cs" />
     <Compile Include="FileSystems\Dependencies\DependencyReferenceDescriptor.cs" />
     <Compile Include="FileSystems\Extensions\ExtensionManagerExtensions.cs" />
     <Compile Include="FileSystems\VirtualPath\DefaultVirtualPathMonitor.cs" />

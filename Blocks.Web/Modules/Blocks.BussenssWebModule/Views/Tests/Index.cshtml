@@ -1,22 +1,12 @@
-﻿ 
+﻿@using Blocks.Framework.Web.Mvc.Extensions
+ 
 @{
-    
-}
-@{
-    Script.Require("jQuery").AtHead();
+    Layout =  ResourceManager.GetTemplateNotCache("_LayoutFirst");
 }
 
-<!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
-    <div> 
-        @ViewBag.Index
-        123123123123123123123
-    </div>
-</body>
-</html>
+<div>
+    @ViewBag.Index
+    123123123123123123123
+</div>
+ 
