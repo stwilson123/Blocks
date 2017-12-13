@@ -1,0 +1,15 @@
+@using Blocks.Framework.Web.Mvc.Extensions
+@{
+   Layout = "~/Template/_LayoutRoot.cshtml";
+}
+@section register
+{
+  @{ Script.Require("jQuery").AtHead(); }
+}
+
+@section style{
+    @{
+        @Html.IncludeScript(ResourceManager.GetRegisteredHeadScripts())
+       
+   }
+}
