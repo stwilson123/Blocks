@@ -89,6 +89,8 @@
     <Content Include="Views\Tests\Index2.cshtml" />
     <Content Include="Views\Tests\Index.cshtml" />
     <Content Include="Views\web.config" />
+    <Content Include="Views\Tests\_LayoutRoot.cshtml" />
+    <Content Include="Views\Tests\View.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

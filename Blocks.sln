@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2009
+VisualStudioVersion = 15.0.27004.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{DFA48E27-7D53-4955-A722-3D91A7119BE7}"
 	ProjectSection(SolutionItems) = preProject
@@ -9,6 +9,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{DFA48E
 		.nuget\NuGet.exe = .nuget\NuGet.exe
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{7E85C7E5-70BD-4C9D-B052-D95955F46609}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{7408541C-F99C-4197-B203-136115BD1CB9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{F7810593-3007-4876-A81C-1C6EDB41FEFB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Adp", "Adp", "{5C533A68-EA85-4372-9A04-10B1D6DB2089}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blocks.Core", "Blocks.Core\Blocks.Core.csproj", "{17298EA0-AF73-4F30-B6F1-2066100D7D74}"
 EndProject
@@ -18,21 +26,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blocks.EntityFramework", "B
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blocks.Web", "Blocks.Web\Blocks.Web.csproj", "{404A6D3B-AA85-4E4C-AEEE-1E5026D5F135}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{7E85C7E5-70BD-4C9D-B052-D95955F46609}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blocks.Tests", "Tests\Blocks.Tests\Blocks.Tests.csproj", "{C602C47E-F379-40A3-A146-4F19105B3491}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{7408541C-F99C-4197-B203-136115BD1CB9}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blocks.Migrator", "Tools\Blocks.Migrator\Blocks.Migrator.csproj", "{6F98C2F2-898A-421B-BE3D-68FE69EC0646}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{F7810593-3007-4876-A81C-1C6EDB41FEFB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blocks.Framework.Web", "Blocks.Framework.Web\Blocks.Framework.Web.csproj", "{4A40A2EE-57BC-48A4-ABD5-36C7D3CBDD34}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blocks.WebApi", "Blocks.WebApi\Blocks.WebApi.csproj", "{5EB52D3D-09FD-463A-B02A-8D9856BD3724}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Adp", "Adp", "{5C533A68-EA85-4372-9A04-10B1D6DB2089}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Abp", "Adp\Abp\Abp.csproj", "{0F98C63C-D019-4F38-9AC3-F5D7BCAD9107}"
 EndProject

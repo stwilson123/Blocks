@@ -1,6 +1,6 @@
 ﻿using Blocks.Framework.Modules;
 
-namespace Blocks.ResourcesModule
+namespace Blocks.LayoutModule
 {
     public class LayoutModule : BlocksWebModule
     {

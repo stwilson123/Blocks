@@ -4,9 +4,13 @@
     Layout =  ResourceManager.GetTemplateNotCache("_LayoutFirst",this.VirtualPath);
 }
 
+@section body
+{
+    <div>
+        @ViewBag.Index
+        123123123123123123123
+    </div>
+}
 
-<div>
-    @ViewBag.Index
-    123123123123123123123
-</div>
+
  

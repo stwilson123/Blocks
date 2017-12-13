@@ -8,7 +8,8 @@ namespace Blocks.LayoutModule {
         {
             var manifest = builder.Add();
 
-            // jQuery.
+            
+            manifest.DefineResource("template","_LayoutRoot").SetUrl("_LayoutRoot.cshtml", "_LayoutRoot.cshtml").SetVersion("0.1");
             manifest.DefineResource("template","_LayoutFirst").SetUrl("_LayoutFirst.cshtml", "_LayoutFirst.cshtml").SetVersion("0.1");
 
         }

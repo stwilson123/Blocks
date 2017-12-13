@@ -9,9 +9,10 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.UI.WebControls.WebParts;
 using Abp.Dependency;
+using Blocks.Framework.Ioc.Dependency;
 
 namespace Blocks.Framework.Web.Mvc.UI.Resources {
-    public class ResourceManager : IResourceManager, ITransientDependency {// IUnitOfWorkDependency {
+    public class ResourceManager : IResourceManager, IUnitOfWorkDependency {// IUnitOfWorkDependency {
         private readonly Dictionary<Tuple<String, String>, RequireSettings> _required = new Dictionary<Tuple<String, String>, RequireSettings>();
         private readonly List<LinkEntry> _links = new List<LinkEntry>();
         private readonly Dictionary<string, MetaEntry> _metas = new Dictionary<string, MetaEntry> {

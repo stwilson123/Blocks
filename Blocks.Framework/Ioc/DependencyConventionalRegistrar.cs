@@ -46,7 +46,15 @@ namespace Blocks.Framework.Ioc
                     .LifestyleTransient()
             );
             
-            
+            context.IocManager.IocContainer.Register(
+                Classes.FromAssembly(context.Assembly)
+                    .BasedOn<IUnitOfWorkDependency>()
+                    .If(type => !type.GetTypeInfo().IsGenericTypeDefinition)
+                    .ConfigureSpecial(_iIocManager,context.Assembly.GetName().Name)
+                    .WithService.Self()
+                    .WithService.DefaultInterfaces()
+                    .LifestylePerWebRequest()
+            );
             
             
             context.IocManager.IocContainer.Register(
@@ -54,6 +62,7 @@ namespace Blocks.Framework.Ioc
                     .Where(t => typeof(IDependency).IsAssignableFrom(t.GetTypeInfo()) &&
                                 !typeof(ISingletonDependency).IsAssignableFrom(t) &&
                                 !typeof(ITransientDependency).IsAssignableFrom(t) && 
+                                !typeof(IUnitOfWorkDependency).IsAssignableFrom(t) &&
                                 !typeof(Abp.Dependency.ISingletonDependency).IsAssignableFrom(t) && 
                                 !typeof(Abp.Dependency.ITransientDependency).IsAssignableFrom(t)
                     )

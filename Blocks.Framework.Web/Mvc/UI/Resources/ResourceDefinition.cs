@@ -25,7 +25,9 @@ namespace Blocks.Framework.Web.Mvc.UI.Resources {
         };
         private static readonly Dictionary<string, string> _resourceTypeDirectories = new Dictionary<string, string> {
             {"script", "scripts/"},
-            {"stylesheet", "styles/"}
+            {"stylesheet", "styles/"},
+            {"template", "template/"}
+
         };
 
         private string _basePath;

@@ -1,5 +1,6 @@
 
- @RenderSection("register",false); 
+@RenderSection("register",false)
+@{ ResourceManager.WriteResources(); }
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,12 +11,12 @@
 @*    <link rel="stylesheet" href="~/Content/bootstrap.css" />*@
 @*    <link rel="stylesheet" href="~/Content/bootstrap-theme.css" />*@
     
-    @RenderSection("resource",false); 
-    @RenderSection("style",false); 
-    @{ ResourceManager.WriteResources(); }
+    @RenderSection("resource",false)
+    @RenderSection("style",false)
+ 
 </head>
 <body>
-@RenderBody()
+@RenderSection("body",false)
 @*<div class="navbar navbar-inverse navbar-fixed-top">*@
 @*    <div class="container">*@
 @*        <div class="navbar-header">*@
@@ -50,6 +51,6 @@
 @*    <script src="~/Scripts/site.js" ></script>*@
 @*</environment>*@
 
-@RenderSection("scripts", required: false)
+@RenderSection("script", required: false)
 </body>
 </html>
