@@ -8,9 +8,12 @@ using Abp.Web.Mvc;
 using Abp.WebApi.Configuration;
 using Abp.WebApi.Controllers.Dynamic;
 using Abp.WebApi.Controllers.Dynamic.Selectors;
+using Blocks.Framework.Environment.Extensions;
 using Blocks.Framework.Modules;
+using Blocks.Framework.Web.Api.Controllers;
 using Blocks.Framework.Web.Api.Controllers.Selectors;
 using Blocks.Framework.Web.Mvc;
+using Blocks.Framework.Web.Mvc.Controllers;
 using Blocks.Framework.Web.Mvc.Filters;
 using Blocks.Framework.Web.Mvc.ViewEngines;
 using Blocks.Framework.Web.Mvc.ViewEngines.ThemeAwareness;
@@ -36,23 +39,29 @@ namespace Blocks.Framework.Web.Modules
 
         public override void Initialize()
         {
+            //Config WebMvc,Webi register
+            IocManager.AddConventionalRegistrar(new ControllerConventionalRegistrar(IocManager.Resolve<IExtensionManager>().AvailableExtensions())); 
+            IocManager.AddConventionalRegistrar(new ApiControllerConventionalRegistrar(IocManager.Resolve<IExtensionManager>().AvailableExtensions())); 
+
+            
             IocManager.RegisterAssemblyByConvention(Assembly.GetExecutingAssembly());
 
             //Config WebMvc
             ControllerBuilder.Current.SetControllerFactory(new BlocksWebMvcControllerFactory(IocManager));
-            FilterProviders.Providers.Add(new BlocksWebMvcFilterProvider());
+          //TODO how ajust to abp filter
+            //  FilterProviders.Providers.Add(new BlocksWebMvcFilterProvider());
 
             ViewEngines.Engines.Clear();
             ViewEngines.Engines.Add(new ThemeAwareViewEngineShim(IocManager));
 
-            //Config WebApi
-            var httpConfiguration = IocManager.Resolve<IAbpWebApiConfiguration>().HttpConfiguration;
-            httpConfiguration.Services.Replace(typeof(IHttpControllerSelector), new BlocksHttpControllerSelector(httpConfiguration, IocManager.Resolve<DynamicApiControllerManager>(), IocManager));
+          
         }
 
         public override void PostInitialize()
         {
-       
+            //Config WebApi
+            var httpConfiguration = IocManager.Resolve<IAbpWebApiConfiguration>().HttpConfiguration;
+            httpConfiguration.Services.Replace(typeof(IHttpControllerSelector), new BlocksHttpControllerSelector(httpConfiguration, IocManager.Resolve<DynamicApiControllerManager>(),IocManager));
 
         }
     }

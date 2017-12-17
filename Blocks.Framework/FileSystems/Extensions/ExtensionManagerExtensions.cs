@@ -19,7 +19,7 @@ namespace Blocks.Framework.FileSystems.Extensions
 //        }
         
         public static IEnumerable<FeatureDescriptor> EnabledFeatures(this IExtensionManager extensionManager, string shellName) {
-                return extensionManager.AvailableFeatures().Where(fd => shellName == fd.Id);
+                return extensionManager.AvailableFeatures().Where(fd => shellName == fd.Name);
         }
     }
 }

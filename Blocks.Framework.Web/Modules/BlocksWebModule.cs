@@ -1,26 +1,18 @@
-﻿using Abp.Application.Services;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Web.Http;
+using Abp.Application.Services;
 using Abp.Configuration.Startup;
 using Abp.Modules;
+using Blocks.Framework.Environment.Exception;
+using Blocks.Framework.Environment.Extensions;
 using Blocks.Framework.Web.Route;
-using System;
-using System.Collections.Generic;
-using System.Reflection;
-using System.Text;
-using System.Web.Http;
-using System.Web.Mvc;
-using System.Web.Routing;
-using Blocks.Framework.Web.Mvc.ViewEngines.ThemeAwareness;
-using Blocks.Framework.Web.Mvc;
-using Abp.WebApi.Configuration;
-using System.Web.Http.Dispatcher;
-using Blocks.Framework.Web.Api.Controllers.Selectors;
-using Abp.WebApi.Controllers.Dynamic;
 
-namespace Blocks.Framework.Modules
+namespace Blocks.Framework.Web.Modules
 {
     public abstract class BlocksWebModule : AbpModule
     {
-
+     
         public override void PreInitialize()
         {
            
@@ -35,17 +27,53 @@ namespace Blocks.Framework.Modules
         /// </summary>
         public override void Initialize()
         {
-            IocManager.RegisterAssemblyByConvention(this.GetType().Assembly);
 
-          
+            var currentAssmebly = this.GetType().Assembly;
+            var currentAssmeblyName = currentAssmebly.GetName().Name;
+            IocManager.RegisterAssemblyByConvention(currentAssmebly);
 
-            //Configuration.Modules.AbpWebApi().DynamicApiControllerBuilder
-            //    .ForAll<IApplicationService>(typeof(BlocksApplicationModule).Assembly, "app")
-            //    .Build();
+
+            var AppModule =  System.AppDomain.CurrentDomain.GetAssemblies()
+                .FirstOrDefault(t => t.FullName.IndexOf("BussnessApplicationModule") > 0);
+
+            IocManager.RegisterAssemblyByConvention(AppModule);
+
+           
+            var RepModule =  System.AppDomain.CurrentDomain.GetAssemblies()
+                .FirstOrDefault(t => t.FullName.IndexOf("BussnessRespositoryModule") > 0);
+
+            IocManager.RegisterAssemblyByConvention(RepModule);
+            
+            var DomainModule =  System.AppDomain.CurrentDomain.GetAssemblies()
+                .FirstOrDefault(t => t.FullName.IndexOf("BussnessDomainModule") > 0);
+
+            IocManager.RegisterAssemblyByConvention(DomainModule);
+            
+            
+//            var RepModule = Assembly.LoadFile(
+//                $"{AppModule.Location.Substring(0,AppModule.Location.LastIndexOf(@"\", StringComparison.Ordinal))}\\Blocks.BussnessRespositoryModule.dll"
+//            );
+//            IocManager.RegisterAssemblyByConvention(RepModule);
+//            
+//            
+//            var DomainModule = Assembly.LoadFile(
+//                $"{AppModule.Location.Substring(0,AppModule.Location.LastIndexOf(@"\", StringComparison.Ordinal))}\\Blocks.BussnessDomainModule.dll"
+//            );
+//            IocManager.RegisterAssemblyByConvention(DomainModule);
+//            
+
+
+            var Extension = IocManager.Resolve<IExtensionManager>().AvailableExtensions()
+                .FirstOrDefault(t => t.Id == currentAssmeblyName);
+            if(Extension == null)
+                throw  new ExtensionNotFoundException($"{currentAssmeblyName} can't found extension depond on it");
+            Configuration.Modules.AbpWebApi().DynamicApiControllerBuilder
+                                         .ForAll<IApplicationService>(AppModule, Extension.Name)
+                                         .Build();
 
             Configuration.Modules.AbpWebApi().HttpConfiguration.Filters.Add(new HostAuthenticationFilter("Bearer"));
 
-            RouteHandle();
+            RouteHandle(Extension.Name);
             InitializeEvent();
         }
 
@@ -62,11 +90,11 @@ namespace Blocks.Framework.Modules
         }
  
 
-        private void RouteHandle()
+        private void RouteHandle(string featureName)
         {
             var listRouteDesc = new List<RouteDescriptor>();
-            IocManager.Resolve<IRouteProvider>().GetRoutes(listRouteDesc, this.GetType().Assembly.GetName().Name);
-            IocManager.Resolve<IHttpRouteProvider>().GetRoutes(listRouteDesc, this.GetType().Assembly.GetName().Name);
+            IocManager.Resolve<IRouteProvider>().GetRoutes(listRouteDesc, featureName);
+            IocManager.Resolve<IHttpRouteProvider>().GetRoutes(listRouteDesc, featureName);
 
             IocManager.Resolve<IRoutePublisher>().Publish(listRouteDesc);
            

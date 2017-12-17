@@ -6,16 +6,13 @@
 {
   @{ Script.Require("jQuery").AtHead(); }
 }
-
-@section script{
-    
-   @Html.IncludeScript(ResourceManager.GetRegisteredHeadScripts())
-       
-   
-}
+@**@
+@*@section script{*@
+@*   *@
+@*          *@
+@*}*@
 
 @section body
 {
     @RenderSection("body",false)
-
 }

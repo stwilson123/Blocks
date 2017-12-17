@@ -1,4 +1,6 @@
-﻿using System.Net.Http;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Controllers;
 using System.Web.Http.Dispatcher;
@@ -8,6 +10,10 @@ using Abp.WebApi.Controllers.Dynamic.Builders;
 using Abp.WebApi.Controllers.Dynamic.Selectors;
 using Abp.WebApi.Extensions;
 using Abp.Collections.Extensions;
+using Blocks.Framework.Environment.Exception;
+using Blocks.Framework.Environment.Extensions;
+using Blocks.Framework.Environment.Extensions.Models;
+
 namespace Blocks.Framework.Web.Api.Controllers.Selectors
 {
      /// <summary>
@@ -20,7 +26,6 @@ namespace Blocks.Framework.Web.Api.Controllers.Selectors
         private readonly HttpConfiguration _configuration;
         private readonly DynamicApiControllerManager _dynamicApiControllerManager;
         private readonly IIocManager _iIocManager;
-
         /// <summary>
         /// Creates a new <see cref="AbpHttpControllerSelector"/> object.
         /// </summary>
@@ -31,7 +36,7 @@ namespace Blocks.Framework.Web.Api.Controllers.Selectors
         {
             _configuration = configuration;
             _dynamicApiControllerManager = dynamicApiControllerManager;
-            _iIocManager = iIocManager;
+            _iIocManager = iIocManager; 
         }
 
         /// <summary>
@@ -98,12 +103,16 @@ namespace Blocks.Framework.Web.Api.Controllers.Selectors
         private HttpControllerDescriptor GetHttpController(HttpRequestMessage request)
         {
             string area = request.GetRouteData().GetAreaName();
+          
             object instance = default(object);
             var controllerName = base.GetControllerName(request);
+            
+            var serviceKey = ApiControllerConventionalRegistrar.GetControllerSerivceName(area,controllerName) + "Controller";
 
-            if (!string.IsNullOrEmpty(area) && _iIocManager.IsRegistered($"{area}.Api.Controllers.{controllerName}Controller"))
+//            string serviceKey = $"{area}.Api.Controllers.{controllerName}Controller";
+            if (!string.IsNullOrEmpty(area) && _iIocManager.IsRegistered(serviceKey))
             {
-                instance = _iIocManager.Resolve<IHttpController>($"{area}.Api.Controllers.{controllerName}Controller");
+                instance = _iIocManager.Resolve<IHttpController>(serviceKey);
             }
 
             if (instance != null)

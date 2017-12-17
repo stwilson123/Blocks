@@ -17,6 +17,7 @@ namespace Blocks.Framework.Web.Mvc.Filters
             // positive order values. We do this by reversing the list and
             // negating the index.
             var filters = workContext.ResolveAll<IFilterProvider>();
+          
             return filters.Reverse().Select((filter, index) => new Filter(filter, FilterScope.Action, -(index + 1)));
         }
     }

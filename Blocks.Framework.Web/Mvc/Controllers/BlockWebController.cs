@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Abp;
-using Abp.Reflection;
 using Abp.Application.Features;
 using Abp.Authorization;
 using Abp.Configuration;
@@ -19,19 +18,18 @@ using Abp.Localization;
 using Abp.Localization.Sources;
 using Abp.Logging;
 using Abp.ObjectMapping;
+using Abp.Reflection;
 using Abp.Runtime.Session;
 using Abp.Runtime.Validation;
 using Abp.Web.Models;
 using Abp.Web.Mvc.Configuration;
-using Abp.Web.Mvc.Controllers;
 using Abp.Web.Mvc.Controllers.Results;
 using Abp.Web.Mvc.Extensions;
 using Abp.Web.Mvc.Helpers;
 using Abp.Web.Mvc.Models;
 using Castle.Core.Logging;
 
-
-namespace Blocks.Framework.Web.Mvc
+namespace Blocks.Framework.Web.Mvc.Controllers
 {
     public abstract class BlockWebController : Controller 
     { 

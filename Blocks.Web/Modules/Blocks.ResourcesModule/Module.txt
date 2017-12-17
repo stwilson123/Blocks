@@ -1,5 +1,5 @@
 {
-    "Name": "Blocks.Resources",
+    "Name": "Resources",
     "AntiForgery": "enabled",
     "Author": "BiLin",
     "Website": "http://xxx.net",

@@ -1,5 +1,5 @@
 {
-    "Name": "Blocks.LayoutModule",
+    "Name": "LayoutModule",
     "AntiForgery": "enabled",
     "Author": "BiLin",
     "Website": "http://xxx.net",

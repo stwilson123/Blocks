@@ -103,7 +103,7 @@ namespace Blocks.Framework.Environment.Extensions.Folders
 
                     localList.Add(descriptor);
                 }
-                catch (Exception ex) {
+                catch (System.Exception ex) {
                     // Ignore invalid module manifests
                     if (ex.IsFatal()) {
                         throw;
@@ -137,7 +137,7 @@ namespace Blocks.Framework.Environment.Extensions.Folders
 //                LifecycleStatus = GetValue(manifest, LifecycleStatusSection, LifecycleStatus.Production)
 //            };
 //            extensionDescriptor.Features = GetFeaturesForExtension(manifest, extensionDescriptor);
-            var extensionDescriptor = JsonHelper.DeserializeObject<ExtensionDescriptor>(Regex.Replace(manifestText, @"[/n/r]", "") );
+            var extensionDescriptor = JsonHelper.DeserializeObject<ExtensionDescriptor>(Regex.Replace(manifestText,  @"[\r\n]", "") );
             extensionDescriptor.Location = locationPath;
             extensionDescriptor.Id = extensionId;
             extensionDescriptor.ExtensionType = extensionType;

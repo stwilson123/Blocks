@@ -2,10 +2,9 @@
 using System.Web.Mvc;
 using System.Web.Routing;
 using Abp.Dependency;
-using Abp.Web.Mvc.Extensions;
 using Blocks.Framework.Web.Mvc.Route;
 
-namespace Blocks.Framework.Web.Mvc
+namespace Blocks.Framework.Web.Mvc.Controllers
 {
     /// <summary>
     /// This class is used to allow MVC to use dependency injection system while creating MVC controllers.
@@ -16,7 +15,9 @@ namespace Blocks.Framework.Web.Mvc
         /// Reference to DI kernel.
         /// </summary>
         private readonly IIocResolver _iocManager;
-
+        
+     
+        
         /// <summary>
         /// Creates a new instance of WindsorControllerFactory.
         /// </summary>
@@ -24,6 +25,7 @@ namespace Blocks.Framework.Web.Mvc
         public BlocksWebMvcControllerFactory(IIocResolver iocManager)
         {
             _iocManager = iocManager;
+    
         }
 
         /// <summary>
@@ -59,10 +61,13 @@ namespace Blocks.Framework.Web.Mvc
                 return base.GetControllerType(requestContext, controllerName);
             }
             string area = requestContext.RouteData.GetAreaName();
+         
+            var serviceKey = ControllerConventionalRegistrar.GetControllerSerivceName(area,controllerName) + "Controller";
+            
             object instance = default(object);
-            if (!string.IsNullOrEmpty(area) && _iocManager.IsRegistered($"{area}.Controllers.{controllerName}Controller"))
+            if (!string.IsNullOrEmpty(area) && _iocManager.IsRegistered(serviceKey))
             {
-                instance = _iocManager.Resolve<IController>($"{area}.Controllers.{controllerName}Controller");
+                instance = _iocManager.Resolve<IController>(serviceKey);
             }
             return instance != null ? instance.GetType() : base.GetControllerType(requestContext, controllerName);
         }

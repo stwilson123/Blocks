@@ -1,5 +1,5 @@
 {
-    "Name": "Blocks.BussenssWebModule",
+    "Name": "BussenssWebModule",
     "AntiForgery": "enabled",
     "Author": "BiLin",
     "Website": "http://xxx.net",

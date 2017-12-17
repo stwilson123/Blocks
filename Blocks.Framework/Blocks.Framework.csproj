@@ -83,6 +83,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplicationServices\IApplicationService.cs" />
     <Compile Include="Caching\AcquireContext.cs" />
     <Compile Include="Caching\Cache.cs" />
     <Compile Include="Caching\CacheModule.cs" />
@@ -105,9 +106,11 @@
     <Compile Include="Collections\DependencyOrdering.cs" />
     <Compile Include="Collections\LazyConcurrentDictionary.cs" />
     <Compile Include="Collections\ReadOnlyCollectionExtensions.cs" />
+    <Compile Include="Data\IRepository.cs" />
     <Compile Include="Environment\Configuration\ExtensionLocations.cs" />
     <Compile Include="Environment\Configuration\IAppConfigurationAccessor.cs" />
     <Compile Include="Environment\EnvironmentModule.cs" />
+    <Compile Include="Environment\Exception\ExtensionNotFoundException.cs" />
     <Compile Include="Environment\Extensions\Attributes\BlocksFeatureAttribute.cs" />
     <Compile Include="Environment\Extensions\DefaultCriticalErrorProvider.cs" />
     <Compile Include="Environment\Extensions\ExtensionEntry.cs" />

@@ -137,6 +137,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\Controllers\ApiControllerConventionalRegistrar.cs" />
     <Compile Include="Api\Controllers\BlockWebApiController.cs" />
     <Compile Include="Api\Controllers\Selectors\BlocksHttpControllerSelector.cs" />
     <Compile Include="BlocksWebApplication.cs" />
@@ -146,6 +147,7 @@
     <Compile Include="Modules\BlocksWebModule.cs" />
     <Compile Include="Mvc\Controllers\BlocksWebMvcControllerFactory.cs" />
     <Compile Include="Mvc\Controllers\BlockWebController.cs" />
+    <Compile Include="Mvc\Controllers\ControllerConventionalRegistrar.cs" />
     <Compile Include="Mvc\Extensions\HtmlHelperResourceExtensions.cs" />
     <Compile Include="Mvc\Filters\BlocksWebMvcFilterProvider.cs" />
     <Compile Include="Mvc\Filters\IFilterProvider.cs" />

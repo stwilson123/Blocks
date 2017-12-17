@@ -49,7 +49,7 @@ namespace Blocks.Framework.Web.Mvc.ViewEngines.Razor
                     return _resourceManager;
 
                 _resourceManager = WorkContext.Resolve<IResourceManager>();
-                this.Page.Head = "123123";
+                
                 //HtmlStringWriter w = new HtmlStringWriter();
                 //w.WriteLine("1111111111111");
                 //this.RenderBody().WriteTo(w);

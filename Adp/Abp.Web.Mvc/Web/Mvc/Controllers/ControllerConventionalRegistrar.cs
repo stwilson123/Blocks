@@ -15,7 +15,7 @@ namespace Abp.Web.Mvc.Controllers
         {
             context.IocManager.IocContainer.Register(
                 Classes.FromAssembly(context.Assembly)
-                    .BasedOn<Controller>()
+                    .BasedOn<AbpController>()
                     .If(type => !type.GetTypeInfo().IsGenericTypeDefinition)
                     .LifestyleTransient()
                 );

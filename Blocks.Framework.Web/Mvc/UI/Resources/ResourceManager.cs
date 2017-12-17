@@ -5,6 +5,7 @@ using System.Collections.Specialized;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.UI.WebControls.WebParts;
@@ -91,9 +92,10 @@ namespace Blocks.Framework.Web.Mvc.UI.Resources {
             }
         }
 
+        public Guid guid;
         public ResourceManager(IEnumerable<IResourceManifestProvider> resourceProviders) {
             _providers = resourceProviders;
-           
+            guid = Guid.NewGuid();
         }
 
         public IEnumerable<IResourceManifest> ResourceProviders {
