@@ -68,6 +68,7 @@ namespace Blocks.Framework.Web.Mvc.ViewEngines.Razor
             var universalFormats = parameters.VirtualPaths
                 .SelectMany(x => new[] {
                                            x + "/Views/{0}.cshtml",
+                                            x + "/Views/{1}/{0}.cshtml",
                                        })
                 .Concat(new[] { "~/Views/{1}/{0}.cshtml", "~/Views/{0}.cshtml" })
                 .ToArray();

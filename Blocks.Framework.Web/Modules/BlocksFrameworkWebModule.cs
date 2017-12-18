@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Reflection;
+using System.Web.Http;
 using System.Web.Http.Dispatcher;
 using System.Web.Mvc;
+using Abp.Configuration.Startup;
 using Abp.Modules;
 using Abp.Web;
 using Abp.Web.Mvc;
@@ -18,6 +20,7 @@ using Blocks.Framework.Web.Mvc.Filters;
 using Blocks.Framework.Web.Mvc.ViewEngines;
 using Blocks.Framework.Web.Mvc.ViewEngines.ThemeAwareness;
 using Blocks.Framework.Web.Route;
+using Castle.Core.Logging;
 
 namespace Blocks.Framework.Web.Modules
 {
@@ -39,12 +42,19 @@ namespace Blocks.Framework.Web.Modules
 
         public override void Initialize()
         {
-            //Config WebMvc,Webi register
-            IocManager.AddConventionalRegistrar(new ControllerConventionalRegistrar(IocManager.Resolve<IExtensionManager>().AvailableExtensions())); 
-            IocManager.AddConventionalRegistrar(new ApiControllerConventionalRegistrar(IocManager.Resolve<IExtensionManager>().AvailableExtensions())); 
 
             
             IocManager.RegisterAssemblyByConvention(Assembly.GetExecutingAssembly());
+
+
+            //Config WebMvc,Webi register
+            IocManager.AddConventionalRegistrar(new ControllerConventionalRegistrar(IocManager.Resolve<IExtensionManager>().AvailableExtensions()));
+            IocManager.AddConventionalRegistrar(new ApiControllerConventionalRegistrar(IocManager.Resolve<IExtensionManager>().AvailableExtensions()));
+
+            //Config init 
+            IocManager.AddConventionalRegistrar(new ConfiguartionConventionalRegistrar(IocManager.Resolve<IExtensionManager>().AvailableExtensions()));
+
+            
 
             //Config WebMvc
             ControllerBuilder.Current.SetControllerFactory(new BlocksWebMvcControllerFactory(IocManager));
@@ -54,7 +64,10 @@ namespace Blocks.Framework.Web.Modules
             ViewEngines.Engines.Clear();
             ViewEngines.Engines.Add(new ThemeAwareViewEngineShim(IocManager));
 
-          
+            
+            //Config WebApi
+            Configuration.Modules.AbpWebApi().HttpConfiguration.Filters.Add(new HostAuthenticationFilter("Bearer"));
+
         }
 
         public override void PostInitialize()

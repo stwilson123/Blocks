@@ -97,6 +97,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResourceManifestProvider.cs" />
     <Compile Include="LayoutModule.cs" />
+    <Compile Include="LayoutAppStartConfg.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />

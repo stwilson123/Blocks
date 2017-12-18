@@ -5,7 +5,9 @@ using System.Web.Http;
 using Abp.Dependency;
 using Blocks.Framework.Environment.Exception;
 using Blocks.Framework.Environment.Extensions.Models;
+using Castle.Core.Logging;
 using Castle.MicroKernel.Registration;
+using Abp.Logging;
 
 namespace Blocks.Framework.Web.Api.Controllers
 {
@@ -14,15 +16,16 @@ namespace Blocks.Framework.Web.Api.Controllers
     /// </summary>
     public class ApiControllerConventionalRegistrar : IConventionalDependencyRegistrar
     {
+        
         public static string GetControllerSerivceName(string area,string controllerName)
         {
             return $@"WebApiController\{area}\{controllerName}";
         }
         private readonly IEnumerable<ExtensionDescriptor> _extensionDescriptors;
-
         public ApiControllerConventionalRegistrar(IEnumerable<ExtensionDescriptor> extensionDescriptors)
         {
             _extensionDescriptors = extensionDescriptors;
+          
         }
 
 
@@ -30,9 +33,12 @@ namespace Blocks.Framework.Web.Api.Controllers
         {
             var currentAssmeblyName = context.Assembly.GetName().Name;
             var extensionDescriptor = _extensionDescriptors.FirstOrDefault(t => t.Id == currentAssmeblyName);
-            if(extensionDescriptor == null)
-                throw  new ExtensionNotFoundException($"{currentAssmeblyName} can't found extension depond on it");
-            
+            if (extensionDescriptor == null)
+            {
+                LogHelper.Logger.WarnFormat($"{currentAssmeblyName} can't found extension depond on it.so ignore to register BlockWebController");
+                return;
+            }
+
             context.IocManager.IocContainer.Register(
                 Classes.FromAssembly(context.Assembly)
                     .BasedOn<BlockWebApiController>()

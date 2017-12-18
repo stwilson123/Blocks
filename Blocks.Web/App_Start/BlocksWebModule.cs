@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System.Collections.Generic;
+using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
@@ -15,6 +16,7 @@ using Hangfire;
 using Microsoft.Owin.Security;
 using Blocks.Framework.Modules;
 using Blocks.Framework.Web.Modules;
+using Blocks.Framework.Web.Route;
 
 namespace Blocks.Web
 {
@@ -56,10 +58,20 @@ namespace Blocks.Web
                     .UsingFactoryMethod(() => HttpContext.Current.GetOwinContext().Authentication)
                     .LifestyleTransient()
             );
-
+           // RouteHandle();
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+        }
+        
+        private void RouteHandle()
+        {
+            var listRouteDesc = new List<RouteDescriptor>();
+            IocManager.Resolve<IRouteProvider>().GetRoutes(listRouteDesc, this.GetType().Assembly.GetName().Name);
+            IocManager.Resolve<IHttpRouteProvider>().GetRoutes(listRouteDesc, this.GetType().Assembly.GetName().Name);
+
+            IocManager.Resolve<IRoutePublisher>().Publish(listRouteDesc);
+           
         }
     }
 }

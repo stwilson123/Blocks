@@ -142,6 +142,7 @@
     <Compile Include="Api\Controllers\Selectors\BlocksHttpControllerSelector.cs" />
     <Compile Include="BlocksWebApplication.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="Configuartions\IWebFrameworkConfiguration.cs" />
     <Compile Include="FileSystems\VirtualPath\DefaultVirtualPathProvider.cs" />
     <Compile Include="Modules\BlocksFrameworkWebModule.cs" />
     <Compile Include="Modules\BlocksWebModule.cs" />

@@ -106,6 +106,10 @@
     <Compile Include="Collections\DependencyOrdering.cs" />
     <Compile Include="Collections\LazyConcurrentDictionary.cs" />
     <Compile Include="Collections\ReadOnlyCollectionExtensions.cs" />
+    <Compile Include="Configurations\ConfiguartionConventionalRegistrar.cs" />
+    <Compile Include="Configurations\AppConfigManager.cs" />
+    <Compile Include="Configurations\ConfigurationException.cs" />
+    <Compile Include="Configurations\IConfiguration.cs" />
     <Compile Include="Data\IRepository.cs" />
     <Compile Include="Environment\Configuration\ExtensionLocations.cs" />
     <Compile Include="Environment\Configuration\IAppConfigurationAccessor.cs" />
