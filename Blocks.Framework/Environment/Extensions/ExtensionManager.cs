@@ -9,7 +9,6 @@ using Blocks.Framework.Environment.Extensions.Folders;
 using Blocks.Framework.Environment.Extensions.Models;
 using Blocks.Framework.Exceptions;
 using Castle.Core.Logging;
-using Framework.Environment.Extensions;
 using ICacheManager = Blocks.Framework.Caching.ICacheManager;
 
 namespace Blocks.Framework.Environment.Extensions

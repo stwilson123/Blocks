@@ -1,6 +1,6 @@
 ﻿using Blocks.Framework.Web.Configuartions;
 
-namespace Blocks.ResourcesModule
+namespace Blocks.BussenssWebModule
 {
     public class BussnessWebConfig : IWebFrameworkConfiguration
     {
