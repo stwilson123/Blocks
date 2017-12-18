@@ -48,5 +48,32 @@ namespace Blocks.Tests.Custom
             throw  new Exception(str);
 
         }
+
+        [Fact]
+        public void Test1()
+        {
+            var tes = new class1();
+           var ass= typeof(IInterface11).IsAssignableFrom(typeof(class1));
+        }
+        
+        public class class1 :IInterface2
+        {
+            
+        }
+        
+        public interface IInterface1
+        {
+            
+        }
+        public interface IInterface11
+        {
+            
+        }
+        
+        
+        public interface IInterface2 : IInterface1,IInterface11
+        {
+            
+        }
     }
 }
