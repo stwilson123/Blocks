@@ -4,11 +4,10 @@ using System.Reflection;
 using System.Web.Mvc;
 using Abp.Dependency;
 using Abp.Logging;
-using Blocks.Framework.Configurations;
 using Blocks.Framework.Environment.Extensions.Models;
 using Castle.MicroKernel.Registration;
 
-namespace Blocks.Framework.Web.Mvc.Controllers
+namespace Blocks.Framework.Configurations
 {
     /// <summary>
     ///     Registers all MVC Controllers derived from <see cref="Controller" />.

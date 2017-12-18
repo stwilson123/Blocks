@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Framework.Environment.Extensions.Attributes
+namespace Blocks.Framework.Environment.Extensions.Attributes
 {
     [AttributeUsage(AttributeTargets.Class)]
     public class BlocksFeatureAttribute : Attribute {
