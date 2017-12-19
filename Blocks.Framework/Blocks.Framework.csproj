@@ -42,6 +42,9 @@
     <Reference Include="Castle.Windsor, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc">
       <HintPath>..\packages\Castle.Windsor.4.1.0\lib\net45\Castle.Windsor.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
@@ -83,6 +86,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplicationServices\AppService.cs" />
     <Compile Include="ApplicationServices\IApplicationService.cs" />
     <Compile Include="Caching\AcquireContext.cs" />
     <Compile Include="Caching\Cache.cs" />
@@ -174,9 +178,21 @@
       <Project>{d7355480-1c71-47d5-b7a3-023cdc5941f3}</Project>
       <Name>Abp.Web</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Adp\Abp.Zero.Common\Abp.Zero.Common.csproj">
+      <Project>{2f5783ee-a022-45a5-928f-2588cb5f6c8e}</Project>
+      <Name>Abp.Zero.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Adp\Abp.Zero\Abp.Zero.csproj">
+      <Project>{22F38673-D59E-4D44-92CD-1E0FB37E7858}</Project>
+      <Name>Abp.Zero</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Adp\Abp\Abp.csproj">
       <Project>{0f98c63c-d019-4f38-9ac3-f5d7bcad9107}</Project>
       <Name>Abp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Blocks.Core\Blocks.Core.csproj">
+      <Project>{17298EA0-AF73-4F30-B6F1-2066100D7D74}</Project>
+      <Name>Blocks.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

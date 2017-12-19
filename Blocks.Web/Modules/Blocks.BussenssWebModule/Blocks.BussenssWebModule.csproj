@@ -87,6 +87,7 @@
     <None Include="packages.config" />
     <Content Include="Views\Tests\Index2.cshtml" />
     <Content Include="Views\Tests\Index.cshtml" />
+    <Content Include="Views\Tests\_LayoutPartialViewFirst.cshtml" />
     <Content Include="Views\web.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -101,7 +102,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="API\Controllers\AccountTestController.cs" />
-    <Compile Include="Controllers\TestsController.cs" />
+    <Compile Include="Controllers\TestsMvcController.cs" />
     <Compile Include="BussnessWebConfiguration.cs" />
     <Compile Include="Models\DefaultModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

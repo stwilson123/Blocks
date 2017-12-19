@@ -42,7 +42,7 @@ namespace Blocks.Framework.Web.Mvc.Controllers
 
             context.IocManager.IocContainer.Register(
                 Classes.FromAssembly(context.Assembly)
-                    .BasedOn<BlockWebController>()
+                    .BasedOn<BlocksWebMvcController>()
                     .If(type => !type.GetTypeInfo().IsGenericTypeDefinition)
                     .Configure(t => t.Named(GetControllerSerivceName(extensionDescriptor.Name ,t.Implementation.Name)))
                     .LifestyleTransient()

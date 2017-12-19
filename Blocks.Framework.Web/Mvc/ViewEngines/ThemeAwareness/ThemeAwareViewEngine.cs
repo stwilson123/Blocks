@@ -46,7 +46,11 @@ namespace Blocks.Framework.Web.Mvc.ViewEngines.ThemeAwareness
 //            else if (_workContext.CurrentTheme != null) {
 //                engines = useDeepPaths ? DeepEngines(_workContext.CurrentTheme) : ShallowEngines(_workContext.CurrentTheme);
 //            }
-
+            var areaName = controllerContext.RouteData.GetAreaName();
+            if (!string.IsNullOrEmpty(areaName))
+            {
+                engines = useDeepPaths ? DeepEngines(areaName) : ShallowEngines(areaName);
+            }
             return engines.FindPartialView(controllerContext, partialViewName, useCache);
         }
 

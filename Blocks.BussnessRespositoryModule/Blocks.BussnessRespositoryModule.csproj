@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
@@ -51,6 +54,10 @@
     <ProjectReference Include="..\Blocks.BussnessEntityModule\Blocks.BussnessEntityModule.csproj">
       <Project>{11206F21-DC7C-4F62-9AB9-9CD1095A78C0}</Project>
       <Name>Blocks.BussnessEntityModule</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Blocks.Framework.DBORM\Blocks.Framework.DBORM.csproj">
+      <Project>{9CA5B764-D047-4662-BA93-DB578ED89E4E}</Project>
+      <Name>Blocks.Framework.DBORM</Name>
     </ProjectReference>
     <ProjectReference Include="..\Blocks.Framework\Blocks.Framework.csproj">
       <Project>{d5acbcf7-a7a7-449e-9dca-c1fcde36b7b6}</Project>

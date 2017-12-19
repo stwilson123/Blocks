@@ -72,13 +72,22 @@ namespace Blocks.Framework.Web.Mvc.ViewEngines.Razor
                                        })
                 .Concat(new[] { "~/Views/{1}/{0}.cshtml", "~/Views/{0}.cshtml" })
                 .ToArray();
+            
+            var partialViewFormats = parameters.VirtualPaths
+                .SelectMany(x => new[] {
+                    x + "/Views/{0}.cshtml",
+                    x + "/Views/{1}/{0}.cshtml",
+                    x +  "/Views/Shared/{0}.cshtml",
+                })
+                .Concat(new[] { "~/Views/{1}/{0}.cshtml", "~/Views/{0}.cshtml" })
+                .ToArray();
 
             //Logger.Debug("UniversalFormats (module): \r\n\t-{0}", string.Join("\r\n\t-", universalFormats));
 
             var viewEngine = new RazorViewEngine {
                 MasterLocationFormats = DisabledFormats,
                 ViewLocationFormats = universalFormats,
-                PartialViewLocationFormats = universalFormats,
+                PartialViewLocationFormats = partialViewFormats,
                 AreaMasterLocationFormats = DisabledFormats,
                 AreaViewLocationFormats = areaFormats,
                 AreaPartialViewLocationFormats = areaFormats,

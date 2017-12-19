@@ -10,7 +10,7 @@ using Blocks.Framework.Web.Mvc.Controllers;
 
 namespace Blocks.BussenssWebModule.Controllers
 {
-    public class TestsController : BlockWebController
+    public class TestsController : BlocksWebMvcController
     {
         [HttpGet]
         public ActionResult Test()

@@ -1,5 +1,6 @@
 ﻿using System;
 using Abp.Domain.Services;
+using Blocks.BussnessEntityModule;
 using Blocks.BussnessRespositoryModule;
 
 namespace Blocks.BussnessDomainModule
@@ -16,6 +17,13 @@ namespace Blocks.BussnessDomainModule
         public virtual string GetValue(string value)
         {
             return testRepository.GetValue(value);
+        }
+        
+        
+        public virtual Guid AddValue(Guid value)
+        {
+             
+            return testRepository.Insert(new TestEntity()).Id;
         }
     }
 }

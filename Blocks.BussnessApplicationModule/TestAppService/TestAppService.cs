@@ -1,8 +1,10 @@
-﻿using Blocks.BussnessDomainModule;
+﻿using System;
+using Blocks.BussnessDomainModule;
+using Blocks.Framework.ApplicationServices;
 
 namespace Blocks.BussnessApplicationModule.TestAppService
 {
-    public class TestAppService : ITestAppService
+    public class TestAppService : AppService,ITestAppService
     {
         public TestAppService(TestDomain testDomain)
         {
@@ -14,6 +16,11 @@ namespace Blocks.BussnessApplicationModule.TestAppService
         public string GetValue(string a)
         {
             return testDomain.GetValue(a);
+        }
+
+        public Guid Add(string id)
+        {
+            return testDomain.AddValue(Guid.NewGuid());
         }
     }
 }

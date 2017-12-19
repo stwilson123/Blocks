@@ -6,13 +6,11 @@
 {
   @{ Script.Require("jQuery").AtHead(); }
 }
-@**@
-@*@section script{*@
-@*   *@
-@*          *@
-@*}*@
+ 
 
 @section body
 {
+    @*    @Html.Action("GetTestPartialView","Layout")*@
+    @{ Html.RenderPartial(ResourceManager.GetTemplateNotCache("_LayoutPartialViewFirst",this.VirtualPath)); }
     @RenderSection("body",false)
 }

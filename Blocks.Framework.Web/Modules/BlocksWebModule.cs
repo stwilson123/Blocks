@@ -33,7 +33,7 @@ namespace Blocks.Framework.Web.Modules
         public override void Initialize()
         {
 
-            var currentAssmebly = this.GetType().Assembly;
+            var currentAssmebly = this.GetType().GetTypeInfo().Assembly;
             var currentAssmeblyName = currentAssmebly.GetName().Name;
             IocManager.RegisterAssemblyByConvention(currentAssmebly);
 

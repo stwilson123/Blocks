@@ -31,7 +31,7 @@ using Castle.Core.Logging;
 
 namespace Blocks.Framework.Web.Mvc.Controllers
 {
-    public abstract class BlockWebController : Controller 
+    public abstract class BlocksWebMvcController : Controller 
     { 
         /// <summary>
         /// Gets current session information.
@@ -155,7 +155,7 @@ namespace Blocks.Framework.Web.Mvc.Controllers
         /// <summary>
         /// Constructor.
         /// </summary>
-        protected BlockWebController()
+        protected BlocksWebMvcController()
         {
             AbpSession = NullAbpSession.Instance;
             Logger = NullLogger.Instance;

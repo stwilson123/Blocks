@@ -34,13 +34,14 @@ namespace Blocks.Framework.Configurations
                 return;
             }
             var configKey = $"{extensionDescriptor.Name}\\{AppConfigKey}";
-            Classes.FromAssembly(context.Assembly)
-                .BasedOn<IConfiguration>()
-                .If(type => !type.GetTypeInfo().IsGenericTypeDefinition)
-                //.ConfigureIf(t => !context.IocManager.IsRegistered(configKey) ,t => t.Named(configKey))
-                //.Configure(t => t.Named(configKey))
-                .LifestyleTransient() ;
-               
+            context.IocManager.IocContainer.Register(
+                Classes.FromAssembly(context.Assembly)
+                    .BasedOn<IConfiguration>()
+                    .If(type => !type.GetTypeInfo().IsGenericTypeDefinition)
+                    .ConfigureIf(t => !context.IocManager.IsRegistered(configKey) ,t => t.Named(configKey))
+                    .LifestyleTransient()
+            );
+
         }
     }
 }
