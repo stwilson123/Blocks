@@ -43,7 +43,7 @@ namespace Blocks.Framework.DBORM.DBContext
         /// Constructor.
         /// Uses <see cref="IAbpStartupConfiguration.DefaultNameOrConnectionString"/> as connection string.
         /// </summary>
-        protected BlocksDbContext() : base()
+        public BlocksDbContext() : base()
         {
           
         }
@@ -51,7 +51,7 @@ namespace Blocks.Framework.DBORM.DBContext
         /// <summary>
         /// Constructor.
         /// </summary>
-        protected BlocksDbContext(string nameOrConnectionString)
+        public BlocksDbContext(string nameOrConnectionString)
             : base(nameOrConnectionString)
         {
            
@@ -61,7 +61,7 @@ namespace Blocks.Framework.DBORM.DBContext
         /// <summary>
         /// Constructor.
         /// </summary>
-        protected BlocksDbContext(DbConnection existingConnection, bool contextOwnsConnection)
+        public BlocksDbContext(DbConnection existingConnection, bool contextOwnsConnection)
             : base(existingConnection, contextOwnsConnection)
         {
            

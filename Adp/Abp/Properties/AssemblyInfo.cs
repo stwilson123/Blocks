@@ -47,6 +47,7 @@ using Abp;
 
 [assembly: InternalsVisibleTo("Blocks.Framework")]
 [assembly: InternalsVisibleTo("Blocks.Framework.Web")]
+[assembly: InternalsVisibleTo("Blocks.Framework.DBORM")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 
