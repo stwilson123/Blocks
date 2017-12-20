@@ -2906,6 +2906,10 @@
       <Project>{3979f157-deb0-4878-ab1d-4cef6b5a1300}</Project>
       <Name>Blocks.EntityFramework</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Blocks.Framework.DBORM\Blocks.Framework.DBORM.csproj">
+      <Project>{9ca5b764-d047-4662-ba93-db578ed89e4e}</Project>
+      <Name>Blocks.Framework.DBORM</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Blocks.Framework.Web\Blocks.Framework.Web.csproj">
       <Project>{4a40a2ee-57bc-48a4-abd5-36c7d3cbdd34}</Project>
       <Name>Blocks.Framework.Web</Name>

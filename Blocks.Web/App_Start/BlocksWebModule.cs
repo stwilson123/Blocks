@@ -11,6 +11,7 @@ using Abp.Modules;
 using Abp.Web.Mvc;
 using Abp.Web.SignalR;
 using Blocks.Api;
+using Blocks.Framework.DBORM;
 using Castle.MicroKernel.Registration;
 using Hangfire;
 using Microsoft.Owin.Security;
@@ -27,7 +28,8 @@ namespace Blocks.Web
         typeof(AbpWebSignalRModule),
         //typeof(AbpHangfireModule), - ENABLE TO USE HANGFIRE INSTEAD OF DEFAULT JOB MANAGER
      //   typeof(AbpWebMvcModule),
-        typeof(BlocksFrameworkWebModule))]
+        typeof(BlocksFrameworkWebModule),
+        typeof(BlocksFrameworkDBORMModule))]
     public class BlocksWebModule : AbpModule
     {
         public override void PreInitialize()

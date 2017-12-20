@@ -140,6 +140,7 @@
     <Compile Include="Api\Controllers\ApiControllerConventionalRegistrar.cs" />
     <Compile Include="Api\Controllers\BlockWebApiController.cs" />
     <Compile Include="Api\Controllers\Selectors\BlocksHttpControllerSelector.cs" />
+    <Compile Include="Api\Route\RouteExtensions.cs" />
     <Compile Include="BlocksWebApplication.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="Configuartions\IWebFrameworkConfiguration.cs" />

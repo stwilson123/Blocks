@@ -11,20 +11,21 @@ using Abp.Collections.Extensions;
 using Abp.Data;
 using Abp.Domain.Entities;
 using Abp.Domain.Repositories;
+using Abp.EntityFramework;
 using Blocks.Framework.DBORM.DBContext;
 
 namespace Blocks.Framework.DBORM.Repository
 {
 
-    public class DBSqlRepositoryBase<TDbContext, TEntity> : DBSqlRepositoryBase<TDbContext, TEntity, Guid>
-        where TEntity : class, IEntity<Guid>
-        where TDbContext : DbContext
+    public class DBSqlRepositoryBase<TEntity> : DBSqlRepositoryBase<BlocksDbContext<TEntity>, TEntity, Guid>
+        where TEntity : Entity<Guid>
+       
     {
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="dbContextProvider"></param>
-        public DBSqlRepositoryBase(IDbContextProvider<TDbContext> dbContextProvider) : base(dbContextProvider)
+        public DBSqlRepositoryBase(DBContext.IDbContextProvider<BlocksDbContext<TEntity>> dbContextProvider) : base(dbContextProvider)
         {
             
         }
@@ -82,13 +83,13 @@ namespace Blocks.Framework.DBORM.Repository
 
         public IActiveTransactionProvider TransactionProvider { private get; set; }
         
-        private readonly IDbContextProvider<TDbContext> _dbContextProvider;
+        private readonly DBContext.IDbContextProvider<TDbContext> _dbContextProvider;
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="dbContextProvider"></param>
-        public DBSqlRepositoryBase(IDbContextProvider<TDbContext> dbContextProvider)
+        public DBSqlRepositoryBase(DBContext.IDbContextProvider<TDbContext> dbContextProvider)
         {
             _dbContextProvider = dbContextProvider;
         }

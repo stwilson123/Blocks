@@ -7,7 +7,7 @@ namespace Blocks.Framework.DBORM.DBContext
     /// 
     /// </summary>
     /// <typeparam name="TDbContext"></typeparam>
-    public interface IDbContextProvider<out TDbContext>
+    public interface IDbContextProvider<out TDbContext> 
         where TDbContext : DbContext
     {
         TDbContext GetDbContext();
