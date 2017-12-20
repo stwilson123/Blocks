@@ -7,6 +7,7 @@ using Abp.Dependency;
 using Abp.Domain.Repositories;
 using Abp.Domain.Uow;
 using Abp.MultiTenancy;
+using Microsoft.EntityFrameworkCore;
 
 namespace Abp.EntityFramework
 {
@@ -140,7 +141,7 @@ namespace Abp.EntityFramework
         private static void AddWithBaseTypes(Type dbContextType, List<Type> types)
         {
             types.Add(dbContextType);
-            if (dbContextType != typeof(TBaseDbContext))
+            if (dbContextType != typeof(TBaseDbContext) && !string.Equals(dbContextType.Name,"DbContext",StringComparison.CurrentCultureIgnoreCase))
             {
                 AddWithBaseTypes(dbContextType.GetTypeInfo().BaseType, types);
             }
