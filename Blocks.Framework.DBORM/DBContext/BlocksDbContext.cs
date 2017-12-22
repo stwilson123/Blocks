@@ -39,6 +39,7 @@ namespace Blocks.Framework.DBORM.DBContext
         public virtual IDbSet<TTable> Tables { get; set; }
 
         
+        
         /// <summary>
         /// Constructor.
         /// Uses <see cref="IAbpStartupConfiguration.DefaultNameOrConnectionString"/> as connection string.
@@ -222,6 +223,8 @@ namespace Blocks.Framework.DBORM.DBContext
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            var a=  System.AppDomain.CurrentDomain.GetAssemblies();
+         //   modelBuilder.Configurations.AddFromAssembly(As);
             modelBuilder.Filter(AbpDataFilters.SoftDelete, (ISoftDelete d) => d.IsDeleted, false);
             modelBuilder.Filter(AbpDataFilters.MustHaveTenant,
                 (IMustHaveTenant t, int tenantId) => t.TenantId == tenantId || (int?) t.TenantId == null,
