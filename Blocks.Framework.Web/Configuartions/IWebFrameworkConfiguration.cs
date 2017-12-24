@@ -18,6 +18,10 @@ namespace Blocks.Framework.Web.Configuartions
         /// Respository  assembly name,it will be not to register in blocks system if it is null or empty.
         /// </summary>
         string DomainModule  { get;   }
+        
+        
+  
+
 
     }
 }

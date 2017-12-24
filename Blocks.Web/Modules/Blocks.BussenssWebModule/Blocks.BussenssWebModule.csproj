@@ -117,6 +117,10 @@
       <Project>{7bf3125e-d15f-43a9-9735-e7bc8527bf63}</Project>
       <Name>Blocks.BussnessApplicationModule</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\Blocks.Framework.DBORM\Blocks.Framework.DBORM.csproj">
+      <Project>{9CA5B764-D047-4662-BA93-DB578ED89E4E}</Project>
+      <Name>Blocks.Framework.DBORM</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\Blocks.Framework.Web\Blocks.Framework.Web.csproj">
       <Project>{4a40a2ee-57bc-48a4-abd5-36c7d3cbdd34}</Project>
       <Name>Blocks.Framework.Web</Name>

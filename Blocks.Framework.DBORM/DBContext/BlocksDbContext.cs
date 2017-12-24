@@ -22,6 +22,7 @@ using Abp.Extensions;
 using Abp.Reflection;
 using Abp.Runtime.Session;
 using Abp.Timing;
+using Blocks.Framework.DBORM.Entity;
 using Blocks.Framework.Ioc.Dependency;
 using Castle.Core.Logging;
 using EntityFramework.DynamicFilters;
@@ -33,18 +34,19 @@ namespace Blocks.Framework.DBORM.DBContext
     /// </summary>
     public class BlocksDbContext<TTable> : BaseBlocksDbContext where TTable : Entity<Guid>
     {
-        /// <summary>
-        /// Roles.
-        /// </summary>
-        public virtual IDbSet<TTable> Tables { get; set; }
+//        /// <summary>
+//        /// Roles.
+//        /// </summary>
+//        public virtual IDbSet<TTable> Tables { get; set; }
 
-        
+        private readonly IEnumerable<IEntityConfiguration> _entityConfigurations;
+
         
         /// <summary>
         /// Constructor.
         /// Uses <see cref="IAbpStartupConfiguration.DefaultNameOrConnectionString"/> as connection string.
         /// </summary>
-        public BlocksDbContext() : base()
+        public BlocksDbContext(IEnumerable<IEntityConfiguration> entityConfigurations) : base(entityConfigurations)
         {
           
         }
@@ -52,8 +54,8 @@ namespace Blocks.Framework.DBORM.DBContext
         /// <summary>
         /// Constructor.
         /// </summary>
-        public BlocksDbContext(string nameOrConnectionString)
-            : base(nameOrConnectionString)
+        public BlocksDbContext(string nameOrConnectionString,IEnumerable<IEntityConfiguration> entityConfigurations)
+            : base(nameOrConnectionString,entityConfigurations)
         {
            
         }
@@ -62,8 +64,8 @@ namespace Blocks.Framework.DBORM.DBContext
         /// <summary>
         /// Constructor.
         /// </summary>
-        public BlocksDbContext(DbConnection existingConnection, bool contextOwnsConnection)
-            : base(existingConnection, contextOwnsConnection)
+        public BlocksDbContext(DbConnection existingConnection, bool contextOwnsConnection,IEnumerable<IEntityConfiguration> entityConfigurations)
+            : base(existingConnection, contextOwnsConnection,entityConfigurations)
         {
            
         }
@@ -125,21 +127,27 @@ namespace Blocks.Framework.DBORM.DBContext
         /// </summary>
         public bool SuppressAutoSetTenantId { get; set; }
 
+        
+        private readonly IEnumerable<IEntityConfiguration> _entityConfigurations;
+
+        
         /// <summary>
         /// Constructor.
         /// Uses <see cref="IAbpStartupConfiguration.DefaultNameOrConnectionString"/> as connection string.
         /// </summary>
-        protected BaseBlocksDbContext()
+        protected BaseBlocksDbContext(IEnumerable<IEntityConfiguration> entityConfigurations)
         {
+            _entityConfigurations = entityConfigurations;
             InitializeDbContext();
         }
 
         /// <summary>
         /// Constructor.
         /// </summary>
-        protected BaseBlocksDbContext(string nameOrConnectionString)
+        protected BaseBlocksDbContext(string nameOrConnectionString, IEnumerable<IEntityConfiguration> entityConfigurations)
             : base(nameOrConnectionString)
         {
+            _entityConfigurations = entityConfigurations;
             InitializeDbContext();
         }
  
@@ -147,9 +155,10 @@ namespace Blocks.Framework.DBORM.DBContext
         /// <summary>
         /// Constructor.
         /// </summary>
-        protected BaseBlocksDbContext(DbConnection existingConnection, bool contextOwnsConnection)
+        protected BaseBlocksDbContext(DbConnection existingConnection, bool contextOwnsConnection, IEnumerable<IEntityConfiguration> entityConfigurations)
             : base(existingConnection, contextOwnsConnection)
         {
+            _entityConfigurations = entityConfigurations;
             InitializeDbContext();
         }
 
@@ -223,8 +232,13 @@ namespace Blocks.Framework.DBORM.DBContext
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            var a=  System.AppDomain.CurrentDomain.GetAssemblies();
-         //   modelBuilder.Configurations.AddFromAssembly(As);
+            var registerAssembly =  System.AppDomain.CurrentDomain.GetAssemblies().Where(t => 
+                _entityConfigurations.Any(config => string.Equals(t.GetName().Name,config.EntityModule,StringComparison.CurrentCultureIgnoreCase)));
+            
+            foreach (var assembly in registerAssembly)
+            {
+                modelBuilder.Configurations.AddFromAssembly(assembly);
+            }
             modelBuilder.Filter(AbpDataFilters.SoftDelete, (ISoftDelete d) => d.IsDeleted, false);
             modelBuilder.Filter(AbpDataFilters.MustHaveTenant,
                 (IMustHaveTenant t, int tenantId) => t.TenantId == tenantId || (int?) t.TenantId == null,

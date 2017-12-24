@@ -39,6 +39,7 @@ namespace Blocks.Framework.Configurations
                     .BasedOn<IConfiguration>()
                     .If(type => !type.GetTypeInfo().IsGenericTypeDefinition)
                     .ConfigureIf(t => !context.IocManager.IsRegistered(configKey) ,t => t.Named(configKey))
+                    .WithService.Select((t,baseTypes )=> t.GetInterfaces().Where(bType =>  typeof(IConfiguration) != bType && typeof(IConfiguration).IsAssignableFrom(bType) )  )
                     .LifestyleTransient()
             );
 

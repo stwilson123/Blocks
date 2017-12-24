@@ -13,6 +13,7 @@ using Abp.Domain.Entities;
 using Abp.Domain.Repositories;
 using Abp.EntityFramework;
 using Blocks.Framework.DBORM.DBContext;
+using Blocks.Framework.DBORM.Entity;
 
 namespace Blocks.Framework.DBORM.Repository
 {

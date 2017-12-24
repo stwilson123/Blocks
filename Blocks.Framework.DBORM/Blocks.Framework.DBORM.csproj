@@ -93,6 +93,7 @@
     <Compile Include="DBContext\IDbContextProvider.cs" />
     <Compile Include="DBContext\UnitOfWorkDbContextProvider.cs" />
     <Compile Include="Entity\EntityConfigConventionalRegistrar.cs" />
+    <Compile Include="Entity\IEntityConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\DBSqlRepositoryBase.cs" />
     <Compile Include="Repository\EfAutoRepositoryTypes.cs" />

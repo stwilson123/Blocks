@@ -8,7 +8,7 @@ namespace Blocks.BussnessEntityModule
        
     }
 
-    public class TestEntity2Configuration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<TestEntity>
+    public class TestEntity2Configuration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<TestEntity2>
     {
         public TestEntity2Configuration()
             : this("dbo")

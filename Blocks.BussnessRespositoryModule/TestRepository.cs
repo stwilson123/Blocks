@@ -16,6 +16,8 @@ namespace Blocks.BussnessRespositoryModule
         }
         public string GetValue(string value)
         {
+            var id = Guid.Parse("DDE679DA-AA68-426D-A6C3-FE66D9725490");
+            var sql = GetAll().Join(Context.Set<TestEntity2>(), a => a.Id, b => b.Id, (a, b) => new {a, b}).Select(result => new { result.a.Id});
             return value;
         }
  

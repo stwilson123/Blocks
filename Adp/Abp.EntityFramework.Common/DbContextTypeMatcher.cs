@@ -7,7 +7,6 @@ using Abp.Dependency;
 using Abp.Domain.Repositories;
 using Abp.Domain.Uow;
 using Abp.MultiTenancy;
-using Microsoft.EntityFrameworkCore;
 
 namespace Abp.EntityFramework
 {
