@@ -6,6 +6,13 @@ using Blocks.Framework.Exceptions.Helper;
 
 namespace Blocks.Framework.DBORM.Linq
 {
+    public static class ValueTypeExtensions
+    {
+        public  static Entity.Entity  Get<Table>(this Dictionary<ValueTuple<Type,string>,Entity.Entity> valueTuple,string tableAliasName)
+        {
+            return valueTuple[(typeof(Table), tableAliasName)];
+        }
+    }
     public class DefaultLinqQueryable<TEntity> : ILinqQueryable<TEntity>  where TEntity : Entity.Entity
     {
         private Dictionary<(Type TableType,string TableAlias), Entity.Entity> linqSqlTableContext;
@@ -41,7 +48,7 @@ namespace Blocks.Framework.DBORM.Linq
                 }
                 return linqSqlTableContext;
             });
-            iQueryContext.GroupJoin()
+            iQueryContext.Join(inner,a => a.Get<TInner>("").Id ,(a,b）=> new {a,b })
             return this;
         }
 
