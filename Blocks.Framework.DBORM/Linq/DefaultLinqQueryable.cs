@@ -12,14 +12,18 @@ namespace Blocks.Framework.DBORM.Linq
         {
             return valueTuple[(typeof(Table), tableAliasName)];
         }
+        public  static Entity.Entity  Get(this Dictionary<ValueTuple<Type,string>,Entity.Entity> valueTuple,Type Table,string tableAliasName)
+        {
+            return valueTuple[(Table, tableAliasName)];
+        }
     }
     public class DefaultLinqQueryable<TEntity> : ILinqQueryable<TEntity>  where TEntity : Entity.Entity
     {
-        private Dictionary<(Type TableType,string TableAlias), Entity.Entity> linqSqlTableContext;
+        private Dictionary<(Type TableType,string TableAlias), object> linqSqlTableContext;
         public DefaultLinqQueryable(IQueryable<TEntity> iQuerable)
         {
             this.iQuerable = iQuerable;
-            this.linqSqlTableContext = new Dictionary<(Type TableType,string TableAlias), Entity.Entity>();
+            this.linqSqlTableContext = new Dictionary<(Type TableType,string TableAlias), object>();
         }
 
         public IQueryable<TEntity> iQuerable { get; }
@@ -28,27 +32,42 @@ namespace Blocks.Framework.DBORM.Linq
 
         public ILinqQueryable<TEntity> InnerJoin<TOuter, TInner, TKey>(IEnumerable<TInner> inner,
             Expression<Func<TOuter, TKey>> outerKeySelector,
-            Expression<Func<TInner, TKey>> innerKeySelector) where TInner : Entity.Entity
+            Expression<Func<TInner, TKey>> innerKeySelector)   
         {
             var outerParam = outerKeySelector.Parameters.FirstOrDefault();
             var innerParam = innerKeySelector.Parameters.FirstOrDefault();
             ExceptionHelper.ThrowArgumentNullException(outerParam, "outerKeySelector.Parameters");
             ExceptionHelper.ThrowArgumentNullException(innerParam, "innerKeySelector.Parameters");
 
-
-            iQueryContext = iQuerable.Join(inner, outerKeySelector, innerKeySelector, (outerObj, innerObj) =>
+            if (iQueryContext == null)
             {
-                if (!linqSqlTableContext.ContainsKey((typeof(TOuter), outerParam.Name)))
+                iQueryContext = iQuerable.Join(inner, outerKeySelector, innerKeySelector, (outerObj, innerObj) =>
                 {
-                    linqSqlTableContext.Add((typeof(TOuter), outerParam.Name), outerObj);
-                }
-                if (!linqSqlTableContext.ContainsKey((typeof(TOuter), innerParam.Name)))
-                {
-                    linqSqlTableContext.Add((typeof(TOuter), innerParam.Name), innerObj);
-                }
-                return linqSqlTableContext;
-            });
-            iQueryContext.Join(inner,a => a.Get<TInner>("").Id ,(a,b）=> new {a,b })
+                    if (!linqSqlTableContext.ContainsKey((typeof(TOuter), outerParam.Name)))
+                    {
+                        linqSqlTableContext.Add((typeof(TOuter), outerParam.Name), outerObj);
+                    }
+                    if (!linqSqlTableContext.ContainsKey((typeof(TOuter), innerParam.Name)))
+                    {
+                        linqSqlTableContext.Add((typeof(TOuter), innerParam.Name), innerObj);
+                    }
+                    return linqSqlTableContext;
+                });
+            }
+
+//            iQueryContext = iQueryContext.Join(inner, a => outerKeySelector(a.Get(outerParam.Type, outerParam.Name)), innerKeySelector,
+//                (outerObj, innerObj) =>
+//                {
+//                    if (!linqSqlTableContext.ContainsKey((typeof(TOuter), outerParam.Name)))
+//                    {
+//                        linqSqlTableContext.Add((typeof(TOuter), outerParam.Name), outerObj);
+//                    }
+//                    if (!linqSqlTableContext.ContainsKey((typeof(TOuter), innerParam.Name)))
+//                    {
+//                        linqSqlTableContext.Add((typeof(TOuter), innerParam.Name), innerObj);
+//                    }
+//                    return linqSqlTableContext;
+//                });
             return this;
         }
 

@@ -120,7 +120,7 @@ namespace Blocks.Framework.DBORM.Repository
             _dbContextProvider = dbContextProvider;
         }
 
-        public override IQueryable<TEntity> GetCurrent()
+        public override IQueryable<TEntity> GetAll()
         {
             return GetAllIncluding();
         }
@@ -142,27 +142,27 @@ namespace Blocks.Framework.DBORM.Repository
 
         public override async Task<List<TEntity>> GetAllListAsync()
         {
-            return await GetCurrent().ToListAsync();
+            return await GetAll().ToListAsync();
         }
 
         public override async Task<List<TEntity>> GetAllListAsync(Expression<Func<TEntity, bool>> predicate)
         {
-            return await GetCurrent().Where(predicate).ToListAsync();
+            return await GetAll().Where(predicate).ToListAsync();
         }
 
         public override async Task<TEntity> SingleAsync(Expression<Func<TEntity, bool>> predicate)
         {
-            return await GetCurrent().SingleAsync(predicate);
+            return await GetAll().SingleAsync(predicate);
         }
 
         public override async Task<TEntity> FirstOrDefaultAsync(TPrimaryKey id)
         {
-            return await GetCurrent().FirstOrDefaultAsync(CreateEqualityExpressionForId(id));
+            return await GetAll().FirstOrDefaultAsync(CreateEqualityExpressionForId(id));
         }
 
         public override async Task<TEntity> FirstOrDefaultAsync(Expression<Func<TEntity, bool>> predicate)
         {
-            return await GetCurrent().FirstOrDefaultAsync(predicate);
+            return await GetAll().FirstOrDefaultAsync(predicate);
         }
 
         public override TEntity Insert(TEntity entity)
@@ -264,22 +264,22 @@ namespace Blocks.Framework.DBORM.Repository
 
         public override async Task<int> CountAsync()
         {
-            return await GetCurrent().CountAsync();
+            return await GetAll().CountAsync();
         }
 
         public override async Task<int> CountAsync(Expression<Func<TEntity, bool>> predicate)
         {
-            return await GetCurrent().Where(predicate).CountAsync();
+            return await GetAll().Where(predicate).CountAsync();
         }
 
         public override async Task<long> LongCountAsync()
         {
-            return await GetCurrent().LongCountAsync();
+            return await GetAll().LongCountAsync();
         }
 
         public override async Task<long> LongCountAsync(Expression<Func<TEntity, bool>> predicate)
         {
-            return await GetCurrent().Where(predicate).LongCountAsync();
+            return await GetAll().Where(predicate).LongCountAsync();
         }
 
         protected virtual void AttachIfNot(TEntity entity)
