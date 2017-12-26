@@ -9,7 +9,11 @@ namespace Blocks.Framework.Exceptions.Helper
             throw new ArgumentNullException(ExceptionHelper.GetArgumentName(argument));
         }
 
-
+        public static void ThrowArgumentNullException(object value,string paramName)
+        {
+            if(value == null)
+            throw new ArgumentNullException(paramName);
+        }
         internal static string GetArgumentName(ExceptionArgument argument)
         {
             switch (argument)

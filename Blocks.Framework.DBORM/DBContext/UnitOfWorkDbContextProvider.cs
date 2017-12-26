@@ -10,8 +10,8 @@ namespace Blocks.Framework.DBORM.DBContext
     /// active unit of work.
     /// </summary>
     /// <typeparam name="TDbContext">Type of the DbContext</typeparam>
-    public class UnitOfWorkDbContextProvider<TDbContext> : IDbContextProvider<TDbContext> 
-        where TDbContext : DbContext
+    public class UnitOfWorkDbContextProvider : IDbContextProvider 
+       
     {
         private readonly ICurrentUnitOfWorkProvider _currentUnitOfWorkProvider;
 
@@ -24,14 +24,18 @@ namespace Blocks.Framework.DBORM.DBContext
             _currentUnitOfWorkProvider = currentUnitOfWorkProvider;
         }
 
-        public TDbContext GetDbContext()
+        
+
+        public TDbContext GetDbContext<TDbContext>() where TDbContext : DbContext
         {
-            return GetDbContext(null);
+            return GetDbContext<TDbContext>(null);
+
         }
 
-        public TDbContext GetDbContext(MultiTenancySides? multiTenancySide)
+        public TDbContext GetDbContext<TDbContext>(MultiTenancySides? multiTenancySide) where TDbContext : DbContext
         {
             return _currentUnitOfWorkProvider.Current.GetDbContext<TDbContext>(multiTenancySide);
+
         }
     }
 }

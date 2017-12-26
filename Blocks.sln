@@ -88,6 +88,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blocks.BussnessEntityModule
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blocks.Framework.DBORM", "Blocks.Framework.DBORM\Blocks.Framework.DBORM.csproj", "{9CA5B764-D047-4662-BA93-DB578ED89E4E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFramework.Test", "EntityFramework.Test\EntityFramework.Test.csproj", "{145B3734-29AC-41A8-9BEB-39CBE9C38F9A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -230,6 +232,10 @@ Global
 		{9CA5B764-D047-4662-BA93-DB578ED89E4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9CA5B764-D047-4662-BA93-DB578ED89E4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9CA5B764-D047-4662-BA93-DB578ED89E4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{145B3734-29AC-41A8-9BEB-39CBE9C38F9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{145B3734-29AC-41A8-9BEB-39CBE9C38F9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{145B3734-29AC-41A8-9BEB-39CBE9C38F9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{145B3734-29AC-41A8-9BEB-39CBE9C38F9A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -262,6 +268,7 @@ Global
 		{515B2AFD-ABE4-4D33-8332-8D900ED947F1} = {68AE0090-E9AF-466A-A898-5A7438A6ED41}
 		{7FB9B7F5-2CC8-4E71-B714-5E2044164448} = {68AE0090-E9AF-466A-A898-5A7438A6ED41}
 		{11206F21-DC7C-4F62-9AB9-9CD1095A78C0} = {68AE0090-E9AF-466A-A898-5A7438A6ED41}
+		{145B3734-29AC-41A8-9BEB-39CBE9C38F9A} = {7E85C7E5-70BD-4C9D-B052-D95955F46609}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DDBAC820-4861-4751-880D-917BF12E2C5D}

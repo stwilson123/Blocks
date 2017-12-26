@@ -7,11 +7,11 @@ namespace Blocks.Framework.DBORM.DBContext
     /// 
     /// </summary>
     /// <typeparam name="TDbContext"></typeparam>
-    public interface IDbContextProvider<out TDbContext> 
-        where TDbContext : DbContext
+    public interface IDbContextProvider 
+       
     {
-        TDbContext GetDbContext();
+        TDbContext GetDbContext<TDbContext>()  where TDbContext : DbContext;
 
-        TDbContext GetDbContext(MultiTenancySides? multiTenancySide );
+        TDbContext GetDbContext<TDbContext>(MultiTenancySides? multiTenancySide ) where TDbContext : DbContext;
     }
 }

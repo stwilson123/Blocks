@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
@@ -20,16 +21,40 @@ namespace Blocks.Framework.DBORM.Repository
 
     public class DBSqlRepositoryBase<TEntity> : DBSqlRepositoryBase<BlocksDbContext<TEntity>, TEntity, Guid>
         where TEntity : Entity<Guid>
-       
+
     {
+        protected readonly DbSetContext<BlocksDbContext<TEntity>> Tables;
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="dbContextProvider"></param>
-        public DBSqlRepositoryBase(DBContext.IDbContextProvider<BlocksDbContext<TEntity>> dbContextProvider) : base(dbContextProvider)
+        public DBSqlRepositoryBase(DBContext.IDbContextProvider dbContextProvider) : base(dbContextProvider)
         {
-            
+            Tables = new DbSetContext<BlocksDbContext<TEntity>>(this.Context);
         }
+        
+        
+    }
+
+
+   public class DbSetContext<TDbContext>  where TDbContext : DbContext
+    {
+        private readonly TDbContext _context;
+        private ConcurrentDictionary<Type, object> dbSetCache;
+
+        public DbSetContext(TDbContext context)
+        {
+            _context = context;
+            this.dbSetCache = new ConcurrentDictionary<Type, object>();
+        }
+
+        public DbSet<TEntity> GetTable<TEntity>() where TEntity : Entity<Guid>
+        {
+            return (DbSet<TEntity>)dbSetCache.GetOrAdd(typeof(TEntity), type =>
+                _context.Set<TEntity>()
+            );
+        }
+        
     }
      /// <summary>
     /// Implements IRepository for Entity Framework.
@@ -48,7 +73,7 @@ namespace Blocks.Framework.DBORM.Repository
         /// <summary>
         /// Gets EF DbContext object.
         /// </summary>
-        public virtual TDbContext Context => _dbContextProvider.GetDbContext(MultiTenancySide);
+        public virtual TDbContext Context => _dbContextProvider.GetDbContext<TDbContext>(MultiTenancySide);
 
         /// <summary>
         /// Gets DbSet for given entity.
@@ -84,18 +109,18 @@ namespace Blocks.Framework.DBORM.Repository
 
         public IActiveTransactionProvider TransactionProvider { private get; set; }
         
-        private readonly DBContext.IDbContextProvider<TDbContext> _dbContextProvider;
+        private readonly DBContext.IDbContextProvider _dbContextProvider;
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="dbContextProvider"></param>
-        public DBSqlRepositoryBase(DBContext.IDbContextProvider<TDbContext> dbContextProvider)
+        public DBSqlRepositoryBase(DBContext.IDbContextProvider dbContextProvider)
         {
             _dbContextProvider = dbContextProvider;
         }
 
-        public override IQueryable<TEntity> GetAll()
+        public override IQueryable<TEntity> GetCurrent()
         {
             return GetAllIncluding();
         }
@@ -117,27 +142,27 @@ namespace Blocks.Framework.DBORM.Repository
 
         public override async Task<List<TEntity>> GetAllListAsync()
         {
-            return await GetAll().ToListAsync();
+            return await GetCurrent().ToListAsync();
         }
 
         public override async Task<List<TEntity>> GetAllListAsync(Expression<Func<TEntity, bool>> predicate)
         {
-            return await GetAll().Where(predicate).ToListAsync();
+            return await GetCurrent().Where(predicate).ToListAsync();
         }
 
         public override async Task<TEntity> SingleAsync(Expression<Func<TEntity, bool>> predicate)
         {
-            return await GetAll().SingleAsync(predicate);
+            return await GetCurrent().SingleAsync(predicate);
         }
 
         public override async Task<TEntity> FirstOrDefaultAsync(TPrimaryKey id)
         {
-            return await GetAll().FirstOrDefaultAsync(CreateEqualityExpressionForId(id));
+            return await GetCurrent().FirstOrDefaultAsync(CreateEqualityExpressionForId(id));
         }
 
         public override async Task<TEntity> FirstOrDefaultAsync(Expression<Func<TEntity, bool>> predicate)
         {
-            return await GetAll().FirstOrDefaultAsync(predicate);
+            return await GetCurrent().FirstOrDefaultAsync(predicate);
         }
 
         public override TEntity Insert(TEntity entity)
@@ -239,22 +264,22 @@ namespace Blocks.Framework.DBORM.Repository
 
         public override async Task<int> CountAsync()
         {
-            return await GetAll().CountAsync();
+            return await GetCurrent().CountAsync();
         }
 
         public override async Task<int> CountAsync(Expression<Func<TEntity, bool>> predicate)
         {
-            return await GetAll().Where(predicate).CountAsync();
+            return await GetCurrent().Where(predicate).CountAsync();
         }
 
         public override async Task<long> LongCountAsync()
         {
-            return await GetAll().LongCountAsync();
+            return await GetCurrent().LongCountAsync();
         }
 
         public override async Task<long> LongCountAsync(Expression<Func<TEntity, bool>> predicate)
         {
-            return await GetAll().Where(predicate).LongCountAsync();
+            return await GetCurrent().Where(predicate).LongCountAsync();
         }
 
         protected virtual void AttachIfNot(TEntity entity)

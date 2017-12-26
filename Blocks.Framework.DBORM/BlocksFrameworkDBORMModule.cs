@@ -43,8 +43,8 @@ namespace Blocks.Framework.DBORM
             IocManager.RegisterAssemblyByConvention(Assembly.GetExecutingAssembly());
 
             IocManager.IocContainer.Register(
-                Component.For(typeof(DBContext.IDbContextProvider<>))
-                    .ImplementedBy(typeof(UnitOfWorkDbContextProvider<>))
+                Component.For(typeof(DBContext.IDbContextProvider))
+                    .ImplementedBy(typeof(UnitOfWorkDbContextProvider))
                     .LifestyleTransient()
             );
             IocManager.IocContainer.Register(Component.For(typeof(BlocksDbContext<>)));

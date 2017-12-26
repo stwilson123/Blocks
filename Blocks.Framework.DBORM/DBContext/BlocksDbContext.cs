@@ -84,7 +84,7 @@ namespace Blocks.Framework.DBORM.DBContext
     /// <summary>
     /// Base class for all DbContext classes in the application.
     /// </summary>
-    public abstract class BaseBlocksDbContext : DbContext, ITransientDependency, IShouldInitialize
+    public abstract class BaseBlocksDbContext : DbContext ,ITransientDependency, IShouldInitialize
     {
         /// <summary>
         /// Used to get current session values.
