@@ -1,5 +1,6 @@
 ﻿using EntityFramework.Test.Properties;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Xunit;
 
@@ -26,15 +27,20 @@ namespace EntityFramework.Test
         {
             using (var context = new BlocksEntities1())
             {
-                var linq = context.AbpUsers.Join(context.AbpUsers, a => a.CreatorUserId, b => b.Id, (a, b) => new {
-                  a,b
-                    }).Select(t => new { t.a ,t.b });
-                var linq2 = context.AbpUsers.Join(linq, a => a.Id, b => b.b.CreatorUserId, (a, b) => new { a, b })
-                    .Select(t => t.a);
+                var linq = context.AbpUsers.Join(context.AbpUsers, a => a.Id, b => b.Id, (a, b) => new Dictionary<string,object> {
+                  //  new KeyValuePair<string,object>("123", a)
+                    });
+//                var linq2 = context.AbpUsers.Join(linq, a => a.Id, b => b.b.CreatorUserId, (a, b) => new { a, b })
+//                    .Select(t => t.a);
 
-             var strLinq = linq2.ToString();
+             var strLinq = linq.ToString();
                 var dataLinq = linq.ToList();
             }
+        }
+
+        public static Int64 Get(AbpUsers a)
+        {
+            return a.Id;
         }
     }
 }
