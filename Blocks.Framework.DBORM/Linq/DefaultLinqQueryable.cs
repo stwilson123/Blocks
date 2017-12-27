@@ -41,18 +41,18 @@ namespace Blocks.Framework.DBORM.Linq
 
             if (iQueryContext == null)
             {
-                iQueryContext = iQuerable.Join(inner, outerKeySelector, innerKeySelector, (outerObj, innerObj) =>
-                {
-                    if (!linqSqlTableContext.ContainsKey((typeof(TOuter), outerParam.Name)))
-                    {
-                        linqSqlTableContext.Add((typeof(TOuter), outerParam.Name), outerObj);
-                    }
-                    if (!linqSqlTableContext.ContainsKey((typeof(TOuter), innerParam.Name)))
-                    {
-                        linqSqlTableContext.Add((typeof(TOuter), innerParam.Name), innerObj);
-                    }
-                    return linqSqlTableContext;
-                });
+//                iQueryContext = iQuerable.Join(inner, outerKeySelector, innerKeySelector, (outerObj, innerObj) =>
+//                {
+//                    if (!linqSqlTableContext.ContainsKey((typeof(TOuter), outerParam.Name)))
+//                    {
+//                        linqSqlTableContext.Add((typeof(TOuter), outerParam.Name), outerObj);
+//                    }
+//                    if (!linqSqlTableContext.ContainsKey((typeof(TOuter), innerParam.Name)))
+//                    {
+//                        linqSqlTableContext.Add((typeof(TOuter), innerParam.Name), innerObj);
+//                    }
+//                    return linqSqlTableContext;
+//                });
             }
 
 //            iQueryContext = iQueryContext.Join(inner, a => outerKeySelector(a.Get(outerParam.Type, outerParam.Name)), innerKeySelector,

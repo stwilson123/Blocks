@@ -97,6 +97,7 @@
     <Compile Include="Entity\IEntityConfiguration.cs" />
     <Compile Include="Linq\DefaultLinqQueryable.cs" />
     <Compile Include="Linq\ILinqQueryable.cs" />
+    <Compile Include="Linq\LinqRuntimeTypeBuilder.cs" />
     <Compile Include="Linq\Queryable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\DBSqlRepositoryBase.cs" />

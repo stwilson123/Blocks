@@ -17,7 +17,10 @@ namespace Blocks.BussnessRespositoryModule
         public string GetValue(string value)
         {
             var id = Guid.Parse("DDE679DA-AA68-426D-A6C3-FE66D9725490");
-            var sql = GetCurrent().Join(Tables.GetTable<TestEntity2>(), a => a.Id, b => b.Id, (a, b) => new {a, b}).Select(result => new { result.a.Id}).ToString()();
+            var sql = GetAllIncluding(t => t.TestEntity2,t => t.TestEntity2.TestEntity3).Select(result => new  {
+                Id = result.Id,
+                 TestEntity2 = new { Id = result.TestEntity2.Id, b = result.TestEntity2.TestEntity3.TestId }
+                }).ToString();
             return value;
         }
  
