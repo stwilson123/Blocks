@@ -8,12 +8,7 @@ namespace Blocks.BussnessEntityModule
     {
        public Guid TestEntity3ID { set; get; }
 
-        [ForeignKey("TestEntity3ID")]
-        public virtual TestEntity3 TestEntity3
-        {
-            get;
-            set;
-        }
+      
     }
 
     public class TestEntity2Configuration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<TestEntity2>
@@ -27,7 +22,7 @@ namespace Blocks.BussnessEntityModule
         {
             ToTable("TestEntity2", schema);
             HasKey(x => x.Id);
-
+           
         }
     }
 }

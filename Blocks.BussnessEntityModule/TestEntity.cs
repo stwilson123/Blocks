@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations.Schema;
 using Abp.Domain.Entities;
+using System.Collections.Generic;
 
 namespace Blocks.BussnessEntityModule
 {
@@ -9,8 +10,14 @@ namespace Blocks.BussnessEntityModule
         
         public  Guid TestEntity2ID { set; get; }
         
-        [ForeignKey("TestEntity2ID")]
         public virtual TestEntity2 TestEntity2{
+            get;
+            set;
+        }
+
+        
+        public virtual ICollection<TestEntity3> TestEntity3s
+        {
             get;
             set;
         }
@@ -30,6 +37,7 @@ namespace Blocks.BussnessEntityModule
             ToTable("TestEntity", schema);
             HasKey(x => x.Id);
            
+
         }
     }
 }

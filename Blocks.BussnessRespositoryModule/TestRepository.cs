@@ -14,12 +14,12 @@ namespace Blocks.BussnessRespositoryModule
         public TestRepository(IDbContextProvider dbContextProvider) : base(dbContextProvider)
         {
         }
-        public string GetValue(string value)
+        public virtual string GetValue(string value)
         {
             var id = Guid.Parse("DDE679DA-AA68-426D-A6C3-FE66D9725490");
-            var sql = GetAllIncluding(t => t.TestEntity2,t => t.TestEntity2.TestEntity3).Select(result => new  {
+            var sql = GetAllIncluding(t => t.TestEntity3s,t => t.TestEntity2).Select(result => new  {
                 Id = result.Id,
-                 TestEntity2 = new { Id = result.TestEntity2.Id, b = result.TestEntity2.TestEntity3.TestId }
+                 TestEntity2 = new {  b = result.TestEntity3s, list = result.TestEntity2 }
                 }).ToString();
             return value;
         }
