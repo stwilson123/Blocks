@@ -11,94 +11,94 @@ using Queryable = System.Linq.Queryable;
 
 namespace EntityFramework.Test
 {
-    public class Tests
-    {
-        
-
-        public static long Get(AbpUsers a)
-        {
-            return a.Id;
-        }
-
-        private static Type FindIEnumerable(Type seqType)
-        {
-            if (seqType == null || seqType == typeof(string) || seqType == typeof(byte[]))
-                return null;
-            if (seqType.IsArray)
-                return typeof(IEnumerable<>).MakeGenericType(seqType.GetElementType());
-            if (seqType.GetTypeInfo().IsGenericType)
-                foreach (var genericArgument in seqType.GetGenericArguments())
-                {
-                    var type = typeof(IEnumerable<>).MakeGenericType(genericArgument);
-                    if (type.IsAssignableFrom(seqType))
-                        return type;
-                }
-            var interfaces = seqType.GetInterfaces();
-            if (interfaces != null && interfaces.Length > 0)
-                foreach (var seqType1 in interfaces)
-                {
-                    var ienumerable = FindIEnumerable(seqType1);
-                    if (ienumerable != null)
-                        return ienumerable;
-                }
-            if (seqType.BaseType != null && seqType.BaseType != typeof(object))
-                return FindIEnumerable(seqType.BaseType);
-            return null;
-        }
-
-        [Fact]
-        public void Test1()
-        {
-            using (var context = new BlocksEntities1())
-            {
-                var linq = context.AbpUsers.SqlQuery(@"SELECT  *
-  FROM[Blocks].[dbo].[AbpUsers] a INNER JOIN dbo.AbpUsers b  ON a.CreatorUserId = b.CreatorUserId");
-                var strLinq = linq.ToString();
-                var dataLinq = linq.ToList();
-            }
-        }
-
-
-        [Fact]
-        public void Test2()
-        {
-            // var ab = FindIEnumerable(dynamicType.GetType());
-            Expression<Func<AbpUsers, long?>> expression = users => users.DeleterUserId;
-          
-            var sourceProperties = new Dictionary<string, Type>()
-            {
-                { "AbpUsers2",typeof(AbpUsers) }, { "AbpUsers4",typeof(AbpUsers) }, 
-
-                
-            };
-            Type dynamicType = LinqRuntimeTypeBuilder.GetDynamicType(sourceProperties);
-           
-            NewExpression selector = Expression.New(dynamicType.GetConstructor(Type.EmptyTypes));
-            dynamic dynamicObject = new { };
-            Func<AbpUsers,AbpUsers, dynamic> func = (a,b) =>
-            {
-                dynamicObject["a"] = a;
-                dynamicObject["b"] = b;
-
-                return dynamicObject;
-            };
-            Expression<Func<AbpUsers,AbpUsers, dynamic>> expression1 = (a,b) => func(a,b);
-            using (var context = new BlocksEntities1())
-            {
-                
-                var linq = context.AbpUsers.Join(context.AbpUsers, a => a.Id, expression);
-
-//                var linq = context.AbpUsers.Join(context.AbpUsers, a => a.Id, expression,(a,b) => new {a.AbpUsers2, a.AbpUsers4, b});
-//                var linq2 = linq.Join(contexdt.AbpUsers, a => expression.Compile()(a.AbpUsers4), b => b.Id,
-//                    (a, b) => new {a.AbpUsers2, a.AbpUsers4, b});
-//                var linq2 = context.AbpUsers.Join(linq, a => a.Id, b => b.b.CreatorUserId, (a, b) => new { a, b })
-//                    .Select(t => t.a);
-
-                  var strLinq = linq.ToString();
+//    public class Tests
+//    {
+//        
+//
+//        public static long Get(AbpUsers a)
+//        {
+//            return a.Id;
+//        }
+//
+//        private static Type FindIEnumerable(Type seqType)
+//        {
+//            if (seqType == null || seqType == typeof(string) || seqType == typeof(byte[]))
+//                return null;
+//            if (seqType.IsArray)
+//                return typeof(IEnumerable<>).MakeGenericType(seqType.GetElementType());
+//            if (seqType.GetTypeInfo().IsGenericType)
+//                foreach (var genericArgument in seqType.GetGenericArguments())
+//                {
+//                    var type = typeof(IEnumerable<>).MakeGenericType(genericArgument);
+//                    if (type.IsAssignableFrom(seqType))
+//                        return type;
+//                }
+//            var interfaces = seqType.GetInterfaces();
+//            if (interfaces != null && interfaces.Length > 0)
+//                foreach (var seqType1 in interfaces)
+//                {
+//                    var ienumerable = FindIEnumerable(seqType1);
+//                    if (ienumerable != null)
+//                        return ienumerable;
+//                }
+//            if (seqType.BaseType != null && seqType.BaseType != typeof(object))
+//                return FindIEnumerable(seqType.BaseType);
+//            return null;
+//        }
+//
+//        [Fact]
+//        public void Test1()
+//        {
+//            using (var context = new BlocksEntities1())
+//            {
+//                var linq = context.AbpUsers.SqlQuery(@"SELECT  *
+//  FROM[Blocks].[dbo].[AbpUsers] a INNER JOIN dbo.AbpUsers b  ON a.CreatorUserId = b.CreatorUserId");
+//                var strLinq = linq.ToString();
 //                var dataLinq = linq.ToList();
-            }
-        }
-    }
+//            }
+//        }
+//
+//
+//        [Fact]
+//        public void Test2()
+//        {
+//            // var ab = FindIEnumerable(dynamicType.GetType());
+//            Expression<Func<AbpUsers, long?>> expression = users => users.DeleterUserId;
+//          
+//            var sourceProperties = new Dictionary<string, Type>()
+//            {
+//                { "AbpUsers2",typeof(AbpUsers) }, { "AbpUsers4",typeof(AbpUsers) }, 
+//
+//                
+//            };
+//            Type dynamicType = LinqRuntimeTypeBuilder.GetDynamicType(sourceProperties);
+//           
+//            NewExpression selector = Expression.New(dynamicType.GetConstructor(Type.EmptyTypes));
+//            dynamic dynamicObject = new { };
+//            Func<AbpUsers,AbpUsers, dynamic> func = (a,b) =>
+//            {
+//                dynamicObject["a"] = a;
+//                dynamicObject["b"] = b;
+//
+//                return dynamicObject;
+//            };
+//            Expression<Func<AbpUsers,AbpUsers, dynamic>> expression1 = (a,b) => func(a,b);
+//            using (var context = new BlocksEntities1())
+//            {
+//                
+//                var linq = context.AbpUsers.Join(context.AbpUsers, a => a.Id, expression);
+//
+////                var linq = context.AbpUsers.Join(context.AbpUsers, a => a.Id, expression,(a,b) => new {a.AbpUsers2, a.AbpUsers4, b});
+////                var linq2 = linq.Join(contexdt.AbpUsers, a => expression.Compile()(a.AbpUsers4), b => b.Id,
+////                    (a, b) => new {a.AbpUsers2, a.AbpUsers4, b});
+////                var linq2 = context.AbpUsers.Join(linq, a => a.Id, b => b.b.CreatorUserId, (a, b) => new { a, b })
+////                    .Select(t => t.a);
+//
+//                  var strLinq = linq.ToString();
+////                var dataLinq = linq.ToList();
+//            }
+//        }
+//    }
 
 
 
@@ -121,7 +121,7 @@ namespace EntityFramework.Test
             
             var sourceProperties = new Dictionary<string, Type>()
             {
-                { "AbpUsers2",typeof(AbpUsers) }, { "AbpUsers4",typeof(AbpUsers) }, 
+//                { "AbpUsers2",typeof(AbpUsers) }, { "AbpUsers4",typeof(AbpUsers) }, 
 
                 
             };

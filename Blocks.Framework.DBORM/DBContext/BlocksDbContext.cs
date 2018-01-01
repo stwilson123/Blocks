@@ -32,7 +32,7 @@ namespace Blocks.Framework.DBORM.DBContext
     /// <summary>
     /// Base class for all DbContext classes in the application.
     /// </summary>
-    public class BlocksDbContext<TTable> : BaseBlocksDbContext where TTable : Entity<Guid>
+    public class BlocksDbContext<TTable> : BaseBlocksDbContext where TTable : Data.Entity.Entity<Guid>
     {
 //        /// <summary>
 //        /// Roles.

@@ -6,12 +6,14 @@ using Castle.MicroKernel.Resolvers.SpecializedResolvers;
 using Blocks.Framework.Environment.Extensions.Folders;
 using Castle.MicroKernel;
 using System.Collections;
+using Abp.AutoMapper;
 using Abp.Localization.Dictionaries;
 using Blocks.Framework.Environment;
 using Blocks.Framework.Environment.Configuration;
 using Abp.Localization.Sources;
 using Blocks.Framework.Localization;
 using Abp.Localization.Dictionaries.Xml;
+using Blocks.Framework.AutoMapper;
 using Blocks.Framework.Environment.Extensions;
 using Blocks.Framework.Ioc;
 
@@ -49,7 +51,7 @@ namespace Blocks.Framework.Modules
         {
             IocManager.RegisterAssemblyByConvention(Assembly.GetExecutingAssembly());
 
-           
+            Configuration.Modules.AbpAutoMapper().Configurators.Add(FrameworkProfile.DefaultAutoMapperConfig());
         }
     }
 }

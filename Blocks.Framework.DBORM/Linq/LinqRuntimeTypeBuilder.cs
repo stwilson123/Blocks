@@ -7,73 +7,76 @@ using System.Threading;
 
 namespace Blocks.Framework.DBORM.Linq
 {
-  public static class LinqRuntimeTypeBuilder
-{
-  //  private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-    private static AssemblyName assemblyName = new AssemblyName() { Name = "DynamicLinqTypes" };
-    private static ModuleBuilder moduleBuilder = null;
-    private static Dictionary<string, Type> builtTypes = new Dictionary<string, Type>();
-
-    static LinqRuntimeTypeBuilder()
+    public static class LinqRuntimeTypeBuilder
     {
-        moduleBuilder = Thread.GetDomain().DefineDynamicAssembly(assemblyName, AssemblyBuilderAccess.Run).DefineDynamicModule(assemblyName.Name);
-    }
+        //  private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly AssemblyName assemblyName = new AssemblyName {Name = "DynamicLinqTypes"};
 
-    private static string GetTypeKey(Dictionary<string, Type> fields)
-    {
-        //TODO: optimize the type caching -- if fields are simply reordered, that doesn't mean that they're actually different types, so this needs to be smarter
-        string key = string.Empty;
-        foreach (var field in fields)
-            key += field.Key + ";" + field.Value.FullName + ";";
+        private static readonly ModuleBuilder moduleBuilder;
+        private static readonly Dictionary<string, Type> builtTypes = new Dictionary<string, Type>();
 
-        return key;
-    }
-
-    public static Type GetDynamicType(Dictionary<string, Type> fields)
-    {
-        if (null == fields)
-            throw new ArgumentNullException("fields");
-        if (0 == fields.Count)
-            throw new ArgumentOutOfRangeException("fields", "fields must have at least 1 field definition");
-
-        try
+        static LinqRuntimeTypeBuilder()
         {
-            Monitor.Enter(builtTypes);
-            string className = GetTypeKey(fields);
+            moduleBuilder = Thread.GetDomain().DefineDynamicAssembly(assemblyName, AssemblyBuilderAccess.Run)
+                .DefineDynamicModule(assemblyName.Name);
+        }
 
-            if (builtTypes.ContainsKey(className))
+        private static string GetTypeKey(Dictionary<string, Type> fields)
+        {
+            //TODO: optimize the type caching -- if fields are simply reordered, that doesn't mean that they're actually different types, so this needs to be smarter
+            var key = string.Empty;
+            foreach (var field in fields)
+                key += field.Key + ";" + field.Value.FullName + ";";
+
+            return key;
+        }
+
+        public static Type GetDynamicType(Dictionary<string, Type> fields)
+        {
+            if (null == fields)
+                throw new ArgumentNullException("fields");
+            if (0 == fields.Count)
+                throw new ArgumentOutOfRangeException("fields", "fields must have at least 1 field definition");
+
+            try
+            {
+                Monitor.Enter(builtTypes);
+                var className = GetTypeKey(fields);
+
+                if (builtTypes.ContainsKey(className))
+                    return builtTypes[className];
+
+                var typeBuilder = moduleBuilder.DefineType(className,
+                    TypeAttributes.Public | TypeAttributes.Class | TypeAttributes.Serializable);
+
+                foreach (var field in fields)
+                    typeBuilder.DefineField(field.Key, field.Value, FieldAttributes.Public);
+
+                builtTypes[className] = typeBuilder.CreateType();
+
                 return builtTypes[className];
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            finally
+            {
+                Monitor.Exit(builtTypes);
+            }
 
-            TypeBuilder typeBuilder = moduleBuilder.DefineType(className, TypeAttributes.Public | TypeAttributes.Class | TypeAttributes.Serializable);
-
-            foreach (var field in fields)                    
-                typeBuilder.DefineField(field.Key, field.Value, FieldAttributes.Public);
-
-            builtTypes[className] = typeBuilder.CreateType();
-
-            return builtTypes[className];
+            return null;
         }
-        catch (Exception ex)
+
+
+        private static string GetTypeKey(IEnumerable<PropertyInfo> fields)
         {
-            throw;
+            return GetTypeKey(fields.ToDictionary(f => f.Name, f => f.PropertyType));
         }
-        finally
+
+        public static Type GetDynamicType(IEnumerable<PropertyInfo> fields)
         {
-            Monitor.Exit(builtTypes);
+            return GetDynamicType(fields.ToDictionary(f => f.Name, f => f.PropertyType));
         }
-
-        return null;
     }
-
-
-    private static string GetTypeKey(IEnumerable<PropertyInfo> fields)
-    {
-        return GetTypeKey(fields.ToDictionary(f => f.Name, f => f.PropertyType));
-    }
-
-    public static Type GetDynamicType(IEnumerable<PropertyInfo> fields)
-    {
-        return GetDynamicType(fields.ToDictionary(f => f.Name, f => f.PropertyType));
-    }
-}
 }

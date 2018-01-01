@@ -15,12 +15,13 @@ using Abp.Domain.Repositories;
 using Abp.EntityFramework;
 using Blocks.Framework.DBORM.DBContext;
 using Blocks.Framework.DBORM.Entity;
+using Blocks.Framework.DBORM.Linq;
 
 namespace Blocks.Framework.DBORM.Repository
 {
 
     public class DBSqlRepositoryBase<TEntity> : DBSqlRepositoryBase<BlocksDbContext<TEntity>, TEntity, Guid>
-        where TEntity : Entity<Guid>
+        where TEntity : Data.Entity.Entity
 
     {
         protected readonly DbSetContext<BlocksDbContext<TEntity>> Tables;
@@ -32,7 +33,25 @@ namespace Blocks.Framework.DBORM.Repository
         {
             Tables = new DbSetContext<BlocksDbContext<TEntity>>(this.Context);
         }
+        public ILinqQueryable<TEntity> GetContextTable()
+        {
+            return GetContextTableIncluding();
+        }
         
+        public ILinqQueryable<TEntity> GetContextTableIncluding(params Expression<Func<TEntity, object>>[] propertySelectors)
+        {
+            var query = Table.AsQueryable();
+
+            if (!propertySelectors.IsNullOrEmpty())
+            {
+                foreach (var propertySelector in propertySelectors)
+                {
+                    query = query.Include(propertySelector);
+                }
+            }
+            
+            return new DefaultLinqQueryable<TEntity>(query){ };
+        }
         
     }
 
@@ -48,7 +67,7 @@ namespace Blocks.Framework.DBORM.Repository
             this.dbSetCache = new ConcurrentDictionary<Type, object>();
         }
 
-        public DbSet<TEntity> GetTable<TEntity>() where TEntity : Entity<Guid>
+        public DbSet<TEntity> GetTable<TEntity>() where TEntity : Data.Entity.Entity
         {
             return (DbSet<TEntity>)dbSetCache.GetOrAdd(typeof(TEntity), type =>
                 _context.Set<TEntity>()
@@ -67,7 +86,7 @@ namespace Blocks.Framework.DBORM.Repository
         ISupportsExplicitLoading<TEntity, TPrimaryKey>,
         IRepositoryWithDbContext
         
-        where TEntity : class, IEntity<TPrimaryKey>
+        where TEntity : Data.Entity.Entity<TPrimaryKey> 
         where TDbContext : DbContext
     {
         /// <summary>
@@ -125,6 +144,7 @@ namespace Blocks.Framework.DBORM.Repository
             return GetAllIncluding();
         }
 
+      
         public override IQueryable<TEntity> GetAllIncluding(params Expression<Func<TEntity, object>>[] propertySelectors)
         {
             var query = Table.AsQueryable();

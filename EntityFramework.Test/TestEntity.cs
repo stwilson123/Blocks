@@ -1,12 +1,12 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Collections.Generic;
-using Blocks.Framework.Data.Entity;
 
 namespace Blocks.BussnessEntityModule
 {
-    public class TestEntity : Entity
+    public class TestEntity  
     {
+        public Guid Id { set; get; }
         
         public  Guid TestEntity2ID { set; get; }
         
@@ -36,8 +36,8 @@ namespace Blocks.BussnessEntityModule
         {
             ToTable("TestEntity", schema);
             HasKey(x => x.Id);
+           
 
-            //HasMany(t => t.TestEntity3s).WithRequired().HasForeignKey(t => t.TestEntityId);
         }
     }
 }

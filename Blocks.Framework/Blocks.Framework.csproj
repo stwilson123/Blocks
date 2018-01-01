@@ -88,6 +88,7 @@
   <ItemGroup>
     <Compile Include="ApplicationServices\AppService.cs" />
     <Compile Include="ApplicationServices\IApplicationService.cs" />
+    <Compile Include="AutoMapper\FrameworkProfile.cs" />
     <Compile Include="Caching\AcquireContext.cs" />
     <Compile Include="Caching\Cache.cs" />
     <Compile Include="Caching\CacheModule.cs" />
@@ -114,6 +115,7 @@
     <Compile Include="Configurations\AppConfigManager.cs" />
     <Compile Include="Configurations\ConfigurationException.cs" />
     <Compile Include="Configurations\IConfiguration.cs" />
+    <Compile Include="Data\Entity\Entity.cs" />
     <Compile Include="Data\IRepository.cs" />
     <Compile Include="Environment\Configuration\ExtensionLocations.cs" />
     <Compile Include="Environment\Configuration\IAppConfigurationAccessor.cs" />

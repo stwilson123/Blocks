@@ -1,16 +1,14 @@
 ﻿using System;
-using Abp.Domain.Entities;
 
 namespace Blocks.BussnessEntityModule
 {
-    public class TestEntity3 : Entity<Guid>
+    public class TestEntity3
     {
-       public string TestId { set; get; }
+        public Guid Id { set; get; }
+
+        public string TestId { set; get; }
 
        public Guid TestEntityId { set; get; }
-
-        public TestEntity TestEntity { get; set; }
-        
     }
 
     public class TestEntity3Configuration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<TestEntity3>

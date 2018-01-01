@@ -2,22 +2,24 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Runtime.InteropServices;
+using Abp.AutoMapper;
 using Blocks.Framework.Exceptions.Helper;
 
 namespace Blocks.Framework.DBORM.Linq
 {
     public static class ValueTypeExtensions
     {
-        public  static Entity.Entity  Get<Table>(this Dictionary<ValueTuple<Type,string>,Entity.Entity> valueTuple,string tableAliasName)
+        public  static Data.Entity.Entity  Get<Table>(this Dictionary<ValueTuple<Type,string>,Data.Entity.Entity> valueTuple,string tableAliasName)
         {
             return valueTuple[(typeof(Table), tableAliasName)];
         }
-        public  static Entity.Entity  Get(this Dictionary<ValueTuple<Type,string>,Entity.Entity> valueTuple,Type Table,string tableAliasName)
+        public  static Data.Entity.Entity  Get(this Dictionary<ValueTuple<Type,string>,Data.Entity.Entity> valueTuple,Type Table,string tableAliasName)
         {
             return valueTuple[(Table, tableAliasName)];
         }
     }
-    public class DefaultLinqQueryable<TEntity> : ILinqQueryable<TEntity>  where TEntity : Entity.Entity
+    public class DefaultLinqQueryable<TEntity> : ILinqQueryable<TEntity>  where TEntity : Data.Entity.Entity 
     {
         private Dictionary<(Type TableType,string TableAlias), object> linqSqlTableContext;
         public DefaultLinqQueryable(IQueryable<TEntity> iQuerable)
@@ -28,7 +30,7 @@ namespace Blocks.Framework.DBORM.Linq
 
         public IQueryable<TEntity> iQuerable { get; }
 
-        private IQueryable<Dictionary<(Type TableType, string TableAlias), Entity.Entity>> iQueryContext;
+        private IQueryable<Dictionary<(Type TableType, string TableAlias), Data.Entity.Entity>> iQueryContext;
 
         public ILinqQueryable<TEntity> InnerJoin<TOuter, TInner, TKey>(IEnumerable<TInner> inner,
             Expression<Func<TOuter, TKey>> outerKeySelector,
@@ -71,6 +73,18 @@ namespace Blocks.Framework.DBORM.Linq
             return this;
         }
 
+        public List<TEntity> SelectToList(Expression<Func<TEntity, dynamic>> selector)
+        {
+            var select = iQuerable.Select(selector).ToList();
+
+//            var a = Mapper.Map<List<TEntity>>(select);
+//            var result = ;
+            return select.MapTo<List<TEntity>>();
+        }
 
     }
+
+     
+    
+   
 }

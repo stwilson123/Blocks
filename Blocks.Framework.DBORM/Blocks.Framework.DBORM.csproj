@@ -48,6 +48,7 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Extensions.DependencyInjection, Version=2.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60">
       <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.2.0.0\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.dll</HintPath>
     </Reference>
@@ -92,7 +93,6 @@
     <Compile Include="DBContext\BlocksDbContext.cs" />
     <Compile Include="DBContext\IDbContextProvider.cs" />
     <Compile Include="DBContext\UnitOfWorkDbContextProvider.cs" />
-    <Compile Include="Entity\Entity.cs" />
     <Compile Include="Entity\EntityConfigConventionalRegistrar.cs" />
     <Compile Include="Entity\IEntityConfiguration.cs" />
     <Compile Include="Linq\DefaultLinqQueryable.cs" />
@@ -110,6 +110,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Adp\Abp.AutoMapper\Abp.AutoMapper.csproj">
+      <Project>{44ee7b2b-c3e5-42b9-95d9-79f8742d6129}</Project>
+      <Name>Abp.AutoMapper</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Adp\Abp.EntityFramework.Common\Abp.EntityFramework.Common.csproj">
       <Project>{c480377f-c82f-49e9-8dd4-b8b50c6d325c}</Project>
       <Name>Abp.EntityFramework.Common</Name>

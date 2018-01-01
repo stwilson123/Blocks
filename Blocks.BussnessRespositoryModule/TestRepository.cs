@@ -16,11 +16,19 @@ namespace Blocks.BussnessRespositoryModule
         }
         public virtual string GetValue(string value)
         {
-            var id = Guid.Parse("DDE679DA-AA68-426D-A6C3-FE66D9725490");
-            var sql = GetAllIncluding(t => t.TestEntity3s,t => t.TestEntity2).Select(result => new  {
+//            var id = Guid.Parse("DDE679DA-AA68-426D-A6C3-FE66D9725490");
+                           //            var sql = GetAll().Select(result => new TestEntity() {
+                           //                  Id = result.Id,
+                           //                TestEntity2  = new TestEntity2() {  Id      = result.TestEntity2.Id},
+                           //                   TestEntity3s =  result.TestEntity3s
+                           //                });
+                           //            return value;
+           // var id = Guid.Parse("DDE679DA-AA68-426D-A6C3-FE66D9725490");
+            var sql = GetContextTable().SelectToList(result => new {
                 Id = result.Id,
-                 TestEntity2 = new {  b = result.TestEntity3s, list = result.TestEntity2 }
-                }).ToString();
+                TestEntity2  = new  {   result.TestEntity2.Id},
+              //  TestEntity3s =  result.TestEntity3s
+            });
             return value;
         }
  

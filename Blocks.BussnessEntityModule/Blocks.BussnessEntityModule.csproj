@@ -57,6 +57,10 @@
       <Project>{0f98c63c-d019-4f38-9ac3-f5d7bcad9107}</Project>
       <Name>Abp</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Blocks.Framework\Blocks.Framework.csproj">
+      <Project>{D5ACBCF7-A7A7-449E-9DCA-C1FCDE36B7B6}</Project>
+      <Name>Blocks.Framework</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
