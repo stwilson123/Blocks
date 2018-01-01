@@ -197,6 +197,7 @@
   <ItemGroup>
     <Compile Include="BlocksTestModule.cs" />
     <Compile Include="Custom\CollectionTest.cs" />
+    <Compile Include="Custom\Test.cs" />
     <Compile Include="MultiTenantFactAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sessions\SessionAppService_Tests.cs" />
@@ -241,6 +242,10 @@
     <ProjectReference Include="..\..\Blocks.EntityFramework\Blocks.EntityFramework.csproj">
       <Project>{3979F157-DEB0-4878-AB1D-4CEF6B5A1300}</Project>
       <Name>Blocks.EntityFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Blocks.Framework.DBORM\Blocks.Framework.DBORM.csproj">
+      <Project>{9CA5B764-D047-4662-BA93-DB578ED89E4E}</Project>
+      <Name>Blocks.Framework.DBORM</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
