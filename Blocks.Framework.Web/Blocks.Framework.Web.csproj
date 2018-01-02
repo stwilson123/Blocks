@@ -143,6 +143,7 @@
     <Compile Include="Api\Route\RouteExtensions.cs" />
     <Compile Include="BlocksWebApplication.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="Configuartions\ConfiguartionConst.cs" />
     <Compile Include="Configuartions\IWebFrameworkConfiguration.cs" />
     <Compile Include="FileSystems\VirtualPath\DefaultVirtualPathProvider.cs" />
     <Compile Include="Modules\BlocksFrameworkWebModule.cs" />

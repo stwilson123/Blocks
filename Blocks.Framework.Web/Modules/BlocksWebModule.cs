@@ -4,11 +4,14 @@ using System.Linq;
 using System.Reflection;
 using System.Web.Http;
 using Abp.Application.Services;
+using Abp.Configuration;
 using Abp.Configuration.Startup;
 using Abp.Modules;
+using Abp.PlugIns;
 using Blocks.Framework.Configurations;
 using Blocks.Framework.Environment.Exception;
 using Blocks.Framework.Environment.Extensions;
+using Blocks.Framework.Exceptions;
 using Blocks.Framework.Web.Configuartions;
 using Blocks.Framework.Web.Mvc.Controllers;
 using Blocks.Framework.Web.Route;
@@ -21,7 +24,6 @@ namespace Blocks.Framework.Web.Modules
         public override void PreInitialize()
         {
            
-         
         }
 
         /// <summary>
@@ -33,7 +35,14 @@ namespace Blocks.Framework.Web.Modules
         public override void Initialize()
         {
 
-            var currentAssmebly = this.GetType().GetTypeInfo().Assembly;
+           
+            InitializeEvent();
+        }
+
+
+        public override void PostInitialize()
+        {
+             var currentAssmebly = this.GetType().GetTypeInfo().Assembly;
             var currentAssmeblyName = currentAssmebly.GetName().Name;
             IocManager.RegisterAssemblyByConvention(currentAssmebly);
 
@@ -72,7 +81,13 @@ namespace Blocks.Framework.Web.Modules
             var Extension = IocManager.Resolve<IExtensionManager>().AvailableExtensions()
                 .FirstOrDefault(t => t.Id == currentAssmeblyName);
             if(Extension == null)
-                throw  new ExtensionNotFoundException($"{currentAssmeblyName} can't found extension depond on it");
+                throw  new ExtensionNotFoundException($"{currentAssmeblyName} can't found extension depond on it.");
+        
+            var databaseType =  IocManager.Resolve<ISettingManager>().GetSettingValueForApplication(typeof(DatabaseType).Name);
+            if(databaseType == null)
+                throw new BlocksException($"{typeof(DatabaseType).Name} global configuartion can't found.");
+            if(!Enum.GetNames(typeof(DatabaseType)).Contains(databaseType) )
+                throw new BlocksException($"{databaseType} isn't belong to global configuartion {typeof(DatabaseType).Name}.");
 
             var AppModule = default(Assembly);
             var configKey = $"{Extension.Name}\\{ConfiguartionConventionalRegistrar.AppConfigKey}";
@@ -98,6 +113,15 @@ namespace Blocks.Framework.Web.Modules
                     {
                         var RepModule =  System.AppDomain.CurrentDomain.GetAssemblies()
                             .FirstOrDefault(t => string.Equals(t.GetName().Name,webModuleConfiguration.RespositoryModule,StringComparison.CurrentCultureIgnoreCase));
+                       
+                        var listAssemblies = IocManager.Resolve<AbpPlugInManager>()
+                            .PlugInSources
+                            .GetAllAssemblies()
+                            .FirstOrDefault(t => t.GetName().Name == $"{RepModule.GetName().Name + databaseType}.Module");
+                       
+                        if(listAssemblies != null)
+                            IocManager.RegisterAssemblyByConvention(listAssemblies);
+
                         IocManager.RegisterAssemblyByConvention(RepModule);
                     }
                     
@@ -114,9 +138,7 @@ namespace Blocks.Framework.Web.Modules
 
 
             RouteHandle(Extension.Name);
-            InitializeEvent();
         }
-
 
         /// <summary>
         /// This is the first event called on application startup. 

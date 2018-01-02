@@ -22,6 +22,7 @@ using Abp.Extensions;
 using Abp.Reflection;
 using Abp.Runtime.Session;
 using Abp.Timing;
+using Blocks.Framework.Data.Entity;
 using Blocks.Framework.DBORM.Entity;
 using Blocks.Framework.Ioc.Dependency;
 using Castle.Core.Logging;

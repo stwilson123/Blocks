@@ -1,6 +1,6 @@
 ﻿using Blocks.Framework.Configurations;
 
-namespace Blocks.Framework.DBORM.Entity
+namespace Blocks.Framework.Data.Entity
 {
     public interface IEntityConfiguration : IConfiguration
     {

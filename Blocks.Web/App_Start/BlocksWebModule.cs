@@ -41,6 +41,7 @@ namespace Blocks.Web
             Configuration.Navigation.Providers.Add<BlocksNavigationProvider>();
 
             IocManager.Register<RouteCollection>(RouteTable.Routes);
+            Configuration.Settings.Providers.Add<GlobalSettingProvider>();
 
             //Configure Hangfire - ENABLE TO USE HANGFIRE INSTEAD OF DEFAULT JOB MANAGER
             //Configuration.BackgroundJobs.UseHangfire(configuration =>

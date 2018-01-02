@@ -55,10 +55,10 @@ namespace Blocks.Framework.Environment
                 .GetAllAssemblies()
                 .Where(t => allDependencies.Contains(t.GetName().Name)).Distinct();
 
-            foreach (var assembly in listAssemblies)
-            {
-                IocManager.RegisterAssemblyByConvention(assembly);
-            }
+//            foreach (var assembly in listAssemblies)
+//            {
+//                IocManager.RegisterAssemblyByConvention(assembly);
+//            }
             #endregion
 
         }

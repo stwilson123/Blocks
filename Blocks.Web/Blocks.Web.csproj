@@ -2679,6 +2679,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\BlocksNavigationProvider.cs" />
     <Compile Include="App_Start\BlocksWebModule.cs" />
+    <Compile Include="App_Start\GlobalSettingProvider.cs" />
     <Compile Include="App_Start\PageNames.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.cs" />
