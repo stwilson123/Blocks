@@ -142,7 +142,7 @@ namespace Blocks.Framework.Environment.Extensions.Folders
             extensionDescriptor.Id = extensionId;
             extensionDescriptor.ExtensionType = extensionType;
             if (!(extensionDescriptor.Features != null &&
-                  extensionDescriptor.Features.Any(t => t.Id == extensionDescriptor.Id)))
+                  extensionDescriptor.Features.Any(t => t.Name == extensionDescriptor.Name)))
             {
                 var defaultFeature = new FeatureDescriptor()
                 {
@@ -151,12 +151,17 @@ namespace Blocks.Framework.Environment.Extensions.Folders
                     Priority = 0,
                     Description = string.Empty,
                     //Dependencies = ParseFeatureDependenciesEntry(GetValue(manifest, DependenciesSection)),
-                    Extension = extensionDescriptor,
+                   // Extension = extensionDescriptor,
                     //Category = GetValue(manifest, CategorySection)
                 };
-                
-                extensionDescriptor.Features  = new List<FeatureDescriptor>(){  defaultFeature};
+
+                extensionDescriptor.Features = extensionDescriptor.Features.ConcatWhether(defaultFeature);
             }
+            extensionDescriptor.Features.ForEach(f => { f.Extension = extensionDescriptor;
+                f.Dependencies = f.Dependencies == null ? new List<string>() : f.Dependencies;
+
+
+            });
             return extensionDescriptor;
         }
 

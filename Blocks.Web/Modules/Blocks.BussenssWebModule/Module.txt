@@ -8,8 +8,8 @@
     "Description": "Test",
     "Features": [
         {
-            "Name": "Blocks.BussenssWebModule",
-            "Dependencies": ""
+            "Name": "Blocks.BussnessRespositoryModule",
+            "Dependencies": ["Blocks.BussnessRespositoryModule"]
         }
        
     ]

@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Linq;
 using System.Reflection;
 using Abp.Dependency;
 using Abp.Modules;
@@ -8,6 +9,8 @@ using Blocks.Framework.Environment.Extensions.Folders;
 using Blocks.Framework.Ioc;
 using Castle.MicroKernel;
 using Castle.MicroKernel.Resolvers.SpecializedResolvers;
+using Abp.PlugIns;
+using Blocks.Framework.Environment.Exception;
 
 namespace Blocks.Framework.Environment
 {
@@ -34,7 +37,30 @@ namespace Blocks.Framework.Environment
             
             IocManager.AddConventionalRegistrar(new DependencyConventionalRegistrar(IocManager)); 
 
-          
+        }
+        
+        public override void PostInitialize()
+        {
+            //TODO Facecade validate avaliable features
+            #region MyRegion
+            var availablFeatures = IocManager.Resolve<IExtensionManager>().AvailableFeatures().ToList();
+            var allDependencies = availablFeatures.SelectMany(f => f.Dependencies);
+            var notExistsDependcies = allDependencies.Where(d => !availablFeatures.Any(f => d == f.Name));
+            if (notExistsDependcies.Any())
+            {
+                throw new ExtensionNotFoundException($"These dependenies [{string.Join(",", notExistsDependcies)}] can't found it's feature");
+            }
+            var listAssemblies = IocManager.Resolve<AbpPlugInManager>()
+                .PlugInSources
+                .GetAllAssemblies()
+                .Where(t => allDependencies.Contains(t.GetName().Name)).Distinct();
+
+            foreach (var assembly in listAssemblies)
+            {
+                IocManager.RegisterAssemblyByConvention(assembly);
+            }
+            #endregion
+
         }
     }
 }

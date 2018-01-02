@@ -5,7 +5,6 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using Blocks.Framework.DBORM.Linq;
-using EntityFramework.Test.Properties;
 using Xunit;
 using Queryable = System.Linq.Queryable;
 
