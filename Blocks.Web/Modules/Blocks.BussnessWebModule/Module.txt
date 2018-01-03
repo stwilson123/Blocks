@@ -1,0 +1,16 @@
+{
+    "Name": "BussnessWebModule",
+    "AntiForgery": "enabled",
+    "Author": "BiLin",
+    "Website": "http://xxx.net",
+    "Version": 0.1,
+    "BlocksVersion": 0.1,
+    "Description": "Test",
+    "Features": [
+        {
+            "Name": "Blocks.BussnessRespositoryModule",
+            "Dependencies": ["Blocks.BussnessRespositoryModule"]
+        }
+       
+    ]
+}
