@@ -15,12 +15,36 @@ using Blocks.Framework.Exceptions;
 using Blocks.Framework.Web.Configuartions;
 using Blocks.Framework.Web.Mvc.Controllers;
 using Blocks.Framework.Web.Route;
+using Blocks.Framework.Environment.Extensions.Models;
 
 namespace Blocks.Framework.Web.Modules
 {
     public abstract class BlocksWebModule : AbpModule
     {
-     
+        private Assembly currentAssmebly { get { return this.GetType().GetTypeInfo().Assembly; } }
+
+        private ExtensionDescriptor extensionDescriptor
+        {
+            get
+            {
+                var currentAssmeblyName = currentAssmebly.GetName().Name;
+                var Extension = IocManager.Resolve<IExtensionManager>().AvailableExtensions()
+             .FirstOrDefault(t => t.Id == currentAssmeblyName);
+                if (Extension == null)
+                    throw new ExtensionNotFoundException($"{currentAssmeblyName} can't found extension depond on it.");
+                return Extension;
+            }
+        }
+
+        private IConfiguration moduleConfiguration
+        {
+            get
+            {
+                var configKey = $"{extensionDescriptor.Name}\\{ConfiguartionConventionalRegistrar.AppConfigKey}";
+
+                return IocManager.IsRegistered(configKey) ? IocManager.Resolve<IConfiguration>(configKey) : null;
+            }
+        }
         public override void PreInitialize()
         {
            
@@ -34,110 +58,70 @@ namespace Blocks.Framework.Web.Modules
         /// </summary>
         public override void Initialize()
         {
+            // var currentAssmeblyName = currentAssmebly.GetName().Name;
+            var extensionName = extensionDescriptor.Name;
+            IocManager.RegisterAssemblyByConvention(currentAssmebly);
 
-           
+            if (moduleConfiguration != null && moduleConfiguration is IWebFrameworkConfiguration)
+            {
+                var webModuleConfiguration = moduleConfiguration as IWebFrameworkConfiguration;
+                if (!string.IsNullOrEmpty(webModuleConfiguration.AppModule))
+                {
+                    var AppModule = System.AppDomain.CurrentDomain.GetAssemblies()
+                        .FirstOrDefault(t => string.Equals(t.GetName().Name, webModuleConfiguration.AppModule, StringComparison.CurrentCultureIgnoreCase));
+                    IocManager.RegisterAssemblyByConvention(AppModule);
+
+                    Configuration.Modules.AbpWebApi().DynamicApiControllerBuilder
+                                   .ForAll<IApplicationService>(AppModule, extensionName)
+                                   .Build();
+                }
+
+                if (!string.IsNullOrEmpty(webModuleConfiguration.DomainModule))
+                {
+                    var DomainModule = System.AppDomain.CurrentDomain.GetAssemblies()
+                        .FirstOrDefault(t => string.Equals(t.GetName().Name, webModuleConfiguration.DomainModule, StringComparison.CurrentCultureIgnoreCase));
+                    IocManager.RegisterAssemblyByConvention(DomainModule);
+                }
+            }
+            RouteHandle(extensionDescriptor.Name);
             InitializeEvent();
         }
 
 
         public override void PostInitialize()
         {
-             var currentAssmebly = this.GetType().GetTypeInfo().Assembly;
+
+
             var currentAssmeblyName = currentAssmebly.GetName().Name;
-            IocManager.RegisterAssemblyByConvention(currentAssmebly);
+            var extensionName = extensionDescriptor.Name;
 
-            
-
-//            var AppModule =  System.AppDomain.CurrentDomain.GetAssemblies()
-//                .FirstOrDefault(t => t.FullName.IndexOf("BussnessApplicationModule") > 0);
-//
-//            IocManager.RegisterAssemblyByConvention(AppModule);
-//
-//           
-//            var RepModule =  System.AppDomain.CurrentDomain.GetAssemblies()
-//                .FirstOrDefault(t => t.FullName.IndexOf("BussnessRespositoryModule") > 0);
-//
-//            IocManager.RegisterAssemblyByConvention(RepModule);
-//            
-//            var DomainModule =  System.AppDomain.CurrentDomain.GetAssemblies()
-//                .FirstOrDefault(t => t.FullName.IndexOf("BussnessDomainModule") > 0);
-
-//            IocManager.RegisterAssemblyByConvention(DomainModule);
-            
-            
-//            var RepModule = Assembly.LoadFile(
-//                $"{AppModule.Location.Substring(0,AppModule.Location.LastIndexOf(@"\", StringComparison.Ordinal))}\\Blocks.BussnessRespositoryModule.dll"
-//            );
-//            IocManager.RegisterAssemblyByConvention(RepModule);
-//            
-//            
-//            var DomainModule = Assembly.LoadFile(
-//                $"{AppModule.Location.Substring(0,AppModule.Location.LastIndexOf(@"\", StringComparison.Ordinal))}\\Blocks.BussnessDomainModule.dll"
-//            );
-//            IocManager.RegisterAssemblyByConvention(DomainModule);
-//            
-
-
-            var Extension = IocManager.Resolve<IExtensionManager>().AvailableExtensions()
-                .FirstOrDefault(t => t.Id == currentAssmeblyName);
-            if(Extension == null)
-                throw  new ExtensionNotFoundException($"{currentAssmeblyName} can't found extension depond on it.");
-        
-            var databaseType =  IocManager.Resolve<ISettingManager>().GetSettingValueForApplication(typeof(DatabaseType).Name);
-            if(databaseType == null)
+            var databaseType = IocManager.Resolve<ISettingManager>().GetSettingValueForApplication(typeof(DatabaseType).Name);
+            if (databaseType == null)
                 throw new BlocksException($"{typeof(DatabaseType).Name} global configuartion can't found.");
-            if(!Enum.GetNames(typeof(DatabaseType)).Contains(databaseType) )
+            if (!Enum.GetNames(typeof(DatabaseType)).Contains(databaseType))
                 throw new BlocksException($"{databaseType} isn't belong to global configuartion {typeof(DatabaseType).Name}.");
 
-            var AppModule = default(Assembly);
-            var configKey = $"{Extension.Name}\\{ConfiguartionConventionalRegistrar.AppConfigKey}";
-            if (IocManager.IsRegistered(configKey))
+            if (moduleConfiguration != null && moduleConfiguration is IWebFrameworkConfiguration)
             {
-                var moduleConfiguration = IocManager.Resolve<IConfiguration>(configKey);
-                if (moduleConfiguration is IWebFrameworkConfiguration)
+                var webModuleConfiguration = moduleConfiguration as IWebFrameworkConfiguration;
+                if (!string.IsNullOrEmpty(webModuleConfiguration.RespositoryModule))
                 {
-                    var webModuleConfiguration =  (moduleConfiguration as IWebFrameworkConfiguration);
-              
-                   if(!string.IsNullOrEmpty(webModuleConfiguration.AppModule))
-                    {
-                        AppModule =  System.AppDomain.CurrentDomain.GetAssemblies()
-                            .FirstOrDefault(t => string.Equals(t.GetName().Name,webModuleConfiguration.AppModule,StringComparison.CurrentCultureIgnoreCase));
-                        IocManager.RegisterAssemblyByConvention(AppModule);
+                    var RepModule = System.AppDomain.CurrentDomain.GetAssemblies()
+                        .FirstOrDefault(t => string.Equals(t.GetName().Name, webModuleConfiguration.RespositoryModule, StringComparison.CurrentCultureIgnoreCase));
 
-                        Configuration.Modules.AbpWebApi().DynamicApiControllerBuilder
-                                       .ForAll<IApplicationService>(AppModule, Extension.Name)
-                                       .Build();
-                    }
-                    
-                    if(!string.IsNullOrEmpty(webModuleConfiguration.RespositoryModule))
-                    {
-                        var RepModule =  System.AppDomain.CurrentDomain.GetAssemblies()
-                            .FirstOrDefault(t => string.Equals(t.GetName().Name,webModuleConfiguration.RespositoryModule,StringComparison.CurrentCultureIgnoreCase));
-                       
-                        var listAssemblies = IocManager.Resolve<AbpPlugInManager>()
-                            .PlugInSources
-                            .GetAllAssemblies()
-                            .FirstOrDefault(t => t.GetName().Name == $"{RepModule.GetName().Name + databaseType}.Module");
-                       
-                        if(listAssemblies != null)
-                            IocManager.RegisterAssemblyByConvention(listAssemblies);
+                    var listAssemblies = IocManager.Resolve<AbpPlugInManager>()
+                        .PlugInSources
+                        .GetAllAssemblies()
+                        .FirstOrDefault(t => t.GetName().Name == $"{RepModule.GetName().Name}.{databaseType}Module");
 
-                        IocManager.RegisterAssemblyByConvention(RepModule);
-                    }
-                    
-                    if(!string.IsNullOrEmpty(webModuleConfiguration.DomainModule))
-                    {
-                        var DomainModule =  System.AppDomain.CurrentDomain.GetAssemblies()
-                            .FirstOrDefault(t => string.Equals(t.GetName().Name,webModuleConfiguration.DomainModule,StringComparison.CurrentCultureIgnoreCase));
-                        IocManager.RegisterAssemblyByConvention(DomainModule);
-                    }
+                    if (listAssemblies != null)
+                        IocManager.RegisterAssemblyByConvention(listAssemblies);
+
+                    IocManager.RegisterAssemblyByConvention(RepModule);
                 }
+
+               
             }
-            
-          
-
-
-            RouteHandle(Extension.Name);
         }
 
         /// <summary>

@@ -25,6 +25,7 @@ using Abp.Timing;
 using Blocks.Framework.Data.Entity;
 using Blocks.Framework.DBORM.Entity;
 using Blocks.Framework.Ioc.Dependency;
+using Blocks.Framework.Untility.Extensions;
 using Castle.Core.Logging;
 using EntityFramework.DynamicFilters;
 
@@ -235,8 +236,8 @@ namespace Blocks.Framework.DBORM.DBContext
             base.OnModelCreating(modelBuilder);
             var registerAssembly =  System.AppDomain.CurrentDomain.GetAssemblies().Where(t => 
                 _entityConfigurations.Any(config => string.Equals(t.GetName().Name,config.EntityModule,StringComparison.CurrentCultureIgnoreCase)));
-            
-            foreach (var assembly in registerAssembly)
+         
+            foreach (var assembly in registerAssembly.DistinctBy(t => t.FullName))
             {
                 modelBuilder.Configurations.AddFromAssembly(assembly);
             }

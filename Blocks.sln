@@ -90,7 +90,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blocks.BussnessRespositoryM
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blocks.BussnessWebModule", "Blocks.Web\Modules\Blocks.BussnessWebModule\Blocks.BussnessWebModule.csproj", "{A5F67ECC-4923-41E9-96F9-1E5D7EF417ED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blocks.BussnessRespositoryModule.SqlserverModule", "Blocks.BussnessRespositoryModule.SqlserverModule\Blocks.BussnessRespositoryModule.SqlserverModule.csproj", "{1873B56F-99EA-4E0E-B9D4-F4C3293FB25D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blocks.BussnessRespositoryModule.SqlserverModule", "Blocks.Web\Modules\Blocks.BussnessRespositoryModule.SqlserverModule\Blocks.BussnessRespositoryModule.SqlserverModule.csproj", "{1873B56F-99EA-4E0E-B9D4-F4C3293FB25D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

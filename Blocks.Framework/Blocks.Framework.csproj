@@ -160,6 +160,7 @@
     <Compile Include="Services\IClock.cs" />
     <Compile Include="Tools\Json\JsonHelper.cs" />
     <Compile Include="Untility\Extensions\IEnumableExtensions.cs" />
+    <Compile Include="Untility\Extensions\LinqExtensions.cs" />
     <Compile Include="Untility\Extensions\StringExtensions.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -14,7 +14,18 @@ namespace Abp.Reflection
                 .EnumerateFiles(folderPath, "*.*", searchOption)
                 .Where(s => (s.EndsWith(".dll") || s.EndsWith(".exe")) && s.EndsWith("Module.dll") || s.EndsWith("Module.exe"));
 
-            return assemblyFiles.Select(
+            //filter Repeat Assembly
+
+            var assemblyRepeatFilesGroup = assemblyFiles
+                .GroupBy(t => t.Substring(t.LastIndexOf(@"\"))).Where(t => t.Count() > 1);
+            var assemblyRepeatFiles = assemblyRepeatFilesGroup
+                .Select(t => t.FirstOrDefault() )
+                .ToArray();
+            ;
+            var loadAssembly = assemblyFiles.Except(assemblyRepeatFilesGroup.SelectMany(t => t))
+                                            .Concat(assemblyRepeatFiles);
+               
+            return loadAssembly.Select(
                 Assembly.LoadFile
             ).ToList();
         }
