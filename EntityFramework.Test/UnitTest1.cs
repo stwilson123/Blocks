@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Linq;
 using System.Data.Entity;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MyTest;
 using Blocks.BussnessEntityModule;
 using Xunit;
@@ -9,7 +8,6 @@ using Xunit;
 namespace UnitTestProject1
 {
 
-    [Fact]
     public class UnitTest1
     {
         [Fact]

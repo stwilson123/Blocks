@@ -73,11 +73,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FunctionTest\EntityStateTest.cs" />
     <Compile Include="Model1.Context.cs" />
-    <Compile Include="TestEntity.cs" />
-    <Compile Include="TestEntity2.cs" />
-    <Compile Include="TestEntity3.cs" />
-    <Compile Include="Tests.cs" />
+    <Compile Include="Model\TestEntity.cs" />
+    <Compile Include="Model\TestEntity2.cs" />
+    <Compile Include="Model\TestEntity3.cs" />
+    <Compile Include="Model\Tests.cs" />
     <Compile Include="UnitTest1.cs" />
   </ItemGroup>
   <ItemGroup>
