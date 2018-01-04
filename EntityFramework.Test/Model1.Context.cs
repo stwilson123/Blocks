@@ -7,13 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MyTest
+using System.Data.Entity;
+using Blocks.BussnessEntityModule;
+
+namespace EntityFramework.Test
 {
-    using Blocks.BussnessEntityModule;
-    using System;
-    using System.Data.Entity;
-    using System.Data.Entity.Infrastructure;
-    
     public partial class BlocksEntities : DbContext
     {
         public BlocksEntities()

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Linq;
 using System.Data.Entity;
-using MyTest;
 using Blocks.BussnessEntityModule;
+using EntityFramework.Test;
 using Xunit;
 
 namespace UnitTestProject1

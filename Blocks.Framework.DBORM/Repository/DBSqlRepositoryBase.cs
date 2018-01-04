@@ -21,7 +21,6 @@ namespace Blocks.Framework.DBORM.Repository
 {
 
     public class DBSqlRepositoryBase<TEntity> : DBSqlRepositoryBase<BlocksDbContext<TEntity>, TEntity, Guid>
-        where TEntity : Data.Entity.Entity
 
     {
         protected readonly DbSetContext<BlocksDbContext<TEntity>> Tables;
@@ -32,6 +31,10 @@ namespace Blocks.Framework.DBORM.Repository
         public DBSqlRepositoryBase(DBContext.IDbContextProvider dbContextProvider) : base(dbContextProvider)
         {
             Tables = new DbSetContext<BlocksDbContext<TEntity>>(this.Context);
+
+            //Context.Configuration.AutoDetectChangesEnabled = false;
+            Context.Configuration.LazyLoadingEnabled = false;
+            Context.Configuration.ProxyCreationEnabled = false;
         }
         public ILinqQueryable<TEntity> GetContextTable()
         {
@@ -52,11 +55,20 @@ namespace Blocks.Framework.DBORM.Repository
             
             return new DefaultLinqQueryable<TEntity>(query){ };
         }
-        
+
+        internal new IQueryable<TEntity> GetAll()
+        {
+            return base.GetAll();
+        }
+
+        internal new IQueryable<TEntity> GetAllIncluding(params Expression<Func<TEntity, object>>[] propertySelectors)
+        {
+            return base.GetAllIncluding(propertySelectors);
+        }
     }
 
 
-   public class DbSetContext<TDbContext>  where TDbContext : DbContext
+    public class DbSetContext<TDbContext>  where TDbContext : DbContext
     {
         private readonly TDbContext _context;
         private ConcurrentDictionary<Type, object> dbSetCache;
@@ -73,7 +85,7 @@ namespace Blocks.Framework.DBORM.Repository
                 _context.Set<TEntity>()
             );
         }
-        
+      
     }
      /// <summary>
     /// Implements IRepository for Entity Framework.
@@ -157,7 +169,7 @@ namespace Blocks.Framework.DBORM.Repository
                 }
             }
 
-            return query;
+            return query.AsNoTracking();
         }
 
         public override async Task<List<TEntity>> GetAllListAsync()

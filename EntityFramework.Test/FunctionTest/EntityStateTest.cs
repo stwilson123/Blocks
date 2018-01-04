@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Data.Entity;
 using System.Linq;
-using MyTest;
 using Xunit;
 
 namespace EntityFramework.Test.FunctionTest
@@ -17,35 +16,90 @@ namespace EntityFramework.Test.FunctionTest
                 
                 testEntity.TestEntity2ID = Guid.NewGuid();
                 Assert.Equal(context.Entry(testEntity).State, EntityState.Modified);
+ 
+
             }
         }
         
         
         [Fact]
-        public void CloseAutoDetect()
+        public void CloseAutoDetectAllModifyIsunchaned_ButCanManalDetect()
         {
             using (var context = new BlocksEntities())
             {
                 context.Configuration.AutoDetectChangesEnabled = false;
-                var testEntity = context.TestEntity.FirstOrDefault();
-                
-                testEntity.TestEntity2ID = Guid.NewGuid();
-                var state = context.Entry(testEntity).State;
-                Assert.Equal(state, EntityState.Unchanged);
+                var testEntities = context.TestEntity.Take(2).ToList();
+                var newGuid = Guid.NewGuid();
+                testEntities[0].TestEntity2ID = newGuid;
+                var dbEntry = context.Entry(testEntities[0]);
+                Assert.Equal(dbEntry.State, EntityState.Unchanged);
+              
+
+
+                context.ChangeTracker.DetectChanges();
+                Assert.Equal(context.Entry(testEntities[0]).State, EntityState.Modified);
+       
+
             }
         }
         
         
         [Fact]
-        public void OnceGetDataNoDetectIsDetached()
+        public void GetDataWithNoTrackingIsDetached_notCache_notUpdate()
         {
+            var id = Guid.Empty;
+            var newGuid = Guid.Empty;
             using (var context = new BlocksEntities())
             {
                 var testEntity = context.TestEntity.AsNoTracking().FirstOrDefault();
-                
-                testEntity.TestEntity2ID = Guid.NewGuid();
-                var state = context.Entry(testEntity).State;
-                Assert.Equal(state, EntityState.Detached);
+                newGuid = Guid.NewGuid();
+                testEntity.TestEntity2ID = newGuid;
+                var EntityEntry = context.Entry(testEntity);
+                Assert.Equal(EntityEntry.State, EntityState.Detached);
+
+                id = testEntity.Id;
+                context.SaveChanges();
+                var newEntityNoTracking = context.TestEntity.AsNoTracking().FirstOrDefault(t => t.Id == id);
+                Assert.NotEqual(newEntityNoTracking.TestEntity2ID, newGuid);
+
+                var newEntity = context.TestEntity.FirstOrDefault(t => t.Id == id);
+                Assert.NotEqual(newEntity.TestEntity2ID, newGuid);
+
+            }
+
+            using (var context = new BlocksEntities())
+            {
+                var testEntity = context.TestEntity.AsNoTracking().FirstOrDefault(t => t.Id == id);
+
+                Assert.NotEqual(testEntity.TestEntity2ID, newGuid);
+            }
+        }
+
+
+        [Fact]
+        public void GetDataWithNoTrackingAttach()
+        {
+            var id = Guid.Empty;
+            var newGuid = Guid.Empty;
+            using (var context = new BlocksEntities())
+            {
+                var testEntity = context.TestEntity.AsNoTracking().FirstOrDefault();
+                newGuid = Guid.NewGuid();
+                testEntity.TestEntity2ID = newGuid;
+                var EntityEntry = context.Entry(testEntity);
+                Assert.Equal(EntityEntry.State, EntityState.Detached);
+                id = testEntity.Id;
+                context.SaveChanges();
+                var newEntity = context.TestEntity.AsNoTracking().FirstOrDefault(t => t.Id == id);
+                Assert.NotEqual(newEntity.TestEntity2ID, newGuid);
+                 
+            }
+
+            using (var context = new BlocksEntities())
+            {
+                var testEntity = context.TestEntity.AsNoTracking().FirstOrDefault(t => t.Id == id);
+
+                Assert.NotEqual(testEntity.TestEntity2ID, newGuid);
             }
         }
     }
