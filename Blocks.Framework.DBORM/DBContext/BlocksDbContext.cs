@@ -50,7 +50,6 @@ namespace Blocks.Framework.DBORM.DBContext
         /// </summary>
         public BlocksDbContext(IEnumerable<IEntityConfiguration> entityConfigurations) : base(entityConfigurations)
         {
-          
         }
 
         /// <summary>

@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Abp.Domain.Entities;
+using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Blocks.BussnessEntityModule
 {
-    public class TestEntity2  
+    public class TestEntity2  : Entity
     {
         public Guid Id { set; get; }
 

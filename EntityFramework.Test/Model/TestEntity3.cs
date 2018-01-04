@@ -1,8 +1,9 @@
-﻿using System;
+﻿using Blocks.Framework.Data.Entity;
+using System;
 
 namespace Blocks.BussnessEntityModule
 {
-    public class TestEntity3
+    public class TestEntity3 : Entity
     {
         public Guid Id { set; get; }
 

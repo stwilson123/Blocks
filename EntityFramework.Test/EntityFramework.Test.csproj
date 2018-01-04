@@ -101,9 +101,21 @@
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Adp\Abp.AutoMapper\Abp.AutoMapper.csproj">
+      <Project>{44ee7b2b-c3e5-42b9-95d9-79f8742d6129}</Project>
+      <Name>Abp.AutoMapper</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Adp\Abp\Abp.csproj">
       <Project>{0f98c63c-d019-4f38-9ac3-f5d7bcad9107}</Project>
       <Name>Abp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Blocks.Core\Blocks.Core.csproj">
+      <Project>{17298ea0-af73-4f30-b6f1-2066100d7d74}</Project>
+      <Name>Blocks.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Blocks.EntityFramework\Blocks.EntityFramework.csproj">
+      <Project>{3979f157-deb0-4878-ab1d-4cef6b5a1300}</Project>
+      <Name>Blocks.EntityFramework</Name>
     </ProjectReference>
     <ProjectReference Include="..\Blocks.Framework.DBORM\Blocks.Framework.DBORM.csproj">
       <Project>{9CA5B764-D047-4662-BA93-DB578ED89E4E}</Project>

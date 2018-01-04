@@ -1,10 +1,11 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Collections.Generic;
+using Blocks.Framework.Data.Entity;
 
 namespace Blocks.BussnessEntityModule
 {
-    public class TestEntity  
+    public class TestEntity  : Entity
     {
         public Guid Id { set; get; }
         

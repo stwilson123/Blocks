@@ -1,6 +1,7 @@
 ﻿using System.Threading;
 using EntityFramework.Test.Model;
 using Xunit;
+using System;
 
 namespace EntityFramework.Test.FunctionTest
 {
@@ -10,7 +11,7 @@ namespace EntityFramework.Test.FunctionTest
         public void FirstOrDefault()
         {
             var rep =  Resolve<TestRepository>();
-            var testEntity = rep.FirstOrDefault();
+            var testEntity = rep.FirstOrDefault(t => t.Id == Guid.NewGuid());
         }
         
     }
