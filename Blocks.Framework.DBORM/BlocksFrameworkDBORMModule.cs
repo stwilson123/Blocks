@@ -35,7 +35,8 @@ namespace Blocks.Framework.DBORM
 
         public override void PreInitialize()
         {
-         
+            Database.SetInitializer<BaseBlocksDbContext>(null);
+
         }
 
         public override void Initialize()
