@@ -19,6 +19,8 @@ using Blocks.Framework.Localization;
 using Blocks.Framework.Modules;
 using Castle.MicroKernel.Registration;
 using AbpDbContext = Abp.EntityFramework.AbpDbContext;
+using System.Data.Entity.Infrastructure.Interception;
+using Blocks.Framework.DBORM.Intercepter;
 
 namespace Blocks.Framework.DBORM
 {
@@ -36,7 +38,9 @@ namespace Blocks.Framework.DBORM
         public override void PreInitialize()
         {
             Database.SetInitializer<BaseBlocksDbContext>(null);
-
+#if DEBUG
+            DbInterception.Add(new EFIntercepterLogging());
+#endif
         }
 
         public override void Initialize()

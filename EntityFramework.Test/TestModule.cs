@@ -1,21 +1,25 @@
 ﻿using System.Reflection;
+using Abp.AutoMapper;
 using Abp.Modules;
 using Abp.TestBase;
-using Abp.AutoMapper;
 using Blocks;
+using Blocks.Framework.DBORM;
+using Castle.MicroKernel.Registration;
+using Blocks.Framework.Configurations;
+using System.Linq;
 
 namespace EntityFramework.Test
 {
     [DependsOn(
-        typeof(Blocks.Framework.DBORM.BlocksFrameworkDBORMModule),
         typeof(AbpTestBaseModule),
+        typeof(AbpAutoMapperModule),
         typeof(BlocksDataModule),
-        typeof(AbpAutoMapperModule))]
+        typeof(BlocksFrameworkDBORMModule)
+    )]
     public class TestModule : AbpModule
     {
         public override void PreInitialize()
         {
-            
         }
 
 
@@ -23,6 +27,13 @@ namespace EntityFramework.Test
         {
             IocManager.RegisterAssemblyByConvention(Assembly.GetExecutingAssembly());
 
+            IocManager.IocContainer.Register(
+                Classes.FromAssembly(Assembly.GetExecutingAssembly())
+                    .BasedOn<IConfiguration>()
+                    .If(type => !type.GetTypeInfo().IsGenericTypeDefinition)
+                    .WithService.Select((t, baseTypes) => t.GetInterfaces().Where(bType => typeof(IConfiguration) != bType && typeof(IConfiguration).IsAssignableFrom(bType)))
+                    .LifestyleTransient()
+            );
         }
     }
 }

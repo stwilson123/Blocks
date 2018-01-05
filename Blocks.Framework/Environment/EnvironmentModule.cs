@@ -43,17 +43,17 @@ namespace Blocks.Framework.Environment
         {
             //TODO Facecade validate avaliable features
             #region MyRegion
-            var availablFeatures = IocManager.Resolve<IExtensionManager>().AvailableFeatures().ToList();
-            var allDependencies = availablFeatures.SelectMany(f => f.Dependencies);
-            var notExistsDependcies = allDependencies.Where(d => !availablFeatures.Any(f => d == f.Name));
-            if (notExistsDependcies.Any())
-            {
-                throw new ExtensionNotFoundException($"These dependenies [{string.Join(",", notExistsDependcies)}] can't found it's feature");
-            }
-            var listAssemblies = IocManager.Resolve<AbpPlugInManager>()
-                .PlugInSources
-                .GetAllAssemblies()
-                .Where(t => allDependencies.Contains(t.GetName().Name)).Distinct();
+            //var availablFeatures = IocManager.Resolve<IExtensionManager>().AvailableFeatures().ToList();
+            //var allDependencies = availablFeatures.SelectMany(f => f.Dependencies);
+            //var notExistsDependcies = allDependencies.Where(d => !availablFeatures.Any(f => d == f.Name));
+            //if (notExistsDependcies.Any())
+            //{
+            //    throw new ExtensionNotFoundException($"These dependenies [{string.Join(",", notExistsDependcies)}] can't found it's feature");
+            //}
+            //var listAssemblies = IocManager.Resolve<AbpPlugInManager>()
+            //    .PlugInSources
+            //    .GetAllAssemblies()
+            //    .Where(t => allDependencies.Contains(t.GetName().Name)).Distinct();
 
 //            foreach (var assembly in listAssemblies)
 //            {

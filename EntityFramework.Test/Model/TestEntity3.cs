@@ -5,7 +5,6 @@ namespace Blocks.BussnessEntityModule
 {
     public class TestEntity3 : Entity
     {
-        public Guid Id { set; get; }
 
         public string TestId { set; get; }
 

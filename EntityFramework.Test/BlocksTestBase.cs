@@ -22,18 +22,18 @@ namespace EntityFramework.Test
         {
             //Seed initial data for host
             AbpSession.TenantId = null;
-            UsingDbContext(context =>
-            {
-//                new InitialHostDbBuilder(context).Create();
-//                new DefaultTenantCreator(context).Create();
-            });
+//            UsingDbContext(context =>
+//            {
+////                new InitialHostDbBuilder(context).Create();
+////                new DefaultTenantCreator(context).Create();
+//            });
 
-            //Seed initial data for default tenant
-            AbpSession.TenantId = 1;
-            UsingDbContext(context =>
-            {
-//                new TenantRoleAndUserBuilder(context, 1).Create();
-            });
+//            //Seed initial data for default tenant
+//            AbpSession.TenantId = 1;
+//            UsingDbContext(context =>
+//            {
+////                new TenantRoleAndUserBuilder(context, 1).Create();
+//            });
 
 //            LoginAsDefaultTenantAdmin();
         }

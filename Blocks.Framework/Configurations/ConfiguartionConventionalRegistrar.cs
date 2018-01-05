@@ -30,7 +30,7 @@ namespace Blocks.Framework.Configurations
             if (extensionDescriptor == null)
             {
                 LogHelper.Logger.WarnFormat(
-                    $"{currentAssmeblyName} can't found extension depond on it.so ignore to register BlockWebController");
+                    $"{currentAssmeblyName} can't found extension depond on it.so ignore to register BlocksConfiguration");
                 return;
             }
             var configKey = $"{extensionDescriptor.Name}\\{AppConfigKey}";

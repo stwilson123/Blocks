@@ -1,10 +1,11 @@
 ﻿using Blocks.BussnessEntityModule;
+using Blocks.BussnessRespositoryModule;
 using Blocks.Framework.DBORM.DBContext;
 using Blocks.Framework.DBORM.Repository;
 
 namespace EntityFramework.Test.Model
 {
-    public class TestRepository : DBSqlRepositoryBase<TestEntity>
+    public class TestRepository : DBSqlRepositoryBase<TestEntity>,ITestRepository  
     {
         public TestRepository(IDbContextProvider dbContextProvider) : base(dbContextProvider)
         {

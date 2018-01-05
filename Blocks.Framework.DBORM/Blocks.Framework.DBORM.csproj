@@ -94,6 +94,7 @@
     <Compile Include="DBContext\IDbContextProvider.cs" />
     <Compile Include="DBContext\UnitOfWorkDbContextProvider.cs" />
     <Compile Include="Entity\EntityConfigConventionalRegistrar.cs" />
+    <Compile Include="Intercepter\EFIntercepterLogging.cs" />
     <Compile Include="Linq\DefaultLinqQueryable.cs" />
     <Compile Include="Linq\ILinqQueryable.cs" />
     <Compile Include="Linq\LinqRuntimeTypeBuilder.cs" />

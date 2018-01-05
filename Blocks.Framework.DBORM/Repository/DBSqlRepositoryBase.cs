@@ -56,15 +56,7 @@ namespace Blocks.Framework.DBORM.Repository
             return new DefaultLinqQueryable<TEntity>(query){ };
         }
 
-        internal new IQueryable<TEntity> GetAll()
-        {
-            return base.GetAll();
-        }
-
-        internal new IQueryable<TEntity> GetAllIncluding(params Expression<Func<TEntity, object>>[] propertySelectors)
-        {
-            return base.GetAllIncluding(propertySelectors);
-        }
+         
     }
 
 
@@ -153,11 +145,23 @@ namespace Blocks.Framework.DBORM.Repository
 
         public override IQueryable<TEntity> GetAll()
         {
-            return GetAllIncluding();
+            throw new NotSupportedException("This Method is not supported");
         }
 
       
         public override IQueryable<TEntity> GetAllIncluding(params Expression<Func<TEntity, object>>[] propertySelectors)
+        {
+            throw new NotSupportedException("This Method is not supported");
+
+        }
+
+
+        private  IQueryable<TEntity> GetAllCode()
+        {
+            return GetAllIncludingCode();
+        }
+
+        private IQueryable<TEntity> GetAllIncludingCode(params Expression<Func<TEntity, object>>[] propertySelectors)
         {
             var query = Table.AsQueryable();
 
@@ -171,32 +175,32 @@ namespace Blocks.Framework.DBORM.Repository
 
             return query.AsNoTracking();
         }
-
-        public override async Task<List<TEntity>> GetAllListAsync()
+        public override List<TEntity> GetAllList()
         {
-            return await GetAll().ToListAsync();
+            return GetAllCode().ToList();
         }
 
-        public override async Task<List<TEntity>> GetAllListAsync(Expression<Func<TEntity, bool>> predicate)
+      
+
+        public override List<TEntity> GetAllList(Expression<Func<TEntity, bool>> predicate)
         {
-            return await GetAll().Where(predicate).ToListAsync();
+            return GetAllCode().Where(predicate).ToList();
         }
 
-        public override async Task<TEntity> SingleAsync(Expression<Func<TEntity, bool>> predicate)
+      
+        public override TEntity FirstOrDefault(TPrimaryKey id)
         {
-            return await GetAll().SingleAsync(predicate);
+            return GetAllCode().FirstOrDefault(CreateEqualityExpressionForId(id));
         }
-
-        public override async Task<TEntity> FirstOrDefaultAsync(TPrimaryKey id)
+        public override TEntity FirstOrDefault(Expression<Func<TEntity, bool>> predicate)
         {
-            return await GetAll().FirstOrDefaultAsync(CreateEqualityExpressionForId(id));
-        }
+            return GetAllCode().FirstOrDefault(predicate);
 
-        public override async Task<TEntity> FirstOrDefaultAsync(Expression<Func<TEntity, bool>> predicate)
+        }
+        public override TEntity Single(Expression<Func<TEntity, bool>> predicate)
         {
-            return await GetAll().FirstOrDefaultAsync(predicate);
+            return GetAllCode().Single(predicate);
         }
-
         public override TEntity Insert(TEntity entity)
         {
             return Table.Add(entity);
@@ -294,26 +298,17 @@ namespace Blocks.Framework.DBORM.Repository
             //Could not found the entity, do nothing.
         }
 
-        public override async Task<int> CountAsync()
+        public override int Count(Expression<Func<TEntity, bool>> predicate)
         {
-            return await GetAll().CountAsync();
+            return GetAllCode().Where(predicate).Count();
         }
 
-        public override async Task<int> CountAsync(Expression<Func<TEntity, bool>> predicate)
-        {
-            return await GetAll().Where(predicate).CountAsync();
-        }
 
-        public override async Task<long> LongCountAsync()
-        {
-            return await GetAll().LongCountAsync();
-        }
 
-        public override async Task<long> LongCountAsync(Expression<Func<TEntity, bool>> predicate)
+        public override long LongCount(Expression<Func<TEntity, bool>> predicate)
         {
-            return await GetAll().Where(predicate).LongCountAsync();
+            return GetAllCode().Where(predicate).LongCount();
         }
-
         protected virtual void AttachIfNot(TEntity entity)
         {
             var entry = Context.ChangeTracker.Entries().FirstOrDefault(ent => ent.Entity == entity);
@@ -323,6 +318,13 @@ namespace Blocks.Framework.DBORM.Repository
             }
 
             Table.Attach(entity);
+        }
+
+
+        public override T Query<T>(Func<IQueryable<TEntity>, T> queryMethod)
+        {
+            throw new NotSupportedException("This Method is not supported");
+
         }
 
         public DbContext GetDbContext()
