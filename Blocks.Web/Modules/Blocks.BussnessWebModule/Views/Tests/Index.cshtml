@@ -1,15 +1,16 @@
-﻿@using Blocks.Framework.Web.Mvc.Extensions
+﻿@using System.Web.Optimization
+@using Blocks.Framework.Web.Mvc.Extensions
  
 @{
     Layout =  ResourceManager.GetTemplateNotCache("_LayoutFirst",this.VirtualPath);
 }
-
 @section body
 {
     <div>
         @ViewBag.Index
         123123123123123123123
         @Html.Partial("_LayoutPartialViewFirst")
+       
     </div>
 }
 

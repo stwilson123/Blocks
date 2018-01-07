@@ -10,6 +10,8 @@
 
 @section body
 {
+    <link href="~/Content/IndexCss.css"  type="text/css" rel="stylesheet" /> 
+
     @*    @Html.Action("GetTestPartialView","Layout")*@
     @{ Html.RenderPartial(ResourceManager.GetTemplateNotCache("_LayoutPartialViewFirst",this.VirtualPath)); }
     @RenderSection("body",false)
