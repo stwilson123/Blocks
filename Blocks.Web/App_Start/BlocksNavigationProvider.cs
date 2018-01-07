@@ -24,15 +24,15 @@ namespace Blocks.Web
                         requiresAuthentication: true
                     )
                 )
-                .AddItem(
-                    new MenuItemDefinition(
-                        PageNames.Tests,
-                        L("Users"),
-                        url: "BussnessWebModule/Tests",
-                        icon: "people",
-                        requiredPermissionName: PermissionNames.Pages_Users
-                    )
-                )
+                //.AddItem(
+                //    new MenuItemDefinition(
+                //        PageNames.Tests,
+                //        L("Users"),
+                //        url: "BussnessWebModule/Tests",
+                //        icon: "people",
+                //        requiredPermissionName: PermissionNames.Pages_Users
+                //    )
+                //)
                 .AddItem(
                     new MenuItemDefinition(
                         PageNames.Tenants,

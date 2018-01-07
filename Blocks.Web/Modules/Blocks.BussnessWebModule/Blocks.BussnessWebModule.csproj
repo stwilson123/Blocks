@@ -105,6 +105,7 @@
     <Compile Include="BussnessWebConfiguration.cs" />
     <Compile Include="Controllers\TestsMvcController.cs" />
     <Compile Include="Models\DefaultModel.cs" />
+    <Compile Include="Module_Start\BlocksNavigationProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Tests\_LayoutPartialViewFirst.cshtml" />

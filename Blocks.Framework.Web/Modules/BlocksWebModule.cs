@@ -47,7 +47,7 @@ namespace Blocks.Framework.Web.Modules
         }
         public override void PreInitialize()
         {
-           
+            PreInitializeEvent();
         }
 
         /// <summary>
@@ -135,6 +135,17 @@ namespace Blocks.Framework.Web.Modules
 
         }
  
+        
+        /// <summary>
+        /// This is the first event called on application startup. 
+        /// Codes can be placed here to run before dependency injection registrations.
+        /// </summary>
+        /// This method is used to register dependencies for this module.
+        /// </summary>
+        public virtual void PreInitializeEvent()
+        {
+
+        }
 
         private void RouteHandle(string featureName)
         {
