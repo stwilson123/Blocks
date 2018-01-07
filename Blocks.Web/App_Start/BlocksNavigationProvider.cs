@@ -17,6 +17,15 @@ namespace Blocks.Web
             context.Manager.MainMenu
                 .AddItem(
                     new MenuItemDefinition(
+                        PageNames.Tests,
+                        L("Users"),
+                        url: "Tests/Index",
+                        icon: "people",
+                        requiredPermissionName: PermissionNames.Pages_Users
+                    )
+                )
+                .AddItem(
+                    new MenuItemDefinition(
                         PageNames.Home,
                         L("HomePage"),
                         url: "",
