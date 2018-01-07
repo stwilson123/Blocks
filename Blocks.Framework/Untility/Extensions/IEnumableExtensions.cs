@@ -27,7 +27,17 @@ namespace Blocks.Framework.Untility.Extensions
             }
       
         }
-        
-        
+        public static IList<TSource> AddRange<TSource>(this IList<TSource> iEnumerable, IList<TSource> Items)
+        {
+            if (Items == null)
+                return iEnumerable;
+
+            foreach (var item in Items)
+            {
+                iEnumerable.Add(item);
+            }
+            return iEnumerable;
+        }
+
     }
 }

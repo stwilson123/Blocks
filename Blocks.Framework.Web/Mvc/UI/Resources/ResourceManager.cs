@@ -11,6 +11,7 @@ using System.Web.Mvc;
 using System.Web.UI.WebControls.WebParts;
 using Abp.Dependency;
 using Blocks.Framework.Ioc.Dependency;
+using Blocks.Framework.Untility.Extensions;
 
 namespace Blocks.Framework.Web.Mvc.UI.Resources {
     public class ResourceManager : IResourceManager, IUnitOfWorkDependency {// IUnitOfWorkDependency {
@@ -406,8 +407,8 @@ namespace Blocks.Framework.Web.Mvc.UI.Resources {
                 : httpContext.Request.ApplicationPath;
             
             var requiredResources = this.BuildRequiredResources("script");
-            requiredResources?.Concat(this.BuildRequiredResources("stylesheet"));
-            requiredResources?.Concat(this.BuildRequiredResources("template"));
+             requiredResources?.AddRange(this.BuildRequiredResources("stylesheet"));
+             requiredResources?.AddRange(this.BuildRequiredResources("template"));
 
             foreach (var context in requiredResources)
             {

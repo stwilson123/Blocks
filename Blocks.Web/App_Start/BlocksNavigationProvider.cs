@@ -17,22 +17,23 @@ namespace Blocks.Web
             context.Manager.MainMenu
                 .AddItem(
                     new MenuItemDefinition(
-                        PageNames.Tests,
-                        L("Users"),
-                        url: "Tests/Index",
-                        icon: "people",
-                        requiredPermissionName: PermissionNames.Pages_Users
-                    )
-                )
-                .AddItem(
-                    new MenuItemDefinition(
                         PageNames.Home,
                         L("HomePage"),
                         url: "",
                         icon: "home",
                         requiresAuthentication: true
                     )
-                ).AddItem(
+                )
+                .AddItem(
+                    new MenuItemDefinition(
+                        PageNames.Tests,
+                        L("Users"),
+                        url: "BussnessWebModule/Tests",
+                        icon: "people",
+                        requiredPermissionName: PermissionNames.Pages_Users
+                    )
+                )
+                .AddItem(
                     new MenuItemDefinition(
                         PageNames.Tenants,
                         L("Tenants"),

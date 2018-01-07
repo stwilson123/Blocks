@@ -9,6 +9,8 @@ namespace Blocks.BussnessApplicationModule.TestAppService
         public TestAppService(TestDomain testDomain)
         {
             this.testDomain = testDomain;
+            
+            
         }
 
         private TestDomain testDomain { get; set; }
