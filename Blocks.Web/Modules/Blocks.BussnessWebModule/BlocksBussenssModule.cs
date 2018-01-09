@@ -7,12 +7,13 @@ namespace Blocks.BussnessWebModule
     {
         public override void PreInitializeEvent()
         {
-            Configuration.Navigation.Providers.Add<BlocksNavigationProvider>();
 
         }
 
         public override void InitializeEvent()
         {
+            Configuration.Navigation.Providers.Add<BlocksNavigationProvider>();
+
         }
     }
 }
