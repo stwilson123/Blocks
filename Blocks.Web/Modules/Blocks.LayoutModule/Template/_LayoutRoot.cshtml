@@ -14,8 +14,9 @@
 </head>
 <body>
 @RenderSection("body",false)
-@RenderSection("script", required: false)
 @Html.IncludeScript(ResourceManager.GetRegisteredHeadScripts())
 @Html.IncludeScript(ResourceManager.GetRegisteredFootScripts())
+@RenderSection("script", required: false)
+
 </body>
 </html>
