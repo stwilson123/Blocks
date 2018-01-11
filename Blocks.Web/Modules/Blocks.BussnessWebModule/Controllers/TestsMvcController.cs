@@ -22,5 +22,11 @@ namespace Blocks.BussnessWebModule.Controllers
             ViewBag.Index = "123123123aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
             return View();
         }
+        
+        public ActionResult TranditionLayoutTest()
+        {
+            ViewBag.Index = "123123123aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+            return View();
+        }
     }
 }

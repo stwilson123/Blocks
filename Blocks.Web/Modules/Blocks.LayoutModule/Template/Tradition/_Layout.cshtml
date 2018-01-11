@@ -1,10 +1,24 @@
 @using Blocks.Framework.Web.Mvc.Extensions
 @{
-   Layout = ResourceManager.GetTemplateNotCache("_LayoutRoot",this.VirtualPath);//"~/Template/_LayoutRoot.cshtml";
+   Layout = ResourceManager.GetTemplateNotCache("Tradition/_Layout",this.VirtualPath);//"~/Template/_LayoutRoot.cshtml";
 }
 @section register
 {
-  @{ Script.Require("jQuery").AtHead(); }
+  @{
+      Style.Require("roboto").AtHead();
+      Style.Require("material_icons").AtHead();
+      Style.Require("bootstrap_select").AtHead();
+      Style.Require("toastr").AtHead();
+      Style.Require("sweetalert").AtHead();
+      Style.Require("font_awesome").AtHead();
+      Style.Require("waves").AtHead();
+      Style.Require("animate").AtHead();
+      Style.Include("/css/materialize.css").AtHead();
+      Style.Include("/css/style.css").AtHead();
+      Style.Include("/css/themes/all-themes.css").AtHead();
+      Style.Include("_Layout.css").AtHead();
+
+  }
 }
  
 

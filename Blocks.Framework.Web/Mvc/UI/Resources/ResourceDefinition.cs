@@ -24,8 +24,10 @@ namespace Blocks.Framework.Web.Mvc.UI.Resources {
             { "link", TagRenderMode.SelfClosing }
         };
         private static readonly Dictionary<string, string> _resourceTypeDirectories = new Dictionary<string, string> {
-            {"script", "scripts/"},
-            {"stylesheet", "styles/"},
+//            {"script", "scripts/"},
+//            {"stylesheet", "styles/"},
+            {"script", ""},
+            {"stylesheet", ""},
             {"template", "template/"}
 
         };
@@ -53,10 +55,11 @@ namespace Blocks.Framework.Web.Mvc.UI.Resources {
                 return null;
             }
             string basePath = null;
-            var viewsPartIndex = viewPath.IndexOf("/Views", StringComparison.OrdinalIgnoreCase);
-            if (viewsPartIndex >= 0) {
-                basePath = viewPath.Substring(0, viewsPartIndex + 1) + GetResourcePath(resourceType);
-            }
+//            var viewsPartIndex = viewPath.IndexOf("/Views", StringComparison.OrdinalIgnoreCase);
+//            if (viewsPartIndex >= 0) {
+//                basePath = viewPath.Substring(0, viewsPartIndex + 1) + GetResourcePath(resourceType);
+//            }
+            basePath = viewPath;
             return basePath;
         }
 

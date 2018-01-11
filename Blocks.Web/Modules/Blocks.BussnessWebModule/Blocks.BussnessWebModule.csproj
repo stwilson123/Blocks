@@ -109,6 +109,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Styles\Index\IndexCss.css" />
+    <Content Include="Views\Tests\IndexCss.css" />
+    <Content Include="Views\Tests\TranditionLayoutTest.cshtml" />
     <Content Include="Views\Tests\_LayoutPartialViewFirst.cshtml" />
   </ItemGroup>
   <ItemGroup>

@@ -12,6 +12,7 @@ namespace Blocks.LayoutModule {
             manifest.DefineResource("template","_LayoutRoot").SetUrl("_LayoutRoot.cshtml", "_LayoutRoot.cshtml").SetVersion("0.1");
             manifest.DefineResource("template","_LayoutFirst").SetUrl("_LayoutFirst.cshtml", "_LayoutFirst.cshtml").SetVersion("0.1");
             manifest.DefineResource("template","_LayoutPartialViewFirst").SetUrl("_LayoutPartialViewFirst.cshtml", "_LayoutPartialViewFirst.cshtml").SetVersion("0.1");
+            manifest.DefineResource("template","Tradition/_Layout").SetUrl("_Layout.cshtml", "_Layout.cshtml").SetVersion("0.1");
 
         }
 
