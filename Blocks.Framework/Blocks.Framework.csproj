@@ -114,6 +114,7 @@
     <Compile Include="Configurations\ConfiguartionConventionalRegistrar.cs" />
     <Compile Include="Configurations\AppConfigManager.cs" />
     <Compile Include="Configurations\ConfigurationException.cs" />
+    <Compile Include="Configurations\DebugState.cs" />
     <Compile Include="Configurations\IConfiguration.cs" />
     <Compile Include="Configurations\Provider\SettingProvider.cs" />
     <Compile Include="Data\Entity\Entity.cs" />

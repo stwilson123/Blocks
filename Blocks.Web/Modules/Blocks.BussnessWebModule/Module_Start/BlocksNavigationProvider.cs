@@ -19,7 +19,7 @@ namespace Blocks.BussnessWebModule.Module_Start
                     new MenuItemDefinition(
                         "Test",
                         L("Tests"),
-                        url: "BussnessWebModule/Tests",
+                        url: "BussnessWebModule/Tests/TranditionLayoutTest",
                         icon: "people",
                         requiredPermissionName: "Pages.Users"
                     )

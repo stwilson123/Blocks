@@ -33,7 +33,8 @@
         var abp = abp || {}; abp.appPath = '@ApplicationPath';
     </script>
 </head>
-<body class="@("theme-" + uiTheme)">
+<body >
+<div class="@("theme-" + uiTheme)">
     <!-- Page Loader -->
     <div class="page-loader-wrapper">
         <div class="loader">
@@ -76,11 +77,19 @@
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Call Search -->
-                    <li><a href="javascript:void(0);" class="js-search" data-close="true"><i class="material-icons">search</i></a></li>
+                    <li>
+                        <a href="javascript:void(0);" class="js-search" data-close="true">
+                            <i class="material-icons">search</i>
+                        </a>
+                    </li>
                     <!-- #END# Call Search -->
                     @Html.Action("LanguageSelection", "Layout")
 
-                    <li class="pull-right"><a href="javascript:void(0);" class="js-right-sidebar" data-close="true"><i class="material-icons">more_vert</i></a></li>
+                    <li class="pull-right">
+                        <a href="javascript:void(0);" class="js-right-sidebar" data-close="true">
+                            <i class="material-icons">more_vert</i>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -90,7 +99,7 @@
         <aside id="leftsidebar" class="sidebar">
 
             @Html.Action("SideBarUserArea", "Layout")
-            @Html.Action("SideBarNav", "Layout", new { activeMenu = ViewBag.ActiveMenu })
+            @Html.Action("SideBarNav", "Layout", new {activeMenu = ViewBag.ActiveMenu})
 
             <!-- Footer -->
             <div class="legal">
@@ -113,23 +122,23 @@
             @RenderBody()
         </div>
     </section>
+</div>
+@Scripts.Render("~/Bundles/vendor/js/bottom")
 
-    @Scripts.Render("~/Bundles/vendor/js/bottom")
+<script>
+    //Localizing momentjs
+    moment.locale('@Thread.CurrentThread.CurrentUICulture.Name');
+</script>
 
-    <script>
-        //Localizing momentjs
-        moment.locale('@Thread.CurrentThread.CurrentUICulture.Name');
-    </script>
+<!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
+<script src="~/api/AbpServiceProxies/GetAll?v=@(Clock.Now.Ticks)"></script>
+<script src="~/AbpScripts/GetScripts?v=@(Clock.Now.Ticks)" type="text/javascript"></script>
 
-    <!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
-    <script src="~/api/AbpServiceProxies/GetAll?v=@(Clock.Now.Ticks)"></script>
-    <script src="~/AbpScripts/GetScripts?v=@(Clock.Now.Ticks)" type="text/javascript"></script>
+<!-- SignalR scripts -->
+<script src="~/signalr/hubs"></script>
+@Html.IncludeScript("~/Abp/Framework/scripts/libs/abp.signalr.js")
 
-    <!-- SignalR scripts -->
-    <script src="~/signalr/hubs"></script>
-    @Html.IncludeScript("~/Abp/Framework/scripts/libs/abp.signalr.js")
-
-    <!-- View specific scripts -->
-    @RenderSection("scripts", required: false)
+<!-- View specific scripts -->
+@RenderSection("scripts", required: false)
 </body>
 </html>

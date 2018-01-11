@@ -12,7 +12,7 @@ namespace Blocks.ResourcesModule.ResourceManifestProviders {
                 PathBuilder.BuilderStyle("bootstrap.css")).SetVersion("3.3.7");
             
             manifest.DefineStyle(ResourceName.bootstrap_select).SetUrl("lib/bootstrap-select/dist/css/bootstrap-select.min.css",
-                "lib/bootstrap-select/dist/css/bootstrap-select.css").SetVersion("3.3.7");
+                "lib/bootstrap-select/dist/css/bootstrap-select.css").SetVersion("3.3.7").SetDependencies(ResourceName.bootstrap);
             
             
             manifest.DefineScript(ResourceName.bootstrap).SetUrl(PathBuilder.BuilderScripts("bootstrap.min.js"),

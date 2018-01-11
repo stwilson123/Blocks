@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Abp.Configuration;
+using Blocks.Framework.Configurations;
 using Blocks.Framework.Configurations.Provider;
 using Blocks.Framework.Web.Configuartions;
 
@@ -15,7 +16,10 @@ namespace Blocks.Web
                     typeof(DatabaseType).Name,
                     DatabaseType.Sqlserver.ToString()
                 ),
-              
+                new SettingDefinition(
+                    typeof(DebugState).Name,
+                     DebugState.Debug.ToString()
+                ),
             };
         }
     }

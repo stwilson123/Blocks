@@ -9,7 +9,9 @@ using System.Runtime.CompilerServices;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.UI.WebControls.WebParts;
+using Abp.Configuration;
 using Abp.Dependency;
+using Blocks.Framework.Configurations;
 using Blocks.Framework.Ioc.Dependency;
 using Blocks.Framework.Untility.Extensions;
 
@@ -18,11 +20,13 @@ namespace Blocks.Framework.Web.Mvc.UI.Resources {
         private readonly Dictionary<Tuple<String, String>, RequireSettings> _required = new Dictionary<Tuple<String, String>, RequireSettings>();
         private readonly List<LinkEntry> _links = new List<LinkEntry>();
         private readonly Dictionary<string, MetaEntry> _metas = new Dictionary<string, MetaEntry> {
-            { "generator", new MetaEntry { Content = "Orchard", Name = "generator" } }
+            { "generator", new MetaEntry { Content = "Blocks", Name = "generator" } }
         };
         private readonly Dictionary<string, IList<ResourceRequiredContext>> _builtResources = new Dictionary<string, IList<ResourceRequiredContext>>(StringComparer.OrdinalIgnoreCase);
         //private readonly IEnumerable<Meta<IResourceManifestProvider>> _providers;
         private readonly IEnumerable<IResourceManifestProvider> _providers;
+        private readonly ISettingManager _setttingManager;
+
         private ResourceManifest _dynamicManifest;
         private List<String> _headScripts;
         private List<String> _footScripts;
@@ -94,8 +98,9 @@ namespace Blocks.Framework.Web.Mvc.UI.Resources {
         }
 
         public Guid guid;
-        public ResourceManager(IEnumerable<IResourceManifestProvider> resourceProviders) {
+        public ResourceManager(IEnumerable<IResourceManifestProvider> resourceProviders, ISettingManager setttingManager) {
             _providers = resourceProviders;
+            _setttingManager = setttingManager;
             guid = Guid.NewGuid();
         }
 
@@ -396,7 +401,7 @@ namespace Blocks.Framework.Web.Mvc.UI.Resources {
         public void WriteResources()
         {
             var defaultSettings = new RequireSettings {
-                DebugMode = false,
+                DebugMode = _setttingManager.GetSettingValue(typeof(DebugState).Name) == DebugState.Debug.ToString(),
                 CdnMode = false,
                 Culture = ""//_workContext.Value.CurrentCulture,
             };

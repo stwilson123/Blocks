@@ -9,8 +9,8 @@ namespace Blocks.ResourcesModule.ResourceManifestProviders {
             var manifest = builder.Add();
 
             // jQuery.
-            manifest.DefineStyle(ResourceName.roboto).SetUrl("fonts/fonts/roboto/roboto.css",
-                "fonts/fonts/roboto/roboto.css").SetVersion("0.5");
+            manifest.DefineStyle(ResourceName.roboto).SetUrl("fonts/roboto/roboto.css",
+                "fonts/roboto/roboto.css").SetVersion("0.5");
             
             manifest.DefineStyle(ResourceName.font_awesome).SetUrl("lib/font-awesome/css/font-awesome.min.css",
                 "lib/font-awesome/css/font-awesome.css").SetVersion("0.5");

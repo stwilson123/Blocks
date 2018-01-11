@@ -9,8 +9,8 @@ namespace Blocks.ResourcesModule.ResourceManifestProviders {
             var manifest = builder.Add();
 
             // jQuery.
-            manifest.DefineStyle(ResourceName.material_icons).SetUrl("fonts/fonts/material-icons/materialicons.css",
-                "fonts/fonts/material-icons/materialicons.css").SetVersion("0.5");
+            manifest.DefineStyle(ResourceName.material_icons).SetUrl("fonts/material-icons/materialicons.css",
+                "fonts/material-icons/materialicons.css").SetVersion("0.5");
             
             
         }
