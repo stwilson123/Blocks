@@ -20,12 +20,18 @@ namespace Blocks.ResourcesModule
         public static string font_awesome { get; } = "font_awesome";
         public static string waves { get; } = "waves";
         public static string animate { get; } = "animate";
-//        public static string toastr3 { get; } = "toastr";
-//        public static string toastr5 { get; } = "toastr";
-//        public static string toast4r { get; } = "toastr";
-//        public static string toastr5 { get; } = "toastr";
-//        public static string toastr6 { get; } = "toastr";
-//        public static string toastr6 { get; } = "toastr";
+        public static string json2 { get; } = "json2";
+        public static string moment { get; } = "moment";
+       
+        public static string  jquery_validate { get; } = "jquery_validate";
+        public static string jquery_blockUI { get; } = "jquery_blockUI";
+        public static string spin { get; } = "spin";
+        public static string jquery_spin { get; } = "jquery_spin";
+
+        public static string slimscroll { get; } = "slimscroll";
+        
+        public static string push { get; } = "push";
+
 
         
     }

@@ -101,6 +101,7 @@
     <Compile Include="ResourceManifestProviders\IconsResourceManifestProvider.cs" />
     <Compile Include="ResourceManifestProviders\PathBuilder.cs" />
     <Compile Include="ResourceManifestProviders\JQueryResourceManifestProvider.cs" />
+    <Compile Include="ResourceManifestProviders\ToolsResourceManifestProvider.cs" />
     <Compile Include="ResourceManifestProviders\UICommonResourceManifestProvider.cs" />
     <Compile Include="ResourceName.cs" />
     <Compile Include="ResourcesAppStartConfg.cs" />

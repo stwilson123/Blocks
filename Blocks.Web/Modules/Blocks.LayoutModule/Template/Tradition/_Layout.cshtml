@@ -19,6 +19,34 @@
       Style.Include("_Layout.css").AtHead();
 
   }
+
+    @{
+        Script.Require("json2").AtFoot();
+        Script.Require("bootstrap_select").AtFoot();
+        Script.Require("moment").AtFoot();
+        Script.Require("jquery_validation").AtFoot();
+        Script.Require("jquery_blockUI").AtFoot();
+        Script.Require("toastr").AtFoot();
+        Script.Require("sweetalert").AtFoot();
+        Script.Require("jquery_spin").AtFoot();
+        Script.Require("slimscroll").AtFoot();
+        Script.Require("waves").AtFoot();
+        Script.Require("push").AtFoot();
+      
+
+        
+        Script.Include("/lib/abp-web-resources/Abp/Framework/scripts/abp.js").AtFoot();
+        Script.Include("/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js").AtFoot();
+        Script.Include("/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js").AtFoot();
+        Script.Include("/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js").AtFoot();
+        Script.Include("/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js").AtFoot();
+        Script.Include("/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js").AtFoot();
+        Script.Include("/js/admin.js").AtFoot();
+        Script.Include("/js/main.js").AtFoot();
+        Script.Include("_Layout.js").AtFoot();
+        Script.Include("lib/signalr/jquery.signalR.js").AtFoot();
+
+    }
 }
  
 
