@@ -3,12 +3,11 @@ using System;
 
 namespace Blocks.BussnessEntityModule
 {
-    public class TestEntity3 : Entity
+    public partial class TestEntity3 : Entity
     {
 
-        public string TestId { set; get; }
+        public Guid? TestEntityId { set; get; }
 
-       public Guid TestEntityId { set; get; }
     }
 
     public class TestEntity3Configuration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<TestEntity3>

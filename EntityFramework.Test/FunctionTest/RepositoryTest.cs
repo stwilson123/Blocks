@@ -58,5 +58,15 @@ namespace EntityFramework.Test.FunctionTest
             rep.GetAll();
 
         }
+
+
+        [Fact]
+        public void queryCombination()
+        {
+            var rep = Resolve<TestRepository>();
+            var testEntity = rep.GetAllList();
+            var tes =  rep.GetValue("123");
+
+        }
     }
 }

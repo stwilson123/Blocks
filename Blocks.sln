@@ -96,6 +96,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blocks.Framework.Test", "Bl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VueSample", "VueSample\VueSample.csproj", "{7B52589F-3E98-4620-BA08-211174EE6AE3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blocks.BussnessDomainExModule", "Blocks.Web\Modules\Blocks.BussnessDomainExModule\Blocks.BussnessDomainExModule.csproj", "{FF36DA7E-B996-4AFB-8AAB-D5A3570D24C5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -254,6 +256,10 @@ Global
 		{7B52589F-3E98-4620-BA08-211174EE6AE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B52589F-3E98-4620-BA08-211174EE6AE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B52589F-3E98-4620-BA08-211174EE6AE3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF36DA7E-B996-4AFB-8AAB-D5A3570D24C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF36DA7E-B996-4AFB-8AAB-D5A3570D24C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF36DA7E-B996-4AFB-8AAB-D5A3570D24C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF36DA7E-B996-4AFB-8AAB-D5A3570D24C5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -290,6 +296,7 @@ Global
 		{1873B56F-99EA-4E0E-B9D4-F4C3293FB25D} = {68AE0090-E9AF-466A-A898-5A7438A6ED41}
 		{B26D0420-439F-4BC5-8551-A1A539803C4C} = {7E85C7E5-70BD-4C9D-B052-D95955F46609}
 		{7B52589F-3E98-4620-BA08-211174EE6AE3} = {7E85C7E5-70BD-4C9D-B052-D95955F46609}
+		{FF36DA7E-B996-4AFB-8AAB-D5A3570D24C5} = {68AE0090-E9AF-466A-A898-5A7438A6ED41}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DDBAC820-4861-4751-880D-917BF12E2C5D}

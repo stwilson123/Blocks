@@ -1,15 +1,12 @@
-﻿using Abp.Domain.Entities;
+﻿using Blocks.Framework.Data.Entity;
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Blocks.BussnessEntityModule
 {
-    public class TestEntity2  : Entity
+    public partial class TestEntity2 : Entity
     {
 
-        public Guid TestEntity3ID { set; get; }
-
-      
     }
 
     public class TestEntity2Configuration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<TestEntity2>
