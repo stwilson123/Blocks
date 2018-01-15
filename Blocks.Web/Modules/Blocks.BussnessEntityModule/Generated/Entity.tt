@@ -12,7 +12,7 @@
 	TrackModifiedColumns = true;
 	ExplicitColumns = false;
 	ExcludePrefix = new string[] {}; // Exclude tables by prefix.
-    MappingFile = "..\Configuration\PocoMapping.xml";
+    MappingFile = @"..\Configuration\PocoMapping.xml";
     // Read schema
 	var tables = LoadTables();
 

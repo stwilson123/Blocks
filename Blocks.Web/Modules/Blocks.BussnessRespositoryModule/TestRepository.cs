@@ -27,7 +27,7 @@ namespace Blocks.BussnessRespositoryModule
             var sql = GetContextTable().SelectToList(result => new {
                 Id = result.Id,
                 TestEntity2  = new  {   result.TestEntity2.Id},
-              //  TestEntity3s =  result.TestEntity3s
+                TestEntity3s =  result.TestEntity3s
             });
             return value;
         }

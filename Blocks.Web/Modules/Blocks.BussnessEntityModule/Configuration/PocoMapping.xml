@@ -1,10 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <poco-mapping>
     <entities>
-        <entityClass table="123">
+        <entityClass table="TestEntity">
             <generate-ones>
-                <generate-one name="123" property-ref="idCard" />
+                <!--<generate-one target_Entity="TestEntity2" property-ref="Id" />-->
+              <generate-one target_Entity="TestEntity2"/>
             </generate-ones>
+          <generate-manys>
+            <!--<generate-one target_Entity="TestEntity2" property-ref="Id" />-->
+            <generate-many target_Entity="TestEntity3"/>
+          </generate-manys>
         </entityClass>
     </entities>
 </poco-mapping>

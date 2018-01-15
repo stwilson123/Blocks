@@ -161,7 +161,7 @@ foreach(Table tbl in from t in tables where !t.Ignore select t)
     {
 <# if (GenerateIDbEntity) { #>   public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;  <# } #> 
 <#
-foreach(Column col in from c in tbl.Columns where !c.Ignore && (c.IsPK && c.Name != "Id" )  select c)
+foreach(Column col in from c in tbl.Columns where !c.Ignore && (!c.IsPK || (c.IsPK && c.Name != "Id" ))  select c)
 {
 		// Column bindings
 #>
