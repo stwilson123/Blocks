@@ -21,6 +21,12 @@ namespace Blocks.Framework.Event
         {
             _eventBus = eventBus;
         }
+        
+        public void Trigger<TEventData>(TEventData eventData) where TEventData : IDomainEventData
+        {
+            _eventBus.Trigger((object)null, eventData);
+           
+        }
     }
 //    public class DomainEventBus : EventBus,IDomainEventBus
 //    {

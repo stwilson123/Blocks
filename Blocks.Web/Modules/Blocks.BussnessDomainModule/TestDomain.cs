@@ -19,7 +19,7 @@ namespace Blocks.BussnessDomainModule
 
         public virtual string GetValue(string value)
         {
-           // EventBus.Trigger(new TaskEventData {id = "123123"});
+            EventBus.Trigger(new TaskEventData {id = "123123"});
             return testRepository.GetValue(value);
         }
         

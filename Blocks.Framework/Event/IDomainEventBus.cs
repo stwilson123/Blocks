@@ -5,8 +5,11 @@ using Abp.Events.Bus;
 
 namespace Blocks.Framework.Event
 {
-    public interface IDomainEventBus 
+    public interface IDomainEventBus
     {
+        void Trigger<TEventData>(TEventData eventData) where TEventData : IDomainEventData;
+        
+        
 //         #region Register
 //
 //        /// <summary>
