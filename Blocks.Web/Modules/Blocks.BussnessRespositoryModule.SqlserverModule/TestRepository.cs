@@ -8,7 +8,7 @@ namespace Blocks.BussnessRespositoryModule.SqlserverModule
         public TestRepository(IDbContextProvider dbContextProvider) : base(dbContextProvider)
         {
         }
-        public override string GetValue(string value)
+        public override string GetValueOverride(string value)
         {
             value = "Sqlserver";
             return value;

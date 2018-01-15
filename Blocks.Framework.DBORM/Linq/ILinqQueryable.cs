@@ -8,8 +8,10 @@ namespace Blocks.Framework.DBORM.Linq
     public interface ILinqQueryable<TEntity>  where TEntity : Abp.Domain.Entities.Entity<Guid>
     {
         IQueryable<TEntity> iQuerable {  get; }
-
-
+        
+        
+        ILinqQueryable<TEntity> Where(Expression<Func<TEntity, bool>> predicate);
+        
         List<TEntity> SelectToList(Expression<Func<TEntity, dynamic>> selector);
     }
 }

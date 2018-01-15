@@ -28,7 +28,7 @@ namespace Blocks.Framework.DBORM.Linq
             this.linqSqlTableContext = new Dictionary<(Type TableType,string TableAlias), object>();
         }
 
-        public IQueryable<TEntity> iQuerable { get; }
+        public IQueryable<TEntity> iQuerable { get; private set; }
 
         private IQueryable<Dictionary<(Type TableType, string TableAlias), Data.Entity.Entity>> iQueryContext;
 
@@ -81,7 +81,15 @@ namespace Blocks.Framework.DBORM.Linq
 //            var result = ;
             return select.MapTo<List<TEntity>>();
         }
+        
+        public ILinqQueryable<TEntity> Where(Expression<Func<TEntity, bool>> predicate)
+        {
+            iQuerable= iQuerable.Where(predicate);
 
+//            var a = Mapper.Map<List<TEntity>>(select);
+//            var result = ;
+            return this;
+        }
     }
 
      
