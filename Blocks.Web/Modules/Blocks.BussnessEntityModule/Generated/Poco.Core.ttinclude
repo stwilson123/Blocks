@@ -19,6 +19,8 @@
 <#@ import namespace="System.Configuration" #>
 <#@ import namespace="System.Windows.Forms" #>
 <#@ import namespace="Oracle.ManagedDataAccess.Client" #>
+<#@ import namespace="System.Xml.Serialization" #>
+
 <#+
 
 /*
@@ -140,6 +142,7 @@ public class Column
     public bool IsNullable;
 	public bool IsAutoIncrement;
 	public bool Ignore;
+	public bool IsFK;
 }
 
 public class Tables : List<Table>
@@ -468,6 +471,74 @@ Tables LoadTables()
         
 }
 
+[XmlRoot("poco-mapping")]
+public class poco_mapping
+{
+    [XmlArray("entities")]
+    public List<entityClass> listEntityClass { set;get;}
+           
+}
+public class entityClass
+{
+    [XmlAttribute]
+    public string table { get; set; }
+
+    [XmlArray("generate-ones")]
+    [XmlArrayItem("generate-one")]
+    public List<one_to_one> listOne2One { set; get; }
+
+    [XmlArray("generate-manys")]
+    [XmlArrayItem("generate-many")]
+    public List<one_to_many> listOne2Many { set; get; }
+}
+
+public class one_to_one
+{
+    [XmlAttribute]
+    public string target_Entity { set; get; }
+
+    [XmlAttribute]
+    public string property_ref { set; get; }
+}
+public class one_to_many
+{
+    [XmlAttribute]
+    public string target_Entity { set; get; }
+
+    [XmlAttribute]
+    public string property_ref { set; get; }
+}
+void PKHandle(Tables tables)
+{
+	poco_mapping result = null;
+    using (StringReader sr = new StringReader(File.ReadAllText(MappingFile)))
+    {
+                    
+        XmlSerializer xmldes = new XmlSerializer(typeof(poco_mapping));
+        var objtmp = xmldes.Deserialize(sr);
+        result = (poco_mapping)objtmp;
+    }  
+	foreach(var table in tables)
+	{
+	   var pkEntityConfig = result.FirstOrDefault(t => string.Equals(table.Name,t.table,StringComparison.CurrentCultureIgnoreCase));
+	   if(pkEntityConfig == null)
+			continue;
+	   if(pkEntityConfig.listOne2One != null)
+       {
+           foreach (var item in pkEntityConfig.listOne2One)
+           {
+				if(item.target_Entity != null && item.property_ref != null)
+			    	WriteLine("Table Name " + table.Name + "'s property target_Entity and property_ref can't set value at the same time. ");
+				if(item.target_Entity != null) 
+                {
+					if(!tables.Any(t => string.Equals(t.Name,item.target_Entity,StringComparison.CurrentCultureIgnoreCase)))
+						WriteLine("Table Name " + table.Name + "'s property target_Entity and property_ref can't set value at the same time. ");
+                }
+           }
+       }
+		  
+	}
+}
 bool StartsWithAny(string s, IEnumerable<string> items)
 {
     if (s == null)

@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<poco-mapping>
+    <entities>
+        <entityClass table="123">
+            <generate-ones>
+                <generate-one name="123" property-ref="idCard" />
+            </generate-ones>
+        </entityClass>
+    </entities>
+</poco-mapping>
