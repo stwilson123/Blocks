@@ -10,7 +10,7 @@ namespace Abp.Localization
     /// Represents a language of the application.
     /// </summary>
     [Serializable]
-    [Table("AbpLanguages")]
+    [Table("BLOCKS_LANGUAGES")]
     public class ApplicationLanguage : FullAuditedEntity, IMayHaveTenant
     {
         /// <summary>

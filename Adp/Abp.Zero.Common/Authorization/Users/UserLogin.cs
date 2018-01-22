@@ -7,7 +7,7 @@ namespace Abp.Authorization.Users
     /// <summary>
     /// Used to store a User Login for external Login services.
     /// </summary>
-    [Table("AbpUserLogins")]
+    [Table("BLOCKS_USER_LOGINS")]
     public class UserLogin : Entity<long>, IMayHaveTenant
     {
         /// <summary>

@@ -8,7 +8,7 @@ namespace Abp.Authorization.Users
     /// <summary>
     /// Represents membership of a User to an OU.
     /// </summary>
-    [Table("AbpUserOrganizationUnits")]
+    [Table("BLOCKS_USERORGANIZATION_UNITS")]
     public class UserOrganizationUnit : CreationAuditedEntity<long>, IMayHaveTenant, ISoftDelete
     {
         /// <summary>

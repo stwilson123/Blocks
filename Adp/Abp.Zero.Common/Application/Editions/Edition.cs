@@ -9,7 +9,7 @@ namespace Abp.Application.Editions
     /// <summary>
     /// Represents an edition of the application.
     /// </summary>
-    [Table("AbpEditions")]
+    [Table("BLOCKS_EDITIONS")]
     [MultiTenancySide(MultiTenancySides.Host)]
     public class Edition : FullAuditedEntity
     {

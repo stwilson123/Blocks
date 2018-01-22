@@ -11,7 +11,7 @@ namespace Abp.Authorization.Roles
     /// <summary>
     /// Base class for role.
     /// </summary>
-    [Table("AbpRoles")]
+    [Table("BLOCKS_ROLES")]
     public abstract class AbpRoleBase : FullAuditedEntity<int>, IMayHaveTenant
     {
         /// <summary>

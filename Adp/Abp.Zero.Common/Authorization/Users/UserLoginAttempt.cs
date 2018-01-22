@@ -11,7 +11,7 @@ namespace Abp.Authorization.Users
     /// <summary>
     /// Used to save a login attempt of a user.
     /// </summary>
-    [Table("AbpUserLoginAttempts")]
+    [Table("BLOCKS_USER_LOGINATTEMPTS")]
     public class UserLoginAttempt : Entity<long>, IHasCreationTime, IMayHaveTenant
     {
         /// <summary>

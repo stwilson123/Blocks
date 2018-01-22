@@ -10,7 +10,7 @@ namespace Abp.Notifications
     /// <summary>
     /// Used to store a notification subscription.
     /// </summary>
-    [Table("AbpNotificationSubscriptions")]
+    [Table("BLOCKS_NOTIFY_SUBSCRIPTIONS")]
     public class NotificationSubscriptionInfo : CreationAuditedEntity<Guid>, IMayHaveTenant
     {
         /// <summary>
@@ -39,8 +39,8 @@ namespace Abp.Notifications
         /// <summary>
         /// AssemblyQualifiedName of the entity type.
         /// </summary>
-        [MaxLength(NotificationInfo.MaxEntityTypeAssemblyQualifiedNameLength)]
-        public virtual string EntityTypeAssemblyQualifiedName { get; set; }
+        [MaxLength(NotificationInfo.MaxEntityTypeQualifiedNameLength)]
+        public virtual string EntityTypeQualifiedName { get; set; }
 
         /// <summary>
         /// Gets/sets primary key of the entity, if this is an entity level notification.
@@ -65,7 +65,7 @@ namespace Abp.Notifications
             NotificationName = notificationName;
             UserId = userId;
             EntityTypeName = entityIdentifier == null ? null : entityIdentifier.Type.FullName;
-            EntityTypeAssemblyQualifiedName = entityIdentifier == null ? null : entityIdentifier.Type.AssemblyQualifiedName;
+            EntityTypeQualifiedName = entityIdentifier == null ? null : entityIdentifier.Type.AssemblyQualifiedName;
             EntityId = entityIdentifier == null ? null : entityIdentifier.Id.ToJsonString();
         }
     }

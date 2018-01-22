@@ -9,7 +9,7 @@ namespace Abp.MultiTenancy
     /// <summary>
     /// Base class for tenants.
     /// </summary>
-    [Table("AbpTenants")]
+    [Table("BLOCKS_TENANTS")]
     [MultiTenancySide(MultiTenancySides.Host)]
     public abstract class AbpTenantBase : FullAuditedEntity<int>, IPassivable
     {

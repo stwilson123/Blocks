@@ -42,6 +42,8 @@ namespace Abp.Domain.Uow
                 type => typeof(IRepository).IsAssignableFrom(type) ||
                         typeof(IApplicationService).IsAssignableFrom(type)
             };
+
+            IsolationLevel = System.Transactions.IsolationLevel.ReadCommitted;
         }
 
         public void RegisterFilter(string filterName, bool isEnabledByDefault)

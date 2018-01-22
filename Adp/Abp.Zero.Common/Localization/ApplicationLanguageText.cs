@@ -10,7 +10,7 @@ namespace Abp.Localization
     /// Used to store a localization text.
     /// </summary>
     [Serializable]
-    [Table("AbpLanguageTexts")]
+    [Table("BLOCKS_LANGUAGETEXTS")]
     public class ApplicationLanguageText : AuditedEntity<long>, IMayHaveTenant
     {
         public const int MaxSourceNameLength = 128;

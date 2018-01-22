@@ -86,7 +86,7 @@ namespace Abp.Notifications
             {
                 NotificationName = notificationName,
                 EntityTypeName = entityIdentifier == null ? null : entityIdentifier.Type.FullName,
-                EntityTypeAssemblyQualifiedName = entityIdentifier == null ? null : entityIdentifier.Type.AssemblyQualifiedName,
+                EntityTypeQualifiedName = entityIdentifier == null ? null : entityIdentifier.Type.AssemblyQualifiedName,
                 EntityId = entityIdentifier == null ? null : entityIdentifier.Id.ToJsonString(),
                 Severity = severity,
                 UserIds = userIds.IsNullOrEmpty() ? null : userIds.Select(uid => uid.ToUserIdentifierString()).JoinAsString(","),

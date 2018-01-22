@@ -3,6 +3,9 @@ using Abp.Zero.EntityFramework;
 using Blocks.Authorization.Roles;
 using Blocks.Authorization.Users;
 using Blocks.MultiTenancy;
+using System.Data.Entity;
+using System.Configuration;
+using System.Data.Entity.Migrations.History;
 
 namespace Blocks.EntityFramework
 {
@@ -42,6 +45,18 @@ namespace Blocks.EntityFramework
          : base(existingConnection, contextOwnsConnection)
         {
 
+        }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            var schema = ConfigurationManager.AppSettings.Get("Schema");
+            modelBuilder.HasDefaultSchema(schema);
+            modelBuilder.Entity<HistoryRow>().ToTable(tableName: "MigrationHistory", schemaName: schema);
+            modelBuilder.Entity<HistoryRow>().Property(p => p.MigrationId).HasColumnName("Migration_ID");
+            modelBuilder.Entity<HistoryRow>().HasKey(p => p.MigrationId);
+            modelBuilder.Entity<HistoryRow>().HasKey(p => p.ContextKey);
+
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

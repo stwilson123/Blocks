@@ -9,7 +9,7 @@ namespace Abp.Application.Features
     /// <summary>
     /// Base class for feature settings
     /// </summary>
-    [Table("AbpFeatures")]
+    [Table("BLOCKS_FEATURES")]
     [MultiTenancySide(MultiTenancySides.Host)]
     public abstract class FeatureSetting : CreationAuditedEntity<long>, IMayHaveTenant
     {

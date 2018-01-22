@@ -8,7 +8,7 @@ namespace Abp.Configuration
     /// <summary>
     /// Represents a setting for a tenant or user.
     /// </summary>
-    [Table("AbpSettings")]
+    [Table("BLOCKS_SETTINGS")]
     public class Setting : AuditedEntity<long>, IMayHaveTenant
     {
         /// <summary>

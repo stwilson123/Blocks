@@ -10,4 +10,14 @@ namespace Blocks.Framework.Exceptions
 
         }
     }
+
+
+    public class BlocksBussnessException : AbpException
+    {
+        public BlocksBussnessException(string code,string message)
+            : base(message)
+        {
+
+        }
+    }
 }

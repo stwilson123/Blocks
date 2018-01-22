@@ -8,7 +8,7 @@ namespace Abp.Authorization.Users
     /// <summary>
     /// Represents a summary user
     /// </summary>
-    [Table("AbpUserAccounts")]
+    [Table("BLOCKS_USER_ACCOUNTS")]
     [MultiTenancySide(MultiTenancySides.Host)]
     public class UserAccount : FullAuditedEntity<long>
     {

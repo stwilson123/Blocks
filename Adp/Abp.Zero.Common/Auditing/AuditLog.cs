@@ -8,7 +8,7 @@ namespace Abp.Auditing
     /// <summary>
     /// Used to store audit logs.
     /// </summary>
-    [Table("AbpAuditLogs")]
+    [Table("BLOCKS_AUDITLOGS")]
     public class AuditLog : Entity<long>, IMayHaveTenant
     {
         /// <summary>

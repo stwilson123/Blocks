@@ -2,6 +2,7 @@ namespace Blocks.Migrations
 {
     using System;
     using System.Collections.Generic;
+    using System.Configuration;
     using System.Data.Entity.Infrastructure.Annotations;
     using System.Data.Entity.Migrations;
     
@@ -9,8 +10,9 @@ namespace Blocks.Migrations
     {
         public override void Up()
         {
+            var schema = ConfigurationManager.AppSettings.Get("Schema");
             AlterTableAnnotations(
-                "dbo.AbpFeatures",
+                schema + ".BLOCKS_FEATURES",
                 c => new
                     {
                         Id = c.Long(nullable: false, identity: true),
@@ -46,8 +48,10 @@ namespace Blocks.Migrations
         
         public override void Down()
         {
+            var schema = ConfigurationManager.AppSettings.Get("Schema");
+
             AlterTableAnnotations(
-                "dbo.AbpFeatures",
+                schema + ".BLOCKS_FEATURES",
                 c => new
                     {
                         Id = c.Long(nullable: false, identity: true),

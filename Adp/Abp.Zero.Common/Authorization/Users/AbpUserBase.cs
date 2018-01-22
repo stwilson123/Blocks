@@ -12,7 +12,7 @@ namespace Abp.Authorization.Users
     /// <summary>
     /// Base class for user.
     /// </summary>
-    [Table("AbpUsers")]
+    [Table("BLOCKS_USERS")]
     public abstract class AbpUserBase : FullAuditedEntity<long>, IMayHaveTenant, IPassivable
     {
         /// <summary>

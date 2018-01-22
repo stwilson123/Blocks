@@ -5,7 +5,7 @@ using Abp.Domain.Entities.Auditing;
 
 namespace Abp.Authorization.Roles
 {
-    [Table("AbpRoleClaims")]
+    [Table("BLOCKS_ROLECLAIMS")]
     public class RoleClaim : CreationAuditedEntity<long>, IMayHaveTenant
     {
         public virtual int? TenantId { get; set; }

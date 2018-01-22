@@ -11,7 +11,7 @@ namespace Abp.Notifications
     /// Used to store a user notification.
     /// </summary>
     [Serializable]
-    [Table("AbpUserNotifications")]
+    [Table("BLOCKS_USERNOTIFICATIONS")]
     public class UserNotificationInfo : Entity<Guid>, IHasCreationTime, IMayHaveTenant
     {
         /// <summary>

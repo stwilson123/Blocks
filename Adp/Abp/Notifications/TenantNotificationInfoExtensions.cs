@@ -15,9 +15,9 @@ namespace Abp.Notifications
         /// </summary>
         public static TenantNotification ToTenantNotification(this TenantNotificationInfo tenantNotificationInfo)
         {
-            var entityType = tenantNotificationInfo.EntityTypeAssemblyQualifiedName.IsNullOrEmpty()
+            var entityType = tenantNotificationInfo.EntityTypeQualifiedName.IsNullOrEmpty()
                 ? null
-                : Type.GetType(tenantNotificationInfo.EntityTypeAssemblyQualifiedName);
+                : Type.GetType(tenantNotificationInfo.EntityTypeQualifiedName);
 
             return new TenantNotification
             {

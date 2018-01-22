@@ -15,9 +15,9 @@ namespace Abp.Notifications
         /// </summary>
         public static NotificationSubscription ToNotificationSubscription(this NotificationSubscriptionInfo subscriptionInfo)
         {
-            var entityType = subscriptionInfo.EntityTypeAssemblyQualifiedName.IsNullOrEmpty()
+            var entityType = subscriptionInfo.EntityTypeQualifiedName.IsNullOrEmpty()
                 ? null
-                : Type.GetType(subscriptionInfo.EntityTypeAssemblyQualifiedName);
+                : Type.GetType(subscriptionInfo.EntityTypeQualifiedName);
 
             return new NotificationSubscription
             {

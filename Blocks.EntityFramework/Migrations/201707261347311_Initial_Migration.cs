@@ -2,6 +2,7 @@ namespace Blocks.Migrations
 {
     using System;
     using System.Collections.Generic;
+    using System.Configuration;
     using System.Data.Entity.Infrastructure.Annotations;
     using System.Data.Entity.Migrations;
     
@@ -9,8 +10,9 @@ namespace Blocks.Migrations
     {
         public override void Up()
         {
+            var schema = ConfigurationManager.AppSettings.Get("Schema");
             CreateTable(
-                "dbo.AbpAuditLogs",
+                schema + ".BLOCKS_AUDITLOGS",
                 c => new
                     {
                         Id = c.Long(nullable: false, identity: true),
@@ -36,7 +38,7 @@ namespace Blocks.Migrations
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
-                "dbo.AbpBackgroundJobs",
+                schema + ".BLOCKS_BACKGROUNDJOBS",
                 c => new
                     {
                         Id = c.Long(nullable: false, identity: true),
@@ -54,7 +56,7 @@ namespace Blocks.Migrations
                 .Index(t => new { t.IsAbandoned, t.NextTryTime });
             
             CreateTable(
-                "dbo.AbpFeatures",
+                schema + ".BLOCKS_FEATURES",
                 c => new
                     {
                         Id = c.Long(nullable: false, identity: true),
@@ -71,11 +73,11 @@ namespace Blocks.Migrations
                     { "DynamicFilter_TenantFeatureSetting_MustHaveTenant", "EntityFramework.DynamicFilters.DynamicFilterDefinition" },
                 })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.AbpEditions", t => t.EditionId, cascadeDelete: true)
+                .ForeignKey(schema + ".BLOCKS_EDITIONS", t => t.EditionId, cascadeDelete: true)
                 .Index(t => t.EditionId);
             
             CreateTable(
-                "dbo.AbpEditions",
+                schema + ".BLOCKS_EDITIONS",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -96,7 +98,7 @@ namespace Blocks.Migrations
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
-                "dbo.AbpLanguages",
+                schema + ".BLOCKS_LANGUAGES",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -121,7 +123,7 @@ namespace Blocks.Migrations
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
-                "dbo.AbpLanguageTexts",
+                schema + ".BLOCKS_LANGUAGETEXTS",
                 c => new
                     {
                         Id = c.Long(nullable: false, identity: true),
@@ -142,7 +144,7 @@ namespace Blocks.Migrations
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
-                "dbo.AbpNotifications",
+                schema + ".BLOCKS_NOTIFICATIONS",
                 c => new
                     {
                         Id = c.Guid(nullable: false),
@@ -150,7 +152,7 @@ namespace Blocks.Migrations
                         Data = c.String(),
                         DataTypeName = c.String(maxLength: 512),
                         EntityTypeName = c.String(maxLength: 250),
-                        EntityTypeAssemblyQualifiedName = c.String(maxLength: 512),
+                        EntityTypeQualifiedName = c.String(maxLength: 512),
                         EntityId = c.String(maxLength: 96),
                         Severity = c.Byte(nullable: false),
                         UserIds = c.String(),
@@ -162,7 +164,7 @@ namespace Blocks.Migrations
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
-                "dbo.AbpNotificationSubscriptions",
+                schema + ".BLOCKS_NOTIFY_SUBSCRIPTIONS",
                 c => new
                     {
                         Id = c.Guid(nullable: false),
@@ -170,7 +172,7 @@ namespace Blocks.Migrations
                         UserId = c.Long(nullable: false),
                         NotificationName = c.String(maxLength: 96),
                         EntityTypeName = c.String(maxLength: 250),
-                        EntityTypeAssemblyQualifiedName = c.String(maxLength: 512),
+                        EntityTypeQualifiedName = c.String(maxLength: 512),
                         EntityId = c.String(maxLength: 96),
                         CreationTime = c.DateTime(nullable: false),
                         CreatorUserId = c.Long(),
@@ -183,7 +185,7 @@ namespace Blocks.Migrations
                 .Index(t => new { t.NotificationName, t.EntityTypeName, t.EntityId, t.UserId });
             
             CreateTable(
-                "dbo.AbpOrganizationUnits",
+                schema + ".BLOCKS_ORGANIZATION_UNITS",
                 c => new
                     {
                         Id = c.Long(nullable: false, identity: true),
@@ -205,11 +207,11 @@ namespace Blocks.Migrations
                     { "DynamicFilter_OrganizationUnit_SoftDelete", "EntityFramework.DynamicFilters.DynamicFilterDefinition" },
                 })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.AbpOrganizationUnits", t => t.ParentId)
+                .ForeignKey(schema + ".BLOCKS_ORGANIZATION_UNITS", t => t.ParentId)
                 .Index(t => t.ParentId);
             
             CreateTable(
-                "dbo.AbpPermissions",
+                schema + ".BLOCKS_PERMISSIONS",
                 c => new
                     {
                         Id = c.Long(nullable: false, identity: true),
@@ -229,13 +231,13 @@ namespace Blocks.Migrations
                     { "DynamicFilter_UserPermissionSetting_MayHaveTenant", "EntityFramework.DynamicFilters.DynamicFilterDefinition" },
                 })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.AbpUsers", t => t.UserId, cascadeDelete: true)
-                .ForeignKey("dbo.AbpRoles", t => t.RoleId, cascadeDelete: true)
+                .ForeignKey(schema + ".BLOCKS_USERS", t => t.UserId, cascadeDelete: true)
+                .ForeignKey(schema + ".BLOCKS_ROLES", t => t.RoleId, cascadeDelete: true)
                 .Index(t => t.RoleId)
                 .Index(t => t.UserId);
             
             CreateTable(
-                "dbo.AbpRoles",
+                schema + ".BLOCKS_ROLES",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -259,15 +261,15 @@ namespace Blocks.Migrations
                     { "DynamicFilter_Role_SoftDelete", "EntityFramework.DynamicFilters.DynamicFilterDefinition" },
                 })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.AbpUsers", t => t.CreatorUserId)
-                .ForeignKey("dbo.AbpUsers", t => t.DeleterUserId)
-                .ForeignKey("dbo.AbpUsers", t => t.LastModifierUserId)
+                .ForeignKey(schema + ".BLOCKS_USERS", t => t.CreatorUserId)
+                .ForeignKey(schema + ".BLOCKS_USERS", t => t.DeleterUserId)
+                .ForeignKey(schema + ".BLOCKS_USERS", t => t.LastModifierUserId)
                 .Index(t => t.DeleterUserId)
                 .Index(t => t.LastModifierUserId)
                 .Index(t => t.CreatorUserId);
             
             CreateTable(
-                "dbo.AbpUsers",
+                schema + ".BLOCKS_USERS",
                 c => new
                     {
                         Id = c.Long(nullable: false, identity: true),
@@ -304,15 +306,15 @@ namespace Blocks.Migrations
                     { "DynamicFilter_User_SoftDelete", "EntityFramework.DynamicFilters.DynamicFilterDefinition" },
                 })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.AbpUsers", t => t.CreatorUserId)
-                .ForeignKey("dbo.AbpUsers", t => t.DeleterUserId)
-                .ForeignKey("dbo.AbpUsers", t => t.LastModifierUserId)
+                .ForeignKey(schema + ".BLOCKS_USERS", t => t.CreatorUserId)
+                .ForeignKey(schema + ".BLOCKS_USERS", t => t.DeleterUserId)
+                .ForeignKey(schema + ".BLOCKS_USERS", t => t.LastModifierUserId)
                 .Index(t => t.DeleterUserId)
                 .Index(t => t.LastModifierUserId)
                 .Index(t => t.CreatorUserId);
             
             CreateTable(
-                "dbo.AbpUserClaims",
+                schema + ".BLOCKS_USER_CLAIMS",
                 c => new
                     {
                         Id = c.Long(nullable: false, identity: true),
@@ -328,11 +330,11 @@ namespace Blocks.Migrations
                     { "DynamicFilter_UserClaim_MayHaveTenant", "EntityFramework.DynamicFilters.DynamicFilterDefinition" },
                 })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.AbpUsers", t => t.UserId, cascadeDelete: true)
+                .ForeignKey(schema + ".BLOCKS_USERS", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.UserId);
             
             CreateTable(
-                "dbo.AbpUserLogins",
+                schema + ".BLOCKS_USER_LOGINS",
                 c => new
                     {
                         Id = c.Long(nullable: false, identity: true),
@@ -346,11 +348,11 @@ namespace Blocks.Migrations
                     { "DynamicFilter_UserLogin_MayHaveTenant", "EntityFramework.DynamicFilters.DynamicFilterDefinition" },
                 })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.AbpUsers", t => t.UserId, cascadeDelete: true)
+                .ForeignKey(schema + ".BLOCKS_USERS", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.UserId);
             
             CreateTable(
-                "dbo.AbpUserRoles",
+                schema + ".BLOCKS_USER_ROLES",
                 c => new
                     {
                         Id = c.Long(nullable: false, identity: true),
@@ -365,11 +367,11 @@ namespace Blocks.Migrations
                     { "DynamicFilter_UserRole_MayHaveTenant", "EntityFramework.DynamicFilters.DynamicFilterDefinition" },
                 })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.AbpUsers", t => t.UserId, cascadeDelete: true)
+                .ForeignKey(schema + ".BLOCKS_USERS", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.UserId);
             
             CreateTable(
-                "dbo.AbpSettings",
+                schema + ".BLOCKS_SETTINGS",
                 c => new
                     {
                         Id = c.Long(nullable: false, identity: true),
@@ -387,11 +389,11 @@ namespace Blocks.Migrations
                     { "DynamicFilter_Setting_MayHaveTenant", "EntityFramework.DynamicFilters.DynamicFilterDefinition" },
                 })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.AbpUsers", t => t.UserId)
+                .ForeignKey(schema + ".BLOCKS_USERS", t => t.UserId)
                 .Index(t => t.UserId);
             
             CreateTable(
-                "dbo.AbpTenantNotifications",
+                schema + ".BLOCKS_TENANT_NOTIFICATIONS",
                 c => new
                     {
                         Id = c.Guid(nullable: false),
@@ -400,7 +402,7 @@ namespace Blocks.Migrations
                         Data = c.String(),
                         DataTypeName = c.String(maxLength: 512),
                         EntityTypeName = c.String(maxLength: 250),
-                        EntityTypeAssemblyQualifiedName = c.String(maxLength: 512),
+                        EntityTypeQualifiedName = c.String(maxLength: 512),
                         EntityId = c.String(maxLength: 96),
                         Severity = c.Byte(nullable: false),
                         CreationTime = c.DateTime(nullable: false),
@@ -413,7 +415,7 @@ namespace Blocks.Migrations
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
-                "dbo.AbpTenants",
+                schema + ".BLOCKS_TENANTS",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -435,17 +437,17 @@ namespace Blocks.Migrations
                     { "DynamicFilter_Tenant_SoftDelete", "EntityFramework.DynamicFilters.DynamicFilterDefinition" },
                 })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.AbpUsers", t => t.CreatorUserId)
-                .ForeignKey("dbo.AbpUsers", t => t.DeleterUserId)
-                .ForeignKey("dbo.AbpEditions", t => t.EditionId)
-                .ForeignKey("dbo.AbpUsers", t => t.LastModifierUserId)
+                .ForeignKey(schema + ".BLOCKS_USERS", t => t.CreatorUserId)
+                .ForeignKey(schema + ".BLOCKS_USERS", t => t.DeleterUserId)
+                .ForeignKey(schema + ".BLOCKS_EDITIONS", t => t.EditionId)
+                .ForeignKey(schema + ".BLOCKS_USERS", t => t.LastModifierUserId)
                 .Index(t => t.EditionId)
                 .Index(t => t.DeleterUserId)
                 .Index(t => t.LastModifierUserId)
                 .Index(t => t.CreatorUserId);
             
             CreateTable(
-                "dbo.AbpUserAccounts",
+                schema + ".BLOCKS_USER_ACCOUNTS",
                 c => new
                     {
                         Id = c.Long(nullable: false, identity: true),
@@ -470,7 +472,7 @@ namespace Blocks.Migrations
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
-                "dbo.AbpUserLoginAttempts",
+                schema + ".BLOCKS_USER_LOGINATTEMPTS",
                 c => new
                     {
                         Id = c.Long(nullable: false, identity: true),
@@ -493,7 +495,7 @@ namespace Blocks.Migrations
                 .Index(t => new { t.TenancyName, t.UserNameOrEmailAddress, t.Result });
             
             CreateTable(
-                "dbo.AbpUserNotifications",
+                schema + ".BLOCKS_USERNOTIFICATIONS",
                 c => new
                     {
                         Id = c.Guid(nullable: false),
@@ -511,7 +513,7 @@ namespace Blocks.Migrations
                 .Index(t => new { t.UserId, t.State, t.CreationTime });
             
             CreateTable(
-                "dbo.AbpUserOrganizationUnits",
+                schema + ".BLOCKS_USERORGANIZATION_UNITS",
                 c => new
                     {
                         Id = c.Long(nullable: false, identity: true),
@@ -533,152 +535,154 @@ namespace Blocks.Migrations
         
         public override void Down()
         {
-            DropForeignKey("dbo.AbpTenants", "LastModifierUserId", "dbo.AbpUsers");
-            DropForeignKey("dbo.AbpTenants", "EditionId", "dbo.AbpEditions");
-            DropForeignKey("dbo.AbpTenants", "DeleterUserId", "dbo.AbpUsers");
-            DropForeignKey("dbo.AbpTenants", "CreatorUserId", "dbo.AbpUsers");
-            DropForeignKey("dbo.AbpPermissions", "RoleId", "dbo.AbpRoles");
-            DropForeignKey("dbo.AbpRoles", "LastModifierUserId", "dbo.AbpUsers");
-            DropForeignKey("dbo.AbpRoles", "DeleterUserId", "dbo.AbpUsers");
-            DropForeignKey("dbo.AbpRoles", "CreatorUserId", "dbo.AbpUsers");
-            DropForeignKey("dbo.AbpSettings", "UserId", "dbo.AbpUsers");
-            DropForeignKey("dbo.AbpUserRoles", "UserId", "dbo.AbpUsers");
-            DropForeignKey("dbo.AbpPermissions", "UserId", "dbo.AbpUsers");
-            DropForeignKey("dbo.AbpUserLogins", "UserId", "dbo.AbpUsers");
-            DropForeignKey("dbo.AbpUsers", "LastModifierUserId", "dbo.AbpUsers");
-            DropForeignKey("dbo.AbpUsers", "DeleterUserId", "dbo.AbpUsers");
-            DropForeignKey("dbo.AbpUsers", "CreatorUserId", "dbo.AbpUsers");
-            DropForeignKey("dbo.AbpUserClaims", "UserId", "dbo.AbpUsers");
-            DropForeignKey("dbo.AbpOrganizationUnits", "ParentId", "dbo.AbpOrganizationUnits");
-            DropForeignKey("dbo.AbpFeatures", "EditionId", "dbo.AbpEditions");
-            DropIndex("dbo.AbpUserNotifications", new[] { "UserId", "State", "CreationTime" });
-            DropIndex("dbo.AbpUserLoginAttempts", new[] { "TenancyName", "UserNameOrEmailAddress", "Result" });
-            DropIndex("dbo.AbpUserLoginAttempts", new[] { "UserId", "TenantId" });
-            DropIndex("dbo.AbpTenants", new[] { "CreatorUserId" });
-            DropIndex("dbo.AbpTenants", new[] { "LastModifierUserId" });
-            DropIndex("dbo.AbpTenants", new[] { "DeleterUserId" });
-            DropIndex("dbo.AbpTenants", new[] { "EditionId" });
-            DropIndex("dbo.AbpSettings", new[] { "UserId" });
-            DropIndex("dbo.AbpUserRoles", new[] { "UserId" });
-            DropIndex("dbo.AbpUserLogins", new[] { "UserId" });
-            DropIndex("dbo.AbpUserClaims", new[] { "UserId" });
-            DropIndex("dbo.AbpUsers", new[] { "CreatorUserId" });
-            DropIndex("dbo.AbpUsers", new[] { "LastModifierUserId" });
-            DropIndex("dbo.AbpUsers", new[] { "DeleterUserId" });
-            DropIndex("dbo.AbpRoles", new[] { "CreatorUserId" });
-            DropIndex("dbo.AbpRoles", new[] { "LastModifierUserId" });
-            DropIndex("dbo.AbpRoles", new[] { "DeleterUserId" });
-            DropIndex("dbo.AbpPermissions", new[] { "UserId" });
-            DropIndex("dbo.AbpPermissions", new[] { "RoleId" });
-            DropIndex("dbo.AbpOrganizationUnits", new[] { "ParentId" });
-            DropIndex("dbo.AbpNotificationSubscriptions", new[] { "NotificationName", "EntityTypeName", "EntityId", "UserId" });
-            DropIndex("dbo.AbpFeatures", new[] { "EditionId" });
-            DropIndex("dbo.AbpBackgroundJobs", new[] { "IsAbandoned", "NextTryTime" });
-            DropTable("dbo.AbpUserOrganizationUnits",
+            var schema = ConfigurationManager.AppSettings.Get("Schema");
+
+            DropForeignKey(schema + ".BLOCKS_TENANTS", "LastModifierUserId", schema + ".BLOCKS_USERS");
+            DropForeignKey(schema + ".BLOCKS_TENANTS", "EditionId", schema + ".BLOCKS_EDITIONS");
+            DropForeignKey(schema + ".BLOCKS_TENANTS", "DeleterUserId", schema + ".BLOCKS_USERS");
+            DropForeignKey(schema + ".BLOCKS_TENANTS", "CreatorUserId", schema + ".BLOCKS_USERS");
+            DropForeignKey(schema + ".BLOCKS_PERMISSIONS", "RoleId", schema + ".BLOCKS_ROLES");
+            DropForeignKey(schema + ".BLOCKS_ROLES", "LastModifierUserId", schema + ".BLOCKS_USERS");
+            DropForeignKey(schema + ".BLOCKS_ROLES", "DeleterUserId", schema + ".BLOCKS_USERS");
+            DropForeignKey(schema + ".BLOCKS_ROLES", "CreatorUserId", schema + ".BLOCKS_USERS");
+            DropForeignKey(schema + ".BLOCKS_SETTINGS", "UserId", schema + ".BLOCKS_USERS");
+            DropForeignKey(schema + ".BLOCKS_USER_ROLES", "UserId", schema + ".BLOCKS_USERS");
+            DropForeignKey(schema + ".BLOCKS_PERMISSIONS", "UserId", schema + ".BLOCKS_USERS");
+            DropForeignKey(schema + ".BLOCKS_USER_LOGINS", "UserId", schema + ".BLOCKS_USERS");
+            DropForeignKey(schema + ".BLOCKS_USERS", "LastModifierUserId", schema + ".BLOCKS_USERS");
+            DropForeignKey(schema + ".BLOCKS_USERS", "DeleterUserId", schema + ".BLOCKS_USERS");
+            DropForeignKey(schema + ".BLOCKS_USERS", "CreatorUserId", schema + ".BLOCKS_USERS");
+            DropForeignKey(schema + ".BLOCKS_USER_CLAIMS", "UserId", schema + ".BLOCKS_USERS");
+            DropForeignKey(schema + ".BLOCKS_ORGANIZATION_UNITS", "ParentId", schema + ".BLOCKS_ORGANIZATION_UNITS");
+            DropForeignKey(schema + ".BLOCKS_FEATURES", "EditionId", schema + ".BLOCKS_EDITIONS");
+            DropIndex(schema + ".BLOCKS_USERNOTIFICATIONS", new[] { "UserId", "State", "CreationTime" });
+            DropIndex(schema + ".BLOCKS_USER_LOGINATTEMPTS", new[] { "TenancyName", "UserNameOrEmailAddress", "Result" });
+            DropIndex(schema + ".BLOCKS_USER_LOGINATTEMPTS", new[] { "UserId", "TenantId" });
+            DropIndex(schema + ".BLOCKS_TENANTS", new[] { "CreatorUserId" });
+            DropIndex(schema + ".BLOCKS_TENANTS", new[] { "LastModifierUserId" });
+            DropIndex(schema + ".BLOCKS_TENANTS", new[] { "DeleterUserId" });
+            DropIndex(schema + ".BLOCKS_TENANTS", new[] { "EditionId" });
+            DropIndex(schema + ".BLOCKS_SETTINGS", new[] { "UserId" });
+            DropIndex(schema + ".BLOCKS_USER_ROLES", new[] { "UserId" });
+            DropIndex(schema + ".BLOCKS_USER_LOGINS", new[] { "UserId" });
+            DropIndex(schema + ".BLOCKS_USER_CLAIMS", new[] { "UserId" });
+            DropIndex(schema + ".BLOCKS_USERS", new[] { "CreatorUserId" });
+            DropIndex(schema + ".BLOCKS_USERS", new[] { "LastModifierUserId" });
+            DropIndex(schema + ".BLOCKS_USERS", new[] { "DeleterUserId" });
+            DropIndex(schema + ".BLOCKS_ROLES", new[] { "CreatorUserId" });
+            DropIndex(schema + ".BLOCKS_ROLES", new[] { "LastModifierUserId" });
+            DropIndex(schema + ".BLOCKS_ROLES", new[] { "DeleterUserId" });
+            DropIndex(schema + ".BLOCKS_PERMISSIONS", new[] { "UserId" });
+            DropIndex(schema + ".BLOCKS_PERMISSIONS", new[] { "RoleId" });
+            DropIndex(schema + ".BLOCKS_ORGANIZATION_UNITS", new[] { "ParentId" });
+            DropIndex(schema + ".BLOCKS_NOTIFY_SUBSCRIPTIONS", new[] { "NotificationName", "EntityTypeName", "EntityId", "UserId" });
+            DropIndex(schema + ".BLOCKS_FEATURES", new[] { "EditionId" });
+            DropIndex(schema + ".BLOCKS_BACKGROUNDJOBS", new[] { "IsAbandoned", "NextTryTime" });
+            DropTable(schema + ".BLOCKS_USERORGANIZATION_UNITS",
                 removedAnnotations: new Dictionary<string, object>
                 {
                     { "DynamicFilter_UserOrganizationUnit_MayHaveTenant", "EntityFramework.DynamicFilters.DynamicFilterDefinition" },
                     { "DynamicFilter_UserOrganizationUnit_SoftDelete", "EntityFramework.DynamicFilters.DynamicFilterDefinition" },
                 });
-            DropTable("dbo.AbpUserNotifications",
+            DropTable(schema + ".BLOCKS_USERNOTIFICATIONS",
                 removedAnnotations: new Dictionary<string, object>
                 {
                     { "DynamicFilter_UserNotificationInfo_MayHaveTenant", "EntityFramework.DynamicFilters.DynamicFilterDefinition" },
                 });
-            DropTable("dbo.AbpUserLoginAttempts",
+            DropTable(schema + ".BLOCKS_USER_LOGINATTEMPTS",
                 removedAnnotations: new Dictionary<string, object>
                 {
                     { "DynamicFilter_UserLoginAttempt_MayHaveTenant", "EntityFramework.DynamicFilters.DynamicFilterDefinition" },
                 });
-            DropTable("dbo.AbpUserAccounts",
+            DropTable(schema + ".BLOCKS_USER_ACCOUNTS",
                 removedAnnotations: new Dictionary<string, object>
                 {
                     { "DynamicFilter_UserAccount_SoftDelete", "EntityFramework.DynamicFilters.DynamicFilterDefinition" },
                 });
-            DropTable("dbo.AbpTenants",
+            DropTable(schema + ".BLOCKS_TENANTS",
                 removedAnnotations: new Dictionary<string, object>
                 {
                     { "DynamicFilter_Tenant_SoftDelete", "EntityFramework.DynamicFilters.DynamicFilterDefinition" },
                 });
-            DropTable("dbo.AbpTenantNotifications",
+            DropTable(schema + ".BLOCKS_TENANT_NOTIFICATIONS",
                 removedAnnotations: new Dictionary<string, object>
                 {
                     { "DynamicFilter_TenantNotificationInfo_MayHaveTenant", "EntityFramework.DynamicFilters.DynamicFilterDefinition" },
                 });
-            DropTable("dbo.AbpSettings",
+            DropTable(schema + ".BLOCKS_SETTINGS",
                 removedAnnotations: new Dictionary<string, object>
                 {
                     { "DynamicFilter_Setting_MayHaveTenant", "EntityFramework.DynamicFilters.DynamicFilterDefinition" },
                 });
-            DropTable("dbo.AbpUserRoles",
+            DropTable(schema + ".BLOCKS_USER_ROLES",
                 removedAnnotations: new Dictionary<string, object>
                 {
                     { "DynamicFilter_UserRole_MayHaveTenant", "EntityFramework.DynamicFilters.DynamicFilterDefinition" },
                 });
-            DropTable("dbo.AbpUserLogins",
+            DropTable(schema + ".BLOCKS_USER_LOGINS",
                 removedAnnotations: new Dictionary<string, object>
                 {
                     { "DynamicFilter_UserLogin_MayHaveTenant", "EntityFramework.DynamicFilters.DynamicFilterDefinition" },
                 });
-            DropTable("dbo.AbpUserClaims",
+            DropTable(schema + ".BLOCKS_USER_CLAIMS",
                 removedAnnotations: new Dictionary<string, object>
                 {
                     { "DynamicFilter_UserClaim_MayHaveTenant", "EntityFramework.DynamicFilters.DynamicFilterDefinition" },
                 });
-            DropTable("dbo.AbpUsers",
+            DropTable(schema + ".BLOCKS_USERS",
                 removedAnnotations: new Dictionary<string, object>
                 {
                     { "DynamicFilter_User_MayHaveTenant", "EntityFramework.DynamicFilters.DynamicFilterDefinition" },
                     { "DynamicFilter_User_SoftDelete", "EntityFramework.DynamicFilters.DynamicFilterDefinition" },
                 });
-            DropTable("dbo.AbpRoles",
+            DropTable(schema + ".BLOCKS_ROLES",
                 removedAnnotations: new Dictionary<string, object>
                 {
                     { "DynamicFilter_Role_MayHaveTenant", "EntityFramework.DynamicFilters.DynamicFilterDefinition" },
                     { "DynamicFilter_Role_SoftDelete", "EntityFramework.DynamicFilters.DynamicFilterDefinition" },
                 });
-            DropTable("dbo.AbpPermissions",
+            DropTable(schema + ".BLOCKS_PERMISSIONS",
                 removedAnnotations: new Dictionary<string, object>
                 {
                     { "DynamicFilter_PermissionSetting_MayHaveTenant", "EntityFramework.DynamicFilters.DynamicFilterDefinition" },
                     { "DynamicFilter_RolePermissionSetting_MayHaveTenant", "EntityFramework.DynamicFilters.DynamicFilterDefinition" },
                     { "DynamicFilter_UserPermissionSetting_MayHaveTenant", "EntityFramework.DynamicFilters.DynamicFilterDefinition" },
                 });
-            DropTable("dbo.AbpOrganizationUnits",
+            DropTable(schema + ".BLOCKS_ORGANIZATION_UNITS",
                 removedAnnotations: new Dictionary<string, object>
                 {
                     { "DynamicFilter_OrganizationUnit_MayHaveTenant", "EntityFramework.DynamicFilters.DynamicFilterDefinition" },
                     { "DynamicFilter_OrganizationUnit_SoftDelete", "EntityFramework.DynamicFilters.DynamicFilterDefinition" },
                 });
-            DropTable("dbo.AbpNotificationSubscriptions",
+            DropTable(schema + ".BLOCKS_NOTIFY_SUBSCRIPTIONS",
                 removedAnnotations: new Dictionary<string, object>
                 {
                     { "DynamicFilter_NotificationSubscriptionInfo_MayHaveTenant", "EntityFramework.DynamicFilters.DynamicFilterDefinition" },
                 });
-            DropTable("dbo.AbpNotifications");
-            DropTable("dbo.AbpLanguageTexts",
+            DropTable(schema + ".BLOCKS_NOTIFICATIONS");
+            DropTable(schema + ".BLOCKS_LANGUAGETEXTS",
                 removedAnnotations: new Dictionary<string, object>
                 {
                     { "DynamicFilter_ApplicationLanguageText_MayHaveTenant", "EntityFramework.DynamicFilters.DynamicFilterDefinition" },
                 });
-            DropTable("dbo.AbpLanguages",
+            DropTable(schema + ".BLOCKS_LANGUAGES",
                 removedAnnotations: new Dictionary<string, object>
                 {
                     { "DynamicFilter_ApplicationLanguage_MayHaveTenant", "EntityFramework.DynamicFilters.DynamicFilterDefinition" },
                     { "DynamicFilter_ApplicationLanguage_SoftDelete", "EntityFramework.DynamicFilters.DynamicFilterDefinition" },
                 });
-            DropTable("dbo.AbpEditions",
+            DropTable(schema + ".BLOCKS_EDITIONS",
                 removedAnnotations: new Dictionary<string, object>
                 {
                     { "DynamicFilter_Edition_SoftDelete", "EntityFramework.DynamicFilters.DynamicFilterDefinition" },
                 });
-            DropTable("dbo.AbpFeatures",
+            DropTable(schema + ".BLOCKS_FEATURES",
                 removedAnnotations: new Dictionary<string, object>
                 {
                     { "DynamicFilter_TenantFeatureSetting_MustHaveTenant", "EntityFramework.DynamicFilters.DynamicFilterDefinition" },
                 });
-            DropTable("dbo.AbpBackgroundJobs");
-            DropTable("dbo.AbpAuditLogs",
+            DropTable(schema + ".BLOCKS_BACKGROUNDJOBS");
+            DropTable(schema + ".BLOCKS_AUDITLOGS",
                 removedAnnotations: new Dictionary<string, object>
                 {
                     { "DynamicFilter_AuditLog_MayHaveTenant", "EntityFramework.DynamicFilters.DynamicFilterDefinition" },

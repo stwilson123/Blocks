@@ -25,7 +25,8 @@ namespace Blocks.Web
         /// <summary>
         /// Gets a reference to the <see cref="P:Abp.Web.AbpWebApplication`1.AbpBootstrapper" /> instance.
         /// </summary>
-        public static AbpBootstrapper AbpBootstrapper { get; } = AbpBootstrapper.Create<BlocksWebModule>((Action<AbpBootstrapperOptions>) null);
+        private static AbpBootstrapper abpBootstrapper = AbpBootstrapper.Create<BlocksWebModule>((Action<AbpBootstrapperOptions>)null);
+        public static AbpBootstrapper AbpBootstrapper { get { return abpBootstrapper; } }
 
         protected  void Application_Start(object sender, EventArgs e)
         {

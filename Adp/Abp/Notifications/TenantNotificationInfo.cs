@@ -9,7 +9,7 @@ namespace Abp.Notifications
     /// <summary>
     /// A notification distributed to it's related tenant.
     /// </summary>
-    [Table("AbpTenantNotifications")]
+    [Table("BLOCKS_TENANT_NOTIFICATIONS")]
     public class TenantNotificationInfo : CreationAuditedEntity<Guid>, IMayHaveTenant
     {
         /// <summary>
@@ -47,8 +47,8 @@ namespace Abp.Notifications
         /// <summary>
         /// AssemblyQualifiedName of the entity type.
         /// </summary>
-        [MaxLength(NotificationInfo.MaxEntityTypeAssemblyQualifiedNameLength)]
-        public virtual string EntityTypeAssemblyQualifiedName { get; set; }
+        [MaxLength(NotificationInfo.MaxEntityTypeQualifiedNameLength)]
+        public virtual string EntityTypeQualifiedName { get; set; }
 
         /// <summary>
         /// Gets/sets primary key of the entity, if this is an entity level notification.
@@ -74,7 +74,7 @@ namespace Abp.Notifications
             Data = notification.Data;
             DataTypeName = notification.DataTypeName;
             EntityTypeName = notification.EntityTypeName;
-            EntityTypeAssemblyQualifiedName = notification.EntityTypeAssemblyQualifiedName;
+            EntityTypeQualifiedName = notification.EntityTypeQualifiedName;
             EntityId = notification.EntityId;
             Severity = notification.Severity;
         }

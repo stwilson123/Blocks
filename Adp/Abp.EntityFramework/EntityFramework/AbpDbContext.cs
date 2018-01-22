@@ -145,6 +145,7 @@ namespace Abp.EntityFramework
 
         private void RegisterToChanges()
         {
+            
             ((IObjectContextAdapter) this)
                 .ObjectContext
                 .ObjectStateManager

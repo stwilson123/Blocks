@@ -13,7 +13,7 @@ namespace Abp.Organizations
     /// <summary>
     /// Represents an organization unit (OU).
     /// </summary>
-    [Table("AbpOrganizationUnits")]
+    [Table("BLOCKS_ORGANIZATION_UNITS")]
     public class OrganizationUnit : FullAuditedEntity<long>, IMayHaveTenant
     {
         /// <summary>

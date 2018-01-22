@@ -232,6 +232,7 @@ namespace Blocks.Framework.DBORM.DBContext
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+           
             base.OnModelCreating(modelBuilder);
             var registerAssembly =  System.AppDomain.CurrentDomain.GetAssemblies().Where(t => 
                 _entityConfigurations.Any(config => string.Equals(t.GetName().Name,config.EntityModule,StringComparison.CurrentCultureIgnoreCase)));

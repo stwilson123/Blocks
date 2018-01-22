@@ -10,7 +10,7 @@ namespace Abp.BackgroundJobs
     /// <summary>
     /// Represents a background job info that is used to persist jobs.
     /// </summary>
-    [Table("AbpBackgroundJobs")]
+    [Table("BLOCKS_BACKGROUNDJOBS")]
     [MultiTenancySide(MultiTenancySides.Host)]
     public class BackgroundJobInfo : CreationAuditedEntity<long>
     {

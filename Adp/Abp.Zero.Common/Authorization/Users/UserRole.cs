@@ -7,7 +7,7 @@ namespace Abp.Authorization.Users
     /// <summary>
     /// Represents role record of a user. 
     /// </summary>
-    [Table("AbpUserRoles")]
+    [Table("BLOCKS_USER_ROLES")]
     public class UserRole : CreationAuditedEntity<long>, IMayHaveTenant
     {
         public virtual int? TenantId { get; set; }

@@ -8,7 +8,7 @@ namespace Abp.Authorization
     /// <summary>
     /// Used to grant/deny a permission for a role or user.
     /// </summary>
-    [Table("AbpPermissions")]
+    [Table("BLOCKS_PERMISSIONS")]
     public abstract class PermissionSetting : CreationAuditedEntity<long>, IMayHaveTenant
     {
         /// <summary>

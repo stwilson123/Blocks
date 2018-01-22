@@ -5,7 +5,7 @@ using Abp.Domain.Entities.Auditing;
 
 namespace Abp.Authorization.Users
 {
-    [Table("AbpUserClaims")]
+    [Table("BLOCKS_USER_CLAIMS")]
     public class UserClaim : CreationAuditedEntity<long>, IMayHaveTenant
     {
         public virtual int? TenantId { get; set; }

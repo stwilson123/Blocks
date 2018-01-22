@@ -11,7 +11,7 @@ namespace Abp.Notifications
     /// This notification is distributed to tenants and users by <see cref="INotificationDistributer"/>.
     /// </summary>
     [Serializable]
-    [Table("AbpNotifications")]
+    [Table("BLOCKS_NOTIFICATIONS")]
     [MultiTenancySide(MultiTenancySides.Host)]
     public class NotificationInfo : CreationAuditedEntity<Guid>
     {
@@ -46,10 +46,10 @@ namespace Abp.Notifications
         public const int MaxEntityTypeNameLength = 250;
 
         /// <summary>
-        /// Maximum length of <see cref="EntityTypeAssemblyQualifiedName"/> property.
+        /// Maximum length of <see cref="EntityTypeQualifiedName"/> property.
         /// Value: 512.
         /// </summary>
-        public const int MaxEntityTypeAssemblyQualifiedNameLength = 512;
+        public const int MaxEntityTypeQualifiedNameLength = 512;
 
         /// <summary>
         /// Maximum length of <see cref="EntityId"/> property.
@@ -99,8 +99,8 @@ namespace Abp.Notifications
         /// <summary>
         /// AssemblyQualifiedName of the entity type.
         /// </summary>
-        [MaxLength(MaxEntityTypeAssemblyQualifiedNameLength)]
-        public virtual string EntityTypeAssemblyQualifiedName { get; set; }
+        [MaxLength(MaxEntityTypeQualifiedNameLength)]
+        public virtual string EntityTypeQualifiedName { get; set; }
 
         /// <summary>
         /// Gets/sets primary key of the entity, if this is an entity level notification.
