@@ -14,7 +14,7 @@ namespace EntityFramework.Test.Cache
         {
             using (var context = new BlocksEntities())
             {
-                Guid id = Guid.NewGuid();
+                var id = Guid.NewGuid().ToString();
                 context.TestEntity.SingleOrDefault(t => t.Id == id);
 
                 context.TestEntity.SingleOrDefault(t => t.Id == id);

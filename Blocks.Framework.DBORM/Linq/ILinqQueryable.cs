@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 
 namespace Blocks.Framework.DBORM.Linq
 {
-    public interface ILinqQueryable<TEntity>  where TEntity : Abp.Domain.Entities.Entity<Guid>
+    public interface ILinqQueryable<TEntity>  where TEntity : Blocks.Framework.Data.Entity.Entity
     {
         IQueryable<TEntity> iQuerable {  get; }
         

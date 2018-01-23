@@ -9,7 +9,7 @@ using Blocks.Framework.DBORM.Repository;
 
 namespace Blocks.BussnessRespositoryModule
 {
-    public class TestRepository : DBSqlRepositoryBase<TestEntity>, ITestRepository
+    public class TestRepository : DBSqlRepositoryBase<TESTENTITY>, ITestRepository
     {
         public TestRepository(IDbContextProvider dbContextProvider) : base(dbContextProvider)
         {
@@ -26,11 +26,11 @@ namespace Blocks.BussnessRespositoryModule
             //            return value;
             // var id = Guid.Parse("DDE679DA-AA68-426D-A6C3-FE66D9725490");
             var sql = GetContextTable()
-               
+
                 .SelectToList(result => new {
-                Id = result.Id,
-                TestEntity2 = new { result.TestEntity2.Id },
-                TestEntity3s = result.TestEntity3s
+                    Id = result.Id,
+                    TestEntity2 = new { result.TESTENTITY2.Id },
+                TestEntity3s = result.TESTENTITY3s
             });
             return value;
             

@@ -23,7 +23,7 @@ namespace Blocks.ResourcesModule
         public static string json2 { get; } = "json2";
         public static string moment { get; } = "moment";
        
-        public static string  jquery_validate { get; } = "jquery_validate";
+        public static string jquery_validate { get; } = "jquery_validate";
         public static string jquery_blockUI { get; } = "jquery_blockUI";
         public static string spin { get; } = "spin";
         public static string jquery_spin { get; } = "jquery_spin";
@@ -32,7 +32,9 @@ namespace Blocks.ResourcesModule
         
         public static string push { get; } = "push";
 
+        public static string jqGrid { get; } = "jqGrid";
 
-        
+        public static string jqGridUI { get; } = "jqGridUI";
+
     }
 }

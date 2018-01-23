@@ -7,7 +7,7 @@ namespace Blocks.Framework.Data
     /// A shortcut of <see cref="IRepository{TEntity,TPrimaryKey}"/> for most used primary key type (<see cref="int"/>).
     /// </summary>
     /// <typeparam name="TEntity">Entity type</typeparam>
-    public interface IRepository<TEntity> : Abp.Domain.Repositories.IRepository<TEntity, Guid> where TEntity : Entity<Guid>
+    public interface IRepository<TEntity> : Abp.Domain.Repositories.IRepository<TEntity, string> where TEntity : Blocks.Framework.Data.Entity.Entity
     {
 
     }

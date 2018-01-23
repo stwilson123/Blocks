@@ -51,10 +51,10 @@ namespace Blocks.EntityFramework
         {
             var schema = ConfigurationManager.AppSettings.Get("Schema");
             modelBuilder.HasDefaultSchema(schema);
-            modelBuilder.Entity<HistoryRow>().ToTable(tableName: "MigrationHistory", schemaName: schema);
-            modelBuilder.Entity<HistoryRow>().Property(p => p.MigrationId).HasColumnName("Migration_ID");
-            modelBuilder.Entity<HistoryRow>().HasKey(p => p.MigrationId);
-            modelBuilder.Entity<HistoryRow>().HasKey(p => p.ContextKey);
+            //            modelBuilder.Entity<HistoryRow>().ToTable(tableName: "MigrationHistory", schemaName: schema);
+            //            modelBuilder.Entity<HistoryRow>().Property(p => p.MigrationId).HasColumnName("Migration_ID");
+            //            modelBuilder.Entity<HistoryRow>().HasKey(p => p.MigrationId);
+            //            modelBuilder.Entity<HistoryRow>().HasKey(p => p.ContextKey);
 
             base.OnModelCreating(modelBuilder);
         }

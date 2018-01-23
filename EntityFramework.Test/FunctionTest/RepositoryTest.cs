@@ -4,6 +4,7 @@ using Xunit;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using Blocks.BussnessEntityModule;
 
 namespace EntityFramework.Test.FunctionTest
 {
@@ -51,11 +52,13 @@ namespace EntityFramework.Test.FunctionTest
             }
         }
         [Fact]
-        public void Update()
+        public void UpdateByModel()
         {
             var rep = Resolve<TestRepository>();
-            var testEntity = rep.GetAllList();
-            rep.GetAll();
+            var id= rep.InsertAndGetId(new TestEntity(){ TestEntity2ID = Guid.NewGuid().ToString()});
+            var testEntity = rep.FirstOrDefault(t => t.Id == id);
+            var setGuid = Guid.NewGuid().ToString();
+            rep.Update(testEntity.Id, t => { t.TestEntity2ID = setGuid; });
 
         }
 

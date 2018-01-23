@@ -90,6 +90,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BlocksFrameworkDBORMModule.cs" />
+    <Compile Include="Configurations\ConfigConst.cs" />
     <Compile Include="DBContext\BlocksDbContext.cs" />
     <Compile Include="DBContext\IDbContextProvider.cs" />
     <Compile Include="DBContext\UnitOfWorkDbContextProvider.cs" />

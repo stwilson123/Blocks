@@ -20,7 +20,7 @@ using Blocks.Framework.DBORM.Linq;
 namespace Blocks.Framework.DBORM.Repository
 {
 
-    public class DBSqlRepositoryBase<TEntity> : DBSqlRepositoryBase<BlocksDbContext<TEntity>, TEntity, Guid>
+    public class DBSqlRepositoryBase<TEntity> : DBSqlRepositoryBase<BlocksDbContext<TEntity>, TEntity, string>
         where TEntity : Data.Entity.Entity
     {
         protected readonly DbSetContext<BlocksDbContext<TEntity>> Tables;

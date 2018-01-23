@@ -14,7 +14,7 @@ namespace EntityFramework.Test.FunctionTest
             {
                var testEntity = context.TestEntity.FirstOrDefault();
                 
-                testEntity.TestEntity2ID = Guid.NewGuid();
+                testEntity.TestEntity2ID = Guid.NewGuid().ToString();
                 Assert.Equal(context.Entry(testEntity).State, EntityState.Modified);
  
 
@@ -29,7 +29,7 @@ namespace EntityFramework.Test.FunctionTest
             {
                 context.Configuration.AutoDetectChangesEnabled = false;
                 var testEntities = context.TestEntity.Take(2).ToList();
-                var newGuid = Guid.NewGuid();
+                var newGuid = Guid.NewGuid().ToString();
                 testEntities[0].TestEntity2ID = newGuid;
                 var dbEntry = context.Entry(testEntities[0]);
                 Assert.Equal(dbEntry.State, EntityState.Unchanged);
@@ -47,12 +47,12 @@ namespace EntityFramework.Test.FunctionTest
         [Fact]
         public void GetDataWithNoTrackingIsDetached_notCache_notUpdate()
         {
-            var id = Guid.Empty;
-            var newGuid = Guid.Empty;
+            var id = String.Empty;
+            var newGuid = String.Empty;
             using (var context = new BlocksEntities())
             {
                 var testEntity = context.TestEntity.AsNoTracking().FirstOrDefault();
-                newGuid = Guid.NewGuid();
+                newGuid = Guid.NewGuid().ToString();
                 testEntity.TestEntity2ID = newGuid;
                 var EntityEntry = context.Entry(testEntity);
                 Assert.Equal(EntityEntry.State, EntityState.Detached);
@@ -79,12 +79,12 @@ namespace EntityFramework.Test.FunctionTest
         [Fact]
         public void GetDataWithNoTrackingAttach()
         {
-            var id = Guid.Empty;
-            var newGuid = Guid.Empty;
+            var id = String.Empty;
+            var newGuid = String.Empty;
             using (var context = new BlocksEntities())
             {
                 var testEntity = context.TestEntity.AsNoTracking().FirstOrDefault();
-                newGuid = Guid.NewGuid();
+                newGuid = Guid.NewGuid().ToString();
                 testEntity.TestEntity2ID = newGuid;
                 var EntityEntry = context.Entry(testEntity);
                 Assert.Equal(EntityEntry.State, EntityState.Detached);

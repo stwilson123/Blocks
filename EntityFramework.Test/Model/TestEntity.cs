@@ -8,7 +8,7 @@ namespace Blocks.BussnessEntityModule
     public partial class TestEntity : Entity
     {
 
-        public Guid? TestEntity2ID { set; get; }
+        public string TestEntity2ID { set; get; }
 
         public TestEntity2 TestEntity2 { set; get; }
 

@@ -17,7 +17,10 @@ namespace Blocks.ResourcesModule.ResourceManifestProviders {
                 "lib/Waves/dist/waves.css").SetVersion("0.1");
             manifest.DefineStyle(ResourceName.animate).SetUrl("lib/animate.css/animate.min.css",
                 "lib/animate.css/animate.css").SetVersion("0.1");
-            
+            manifest.DefineStyle(ResourceName.jqGrid).SetUrl("lib/jqGrid/css/ui.jqgrid-bootstrap.css",
+                "lib/jqGrid/css/ui.jqgrid-bootstrap.css").SetVersion("5.2.0");
+            manifest.DefineStyle(ResourceName.jqGridUI).SetUrl("lib/jqGrid/css/ui.jqgrid-bootstrap-ui.css",
+                "lib/jqGrid/css/ui.jqgrid-bootstrap-ui.css").SetVersion("5.2.0");
             
             manifest.DefineScript(ResourceName.toastr).SetUrl("lib/toastr/toastr.min.js",
                 "lib/toastr/toastr.js").SetVersion("0.1");
@@ -41,6 +44,9 @@ namespace Blocks.ResourcesModule.ResourceManifestProviders {
             
             manifest.DefineScript(ResourceName.push).SetUrl("lib/push.js/push.min.js",
                 "lib/push.js/push.js").SetVersion("0.1");
+            
+            manifest.DefineScript(ResourceName.jqGrid).SetUrl("lib/jqGrid/script/jquery.jqGrid.min.js",
+                "lib/jqGrid/script/jquery.jqGrid.min.js").SetVersion("5.2.0");
         }
 
         public Lazy<FeatureDescriptor> Feature { get; set; }

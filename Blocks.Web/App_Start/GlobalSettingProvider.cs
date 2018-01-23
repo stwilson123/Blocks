@@ -3,6 +3,7 @@ using Abp.Configuration;
 using Blocks.Framework.Configurations;
 using Blocks.Framework.Configurations.Provider;
 using Blocks.Framework.Web.Configuartions;
+using System.Configuration;
 
 namespace Blocks.Web
 {
@@ -20,6 +21,10 @@ namespace Blocks.Web
                     typeof(DebugState).Name,
                      DebugState.Debug.ToString()
                 ),
+                new SettingDefinition(
+                    Framework.DBORM.Configurations.ConfigKey.Schema,
+                    ConfigurationManager.AppSettings.Get(Framework.DBORM.Configurations.ConfigKey.Schema)
+                )
             };
         }
     }

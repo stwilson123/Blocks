@@ -20,9 +20,9 @@ namespace Blocks.BussnessApplicationModule.TestAppService
             return testDomain.GetValue(a);
         }
 
-        public Guid Add(string id)
+        public string Add(string id)
         {
-            return testDomain.AddValue(Guid.NewGuid());
+            return testDomain.AddValue(Guid.NewGuid().ToString());
         }
     }
 }

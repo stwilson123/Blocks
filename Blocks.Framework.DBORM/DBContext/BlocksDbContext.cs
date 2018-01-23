@@ -28,13 +28,14 @@ using Blocks.Framework.Ioc.Dependency;
 using Blocks.Framework.Untility.Extensions;
 using Castle.Core.Logging;
 using EntityFramework.DynamicFilters;
+using Abp.Configuration;
 
 namespace Blocks.Framework.DBORM.DBContext
 {
     /// <summary>
     /// Base class for all DbContext classes in the application.
     /// </summary>
-    public class BlocksDbContext<TTable> : BaseBlocksDbContext where TTable : Data.Entity.Entity<Guid>
+    public class BlocksDbContext<TTable> : BaseBlocksDbContext where TTable : Data.Entity.Entity<string>
     {
 //        /// <summary>
 //        /// Roles.
@@ -48,15 +49,15 @@ namespace Blocks.Framework.DBORM.DBContext
         /// Constructor.
         /// Uses <see cref="IAbpStartupConfiguration.DefaultNameOrConnectionString"/> as connection string.
         /// </summary>
-        public BlocksDbContext(IEnumerable<IEntityConfiguration> entityConfigurations) : base(entityConfigurations)
+        public BlocksDbContext(IEnumerable<IEntityConfiguration> entityConfigurations, ISettingManager settingManager) : base(entityConfigurations, settingManager)
         {
         }
 
         /// <summary>
         /// Constructor.
         /// </summary>
-        public BlocksDbContext(string nameOrConnectionString,IEnumerable<IEntityConfiguration> entityConfigurations)
-            : base(nameOrConnectionString,entityConfigurations)
+        public BlocksDbContext(string nameOrConnectionString,IEnumerable<IEntityConfiguration> entityConfigurations, ISettingManager settingManager)
+            : base(nameOrConnectionString,entityConfigurations, settingManager)
         {
            
         }
@@ -65,8 +66,8 @@ namespace Blocks.Framework.DBORM.DBContext
         /// <summary>
         /// Constructor.
         /// </summary>
-        public BlocksDbContext(DbConnection existingConnection, bool contextOwnsConnection,IEnumerable<IEntityConfiguration> entityConfigurations)
-            : base(existingConnection, contextOwnsConnection,entityConfigurations)
+        public BlocksDbContext(DbConnection existingConnection, bool contextOwnsConnection,IEnumerable<IEntityConfiguration> entityConfigurations, ISettingManager settingManager)
+            : base(existingConnection, contextOwnsConnection,entityConfigurations, settingManager)
         {
            
         }
@@ -132,23 +133,26 @@ namespace Blocks.Framework.DBORM.DBContext
         private readonly IEnumerable<IEntityConfiguration> _entityConfigurations;
 
         
+        private ISettingManager _settingManager { get; set; }
         /// <summary>
         /// Constructor.
         /// Uses <see cref="IAbpStartupConfiguration.DefaultNameOrConnectionString"/> as connection string.
         /// </summary>
-        protected BaseBlocksDbContext(IEnumerable<IEntityConfiguration> entityConfigurations)
+        protected BaseBlocksDbContext(IEnumerable<IEntityConfiguration> entityConfigurations, ISettingManager settingManager)
         {
             _entityConfigurations = entityConfigurations;
+            _settingManager = settingManager;
             InitializeDbContext();
         }
 
         /// <summary>
         /// Constructor.
         /// </summary>
-        protected BaseBlocksDbContext(string nameOrConnectionString, IEnumerable<IEntityConfiguration> entityConfigurations)
+        protected BaseBlocksDbContext(string nameOrConnectionString, IEnumerable<IEntityConfiguration> entityConfigurations, ISettingManager settingManager)
             : base(nameOrConnectionString)
         {
             _entityConfigurations = entityConfigurations;
+            _settingManager = settingManager;
             InitializeDbContext();
         }
  
@@ -156,10 +160,11 @@ namespace Blocks.Framework.DBORM.DBContext
         /// <summary>
         /// Constructor.
         /// </summary>
-        protected BaseBlocksDbContext(DbConnection existingConnection, bool contextOwnsConnection, IEnumerable<IEntityConfiguration> entityConfigurations)
+        protected BaseBlocksDbContext(DbConnection existingConnection, bool contextOwnsConnection, IEnumerable<IEntityConfiguration> entityConfigurations, ISettingManager settingManager)
             : base(existingConnection, contextOwnsConnection)
         {
             _entityConfigurations = entityConfigurations;
+            _settingManager = settingManager;
             InitializeDbContext();
         }
 
@@ -232,7 +237,8 @@ namespace Blocks.Framework.DBORM.DBContext
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-           
+            modelBuilder.HasDefaultSchema(_settingManager.GetSettingValueForApplication(Framework.DBORM.Configurations.ConfigKey.Schema));
+            modelBuilder.Conventions.Remove<System.Data.Entity.ModelConfiguration.Conventions.PluralizingTableNameConvention>();
             base.OnModelCreating(modelBuilder);
             var registerAssembly =  System.AppDomain.CurrentDomain.GetAssemblies().Where(t => 
                 _entityConfigurations.Any(config => string.Equals(t.GetName().Name,config.EntityModule,StringComparison.CurrentCultureIgnoreCase)));

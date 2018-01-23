@@ -533,7 +533,7 @@ void PKHandle(Tables tables)
                 }
 				if(item.target_Entity != null) 
                 {
-					if(!tables.Any(t => string.Equals(t.Name,item.target_Entity,StringComparison.CurrentCultureIgnoreCase)))
+					if(!tables.Any(t => t.Name == item.target_Entity))
 					{	
 						WriteLine("Table Name " + table.Name + "'s can't find in generate tables. ");
 						break;
@@ -551,7 +551,7 @@ void PKHandle(Tables tables)
                 }
 				if(item.target_Entity != null) 
                 {
-					if(!tables.Any(t => string.Equals(t.Name,item.target_Entity,StringComparison.CurrentCultureIgnoreCase)))
+					if(!tables.Any(t => t.Name == item.target_Entity))
 					{	
 						WriteLine("Table Name " + table.Name + "'s can't find in generate tables. ");
 						break;

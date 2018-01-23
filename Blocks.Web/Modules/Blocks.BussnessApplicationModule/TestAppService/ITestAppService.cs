@@ -7,6 +7,6 @@ namespace Blocks.BussnessApplicationModule.TestAppService
     {
         string GetValue(string a);
 
-        Guid Add(string id);
+        string Add(string id);
     }
 }

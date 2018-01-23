@@ -20,14 +20,15 @@ namespace Blocks.BussnessDomainModule
         public virtual string GetValue(string value)
         {
             EventBus.Trigger(new TaskEventData {id = "123123"});
+            testRepository.FirstOrDefault(t => t.Id == "123");
             return testRepository.GetValue(value);
         }
         
         
-        public virtual Guid AddValue(Guid value)
+        public virtual string AddValue(string value)
         {
              
-            return testRepository.Insert(new TestEntity()).Id;
+            return testRepository.Insert(new TESTENTITY()).Id;
         }
     }
     

@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <poco-mapping>
     <entities>
-        <entityClass table="TestEntity">
+        <entityClass table="TESTENTITY">
             <generate-ones>
                 <!--<generate-one target_Entity="TestEntity2" property-ref="Id" />-->
-              <generate-one target_Entity="TestEntity2"/>
+              <generate-one target_Entity="TESTENTITY2"/>
             </generate-ones>
           <generate-manys>
             <!--<generate-one target_Entity="TestEntity2" property-ref="Id" />-->
-            <generate-many target_Entity="TestEntity3"/>
+            <generate-many target_Entity="TESTENTITY3"/>
           </generate-manys>
         </entityClass>
     </entities>

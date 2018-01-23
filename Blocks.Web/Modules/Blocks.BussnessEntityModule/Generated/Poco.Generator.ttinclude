@@ -10,6 +10,8 @@ using System.Linq;
 using System.Web;
 using Blocks.Framework.Data.Entity;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace <#=Namespace #>
 {
 <# if (GenerateCommon) { #>
@@ -173,8 +175,12 @@ foreach(Column col in from c in tbl.Columns where !c.Ignore && (!c.IsPK || (c.Is
         [Column] 
 <# } #>
 <# } #>
-		public <#=col.PropertyType #><#=CheckNullable(col)#> <#=col.PropertyName #> { set; get; }
-
+    <# if(String.Equals(col.Name,"Id",StringComparison.CurrentCultureIgnoreCase) && col.Name != "Id"){ #>
+	    [Column("<#=col.Name#>")]
+		public override <#=col.PropertyType #><#=CheckNullable(col)#> Id { set ; get ; }
+	<# } else { #>
+	    public <#=col.PropertyType #><#=CheckNullable(col)#> <#=col.PropertyName #> { set; get; }
+	<# } #>
 <# } else { #>
 <# if (col.Name!=col.PropertyName) { #>
 		[Column("<#=col.Name#>")] public <#=col.PropertyType #><#=CheckNullable(col)#> <#=col.PropertyName #> { get; set; }
@@ -203,14 +209,13 @@ foreach(Table tbl in from t in tables where !t.Ignore select t)
     public partial class <#=tbl.ClassName#>Configuration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<<#=tbl.ClassName#>> 
     {
 		public <#=tbl.ClassName#>Configuration()
-            : this("<#=tbl.Schema#>")
         {
         }
 		public <#=tbl.ClassName#>Configuration(string schema)
         {
 			ToTable("<#=tbl.ClassName#>", schema);
 			<# if(tbl.PK == null){ WriteLine("\""+tbl.ClassName + " can't find primary key.\"");break;}#>
-            HasKey(x => x.<#=tbl.PK.Name #>);
+            HasKey(x => x.Id);
 		 
 <# foreach(Column col in from c in tbl.Columns where !c.Ignore select c)
 {

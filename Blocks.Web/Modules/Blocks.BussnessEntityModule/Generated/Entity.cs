@@ -6,11 +6,10 @@
 // The following connection settings were used to generate this file
 // 
 //     Connection String Name: `MyDbContext`
-//     Provider:               `System.Data.SqlClient`
-//     Connection String:      `Data Source=.;Initial Catalog=Blocks;Integrated Security=True;`
+//     Provider:               `Oracle.ManagedDataAccess.Client`
+//     Connection String:      `Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.1.215)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=devserver)));User ID=R2E4XZ_DEV;password=**zapped**;Enlist=false`
 //     Schema:                 ``
 //     Include Views:          `False`
-
 
 using System;
 using System.Collections.Generic;
@@ -18,618 +17,3314 @@ using System.Linq;
 using System.Web;
 using Blocks.Framework.Data.Entity;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace Blocks.BussnessEntityModule
 {
 	
 
     
-    public partial class __MigrationHistory   : Entity   
+    public partial class BDTA_CALDETAIL   : Entity   
     {
  
-		public string MigrationId { set; get; }
-
-		public string ContextKey { set; get; }
-
-		public byte[] Model { set; get; }
-
-		public string ProductVersion { set; get; }
-
-	}
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string ORG_ID { set; get; }
+	    	    public DateTime? CALDETAIL_DATE { set; get; }
+	    	    public DateTime? CALDETAIL_DATE_BEFORE { set; get; }
+	    	    public DateTime? CALDETAIL_DATE_AFTER { set; get; }
+	    	    public long? CALDETAIL_DATE_TYPE { set; get; }
+	    	    public long? CALDETAIL_DATE_WORKSTATE { set; get; }
+	    	    public long? CALDETAIL_WEEK_DAY { set; get; }
+	    	    public long? CALDETAIL_WEEK { set; get; }
+	    	    public string CALDETAIL_DESC { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public long? ORG_TYPE { set; get; }
+	    	    public long? CALDETAIL_TYPE { set; get; }
+		}
     
-    public partial class AbpAuditLogs   : Entity   
+    public partial class BDTA_CALNUMBER   : Entity   
     {
  
-		public int? TenantId { set; get; }
-
-		public long? UserId { set; get; }
-
-		public string ServiceName { set; get; }
-
-		public string MethodName { set; get; }
-
-		public string Parameters { set; get; }
-
-		public DateTime ExecutionTime { set; get; }
-
-		public int ExecutionDuration { set; get; }
-
-		public string ClientIpAddress { set; get; }
-
-		public string ClientName { set; get; }
-
-		public string BrowserInfo { set; get; }
-
-		public string Exception { set; get; }
-
-		public long? ImpersonatorUserId { set; get; }
-
-		public int? ImpersonatorTenantId { set; get; }
-
-		public string CustomData { set; get; }
-
-	}
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string CALDETAIL_ID { set; get; }
+	    	    public string WORKNUMBER_ID { set; get; }
+	    	    public string CALNUMBER_NAME { set; get; }
+	    	    public DateTime CALNUMBER_STARTDATE { set; get; }
+	    	    public DateTime CALNUMBER_ENDDATE { set; get; }
+	    	    public string CALNUMBER_DESC { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string CALNUMBER_NO { set; get; }
+		}
     
-    public partial class AbpBackgroundJobs   : Entity   
+    public partial class BDTA_CHECKTOOL   : Entity   
     {
  
-		public string JobType { set; get; }
-
-		public string JobArgs { set; get; }
-
-		public short TryCount { set; get; }
-
-		public DateTime NextTryTime { set; get; }
-
-		public DateTime? LastTryTime { set; get; }
-
-		public bool IsAbandoned { set; get; }
-
-		public byte Priority { set; get; }
-
-		public DateTime CreationTime { set; get; }
-
-		public long? CreatorUserId { set; get; }
-
-	}
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string SATAE { set; get; }
+	    	    public string CHECKTOOL_NAME { set; get; }
+	    	    public string CHECKTOOL_CODE { set; get; }
+	    	    public decimal? QTY { set; get; }
+	    	    public string CUSTOMER { set; get; }
+	    	    public string DRAWING { set; get; }
+	    	    public string POSITION { set; get; }
+	    	    public string DESIGN_REVIEW_REPORT { set; get; }
+	    	    public string DRAWING_MOLD { set; get; }
+	    	    public string PURCHASE_LIST { set; get; }
+	    	    public string SIZE_TEST_REPORT { set; get; }
+	    	    public string PRODUCTION_VERIFICATION_REPORT { set; get; }
+	    	    public string JES { set; get; }
+	    	    public string TOOLING_CHECKLIST { set; get; }
+	    	    public string SPARE_LIST { set; get; }
+	    	    public string SUPPIER { set; get; }
+	    	    public string STORAGE_PERSON { set; get; }
+	    	    public DateTime? STORAGE_DATE { set; get; }
+	    	    public decimal? DESIGN_LIFE { set; get; }
+	    	    public decimal? FORCE_MAINTENANCE_CYCLE { set; get; }
+	    	    public DateTime? REALITY_MAINTENANCE_DATE { set; get; }
+	    	    public DateTime? NEXT_CARE_PLAN_DATE { set; get; }
+	    	    public DateTime? NEXT_CARE_REALITY_DATE { set; get; }
+	    	    public string NEXT_CARE_WARNING_DATE { set; get; }
+	    	    public string RECORD1 { set; get; }
+	    	    public string RECORD2 { set; get; }
+	    	    public string RECORD3 { set; get; }
+	    	    public string REMARK { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+		}
     
-    public partial class AbpEditions   : Entity   
+    public partial class BDTA_CODE_FORMAT   : Entity   
     {
  
-		public string Name { set; get; }
-
-		public string DisplayName { set; get; }
-
-		public bool IsDeleted { set; get; }
-
-		public long? DeleterUserId { set; get; }
-
-		public DateTime? DeletionTime { set; get; }
-
-		public DateTime? LastModificationTime { set; get; }
-
-		public long? LastModifierUserId { set; get; }
-
-		public DateTime CreationTime { set; get; }
-
-		public long? CreatorUserId { set; get; }
-
-	}
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string CODE_FORMAT_NO { set; get; }
+	    	    public long? CODE_FORMAT_LENGTH { set; get; }
+	    	    public string CODE_FORMAT_NMAE { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public long? ISUSED { set; get; }
+		}
     
-    public partial class AbpFeatures   : Entity   
+    public partial class BDTA_CODE_FORMAT_DEFINE   : Entity   
     {
  
-		public string Name { set; get; }
-
-		public string Value { set; get; }
-
-		public DateTime CreationTime { set; get; }
-
-		public long? CreatorUserId { set; get; }
-
-		public int? EditionId { set; get; }
-
-		public int? TenantId { set; get; }
-
-		public string Discriminator { set; get; }
-
-	}
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string CODE_FORMAT_ID { set; get; }
+	    	    public long DEFINE_NUMBER { set; get; }
+	    	    public string ELEMENT_NAME { set; get; }
+	    	    public long? ELEMENT_BEGIN { set; get; }
+	    	    public long? ELEMENT_END { set; get; }
+	    	    public long? ELEMENT_LENTH { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+		}
     
-    public partial class AbpLanguages   : Entity   
+    public partial class BDTA_CODE_FORMAT_ELEMENT   : Entity   
     {
  
-		public int? TenantId { set; get; }
-
-		public string Name { set; get; }
-
-		public string DisplayName { set; get; }
-
-		public string Icon { set; get; }
-
-		public bool IsDisabled { set; get; }
-
-		public bool IsDeleted { set; get; }
-
-		public long? DeleterUserId { set; get; }
-
-		public DateTime? DeletionTime { set; get; }
-
-		public DateTime? LastModificationTime { set; get; }
-
-		public long? LastModifierUserId { set; get; }
-
-		public DateTime CreationTime { set; get; }
-
-		public long? CreatorUserId { set; get; }
-
-	}
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string ELEMENT_NAME { set; get; }
+	    	    public string ELEMENT_TYPE { set; get; }
+	    	    public long? ELEMENT_NUMBER { set; get; }
+	    	    public string ELEMENT_VALUE { set; get; }
+	    	    public string ELEMENT_DESC { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+		}
     
-    public partial class AbpLanguageTexts   : Entity   
+    public partial class BDTA_COLLECT_STATION   : Entity   
     {
  
-		public int? TenantId { set; get; }
-
-		public string LanguageName { set; get; }
-
-		public string Source { set; get; }
-
-		public string Key { set; get; }
-
-		public string Value { set; get; }
-
-		public DateTime? LastModificationTime { set; get; }
-
-		public long? LastModifierUserId { set; get; }
-
-		public DateTime CreationTime { set; get; }
-
-		public long? CreatorUserId { set; get; }
-
-	}
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string COLLECT_STATION_NO { set; get; }
+	    	    public string COLLECT_STATION_NAME { set; get; }
+	    	    public string WORKPROCEDURE_ID { set; get; }
+	    	    public long? WORKPROCEDURE_TYPE { set; get; }
+	    	    public long? COLLECT_STATION_ISFIRST { set; get; }
+	    	    public string WORKSHOP_ID { set; get; }
+	    	    public string STATION_ID { set; get; }
+	    	    public string MACHING_CENTER_ID { set; get; }
+	    	    public long? MACHING_CENTER_TYPE { set; get; }
+	    	    public long? COLLECT_STATION_STATE { set; get; }
+	    	    public string COLLECT_STATION_DESC { set; get; }
+	    	    public long? COLLECT_STATION_PRINTMODE { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public long? COLLECT_TYPE { set; get; }
+		}
     
-    public partial class AbpNotifications   : Entity   
+    public partial class BDTA_COLLECT_STATION_DETAIL   : Entity   
     {
  
-		public string NotificationName { set; get; }
-
-		public string Data { set; get; }
-
-		public string DataTypeName { set; get; }
-
-		public string EntityTypeName { set; get; }
-
-		public string EntityTypeAssemblyQualifiedName { set; get; }
-
-		public string EntityId { set; get; }
-
-		public byte Severity { set; get; }
-
-		public string UserIds { set; get; }
-
-		public string ExcludedUserIds { set; get; }
-
-		public string TenantIds { set; get; }
-
-		public DateTime CreationTime { set; get; }
-
-		public long? CreatorUserId { set; get; }
-
-	}
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string STATION_ID { set; get; }
+	    	    public string WORKROOM { set; get; }
+	    	    public string WORKROOMCODE { set; get; }
+	    	    public string WORKROOMNAME { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string COLLECT_STATION_ID { set; get; }
+		}
     
-    public partial class AbpNotificationSubscriptions   : Entity   
+    public partial class BDTA_COLLECT_STATION_SKILL   : Entity   
     {
  
-		public int? TenantId { set; get; }
-
-		public long UserId { set; get; }
-
-		public string NotificationName { set; get; }
-
-		public string EntityTypeName { set; get; }
-
-		public string EntityTypeAssemblyQualifiedName { set; get; }
-
-		public string EntityId { set; get; }
-
-		public DateTime CreationTime { set; get; }
-
-		public long? CreatorUserId { set; get; }
-
-	}
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string COLLECT_STATION_ID { set; get; }
+	    	    public string DICTIONARY_ID { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+		}
     
-    public partial class AbpOrganizationUnits   : Entity   
+    public partial class BDTA_COMMON_EQUIPMENT   : Entity   
     {
  
-		public int? TenantId { set; get; }
-
-		public long? ParentId { set; get; }
-
-		public string Code { set; get; }
-
-		public string DisplayName { set; get; }
-
-		public bool IsDeleted { set; get; }
-
-		public long? DeleterUserId { set; get; }
-
-		public DateTime? DeletionTime { set; get; }
-
-		public DateTime? LastModificationTime { set; get; }
-
-		public long? LastModifierUserId { set; get; }
-
-		public DateTime CreationTime { set; get; }
-
-		public long? CreatorUserId { set; get; }
-
-	}
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string EQUIPMENT_CODE { set; get; }
+	    	    public string EQUIPMENT_NAME { set; get; }
+	    	    public string MODEL_SPECIFICATION { set; get; }
+	    	    public string PROVIDER { set; get; }
+	    	    public DateTime? PURCHASE_DATE { set; get; }
+	    	    public string YEAR_EXAMINE_CONTENT { set; get; }
+	    	    public decimal? CARE_TIME { set; get; }
+	    	    public DateTime? EXAMINE_DATE { set; get; }
+	    	    public DateTime? NEXT_EXAMINE_DATE { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public DateTime? ACTUAL_COMPLETE_DATE { set; get; }
+	    	    public string NEXT_CARE_WARNING_DATE { set; get; }
+		}
     
-    public partial class AbpPermissions   : Entity   
+    public partial class BDTA_DEPARTMENT   : Entity   
     {
  
-		public int? TenantId { set; get; }
-
-		public string Name { set; get; }
-
-		public bool IsGranted { set; get; }
-
-		public DateTime CreationTime { set; get; }
-
-		public long? CreatorUserId { set; get; }
-
-		public int? RoleId { set; get; }
-
-		public long? UserId { set; get; }
-
-		public string Discriminator { set; get; }
-
-	}
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string DEPARTMENT_NO { set; get; }
+	    	    public string DEPARTMENT_NAME { set; get; }
+	    	    public string DEPARTMENT_DESC { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+		}
     
-    public partial class AbpRoles   : Entity   
+    public partial class BDTA_DICTIONARY   : Entity   
     {
  
-		public string Description { set; get; }
-
-		public int? TenantId { set; get; }
-
-		public string Name { set; get; }
-
-		public string DisplayName { set; get; }
-
-		public bool IsStatic { set; get; }
-
-		public bool IsDefault { set; get; }
-
-		public bool IsDeleted { set; get; }
-
-		public long? DeleterUserId { set; get; }
-
-		public DateTime? DeletionTime { set; get; }
-
-		public DateTime? LastModificationTime { set; get; }
-
-		public long? LastModifierUserId { set; get; }
-
-		public DateTime CreationTime { set; get; }
-
-		public long? CreatorUserId { set; get; }
-
-	}
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string DIC_NO { set; get; }
+	    	    public string DIC_NAME { set; get; }
+	    	    public string DIC_VALUE { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string DIC_TYPE_ID { set; get; }
+		}
     
-    public partial class AbpSettings   : Entity   
+    public partial class BDTA_DICTIONARY_TYPE   : Entity   
     {
  
-		public int? TenantId { set; get; }
-
-		public long? UserId { set; get; }
-
-		public string Name { set; get; }
-
-		public string Value { set; get; }
-
-		public DateTime? LastModificationTime { set; get; }
-
-		public long? LastModifierUserId { set; get; }
-
-		public DateTime CreationTime { set; get; }
-
-		public long? CreatorUserId { set; get; }
-
-	}
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string DIC_TYPE_NO { set; get; }
+	    	    public string DIC_TYPE_NAME { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string DIC_TYPE_VALUE { set; get; }
+		}
     
-    public partial class AbpTenantNotifications   : Entity   
+    public partial class BDTA_EMPLOYEE   : Entity   
     {
  
-		public int? TenantId { set; get; }
-
-		public string NotificationName { set; get; }
-
-		public string Data { set; get; }
-
-		public string DataTypeName { set; get; }
-
-		public string EntityTypeName { set; get; }
-
-		public string EntityTypeAssemblyQualifiedName { set; get; }
-
-		public string EntityId { set; get; }
-
-		public byte Severity { set; get; }
-
-		public DateTime CreationTime { set; get; }
-
-		public long? CreatorUserId { set; get; }
-
-	}
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string EMPLOYEE_NO { set; get; }
+	    	    public string EMPLOYEE_NAME { set; get; }
+	    	    public string EMPLOYEE_DESC { set; get; }
+	    	    public string EMPLOYEE_TYPE { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public string EMPLOYEE_EMAIL { set; get; }
+	    	    public string EMPLOYEE_PHONE { set; get; }
+	    	    public string DEPARTMENT_ID { set; get; }
+		}
     
-    public partial class AbpTenants   : Entity   
+    public partial class BDTA_EMPLOYEE_SKILL   : Entity   
     {
  
-		public int? EditionId { set; get; }
-
-		public string Name { set; get; }
-
-		public string TenancyName { set; get; }
-
-		public string ConnectionString { set; get; }
-
-		public bool IsActive { set; get; }
-
-		public bool IsDeleted { set; get; }
-
-		public long? DeleterUserId { set; get; }
-
-		public DateTime? DeletionTime { set; get; }
-
-		public DateTime? LastModificationTime { set; get; }
-
-		public long? LastModifierUserId { set; get; }
-
-		public DateTime CreationTime { set; get; }
-
-		public long? CreatorUserId { set; get; }
-
-	}
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string EMPLOYEE_ID { set; get; }
+	    	    public string DICTIONARY_ID { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+		}
     
-    public partial class AbpUserAccounts   : Entity   
+    public partial class BDTA_FILE   : Entity   
     {
  
-		public int? TenantId { set; get; }
-
-		public long UserId { set; get; }
-
-		public long? UserLinkId { set; get; }
-
-		public string UserName { set; get; }
-
-		public string EmailAddress { set; get; }
-
-		public DateTime? LastLoginTime { set; get; }
-
-		public bool IsDeleted { set; get; }
-
-		public long? DeleterUserId { set; get; }
-
-		public DateTime? DeletionTime { set; get; }
-
-		public DateTime? LastModificationTime { set; get; }
-
-		public long? LastModifierUserId { set; get; }
-
-		public DateTime CreationTime { set; get; }
-
-		public long? CreatorUserId { set; get; }
-
-	}
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string FILE_NO { set; get; }
+	    	    public string FILE_NAME { set; get; }
+	    	    public string WORKSHOP_ID { set; get; }
+	    	    public string WORKPROCEDURE_ID { set; get; }
+	    	    public string FILE_DRAWING_NO { set; get; }
+	    	    public string FILE_DESC { set; get; }
+	    	    public long? FILE_TYPE { set; get; }
+	    	    public string MATERAL_ID { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public string FILE_PATH { set; get; }
+		}
     
-    public partial class AbpUserClaims   : Entity   
+    public partial class BDTA_FROCK   : Entity   
     {
  
-		public int? TenantId { set; get; }
-
-		public long UserId { set; get; }
-
-		public string ClaimType { set; get; }
-
-		public string ClaimValue { set; get; }
-
-		public DateTime CreationTime { set; get; }
-
-		public long? CreatorUserId { set; get; }
-
-	}
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string SATAE { set; get; }
+	    	    public string FROCK_NAME { set; get; }
+	    	    public string FROCK_CODE { set; get; }
+	    	    public string CUSTOMER { set; get; }
+	    	    public string PROPERTY_BELONG_CUSTOMER { set; get; }
+	    	    public decimal? QTY { set; get; }
+	    	    public string PRODUCT_REVIEW_REPORT { set; get; }
+	    	    public string PURCHASE_LIST { set; get; }
+	    	    public string FROCK_DRAWINGS_REPORT { set; get; }
+	    	    public string PRODUCTION_VERIFICATION_REPORT { set; get; }
+	    	    public string PRODUCT_DRAWINGS_REPORT { set; get; }
+	    	    public string FORCE_OPERATION_INSTRUCTION { set; get; }
+	    	    public string SPARE_LIST { set; get; }
+	    	    public string DRAWING_NUMBER { set; get; }
+	    	    public string FROCK_POSITION { set; get; }
+	    	    public decimal? DESIGN_LIFE { set; get; }
+	    	    public decimal? FORCE_MAINTENANCE_CYCLE { set; get; }
+	    	    public DateTime? REALITY_MAINTENANCE_DATE { set; get; }
+	    	    public DateTime? NEXT_CARE_PLAN_DATE { set; get; }
+	    	    public DateTime? NEXT_CARE_REALITY_DATE { set; get; }
+	    	    public string NEXT_CARE_WARNING_DATE { set; get; }
+	    	    public string RECORD1 { set; get; }
+	    	    public string RECORD2 { set; get; }
+	    	    public string RECORD3 { set; get; }
+	    	    public string REMARK { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+		}
     
-    public partial class AbpUserLoginAttempts   : Entity   
+    public partial class BDTA_KEY_EQUIPMENT   : Entity   
     {
  
-		public int? TenantId { set; get; }
-
-		public string TenancyName { set; get; }
-
-		public long? UserId { set; get; }
-
-		public string UserNameOrEmailAddress { set; get; }
-
-		public string ClientIpAddress { set; get; }
-
-		public string ClientName { set; get; }
-
-		public string BrowserInfo { set; get; }
-
-		public byte Result { set; get; }
-
-		public DateTime CreationTime { set; get; }
-
-	}
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string EQUIPMENT_CODE { set; get; }
+	    	    public string EQUIPMENT_NAME { set; get; }
+	    	    public string MODEL_SPECIFICATION { set; get; }
+	    	    public string MAINTENANCE_CONTENT { set; get; }
+	    	    public string EXECUTION_QUARTER { set; get; }
+	    	    public string EXECUTION { set; get; }
+	    	    public string REMARK { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public DateTime? ACTUAL_COMPLETE_DATE { set; get; }
+	    	    public string NEXT_CARE_WARNING_DATE { set; get; }
+		}
     
-    public partial class AbpUserLogins   : Entity   
+    public partial class BDTA_MACHING_CENTER   : Entity   
     {
  
-		public int? TenantId { set; get; }
-
-		public long UserId { set; get; }
-
-		public string LoginProvider { set; get; }
-
-		public string ProviderKey { set; get; }
-
-	}
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string MACHING_CENTER_NO { set; get; }
+	    	    public string MACHING_CENTER_NAME { set; get; }
+	    	    public string WORKSHOP_ID { set; get; }
+	    	    public decimal? MACHING_CENTER_WORK_TYPE { set; get; }
+	    	    public string MACHING_CENTER_ISUSE { set; get; }
+	    	    public decimal? MACHING_CENTER_WORK_RANGE_TYPE { set; get; }
+	    	    public string MACHING_CENTER_CAPACITY_FACTOR { set; get; }
+	    	    public string MACHING_CENTER_DAY_YIEID { set; get; }
+	    	    public decimal? MACHING_CENTER_ISUSE_CALENDAR { set; get; }
+	    	    public string MACHING_CENTER_DESCRIPTION { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public long MACHING_CENTER_ABILITY { set; get; }
+	    	    public string MACHING_CENTER_TYPE { set; get; }
+	    	    public decimal MACHING_CENTER_ALLOW_OVERRATIO { set; get; }
+	    	    public long MACHING_CENTER_URGENTABILITY { set; get; }
+	    	    public decimal? MACHING_CENTER_ABILITY_SO { set; get; }
+	    	    public decimal? MACHING_CENTER_URGENTABILITY_S { set; get; }
+	    	    public long? MACHING_CENTER_COUNT_ABILITY_M { set; get; }
+	    	    public long? ISMERGEAPPLY4MATERIAL { set; get; }
+		}
     
-    public partial class AbpUserNotifications   : Entity   
+    public partial class BDTA_MAINTAIN_STATION   : Entity   
     {
  
-		public int? TenantId { set; get; }
-
-		public long UserId { set; get; }
-
-		public Guid TenantNotificationId { set; get; }
-
-		public int State { set; get; }
-
-		public DateTime CreationTime { set; get; }
-
-	}
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string MAINTAIN_STATION_NO { set; get; }
+	    	    public string MAINTAIN_STATION_NAME { set; get; }
+	    	    public string MAINTAIN_STATION_DESC { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+		}
     
-    public partial class AbpUserOrganizationUnits   : Entity   
+    public partial class BDTA_MATERIAL   : Entity   
     {
  
-		public int? TenantId { set; get; }
-
-		public long UserId { set; get; }
-
-		public long OrganizationUnitId { set; get; }
-
-		public bool IsDeleted { set; get; }
-
-		public DateTime CreationTime { set; get; }
-
-		public long? CreatorUserId { set; get; }
-
-	}
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string MATERIAL_TYPE_ID { set; get; }
+	    	    public string MATERIAL_CODE { set; get; }
+	    	    public string MATERIAL_DRAWING_NO { set; get; }
+	    	    public string MATERIAL_INNER_CODE { set; get; }
+	    	    public string MATERIAL_CUSTOM_CODE { set; get; }
+	    	    public string MATERIAL_UPC { set; get; }
+	    	    public string MATERIAL_NAME { set; get; }
+	    	    public string MATERIAL_MODEL { set; get; }
+	    	    public string MATERIAL_UNIT { set; get; }
+	    	    public long? MATERIAL_DATA_STATE { set; get; }
+	    	    public decimal? MATERIAL_WEI_SINGLE { set; get; }
+	    	    public decimal? MATERIAL_WEI_METER { set; get; }
+	    	    public string MATERIAL_DETAIL_CONFIG { set; get; }
+	    	    public long? MATERIAL_SORT { set; get; }
+	    	    public string MATERIAL_TYPE { set; get; }
+	    	    public long? MATERIAL_CONTROL { set; get; }
+	    	    public long? MATERIAL_PACKET_QTY { set; get; }
+	    	    public long? MATERIAL_BOX_QTY { set; get; }
+	    	    public decimal? MATERIAL_LOT_QTY { set; get; }
+	    	    public long? MATERIAL_MIN_ROAS_TTIME { set; get; }
+	    	    public long? MATERIAL_MAX_ROAS_TTIME { set; get; }
+	    	    public long? MATERIAL_MAX_REPAR { set; get; }
+	    	    public string MATERIAL_DESC { set; get; }
+	    	    public string MATERIAL_PACK_REQ { set; get; }
+	    	    public string MATERIAL_REQ1 { set; get; }
+	    	    public string MATERIAL_REQ2 { set; get; }
+	    	    public string MATERIAL_OQC_STANDARD { set; get; }
+	    	    public decimal? MATERIAL_PRICE { set; get; }
+	    	    public string PROCESSPATH_ID { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public long? PACKAGE_COUNT { set; get; }
+	    	    public string CATALOG_CODE { set; get; }
+	    	    public string MATERIAL_GROUP { set; get; }
+	    	    public string FACTORY { set; get; }
+	    	    public string MATERIAL_CLASS { set; get; }
+	    	    public string PICK_TYPE { set; get; }
+	    	    public string MATERIAL_STATE { set; get; }
+	    	    public string MATERIAL_CODE_SAP { set; get; }
+	    	    public long? FBOX_COUNT { set; get; }
+	    	    public string MATERIAL_CATEGORY { set; get; }
+	    	    public string PURCHASE_ADJUST_VALUE { set; get; }
+	    	    public string INSTORAGE_AREA { set; get; }
+	    	    public string OPERATER_IN_CHANGE { set; get; }
+		}
     
-    public partial class AbpUserRoles   : Entity   
+    public partial class BDTA_MATERIAL_BOM   : Entity   
     {
  
-		public int? TenantId { set; get; }
-
-		public long UserId { set; get; }
-
-		public int RoleId { set; get; }
-
-		public DateTime CreationTime { set; get; }
-
-		public long? CreatorUserId { set; get; }
-
-	}
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string MATERIAL_ID { set; get; }
+	    	    public string MATERIAL_BOM_CODE_ID { set; get; }
+	    	    public string MATERIAL_BOM_CODE { set; get; }
+	    	    public string MATERIAL_CODE { set; get; }
+	    	    public decimal MATERIAL_BOM_DOSAGE { set; get; }
+	    	    public string MATERIAL_BOM_DESC { set; get; }
+	    	    public long? MATERIAL_BOM_CONTAG { set; get; }
+	    	    public long? MATERIAL_BOM_TAG { set; get; }
+	    	    public long? MATERIAL_BOM_STRUCTAG { set; get; }
+	    	    public string MATERIAL_BOM_LOCATOR { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public long? ISUSED { set; get; }
+		}
     
-    public partial class AbpUsers   : Entity   
+    public partial class BDTA_MATERIAL_CATEGORY   : Entity   
     {
  
-		public string AuthenticationSource { set; get; }
-
-		public string UserName { set; get; }
-
-		public int? TenantId { set; get; }
-
-		public string EmailAddress { set; get; }
-
-		public string Name { set; get; }
-
-		public string Surname { set; get; }
-
-		public string Password { set; get; }
-
-		public string EmailConfirmationCode { set; get; }
-
-		public string PasswordResetCode { set; get; }
-
-		public DateTime? LockoutEndDateUtc { set; get; }
-
-		public int AccessFailedCount { set; get; }
-
-		public bool IsLockoutEnabled { set; get; }
-
-		public string PhoneNumber { set; get; }
-
-		public bool IsPhoneNumberConfirmed { set; get; }
-
-		public string SecurityStamp { set; get; }
-
-		public bool IsTwoFactorEnabled { set; get; }
-
-		public bool IsEmailConfirmed { set; get; }
-
-		public bool IsActive { set; get; }
-
-		public DateTime? LastLoginTime { set; get; }
-
-		public bool IsDeleted { set; get; }
-
-		public long? DeleterUserId { set; get; }
-
-		public DateTime? DeletionTime { set; get; }
-
-		public DateTime? LastModificationTime { set; get; }
-
-		public long? LastModifierUserId { set; get; }
-
-		public DateTime CreationTime { set; get; }
-
-		public long? CreatorUserId { set; get; }
-
-	}
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string MATERIAL_CATEGORY { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+		}
     
-    public partial class TestEntity   : Entity   
+    public partial class BDTA_MATERIAL_PACKAGE   : Entity   
     {
  
-		public Guid? TestEntity2ID { set; get; }
-
-		public TestEntity2 TestEntity2 { set; get; }
-
-		public ICollection<TestEntity3> TestEntity3s { set; get; }
-
-	}
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string MATERIAL_ID { set; get; }
+	    	    public string SERIAL_NUMBER_END { set; get; }
+	    	    public decimal PACKAGE_QTY { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long ACTIVITY { set; get; }
+		}
     
-    public partial class TestEntity2   : Entity   
+    public partial class BDTA_MATERIAL_TYPE   : Entity   
     {
  
-	}
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string MATERIAL_NO { set; get; }
+	    	    public string MATERIAL_NAME { set; get; }
+	    	    public string MATERIAL_UPC { set; get; }
+	    	    public string MATERIAL_PARENT_ID { set; get; }
+	    	    public long? MATERIAL_CLASS { set; get; }
+	    	    public long? MATERIAL_STATE { set; get; }
+	    	    public string MATERIAL_FORMAT { set; get; }
+	    	    public decimal? MATERIAL_LOT_QTY { set; get; }
+	    	    public string MATERIAL_DESC { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public long? ISUSED { set; get; }
+		}
     
-    public partial class TestEntity3   : Entity   
+    public partial class BDTA_MATERIAL_WORKCENTER   : Entity   
     {
  
-		public Guid? TestEntityId { set; get; }
-
-	}
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string MATERIAL_ID { set; get; }
+	    	    public string WORKSHOP_ID { set; get; }
+	    	    public long MAT_WC_SEQUENCE { set; get; }
+	    	    public decimal? MAT_WC_CONTIME { set; get; }
+	    	    public decimal? MAT_WC_AGETIME { set; get; }
+	    	    public string MAT_WC_DESC { set; get; }
+	    	    public string WORKPROCEDURE_ID { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+		}
+    
+    public partial class BDTA_MATERIAL_WORKING   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string MAT_WORKCENTER_ID { set; get; }
+	    	    public string MACHING_CENTER_ID { set; get; }
+	    	    public long? MAT_WORKING_TIME { set; get; }
+	    	    public string MAT_WORKING_DESC { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+		}
+    
+    public partial class BDTA_MATTYPE   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string MATTYPE_CODE { set; get; }
+	    	    public string MATTYPE_NAME { set; get; }
+	    	    public string MATTYPE_PARENT_ID { set; get; }
+	    	    public long? MATTYPE_STATE { set; get; }
+	    	    public string MATFORMAT { set; get; }
+	    	    public decimal? MATLOTQTY { set; get; }
+	    	    public string MATTYPE_DESC { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+		}
+    
+    public partial class BDTA_MOLD   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string MOLD_NAME { set; get; }
+	    	    public string MOLD_CODE { set; get; }
+	    	    public string STANDARD { set; get; }
+	    	    public string MANUFACTURER_NAME { set; get; }
+	    	    public string APPLY_EQUIPMENT { set; get; }
+	    	    public string EQUIPMENT_CODE { set; get; }
+	    	    public DateTime? STORAGE_DATE { set; get; }
+	    	    public string MAINTENANCE_CONTENT { set; get; }
+	    	    public decimal? USED_NUMBER { set; get; }
+	    	    public decimal? EXPECT_MAINTENANCE_TIMES { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string REMARK { set; get; }
+	    	    public DateTime? ACTUAL_COMPLETE_DATE { set; get; }
+	    	    public string MAINTENANCE_EXPLAIN { set; get; }
+	    	    public string NEXT_CARE_WARNING_DATE { set; get; }
+	    	    public decimal? SERVICE_LIFE { set; get; }
+	    	    public decimal? SUM_USED_NUMBER { set; get; }
+		}
+    
+    public partial class BDTA_MOLD_ADD   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public DateTime? MONTH { set; get; }
+	    	    public string MOLD_NAME { set; get; }
+	    	    public string MOLD_CODE { set; get; }
+	    	    public string STANDARD { set; get; }
+	    	    public string MANUFACTURER_NAME { set; get; }
+	    	    public string APPLY_EQUIPMENT { set; get; }
+	    	    public string EQUIPMENT_CODE { set; get; }
+	    	    public string MAINTENANCE_CONTENT { set; get; }
+	    	    public decimal? USED_NUMBER { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+		}
+    
+    public partial class BDTA_ORG_FACTORY   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string FACTORY_NO { set; get; }
+	    	    public string FACTORY_NAME { set; get; }
+	    	    public string FACTORY_DESC { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+		}
+    
+    public partial class BDTA_ORG_ORGRELATION   : Entity   
+    {
+ 
+    	    public string ORGRELATIONID { set; get; }
+	    	    public string ORGRELATIONPID { set; get; }
+	    	    public long ORGRELATIONTYPE { set; get; }
+	    	    public string ORGRELATIONTABLE { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public string ORGRELATIONNAME { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+		}
+    
+    public partial class BDTA_ORG_STOREROOM   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string STOREROOMNO { set; get; }
+	    	    public string STOREROOMNAME { set; get; }
+	    	    public string ISFROZEN { set; get; }
+	    	    public string ISINITIALIZED { set; get; }
+	    	    public string ROOMCHARGER { set; get; }
+	    	    public long? ISSYSTEM { set; get; }
+	    	    public string ROOMTAG { set; get; }
+	    	    public string BELONGFACTORY { set; get; }
+	    	    public string ISGOOD { set; get; }
+	    	    public string AREACODE { set; get; }
+	    	    public string STOREROOMDESC { set; get; }
+	    	    public string VMI { set; get; }
+	    	    public string SELFGET { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public long? ISFICTITIOUS { set; get; }
+		}
+    
+    public partial class BDTA_ORG_STORESITE   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string STORESITENO { set; get; }
+	    	    public string STORESITENAME { set; get; }
+	    	    public string ISFROZEN { set; get; }
+	    	    public decimal? LENGTH { set; get; }
+	    	    public decimal? WIDTH { set; get; }
+	    	    public decimal? HEIGHT { set; get; }
+	    	    public decimal? LIMITEDWEIGHT { set; get; }
+	    	    public decimal? CURRENTWEIGHT { set; get; }
+	    	    public decimal? PLOTRATIO { set; get; }
+	    	    public decimal? CURRENTPLOT { set; get; }
+	    	    public string STACKINGNO { set; get; }
+	    	    public string VELOCITY { set; get; }
+	    	    public string HIGHNESS { set; get; }
+	    	    public decimal? FLOORS { set; get; }
+	    	    public long? ISSYSTEM { set; get; }
+	    	    public string STORESITEDESC { set; get; }
+	    	    public string BDTA_ORG_STORESITE_DATA1 { set; get; }
+	    	    public string BDTA_ORG_STORESITE_DATA2 { set; get; }
+	    	    public string BDTA_ORG_STORESITE_DATA3 { set; get; }
+	    	    public string BDTA_ORG_STORESITE_DATA4 { set; get; }
+	    	    public string ISPALLETTEMPSITE { set; get; }
+	    	    public string WEIGHT_GRADE { set; get; }
+	    	    public string HIGH_GRADE { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public string INSTORAGE_AREA { set; get; }
+		}
+    
+    public partial class BDTA_PROCESSPATH   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string PROCESSPATH_NO { set; get; }
+	    	    public string PROCESSPATH_NAME { set; get; }
+	    	    public string PROCESSPATH_DESC { set; get; }
+	    	    public long? PROCESSPATH_CAPABILITY { set; get; }
+	    	    public string PROCESSPATH_TYPE { set; get; }
+	    	    public string WORKSHOP_ID { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public string MERGEBILL_TYPE { set; get; }
+		}
+    
+    public partial class BDTA_QUEUE   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string CATA4 { set; get; }
+	    	    public string CATA3 { set; get; }
+	    	    public string CATA2 { set; get; }
+	    	    public string CATA1 { set; get; }
+	    	    public long SNO { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public string CATA5 { set; get; }
+		}
+    
+    public partial class BDTA_ROUTING   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string ROUTING_NO { set; get; }
+	    	    public string ROUTING_NAME { set; get; }
+	    	    public string ROUTING_DESC { set; get; }
+	    	    public long? ROUTING_CAPABILITY { set; get; }
+	    	    public string ROUTING_TYPE { set; get; }
+	    	    public string WORKSHOP_ID { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public string MERGEBILL_TYPE { set; get; }
+		}
+    
+    public partial class BDTA_SETUP   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string SETUP_NO { set; get; }
+	    	    public string SETUP_CONTENTS { set; get; }
+	    	    public string SETUP_KEY { set; get; }
+	    	    public string SETUP_TYPE { set; get; }
+	    	    public string SETUP_PARAMETER { set; get; }
+	    	    public string SETUP_MAX { set; get; }
+	    	    public string SETUP_MIN { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+		}
+    
+    public partial class BDTA_STATION   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string MACHING_CENTER_ID { set; get; }
+	    	    public string STATION_NO { set; get; }
+	    	    public string STATION_NAME { set; get; }
+	    	    public string STATION_CAPACITY { set; get; }
+	    	    public string STATION_TYPE { set; get; }
+	    	    public string SECTION_ID { set; get; }
+	    	    public string STATION_DIFFICULTY_COEFFICIENT { set; get; }
+	    	    public string STATION_DESCRIPTION { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+		}
+    
+    public partial class BDTA_SUPPLIER   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string SUPPLIER_NO { set; get; }
+	    	    public string SUPPLIER_NAME { set; get; }
+	    	    public string SUPPLIER_CHARGER { set; get; }
+	    	    public string SUPPLIER_TELEPHONE { set; get; }
+	    	    public string SUPPLIER_TAX { set; get; }
+	    	    public string SUPPLIER_MAIL { set; get; }
+	    	    public string SUPPLIER_ADDRESS { set; get; }
+	    	    public string SUPPLIER_PROVINCE { set; get; }
+	    	    public string SUPPLIER_POSTCODE { set; get; }
+	    	    public string SUPPLIER_DESC { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string SUPPLIER_ABBREVIATION { set; get; }
+		}
+    
+    public partial class BDTA_WORKING   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string PROCESSPATH_ID { set; get; }
+	    	    public long? WORKING_ORDERNO { set; get; }
+	    	    public string WORKING_NO { set; get; }
+	    	    public string WORKING_NAME { set; get; }
+	    	    public string WORKING_DESC { set; get; }
+	    	    public long? WORKING_TYPE { set; get; }
+	    	    public long? WORKING_EXCTAG { set; get; }
+	    	    public string WORKING_ERPTAG { set; get; }
+	    	    public long? WORKING_QUASATAG { set; get; }
+	    	    public long? WORKING_TRATAG { set; get; }
+	    	    public string WORKING_NEXT_WORKINGID { set; get; }
+	    	    public string WORKING_DEPLOY { set; get; }
+	    	    public string WORKPROCEDURE_ID { set; get; }
+	    	    public long? PROCESSPATH_DIRCONTROL { set; get; }
+	    	    public string MAINTAIN_STATION_ID { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public long DATAVERSION { set; get; }
+		}
+    
+    public partial class BDTA_WORKNUMBER   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string WORKNUMBER_NO { set; get; }
+	    	    public string WORKNUMBER_NAME { set; get; }
+	    	    public long WORKNUMBER_TIME_LONG { set; get; }
+	    	    public DateTime WORKNUMBER_ONWORK { set; get; }
+	    	    public DateTime WORKNUMBER_OFFWORK { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+		}
+    
+    public partial class BDTA_WORKPROCEDURE   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string WORKSECTION_ID { set; get; }
+	    	    public string WORKPROCEDURE_NO { set; get; }
+	    	    public string WORKPROCEDURE_NAME { set; get; }
+	    	    public long WORKPROCEDURE_TYPE { set; get; }
+	    	    public long WORKPROCEDURE_COLLECT_TYPE { set; get; }
+	    	    public string WORKPROCEDURE_DESC { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+		}
+    
+    public partial class BDTA_WORKSECTION   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string WORKSECTION_NO { set; get; }
+	    	    public string WORKSECTION_NAME { set; get; }
+	    	    public string WORKSECTION_DESC { set; get; }
+	    	    public string WORKSHOP_ID { set; get; }
+	    	    public decimal DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+		}
+    
+    public partial class BDTA_WORKSHOP   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string FACTORY_ID { set; get; }
+	    	    public string WORKSHOP_NO { set; get; }
+	    	    public string WORKSHOP_NAME { set; get; }
+	    	    public long? WORKSHOP_CAPABILITY { set; get; }
+	    	    public string WORKSHOP_DESCRIPTION { set; get; }
+	    	    public string BDTA_WORKSHOP_DATA1 { set; get; }
+	    	    public string BDTA_WORKSHOP_DATA2 { set; get; }
+	    	    public string BDTA_WORKSHOP_DATA3 { set; get; }
+	    	    public string BDTA_WORKSHOP_DATA4 { set; get; }
+	    	    public string BDTA_WORKSHOP_DATA5 { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string WORKSHOP_WORKCENTER { set; get; }
+	    	    public long? WORKSHOP_TYPE { set; get; }
+		}
+    
+    public partial class BDTA_WORKTEAM   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string WORKTEAM_NO { set; get; }
+	    	    public string WORKTEAM_DESC { set; get; }
+	    	    public string WORKTEAM_EMP { set; get; }
+	    	    public DateTime? WORKTEAM_BGN { set; get; }
+	    	    public DateTime? WORKTEAM_END { set; get; }
+	    	    public string WORKSHOP_ID { set; get; }
+	    	    public decimal? WORKTEAM_TARGET_QTY { set; get; }
+	    	    public decimal? WORKTEAM_ALLOWE_QTY { set; get; }
+	    	    public string WORKTEAM_DEPARTMENT { set; get; }
+	    	    public string WORKTEAM_WORSECTION { set; get; }
+	    	    public DateTime? WORKTEAM_UTIME { set; get; }
+	    	    public string WORKTEAM_UUSER { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+		}
+    
+    public partial class BDTA_WORKTEAM_MEMBER   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string WORKTEAM_ID { set; get; }
+	    	    public string EMPLOYEE_ID { set; get; }
+	    	    public string STATION_ID { set; get; }
+	    	    public string MEMBER_POST { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+		}
+    
+    public partial class FUR_ARRIVALS_BILL   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string ARRIVAL_BILLNO { set; get; }
+	    	    public DateTime? ARRIVAL_DATE { set; get; }
+	    	    public long? ARRIVAL_STATE { set; get; }
+	    	    public string ACCEPTOR { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public long? TOTAL_BOX_QTY { set; get; }
+		}
+    
+    public partial class FUR_ARRIVALS_BILL_DETAIL   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string ARRIVALS_BILLID { set; get; }
+	    	    public string SUPPLIER_CODE { set; get; }
+	    	    public string SUPPLIER_NAME { set; get; }
+	    	    public string PURCHASE_NO { set; get; }
+	    	    public string PURCHASE_ITEM { set; get; }
+	    	    public string SALES_ORDER { set; get; }
+	    	    public string SALES_ORDER_ITEM { set; get; }
+	    	    public string MATERIAL_CODE { set; get; }
+	    	    public string MATERIAL_DESC { set; get; }
+	    	    public decimal ARRIVAL_QTY { set; get; }
+	    	    public string PICKING_TYPE { set; get; }
+	    	    public string CUSTOMER_CODE { set; get; }
+	    	    public string CUSTOMER_NAME { set; get; }
+	    	    public string CITY { set; get; }
+	    	    public string CUSTOMER_SHORT { set; get; }
+	    	    public string SO_CUSTOMER_NAME { set; get; }
+	    	    public string SO_REMARK { set; get; }
+	    	    public string CRM_SO { set; get; }
+	    	    public string STATE { set; get; }
+	    	    public string MESSAGE { set; get; }
+	    	    public string FACTORY { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public decimal ACCEPT_QTY { set; get; }
+	    	    public string LOTNO { set; get; }
+	    	    public string MATERIALID { set; get; }
+	    	    public decimal HAVING_STOCKIN_QTY { set; get; }
+	    	    public string ACTUAL_INPUT_QTY { set; get; }
+		}
+    
+    public partial class FUR_BDTA_CARRIER   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string CARRIER_CODE { set; get; }
+	    	    public string CARRIER_NAME { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+		}
+    
+    public partial class FUR_BDTA_CLIENT_INFO   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string CLIENT_CODE { set; get; }
+	    	    public string CLIENT_NAME { set; get; }
+	    	    public string CLIENT_SIMPLE_NAME { set; get; }
+	    	    public string CLIENT_CITY { set; get; }
+	    	    public string CLIENT_PROVINCE { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public decimal? CLIENT_FDECIMAL { set; get; }
+	    	    public string CLIENT_FTEXT2 { set; get; }
+	    	    public string CLIENT_CODE_ID { set; get; }
+		}
+    
+    public partial class FUR_BDTA_CLIENT_TEL   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string CLIENT_CODE { set; get; }
+	    	    public string CLIENT_TEL { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string CARRIER_ID { set; get; }
+	    	    public string CLIENT_NAME { set; get; }
+	    	    public string CLIENT_CITY { set; get; }
+		}
+    
+    public partial class FUR_BDTA_DEPT_AIM   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string DEPT_ID { set; get; }
+	    	    public long? AIM_BLOCK_SINGLE { set; get; }
+	    	    public string AIM_VALUE { set; get; }
+	    	    public DateTime? AIM_START_DATE { set; get; }
+	    	    public DateTime? AIM_END_DATE { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public string AIM_TYPE { set; get; }
+		}
+    
+    public partial class FUR_BDTA_DEPT_MGETYPE   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string DEPT_ID { set; get; }
+	    	    public string MERGE_TYPE { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public long? ISUSED { set; get; }
+		}
+    
+    public partial class FUR_BDTA_DISCOUNT   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string ORIGINAL_CITY { set; get; }
+	    	    public string DESTINATION_CITY { set; get; }
+	    	    public string DISCOUNT_VALUE { set; get; }
+	    	    public string CUSTOMER_CODE { set; get; }
+	    	    public string WEIGHT_PRICE { set; get; }
+	    	    public string SINGLE_PRICE { set; get; }
+	    	    public string SINGLE_DISCOUNT { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+		}
+    
+    public partial class FUR_BDTA_IMOS_SO_MATCODE   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string IMOS_MAT_CODE { set; get; }
+	    	    public string SALEORDER_MAT_CODE { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+		}
+    
+    public partial class FUR_BDTA_PROPER_GTH   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string PORPER_GTHS { set; get; }
+	    	    public string PORPER_GTHS_VALUE { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+		}
+    
+    public partial class FUR_BDTA_SPLITCREATEINFO   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string SPLITCREATEINFO_CODE { set; get; }
+	    	    public long SPLITCREATEINFO_TYPE { set; get; }
+	    	    public string SPLITCREATEINFO_VALUE { set; get; }
+	    	    public string SPLIFCREATEINFO_DESC { set; get; }
+	    	    public string SPLIFCREATEINFO_ZMXDM { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+		}
+    
+    public partial class FUR_BDTA_STATION_PAG   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string COLLECT_STATION_ID { set; get; }
+	    	    public string PAG_EXIT_PORT { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public string PAG_PRINT_NAME { set; get; }
+		}
+    
+    public partial class FUR_COLLECT_DATA_LOG   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string SPLITNO { set; get; }
+	    	    public long COLLECT_TYPE { set; get; }
+	    	    public string COLLECT_STATION { set; get; }
+	    	    public string COLLECT_WORKSHOP { set; get; }
+	    	    public string COLLECT_MACHINE_CENTER { set; get; }
+	    	    public string COLLECT_PROCESS { set; get; }
+	    	    public string COLLECT_WORKTEAM { set; get; }
+	    	    public string COLLECT_WORKNUMBER { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string MERGEBILL_SECONDARYSPLITID { set; get; }
+	    	    public string COLLECT_SALES_ORDER { set; get; }
+	    	    public string COLLECT_PROCESS_ID { set; get; }
+		}
+    
+    public partial class FUR_COLLECT_DATA_QWPB   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string SPLITNO { set; get; }
+	    	    public long COLLECT_STATUS { set; get; }
+	    	    public string COLLECT_STATION { set; get; }
+	    	    public string COLLECT_WORKSHOP { set; get; }
+	    	    public string COLLECT_MACHINE_CENTER { set; get; }
+	    	    public string COLLECT_PROCESS { set; get; }
+	    	    public string COLLECT_WORKTEAM { set; get; }
+	    	    public string COLLECT_WORKNUMBER { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string MERGEBILL_SECONDARYSPLITID { set; get; }
+	    	    public string COLLECT_PROCESS_ID { set; get; }
+		}
+    
+    public partial class FUR_COLLECT_STANDAR_PACKAGE   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string WORKORDER { set; get; }
+	    	    public decimal QTY { set; get; }
+	    	    public string LOTNO { set; get; }
+	    	    public string SPLITNO { set; get; }
+	    	    public string COLLECT_STATION_ID { set; get; }
+	    	    public string COLLECT_WORKSHOP_ID { set; get; }
+	    	    public string COLLECT_MACHINE_CENTER_ID { set; get; }
+	    	    public string COLLECT_PROCESS_ID { set; get; }
+	    	    public string COLLECT_WORKTEAM_ID { set; get; }
+	    	    public string COLLECT_WORKNUMBER_ID { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string COLLECT_STATION_NAME { set; get; }
+	    	    public string COLLECT_WORKSHOP_NAME { set; get; }
+	    	    public string COLLECT_MACHINE_CENTER_NAME { set; get; }
+	    	    public string COLLECT_PROCESS_NAME { set; get; }
+	    	    public string COLLECT_WORKTEAM_NAME { set; get; }
+	    	    public string COLLECT_WORKNUMBER_NAME { set; get; }
+	    	    public long COLLECT_STATUS { set; get; }
+	    	    public string SHOP_WAREHOUSE { set; get; }
+	    	    public string MATERIAL_CODE { set; get; }
+	    	    public string MATERIAL_NAME { set; get; }
+	    	    public string MATERIAL_ID { set; get; }
+	    	    public string SHIP_FACTORY { set; get; }
+	    	    public string BZJ_WAREHOUSE { set; get; }
+		}
+    
+    public partial class FUR_COMPLETEQTY   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string SALES_ORDER { set; get; }
+	    	    public string SHIPMENT_PLAN { set; get; }
+	    	    public long? QTY { set; get; }
+	    	    public long? TYPE { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+		}
+    
+    public partial class FUR_MERGEBILL_SECONDARYSPLIT   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string SPLITNO { set; get; }
+	    	    public string MERGEBILLNO { set; get; }
+	    	    public long SPLITSTATE { set; get; }
+	    	    public long? SPLIT_BOARD_TOTALITY { set; get; }
+	    	    public string DESIGN_COLOUR { set; get; }
+	    	    public long? BE_EXTRA_URGENT { set; get; }
+	    	    public DateTime? DELIVERY_DATE { set; get; }
+	    	    public string SPLITNO_TYPE { set; get; }
+	    	    public string MACHING_CENTERID { set; get; }
+	    	    public string WORKNUMBERID { set; get; }
+	    	    public DateTime? SCHEDULE_BEGIN { set; get; }
+	    	    public DateTime? SCHEDULE_END { set; get; }
+	    	    public long? SCHEDULED_FLAG { set; get; }
+	    	    public string SAW_FILEPATH { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public DateTime? JOB_SCHEDULE { set; get; }
+	    	    public DateTime? DELIVERY_END_DATE { set; get; }
+	    	    public DateTime? PC_SCHEDULE_DATE { set; get; }
+	    	    public string FID { set; get; }
+	    	    public string FMS_WORKCENTER { set; get; }
+	    	    public long? FMS_IS_USE_MAT { set; get; }
+	    	    public string FMS_MERGEBILL_TYPE { set; get; }
+		}
+    
+    public partial class FUR_MERGEBILL_SECONDARYSPLIT_R   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string MERGEBILL_SECONDARYSPLITID { set; get; }
+	    	    public string MERGEBILLNO { set; get; }
+	    	    public string SPLITNO { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string FID { set; get; }
+	    	    public string SALES_ORDER { set; get; }
+	    	    public string SALESORDERID { set; get; }
+		}
+    
+    public partial class FUR_PICK_TYPE   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string PICK_TYPE_CODE { set; get; }
+	    	    public string PICK_TYPE_NAME { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+		}
+    
+    public partial class FUR_PICKING   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string PICK_NO { set; get; }
+	    	    public string SHIPMENT_PLAN { set; get; }
+	    	    public string PICK_TYPE { set; get; }
+	    	    public string TRAIN_NUMBER { set; get; }
+	    	    public string PLATFORM { set; get; }
+	    	    public string SHIPMENT_TYPE { set; get; }
+	    	    public string SHIPMENT_TYPE_DESC { set; get; }
+	    	    public string ORDER_CAUSE { set; get; }
+	    	    public string DESCRIPTION { set; get; }
+	    	    public string DELIVERY_INFO { set; get; }
+	    	    public long? PICK_STATE { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string PICK_NEWNO { set; get; }
+	    	    public string COMPLETE_KITTING_NO { set; get; }
+	    	    public string SHIPMENT_FACTORY { set; get; }
+	    	    public string DELIVERY_BILLID { set; get; }
+		}
+    
+    public partial class FUR_PICKING_DETAIL   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string PICKID { set; get; }
+	    	    public string PICK_SEQNO { set; get; }
+	    	    public string BATCHNO { set; get; }
+	    	    public string MATERIAL_CLASS { set; get; }
+	    	    public string MATERIALID { set; get; }
+	    	    public string MATERIAL_CODE { set; get; }
+	    	    public string MATERIAL_NAME { set; get; }
+	    	    public decimal? DELIVERY_BILL_QTY { set; get; }
+	    	    public decimal? BATCH_QTY { set; get; }
+	    	    public decimal? SITE_QTY { set; get; }
+	    	    public string SPECIAL_STOCK_FLAG { set; get; }
+	    	    public string SALES_ORDER { set; get; }
+	    	    public string SALES_ORDER_ITEM { set; get; }
+	    	    public string CRM_SO { set; get; }
+	    	    public string DELIVERY_NO { set; get; }
+	    	    public string DELIVERY_NO_ITEM { set; get; }
+	    	    public string AREA { set; get; }
+	    	    public string STORE_NO { set; get; }
+	    	    public string STORAGE_TYPE { set; get; }
+	    	    public string SOURCE_STOCK_DEP { set; get; }
+	    	    public string SOURCE_STORAGE_AREA { set; get; }
+	    	    public string SOURCE_STORAGE_SITE { set; get; }
+	    	    public string SN { set; get; }
+	    	    public string NAME1 { set; get; }
+	    	    public string SHIPMENT_TYPE { set; get; }
+	    	    public string SHIPMENT_TYPE_DESC { set; get; }
+	    	    public string ORDER_CAUSE { set; get; }
+	    	    public string DESCRIPTION { set; get; }
+	    	    public string ORDER_PEOPLE { set; get; }
+	    	    public string PICK_TYPE { set; get; }
+	    	    public string SHIPMENT_PLAN { set; get; }
+	    	    public string TRAIN_NUMBER { set; get; }
+	    	    public string PLATFORM { set; get; }
+	    	    public DateTime? PICK_DETAIL_DATE { set; get; }
+	    	    public string CUSTOMER_CODE { set; get; }
+	    	    public string CITY { set; get; }
+	    	    public string CUSTOMER_SHORT { set; get; }
+	    	    public string SO_REMARK { set; get; }
+	    	    public string FACTORY { set; get; }
+	    	    public string STOCK_LOCALE { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public long? DETAIL_PICK_STATE { set; get; }
+	    	    public string PACKCOUNT { set; get; }
+	    	    public string MAT_WEIGHT { set; get; }
+	    	    public string MAT_VOLUME { set; get; }
+	    	    public string BASIC_FEE { set; get; }
+	    	    public string DISCOUNT_FEE { set; get; }
+	    	    public string DISCOUNT_VALUE { set; get; }
+		}
+    
+    public partial class FUR_PICKING_MERGE   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string SHIPMENT_PLAN { set; get; }
+	    	    public string SALES_ORDER { set; get; }
+	    	    public string PICK_NEWNO { set; get; }
+	    	    public long? STATE { set; get; }
+	    	    public string CRM_SO { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public long? PICK_NEWNO_PACKAGE_QTY { set; get; }
+	    	    public long? BIG_QTY { set; get; }
+	    	    public long? SMALL_QTY { set; get; }
+	    	    public string PICK_TYPE { set; get; }
+	    	    public string PICK_PEOPLE { set; get; }
+	    	    public DateTime? PICK_TIME { set; get; }
+	    	    public string CHECK_PEOPLE { set; get; }
+	    	    public DateTime? CHECK_TIME { set; get; }
+	    	    public long? DELIVERY_PACKAGE_QTY { set; get; }
+	    	    public string PRINT_SEQNO { set; get; }
+	    	    public long? PRINTMARK { set; get; }
+	    	    public DateTime? PRINT_STICKER_TIME { set; get; }
+	    	    public string PRINT_STICKER_PEOPLE { set; get; }
+		}
+    
+    public partial class FUR_PLAN_KL_SCHEDULE   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string MERGEBILL_SECONDARYSPLITID { set; get; }
+	    	    public string SPLITNO { set; get; }
+	    	    public DateTime? PRE_JOB_SCHEDULE { set; get; }
+	    	    public long? SEQ_NO { set; get; }
+	    	    public string MACHING_CENTERID { set; get; }
+	    	    public string WORKNUMBERID { set; get; }
+	    	    public DateTime? PRE_SCHEDULE_BEGIN { set; get; }
+	    	    public DateTime? PRE_SCHEDULE_END { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+		}
+    
+    public partial class FUR_REJECTSINFO   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string REJECTSINFO_CODE { set; get; }
+	    	    public string REJECTSINFO_NAME { set; get; }
+	    	    public string REJECTSINFO_VALUE { set; get; }
+	    	    public string REJECTSINFO_DESC { set; get; }
+		}
+    
+    public partial class FUR_SALESORDER   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string SALES_ORDER { set; get; }
+	    	    public string ENDING_CUSTOMER { set; get; }
+	    	    public string CITY { set; get; }
+	    	    public string PROVINCE_CODE { set; get; }
+	    	    public string PROVINCE_NAME { set; get; }
+	    	    public string CARRIER { set; get; }
+	    	    public string SALES_REMARK { set; get; }
+	    	    public string CASE_QTY { set; get; }
+	    	    public string CUSTOMER_SHORT { set; get; }
+	    	    public string SALES_ORG { set; get; }
+	    	    public string SALES_ORG_DESC { set; get; }
+	    	    public string DISTRIBUTION_CHANNEL { set; get; }
+	    	    public string DISTRIBUTION_CHANNEL_DESC { set; get; }
+	    	    public string PRODUCT_GROUP { set; get; }
+	    	    public string PRODUCT_GROUP_DESC { set; get; }
+	    	    public string CRM_SO { set; get; }
+	    	    public DateTime? ORDER_DELIVERY_TIME { set; get; }
+	    	    public string ORDER_REASON { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string SUITE_NUMBER { set; get; }
+	    	    public string DESPATCH_FACTORY { set; get; }
+	    	    public long? SUITE_TOTAL { set; get; }
+	    	    public long? SUITE_SEQNO { set; get; }
+	    	    public string FID { set; get; }
+		}
+    
+    public partial class FUR_SALESORDERPROCESS_DETAIL   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string PLAN_JOBDISPATCHID { set; get; }
+	    	    public string SALES_PROOF { set; get; }
+	    	    public string SALES_PROOF_ITEM { set; get; }
+	    	    public string MATERIAL_CODE { set; get; }
+	    	    public decimal? QTY { set; get; }
+	    	    public string PORPER_FBBX { set; get; }
+	    	    public string PORPER_MX { set; get; }
+	    	    public string PORPER_FNWIDTH { set; get; }
+	    	    public string PORPER_FN { set; get; }
+	    	    public string PORPER_GLASS { set; get; }
+	    	    public string PORPER_GTHS { set; get; }
+	    	    public string MB_PORPERTY { set; get; }
+	    	    public string MB_OPENTO { set; get; }
+	    	    public string DEPTH { set; get; }
+	    	    public string HEIGHT { set; get; }
+	    	    public string SPECIAL_ART { set; get; }
+	    	    public string REMARK { set; get; }
+	    	    public string MODEL_CODE { set; get; }
+	    	    public string OUTER_HANDLE { set; get; }
+	    	    public string SELF_DESC { set; get; }
+	    	    public string WIDTH { set; get; }
+	    	    public string MB_COLOUR { set; get; }
+	    	    public string HINGE_STYLE { set; get; }
+	    	    public string ELEC_HEIGHT { set; get; }
+	    	    public string DARK_CORNER_HEIGHT { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string FID { set; get; }
+		}
+    
+    public partial class FUR_SAP_ROUTING   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string PLAN_JOBDISPATCHID { set; get; }
+	    	    public long? ORDERNO { set; get; }
+	    	    public string SAP_WORKING_CODE { set; get; }
+	    	    public string SAP_WORKING_NAME { set; get; }
+	    	    public string WORKING_TYPE { set; get; }
+	    	    public string NEXT_WORKING_CODE { set; get; }
+	    	    public string CONTROL_CODE { set; get; }
+	    	    public string SAP_WORKING_TEXTCODE { set; get; }
+	    	    public string SAP_ROUTING_NO { set; get; }
+	    	    public string SAP_WORKCENTER { set; get; }
+	    	    public long? WORKING_STATE { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string FID { set; get; }
+	    	    public decimal? SAP_PROCESS_QTY { set; get; }
+	    	    public string LIFNR_ROUTING { set; get; }
+	    	    public string INFNR_ROUTING { set; get; }
+	    	    public string BANFN_ROUTING { set; get; }
+	    	    public string BNFPO_ROUTING { set; get; }
+		}
+    
+    public partial class FUR_SHIPMENT   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string SHIPMENT_NO { set; get; }
+	    	    public string PLATE_NUMBER { set; get; }
+	    	    public string SHIPMENT_ROUTE { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+		}
+    
+    public partial class FUR_SHIPMENT_NEW   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string SHIPMENT_NO { set; get; }
+	    	    public string SHIPMENT_PLATE_NUMBER { set; get; }
+	    	    public string SHIPMENT_ROUTE { set; get; }
+	    	    public string SHIPMENT_NUMBER { set; get; }
+	    	    public string SHIPMENT_PLATFORM { set; get; }
+	    	    public string SHIPMENT_DESC { set; get; }
+	    	    public DateTime? SHIPMENT_DATE { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string SHIPMENT_TOTAL_QTY { set; get; }
+	    	    public string SHIPMENT_DISPATCHER { set; get; }
+	    	    public string SHIPMENT_COMPANY { set; get; }
+	    	    public string SHIPMENT_COMPANY_ADDRESS { set; get; }
+	    	    public string SHIPMENT_COMPANY_LOGISTICS { set; get; }
+		}
+    
+    public partial class FUR_SHIPMENT_NEW_DETAIL   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string SHIPMENT_NO { set; get; }
+	    	    public string SHIPMENT_PLAN { set; get; }
+	    	    public string SHIPMENT_CRM_ORDER { set; get; }
+	    	    public string SHIPMENT_CUSTOM { set; get; }
+	    	    public string SHIPMENT_CUSTOM_DESC { set; get; }
+	    	    public decimal SHIPMENT_QTY { set; get; }
+	    	    public string SHIPMENT_WEIGHT { set; get; }
+	    	    public string SHIPMENT_VOLUME { set; get; }
+	    	    public string SHIPMENT_FREIGHT_DISPRICE { set; get; }
+	    	    public string DISCOUNT_VALUE { set; get; }
+	    	    public string WEIGHT_PRICE { set; get; }
+	    	    public string SHIPMENT_DESC { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string SHIPMENT_SO_ORDER { set; get; }
+	    	    public long? SHIPMENT_SERIAL_NO { set; get; }
+	    	    public string SHIPMENT_DELIVERY_NO { set; get; }
+	    	    public string SHIPMENT_PICKNEWNO { set; get; }
+	    	    public long? SHIPMENT_STATE { set; get; }
+	    	    public long? SHIPMENT_IS_SEND { set; get; }
+	    	    public string ORDER_PEOPLE { set; get; }
+	    	    public DateTime? EXAMINE_DATE { set; get; }
+	    	    public string EXAMINE_PEOPLE { set; get; }
+	    	    public string CARRIER_CODE { set; get; }
+	    	    public string SHIPMENT_FREIGHT { set; get; }
+	    	    public string SINGLE_PRICE { set; get; }
+	    	    public string SINGLE_DISCOUNT { set; get; }
+		}
+    
+    public partial class FUR_SHIPMENT_PICK_DETAIL   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string SHIPMENT_SO_DETAILID { set; get; }
+	    	    public string SHIPMENT_PLAN { set; get; }
+	    	    public string SALES_ORDER { set; get; }
+	    	    public string PICK_NEWNO { set; get; }
+	    	    public long? PACKAGE_QTY { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public long? LACK_QTY { set; get; }
+		}
+    
+    public partial class FUR_SHIPMENT_QTYINFO   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string DETAIL_ID { set; get; }
+	    	    public string MATERIAL_CATEGORY { set; get; }
+	    	    public decimal? QTY { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+		}
+    
+    public partial class FUR_SHIPMENT_SO_DETAIL   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string SHIPMENTID { set; get; }
+	    	    public string SHIPMENT_PLAN { set; get; }
+	    	    public string SALES_ORDER { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public long? TOTAL_PACKAGE_QTY { set; get; }
+	    	    public long? LACK_QTY { set; get; }
+	    	    public long? BE_REDELIVERY { set; get; }
+	    	    public string REMARK { set; get; }
+		}
+    
+    public partial class FUR_SOURCE_PRODUCT_DETAIL_DOOR   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string SALES_ORDER { set; get; }
+	    	    public string SALES_ORDER_ITEM { set; get; }
+	    	    public string SERIAL_NO { set; get; }
+	    	    public string SN { set; get; }
+	    	    public string EDGE_PERFORMANCE { set; get; }
+	    	    public decimal? KL_HEIGHT { set; get; }
+	    	    public decimal? KL_WIDTH { set; get; }
+	    	    public long? QTY { set; get; }
+	    	    public string TEXTURE_CODE { set; get; }
+	    	    public string CUSTOMER_SHORT { set; get; }
+	    	    public string EDGE_QTY_HEIGHT { set; get; }
+	    	    public string EDGE_QTY_WIDTH { set; get; }
+	    	    public string FNLS { set; get; }
+	    	    public string DOOR_PROPERTY { set; get; }
+	    	    public string DOOR_OPENTO { set; get; }
+	    	    public string EDGE_TYPE { set; get; }
+	    	    public string REMARK { set; get; }
+	    	    public string ROWMATERIAL_CODE { set; get; }
+	    	    public string MERGEBILLNO { set; get; }
+	    	    public string PRODUCT_HEIGHT { set; get; }
+	    	    public string PRODUCT_WIDTH { set; get; }
+	    	    public decimal? DEPTH { set; get; }
+	    	    public string INVERSE_HEIGHT { set; get; }
+	    	    public string GKBS { set; get; }
+	    	    public string TEXTURE_MCODE { set; get; }
+	    	    public string SO_SHORT { set; get; }
+	    	    public long? PLANT_COUNT { set; get; }
+	    	    public string SEQ_NO { set; get; }
+	    	    public DateTime? WORKORDER_CDT { set; get; }
+	    	    public DateTime? DELIVERY_DATE { set; get; }
+	    	    public string K3_PRODUCT_CODE { set; get; }
+	    	    public string DOOR_TYPE { set; get; }
+	    	    public string SPLITNO { set; get; }
+	    	    public string DOOR_EDGE_TYPE { set; get; }
+	    	    public string DOOR_PROPERTY_OPENTO { set; get; }
+	    	    public string GLASS_HUASE { set; get; }
+	    	    public string KL_HEIGHT_WIDTH { set; get; }
+	    	    public string ROWMATERIAL_DESC { set; get; }
+	    	    public string FID { set; get; }
+	    	    public string ATWRT5 { set; get; }
+	    	    public string CRMORDER { set; get; }
+	    	    public string DQGD { set; get; }
+	    	    public string JLPZ { set; get; }
+	    	    public string MBHS { set; get; }
+	    	    public string ZBCHD { set; get; }
+	    	    public string ZMXDM { set; get; }
+	    	    public string ZTSGY { set; get; }
+	    	    public string ZBZ { set; get; }
+	    	    public string ZWZLS { set; get; }
+	    	    public string BUTTRESS_NUMBER { set; get; }
+	    	    public decimal? BUTTRESS_TOTAL_PACKAGEQTY { set; get; }
+	    	    public decimal? TOTAL_PACKAGE_QTY { set; get; }
+	    	    public long? TOTAL_PACKAGE_SEQ { set; get; }
+	    	    public long? TOTAL_SN_QTY { set; get; }
+	    	    public long? TOTAL_SN_SEQ { set; get; }
+	    	    public decimal? SN_WEIGHT { set; get; }
+	    	    public long? TOTAL_PACKAGE_QTY_SPLIT { set; get; }
+	    	    public long? TOTAL_PACKAGE_SEQ_SPLIT { set; get; }
+	    	    public string PRODUCTMATERIAL_CODE { set; get; }
+		}
+    
+    public partial class FUR_SOURCE_PRODUCT_DETAIL_GT   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string CRM_SO { set; get; }
+	    	    public string PLATE_NAME { set; get; }
+	    	    public string ROWMATERIAL_CODE { set; get; }
+	    	    public decimal? KL_HEIGHT { set; get; }
+	    	    public decimal? KL_WIDTH { set; get; }
+	    	    public long? QTY { set; get; }
+	    	    public string EXCEED { set; get; }
+	    	    public long? CUT_PRODUCTION_QTY { set; get; }
+	    	    public string TEXTURE_CODE { set; get; }
+	    	    public string DATA1 { set; get; }
+	    	    public string MERGEBILLNO { set; get; }
+	    	    public string DATA2 { set; get; }
+	    	    public string DATA3 { set; get; }
+	    	    public string ITEM_NAME { set; get; }
+	    	    public string SALES_ORDER { set; get; }
+	    	    public string FACE_HOLE_POSITION { set; get; }
+	    	    public string MODEL_CODE { set; get; }
+	    	    public string BACK_HOLE_POSITION { set; get; }
+	    	    public string PRODUCT_SIZE { set; get; }
+	    	    public string SN_T { set; get; }
+	    	    public string SN_B { set; get; }
+	    	    public string OPEN_SLOT { set; get; }
+	    	    public string PROCEDURE_NO { set; get; }
+	    	    public string FACE_STATION { set; get; }
+	    	    public string BACK_STATION { set; get; }
+	    	    public string WORKING_DRAWING { set; get; }
+	    	    public string PRODUCTMATERIAL_CODE { set; get; }
+	    	    public string EDGE_DRAWING_PATH { set; get; }
+	    	    public string DATA4 { set; get; }
+	    	    public string DATA5 { set; get; }
+	    	    public string EDGE_DATA1 { set; get; }
+	    	    public string EDGE_DATA2 { set; get; }
+	    	    public string EDGE_DATA3 { set; get; }
+	    	    public string EDGE_DATA4 { set; get; }
+	    	    public string EDGE_DATA5 { set; get; }
+	    	    public string EDGE_DATA6 { set; get; }
+	    	    public string EDGE_DATA7 { set; get; }
+	    	    public string EDGE_DATA8 { set; get; }
+	    	    public string BARCODE1 { set; get; }
+	    	    public string BARCODE2 { set; get; }
+	    	    public string WORKING_MODE { set; get; }
+	    	    public string ATTACH_T { set; get; }
+	    	    public string ATTACH_B { set; get; }
+	    	    public string PRODUCTION_DESC { set; get; }
+	    	    public string PRODUCTIONID { set; get; }
+	    	    public string BYS_SN_BACK { set; get; }
+	    	    public string TURN_WORKING1 { set; get; }
+	    	    public string TURN_WORKING2 { set; get; }
+	    	    public string RAWMATERIAL_QUALITY { set; get; }
+	    	    public string THICK_SPLIC_MATERIAL { set; get; }
+	    	    public decimal? PLATE_THICK { set; get; }
+	    	    public decimal? CUT_DEVIATION_X { set; get; }
+	    	    public decimal? CUT_DEVIATION_Y { set; get; }
+	    	    public string FACE_STATION160 { set; get; }
+	    	    public string BACK_STATION160 { set; get; }
+	    	    public string GOOD_COORDINATE { set; get; }
+	    	    public string GOOD_ANGLE { set; get; }
+	    	    public string APPOINT_PACKAGE { set; get; }
+	    	    public string CUSTOMER_NAME { set; get; }
+	    	    public string SPLITNO { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string CODE_CONFORM { set; get; }
+	    	    public long? TWINS_SLOT { set; get; }
+	    	    public long? TWINS_HOLE { set; get; }
+	    	    public string SPLITNO_TYPE { set; get; }
+	    	    public string BUTTRESS_NUMBER { set; get; }
+	    	    public decimal? BUTTRESS_TOTAL_PACKAGEQTY { set; get; }
+	    	    public decimal? TOTAL_PACKAGE_QTY { set; get; }
+	    	    public long? TOTAL_PACKAGE_SEQ { set; get; }
+	    	    public long? TOTAL_SN_QTY { set; get; }
+	    	    public long? TOTAL_SN_SEQ { set; get; }
+	    	    public decimal? SN_WEIGHT { set; get; }
+	    	    public string HOLE_HANDLE { set; get; }
+	    	    public string SLOT_HANDLE { set; get; }
+	    	    public string FACE_SLOT_INFO { set; get; }
+	    	    public string BACK_SLOT_INFO { set; get; }
+	    	    public string FID { set; get; }
+	    	    public long? TOTAL_PACKAGE_QTY_SPLIT { set; get; }
+	    	    public long? TOTAL_PACKAGE_SEQ_SPLIT { set; get; }
+	    	    public string SN_CATEGORY { set; get; }
+		}
+    
+    public partial class FUR_TRANSFER_ORDER   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string TRANSFER_ORDERNO { set; get; }
+	    	    public string SALES_ORDER { set; get; }
+	    	    public string MERGEBILL_SECONDARYSPLITID { set; get; }
+	    	    public long? TRANSFER_TYPE { set; get; }
+	    	    public DateTime? TRANSFER_DATE { set; get; }
+	    	    public string TRANSFERER { set; get; }
+	    	    public string RECEIVE_STORESITE { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public long? TRANS_STATE { set; get; }
+	    	    public string SPLITNO { set; get; }
+		}
+    
+    public partial class FUR_TRANSFER_ORDER_DETAIL   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string TRANSFER_ORDERID { set; get; }
+	    	    public string PACK_ARCHIVEID { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string PACKNO { set; get; }
+		}
+    
+    public partial class FUR_TRANSFER_ORDER_GOODSDETAIL   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string TRANSFER_ORDERID { set; get; }
+	    	    public string SALES_ORDER { set; get; }
+	    	    public string MATERIALID { set; get; }
+	    	    public string MATERIAL_CODE { set; get; }
+	    	    public string MATERIAL_DESC { set; get; }
+	    	    public decimal? BOARD_QTY { set; get; }
+	    	    public string DELIVERY_STORESITE { set; get; }
+	    	    public string RECEIVE_STORESITE { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+		}
+    
+    public partial class FUR_TRANSPORT   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string TRANSPORT_BILLNO { set; get; }
+	    	    public string PLATE_NUMBER { set; get; }
+	    	    public string IN_FACTORY { set; get; }
+	    	    public string OUT_FACTORY { set; get; }
+	    	    public DateTime? LOADING_TIME { set; get; }
+	    	    public string MAKE_SINGLE_PEOPLE { set; get; }
+	    	    public DateTime? MAKE_SINGLE_TIME { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public long? TRANSPORT_STATUS { set; get; }
+	    	    public string FID { set; get; }
+		}
+    
+    public partial class FUR_TRANSPORT_DETAIL   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string TRANSPORT_ID { set; get; }
+	    	    public string SALES_ORDER { set; get; }
+	    	    public string CUSTOMER_SHORT { set; get; }
+	    	    public string LOTNO { set; get; }
+	    	    public decimal LOTNO_QTY { set; get; }
+	    	    public string NOTE { set; get; }
+	    	    public string SOURCE_WAREHOUSE { set; get; }
+	    	    public string SOURCE_SITE { set; get; }
+	    	    public string TARGET_WAREHOUSE { set; get; }
+	    	    public string TARGET_SITE { set; get; }
+	    	    public string SOURCE_TYPE { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public decimal? LOT_COUNT { set; get; }
+	    	    public string SALES_ORDER_ITEM { set; get; }
+	    	    public string ALLOCATION { set; get; }
+	    	    public string ALLOCATION_ITEM { set; get; }
+	    	    public string MATERIAL_CODE { set; get; }
+	    	    public string FID { set; get; }
+	    	    public long? TRANSPORT_STATUS { set; get; }
+	    	    public decimal? HAS_RECEIVE_QTY { set; get; }
+	    	    public DateTime? TRANSPORT_DATE { set; get; }
+		}
+    
+    public partial class FUR_WORKORDER_REASON   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string WORKORDER_REASON_CODE { set; get; }
+	    	    public string WORKORDER_REASON_NAME { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+		}
+    
+    public partial class FUR_WORKORDER_TYPE   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string WORKORDER_TYPE_CODE { set; get; }
+	    	    public string WORKORDER_TYPE_NAME { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+		}
+    
+    public partial class MATERIAL_APPLY   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string MATERIAL_APPLYNO { set; get; }
+	    	    public long? APPLY_TYPE { set; get; }
+	    	    public string APPLYER { set; get; }
+	    	    public DateTime? APPLYDATE { set; get; }
+	    	    public long? STATE { set; get; }
+	    	    public string REMARK { set; get; }
+	    	    public string RECEIVER { set; get; }
+	    	    public DateTime? RECEIVEDATE { set; get; }
+	    	    public string SOURCE_APPLYID { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+		}
+    
+    public partial class MATERIAL_APPLY_DETAIL   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string MATERIAL_APPLYID { set; get; }
+	    	    public string MATERIALID { set; get; }
+	    	    public string MATERIAL_CODE { set; get; }
+	    	    public string MATERIAL_DESC { set; get; }
+	    	    public decimal? REQUIRE_QTY { set; get; }
+	    	    public decimal? RECEIVE_QTY { set; get; }
+	    	    public decimal? OVERPLUS_QTY { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string STATIONID { set; get; }
+	    	    public long? MATERIAL_SEQNO { set; get; }
+	    	    public string WAREHOUSE { set; get; }
+	    	    public string STOCK_SITE { set; get; }
+	    	    public string MERGEBILL_SECONDARYSPLITID { set; get; }
+		}
+    
+    public partial class MATERIAL_APPLY_REFER   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string MERGEBILL_SECONDARYSPLITID { set; get; }
+	    	    public string MACHING_CENTERID { set; get; }
+	    	    public string STATIONID { set; get; }
+	    	    public string MATERIAL_CODE { set; get; }
+	    	    public long? USAGE { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public long? MATERIAL_SEQNO { set; get; }
+		}
+    
+    public partial class PACK_ARCHIVE   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string PACKNO { set; get; }
+	    	    public string PLAN_WIPID { set; get; }
+	    	    public string SALESORDERID { set; get; }
+	    	    public DateTime? PACK_DATE { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string SNO { set; get; }
+	    	    public string WAREHOUSE { set; get; }
+	    	    public string SOURCE_WAREHOUSE { set; get; }
+	    	    public string WORKORDER { set; get; }
+	    	    public string MATERIALID { set; get; }
+	    	    public string MATERIAL_CODE { set; get; }
+	    	    public long IS_TRANS_STATE { set; get; }
+	    	    public string MERGEBILL_SECONDARYSPLITID { set; get; }
+	    	    public string SUITE_NUMBER { set; get; }
+	    	    public string TRANSPORT_NO { set; get; }
+	    	    public string PACKAGE_RULE { set; get; }
+	    	    public long? STATE { set; get; }
+	    	    public decimal? QTY { set; get; }
+	    	    public string SALES_ORDER { set; get; }
+	    	    public string SALES_ORDER_ITEM { set; get; }
+	    	    public DateTime? IN_STOCK_DATE { set; get; }
+	    	    public DateTime? TRANSPORT_DATE { set; get; }
+	    	    public string PACKNO_OLD { set; get; }
+	    	    public string PACKAGE_RULE_OLD { set; get; }
+		}
+    
+    public partial class PLAN_CHECK_COLLECTDATA   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string SN_T { set; get; }
+	    	    public string WORKTEAMID { set; get; }
+	    	    public string WORKPROCEDUREID { set; get; }
+	    	    public long? COLLECTDATA_STATE { set; get; }
+	    	    public string REJECTSINFO_ID { set; get; }
+	    	    public DateTime? COLLECTDATA_TIME { set; get; }
+	    	    public string SPLITID { set; get; }
+	    	    public string SPLITNO { set; get; }
+	    	    public long? SPLIT_QTY { set; get; }
+	    	    public string STACK_TYPE { set; get; }
+	    	    public long? JOB_TORRNO { set; get; }
+	    	    public string JOBDISPATCHID { set; get; }
+	    	    public long? JOBDISPATCH_QTY { set; get; }
+		}
+    
+    public partial class SYS_LOG   : Entity   
+    {
+ 
+    	    public DateTime? LOGDATE { set; get; }
+	    	    public string THREADID { set; get; }
+	    	    public string LOGLEVEL { set; get; }
+	    	    public string MODULENAME { set; get; }
+	    	    public string CLASSNAME { set; get; }
+	    	    public string METHODNAME { set; get; }
+	    	    public string CUSTOMMESSAGE { set; get; }
+	    	    public string USERID { set; get; }
+	    	    public string LOGEXCEPTION { set; get; }
+	    	    public string LOGID { set; get; }
+		}
+    
+    public partial class SYS_POPEDOMPROGRAM   : Entity   
+    {
+ 
+    	    public string SYS_POPEDOMPROGRAMID { set; get; }
+	    	    public string SYS_SYSTEMINFOID { set; get; }
+	    	    public string SYS_PROGRAMID { set; get; }
+	    	    public string PARENTPROGRAMID { set; get; }
+	    	    public string MEMO { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+		}
+    
+    public partial class SYS_PROGRAM_WINFORM   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string PROGRAMCODE { set; get; }
+	    	    public string PROGRAMNAME { set; get; }
+	    	    public string PROGRAMPARENT { set; get; }
+	    	    public string PROGRAMCOMMENT { set; get; }
+	    	    public string PROGRAMDEFINITION { set; get; }
+	    	    public string PROGRAMICON { set; get; }
+	    	    public string PROGRAMPROPERTY { set; get; }
+	    	    public string PROGRAMSECURITY { set; get; }
+	    	    public DateTime? PROGRAMRELEASE { set; get; }
+	    	    public string PROGRAMVERSION { set; get; }
+	    	    public string PROGRAMDESCRIPTION { set; get; }
+	    	    public string PROGRAMTYPE { set; get; }
+	    	    public string PROGRAMEXTEND { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? MENU_ORDER { set; get; }
+		}
+    
+    public partial class SYS_ROLEAUTHORIZE   : Entity   
+    {
+ 
+    	    public string SYS_ROLEAUTHORIZEID { set; get; }
+	    	    public string SYS_POPEDOMPROGRAMID { set; get; }
+	    	    public string SYS_PROGRAMOPERATION_ID { set; get; }
+	    	    public string SYS_ROLEORUSERID { set; get; }
+	    	    public long? POPEDOM { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public string OPERATION_PAGE_NAME { set; get; }
+		}
+    
+    public partial class SYS_ROLEINFO   : Entity   
+    {
+ 
+    	    public string SYS_ROLEINFOID { set; get; }
+	    	    public string ROLECODE { set; get; }
+	    	    public string CNAME { set; get; }
+	    	    public string MEMO { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+		}
+    
+    public partial class SYS_ROLEUSER   : Entity   
+    {
+ 
+    	    public string SYS_ROLEUSERID { set; get; }
+	    	    public string SYS_ROLEINFOID { set; get; }
+	    	    public string SYS_USERINFOID { set; get; }
+	    	    public string MEMO { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+		}
+    
+    public partial class SYS_SYSTEMINFO   : Entity   
+    {
+ 
+    	    public string SYS_SYSTEMINFOID { set; get; }
+	    	    public string SYSTEMID { set; get; }
+	    	    public string MEMO { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+		}
+    
+    public partial class SYS_TEST   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+		}
+    
+    public partial class SYS_USERINFO   : Entity   
+    {
+ 
+    	    public string SYS_USERINFOID { set; get; }
+	    	    public string USERCODE { set; get; }
+	    	    public string CNAME { set; get; }
+	    	    public string PASSWORD { set; get; }
+	    	    public long STATE { set; get; }
+	    	    public string LOGSCRIPT { set; get; }
+	    	    public string MEMO { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+		}
+    
+    public partial class TR_MATERIAL_APPLY_DISPATCHBOM   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string MATERIAL_APPLY_ID { set; get; }
+	    	    public string PLAN_JOBDISPATCHBOM_ID { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public long? ISUSED { set; get; }
+		}
+    
+    public partial class WAREHOUSE_COLLECT_LOG   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public DateTime? COLLECT_TIME { set; get; }
+	    	    public string SITE_ID { set; get; }
+	    	    public string MATERIAL_ID { set; get; }
+	    	    public string LOTNO { set; get; }
+	    	    public decimal? QTY { set; get; }
+	    	    public string IN_DESC { set; get; }
+	    	    public long? SOURCE_CODE { set; get; }
+	    	    public long? STORAGE_TYPE { set; get; }
+	    	    public string MATERIAL_CODE { set; get; }
+	    	    public string SITE_CODE { set; get; }
+	    	    public string SUPPLIER_ID { set; get; }
+	    	    public string SUPPLIER_NAME { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public long? SEQUENCE_CODE { set; get; }
+	    	    public string SCAN_CODE { set; get; }
+	    	    public DateTime? SUPPLIER_DATE { set; get; }
+	    	    public DateTime? IN_STORAGE_DATE { set; get; }
+	    	    public string SUPPLIER_CODE { set; get; }
+		}
+    
+    public partial class WAREHOUSE_DELIVERY_BILL   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string DELIVERY_NO { set; get; }
+	    	    public string SALES_ORDER { set; get; }
+	    	    public string CRM_SO { set; get; }
+	    	    public string AREA { set; get; }
+	    	    public string CITY { set; get; }
+	    	    public long? TOTAL_QTY { set; get; }
+	    	    public long? STATE { set; get; }
+	    	    public string TRAIN_NUMBER { set; get; }
+	    	    public string PLATFORM { set; get; }
+	    	    public string SHIPMENT_PLAN { set; get; }
+	    	    public decimal? SHIPMENT_FEE { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+		}
+    
+    public partial class WAREHOUSE_IN_COLLECTDATA   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public DateTime? COLLECT_TIME { set; get; }
+	    	    public string SITE_ID { set; get; }
+	    	    public string MATERIAL_ID { set; get; }
+	    	    public string LOTNO { set; get; }
+	    	    public decimal? QTY { set; get; }
+	    	    public string IN_DESC { set; get; }
+	    	    public long? SOURCE_CODE { set; get; }
+	    	    public long? STORAGE_TYPE { set; get; }
+	    	    public string MATERIAL_CODE { set; get; }
+	    	    public string SITE_CODE { set; get; }
+	    	    public string SUPPLIER_ID { set; get; }
+	    	    public string SUPPLIER_NAME { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+		}
+    
+    public partial class WAREHOUSE_IN_FORM   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string RECEIVE_CODE { set; get; }
+	    	    public string RECEIVE_USER { set; get; }
+	    	    public DateTime? RECEIVE_DATE { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public long? RECEIVE_TYPE { set; get; }
+		}
+    
+    public partial class WAREHOUSE_IN_FORM_DETAIL   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string MATERIAL_ID { set; get; }
+	    	    public string MATERIAL_CODE { set; get; }
+	    	    public string LOTNO { set; get; }
+	    	    public decimal? QTY { set; get; }
+	    	    public string SUPPLIER_CODE { set; get; }
+	    	    public string SUPPLIER_ID { set; get; }
+	    	    public string RECEIVE_GOOD_AREAR { set; get; }
+	    	    public string SCAN_CODE { set; get; }
+	    	    public string SUPPLIER_NAME { set; get; }
+	    	    public string WAREHOUSE_IN_FORM_ID { set; get; }
+	    	    public string SITE_ID { set; get; }
+	    	    public string SITE_CODE { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+		}
+    
+    public partial class WAREHOUSE_IN_STOCK   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string SCAN_CODE { set; get; }
+	    	    public string LOTNO { set; get; }
+	    	    public string SEQUENCE_CODE { set; get; }
+	    	    public string MATERIAL_ID { set; get; }
+	    	    public string MATERIAL_CODE { set; get; }
+	    	    public string SITE_ID { set; get; }
+	    	    public string SITE_CODE { set; get; }
+	    	    public string SUPPLIER_ID { set; get; }
+	    	    public string SUPPLIER_CODE { set; get; }
+	    	    public string SUPPLIER_NAME { set; get; }
+	    	    public DateTime? SUPPLIER_DATE { set; get; }
+	    	    public decimal QTY { set; get; }
+	    	    public long? STOCK_STATE { set; get; }
+	    	    public long? SOURCE_CODE { set; get; }
+	    	    public long? STOCKIN_STATE { set; get; }
+	    	    public DateTime? IN_STORAGE_DATE { set; get; }
+	    	    public long? STORAGE_TYPE { set; get; }
+	    	    public DateTime? OUT_STORAGE_DATE { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+		}
+    
+    public partial class WAREHOUSE_IN_STOCK_LOCK   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string LOCK_GUID { set; get; }
+	    	    public string LOTNO { set; get; }
+	    	    public string SITE_ID { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string OPERATOR_TPYE { set; get; }
+	    	    public string MATERIALID { set; get; }
+		}
+    
+    public partial class WAREHOUSE_OUT_FORM   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string OUT_CODE { set; get; }
+	    	    public string OUT_USER { set; get; }
+	    	    public DateTime? OUT_DATE { set; get; }
+	    	    public long? OUT_TYPE { set; get; }
+	    	    public long? IS_FINISH { set; get; }
+	    	    public long? OUT_STATUS { set; get; }
+	    	    public long? OUT_MODE { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string OUT_DESC { set; get; }
+		}
+    
+    public partial class WAREHOUSE_OUT_FORM_DETAIL   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string WAREHOUSE_OUT_FORM_ID { set; get; }
+	    	    public string MATERIAL_ID { set; get; }
+	    	    public string LOTNO { set; get; }
+	    	    public string SITE_CODE { set; get; }
+	    	    public decimal? QTY { set; get; }
+	    	    public string MATERIAL_CODE { set; get; }
+	    	    public string SITE_ID { set; get; }
+	    	    public string SUPPLIER_ID { set; get; }
+	    	    public string SUPPLIER_NAME { set; get; }
+	    	    public string SEQUENCE_CODE { set; get; }
+	    	    public string SCAN_CODE { set; get; }
+	    	    public DateTime? SUPPLIER_DATE { set; get; }
+	    	    public DateTime? IN_STORAGE_DATE { set; get; }
+	    	    public string SUPPLIER_CODE { set; get; }
+	    	    public string WAREHOUSE_IN_STOCK_ID { set; get; }
+	    	    public string OUT_OPERATER { set; get; }
+	    	    public long? IS_FINISH { set; get; }
+	    	    public long? SOURCE_CODE { set; get; }
+	    	    public string MATERIAL_NAME { set; get; }
+	    	    public DateTime? OUT_STORAGE_DATE { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string FINISHED_PRODUCT_MAT_CODE { set; get; }
+	    	    public string FINISHED_PRODUCT_MAT_NAME { set; get; }
+	    	    public decimal? MATERIAL_CURR_QTY_IN_STORAG { set; get; }
+		}
+    
+    public partial class WAREHOUSE_OUT_FORM_FAULT   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string WAREHOUSE_OUT_FORM_ID { set; get; }
+	    	    public string MATERIAL_ID { set; get; }
+	    	    public string MATERIAL_CODE { set; get; }
+	    	    public string MATERIAL_NAME { set; get; }
+	    	    public decimal? QTY { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string MATERIAL_OPERATER_IN_CHANGE { set; get; }
+	    	    public decimal? MATERIAL_CURR_QTY_IN_STORAG { set; get; }
+	    	    public string FINISHED_PRODUCT_MAT_CODE { set; get; }
+	    	    public string FINISHED_PRODUCT_MAT_NAME { set; get; }
+	    	    public string WAREHOUSE_OUT_FORM_ITEM_ID { set; get; }
+		}
+    
+    public partial class WAREHOUSE_OUT_FORM_ITEM   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string WAREHOUSE_OUT_FORM_ID { set; get; }
+	    	    public string MATERIAL_ID { set; get; }
+	    	    public string MATERIAL_CODE { set; get; }
+	    	    public string MATERIAL_NAME { set; get; }
+	    	    public decimal? QTY { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string MATERIAL_OPERATER_IN_CHANGE { set; get; }
+	    	    public decimal? MATERIAL_CURR_QTY_IN_STORAG { set; get; }
+	    	    public string FINISHED_PRODUCT_MAT_CODE { set; get; }
+	    	    public string FINISHED_PRODUCT_MAT_NAME { set; get; }
+		}
+    
+    public partial class WAREHOUSE_OUT_STOCK_LOCK   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string LOCK_GUID { set; get; }
+	    	    public string OUT_FORM { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string OPERATOR_TPYE { set; get; }
+		}
+    
+    public partial class WAREHOUSE_QUALITY_FORM   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string MATERIAL_ID { set; get; }
+	    	    public string MATERIAL_CODE { set; get; }
+	    	    public string LOTNO { set; get; }
+	    	    public decimal? QTY { set; get; }
+	    	    public long? IS_QUALIFIED { set; get; }
+	    	    public decimal? QUALIFIED_QTY { set; get; }
+	    	    public string SUPPLIER_CODE { set; get; }
+	    	    public string SUPPLIER_ID { set; get; }
+	    	    public string RECEIVE_GOOD_AREAR { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string SCAN_CODE { set; get; }
+	    	    public decimal? UNQUALIFIED_QTY { set; get; }
+	    	    public string DESC { set; get; }
+	    	    public decimal? IN_STORAGE_QTY { set; get; }
+	    	    public string QUALITY_FORM_CODE { set; get; }
+	    	    public long? IS_IN_STORAGE { set; get; }
+		}
+    
+    public partial class WAREHOUSE_SCAN_CODE_INFO   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string SCAN_CODE { set; get; }
+	    	    public long? STATUS { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+		}
+    
+    public partial class SYS_PROGRAM   : Entity   
+    {
+ 
+    	    public string SYS_PROGRAMID { set; get; }
+	    	    public string PROGRAMCODE { set; get; }
+	    	    public string PROGRAMNAME { set; get; }
+	    	    public string PROGRAMPARENT { set; get; }
+	    	    public string PROGRAMCOMMENT { set; get; }
+	    	    public string PROGRAMDEFINITION { set; get; }
+	    	    public string PROGRAMICON { set; get; }
+	    	    public string PROGRAMPROPERTY { set; get; }
+	    	    public string PROGRAMSECURITY { set; get; }
+	    	    public DateTime? PROGRAMRELEASE { set; get; }
+	    	    public string PROGRAMVERSION { set; get; }
+	    	    public string PROGRAMDESCRIPTION { set; get; }
+	    	    public string PROGRAMTYPE { set; get; }
+	    	    public string PROGRAMEXTEND { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public long? MENU_ORDER { set; get; }
+		}
+    
+    public partial class SYS_PROGRAM_OPERATION_WEB   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string OPERATION_NAME { set; get; }
+	    	    public string OPERATION_CONTENT { set; get; }
+	    	    public long? OPERATION_TYPE { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public string OPERATION_CODE { set; get; }
+		}
+    
+    public partial class BLOCKS_AUDITLOGS   : Entity   
+    {
+ 
+    	    public long? TenantId { set; get; }
+	    	    public long? UserId { set; get; }
+	    	    public string ServiceName { set; get; }
+	    	    public string MethodName { set; get; }
+	    	    public string Parameters { set; get; }
+	    	    public DateTime ExecutionTime { set; get; }
+	    	    public long ExecutionDuration { set; get; }
+	    	    public string ClientIpAddress { set; get; }
+	    	    public string ClientName { set; get; }
+	    	    public string BrowserInfo { set; get; }
+	    	    public string Exception { set; get; }
+	    	    public long? ImpersonatorUserId { set; get; }
+	    	    public long? ImpersonatorTenantId { set; get; }
+	    	    public string CustomData { set; get; }
+		}
+    
+    public partial class BLOCKS_BACKGROUNDJOBS   : Entity   
+    {
+ 
+    	    public string JobType { set; get; }
+	    	    public string JobArgs { set; get; }
+	    	    public long TryCount { set; get; }
+	    	    public DateTime NextTryTime { set; get; }
+	    	    public DateTime? LastTryTime { set; get; }
+	    	    public long IsAbandoned { set; get; }
+	    	    public long Priority { set; get; }
+	    	    public DateTime CreationTime { set; get; }
+	    	    public long? CreatorUserId { set; get; }
+		}
+    
+    public partial class BLOCKS_FEATURES   : Entity   
+    {
+ 
+    	    public string Name { set; get; }
+	    	    public string Value { set; get; }
+	    	    public DateTime CreationTime { set; get; }
+	    	    public long? CreatorUserId { set; get; }
+	    	    public long? EditionId { set; get; }
+	    	    public long? TenantId { set; get; }
+	    	    public string Discriminator { set; get; }
+		}
+    
+    public partial class BLOCKS_EDITIONS   : Entity   
+    {
+ 
+    	    public string Name { set; get; }
+	    	    public string DisplayName { set; get; }
+	    	    public long IsDeleted { set; get; }
+	    	    public long? DeleterUserId { set; get; }
+	    	    public DateTime? DeletionTime { set; get; }
+	    	    public DateTime? LastModificationTime { set; get; }
+	    	    public long? LastModifierUserId { set; get; }
+	    	    public DateTime CreationTime { set; get; }
+	    	    public long? CreatorUserId { set; get; }
+		}
+    
+    public partial class BLOCKS_LANGUAGES   : Entity   
+    {
+ 
+    	    public long? TenantId { set; get; }
+	    	    public string Name { set; get; }
+	    	    public string DisplayName { set; get; }
+	    	    public string Icon { set; get; }
+	    	    public long IsDisabled { set; get; }
+	    	    public long IsDeleted { set; get; }
+	    	    public long? DeleterUserId { set; get; }
+	    	    public DateTime? DeletionTime { set; get; }
+	    	    public DateTime? LastModificationTime { set; get; }
+	    	    public long? LastModifierUserId { set; get; }
+	    	    public DateTime CreationTime { set; get; }
+	    	    public long? CreatorUserId { set; get; }
+		}
+    
+    public partial class BLOCKS_LANGUAGETEXTS   : Entity   
+    {
+ 
+    	    public long? TenantId { set; get; }
+	    	    public string LanguageName { set; get; }
+	    	    public string Source { set; get; }
+	    	    public string Key { set; get; }
+	    	    public string Value { set; get; }
+	    	    public DateTime? LastModificationTime { set; get; }
+	    	    public long? LastModifierUserId { set; get; }
+	    	    public DateTime CreationTime { set; get; }
+	    	    public long? CreatorUserId { set; get; }
+		}
+    
+    public partial class BLOCKS_NOTIFICATIONS   : Entity   
+    {
+ 
+    	    public string NotificationName { set; get; }
+	    	    public string Data { set; get; }
+	    	    public string DataTypeName { set; get; }
+	    	    public string EntityTypeName { set; get; }
+	    	    public string EntityTypeQualifiedName { set; get; }
+	    	    public string EntityId { set; get; }
+	    	    public long Severity { set; get; }
+	    	    public string UserIds { set; get; }
+	    	    public string ExcludedUserIds { set; get; }
+	    	    public string TenantIds { set; get; }
+	    	    public DateTime CreationTime { set; get; }
+	    	    public long? CreatorUserId { set; get; }
+		}
+    
+    public partial class BLOCKS_NOTIFY_SUBSCRIPTIONS   : Entity   
+    {
+ 
+    	    public long? TenantId { set; get; }
+	    	    public long UserId { set; get; }
+	    	    public string NotificationName { set; get; }
+	    	    public string EntityTypeName { set; get; }
+	    	    public string EntityTypeQualifiedName { set; get; }
+	    	    public string EntityId { set; get; }
+	    	    public DateTime CreationTime { set; get; }
+	    	    public long? CreatorUserId { set; get; }
+		}
+    
+    public partial class BLOCKS_ORGANIZATION_UNITS   : Entity   
+    {
+ 
+    	    public long? TenantId { set; get; }
+	    	    public long? ParentId { set; get; }
+	    	    public string Code { set; get; }
+	    	    public string DisplayName { set; get; }
+	    	    public long IsDeleted { set; get; }
+	    	    public long? DeleterUserId { set; get; }
+	    	    public DateTime? DeletionTime { set; get; }
+	    	    public DateTime? LastModificationTime { set; get; }
+	    	    public long? LastModifierUserId { set; get; }
+	    	    public DateTime CreationTime { set; get; }
+	    	    public long? CreatorUserId { set; get; }
+		}
+    
+    public partial class BLOCKS_PERMISSIONS   : Entity   
+    {
+ 
+    	    public long? TenantId { set; get; }
+	    	    public string Name { set; get; }
+	    	    public long IsGranted { set; get; }
+	    	    public DateTime CreationTime { set; get; }
+	    	    public long? CreatorUserId { set; get; }
+	    	    public long? RoleId { set; get; }
+	    	    public long? UserId { set; get; }
+	    	    public string Discriminator { set; get; }
+		}
+    
+    public partial class BLOCKS_ROLES   : Entity   
+    {
+ 
+    	    public string Description { set; get; }
+	    	    public long? TenantId { set; get; }
+	    	    public string Name { set; get; }
+	    	    public string DisplayName { set; get; }
+	    	    public long IsStatic { set; get; }
+	    	    public long IsDefault { set; get; }
+	    	    public long IsDeleted { set; get; }
+	    	    public long? DeleterUserId { set; get; }
+	    	    public DateTime? DeletionTime { set; get; }
+	    	    public DateTime? LastModificationTime { set; get; }
+	    	    public long? LastModifierUserId { set; get; }
+	    	    public DateTime CreationTime { set; get; }
+	    	    public long? CreatorUserId { set; get; }
+		}
+    
+    public partial class BLOCKS_USERS   : Entity   
+    {
+ 
+    	    public string AuthenticationSource { set; get; }
+	    	    public string UserName { set; get; }
+	    	    public long? TenantId { set; get; }
+	    	    public string EmailAddress { set; get; }
+	    	    public string Name { set; get; }
+	    	    public string Surname { set; get; }
+	    	    public string Password { set; get; }
+	    	    public string EmailConfirmationCode { set; get; }
+	    	    public string PasswordResetCode { set; get; }
+	    	    public DateTime? LockoutEndDateUtc { set; get; }
+	    	    public long AccessFailedCount { set; get; }
+	    	    public long IsLockoutEnabled { set; get; }
+	    	    public string PhoneNumber { set; get; }
+	    	    public long IsPhoneNumberConfirmed { set; get; }
+	    	    public string SecurityStamp { set; get; }
+	    	    public long IsTwoFactorEnabled { set; get; }
+	    	    public long IsEmailConfirmed { set; get; }
+	    	    public long IsActive { set; get; }
+	    	    public DateTime? LastLoginTime { set; get; }
+	    	    public long IsDeleted { set; get; }
+	    	    public long? DeleterUserId { set; get; }
+	    	    public DateTime? DeletionTime { set; get; }
+	    	    public DateTime? LastModificationTime { set; get; }
+	    	    public long? LastModifierUserId { set; get; }
+	    	    public DateTime CreationTime { set; get; }
+	    	    public long? CreatorUserId { set; get; }
+		}
+    
+    public partial class BLOCKS_USER_CLAIMS   : Entity   
+    {
+ 
+    	    public long? TenantId { set; get; }
+	    	    public long UserId { set; get; }
+	    	    public string ClaimType { set; get; }
+	    	    public string ClaimValue { set; get; }
+	    	    public DateTime CreationTime { set; get; }
+	    	    public long? CreatorUserId { set; get; }
+		}
+    
+    public partial class BLOCKS_USER_LOGINS   : Entity   
+    {
+ 
+    	    public long? TenantId { set; get; }
+	    	    public long UserId { set; get; }
+	    	    public string LoginProvider { set; get; }
+	    	    public string ProviderKey { set; get; }
+		}
+    
+    public partial class BLOCKS_USER_ROLES   : Entity   
+    {
+ 
+    	    public long? TenantId { set; get; }
+	    	    public long UserId { set; get; }
+	    	    public long RoleId { set; get; }
+	    	    public DateTime CreationTime { set; get; }
+	    	    public long? CreatorUserId { set; get; }
+		}
+    
+    public partial class BLOCKS_SETTINGS   : Entity   
+    {
+ 
+    	    public long? TenantId { set; get; }
+	    	    public long? UserId { set; get; }
+	    	    public string Name { set; get; }
+	    	    public string Value { set; get; }
+	    	    public DateTime? LastModificationTime { set; get; }
+	    	    public long? LastModifierUserId { set; get; }
+	    	    public DateTime CreationTime { set; get; }
+	    	    public long? CreatorUserId { set; get; }
+		}
+    
+    public partial class BLOCKS_TENANT_NOTIFICATIONS   : Entity   
+    {
+ 
+    	    public long? TenantId { set; get; }
+	    	    public string NotificationName { set; get; }
+	    	    public string Data { set; get; }
+	    	    public string DataTypeName { set; get; }
+	    	    public string EntityTypeName { set; get; }
+	    	    public string EntityTypeQualifiedName { set; get; }
+	    	    public string EntityId { set; get; }
+	    	    public long Severity { set; get; }
+	    	    public DateTime CreationTime { set; get; }
+	    	    public long? CreatorUserId { set; get; }
+		}
+    
+    public partial class BLOCKS_TENANTS   : Entity   
+    {
+ 
+    	    public long? EditionId { set; get; }
+	    	    public string Name { set; get; }
+	    	    public string TenancyName { set; get; }
+	    	    public string ConnectionString { set; get; }
+	    	    public long IsActive { set; get; }
+	    	    public long IsDeleted { set; get; }
+	    	    public long? DeleterUserId { set; get; }
+	    	    public DateTime? DeletionTime { set; get; }
+	    	    public DateTime? LastModificationTime { set; get; }
+	    	    public long? LastModifierUserId { set; get; }
+	    	    public DateTime CreationTime { set; get; }
+	    	    public long? CreatorUserId { set; get; }
+		}
+    
+    public partial class BLOCKS_USER_ACCOUNTS   : Entity   
+    {
+ 
+    	    public long? TenantId { set; get; }
+	    	    public long UserId { set; get; }
+	    	    public long? UserLinkId { set; get; }
+	    	    public string UserName { set; get; }
+	    	    public string EmailAddress { set; get; }
+	    	    public DateTime? LastLoginTime { set; get; }
+	    	    public long IsDeleted { set; get; }
+	    	    public long? DeleterUserId { set; get; }
+	    	    public DateTime? DeletionTime { set; get; }
+	    	    public DateTime? LastModificationTime { set; get; }
+	    	    public long? LastModifierUserId { set; get; }
+	    	    public DateTime CreationTime { set; get; }
+	    	    public long? CreatorUserId { set; get; }
+		}
+    
+    public partial class BLOCKS_USER_LOGINATTEMPTS   : Entity   
+    {
+ 
+    	    public long? TenantId { set; get; }
+	    	    public string TenancyName { set; get; }
+	    	    public long? UserId { set; get; }
+	    	    public string UserNameOrEmailAddress { set; get; }
+	    	    public string ClientIpAddress { set; get; }
+	    	    public string ClientName { set; get; }
+	    	    public string BrowserInfo { set; get; }
+	    	    public long Result { set; get; }
+	    	    public DateTime CreationTime { set; get; }
+		}
+    
+    public partial class BLOCKS_USERNOTIFICATIONS   : Entity   
+    {
+ 
+    	    public long? TenantId { set; get; }
+	    	    public long UserId { set; get; }
+	    	    public string TenantNotificationId { set; get; }
+	    	    public long State { set; get; }
+	    	    public DateTime CreationTime { set; get; }
+		}
+    
+    public partial class BLOCKS_USERORGANIZATION_UNITS   : Entity   
+    {
+ 
+    	    public long? TenantId { set; get; }
+	    	    public long UserId { set; get; }
+	    	    public long OrganizationUnitId { set; get; }
+	    	    public long IsDeleted { set; get; }
+	    	    public DateTime CreationTime { set; get; }
+	    	    public long? CreatorUserId { set; get; }
+		}
+    
+    public partial class TESTENTITY   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string TESTENTITY2ID { set; get; }
+	    	    public TESTENTITY2 TESTENTITY2 { set; get; }
+	    	    public ICollection<TESTENTITY3> TESTENTITY3s { set; get; }
+		}
+    
+    public partial class TESTENTITY2   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+		}
+    
+    public partial class TESTENTITY3   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string TESTENTITYID { set; get; }
+		}
 
 
     
  
  
-    public partial class __MigrationHistoryConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<__MigrationHistory> 
+    public partial class BDTA_CALDETAILConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_CALDETAIL> 
     {
-		public __MigrationHistoryConfiguration()
-            : this("dbo")
+		public BDTA_CALDETAILConfiguration()
         {
         }
-		public __MigrationHistoryConfiguration(string schema)
+		public BDTA_CALDETAILConfiguration(string schema)
         {
-			ToTable("__MigrationHistory", schema);
-			            HasKey(x => x.MigrationId);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class AbpAuditLogsConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<AbpAuditLogs> 
-    {
-		public AbpAuditLogsConfiguration()
-            : this("dbo")
-        {
-        }
-		public AbpAuditLogsConfiguration(string schema)
-        {
-			ToTable("AbpAuditLogs", schema);
+			ToTable("BDTA_CALDETAIL", schema);
 			            HasKey(x => x.Id);
 		 
 	    }
@@ -637,15 +3332,14 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class AbpBackgroundJobsConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<AbpBackgroundJobs> 
+    public partial class BDTA_CALNUMBERConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_CALNUMBER> 
     {
-		public AbpBackgroundJobsConfiguration()
-            : this("dbo")
+		public BDTA_CALNUMBERConfiguration()
         {
         }
-		public AbpBackgroundJobsConfiguration(string schema)
+		public BDTA_CALNUMBERConfiguration(string schema)
         {
-			ToTable("AbpBackgroundJobs", schema);
+			ToTable("BDTA_CALNUMBER", schema);
 			            HasKey(x => x.Id);
 		 
 	    }
@@ -653,15 +3347,14 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class AbpEditionsConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<AbpEditions> 
+    public partial class BDTA_CHECKTOOLConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_CHECKTOOL> 
     {
-		public AbpEditionsConfiguration()
-            : this("dbo")
+		public BDTA_CHECKTOOLConfiguration()
         {
         }
-		public AbpEditionsConfiguration(string schema)
+		public BDTA_CHECKTOOLConfiguration(string schema)
         {
-			ToTable("AbpEditions", schema);
+			ToTable("BDTA_CHECKTOOL", schema);
 			            HasKey(x => x.Id);
 		 
 	    }
@@ -669,15 +3362,14 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class AbpFeaturesConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<AbpFeatures> 
+    public partial class BDTA_CODE_FORMATConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_CODE_FORMAT> 
     {
-		public AbpFeaturesConfiguration()
-            : this("dbo")
+		public BDTA_CODE_FORMATConfiguration()
         {
         }
-		public AbpFeaturesConfiguration(string schema)
+		public BDTA_CODE_FORMATConfiguration(string schema)
         {
-			ToTable("AbpFeatures", schema);
+			ToTable("BDTA_CODE_FORMAT", schema);
 			            HasKey(x => x.Id);
 		 
 	    }
@@ -685,15 +3377,14 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class AbpLanguagesConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<AbpLanguages> 
+    public partial class BDTA_CODE_FORMAT_DEFINEConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_CODE_FORMAT_DEFINE> 
     {
-		public AbpLanguagesConfiguration()
-            : this("dbo")
+		public BDTA_CODE_FORMAT_DEFINEConfiguration()
         {
         }
-		public AbpLanguagesConfiguration(string schema)
+		public BDTA_CODE_FORMAT_DEFINEConfiguration(string schema)
         {
-			ToTable("AbpLanguages", schema);
+			ToTable("BDTA_CODE_FORMAT_DEFINE", schema);
 			            HasKey(x => x.Id);
 		 
 	    }
@@ -701,15 +3392,14 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class AbpLanguageTextsConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<AbpLanguageTexts> 
+    public partial class BDTA_CODE_FORMAT_ELEMENTConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_CODE_FORMAT_ELEMENT> 
     {
-		public AbpLanguageTextsConfiguration()
-            : this("dbo")
+		public BDTA_CODE_FORMAT_ELEMENTConfiguration()
         {
         }
-		public AbpLanguageTextsConfiguration(string schema)
+		public BDTA_CODE_FORMAT_ELEMENTConfiguration(string schema)
         {
-			ToTable("AbpLanguageTexts", schema);
+			ToTable("BDTA_CODE_FORMAT_ELEMENT", schema);
 			            HasKey(x => x.Id);
 		 
 	    }
@@ -717,15 +3407,14 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class AbpNotificationsConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<AbpNotifications> 
+    public partial class BDTA_COLLECT_STATIONConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_COLLECT_STATION> 
     {
-		public AbpNotificationsConfiguration()
-            : this("dbo")
+		public BDTA_COLLECT_STATIONConfiguration()
         {
         }
-		public AbpNotificationsConfiguration(string schema)
+		public BDTA_COLLECT_STATIONConfiguration(string schema)
         {
-			ToTable("AbpNotifications", schema);
+			ToTable("BDTA_COLLECT_STATION", schema);
 			            HasKey(x => x.Id);
 		 
 	    }
@@ -733,15 +3422,14 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class AbpNotificationSubscriptionsConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<AbpNotificationSubscriptions> 
+    public partial class BDTA_COLLECT_STATION_DETAILConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_COLLECT_STATION_DETAIL> 
     {
-		public AbpNotificationSubscriptionsConfiguration()
-            : this("dbo")
+		public BDTA_COLLECT_STATION_DETAILConfiguration()
         {
         }
-		public AbpNotificationSubscriptionsConfiguration(string schema)
+		public BDTA_COLLECT_STATION_DETAILConfiguration(string schema)
         {
-			ToTable("AbpNotificationSubscriptions", schema);
+			ToTable("BDTA_COLLECT_STATION_DETAIL", schema);
 			            HasKey(x => x.Id);
 		 
 	    }
@@ -749,15 +3437,14 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class AbpOrganizationUnitsConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<AbpOrganizationUnits> 
+    public partial class BDTA_COLLECT_STATION_SKILLConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_COLLECT_STATION_SKILL> 
     {
-		public AbpOrganizationUnitsConfiguration()
-            : this("dbo")
+		public BDTA_COLLECT_STATION_SKILLConfiguration()
         {
         }
-		public AbpOrganizationUnitsConfiguration(string schema)
+		public BDTA_COLLECT_STATION_SKILLConfiguration(string schema)
         {
-			ToTable("AbpOrganizationUnits", schema);
+			ToTable("BDTA_COLLECT_STATION_SKILL", schema);
 			            HasKey(x => x.Id);
 		 
 	    }
@@ -765,15 +3452,14 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class AbpPermissionsConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<AbpPermissions> 
+    public partial class BDTA_COMMON_EQUIPMENTConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_COMMON_EQUIPMENT> 
     {
-		public AbpPermissionsConfiguration()
-            : this("dbo")
+		public BDTA_COMMON_EQUIPMENTConfiguration()
         {
         }
-		public AbpPermissionsConfiguration(string schema)
+		public BDTA_COMMON_EQUIPMENTConfiguration(string schema)
         {
-			ToTable("AbpPermissions", schema);
+			ToTable("BDTA_COMMON_EQUIPMENT", schema);
 			            HasKey(x => x.Id);
 		 
 	    }
@@ -781,15 +3467,14 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class AbpRolesConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<AbpRoles> 
+    public partial class BDTA_DEPARTMENTConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_DEPARTMENT> 
     {
-		public AbpRolesConfiguration()
-            : this("dbo")
+		public BDTA_DEPARTMENTConfiguration()
         {
         }
-		public AbpRolesConfiguration(string schema)
+		public BDTA_DEPARTMENTConfiguration(string schema)
         {
-			ToTable("AbpRoles", schema);
+			ToTable("BDTA_DEPARTMENT", schema);
 			            HasKey(x => x.Id);
 		 
 	    }
@@ -797,15 +3482,14 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class AbpSettingsConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<AbpSettings> 
+    public partial class BDTA_DICTIONARYConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_DICTIONARY> 
     {
-		public AbpSettingsConfiguration()
-            : this("dbo")
+		public BDTA_DICTIONARYConfiguration()
         {
         }
-		public AbpSettingsConfiguration(string schema)
+		public BDTA_DICTIONARYConfiguration(string schema)
         {
-			ToTable("AbpSettings", schema);
+			ToTable("BDTA_DICTIONARY", schema);
 			            HasKey(x => x.Id);
 		 
 	    }
@@ -813,15 +3497,14 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class AbpTenantNotificationsConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<AbpTenantNotifications> 
+    public partial class BDTA_DICTIONARY_TYPEConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_DICTIONARY_TYPE> 
     {
-		public AbpTenantNotificationsConfiguration()
-            : this("dbo")
+		public BDTA_DICTIONARY_TYPEConfiguration()
         {
         }
-		public AbpTenantNotificationsConfiguration(string schema)
+		public BDTA_DICTIONARY_TYPEConfiguration(string schema)
         {
-			ToTable("AbpTenantNotifications", schema);
+			ToTable("BDTA_DICTIONARY_TYPE", schema);
 			            HasKey(x => x.Id);
 		 
 	    }
@@ -829,15 +3512,14 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class AbpTenantsConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<AbpTenants> 
+    public partial class BDTA_EMPLOYEEConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_EMPLOYEE> 
     {
-		public AbpTenantsConfiguration()
-            : this("dbo")
+		public BDTA_EMPLOYEEConfiguration()
         {
         }
-		public AbpTenantsConfiguration(string schema)
+		public BDTA_EMPLOYEEConfiguration(string schema)
         {
-			ToTable("AbpTenants", schema);
+			ToTable("BDTA_EMPLOYEE", schema);
 			            HasKey(x => x.Id);
 		 
 	    }
@@ -845,15 +3527,14 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class AbpUserAccountsConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<AbpUserAccounts> 
+    public partial class BDTA_EMPLOYEE_SKILLConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_EMPLOYEE_SKILL> 
     {
-		public AbpUserAccountsConfiguration()
-            : this("dbo")
+		public BDTA_EMPLOYEE_SKILLConfiguration()
         {
         }
-		public AbpUserAccountsConfiguration(string schema)
+		public BDTA_EMPLOYEE_SKILLConfiguration(string schema)
         {
-			ToTable("AbpUserAccounts", schema);
+			ToTable("BDTA_EMPLOYEE_SKILL", schema);
 			            HasKey(x => x.Id);
 		 
 	    }
@@ -861,15 +3542,14 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class AbpUserClaimsConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<AbpUserClaims> 
+    public partial class BDTA_FILEConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_FILE> 
     {
-		public AbpUserClaimsConfiguration()
-            : this("dbo")
+		public BDTA_FILEConfiguration()
         {
         }
-		public AbpUserClaimsConfiguration(string schema)
+		public BDTA_FILEConfiguration(string schema)
         {
-			ToTable("AbpUserClaims", schema);
+			ToTable("BDTA_FILE", schema);
 			            HasKey(x => x.Id);
 		 
 	    }
@@ -877,15 +3557,14 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class AbpUserLoginAttemptsConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<AbpUserLoginAttempts> 
+    public partial class BDTA_FROCKConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_FROCK> 
     {
-		public AbpUserLoginAttemptsConfiguration()
-            : this("dbo")
+		public BDTA_FROCKConfiguration()
         {
         }
-		public AbpUserLoginAttemptsConfiguration(string schema)
+		public BDTA_FROCKConfiguration(string schema)
         {
-			ToTable("AbpUserLoginAttempts", schema);
+			ToTable("BDTA_FROCK", schema);
 			            HasKey(x => x.Id);
 		 
 	    }
@@ -893,15 +3572,14 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class AbpUserLoginsConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<AbpUserLogins> 
+    public partial class BDTA_KEY_EQUIPMENTConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_KEY_EQUIPMENT> 
     {
-		public AbpUserLoginsConfiguration()
-            : this("dbo")
+		public BDTA_KEY_EQUIPMENTConfiguration()
         {
         }
-		public AbpUserLoginsConfiguration(string schema)
+		public BDTA_KEY_EQUIPMENTConfiguration(string schema)
         {
-			ToTable("AbpUserLogins", schema);
+			ToTable("BDTA_KEY_EQUIPMENT", schema);
 			            HasKey(x => x.Id);
 		 
 	    }
@@ -909,15 +3587,14 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class AbpUserNotificationsConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<AbpUserNotifications> 
+    public partial class BDTA_MACHING_CENTERConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_MACHING_CENTER> 
     {
-		public AbpUserNotificationsConfiguration()
-            : this("dbo")
+		public BDTA_MACHING_CENTERConfiguration()
         {
         }
-		public AbpUserNotificationsConfiguration(string schema)
+		public BDTA_MACHING_CENTERConfiguration(string schema)
         {
-			ToTable("AbpUserNotifications", schema);
+			ToTable("BDTA_MACHING_CENTER", schema);
 			            HasKey(x => x.Id);
 		 
 	    }
@@ -925,15 +3602,14 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class AbpUserOrganizationUnitsConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<AbpUserOrganizationUnits> 
+    public partial class BDTA_MAINTAIN_STATIONConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_MAINTAIN_STATION> 
     {
-		public AbpUserOrganizationUnitsConfiguration()
-            : this("dbo")
+		public BDTA_MAINTAIN_STATIONConfiguration()
         {
         }
-		public AbpUserOrganizationUnitsConfiguration(string schema)
+		public BDTA_MAINTAIN_STATIONConfiguration(string schema)
         {
-			ToTable("AbpUserOrganizationUnits", schema);
+			ToTable("BDTA_MAINTAIN_STATION", schema);
 			            HasKey(x => x.Id);
 		 
 	    }
@@ -941,15 +3617,14 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class AbpUserRolesConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<AbpUserRoles> 
+    public partial class BDTA_MATERIALConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_MATERIAL> 
     {
-		public AbpUserRolesConfiguration()
-            : this("dbo")
+		public BDTA_MATERIALConfiguration()
         {
         }
-		public AbpUserRolesConfiguration(string schema)
+		public BDTA_MATERIALConfiguration(string schema)
         {
-			ToTable("AbpUserRoles", schema);
+			ToTable("BDTA_MATERIAL", schema);
 			            HasKey(x => x.Id);
 		 
 	    }
@@ -957,15 +3632,14 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class AbpUsersConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<AbpUsers> 
+    public partial class BDTA_MATERIAL_BOMConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_MATERIAL_BOM> 
     {
-		public AbpUsersConfiguration()
-            : this("dbo")
+		public BDTA_MATERIAL_BOMConfiguration()
         {
         }
-		public AbpUsersConfiguration(string schema)
+		public BDTA_MATERIAL_BOMConfiguration(string schema)
         {
-			ToTable("AbpUsers", schema);
+			ToTable("BDTA_MATERIAL_BOM", schema);
 			            HasKey(x => x.Id);
 		 
 	    }
@@ -973,15 +3647,14 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class TestEntityConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<TestEntity> 
+    public partial class BDTA_MATERIAL_CATEGORYConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_MATERIAL_CATEGORY> 
     {
-		public TestEntityConfiguration()
-            : this("dbo")
+		public BDTA_MATERIAL_CATEGORYConfiguration()
         {
         }
-		public TestEntityConfiguration(string schema)
+		public BDTA_MATERIAL_CATEGORYConfiguration(string schema)
         {
-			ToTable("TestEntity", schema);
+			ToTable("BDTA_MATERIAL_CATEGORY", schema);
 			            HasKey(x => x.Id);
 		 
 	    }
@@ -989,15 +3662,14 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class TestEntity2Configuration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<TestEntity2> 
+    public partial class BDTA_MATERIAL_PACKAGEConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_MATERIAL_PACKAGE> 
     {
-		public TestEntity2Configuration()
-            : this("dbo")
+		public BDTA_MATERIAL_PACKAGEConfiguration()
         {
         }
-		public TestEntity2Configuration(string schema)
+		public BDTA_MATERIAL_PACKAGEConfiguration(string schema)
         {
-			ToTable("TestEntity2", schema);
+			ToTable("BDTA_MATERIAL_PACKAGE", schema);
 			            HasKey(x => x.Id);
 		 
 	    }
@@ -1005,15 +3677,1814 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class TestEntity3Configuration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<TestEntity3> 
+    public partial class BDTA_MATERIAL_TYPEConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_MATERIAL_TYPE> 
     {
-		public TestEntity3Configuration()
-            : this("dbo")
+		public BDTA_MATERIAL_TYPEConfiguration()
         {
         }
-		public TestEntity3Configuration(string schema)
+		public BDTA_MATERIAL_TYPEConfiguration(string schema)
         {
-			ToTable("TestEntity3", schema);
+			ToTable("BDTA_MATERIAL_TYPE", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BDTA_MATERIAL_WORKCENTERConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_MATERIAL_WORKCENTER> 
+    {
+		public BDTA_MATERIAL_WORKCENTERConfiguration()
+        {
+        }
+		public BDTA_MATERIAL_WORKCENTERConfiguration(string schema)
+        {
+			ToTable("BDTA_MATERIAL_WORKCENTER", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BDTA_MATERIAL_WORKINGConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_MATERIAL_WORKING> 
+    {
+		public BDTA_MATERIAL_WORKINGConfiguration()
+        {
+        }
+		public BDTA_MATERIAL_WORKINGConfiguration(string schema)
+        {
+			ToTable("BDTA_MATERIAL_WORKING", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BDTA_MATTYPEConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_MATTYPE> 
+    {
+		public BDTA_MATTYPEConfiguration()
+        {
+        }
+		public BDTA_MATTYPEConfiguration(string schema)
+        {
+			ToTable("BDTA_MATTYPE", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BDTA_MOLDConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_MOLD> 
+    {
+		public BDTA_MOLDConfiguration()
+        {
+        }
+		public BDTA_MOLDConfiguration(string schema)
+        {
+			ToTable("BDTA_MOLD", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BDTA_MOLD_ADDConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_MOLD_ADD> 
+    {
+		public BDTA_MOLD_ADDConfiguration()
+        {
+        }
+		public BDTA_MOLD_ADDConfiguration(string schema)
+        {
+			ToTable("BDTA_MOLD_ADD", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BDTA_ORG_FACTORYConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_ORG_FACTORY> 
+    {
+		public BDTA_ORG_FACTORYConfiguration()
+        {
+        }
+		public BDTA_ORG_FACTORYConfiguration(string schema)
+        {
+			ToTable("BDTA_ORG_FACTORY", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BDTA_ORG_ORGRELATIONConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_ORG_ORGRELATION> 
+    {
+		public BDTA_ORG_ORGRELATIONConfiguration()
+        {
+        }
+		public BDTA_ORG_ORGRELATIONConfiguration(string schema)
+        {
+			ToTable("BDTA_ORG_ORGRELATION", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BDTA_ORG_STOREROOMConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_ORG_STOREROOM> 
+    {
+		public BDTA_ORG_STOREROOMConfiguration()
+        {
+        }
+		public BDTA_ORG_STOREROOMConfiguration(string schema)
+        {
+			ToTable("BDTA_ORG_STOREROOM", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BDTA_ORG_STORESITEConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_ORG_STORESITE> 
+    {
+		public BDTA_ORG_STORESITEConfiguration()
+        {
+        }
+		public BDTA_ORG_STORESITEConfiguration(string schema)
+        {
+			ToTable("BDTA_ORG_STORESITE", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BDTA_PROCESSPATHConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_PROCESSPATH> 
+    {
+		public BDTA_PROCESSPATHConfiguration()
+        {
+        }
+		public BDTA_PROCESSPATHConfiguration(string schema)
+        {
+			ToTable("BDTA_PROCESSPATH", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BDTA_QUEUEConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_QUEUE> 
+    {
+		public BDTA_QUEUEConfiguration()
+        {
+        }
+		public BDTA_QUEUEConfiguration(string schema)
+        {
+			ToTable("BDTA_QUEUE", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BDTA_ROUTINGConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_ROUTING> 
+    {
+		public BDTA_ROUTINGConfiguration()
+        {
+        }
+		public BDTA_ROUTINGConfiguration(string schema)
+        {
+			ToTable("BDTA_ROUTING", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BDTA_SETUPConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_SETUP> 
+    {
+		public BDTA_SETUPConfiguration()
+        {
+        }
+		public BDTA_SETUPConfiguration(string schema)
+        {
+			ToTable("BDTA_SETUP", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BDTA_STATIONConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_STATION> 
+    {
+		public BDTA_STATIONConfiguration()
+        {
+        }
+		public BDTA_STATIONConfiguration(string schema)
+        {
+			ToTable("BDTA_STATION", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BDTA_SUPPLIERConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_SUPPLIER> 
+    {
+		public BDTA_SUPPLIERConfiguration()
+        {
+        }
+		public BDTA_SUPPLIERConfiguration(string schema)
+        {
+			ToTable("BDTA_SUPPLIER", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BDTA_WORKINGConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_WORKING> 
+    {
+		public BDTA_WORKINGConfiguration()
+        {
+        }
+		public BDTA_WORKINGConfiguration(string schema)
+        {
+			ToTable("BDTA_WORKING", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BDTA_WORKNUMBERConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_WORKNUMBER> 
+    {
+		public BDTA_WORKNUMBERConfiguration()
+        {
+        }
+		public BDTA_WORKNUMBERConfiguration(string schema)
+        {
+			ToTable("BDTA_WORKNUMBER", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BDTA_WORKPROCEDUREConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_WORKPROCEDURE> 
+    {
+		public BDTA_WORKPROCEDUREConfiguration()
+        {
+        }
+		public BDTA_WORKPROCEDUREConfiguration(string schema)
+        {
+			ToTable("BDTA_WORKPROCEDURE", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BDTA_WORKSECTIONConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_WORKSECTION> 
+    {
+		public BDTA_WORKSECTIONConfiguration()
+        {
+        }
+		public BDTA_WORKSECTIONConfiguration(string schema)
+        {
+			ToTable("BDTA_WORKSECTION", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BDTA_WORKSHOPConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_WORKSHOP> 
+    {
+		public BDTA_WORKSHOPConfiguration()
+        {
+        }
+		public BDTA_WORKSHOPConfiguration(string schema)
+        {
+			ToTable("BDTA_WORKSHOP", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BDTA_WORKTEAMConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_WORKTEAM> 
+    {
+		public BDTA_WORKTEAMConfiguration()
+        {
+        }
+		public BDTA_WORKTEAMConfiguration(string schema)
+        {
+			ToTable("BDTA_WORKTEAM", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BDTA_WORKTEAM_MEMBERConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_WORKTEAM_MEMBER> 
+    {
+		public BDTA_WORKTEAM_MEMBERConfiguration()
+        {
+        }
+		public BDTA_WORKTEAM_MEMBERConfiguration(string schema)
+        {
+			ToTable("BDTA_WORKTEAM_MEMBER", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_ARRIVALS_BILLConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_ARRIVALS_BILL> 
+    {
+		public FUR_ARRIVALS_BILLConfiguration()
+        {
+        }
+		public FUR_ARRIVALS_BILLConfiguration(string schema)
+        {
+			ToTable("FUR_ARRIVALS_BILL", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_ARRIVALS_BILL_DETAILConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_ARRIVALS_BILL_DETAIL> 
+    {
+		public FUR_ARRIVALS_BILL_DETAILConfiguration()
+        {
+        }
+		public FUR_ARRIVALS_BILL_DETAILConfiguration(string schema)
+        {
+			ToTable("FUR_ARRIVALS_BILL_DETAIL", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_BDTA_CARRIERConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_BDTA_CARRIER> 
+    {
+		public FUR_BDTA_CARRIERConfiguration()
+        {
+        }
+		public FUR_BDTA_CARRIERConfiguration(string schema)
+        {
+			ToTable("FUR_BDTA_CARRIER", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_BDTA_CLIENT_INFOConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_BDTA_CLIENT_INFO> 
+    {
+		public FUR_BDTA_CLIENT_INFOConfiguration()
+        {
+        }
+		public FUR_BDTA_CLIENT_INFOConfiguration(string schema)
+        {
+			ToTable("FUR_BDTA_CLIENT_INFO", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_BDTA_CLIENT_TELConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_BDTA_CLIENT_TEL> 
+    {
+		public FUR_BDTA_CLIENT_TELConfiguration()
+        {
+        }
+		public FUR_BDTA_CLIENT_TELConfiguration(string schema)
+        {
+			ToTable("FUR_BDTA_CLIENT_TEL", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_BDTA_DEPT_AIMConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_BDTA_DEPT_AIM> 
+    {
+		public FUR_BDTA_DEPT_AIMConfiguration()
+        {
+        }
+		public FUR_BDTA_DEPT_AIMConfiguration(string schema)
+        {
+			ToTable("FUR_BDTA_DEPT_AIM", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_BDTA_DEPT_MGETYPEConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_BDTA_DEPT_MGETYPE> 
+    {
+		public FUR_BDTA_DEPT_MGETYPEConfiguration()
+        {
+        }
+		public FUR_BDTA_DEPT_MGETYPEConfiguration(string schema)
+        {
+			ToTable("FUR_BDTA_DEPT_MGETYPE", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_BDTA_DISCOUNTConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_BDTA_DISCOUNT> 
+    {
+		public FUR_BDTA_DISCOUNTConfiguration()
+        {
+        }
+		public FUR_BDTA_DISCOUNTConfiguration(string schema)
+        {
+			ToTable("FUR_BDTA_DISCOUNT", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_BDTA_IMOS_SO_MATCODEConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_BDTA_IMOS_SO_MATCODE> 
+    {
+		public FUR_BDTA_IMOS_SO_MATCODEConfiguration()
+        {
+        }
+		public FUR_BDTA_IMOS_SO_MATCODEConfiguration(string schema)
+        {
+			ToTable("FUR_BDTA_IMOS_SO_MATCODE", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_BDTA_PROPER_GTHConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_BDTA_PROPER_GTH> 
+    {
+		public FUR_BDTA_PROPER_GTHConfiguration()
+        {
+        }
+		public FUR_BDTA_PROPER_GTHConfiguration(string schema)
+        {
+			ToTable("FUR_BDTA_PROPER_GTH", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_BDTA_SPLITCREATEINFOConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_BDTA_SPLITCREATEINFO> 
+    {
+		public FUR_BDTA_SPLITCREATEINFOConfiguration()
+        {
+        }
+		public FUR_BDTA_SPLITCREATEINFOConfiguration(string schema)
+        {
+			ToTable("FUR_BDTA_SPLITCREATEINFO", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_BDTA_STATION_PAGConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_BDTA_STATION_PAG> 
+    {
+		public FUR_BDTA_STATION_PAGConfiguration()
+        {
+        }
+		public FUR_BDTA_STATION_PAGConfiguration(string schema)
+        {
+			ToTable("FUR_BDTA_STATION_PAG", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_COLLECT_DATA_LOGConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_COLLECT_DATA_LOG> 
+    {
+		public FUR_COLLECT_DATA_LOGConfiguration()
+        {
+        }
+		public FUR_COLLECT_DATA_LOGConfiguration(string schema)
+        {
+			ToTable("FUR_COLLECT_DATA_LOG", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_COLLECT_DATA_QWPBConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_COLLECT_DATA_QWPB> 
+    {
+		public FUR_COLLECT_DATA_QWPBConfiguration()
+        {
+        }
+		public FUR_COLLECT_DATA_QWPBConfiguration(string schema)
+        {
+			ToTable("FUR_COLLECT_DATA_QWPB", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_COLLECT_STANDAR_PACKAGEConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_COLLECT_STANDAR_PACKAGE> 
+    {
+		public FUR_COLLECT_STANDAR_PACKAGEConfiguration()
+        {
+        }
+		public FUR_COLLECT_STANDAR_PACKAGEConfiguration(string schema)
+        {
+			ToTable("FUR_COLLECT_STANDAR_PACKAGE", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_COMPLETEQTYConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_COMPLETEQTY> 
+    {
+		public FUR_COMPLETEQTYConfiguration()
+        {
+        }
+		public FUR_COMPLETEQTYConfiguration(string schema)
+        {
+			ToTable("FUR_COMPLETEQTY", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_MERGEBILL_SECONDARYSPLITConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_MERGEBILL_SECONDARYSPLIT> 
+    {
+		public FUR_MERGEBILL_SECONDARYSPLITConfiguration()
+        {
+        }
+		public FUR_MERGEBILL_SECONDARYSPLITConfiguration(string schema)
+        {
+			ToTable("FUR_MERGEBILL_SECONDARYSPLIT", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_MERGEBILL_SECONDARYSPLIT_RConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_MERGEBILL_SECONDARYSPLIT_R> 
+    {
+		public FUR_MERGEBILL_SECONDARYSPLIT_RConfiguration()
+        {
+        }
+		public FUR_MERGEBILL_SECONDARYSPLIT_RConfiguration(string schema)
+        {
+			ToTable("FUR_MERGEBILL_SECONDARYSPLIT_R", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_PICK_TYPEConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_PICK_TYPE> 
+    {
+		public FUR_PICK_TYPEConfiguration()
+        {
+        }
+		public FUR_PICK_TYPEConfiguration(string schema)
+        {
+			ToTable("FUR_PICK_TYPE", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_PICKINGConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_PICKING> 
+    {
+		public FUR_PICKINGConfiguration()
+        {
+        }
+		public FUR_PICKINGConfiguration(string schema)
+        {
+			ToTable("FUR_PICKING", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_PICKING_DETAILConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_PICKING_DETAIL> 
+    {
+		public FUR_PICKING_DETAILConfiguration()
+        {
+        }
+		public FUR_PICKING_DETAILConfiguration(string schema)
+        {
+			ToTable("FUR_PICKING_DETAIL", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_PICKING_MERGEConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_PICKING_MERGE> 
+    {
+		public FUR_PICKING_MERGEConfiguration()
+        {
+        }
+		public FUR_PICKING_MERGEConfiguration(string schema)
+        {
+			ToTable("FUR_PICKING_MERGE", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_PLAN_KL_SCHEDULEConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_PLAN_KL_SCHEDULE> 
+    {
+		public FUR_PLAN_KL_SCHEDULEConfiguration()
+        {
+        }
+		public FUR_PLAN_KL_SCHEDULEConfiguration(string schema)
+        {
+			ToTable("FUR_PLAN_KL_SCHEDULE", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_REJECTSINFOConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_REJECTSINFO> 
+    {
+		public FUR_REJECTSINFOConfiguration()
+        {
+        }
+		public FUR_REJECTSINFOConfiguration(string schema)
+        {
+			ToTable("FUR_REJECTSINFO", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_SALESORDERConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_SALESORDER> 
+    {
+		public FUR_SALESORDERConfiguration()
+        {
+        }
+		public FUR_SALESORDERConfiguration(string schema)
+        {
+			ToTable("FUR_SALESORDER", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_SALESORDERPROCESS_DETAILConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_SALESORDERPROCESS_DETAIL> 
+    {
+		public FUR_SALESORDERPROCESS_DETAILConfiguration()
+        {
+        }
+		public FUR_SALESORDERPROCESS_DETAILConfiguration(string schema)
+        {
+			ToTable("FUR_SALESORDERPROCESS_DETAIL", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_SAP_ROUTINGConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_SAP_ROUTING> 
+    {
+		public FUR_SAP_ROUTINGConfiguration()
+        {
+        }
+		public FUR_SAP_ROUTINGConfiguration(string schema)
+        {
+			ToTable("FUR_SAP_ROUTING", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_SHIPMENTConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_SHIPMENT> 
+    {
+		public FUR_SHIPMENTConfiguration()
+        {
+        }
+		public FUR_SHIPMENTConfiguration(string schema)
+        {
+			ToTable("FUR_SHIPMENT", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_SHIPMENT_NEWConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_SHIPMENT_NEW> 
+    {
+		public FUR_SHIPMENT_NEWConfiguration()
+        {
+        }
+		public FUR_SHIPMENT_NEWConfiguration(string schema)
+        {
+			ToTable("FUR_SHIPMENT_NEW", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_SHIPMENT_NEW_DETAILConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_SHIPMENT_NEW_DETAIL> 
+    {
+		public FUR_SHIPMENT_NEW_DETAILConfiguration()
+        {
+        }
+		public FUR_SHIPMENT_NEW_DETAILConfiguration(string schema)
+        {
+			ToTable("FUR_SHIPMENT_NEW_DETAIL", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_SHIPMENT_PICK_DETAILConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_SHIPMENT_PICK_DETAIL> 
+    {
+		public FUR_SHIPMENT_PICK_DETAILConfiguration()
+        {
+        }
+		public FUR_SHIPMENT_PICK_DETAILConfiguration(string schema)
+        {
+			ToTable("FUR_SHIPMENT_PICK_DETAIL", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_SHIPMENT_QTYINFOConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_SHIPMENT_QTYINFO> 
+    {
+		public FUR_SHIPMENT_QTYINFOConfiguration()
+        {
+        }
+		public FUR_SHIPMENT_QTYINFOConfiguration(string schema)
+        {
+			ToTable("FUR_SHIPMENT_QTYINFO", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_SHIPMENT_SO_DETAILConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_SHIPMENT_SO_DETAIL> 
+    {
+		public FUR_SHIPMENT_SO_DETAILConfiguration()
+        {
+        }
+		public FUR_SHIPMENT_SO_DETAILConfiguration(string schema)
+        {
+			ToTable("FUR_SHIPMENT_SO_DETAIL", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_SOURCE_PRODUCT_DETAIL_DOORConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_SOURCE_PRODUCT_DETAIL_DOOR> 
+    {
+		public FUR_SOURCE_PRODUCT_DETAIL_DOORConfiguration()
+        {
+        }
+		public FUR_SOURCE_PRODUCT_DETAIL_DOORConfiguration(string schema)
+        {
+			ToTable("FUR_SOURCE_PRODUCT_DETAIL_DOOR", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_SOURCE_PRODUCT_DETAIL_GTConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_SOURCE_PRODUCT_DETAIL_GT> 
+    {
+		public FUR_SOURCE_PRODUCT_DETAIL_GTConfiguration()
+        {
+        }
+		public FUR_SOURCE_PRODUCT_DETAIL_GTConfiguration(string schema)
+        {
+			ToTable("FUR_SOURCE_PRODUCT_DETAIL_GT", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_TRANSFER_ORDERConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_TRANSFER_ORDER> 
+    {
+		public FUR_TRANSFER_ORDERConfiguration()
+        {
+        }
+		public FUR_TRANSFER_ORDERConfiguration(string schema)
+        {
+			ToTable("FUR_TRANSFER_ORDER", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_TRANSFER_ORDER_DETAILConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_TRANSFER_ORDER_DETAIL> 
+    {
+		public FUR_TRANSFER_ORDER_DETAILConfiguration()
+        {
+        }
+		public FUR_TRANSFER_ORDER_DETAILConfiguration(string schema)
+        {
+			ToTable("FUR_TRANSFER_ORDER_DETAIL", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_TRANSFER_ORDER_GOODSDETAILConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_TRANSFER_ORDER_GOODSDETAIL> 
+    {
+		public FUR_TRANSFER_ORDER_GOODSDETAILConfiguration()
+        {
+        }
+		public FUR_TRANSFER_ORDER_GOODSDETAILConfiguration(string schema)
+        {
+			ToTable("FUR_TRANSFER_ORDER_GOODSDETAIL", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_TRANSPORTConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_TRANSPORT> 
+    {
+		public FUR_TRANSPORTConfiguration()
+        {
+        }
+		public FUR_TRANSPORTConfiguration(string schema)
+        {
+			ToTable("FUR_TRANSPORT", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_TRANSPORT_DETAILConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_TRANSPORT_DETAIL> 
+    {
+		public FUR_TRANSPORT_DETAILConfiguration()
+        {
+        }
+		public FUR_TRANSPORT_DETAILConfiguration(string schema)
+        {
+			ToTable("FUR_TRANSPORT_DETAIL", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_WORKORDER_REASONConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_WORKORDER_REASON> 
+    {
+		public FUR_WORKORDER_REASONConfiguration()
+        {
+        }
+		public FUR_WORKORDER_REASONConfiguration(string schema)
+        {
+			ToTable("FUR_WORKORDER_REASON", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_WORKORDER_TYPEConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_WORKORDER_TYPE> 
+    {
+		public FUR_WORKORDER_TYPEConfiguration()
+        {
+        }
+		public FUR_WORKORDER_TYPEConfiguration(string schema)
+        {
+			ToTable("FUR_WORKORDER_TYPE", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class MATERIAL_APPLYConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<MATERIAL_APPLY> 
+    {
+		public MATERIAL_APPLYConfiguration()
+        {
+        }
+		public MATERIAL_APPLYConfiguration(string schema)
+        {
+			ToTable("MATERIAL_APPLY", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class MATERIAL_APPLY_DETAILConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<MATERIAL_APPLY_DETAIL> 
+    {
+		public MATERIAL_APPLY_DETAILConfiguration()
+        {
+        }
+		public MATERIAL_APPLY_DETAILConfiguration(string schema)
+        {
+			ToTable("MATERIAL_APPLY_DETAIL", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class MATERIAL_APPLY_REFERConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<MATERIAL_APPLY_REFER> 
+    {
+		public MATERIAL_APPLY_REFERConfiguration()
+        {
+        }
+		public MATERIAL_APPLY_REFERConfiguration(string schema)
+        {
+			ToTable("MATERIAL_APPLY_REFER", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class PACK_ARCHIVEConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<PACK_ARCHIVE> 
+    {
+		public PACK_ARCHIVEConfiguration()
+        {
+        }
+		public PACK_ARCHIVEConfiguration(string schema)
+        {
+			ToTable("PACK_ARCHIVE", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class PLAN_CHECK_COLLECTDATAConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<PLAN_CHECK_COLLECTDATA> 
+    {
+		public PLAN_CHECK_COLLECTDATAConfiguration()
+        {
+        }
+		public PLAN_CHECK_COLLECTDATAConfiguration(string schema)
+        {
+			ToTable("PLAN_CHECK_COLLECTDATA", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class SYS_LOGConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<SYS_LOG> 
+    {
+		public SYS_LOGConfiguration()
+        {
+        }
+		public SYS_LOGConfiguration(string schema)
+        {
+			ToTable("SYS_LOG", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class SYS_POPEDOMPROGRAMConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<SYS_POPEDOMPROGRAM> 
+    {
+		public SYS_POPEDOMPROGRAMConfiguration()
+        {
+        }
+		public SYS_POPEDOMPROGRAMConfiguration(string schema)
+        {
+			ToTable("SYS_POPEDOMPROGRAM", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class SYS_PROGRAM_WINFORMConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<SYS_PROGRAM_WINFORM> 
+    {
+		public SYS_PROGRAM_WINFORMConfiguration()
+        {
+        }
+		public SYS_PROGRAM_WINFORMConfiguration(string schema)
+        {
+			ToTable("SYS_PROGRAM_WINFORM", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class SYS_ROLEAUTHORIZEConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<SYS_ROLEAUTHORIZE> 
+    {
+		public SYS_ROLEAUTHORIZEConfiguration()
+        {
+        }
+		public SYS_ROLEAUTHORIZEConfiguration(string schema)
+        {
+			ToTable("SYS_ROLEAUTHORIZE", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class SYS_ROLEINFOConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<SYS_ROLEINFO> 
+    {
+		public SYS_ROLEINFOConfiguration()
+        {
+        }
+		public SYS_ROLEINFOConfiguration(string schema)
+        {
+			ToTable("SYS_ROLEINFO", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class SYS_ROLEUSERConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<SYS_ROLEUSER> 
+    {
+		public SYS_ROLEUSERConfiguration()
+        {
+        }
+		public SYS_ROLEUSERConfiguration(string schema)
+        {
+			ToTable("SYS_ROLEUSER", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class SYS_SYSTEMINFOConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<SYS_SYSTEMINFO> 
+    {
+		public SYS_SYSTEMINFOConfiguration()
+        {
+        }
+		public SYS_SYSTEMINFOConfiguration(string schema)
+        {
+			ToTable("SYS_SYSTEMINFO", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class SYS_TESTConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<SYS_TEST> 
+    {
+		public SYS_TESTConfiguration()
+        {
+        }
+		public SYS_TESTConfiguration(string schema)
+        {
+			ToTable("SYS_TEST", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class SYS_USERINFOConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<SYS_USERINFO> 
+    {
+		public SYS_USERINFOConfiguration()
+        {
+        }
+		public SYS_USERINFOConfiguration(string schema)
+        {
+			ToTable("SYS_USERINFO", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class TR_MATERIAL_APPLY_DISPATCHBOMConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<TR_MATERIAL_APPLY_DISPATCHBOM> 
+    {
+		public TR_MATERIAL_APPLY_DISPATCHBOMConfiguration()
+        {
+        }
+		public TR_MATERIAL_APPLY_DISPATCHBOMConfiguration(string schema)
+        {
+			ToTable("TR_MATERIAL_APPLY_DISPATCHBOM", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class WAREHOUSE_COLLECT_LOGConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_COLLECT_LOG> 
+    {
+		public WAREHOUSE_COLLECT_LOGConfiguration()
+        {
+        }
+		public WAREHOUSE_COLLECT_LOGConfiguration(string schema)
+        {
+			ToTable("WAREHOUSE_COLLECT_LOG", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class WAREHOUSE_DELIVERY_BILLConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_DELIVERY_BILL> 
+    {
+		public WAREHOUSE_DELIVERY_BILLConfiguration()
+        {
+        }
+		public WAREHOUSE_DELIVERY_BILLConfiguration(string schema)
+        {
+			ToTable("WAREHOUSE_DELIVERY_BILL", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class WAREHOUSE_IN_COLLECTDATAConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_IN_COLLECTDATA> 
+    {
+		public WAREHOUSE_IN_COLLECTDATAConfiguration()
+        {
+        }
+		public WAREHOUSE_IN_COLLECTDATAConfiguration(string schema)
+        {
+			ToTable("WAREHOUSE_IN_COLLECTDATA", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class WAREHOUSE_IN_FORMConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_IN_FORM> 
+    {
+		public WAREHOUSE_IN_FORMConfiguration()
+        {
+        }
+		public WAREHOUSE_IN_FORMConfiguration(string schema)
+        {
+			ToTable("WAREHOUSE_IN_FORM", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class WAREHOUSE_IN_FORM_DETAILConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_IN_FORM_DETAIL> 
+    {
+		public WAREHOUSE_IN_FORM_DETAILConfiguration()
+        {
+        }
+		public WAREHOUSE_IN_FORM_DETAILConfiguration(string schema)
+        {
+			ToTable("WAREHOUSE_IN_FORM_DETAIL", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class WAREHOUSE_IN_STOCKConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_IN_STOCK> 
+    {
+		public WAREHOUSE_IN_STOCKConfiguration()
+        {
+        }
+		public WAREHOUSE_IN_STOCKConfiguration(string schema)
+        {
+			ToTable("WAREHOUSE_IN_STOCK", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class WAREHOUSE_IN_STOCK_LOCKConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_IN_STOCK_LOCK> 
+    {
+		public WAREHOUSE_IN_STOCK_LOCKConfiguration()
+        {
+        }
+		public WAREHOUSE_IN_STOCK_LOCKConfiguration(string schema)
+        {
+			ToTable("WAREHOUSE_IN_STOCK_LOCK", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class WAREHOUSE_OUT_FORMConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_OUT_FORM> 
+    {
+		public WAREHOUSE_OUT_FORMConfiguration()
+        {
+        }
+		public WAREHOUSE_OUT_FORMConfiguration(string schema)
+        {
+			ToTable("WAREHOUSE_OUT_FORM", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class WAREHOUSE_OUT_FORM_DETAILConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_OUT_FORM_DETAIL> 
+    {
+		public WAREHOUSE_OUT_FORM_DETAILConfiguration()
+        {
+        }
+		public WAREHOUSE_OUT_FORM_DETAILConfiguration(string schema)
+        {
+			ToTable("WAREHOUSE_OUT_FORM_DETAIL", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class WAREHOUSE_OUT_FORM_FAULTConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_OUT_FORM_FAULT> 
+    {
+		public WAREHOUSE_OUT_FORM_FAULTConfiguration()
+        {
+        }
+		public WAREHOUSE_OUT_FORM_FAULTConfiguration(string schema)
+        {
+			ToTable("WAREHOUSE_OUT_FORM_FAULT", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class WAREHOUSE_OUT_FORM_ITEMConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_OUT_FORM_ITEM> 
+    {
+		public WAREHOUSE_OUT_FORM_ITEMConfiguration()
+        {
+        }
+		public WAREHOUSE_OUT_FORM_ITEMConfiguration(string schema)
+        {
+			ToTable("WAREHOUSE_OUT_FORM_ITEM", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class WAREHOUSE_OUT_STOCK_LOCKConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_OUT_STOCK_LOCK> 
+    {
+		public WAREHOUSE_OUT_STOCK_LOCKConfiguration()
+        {
+        }
+		public WAREHOUSE_OUT_STOCK_LOCKConfiguration(string schema)
+        {
+			ToTable("WAREHOUSE_OUT_STOCK_LOCK", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class WAREHOUSE_QUALITY_FORMConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_QUALITY_FORM> 
+    {
+		public WAREHOUSE_QUALITY_FORMConfiguration()
+        {
+        }
+		public WAREHOUSE_QUALITY_FORMConfiguration(string schema)
+        {
+			ToTable("WAREHOUSE_QUALITY_FORM", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class WAREHOUSE_SCAN_CODE_INFOConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_SCAN_CODE_INFO> 
+    {
+		public WAREHOUSE_SCAN_CODE_INFOConfiguration()
+        {
+        }
+		public WAREHOUSE_SCAN_CODE_INFOConfiguration(string schema)
+        {
+			ToTable("WAREHOUSE_SCAN_CODE_INFO", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class SYS_PROGRAMConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<SYS_PROGRAM> 
+    {
+		public SYS_PROGRAMConfiguration()
+        {
+        }
+		public SYS_PROGRAMConfiguration(string schema)
+        {
+			ToTable("SYS_PROGRAM", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class SYS_PROGRAM_OPERATION_WEBConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<SYS_PROGRAM_OPERATION_WEB> 
+    {
+		public SYS_PROGRAM_OPERATION_WEBConfiguration()
+        {
+        }
+		public SYS_PROGRAM_OPERATION_WEBConfiguration(string schema)
+        {
+			ToTable("SYS_PROGRAM_OPERATION_WEB", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BLOCKS_AUDITLOGSConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_AUDITLOGS> 
+    {
+		public BLOCKS_AUDITLOGSConfiguration()
+        {
+        }
+		public BLOCKS_AUDITLOGSConfiguration(string schema)
+        {
+			ToTable("BLOCKS_AUDITLOGS", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BLOCKS_BACKGROUNDJOBSConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_BACKGROUNDJOBS> 
+    {
+		public BLOCKS_BACKGROUNDJOBSConfiguration()
+        {
+        }
+		public BLOCKS_BACKGROUNDJOBSConfiguration(string schema)
+        {
+			ToTable("BLOCKS_BACKGROUNDJOBS", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BLOCKS_FEATURESConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_FEATURES> 
+    {
+		public BLOCKS_FEATURESConfiguration()
+        {
+        }
+		public BLOCKS_FEATURESConfiguration(string schema)
+        {
+			ToTable("BLOCKS_FEATURES", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BLOCKS_EDITIONSConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_EDITIONS> 
+    {
+		public BLOCKS_EDITIONSConfiguration()
+        {
+        }
+		public BLOCKS_EDITIONSConfiguration(string schema)
+        {
+			ToTable("BLOCKS_EDITIONS", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BLOCKS_LANGUAGESConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_LANGUAGES> 
+    {
+		public BLOCKS_LANGUAGESConfiguration()
+        {
+        }
+		public BLOCKS_LANGUAGESConfiguration(string schema)
+        {
+			ToTable("BLOCKS_LANGUAGES", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BLOCKS_LANGUAGETEXTSConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_LANGUAGETEXTS> 
+    {
+		public BLOCKS_LANGUAGETEXTSConfiguration()
+        {
+        }
+		public BLOCKS_LANGUAGETEXTSConfiguration(string schema)
+        {
+			ToTable("BLOCKS_LANGUAGETEXTS", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BLOCKS_NOTIFICATIONSConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_NOTIFICATIONS> 
+    {
+		public BLOCKS_NOTIFICATIONSConfiguration()
+        {
+        }
+		public BLOCKS_NOTIFICATIONSConfiguration(string schema)
+        {
+			ToTable("BLOCKS_NOTIFICATIONS", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BLOCKS_NOTIFY_SUBSCRIPTIONSConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_NOTIFY_SUBSCRIPTIONS> 
+    {
+		public BLOCKS_NOTIFY_SUBSCRIPTIONSConfiguration()
+        {
+        }
+		public BLOCKS_NOTIFY_SUBSCRIPTIONSConfiguration(string schema)
+        {
+			ToTable("BLOCKS_NOTIFY_SUBSCRIPTIONS", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BLOCKS_ORGANIZATION_UNITSConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_ORGANIZATION_UNITS> 
+    {
+		public BLOCKS_ORGANIZATION_UNITSConfiguration()
+        {
+        }
+		public BLOCKS_ORGANIZATION_UNITSConfiguration(string schema)
+        {
+			ToTable("BLOCKS_ORGANIZATION_UNITS", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BLOCKS_PERMISSIONSConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_PERMISSIONS> 
+    {
+		public BLOCKS_PERMISSIONSConfiguration()
+        {
+        }
+		public BLOCKS_PERMISSIONSConfiguration(string schema)
+        {
+			ToTable("BLOCKS_PERMISSIONS", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BLOCKS_ROLESConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_ROLES> 
+    {
+		public BLOCKS_ROLESConfiguration()
+        {
+        }
+		public BLOCKS_ROLESConfiguration(string schema)
+        {
+			ToTable("BLOCKS_ROLES", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BLOCKS_USERSConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_USERS> 
+    {
+		public BLOCKS_USERSConfiguration()
+        {
+        }
+		public BLOCKS_USERSConfiguration(string schema)
+        {
+			ToTable("BLOCKS_USERS", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BLOCKS_USER_CLAIMSConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_USER_CLAIMS> 
+    {
+		public BLOCKS_USER_CLAIMSConfiguration()
+        {
+        }
+		public BLOCKS_USER_CLAIMSConfiguration(string schema)
+        {
+			ToTable("BLOCKS_USER_CLAIMS", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BLOCKS_USER_LOGINSConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_USER_LOGINS> 
+    {
+		public BLOCKS_USER_LOGINSConfiguration()
+        {
+        }
+		public BLOCKS_USER_LOGINSConfiguration(string schema)
+        {
+			ToTable("BLOCKS_USER_LOGINS", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BLOCKS_USER_ROLESConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_USER_ROLES> 
+    {
+		public BLOCKS_USER_ROLESConfiguration()
+        {
+        }
+		public BLOCKS_USER_ROLESConfiguration(string schema)
+        {
+			ToTable("BLOCKS_USER_ROLES", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BLOCKS_SETTINGSConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_SETTINGS> 
+    {
+		public BLOCKS_SETTINGSConfiguration()
+        {
+        }
+		public BLOCKS_SETTINGSConfiguration(string schema)
+        {
+			ToTable("BLOCKS_SETTINGS", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BLOCKS_TENANT_NOTIFICATIONSConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_TENANT_NOTIFICATIONS> 
+    {
+		public BLOCKS_TENANT_NOTIFICATIONSConfiguration()
+        {
+        }
+		public BLOCKS_TENANT_NOTIFICATIONSConfiguration(string schema)
+        {
+			ToTable("BLOCKS_TENANT_NOTIFICATIONS", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BLOCKS_TENANTSConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_TENANTS> 
+    {
+		public BLOCKS_TENANTSConfiguration()
+        {
+        }
+		public BLOCKS_TENANTSConfiguration(string schema)
+        {
+			ToTable("BLOCKS_TENANTS", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BLOCKS_USER_ACCOUNTSConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_USER_ACCOUNTS> 
+    {
+		public BLOCKS_USER_ACCOUNTSConfiguration()
+        {
+        }
+		public BLOCKS_USER_ACCOUNTSConfiguration(string schema)
+        {
+			ToTable("BLOCKS_USER_ACCOUNTS", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BLOCKS_USER_LOGINATTEMPTSConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_USER_LOGINATTEMPTS> 
+    {
+		public BLOCKS_USER_LOGINATTEMPTSConfiguration()
+        {
+        }
+		public BLOCKS_USER_LOGINATTEMPTSConfiguration(string schema)
+        {
+			ToTable("BLOCKS_USER_LOGINATTEMPTS", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BLOCKS_USERNOTIFICATIONSConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_USERNOTIFICATIONS> 
+    {
+		public BLOCKS_USERNOTIFICATIONSConfiguration()
+        {
+        }
+		public BLOCKS_USERNOTIFICATIONSConfiguration(string schema)
+        {
+			ToTable("BLOCKS_USERNOTIFICATIONS", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BLOCKS_USERORGANIZATION_UNITSConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_USERORGANIZATION_UNITS> 
+    {
+		public BLOCKS_USERORGANIZATION_UNITSConfiguration()
+        {
+        }
+		public BLOCKS_USERORGANIZATION_UNITSConfiguration(string schema)
+        {
+			ToTable("BLOCKS_USERORGANIZATION_UNITS", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class TESTENTITYConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<TESTENTITY> 
+    {
+		public TESTENTITYConfiguration()
+        {
+        }
+		public TESTENTITYConfiguration(string schema)
+        {
+			ToTable("TESTENTITY", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class TESTENTITY2Configuration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<TESTENTITY2> 
+    {
+		public TESTENTITY2Configuration()
+        {
+        }
+		public TESTENTITY2Configuration(string schema)
+        {
+			ToTable("TESTENTITY2", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class TESTENTITY3Configuration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<TESTENTITY3> 
+    {
+		public TESTENTITY3Configuration()
+        {
+        }
+		public TESTENTITY3Configuration(string schema)
+        {
+			ToTable("TESTENTITY3", schema);
 			            HasKey(x => x.Id);
 		 
 	    }

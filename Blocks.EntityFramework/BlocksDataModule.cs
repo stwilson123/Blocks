@@ -13,7 +13,7 @@ namespace Blocks
         {   
             
             
-           // Database.SetInitializer(new CreateDatabaseIfNotExists<BlocksDbContext>());
+           // Database.SetInitializer<BlocksDbContext>(null);
 
             Configuration.DefaultNameOrConnectionString = "Default";
         }

@@ -6,7 +6,7 @@ namespace Blocks.Framework.Data.Entity
     /// A shortcut of <see cref="Entity{TPrimaryKey}"/> for most used primary key type (<see cref="int"/>).
     /// </summary>
     [Serializable]
-    public abstract class Entity : Entity<Guid> 
+    public abstract class Entity : Entity<string> 
     {
         
     }
