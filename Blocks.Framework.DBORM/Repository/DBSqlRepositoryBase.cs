@@ -262,7 +262,8 @@ namespace Blocks.Framework.DBORM.Repository
         public override TEntity Update(TEntity entity)
         {
             AttachIfNot(entity);
-            Context.Entry(entity).State = EntityState.Modified;
+            var entryEntity = Context.Entry(entity);
+            entryEntity.State = EntityState.Modified;
             return entity;
         }
 
@@ -312,11 +313,16 @@ namespace Blocks.Framework.DBORM.Repository
         protected virtual void AttachIfNot(TEntity entity)
         {
             var entry = Context.ChangeTracker.Entries().FirstOrDefault(ent => ent.Entity == entity);
+           
             if (entry != null)
             {
                 return;
             }
-
+            var entry1 = Context.Set<TEntity>().Local.FirstOrDefault(t => t.Id.ToString() == entity.Id.ToString());
+            if (entry1 != null)
+            {
+                return;
+            }
             Table.Attach(entity);
         }
 

@@ -55,11 +55,12 @@ namespace EntityFramework.Test.FunctionTest
         public void UpdateByModel()
         {
             var rep = Resolve<TestRepository>();
-            var id= rep.InsertAndGetId(new TestEntity(){ TestEntity2ID = Guid.NewGuid().ToString()});
-            var testEntity = rep.FirstOrDefault(t => t.Id == id);
+            var id= rep.InsertAndGetId(new TESTENTITY(){ Id = Guid.NewGuid().ToString(), TESTENTITY2ID = Guid.NewGuid().ToString()});
+            var testEntity = rep.FirstOrDefault(t => t.Id != null);
             var setGuid = Guid.NewGuid().ToString();
-            rep.Update(testEntity.Id, t => { t.TestEntity2ID = setGuid; });
-
+            testEntity.TESTENTITY2ID = setGuid;
+            rep.Update(testEntity);
+           
         }
 
 

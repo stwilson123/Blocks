@@ -5,21 +5,22 @@ using Blocks.Framework.Data.Entity;
 
 namespace Blocks.BussnessEntityModule
 {
-    public partial class TestEntity : Entity
+    public partial class TESTENTITY : Entity
     {
+        [Column("ID")]
+        public override string Id { get; set; }
 
-        public string TestEntity2ID { set; get; }
+        public string TESTENTITY2ID { set; get; }
 
-        public TestEntity2 TestEntity2 { set; get; }
+        public TESTENTITY2 TestEntity2 { set; get; }
 
-        public IList<TestEntity3> TestEntity3s { set; get; }
+        public IList<TESTENTITY3> TestEntity3s { set; get; }
 
     }
 
-    public class TestEntityConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<TestEntity>
+    public class TestEntityConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<TESTENTITY>
     {
-        public TestEntityConfiguration()
-            : this("dbo")
+        public TestEntityConfiguration() 
         {
         }
         

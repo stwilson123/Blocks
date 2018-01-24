@@ -4,15 +4,14 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Blocks.BussnessEntityModule
 {
-    public partial class TestEntity2 : Entity
+    public partial class TESTENTITY2 : Entity
     {
 
     }
 
-    public class TestEntity2Configuration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<TestEntity2>
+    public class TestEntity2Configuration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<TESTENTITY2>
     {
-        public TestEntity2Configuration()
-            : this("dbo")
+        public TestEntity2Configuration() 
         {
         }
 

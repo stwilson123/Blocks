@@ -9,7 +9,7 @@ using System.Linq;
 
 namespace EntityFramework.Test.Model
 {
-    public class TestRepository : DBSqlRepositoryBase<TestEntity>,ITestRepository  
+    public class TestRepository : DBSqlRepositoryBase<TESTENTITY>,ITestRepository  
     {
         public TestRepository(IDbContextProvider dbContextProvider) : base(dbContextProvider)
         {

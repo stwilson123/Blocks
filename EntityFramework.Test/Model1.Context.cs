@@ -48,8 +48,8 @@ namespace EntityFramework.Test
         //public virtual DbSet<AbpUserRoles> AbpUserRoles { get; set; }
         //public virtual DbSet<AbpUsers> AbpUsers { get; set; }
         //public virtual DbSet<TestEntities> TestEntities { get; set; }
-        public virtual DbSet<TestEntity> TestEntity { get; set; }
-        public virtual DbSet<TestEntity2> TestEntity2 { get; set; }
-        public virtual DbSet<TestEntity3> TestEntity3 { get; set; }
+        public virtual DbSet<TESTENTITY> TestEntity { get; set; }
+        public virtual DbSet<TESTENTITY2> TestEntity2 { get; set; }
+        public virtual DbSet<TESTENTITY3> TestEntity3 { get; set; }
     }
 }

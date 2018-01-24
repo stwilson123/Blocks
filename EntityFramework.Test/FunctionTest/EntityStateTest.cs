@@ -14,7 +14,7 @@ namespace EntityFramework.Test.FunctionTest
             {
                var testEntity = context.TestEntity.FirstOrDefault();
                 
-                testEntity.TestEntity2ID = Guid.NewGuid().ToString();
+                testEntity.TESTENTITY2ID = Guid.NewGuid().ToString();
                 Assert.Equal(context.Entry(testEntity).State, EntityState.Modified);
  
 
@@ -30,7 +30,7 @@ namespace EntityFramework.Test.FunctionTest
                 context.Configuration.AutoDetectChangesEnabled = false;
                 var testEntities = context.TestEntity.Take(2).ToList();
                 var newGuid = Guid.NewGuid().ToString();
-                testEntities[0].TestEntity2ID = newGuid;
+                testEntities[0].TESTENTITY2ID = newGuid;
                 var dbEntry = context.Entry(testEntities[0]);
                 Assert.Equal(dbEntry.State, EntityState.Unchanged);
               
@@ -53,17 +53,17 @@ namespace EntityFramework.Test.FunctionTest
             {
                 var testEntity = context.TestEntity.AsNoTracking().FirstOrDefault();
                 newGuid = Guid.NewGuid().ToString();
-                testEntity.TestEntity2ID = newGuid;
+                testEntity.TESTENTITY2ID = newGuid;
                 var EntityEntry = context.Entry(testEntity);
                 Assert.Equal(EntityEntry.State, EntityState.Detached);
 
                 id = testEntity.Id;
                 context.SaveChanges();
                 var newEntityNoTracking = context.TestEntity.AsNoTracking().FirstOrDefault(t => t.Id == id);
-                Assert.NotEqual(newEntityNoTracking.TestEntity2ID, newGuid);
+                Assert.NotEqual(newEntityNoTracking.TESTENTITY2ID, newGuid);
 
                 var newEntity = context.TestEntity.FirstOrDefault(t => t.Id == id);
-                Assert.NotEqual(newEntity.TestEntity2ID, newGuid);
+                Assert.NotEqual(newEntity.TESTENTITY2ID, newGuid);
 
             }
 
@@ -71,7 +71,7 @@ namespace EntityFramework.Test.FunctionTest
             {
                 var testEntity = context.TestEntity.AsNoTracking().FirstOrDefault(t => t.Id == id);
 
-                Assert.NotEqual(testEntity.TestEntity2ID, newGuid);
+                Assert.NotEqual(testEntity.TESTENTITY2ID, newGuid);
             }
         }
 
@@ -85,13 +85,13 @@ namespace EntityFramework.Test.FunctionTest
             {
                 var testEntity = context.TestEntity.AsNoTracking().FirstOrDefault();
                 newGuid = Guid.NewGuid().ToString();
-                testEntity.TestEntity2ID = newGuid;
+                testEntity.TESTENTITY2ID = newGuid;
                 var EntityEntry = context.Entry(testEntity);
                 Assert.Equal(EntityEntry.State, EntityState.Detached);
                 id = testEntity.Id;
                 context.SaveChanges();
                 var newEntity = context.TestEntity.AsNoTracking().FirstOrDefault(t => t.Id == id);
-                Assert.NotEqual(newEntity.TestEntity2ID, newGuid);
+                Assert.NotEqual(newEntity.TESTENTITY2ID, newGuid);
                  
             }
 
@@ -99,7 +99,7 @@ namespace EntityFramework.Test.FunctionTest
             {
                 var testEntity = context.TestEntity.AsNoTracking().FirstOrDefault(t => t.Id == id);
 
-                Assert.NotEqual(testEntity.TestEntity2ID, newGuid);
+                Assert.NotEqual(testEntity.TESTENTITY2ID, newGuid);
             }
         }
     }

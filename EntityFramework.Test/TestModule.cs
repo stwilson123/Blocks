@@ -20,6 +20,8 @@ namespace EntityFramework.Test
     {
         public override void PreInitialize()
         {
+            Configuration.Settings.Providers.Add<GlobalSettingProvider>();
+
         }
 
 
