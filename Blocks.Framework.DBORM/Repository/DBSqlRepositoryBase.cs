@@ -16,6 +16,7 @@ using Abp.EntityFramework;
 using Blocks.Framework.DBORM.DBContext;
 using Blocks.Framework.DBORM.Entity;
 using Blocks.Framework.DBORM.Linq;
+using Z.EntityFramework.Plus;
 
 namespace Blocks.Framework.DBORM.Repository
 {
@@ -88,8 +89,8 @@ namespace Blocks.Framework.DBORM.Repository
     public class DBSqlRepositoryBase<TDbContext, TEntity, TPrimaryKey> : 
         AbpRepositoryBase<TEntity, TPrimaryKey>,
         ISupportsExplicitLoading<TEntity, TPrimaryKey>,
-        IRepositoryWithDbContext
-        
+        IRepositoryWithDbContext 
+
         where TEntity : Data.Entity.Entity<TPrimaryKey> 
         where TDbContext : DbContext
     {
@@ -274,6 +275,15 @@ namespace Blocks.Framework.DBORM.Repository
             return Task.FromResult(entity);
         }
 
+        public virtual Int32 Update(Expression<Func<TEntity, bool>> wherePredicate, Expression<Func<TEntity, TEntity>> updateFactory)
+        {
+            return GetAllCode().Where(wherePredicate).Update(updateFactory);
+        }
+        public virtual Task<Int32> UpdateAsync(Expression<Func<TEntity, bool>> wherePredicate, Expression<Func<TEntity, TEntity>> updateFactory)
+        {
+            return GetAllCode().Where(wherePredicate).UpdateAsync(updateFactory);
+        }
+
         public override void Delete(TEntity entity)
         {
             AttachIfNot(entity);
@@ -298,6 +308,8 @@ namespace Blocks.Framework.DBORM.Repository
 
             //Could not found the entity, do nothing.
         }
+
+       
 
         public override int Count(Expression<Func<TEntity, bool>> predicate)
         {

@@ -12,6 +12,8 @@ namespace Blocks.BussnessEntityModule
 
         public string TESTENTITY2ID { set; get; }
 
+        public int COLNUMINT { get; set; }
+
         public TESTENTITY2 TestEntity2 { set; get; }
 
         public IList<TESTENTITY3> TestEntity3s { set; get; }

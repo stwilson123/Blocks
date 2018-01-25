@@ -63,6 +63,21 @@ namespace EntityFramework.Test.FunctionTest
            
         }
 
+        [Fact]
+        public void UpdateByExpression()
+        {
+            var rep = Resolve<TestRepository>();
+             
+            var id = rep.Update(t => t.Id != "123", t => new TESTENTITY() {  TESTENTITY2ID = t.TESTENTITY2ID + "123" });
+            var inputPlus = "inputPlus";
+            var id1 = rep.Update(t => t.Id != "123", t => new TESTENTITY() { TESTENTITY2ID = t.TESTENTITY2ID + inputPlus });
+
+            var testEntity = rep.FirstOrDefault(t => t.Id != null);
+            var setGuid = Guid.NewGuid().ToString();
+            testEntity.TESTENTITY2ID = setGuid;
+            rep.Update(testEntity);
+
+        }
 
         [Fact]
         public void queryCombination()
