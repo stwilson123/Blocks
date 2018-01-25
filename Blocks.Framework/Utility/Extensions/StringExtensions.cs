@@ -5,9 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
-using Abp.Localization;
 
-namespace Blocks.Framework.Untility.Extensions
+namespace Blocks.Framework.Utility.Extensions
 {
     public static class StringExtensions
     {

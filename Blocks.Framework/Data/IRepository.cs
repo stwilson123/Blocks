@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Abp.Domain.Entities;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
@@ -27,5 +28,18 @@ namespace Blocks.Framework.Data
         /// <param name="updateFactory"></param>
         /// <returns>Updated numbers</returns>
         Task<Int32> UpdateAsync(Expression<Func<TEntity, bool>> wherePredicate, Expression<Func<TEntity, TEntity>> updateFactory);
+        
+        
+        /// <summary>
+        /// Inserts new entitites.
+        /// </summary>
+        /// <param name="entitites">Inserted entitites</param>
+        IList<TEntity> Insert(IList<TEntity> entitites);
+
+        /// <summary>
+        /// Inserts new entitites.
+        /// </summary>
+        /// <param name="entitites">Inserted entitites</param>
+        Task<IList<TEntity>> InsertAsync(IList<TEntity> entity);
     }
 }

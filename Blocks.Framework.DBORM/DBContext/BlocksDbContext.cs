@@ -25,10 +25,10 @@ using Abp.Timing;
 using Blocks.Framework.Data.Entity;
 using Blocks.Framework.DBORM.Entity;
 using Blocks.Framework.Ioc.Dependency;
-using Blocks.Framework.Untility.Extensions;
 using Castle.Core.Logging;
 using EntityFramework.DynamicFilters;
 using Abp.Configuration;
+using Blocks.Framework.Utility.Extensions;
 
 namespace Blocks.Framework.DBORM.DBContext
 {

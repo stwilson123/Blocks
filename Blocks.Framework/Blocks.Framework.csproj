@@ -167,9 +167,12 @@
     <Compile Include="Services\Clock.cs" />
     <Compile Include="Services\IClock.cs" />
     <Compile Include="Tools\Json\JsonHelper.cs" />
-    <Compile Include="Untility\Extensions\IEnumableExtensions.cs" />
-    <Compile Include="Untility\Extensions\LinqExtensions.cs" />
-    <Compile Include="Untility\Extensions\StringExtensions.cs" />
+    <Compile Include="Utility\Extensions\IEnumableExtensions.cs" />
+    <Compile Include="Utility\Extensions\LinqExtensions.cs" />
+    <Compile Include="Utility\Extensions\StringExtensions.cs" />
+    <Compile Include="Utility\SafeConvert\DateTimeHelper.cs" />
+    <Compile Include="Utility\SafeConvert\SafeConvert.cs" />
+    <Compile Include="Utility\SafeConvert\TimeFormatEnum.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Adp\Abp.AutoMapper\Abp.AutoMapper.csproj">

@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 
-namespace Blocks.Framework.Untility.Extensions
+namespace Blocks.Framework.Utility.Extensions
 {
     public static class IEnumableExtensions
     {

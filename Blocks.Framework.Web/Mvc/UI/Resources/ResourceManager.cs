@@ -13,7 +13,7 @@ using Abp.Configuration;
 using Abp.Dependency;
 using Blocks.Framework.Configurations;
 using Blocks.Framework.Ioc.Dependency;
-using Blocks.Framework.Untility.Extensions;
+using Blocks.Framework.Utility.Extensions;
 
 namespace Blocks.Framework.Web.Mvc.UI.Resources {
     public class ResourceManager : IResourceManager, IUnitOfWorkDependency {// IUnitOfWorkDependency {

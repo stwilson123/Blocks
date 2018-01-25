@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Blocks.Framework.Untility.Extensions
+namespace Blocks.Framework.Utility.Extensions
 {
     public static class LinqExtensions
     {

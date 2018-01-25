@@ -207,6 +207,28 @@ namespace Blocks.Framework.DBORM.Repository
             return Table.Add(entity);
         }
 
+
+        /// Inserts new entitites.
+        /// </summary>
+        /// <param name="entitites">Inserted entitites</param>
+        public virtual IList<TEntity> Insert(IList<TEntity> entitites)
+        {
+            foreach (var entity in entitites)
+            {
+                Insert(entity);
+            }
+            return entitites;
+        }
+
+        /// <summary>
+        /// Inserts new entitites.
+        /// </summary>
+        /// <param name="entitites">Inserted entitites</param>
+        Task<IList<TEntity>> InsertAsync(IList<TEntity> entity)
+        {
+            return Task.FromResult(Insert(entity));
+        }
+
         public override Task<TEntity> InsertAsync(TEntity entity)
         {
             return Task.FromResult(Insert(entity));
