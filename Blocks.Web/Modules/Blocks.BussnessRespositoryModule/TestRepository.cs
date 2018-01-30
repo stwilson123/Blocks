@@ -25,13 +25,13 @@ namespace Blocks.BussnessRespositoryModule
             //                });
             //            return value;
             // var id = Guid.Parse("DDE679DA-AA68-426D-A6C3-FE66D9725490");
-            var sql = GetContextTable()
+            //var sql = GetContextTable()
 
-                .SelectToList(result => new {
-                    Id = result.Id,
-                    TestEntity2 = new { result.TESTENTITY2.Id },
-                TestEntity3s = result.TESTENTITY3s
-            });
+            //    .SelectToList(result => new {
+            //        Id = result.Id,
+            //        TestEntity2 = new { result.TESTENTITY2.Id },
+            //    TestEntity3s = result.TESTENTITY3s
+            //});
             return value;
             
         }
@@ -40,6 +40,7 @@ namespace Blocks.BussnessRespositoryModule
         {
             throw new NotImplementedException();
         }
- 
+
+       
     }
 }

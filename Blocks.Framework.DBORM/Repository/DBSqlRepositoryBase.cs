@@ -37,12 +37,12 @@ namespace Blocks.Framework.DBORM.Repository
             Context.Configuration.LazyLoadingEnabled = false;
             Context.Configuration.ProxyCreationEnabled = false;
         }
-        public ILinqQueryable<TEntity> GetContextTable()
+        public IDbLinqQueryable<TEntity> GetContextTable()
         {
             return GetContextTableIncluding();
         }
         
-        public ILinqQueryable<TEntity> GetContextTableIncluding(params Expression<Func<TEntity, object>>[] propertySelectors)
+        public IDbLinqQueryable<TEntity> GetContextTableIncluding(params Expression<Func<TEntity, object>>[] propertySelectors)
         {
             var query = Table.AsQueryable();
 
@@ -54,7 +54,7 @@ namespace Blocks.Framework.DBORM.Repository
                 }
             }
             
-            return new DefaultLinqQueryable<TEntity>(query){ };
+            return new DefaultLinqQueryable<TEntity>(query, Context) { };
         }
 
          
@@ -224,7 +224,7 @@ namespace Blocks.Framework.DBORM.Repository
         /// Inserts new entitites.
         /// </summary>
         /// <param name="entitites">Inserted entitites</param>
-        Task<IList<TEntity>> InsertAsync(IList<TEntity> entity)
+        public virtual  Task<IList<TEntity>> InsertAsync(IList<TEntity> entity)
         {
             return Task.FromResult(Insert(entity));
         }

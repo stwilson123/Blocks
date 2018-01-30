@@ -92,7 +92,8 @@ namespace EntityFramework.Test.FunctionTest
                 context.SaveChanges();
                 var newEntity = context.TestEntity.AsNoTracking().FirstOrDefault(t => t.Id == id);
                 Assert.NotEqual(newEntity.TESTENTITY2ID, newGuid);
-                 
+                
+                
             }
 
             using (var context = new BlocksEntities())

@@ -5,8 +5,8 @@ using System.Linq.Expressions;
 
 namespace Blocks.Framework.DBORM.Linq
 {
-    public static class Queryable
-    {
+    //public static class Queryable
+    //{
        
-    }
+    //}
 }

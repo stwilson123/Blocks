@@ -9,6 +9,7 @@
 
 using System.Data.Entity;
 using Blocks.BussnessEntityModule;
+using System.Configuration;
 
 namespace EntityFramework.Test
 {
@@ -21,6 +22,8 @@ namespace EntityFramework.Test
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            var schema = ConfigurationManager.AppSettings.Get("Schema");
+            modelBuilder.HasDefaultSchema(schema);
             //modelBuilder.Entity<TestEntity>().HasMany(t => t.TestEntity3s);
         }
     

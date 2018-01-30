@@ -24,14 +24,14 @@ namespace EntityFramework.Test.Model
                            //                });
                            //            return value;
            // var id = Guid.Parse("DDE679DA-AA68-426D-A6C3-FE66D9725490");
-            var guid = Guid.NewGuid().ToString();
-            var sql = GetContextTable()
-                .Where(t => t.TestEntity2.Id == guid)
-                .SelectToList(result => new {
-                Id = result.Id,
-                TestEntity2  = new  {   result.TestEntity2.Id},
-                TestEntity3s =  result.TestEntity3s.Select(aa => new {  aa.Id })
-            });
+            //var guid = Guid.NewGuid().ToString();
+            //var sql = GetContextTable()
+            //    .Where(t => t.TestEntity2.Id == guid)
+            //    .SelectToList(result => new {
+            //    Id = result.Id,
+            //    TestEntity2  = new  {   result.TestEntity2.Id},
+            //    TestEntity3s =  result.TestEntity3s.Select(aa => new {  aa.Id })
+            //});
             return value;
         }
  
