@@ -24,9 +24,11 @@ namespace EntityFramework.Test
         {
             var schema = ConfigurationManager.AppSettings.Get("Schema");
             modelBuilder.HasDefaultSchema(schema);
+            modelBuilder.Conventions.Remove<System.Data.Entity.ModelConfiguration.Conventions.PluralizingTableNameConvention>();
+
             //modelBuilder.Entity<TestEntity>().HasMany(t => t.TestEntity3s);
         }
-    
+
         //public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
         //public virtual DbSet<AbpAuditLogs> AbpAuditLogs { get; set; }
         //public virtual DbSet<AbpBackgroundJobs> AbpBackgroundJobs { get; set; }

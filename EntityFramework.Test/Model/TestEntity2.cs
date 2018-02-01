@@ -6,7 +6,8 @@ namespace Blocks.BussnessEntityModule
 {
     public partial class TESTENTITY2 : Entity
     {
-
+        [Column("ID")]
+        public override string Id { get; set; }
     }
 
     public class TestEntity2Configuration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<TESTENTITY2>

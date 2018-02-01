@@ -16,8 +16,6 @@ namespace EntityFramework.Test.FunctionTest
                 
                 testEntity.TESTENTITY2ID = Guid.NewGuid().ToString();
                 Assert.Equal(context.Entry(testEntity).State, EntityState.Modified);
- 
-
             }
         }
         
@@ -92,8 +90,8 @@ namespace EntityFramework.Test.FunctionTest
                 context.SaveChanges();
                 var newEntity = context.TestEntity.AsNoTracking().FirstOrDefault(t => t.Id == id);
                 Assert.NotEqual(newEntity.TESTENTITY2ID, newGuid);
-                
-                
+
+
             }
 
             using (var context = new BlocksEntities())
@@ -103,5 +101,11 @@ namespace EntityFramework.Test.FunctionTest
                 Assert.NotEqual(testEntity.TESTENTITY2ID, newGuid);
             }
         }
+
+
+   
     }
+
+
+   
 }

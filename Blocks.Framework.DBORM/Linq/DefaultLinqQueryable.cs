@@ -8,6 +8,9 @@ using Blocks.Framework.Exceptions.Helper;
 using System.Linq.Dynamic.Core;
 using System.Data.Entity;
 using Blocks.Framework.DBORM.Linq.Extends;
+using Blocks.Framework.Data.Paging;
+using System.Collections.ObjectModel;
+using Blocks.Framework.Data.Pager;
 
 namespace Blocks.Framework.DBORM.Linq
 {
@@ -54,14 +57,14 @@ namespace Blocks.Framework.DBORM.Linq
 
             //TODO validate table alias;
 
-            iQuerable.Take
             tableAlias.Add((typeof(TOuter), outerParam.Name));
             tableAlias.Add((typeof(TInner), innerParam.Name));
-            if(isFirstInnerJoin)
+
+            var querable = transferQuaryable();
+            if (querable != null)
             {
                 iQuerable = iQuerable.Join(dbContext.Set(typeof(TInner)), $"{((MemberExpression)outerKeySelector.Body).Member.Name}",
-                    $"{((MemberExpression)innerKeySelector.Body).Member.Name}", tableAlias.CreateResultSelector());
-                isFirstInnerJoin = false;
+                       $"{((MemberExpression)innerKeySelector.Body).Member.Name}", tableAlias.CreateResultSelector());
             }
             else
             {
@@ -86,72 +89,81 @@ namespace Blocks.Framework.DBORM.Linq
             return this;
         }
 
- 
-        
-        public IDbLinqQueryable<TEntity> Where<T>(Expression<Func<T, bool>> predicate) 
+        public IDbLinqQueryable<TEntity> Where(LambdaExpression predicate)
         {
-            var source = iQuerable;
-            if (isFirstInnerJoin)
+            ExceptionHelper.ThrowArgumentNullException(predicate, "predicate");
+            validateParamter(predicate.Parameters);
+
+            var querable = transferQuaryable();
+
+            if (querable != null)
             {
-                var newSelect = Expression.Call(typeof(Queryable), nameof(Queryable.Where), new[] { source.ElementType }, source.Expression, predicate);
-                iQuerable = source.Provider.CreateQuery(newSelect);
+                iQuerable = querable.Where(predicate);
             }
             else
             {
                 var a = ExpressionUtils.Convert(predicate, iQuerable.ElementType);
-                var newSelect = Expression.Call(typeof(Queryable), nameof(Queryable.Where), new[] { source.ElementType }, source.Expression, Expression.Quote(a));
-                iQuerable = source.Provider.CreateQuery(newSelect);
+                iQuerable = iQuerable.Where(a);
             }
-             
+
             return this;
         }
+
+       
 
         public override string ToString()
         {
             return iQuerable.ToString();
         }
 
-        public IDbLinqQueryable<TEntity> Where(Expression<Func<TEntity, bool>> predicate)
+       
+
+        //public List<TEntity> SelectToList(Expression<Func<TEntity, dynamic>> selector)
+        //{
+        //    var querable = transferQuaryable();
+        //    if (querable != null)
+        //    {
+        //        iQuerable = querable.Select(selector);
+        //    }
+        //    else
+        //    {
+        //        var source = iQuerable;
+        //        var a = ExpressionUtils.Convert(selector, iQuerable.ElementType);
+        //        iQuerable = iQuerable.Select(a);
+        //    }
+        
+        //    return iQuerable.ToDynamicList().MapTo<List<TEntity>>();
+        //}
+
+        //public List<TDto> SelectToList<TDto>(Expression<Func<TEntity, TDto>> selector)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        public List<dynamic> SelectToList(LambdaExpression selector)
         {
-            var source = iQuerable;
-            if (isFirstInnerJoin)
+            ExceptionHelper.ThrowArgumentNullException(selector, "selector");
+            validateParamter(selector.Parameters);
+
+            var querable = transferQuaryable();
+
+            if (querable != null)
             {
-                var newSelect = Expression.Call(typeof(Queryable), nameof(Queryable.Where), new[] { source.ElementType }, source.Expression, predicate);
-                iQuerable = source.Provider.CreateQuery(newSelect);
+                iQuerable = querable.Select(selector);
             }
             else
             {
-                var a = ExpressionUtils.Convert(predicate, iQuerable.ElementType);
-              
-                var newSelect = Expression.Call(typeof(Queryable), nameof(Queryable.Where), new[] { source.ElementType }, source.Expression, Expression.Quote(a));
-                iQuerable = source.Provider.CreateQuery(newSelect);
-            }
-             
-
-            return this;
-        }
-
-        public List<TEntity> SelectToList(Expression<Func<TEntity, dynamic>> selector)
-        {
-            var source = iQuerable;
-            if (isFirstInnerJoin)
-            {
-                var newSelect = Expression.Call(typeof(Queryable), nameof(Queryable.Select), new[] { source.ElementType, selector.Body.Type }, source.Expression, selector);
-                iQuerable = source.Provider.CreateQuery(newSelect);
-            }
-            else
-            {
+                var source = iQuerable;
                 var a = ExpressionUtils.Convert(selector, iQuerable.ElementType);
-                var newSelect = Expression.Call(typeof(Queryable), nameof(Queryable.Select), new[] { source.ElementType, a.Body.Type }, source.Expression, Expression.Quote(a));
-                iQuerable = source.Provider.CreateQuery(newSelect);
+                iQuerable = iQuerable.Select(a);
             }
-               
-            return null;
+            return iQuerable.ToDynamicList();
         }
 
         public IDbLinqQueryable<TEntity> Take(int count)
         {
             iQuerable = iQuerable.Take(count);
+           
             return this;
         }
 
@@ -160,6 +172,83 @@ namespace Blocks.Framework.DBORM.Linq
             iQuerable = iQuerable.Skip(count);
             return this;
 
+        }
+
+        public IDbLinqQueryable<TEntity> OrderBy<TSource, TKey>(Expression<Func<TSource, TKey>> keySelector)
+        {
+            var querable = transferQuaryable();
+
+            if (querable != null)
+            {
+                iQuerable = querable.OrderBy(keySelector);
+            }
+            else
+            {
+                var a = ExpressionUtils.Convert(keySelector, iQuerable.ElementType);
+                iQuerable = iQuerable.OrderBy(a);
+            }
+
+            return this;
+        }
+
+        public IDbLinqQueryable<TEntity> OrderBy<TKey>(Expression<Func<TEntity, TKey>> keySelector)
+        {
+            return OrderBy<TEntity, TKey>(keySelector);
+        }
+
+        private IQueryable<TEntity> transferQuaryable()
+        {
+            return iQuerable is IQueryable<TEntity> ? (IQueryable<TEntity>)iQuerable : null;
+        }
+
+      
+
+        private void validateParamter(ReadOnlyCollection<ParameterExpression> parameterCollection)
+        {
+            ExceptionHelper.ThrowArgumentNullException(parameterCollection, "parameterCollection");
+            foreach (var item in parameterCollection)
+            {
+                if (!tableAlias.Any(t => t.TableAlias == item.Name))
+                    throw new BlocksDBORMException("Can't find table alias in the join expression.Please check join expression.");
+            }
+        }
+
+        public PageList<dynamic> Paging(LambdaExpression selector, Page page)
+        {
+            ExceptionHelper.ThrowArgumentNullException(selector, "selector");
+            ExceptionHelper.ThrowArgumentNullException(page, "page");
+            //TODO check page property 
+
+
+            validateParamter(selector.Parameters);
+
+            var querable = transferQuaryable();
+            if (querable != null)
+            {
+                iQuerable = querable.Select(selector);
+            }
+            else
+            {
+                var source = iQuerable;
+                var a = ExpressionUtils.Convert(selector, iQuerable.ElementType);
+                iQuerable = iQuerable.Select(a);
+            }
+            var pageResult = iQuerable.OrderBy(page.OrderBy).PageResult(page.page, page.pageSize);
+
+            var pagelist = new PageList<dynamic>()
+            {
+                Rows = pageResult.Queryable.ToDynamicList(),
+                PagerInfo = new Page()
+                {
+                    page = pageResult.PageCount,
+                    pageSize = pageResult.PageSize,
+                    records = pageResult.RowCount,
+                    sortColumn = page.sortColumn,
+                    sortOrder = page.sortOrder
+                }
+            };
+
+            return pagelist;
         }
     }
 
@@ -176,8 +265,11 @@ namespace Blocks.Framework.DBORM.Linq
         {
             return listTableAlias.Any();
         }
+        public bool Any(Func<(Type TableType, string TableAlias), bool> predicate)
+        {
+            return listTableAlias.Any(predicate);
+        }
 
-      
         public void Add((Type TableType, string TableAlias) item)
         {
             if (listTableAlias.Contains(item))

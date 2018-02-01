@@ -95,6 +95,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BlocksDBORMException.cs" />
     <Compile Include="BlocksFrameworkDBORMModule.cs" />
     <Compile Include="Configurations\ConfigConst.cs" />
     <Compile Include="DBContext\BlocksDbContext.cs" />
@@ -106,6 +107,7 @@
     <Compile Include="Linq\Dynamic.cs" />
     <Compile Include="Linq\Extends\ExpressionUtils.cs" />
     <Compile Include="Linq\ILinqQueryable.cs" />
+    <Compile Include="Linq\LinqQueryableExtend.cs" />
     <Compile Include="Linq\LinqRuntimeTypeBuilder.cs" />
     <Compile Include="Linq\Queryable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
