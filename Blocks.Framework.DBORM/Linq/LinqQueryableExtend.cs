@@ -56,7 +56,7 @@ namespace Blocks.Framework.DBORM.Linq
         }
         #endregion
 
-        #region select
+        #region paging
         public static PageList<TDto> Paging<TEntity, T1, TDto>(this IDbLinqQueryable<TEntity> dbLinqQueryable, Expression<Func<T1, TDto>> selector,Page page) where TEntity : Data.Entity.Entity
         {
             return dbLinqQueryable.Paging((LambdaExpression)selector, page).MapTo<PageList<TDto>>();
