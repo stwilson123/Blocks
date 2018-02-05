@@ -1,4 +1,4 @@
-@using Blocks.Framework.Web.Mvc.Extensions
+﻿@using Blocks.Framework.Web.Mvc.Extensions
 
 @RenderSection("register",false)
 @{ ResourceManager.WriteResources(); }
@@ -10,7 +10,7 @@
 @*    <title>@ViewData["Title"] - WebApplication</title>*@ 
     @RenderSection("resource",false)
     @RenderSection("style",false)
-    @Html.IncludeStyle(ResourceManager.GetRegisteredLinks().Select(t => t.Href).ToList())
+    @Html.IncludeStyle(ResourceManager.GetRegisteredLinks())
 </head>
 <body>
 @RenderSection("body",false)

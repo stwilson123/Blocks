@@ -77,6 +77,9 @@ namespace Blocks.Framework.Web.Modules
             var httpConfiguration = IocManager.Resolve<IAbpWebApiConfiguration>().HttpConfiguration;
             httpConfiguration.Services.Replace(typeof(IHttpControllerSelector), new BlocksHttpControllerSelector(httpConfiguration, IocManager.Resolve<DynamicApiControllerManager>(),IocManager));
 
+
+            GlobalFilters.Filters.Add(IocManager.Resolve<AbpMvcAuthorizeFilter>());
+
         }
     }
 }

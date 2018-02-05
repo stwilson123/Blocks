@@ -35,6 +35,9 @@ namespace Blocks.ResourcesModule
         public static string jqGrid { get; } = "jqGrid";
 
         public static string jqGridUI { get; } = "jqGridUI";
+        
+        public static string requireJS { get; } = "requireJS";
+
 
     }
 }

@@ -259,12 +259,12 @@ namespace Blocks.Framework.Web.Mvc.ViewEngines.Razor
 
             public override IDisposable Head()
             {
-                return new CaptureScope(_viewPage, s => ResourceManager.RegisterHeadScript(s.ToString()));
+                return new CaptureScope(_viewPage, s => ResourceManager.RegisterHeadScript(new ScriptEntry(){ Src= s.ToString(), Type = "text/javascript" }));
             }
 
             public override IDisposable Foot()
             {
-                return new CaptureScope(_viewPage, s => ResourceManager.RegisterFootScript(s.ToString()));
+                return new CaptureScope(_viewPage, s => ResourceManager.RegisterFootScript(new ScriptEntry() { Src = s.ToString(), Type = "text/javascript" }));
             }
         }
     }

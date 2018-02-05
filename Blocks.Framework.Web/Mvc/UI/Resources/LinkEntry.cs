@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Collections.Generic;
+using System.Web.Mvc;
 
 namespace Blocks.Framework.Web.Mvc.UI.Resources {
     public class LinkEntry {
@@ -66,6 +67,12 @@ namespace Blocks.Framework.Web.Mvc.UI.Resources {
 
         public LinkEntry SetAttribute(string name, string value) {
             _builder.MergeAttribute(name, value, true);
+            return this;
+        }
+
+        public LinkEntry SetAttributes(IDictionary<string, string> dic)
+        {
+            _builder.MergeAttributes(dic, true);
             return this;
         }
     }

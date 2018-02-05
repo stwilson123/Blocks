@@ -14,6 +14,7 @@ using Abp.Dependency;
 using Blocks.Framework.Configurations;
 using Blocks.Framework.Ioc.Dependency;
 using Blocks.Framework.Utility.Extensions;
+using Castle.Components.DictionaryAdapter;
 
 namespace Blocks.Framework.Web.Mvc.UI.Resources {
     public class ResourceManager : IResourceManager, IUnitOfWorkDependency {// IUnitOfWorkDependency {
@@ -28,8 +29,8 @@ namespace Blocks.Framework.Web.Mvc.UI.Resources {
         private readonly ISettingManager _setttingManager;
 
         private ResourceManifest _dynamicManifest;
-        private List<String> _headScripts;
-        private List<String> _footScripts;
+        private List<ScriptEntry> _headScripts= new List<ScriptEntry>();
+        private List<ScriptEntry> _footScripts = new List<ScriptEntry>();
         
         public  List<string> Templates { set; get; } = new List<string>();
         private IEnumerable<IResourceManifest> _manifests;
@@ -174,17 +175,13 @@ namespace Blocks.Framework.Web.Mvc.UI.Resources {
             return Require(resourceType, ToAppRelativePath(resourcePath)).Define(d => d.SetUrl(resourcePath, resourceDebugPath));
         }
 
-        public virtual void RegisterHeadScript(string script) {
-            if (_headScripts == null) {
-                _headScripts = new List<string>();
-            }
+        public virtual void RegisterHeadScript(ScriptEntry script) {
+            
             _headScripts.Add(script);
         }
 
-        public virtual void RegisterFootScript(string script) {
-            if (_footScripts == null) {
-                _footScripts = new List<string>();
-            }
+        public virtual void RegisterFootScript(ScriptEntry script) {
+             
             _footScripts.Add(script);
         }
 
@@ -264,11 +261,11 @@ namespace Blocks.Framework.Web.Mvc.UI.Resources {
             return _metas.Values.ToList().AsReadOnly();
         }
 
-        public virtual IList<String> GetRegisteredHeadScripts() {
+        public virtual IList<ScriptEntry> GetRegisteredHeadScripts() {
             return _headScripts == null ? null : _headScripts.AsReadOnly();
         }
 
-        public virtual IList<String> GetRegisteredFootScripts() {
+        public virtual IList<ScriptEntry> GetRegisteredFootScripts() {
             return _footScripts == null ? null : _footScripts.AsReadOnly();
         }
 
@@ -425,13 +422,13 @@ namespace Blocks.Framework.Web.Mvc.UI.Resources {
                 {
                     switch (context.Settings.Location)
                     {
-                        case ResourceLocation.Foot: this.RegisterFootScript(path); break;
-                        case ResourceLocation.Head: this.RegisterHeadScript(path);break;
+                        case ResourceLocation.Foot: this.RegisterFootScript(new ScriptEntry() { Src = path, Type = "text/javascript" }.SetAttributes(attributes)); break;
+                        case ResourceLocation.Head: this.RegisterHeadScript(new ScriptEntry() { Src = path, Type = "text/javascript" }.SetAttributes(attributes));break;
                     }
                 }
                 else if (context.Resource.Type == "stylesheet")
                 {
-                    this.RegisterLink(new LinkEntry(){  Rel = "stylesheet", Type = "text/css", Href =path });
+                    this.RegisterLink(new LinkEntry(){  Rel = "stylesheet", Type = "text/css", Href =path, }.SetAttributes(attributes));
                 }
                  
                 else if (context.Resource.Type == "template")

@@ -7,8 +7,8 @@ namespace Blocks.Framework.Web.Mvc.UI.Resources {
         IList<ResourceRequiredContext> BuildRequiredResources(string resourceType);
         IList<LinkEntry> GetRegisteredLinks();
         IList<MetaEntry> GetRegisteredMetas();
-        IList<String> GetRegisteredHeadScripts();
-        IList<String> GetRegisteredFootScripts();
+        IList<ScriptEntry> GetRegisteredHeadScripts();
+        IList<ScriptEntry> GetRegisteredFootScripts();
         IEnumerable<IResourceManifest> ResourceProviders { get; }
         ResourceManifest DynamicResources { get; }
         ResourceDefinition FindResource(RequireSettings settings);
@@ -16,8 +16,8 @@ namespace Blocks.Framework.Web.Mvc.UI.Resources {
         RequireSettings Include(string resourceType, string resourcePath, string resourceDebugPath);
         RequireSettings Include(string resourceType, string resourcePath, string resourceDebugPath, string relativeFromPath);
         RequireSettings Require(string resourceType, string resourceName);
-        void RegisterHeadScript(string script);
-        void RegisterFootScript(string script);
+        void RegisterHeadScript(ScriptEntry script);
+        void RegisterFootScript(ScriptEntry script);
         void RegisterLink(LinkEntry link);
         void SetMeta(MetaEntry meta);
         void AppendMeta(MetaEntry meta, string contentSeparator);

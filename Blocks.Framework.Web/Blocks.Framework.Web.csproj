@@ -152,6 +152,7 @@
     <Compile Include="Mvc\Controllers\BlocksWebMvcController.cs" />
     <Compile Include="Mvc\Controllers\ControllerConventionalRegistrar.cs" />
     <Compile Include="Mvc\Extensions\HtmlHelperResourceExtensions.cs" />
+    <Compile Include="Mvc\Filters\BlocksWebMvcActionFilter.cs" />
     <Compile Include="Mvc\Filters\BlocksWebMvcFilterProvider.cs" />
     <Compile Include="Mvc\Filters\IFilterProvider.cs" />
     <Compile Include="Mvc\IBlocksViewPage.cs" />
@@ -172,6 +173,7 @@
     <Compile Include="Mvc\UI\Resources\ResourceManifestBuilder.cs" />
     <Compile Include="Mvc\UI\Resources\ResourceRegister.cs" />
     <Compile Include="Mvc\UI\Resources\ResourceRequiredContext.cs" />
+    <Compile Include="Mvc\UI\Resources\ScriptEntry.cs" />
     <Compile Include="Mvc\ViewEngines\IViewEngineProvider.cs" />
     <Compile Include="Mvc\ViewEngines\Razor\RazorViewEngineProvider.cs" />
     <Compile Include="Mvc\ViewEngines\Razor\WebViewPage.cs" />

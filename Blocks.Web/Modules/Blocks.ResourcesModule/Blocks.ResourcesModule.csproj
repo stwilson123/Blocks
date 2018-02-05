@@ -97,6 +97,7 @@
     <Compile Include="ResourceManifestProviders\BootstrapResourceManifestProvider.cs" />
     <Compile Include="ResourceManifestProviders\FontsResourceManifestProvider.cs" />
     <Compile Include="ResourceManifestProviders\IconsResourceManifestProvider.cs" />
+    <Compile Include="ResourceManifestProviders\JSLoaderResourceManifestProvider.cs" />
     <Compile Include="ResourceManifestProviders\PathBuilder.cs" />
     <Compile Include="ResourceManifestProviders\JQueryResourceManifestProvider.cs" />
     <Compile Include="ResourceManifestProviders\ToolsResourceManifestProvider.cs" />
@@ -2421,6 +2422,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Scripts\r.js" />
+    <None Include="Scripts\require.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v15.0\WebApplications\Microsoft.WebApplication.targets" />

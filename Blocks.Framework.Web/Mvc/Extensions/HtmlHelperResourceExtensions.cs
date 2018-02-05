@@ -10,6 +10,7 @@ using System.Web.Mvc;
 using Abp.Logging;
 using Abp.Web.Mvc.Resources;
 using Blocks.Framework.Collections;
+using Blocks.Framework.Web.Mvc.UI.Resources;
 
 namespace Blocks.Framework.Web.Mvc.Extensions
 {
@@ -56,6 +57,24 @@ namespace Blocks.Framework.Web.Mvc.Extensions
         }
 
         /// <summary>
+        /// Includes a script to the page with versioning.
+        /// </summary>
+        /// <param name="html">Reference to the HtmlHelper object</param>
+        /// <param name="url">URL of the script file</param>
+        public static IHtmlString IncludeScript(this HtmlHelper html, IEnumerable<ScriptEntry> urls)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            urls?.ForEach(s =>
+            {
+                s.Src = GetPathWithVersioning(s.Src);
+                sb.AppendLine(s.GetTag());
+            });
+            return html.Raw(sb.ToString());
+        }
+
+
+        /// <summary>
         /// Includes a style to the page with versioning.
         /// </summary>
         /// <param name="html">Reference to the HtmlHelper object</param>
@@ -67,6 +86,22 @@ namespace Blocks.Framework.Web.Mvc.Extensions
             return html.Raw(sb.ToString());
         }
 
+
+        /// <summary>
+        /// Includes a style to the page with versioning.
+        /// </summary>
+        /// <param name="html">Reference to the HtmlHelper object</param>
+        /// <param name="url">URL of the style file</param>
+        public static IHtmlString IncludeStyle(this HtmlHelper html, IList<LinkEntry> Wurls)
+        {
+            StringBuilder sb = new StringBuilder();
+            Wurls?.ForEach(s =>
+            {
+                s.Href = GetPathWithVersioning(s.Href);
+                sb.AppendLine(s.GetTag());
+            });
+            return html.Raw(sb.ToString());
+        }
         private static string GetPathWithVersioning(string path)
         {
             if (Cache.ContainsKey(path))
