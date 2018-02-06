@@ -15,6 +15,9 @@ namespace Blocks.Framework.Web.Mvc.UI.Resources {
         public ResourceLocation Location { get; set; }
         public string Condition { get; set; }
         public Action<ResourceDefinition> InlineDefinition { get; set; }
+
+
+        public IEnumerable<string> Dependencies { get; set; } = new List<string>();
         public Dictionary<string, string> Attributes {
             get { return _attributes ?? (_attributes = new Dictionary<string, string>()); }
             set { _attributes = value; }
@@ -123,6 +126,12 @@ namespace Blocks.Framework.Web.Mvc.UI.Resources {
             return mergedAttributes;
         }
 
+        public RequireSettings AddDependencies(IEnumerable<string> dependencies)
+        {
+            if (dependencies != null)
+                Dependencies = Dependencies.Concat(dependencies);
+            return this;
+        }
         public RequireSettings Combine(RequireSettings other) {
             var settings = (new RequireSettings {
                 Name = Name,
@@ -133,7 +142,8 @@ namespace Blocks.Framework.Web.Mvc.UI.Resources {
                 .UseDebugMode(DebugMode).UseDebugMode(other.DebugMode)
                 .UseCulture(Culture).UseCulture(other.Culture)
                 .UseCondition(Condition).UseCondition(other.Condition)
-                .Define(InlineDefinition).Define(other.InlineDefinition);
+                .Define(InlineDefinition).Define(other.InlineDefinition)
+                .AddDependencies(Dependencies).AddDependencies(other.Dependencies);
             settings._attributes = MergeAttributes(other);
             return settings;
         }

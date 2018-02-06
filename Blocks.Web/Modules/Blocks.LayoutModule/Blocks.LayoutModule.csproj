@@ -142,6 +142,7 @@
     <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
     <Content Include="Scripts\site.js" />
+    <Content Include="Template\Tradition\RequireConfig.js" />
     <Content Include="Template\Tradition\_Layout.cshtml" />
     <Content Include="Template\Tradition\_Layout.css" />
     <Content Include="Template\Tradition\_Layout.js" />
@@ -175,6 +176,7 @@
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
+    <Content Include="Template\Tradition\_LayoutModule.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />

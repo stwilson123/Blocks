@@ -67,6 +67,9 @@ namespace Blocks.Framework.Web.Mvc.UI.Resources {
             }
             return settings;
         }
+
+
+      
     }
 
     public abstract class ScriptRegister : ResourceRegister {

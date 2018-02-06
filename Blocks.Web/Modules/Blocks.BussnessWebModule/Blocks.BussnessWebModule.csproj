@@ -113,6 +113,7 @@
     <Content Include="Styles\Index\IndexCss.css" />
     <Content Include="Views\Tests\IndexCss.css" />
     <Content Include="Views\Tests\TranditionLayoutTest.cshtml" />
+    <Content Include="Views\Tests\TranditionLayoutTestNew.js" />
     <Content Include="Views\Tests\_LayoutPartialViewFirst.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -129,6 +130,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <Content Include="Views\Tests\TranditionLayoutTestNew.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

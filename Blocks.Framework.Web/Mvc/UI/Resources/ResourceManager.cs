@@ -31,7 +31,7 @@ namespace Blocks.Framework.Web.Mvc.UI.Resources {
         private ResourceManifest _dynamicManifest;
         private List<ScriptEntry> _headScripts= new List<ScriptEntry>();
         private List<ScriptEntry> _footScripts = new List<ScriptEntry>();
-        
+        private List<ScriptEntry> _DisplayNonoScripts = new List<ScriptEntry>();
         public  List<string> Templates { set; get; } = new List<string>();
         private IEnumerable<IResourceManifest> _manifests;
 
@@ -185,6 +185,11 @@ namespace Blocks.Framework.Web.Mvc.UI.Resources {
             _footScripts.Add(script);
         }
 
+        public virtual void RegisterDisplayNonoScript(ScriptEntry script)
+        {
+
+            _DisplayNonoScripts.Add(script);
+        }
         public virtual void NotRequired(string resourceType, string resourceName) {
             if (resourceType == null) {
                 throw new ArgumentNullException("resourceType");
@@ -269,6 +274,12 @@ namespace Blocks.Framework.Web.Mvc.UI.Resources {
             return _footScripts == null ? null : _footScripts.AsReadOnly();
         }
 
+
+        public virtual IList<ScriptEntry> GetRegisteredDisplayNonoScripts()
+        {
+            return _DisplayNonoScripts == null ? null : _DisplayNonoScripts.AsReadOnly();
+        }
+
         public virtual IList<ResourceRequiredContext> BuildRequiredResources(string resourceType) {
             IList<ResourceRequiredContext> requiredResources;
             if (_builtResources.TryGetValue(resourceType, out requiredResources) && requiredResources != null) {
@@ -299,8 +310,9 @@ namespace Blocks.Framework.Web.Mvc.UI.Resources {
             // (2) If no require already exists, form a new settings object based on the given one but with its own type/name.
             settings = allResources.Contains(resource)
                 ? ((RequireSettings)allResources[resource]).Combine(settings)
-                : new RequireSettings { Type = resource.Type, Name = resource.Name }.Combine(settings);
+                : new RequireSettings { Type = resource.Type, Name = resource.Name, Dependencies = resource.Dependencies }.Combine(settings);
             if (resource.Dependencies != null) {
+              
                 var dependencies = from d in resource.Dependencies
                                    select FindResource(new RequireSettings { Type = resource.Type, Name = d });
                 foreach (var dependency in dependencies) {
@@ -424,6 +436,7 @@ namespace Blocks.Framework.Web.Mvc.UI.Resources {
                     {
                         case ResourceLocation.Foot: this.RegisterFootScript(new ScriptEntry() { Src = path, Type = "text/javascript" }.SetAttributes(attributes)); break;
                         case ResourceLocation.Head: this.RegisterHeadScript(new ScriptEntry() { Src = path, Type = "text/javascript" }.SetAttributes(attributes));break;
+                        default: this.RegisterDisplayNonoScript(new ScriptEntry() { Src = path, Type = "text/javascript" }.SetAttributes(attributes));break;
                     }
                 }
                 else if (context.Resource.Type == "stylesheet")

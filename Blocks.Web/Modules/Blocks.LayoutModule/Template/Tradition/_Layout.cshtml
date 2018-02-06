@@ -2,25 +2,25 @@
 @using Blocks
 @using Blocks.Framework.Web.Mvc.Extensions
 @{
-   Layout = ResourceManager.GetTemplateNotCache("_LayoutRoot",this.VirtualPath);//"~/Template/_LayoutRoot.cshtml";
+    Layout = ResourceManager.GetTemplateNotCache("_LayoutRoot", this.VirtualPath);//"~/Template/_LayoutRoot.cshtml";
 }
 @section register
 {
-  @{
-      Style.Require("roboto").AtHead();
-      Style.Require("material_icons").AtHead();
-      Style.Require("bootstrap_select").AtHead();
-      Style.Require("toastr").AtHead();
-      Style.Require("sweetalert").AtHead();
-      Style.Require("font_awesome").AtHead();
-      Style.Require("waves").AtHead();
-      Style.Require("animate").AtHead();
-      Style.Include("/css/materialize.css").AtHead();
-      Style.Include("/css/style.css").AtHead();
-      Style.Include("/css/themes/all-themes.css").AtHead();
-      Style.Include("_Layout.css").AtHead();
+    @{
+        Style.Require("roboto").AtHead();
+        Style.Require("material_icons").AtHead();
+        Style.Require("bootstrap_select").AtHead();
+        Style.Require("toastr").AtHead();
+        Style.Require("sweetalert").AtHead();
+        Style.Require("font_awesome").AtHead();
+        Style.Require("waves").AtHead();
+        Style.Require("animate").AtHead();
+        Style.Include("/css/materialize.css").AtHead();
+        Style.Include("/css/style.css").AtHead();
+        Style.Include("/css/themes/all-themes.css").AtHead();
+        Style.Include("_Layout.css").AtHead();
 
-  }
+    }
 
     @{
         Script.Require("json2").AtFoot();
@@ -34,9 +34,9 @@
         Script.Require("slimscroll").AtFoot();
         Script.Require("waves").AtFoot();
         Script.Require("push").AtFoot();
-      
 
-        
+
+
         Script.Include("/lib/abp-web-resources/Abp/Framework/scripts/abp.js").AtFoot();
         Script.Include("/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js").AtFoot();
         Script.Include("/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js").AtFoot();
@@ -61,9 +61,9 @@
     <link rel="shortcut icon" href="~/favicon.ico">
 
     <title>Blocks</title>
-@*    <link rel="stylesheet" type="text/css" href="/fonts/material-icons/materialicons.css" > *@
-@*    *@
-@*    <link rel="stylesheet" type="text/css" href="/Modules/Blocks.ResourcesModule/lib/font-awesome/css/font-awesome.css?v=636512628386490276" > *@
+    @*    <link rel="stylesheet" type="text/css" href="/fonts/material-icons/materialicons.css" > *@
+    @*    *@
+    @*    <link rel="stylesheet" type="text/css" href="/Modules/Blocks.ResourcesModule/lib/font-awesome/css/font-awesome.css?v=636512628386490276" > *@
 
 }
 
@@ -134,7 +134,7 @@
             <aside id="leftsidebar" class="sidebar">
 
                 @Html.Action("SideBarUserArea", "Layout")
-                @Html.Action("SideBarNav", "Layout", new {activeMenu = ViewBag.ActiveMenu})
+                @Html.Action("SideBarNav", "Layout", new { activeMenu = ViewBag.ActiveMenu })
 
                 <!-- Footer -->
                 <div class="legal">
@@ -175,5 +175,5 @@
     <!-- SignalR scripts -->
     <script src="~/signalr/hubs"></script>
     <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.signalr.js"></script>
-@*    @Html.IncludeScript("~/lib/Abp/Framework/scripts/libs/abp.signalr.js")*@
+    @*    @Html.IncludeScript("~/lib/Abp/Framework/scripts/libs/abp.signalr.js")*@
 }
