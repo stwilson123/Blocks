@@ -9,7 +9,7 @@ namespace Blocks.Framework.Web.Mvc.UI.Resources
         {
 
         }
-        private readonly TagBuilder _builder = new TagBuilder("link");
+        private readonly TagBuilder _builder = new TagBuilder("script");
         public string Condition { get; set; }
         public string Src {
             get {
@@ -42,7 +42,7 @@ namespace Blocks.Framework.Web.Mvc.UI.Resources
 
         public string GetTag()
         {
-            string tag = _builder.ToString(TagRenderMode.SelfClosing);
+            string tag = _builder.ToString();
             if (!string.IsNullOrEmpty(Condition))
             {
                 return "<!--[if " + Condition + "]>" + tag + "<![endif]-->";
