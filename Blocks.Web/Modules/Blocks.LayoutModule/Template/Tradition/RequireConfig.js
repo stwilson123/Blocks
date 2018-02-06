@@ -9,7 +9,7 @@ require.config({
     //define each js frame path, not need to add .js suffix name  
     //定义各个JS框架路径名,不用加后缀 .js  
     , paths: {
-        "jquery": ["Blocks.ResourcesModule/Scripts/jquery-1.9.1.min"],
+        "jquery": ["Blocks.ResourcesModule/Scripts/jquery-1.9.1.min"]
 
         , "underscore": "" //路径未提供，可网上搜索然后加上即可  
     }
