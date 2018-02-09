@@ -7,7 +7,7 @@
 // 
 //     Connection String Name: `MyDbContext`
 //     Provider:               `Oracle.ManagedDataAccess.Client`
-//     Connection String:      `Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.1.215)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=devserver)));User ID=R2E4XZ_DEV;password=**zapped**;Enlist=false`
+//     Connection String:      `Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.1.215)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=devserver)));User ID=R2E4MOD;password=**zapped**;Enlist=false`
 //     Schema:                 ``
 //     Include Views:          `False`
 
@@ -23,6 +23,311 @@ namespace Blocks.BussnessEntityModule
 {
 	
 
+    
+    public partial class BDTA_MATERIAL_WORKING   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string MAT_WORKCENTER_ID { set; get; }
+	    	    public string MACHING_CENTER_ID { set; get; }
+	    	    public long? MAT_WORKING_TIME { set; get; }
+	    	    public string MAT_WORKING_DESC { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+		}
+    
+    public partial class BDTA_MATTYPE   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string MATTYPE_CODE { set; get; }
+	    	    public string MATTYPE_NAME { set; get; }
+	    	    public string MATTYPE_PARENT_ID { set; get; }
+	    	    public long? MATTYPE_STATE { set; get; }
+	    	    public string MATFORMAT { set; get; }
+	    	    public decimal? MATLOTQTY { set; get; }
+	    	    public string MATTYPE_DESC { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+		}
+    
+    public partial class BDTA_MOLD   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string MOLD_NAME { set; get; }
+	    	    public string MOLD_CODE { set; get; }
+	    	    public string STANDARD { set; get; }
+	    	    public string MANUFACTURER_NAME { set; get; }
+	    	    public string APPLY_EQUIPMENT { set; get; }
+	    	    public string EQUIPMENT_CODE { set; get; }
+	    	    public DateTime? STORAGE_DATE { set; get; }
+	    	    public string MAINTENANCE_CONTENT { set; get; }
+	    	    public decimal? USED_NUMBER { set; get; }
+	    	    public decimal? EXPECT_MAINTENANCE_TIMES { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string REMARK { set; get; }
+	    	    public DateTime? ACTUAL_COMPLETE_DATE { set; get; }
+	    	    public string MAINTENANCE_EXPLAIN { set; get; }
+	    	    public string NEXT_CARE_WARNING_DATE { set; get; }
+	    	    public decimal? SERVICE_LIFE { set; get; }
+	    	    public decimal? SUM_USED_NUMBER { set; get; }
+		}
+    
+    public partial class BDTA_MOLD_ADD   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public DateTime? MONTH { set; get; }
+	    	    public string MOLD_NAME { set; get; }
+	    	    public string MOLD_CODE { set; get; }
+	    	    public string STANDARD { set; get; }
+	    	    public string MANUFACTURER_NAME { set; get; }
+	    	    public string APPLY_EQUIPMENT { set; get; }
+	    	    public string EQUIPMENT_CODE { set; get; }
+	    	    public string MAINTENANCE_CONTENT { set; get; }
+	    	    public decimal? USED_NUMBER { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+		}
+    
+    public partial class BDTA_ORG_FACTORY   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string FACTORY_NO { set; get; }
+	    	    public string FACTORY_NAME { set; get; }
+	    	    public string FACTORY_DESC { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+		}
+    
+    public partial class BDTA_ORG_ORGRELATION   : Entity   
+    {
+ 
+    	    public string ORGRELATIONID { set; get; }
+	    	    public string ORGRELATIONPID { set; get; }
+	    	    public long ORGRELATIONTYPE { set; get; }
+	    	    public string ORGRELATIONTABLE { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public string ORGRELATIONNAME { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+		}
+    
+    public partial class BDTA_ORG_STOREROOM   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string STOREROOMNO { set; get; }
+	    	    public string STOREROOMNAME { set; get; }
+	    	    public string ISFROZEN { set; get; }
+	    	    public string ISINITIALIZED { set; get; }
+	    	    public string ROOMCHARGER { set; get; }
+	    	    public long? ISSYSTEM { set; get; }
+	    	    public string ROOMTAG { set; get; }
+	    	    public string BELONGFACTORY { set; get; }
+	    	    public string ISGOOD { set; get; }
+	    	    public string AREACODE { set; get; }
+	    	    public string STOREROOMDESC { set; get; }
+	    	    public string VMI { set; get; }
+	    	    public string SELFGET { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public long? ISFICTITIOUS { set; get; }
+		}
+    
+    public partial class BDTA_ORG_STORESITE   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string STORESITENO { set; get; }
+	    	    public string STORESITENAME { set; get; }
+	    	    public string ISFROZEN { set; get; }
+	    	    public decimal? LENGTH { set; get; }
+	    	    public decimal? WIDTH { set; get; }
+	    	    public decimal? HEIGHT { set; get; }
+	    	    public decimal? LIMITEDWEIGHT { set; get; }
+	    	    public decimal? CURRENTWEIGHT { set; get; }
+	    	    public decimal? PLOTRATIO { set; get; }
+	    	    public decimal? CURRENTPLOT { set; get; }
+	    	    public string STACKINGNO { set; get; }
+	    	    public string VELOCITY { set; get; }
+	    	    public string HIGHNESS { set; get; }
+	    	    public decimal? FLOORS { set; get; }
+	    	    public long? ISSYSTEM { set; get; }
+	    	    public string STORESITEDESC { set; get; }
+	    	    public string BDTA_ORG_STORESITE_DATA1 { set; get; }
+	    	    public string BDTA_ORG_STORESITE_DATA2 { set; get; }
+	    	    public string BDTA_ORG_STORESITE_DATA3 { set; get; }
+	    	    public string BDTA_ORG_STORESITE_DATA4 { set; get; }
+	    	    public string ISPALLETTEMPSITE { set; get; }
+	    	    public string WEIGHT_GRADE { set; get; }
+	    	    public string HIGH_GRADE { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public string INSTORAGE_AREA { set; get; }
+		}
+    
+    public partial class BDTA_PROCESSPATH   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string PROCESSPATH_NO { set; get; }
+	    	    public string PROCESSPATH_NAME { set; get; }
+	    	    public string PROCESSPATH_DESC { set; get; }
+	    	    public long? PROCESSPATH_CAPABILITY { set; get; }
+	    	    public string PROCESSPATH_TYPE { set; get; }
+	    	    public string WORKSHOP_ID { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public string MERGEBILL_TYPE { set; get; }
+		}
+    
+    public partial class BDTA_QUEUE   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string CATA4 { set; get; }
+	    	    public string CATA3 { set; get; }
+	    	    public string CATA2 { set; get; }
+	    	    public string CATA1 { set; get; }
+	    	    public long SNO { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public string CATA5 { set; get; }
+		}
+    
+    public partial class BDTA_ROUTING   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string ROUTING_NO { set; get; }
+	    	    public string ROUTING_NAME { set; get; }
+	    	    public string ROUTING_DESC { set; get; }
+	    	    public long? ROUTING_CAPABILITY { set; get; }
+	    	    public string ROUTING_TYPE { set; get; }
+	    	    public string WORKSHOP_ID { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public string MERGEBILL_TYPE { set; get; }
+		}
+    
+    public partial class BDTA_SETUP   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string SETUP_NO { set; get; }
+	    	    public string SETUP_CONTENTS { set; get; }
+	    	    public string SETUP_KEY { set; get; }
+	    	    public string SETUP_TYPE { set; get; }
+	    	    public string SETUP_PARAMETER { set; get; }
+	    	    public string SETUP_MAX { set; get; }
+	    	    public string SETUP_MIN { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+		}
+    
+    public partial class BDTA_STATION   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string MACHING_CENTER_ID { set; get; }
+	    	    public string STATION_NO { set; get; }
+	    	    public string STATION_NAME { set; get; }
+	    	    public string STATION_CAPACITY { set; get; }
+	    	    public string STATION_TYPE { set; get; }
+	    	    public string SECTION_ID { set; get; }
+	    	    public string STATION_DIFFICULTY_COEFFICIENT { set; get; }
+	    	    public string STATION_DESCRIPTION { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+		}
     
     public partial class BDTA_CALDETAIL   : Entity   
     {
@@ -646,311 +951,6 @@ namespace Blocks.BussnessEntityModule
 	    	    public decimal? MAT_WC_AGETIME { set; get; }
 	    	    public string MAT_WC_DESC { set; get; }
 	    	    public string WORKPROCEDURE_ID { set; get; }
-	    	    public long DATAVERSION { set; get; }
-	    	    public DateTime? CREATEDATE { set; get; }
-	    	    public string CREATER { set; get; }
-	    	    public DateTime? UPDATEDATE { set; get; }
-	    	    public string UPDATER { set; get; }
-	    	    public string EXTENDFIELD { set; get; }
-	    	    public long? ISUSED { set; get; }
-	    	    public long? ACTIVITY { set; get; }
-		}
-    
-    public partial class BDTA_MATERIAL_WORKING   : Entity   
-    {
- 
-    	    [Column("ID")]
-		public override string Id { set ; get ; }
-	    	    public string MAT_WORKCENTER_ID { set; get; }
-	    	    public string MACHING_CENTER_ID { set; get; }
-	    	    public long? MAT_WORKING_TIME { set; get; }
-	    	    public string MAT_WORKING_DESC { set; get; }
-	    	    public long DATAVERSION { set; get; }
-	    	    public DateTime? CREATEDATE { set; get; }
-	    	    public string CREATER { set; get; }
-	    	    public DateTime? UPDATEDATE { set; get; }
-	    	    public string UPDATER { set; get; }
-	    	    public string EXTENDFIELD { set; get; }
-	    	    public long? ISUSED { set; get; }
-	    	    public long? ACTIVITY { set; get; }
-		}
-    
-    public partial class BDTA_MATTYPE   : Entity   
-    {
- 
-    	    [Column("ID")]
-		public override string Id { set ; get ; }
-	    	    public string MATTYPE_CODE { set; get; }
-	    	    public string MATTYPE_NAME { set; get; }
-	    	    public string MATTYPE_PARENT_ID { set; get; }
-	    	    public long? MATTYPE_STATE { set; get; }
-	    	    public string MATFORMAT { set; get; }
-	    	    public decimal? MATLOTQTY { set; get; }
-	    	    public string MATTYPE_DESC { set; get; }
-	    	    public long DATAVERSION { set; get; }
-	    	    public DateTime? CREATEDATE { set; get; }
-	    	    public string CREATER { set; get; }
-	    	    public DateTime? UPDATEDATE { set; get; }
-	    	    public string UPDATER { set; get; }
-	    	    public string EXTENDFIELD { set; get; }
-		}
-    
-    public partial class BDTA_MOLD   : Entity   
-    {
- 
-    	    [Column("ID")]
-		public override string Id { set ; get ; }
-	    	    public string MOLD_NAME { set; get; }
-	    	    public string MOLD_CODE { set; get; }
-	    	    public string STANDARD { set; get; }
-	    	    public string MANUFACTURER_NAME { set; get; }
-	    	    public string APPLY_EQUIPMENT { set; get; }
-	    	    public string EQUIPMENT_CODE { set; get; }
-	    	    public DateTime? STORAGE_DATE { set; get; }
-	    	    public string MAINTENANCE_CONTENT { set; get; }
-	    	    public decimal? USED_NUMBER { set; get; }
-	    	    public decimal? EXPECT_MAINTENANCE_TIMES { set; get; }
-	    	    public long DATAVERSION { set; get; }
-	    	    public DateTime? CREATEDATE { set; get; }
-	    	    public string CREATER { set; get; }
-	    	    public DateTime? UPDATEDATE { set; get; }
-	    	    public string UPDATER { set; get; }
-	    	    public string EXTENDFIELD { set; get; }
-	    	    public long? ISUSED { set; get; }
-	    	    public long? ACTIVITY { set; get; }
-	    	    public string REMARK { set; get; }
-	    	    public DateTime? ACTUAL_COMPLETE_DATE { set; get; }
-	    	    public string MAINTENANCE_EXPLAIN { set; get; }
-	    	    public string NEXT_CARE_WARNING_DATE { set; get; }
-	    	    public decimal? SERVICE_LIFE { set; get; }
-	    	    public decimal? SUM_USED_NUMBER { set; get; }
-		}
-    
-    public partial class BDTA_MOLD_ADD   : Entity   
-    {
- 
-    	    [Column("ID")]
-		public override string Id { set ; get ; }
-	    	    public DateTime? MONTH { set; get; }
-	    	    public string MOLD_NAME { set; get; }
-	    	    public string MOLD_CODE { set; get; }
-	    	    public string STANDARD { set; get; }
-	    	    public string MANUFACTURER_NAME { set; get; }
-	    	    public string APPLY_EQUIPMENT { set; get; }
-	    	    public string EQUIPMENT_CODE { set; get; }
-	    	    public string MAINTENANCE_CONTENT { set; get; }
-	    	    public decimal? USED_NUMBER { set; get; }
-	    	    public long DATAVERSION { set; get; }
-	    	    public DateTime? CREATEDATE { set; get; }
-	    	    public string CREATER { set; get; }
-	    	    public DateTime? UPDATEDATE { set; get; }
-	    	    public string UPDATER { set; get; }
-	    	    public string EXTENDFIELD { set; get; }
-	    	    public long? ISUSED { set; get; }
-	    	    public long? ACTIVITY { set; get; }
-		}
-    
-    public partial class BDTA_ORG_FACTORY   : Entity   
-    {
- 
-    	    [Column("ID")]
-		public override string Id { set ; get ; }
-	    	    public string FACTORY_NO { set; get; }
-	    	    public string FACTORY_NAME { set; get; }
-	    	    public string FACTORY_DESC { set; get; }
-	    	    public long DATAVERSION { set; get; }
-	    	    public DateTime? CREATEDATE { set; get; }
-	    	    public string CREATER { set; get; }
-	    	    public DateTime? UPDATEDATE { set; get; }
-	    	    public string UPDATER { set; get; }
-	    	    public string EXTENDFIELD { set; get; }
-	    	    public long? ISUSED { set; get; }
-	    	    public long? ACTIVITY { set; get; }
-		}
-    
-    public partial class BDTA_ORG_ORGRELATION   : Entity   
-    {
- 
-    	    public string ORGRELATIONID { set; get; }
-	    	    public string ORGRELATIONPID { set; get; }
-	    	    public long ORGRELATIONTYPE { set; get; }
-	    	    public string ORGRELATIONTABLE { set; get; }
-	    	    public long DATAVERSION { set; get; }
-	    	    public DateTime? CREATEDATE { set; get; }
-	    	    public string CREATER { set; get; }
-	    	    public DateTime? UPDATEDATE { set; get; }
-	    	    public string UPDATER { set; get; }
-	    	    public string EXTENDFIELD { set; get; }
-	    	    public string ORGRELATIONNAME { set; get; }
-	    	    public long? ACTIVITY { set; get; }
-		}
-    
-    public partial class BDTA_ORG_STOREROOM   : Entity   
-    {
- 
-    	    [Column("ID")]
-		public override string Id { set ; get ; }
-	    	    public string STOREROOMNO { set; get; }
-	    	    public string STOREROOMNAME { set; get; }
-	    	    public string ISFROZEN { set; get; }
-	    	    public string ISINITIALIZED { set; get; }
-	    	    public string ROOMCHARGER { set; get; }
-	    	    public long? ISSYSTEM { set; get; }
-	    	    public string ROOMTAG { set; get; }
-	    	    public string BELONGFACTORY { set; get; }
-	    	    public string ISGOOD { set; get; }
-	    	    public string AREACODE { set; get; }
-	    	    public string STOREROOMDESC { set; get; }
-	    	    public string VMI { set; get; }
-	    	    public string SELFGET { set; get; }
-	    	    public long DATAVERSION { set; get; }
-	    	    public DateTime? CREATEDATE { set; get; }
-	    	    public string CREATER { set; get; }
-	    	    public DateTime? UPDATEDATE { set; get; }
-	    	    public string UPDATER { set; get; }
-	    	    public string EXTENDFIELD { set; get; }
-	    	    public long? ACTIVITY { set; get; }
-	    	    public long? ISUSED { set; get; }
-	    	    public long? ISFICTITIOUS { set; get; }
-		}
-    
-    public partial class BDTA_ORG_STORESITE   : Entity   
-    {
- 
-    	    [Column("ID")]
-		public override string Id { set ; get ; }
-	    	    public string STORESITENO { set; get; }
-	    	    public string STORESITENAME { set; get; }
-	    	    public string ISFROZEN { set; get; }
-	    	    public decimal? LENGTH { set; get; }
-	    	    public decimal? WIDTH { set; get; }
-	    	    public decimal? HEIGHT { set; get; }
-	    	    public decimal? LIMITEDWEIGHT { set; get; }
-	    	    public decimal? CURRENTWEIGHT { set; get; }
-	    	    public decimal? PLOTRATIO { set; get; }
-	    	    public decimal? CURRENTPLOT { set; get; }
-	    	    public string STACKINGNO { set; get; }
-	    	    public string VELOCITY { set; get; }
-	    	    public string HIGHNESS { set; get; }
-	    	    public decimal? FLOORS { set; get; }
-	    	    public long? ISSYSTEM { set; get; }
-	    	    public string STORESITEDESC { set; get; }
-	    	    public string BDTA_ORG_STORESITE_DATA1 { set; get; }
-	    	    public string BDTA_ORG_STORESITE_DATA2 { set; get; }
-	    	    public string BDTA_ORG_STORESITE_DATA3 { set; get; }
-	    	    public string BDTA_ORG_STORESITE_DATA4 { set; get; }
-	    	    public string ISPALLETTEMPSITE { set; get; }
-	    	    public string WEIGHT_GRADE { set; get; }
-	    	    public string HIGH_GRADE { set; get; }
-	    	    public long DATAVERSION { set; get; }
-	    	    public DateTime? CREATEDATE { set; get; }
-	    	    public string CREATER { set; get; }
-	    	    public DateTime? UPDATEDATE { set; get; }
-	    	    public string UPDATER { set; get; }
-	    	    public string EXTENDFIELD { set; get; }
-	    	    public long? ACTIVITY { set; get; }
-	    	    public long? ISUSED { set; get; }
-	    	    public string INSTORAGE_AREA { set; get; }
-		}
-    
-    public partial class BDTA_PROCESSPATH   : Entity   
-    {
- 
-    	    [Column("ID")]
-		public override string Id { set ; get ; }
-	    	    public string PROCESSPATH_NO { set; get; }
-	    	    public string PROCESSPATH_NAME { set; get; }
-	    	    public string PROCESSPATH_DESC { set; get; }
-	    	    public long? PROCESSPATH_CAPABILITY { set; get; }
-	    	    public string PROCESSPATH_TYPE { set; get; }
-	    	    public string WORKSHOP_ID { set; get; }
-	    	    public DateTime? CREATEDATE { set; get; }
-	    	    public string CREATER { set; get; }
-	    	    public DateTime? UPDATEDATE { set; get; }
-	    	    public string UPDATER { set; get; }
-	    	    public string EXTENDFIELD { set; get; }
-	    	    public long? ISUSED { set; get; }
-	    	    public long? ACTIVITY { set; get; }
-	    	    public long DATAVERSION { set; get; }
-	    	    public string MERGEBILL_TYPE { set; get; }
-		}
-    
-    public partial class BDTA_QUEUE   : Entity   
-    {
- 
-    	    [Column("ID")]
-		public override string Id { set ; get ; }
-	    	    public string CATA4 { set; get; }
-	    	    public string CATA3 { set; get; }
-	    	    public string CATA2 { set; get; }
-	    	    public string CATA1 { set; get; }
-	    	    public long SNO { set; get; }
-	    	    public long? DATAVERSION { set; get; }
-	    	    public DateTime? CREATEDATE { set; get; }
-	    	    public string CREATER { set; get; }
-	    	    public DateTime? UPDATEDATE { set; get; }
-	    	    public string UPDATER { set; get; }
-	    	    public string EXTENDFIELD { set; get; }
-	    	    public string CATA5 { set; get; }
-		}
-    
-    public partial class BDTA_ROUTING   : Entity   
-    {
- 
-    	    [Column("ID")]
-		public override string Id { set ; get ; }
-	    	    public string ROUTING_NO { set; get; }
-	    	    public string ROUTING_NAME { set; get; }
-	    	    public string ROUTING_DESC { set; get; }
-	    	    public long? ROUTING_CAPABILITY { set; get; }
-	    	    public string ROUTING_TYPE { set; get; }
-	    	    public string WORKSHOP_ID { set; get; }
-	    	    public DateTime? CREATEDATE { set; get; }
-	    	    public string CREATER { set; get; }
-	    	    public DateTime? UPDATEDATE { set; get; }
-	    	    public string UPDATER { set; get; }
-	    	    public string EXTENDFIELD { set; get; }
-	    	    public long? ISUSED { set; get; }
-	    	    public long? ACTIVITY { set; get; }
-	    	    public long DATAVERSION { set; get; }
-	    	    public string MERGEBILL_TYPE { set; get; }
-		}
-    
-    public partial class BDTA_SETUP   : Entity   
-    {
- 
-    	    [Column("ID")]
-		public override string Id { set ; get ; }
-	    	    public string SETUP_NO { set; get; }
-	    	    public string SETUP_CONTENTS { set; get; }
-	    	    public string SETUP_KEY { set; get; }
-	    	    public string SETUP_TYPE { set; get; }
-	    	    public string SETUP_PARAMETER { set; get; }
-	    	    public string SETUP_MAX { set; get; }
-	    	    public string SETUP_MIN { set; get; }
-	    	    public long? DATAVERSION { set; get; }
-	    	    public DateTime? CREATEDATE { set; get; }
-	    	    public string CREATER { set; get; }
-	    	    public DateTime? UPDATEDATE { set; get; }
-	    	    public string UPDATER { set; get; }
-	    	    public string EXTENDFIELD { set; get; }
-	    	    public long? ISUSED { set; get; }
-	    	    public long? ACTIVITY { set; get; }
-		}
-    
-    public partial class BDTA_STATION   : Entity   
-    {
- 
-    	    [Column("ID")]
-		public override string Id { set ; get ; }
-	    	    public string MACHING_CENTER_ID { set; get; }
-	    	    public string STATION_NO { set; get; }
-	    	    public string STATION_NAME { set; get; }
-	    	    public string STATION_CAPACITY { set; get; }
-	    	    public string STATION_TYPE { set; get; }
-	    	    public string SECTION_ID { set; get; }
-	    	    public string STATION_DIFFICULTY_COEFFICIENT { set; get; }
-	    	    public string STATION_DESCRIPTION { set; get; }
 	    	    public long DATAVERSION { set; get; }
 	    	    public DateTime? CREATEDATE { set; get; }
 	    	    public string CREATER { set; get; }
@@ -2443,6 +2443,50 @@ namespace Blocks.BussnessEntityModule
 	    	    public string EXTENDFIELD { set; get; }
 		}
     
+    public partial class SYS_PROGRAM   : Entity   
+    {
+ 
+    	    public string SYS_PROGRAMID { set; get; }
+	    	    public string PROGRAMCODE { set; get; }
+	    	    public string PROGRAMNAME { set; get; }
+	    	    public string PROGRAMPARENT { set; get; }
+	    	    public string PROGRAMCOMMENT { set; get; }
+	    	    public string PROGRAMDEFINITION { set; get; }
+	    	    public string PROGRAMICON { set; get; }
+	    	    public string PROGRAMPROPERTY { set; get; }
+	    	    public string PROGRAMSECURITY { set; get; }
+	    	    public DateTime? PROGRAMRELEASE { set; get; }
+	    	    public string PROGRAMVERSION { set; get; }
+	    	    public string PROGRAMDESCRIPTION { set; get; }
+	    	    public string PROGRAMTYPE { set; get; }
+	    	    public string PROGRAMEXTEND { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public long? MENU_ORDER { set; get; }
+		}
+    
+    public partial class SYS_PROGRAM_OPERATION_WEB   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string OPERATION_NAME { set; get; }
+	    	    public string OPERATION_CONTENT { set; get; }
+	    	    public long? OPERATION_TYPE { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public string OPERATION_CODE { set; get; }
+		}
+    
     public partial class SYS_PROGRAM_WINFORM   : Entity   
     {
  
@@ -2554,6 +2598,34 @@ namespace Blocks.BussnessEntityModule
 	    	    public DateTime? UPDATEDATE { set; get; }
 	    	    public string UPDATER { set; get; }
 	    	    public string EXTENDFIELD { set; get; }
+		}
+    
+    public partial class TESTENTITY   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string TESTENTITY2ID { set; get; }
+	    	    public decimal COLNUMINT { set; get; }
+	    	    public string TESTENTITY2ID_NULLABLE { set; get; }
+	    	    public decimal? COLNUMINT_NULLABLE { set; get; }
+	    	    public TESTENTITY2 TESTENTITY2 { set; get; }
+	    	    public ICollection<TESTENTITY3> TESTENTITY3s { set; get; }
+		}
+    
+    public partial class TESTENTITY2   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+		}
+    
+    public partial class TESTENTITY3   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string TESTENTITYID { set; get; }
 		}
     
     public partial class TR_MATERIAL_APPLY_DISPATCHBOM   : Entity   
@@ -2918,48 +2990,13 @@ namespace Blocks.BussnessEntityModule
 	    	    public long? ACTIVITY { set; get; }
 		}
     
-    public partial class SYS_PROGRAM   : Entity   
+    public partial class MIGRATIONHISTORY   : Entity   
     {
  
-    	    public string SYS_PROGRAMID { set; get; }
-	    	    public string PROGRAMCODE { set; get; }
-	    	    public string PROGRAMNAME { set; get; }
-	    	    public string PROGRAMPARENT { set; get; }
-	    	    public string PROGRAMCOMMENT { set; get; }
-	    	    public string PROGRAMDEFINITION { set; get; }
-	    	    public string PROGRAMICON { set; get; }
-	    	    public string PROGRAMPROPERTY { set; get; }
-	    	    public string PROGRAMSECURITY { set; get; }
-	    	    public DateTime? PROGRAMRELEASE { set; get; }
-	    	    public string PROGRAMVERSION { set; get; }
-	    	    public string PROGRAMDESCRIPTION { set; get; }
-	    	    public string PROGRAMTYPE { set; get; }
-	    	    public string PROGRAMEXTEND { set; get; }
-	    	    public long DATAVERSION { set; get; }
-	    	    public DateTime? CREATEDATE { set; get; }
-	    	    public string CREATER { set; get; }
-	    	    public DateTime? UPDATEDATE { set; get; }
-	    	    public string UPDATER { set; get; }
-	    	    public string EXTENDFIELD { set; get; }
-	    	    public long? ACTIVITY { set; get; }
-	    	    public long? MENU_ORDER { set; get; }
-		}
-    
-    public partial class SYS_PROGRAM_OPERATION_WEB   : Entity   
-    {
- 
-    	    [Column("ID")]
-		public override string Id { set ; get ; }
-	    	    public string OPERATION_NAME { set; get; }
-	    	    public string OPERATION_CONTENT { set; get; }
-	    	    public long? OPERATION_TYPE { set; get; }
-	    	    public long? DATAVERSION { set; get; }
-	    	    public DateTime? CREATEDATE { set; get; }
-	    	    public string CREATER { set; get; }
-	    	    public DateTime? UPDATEDATE { set; get; }
-	    	    public string UPDATER { set; get; }
-	    	    public string EXTENDFIELD { set; get; }
-	    	    public string OPERATION_CODE { set; get; }
+    	    public string MIGRATIONID { set; get; }
+	    	    public string CONTEXTKEY { set; get; }
+	    	    public string MODEL { set; get; }
+	    	    public string PRODUCTVERSION { set; get; }
 		}
     
     public partial class BLOCKS_AUDITLOGS   : Entity   
@@ -3287,33 +3324,203 @@ namespace Blocks.BussnessEntityModule
 	    	    public DateTime CreationTime { set; get; }
 	    	    public long? CreatorUserId { set; get; }
 		}
-    
-    public partial class TESTENTITY   : Entity   
-    {
- 
-    	    [Column("ID")]
-		public override string Id { set ; get ; }
-	    	    public string TESTENTITY2ID { set; get; }
-	    	    public TESTENTITY2 TESTENTITY2 { set; get; }
-	    	    public ICollection<TESTENTITY3> TESTENTITY3s { set; get; }
-		}
-    
-    public partial class TESTENTITY2   : Entity   
-    {
- 
-    	    [Column("ID")]
-		public override string Id { set ; get ; }
-		}
-    
-    public partial class TESTENTITY3   : Entity   
-    {
- 
-    	    [Column("ID")]
-		public override string Id { set ; get ; }
-	    	    public string TESTENTITYID { set; get; }
-		}
 
 
+    
+ 
+ 
+    public partial class BDTA_MATERIAL_WORKINGConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_MATERIAL_WORKING> 
+    {
+		public BDTA_MATERIAL_WORKINGConfiguration()
+        {
+        }
+		public BDTA_MATERIAL_WORKINGConfiguration(string schema)
+        {
+			ToTable("BDTA_MATERIAL_WORKING", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BDTA_MATTYPEConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_MATTYPE> 
+    {
+		public BDTA_MATTYPEConfiguration()
+        {
+        }
+		public BDTA_MATTYPEConfiguration(string schema)
+        {
+			ToTable("BDTA_MATTYPE", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BDTA_MOLDConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_MOLD> 
+    {
+		public BDTA_MOLDConfiguration()
+        {
+        }
+		public BDTA_MOLDConfiguration(string schema)
+        {
+			ToTable("BDTA_MOLD", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BDTA_MOLD_ADDConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_MOLD_ADD> 
+    {
+		public BDTA_MOLD_ADDConfiguration()
+        {
+        }
+		public BDTA_MOLD_ADDConfiguration(string schema)
+        {
+			ToTable("BDTA_MOLD_ADD", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BDTA_ORG_FACTORYConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_ORG_FACTORY> 
+    {
+		public BDTA_ORG_FACTORYConfiguration()
+        {
+        }
+		public BDTA_ORG_FACTORYConfiguration(string schema)
+        {
+			ToTable("BDTA_ORG_FACTORY", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BDTA_ORG_ORGRELATIONConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_ORG_ORGRELATION> 
+    {
+		public BDTA_ORG_ORGRELATIONConfiguration()
+        {
+        }
+		public BDTA_ORG_ORGRELATIONConfiguration(string schema)
+        {
+			ToTable("BDTA_ORG_ORGRELATION", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BDTA_ORG_STOREROOMConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_ORG_STOREROOM> 
+    {
+		public BDTA_ORG_STOREROOMConfiguration()
+        {
+        }
+		public BDTA_ORG_STOREROOMConfiguration(string schema)
+        {
+			ToTable("BDTA_ORG_STOREROOM", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BDTA_ORG_STORESITEConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_ORG_STORESITE> 
+    {
+		public BDTA_ORG_STORESITEConfiguration()
+        {
+        }
+		public BDTA_ORG_STORESITEConfiguration(string schema)
+        {
+			ToTable("BDTA_ORG_STORESITE", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BDTA_PROCESSPATHConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_PROCESSPATH> 
+    {
+		public BDTA_PROCESSPATHConfiguration()
+        {
+        }
+		public BDTA_PROCESSPATHConfiguration(string schema)
+        {
+			ToTable("BDTA_PROCESSPATH", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BDTA_QUEUEConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_QUEUE> 
+    {
+		public BDTA_QUEUEConfiguration()
+        {
+        }
+		public BDTA_QUEUEConfiguration(string schema)
+        {
+			ToTable("BDTA_QUEUE", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BDTA_ROUTINGConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_ROUTING> 
+    {
+		public BDTA_ROUTINGConfiguration()
+        {
+        }
+		public BDTA_ROUTINGConfiguration(string schema)
+        {
+			ToTable("BDTA_ROUTING", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BDTA_SETUPConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_SETUP> 
+    {
+		public BDTA_SETUPConfiguration()
+        {
+        }
+		public BDTA_SETUPConfiguration(string schema)
+        {
+			ToTable("BDTA_SETUP", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BDTA_STATIONConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_STATION> 
+    {
+		public BDTA_STATIONConfiguration()
+        {
+        }
+		public BDTA_STATIONConfiguration(string schema)
+        {
+			ToTable("BDTA_STATION", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
     
  
  
@@ -3707,201 +3914,6 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class BDTA_MATERIAL_WORKINGConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_MATERIAL_WORKING> 
-    {
-		public BDTA_MATERIAL_WORKINGConfiguration()
-        {
-        }
-		public BDTA_MATERIAL_WORKINGConfiguration(string schema)
-        {
-			ToTable("BDTA_MATERIAL_WORKING", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class BDTA_MATTYPEConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_MATTYPE> 
-    {
-		public BDTA_MATTYPEConfiguration()
-        {
-        }
-		public BDTA_MATTYPEConfiguration(string schema)
-        {
-			ToTable("BDTA_MATTYPE", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class BDTA_MOLDConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_MOLD> 
-    {
-		public BDTA_MOLDConfiguration()
-        {
-        }
-		public BDTA_MOLDConfiguration(string schema)
-        {
-			ToTable("BDTA_MOLD", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class BDTA_MOLD_ADDConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_MOLD_ADD> 
-    {
-		public BDTA_MOLD_ADDConfiguration()
-        {
-        }
-		public BDTA_MOLD_ADDConfiguration(string schema)
-        {
-			ToTable("BDTA_MOLD_ADD", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class BDTA_ORG_FACTORYConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_ORG_FACTORY> 
-    {
-		public BDTA_ORG_FACTORYConfiguration()
-        {
-        }
-		public BDTA_ORG_FACTORYConfiguration(string schema)
-        {
-			ToTable("BDTA_ORG_FACTORY", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class BDTA_ORG_ORGRELATIONConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_ORG_ORGRELATION> 
-    {
-		public BDTA_ORG_ORGRELATIONConfiguration()
-        {
-        }
-		public BDTA_ORG_ORGRELATIONConfiguration(string schema)
-        {
-			ToTable("BDTA_ORG_ORGRELATION", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class BDTA_ORG_STOREROOMConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_ORG_STOREROOM> 
-    {
-		public BDTA_ORG_STOREROOMConfiguration()
-        {
-        }
-		public BDTA_ORG_STOREROOMConfiguration(string schema)
-        {
-			ToTable("BDTA_ORG_STOREROOM", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class BDTA_ORG_STORESITEConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_ORG_STORESITE> 
-    {
-		public BDTA_ORG_STORESITEConfiguration()
-        {
-        }
-		public BDTA_ORG_STORESITEConfiguration(string schema)
-        {
-			ToTable("BDTA_ORG_STORESITE", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class BDTA_PROCESSPATHConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_PROCESSPATH> 
-    {
-		public BDTA_PROCESSPATHConfiguration()
-        {
-        }
-		public BDTA_PROCESSPATHConfiguration(string schema)
-        {
-			ToTable("BDTA_PROCESSPATH", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class BDTA_QUEUEConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_QUEUE> 
-    {
-		public BDTA_QUEUEConfiguration()
-        {
-        }
-		public BDTA_QUEUEConfiguration(string schema)
-        {
-			ToTable("BDTA_QUEUE", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class BDTA_ROUTINGConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_ROUTING> 
-    {
-		public BDTA_ROUTINGConfiguration()
-        {
-        }
-		public BDTA_ROUTINGConfiguration(string schema)
-        {
-			ToTable("BDTA_ROUTING", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class BDTA_SETUPConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_SETUP> 
-    {
-		public BDTA_SETUPConfiguration()
-        {
-        }
-		public BDTA_SETUPConfiguration(string schema)
-        {
-			ToTable("BDTA_SETUP", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class BDTA_STATIONConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_STATION> 
-    {
-		public BDTA_STATIONConfiguration()
-        {
-        }
-		public BDTA_STATIONConfiguration(string schema)
-        {
-			ToTable("BDTA_STATION", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
     public partial class BDTA_SUPPLIERConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_SUPPLIER> 
     {
 		public BDTA_SUPPLIERConfiguration()
@@ -4037,1456 +4049,5 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class FUR_ARRIVALS_BILL_DETAILConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_ARRIVALS_BILL_DETAIL> 
-    {
-		public FUR_ARRIVALS_BILL_DETAILConfiguration()
-        {
-        }
-		public FUR_ARRIVALS_BILL_DETAILConfiguration(string schema)
-        {
-			ToTable("FUR_ARRIVALS_BILL_DETAIL", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
     
- 
- 
-    public partial class FUR_BDTA_CARRIERConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_BDTA_CARRIER> 
-    {
-		public FUR_BDTA_CARRIERConfiguration()
-        {
-        }
-		public FUR_BDTA_CARRIERConfiguration(string schema)
-        {
-			ToTable("FUR_BDTA_CARRIER", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class FUR_BDTA_CLIENT_INFOConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_BDTA_CLIENT_INFO> 
-    {
-		public FUR_BDTA_CLIENT_INFOConfiguration()
-        {
-        }
-		public FUR_BDTA_CLIENT_INFOConfiguration(string schema)
-        {
-			ToTable("FUR_BDTA_CLIENT_INFO", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class FUR_BDTA_CLIENT_TELConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_BDTA_CLIENT_TEL> 
-    {
-		public FUR_BDTA_CLIENT_TELConfiguration()
-        {
-        }
-		public FUR_BDTA_CLIENT_TELConfiguration(string schema)
-        {
-			ToTable("FUR_BDTA_CLIENT_TEL", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class FUR_BDTA_DEPT_AIMConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_BDTA_DEPT_AIM> 
-    {
-		public FUR_BDTA_DEPT_AIMConfiguration()
-        {
-        }
-		public FUR_BDTA_DEPT_AIMConfiguration(string schema)
-        {
-			ToTable("FUR_BDTA_DEPT_AIM", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class FUR_BDTA_DEPT_MGETYPEConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_BDTA_DEPT_MGETYPE> 
-    {
-		public FUR_BDTA_DEPT_MGETYPEConfiguration()
-        {
-        }
-		public FUR_BDTA_DEPT_MGETYPEConfiguration(string schema)
-        {
-			ToTable("FUR_BDTA_DEPT_MGETYPE", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class FUR_BDTA_DISCOUNTConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_BDTA_DISCOUNT> 
-    {
-		public FUR_BDTA_DISCOUNTConfiguration()
-        {
-        }
-		public FUR_BDTA_DISCOUNTConfiguration(string schema)
-        {
-			ToTable("FUR_BDTA_DISCOUNT", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class FUR_BDTA_IMOS_SO_MATCODEConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_BDTA_IMOS_SO_MATCODE> 
-    {
-		public FUR_BDTA_IMOS_SO_MATCODEConfiguration()
-        {
-        }
-		public FUR_BDTA_IMOS_SO_MATCODEConfiguration(string schema)
-        {
-			ToTable("FUR_BDTA_IMOS_SO_MATCODE", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class FUR_BDTA_PROPER_GTHConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_BDTA_PROPER_GTH> 
-    {
-		public FUR_BDTA_PROPER_GTHConfiguration()
-        {
-        }
-		public FUR_BDTA_PROPER_GTHConfiguration(string schema)
-        {
-			ToTable("FUR_BDTA_PROPER_GTH", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class FUR_BDTA_SPLITCREATEINFOConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_BDTA_SPLITCREATEINFO> 
-    {
-		public FUR_BDTA_SPLITCREATEINFOConfiguration()
-        {
-        }
-		public FUR_BDTA_SPLITCREATEINFOConfiguration(string schema)
-        {
-			ToTable("FUR_BDTA_SPLITCREATEINFO", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class FUR_BDTA_STATION_PAGConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_BDTA_STATION_PAG> 
-    {
-		public FUR_BDTA_STATION_PAGConfiguration()
-        {
-        }
-		public FUR_BDTA_STATION_PAGConfiguration(string schema)
-        {
-			ToTable("FUR_BDTA_STATION_PAG", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class FUR_COLLECT_DATA_LOGConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_COLLECT_DATA_LOG> 
-    {
-		public FUR_COLLECT_DATA_LOGConfiguration()
-        {
-        }
-		public FUR_COLLECT_DATA_LOGConfiguration(string schema)
-        {
-			ToTable("FUR_COLLECT_DATA_LOG", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class FUR_COLLECT_DATA_QWPBConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_COLLECT_DATA_QWPB> 
-    {
-		public FUR_COLLECT_DATA_QWPBConfiguration()
-        {
-        }
-		public FUR_COLLECT_DATA_QWPBConfiguration(string schema)
-        {
-			ToTable("FUR_COLLECT_DATA_QWPB", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class FUR_COLLECT_STANDAR_PACKAGEConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_COLLECT_STANDAR_PACKAGE> 
-    {
-		public FUR_COLLECT_STANDAR_PACKAGEConfiguration()
-        {
-        }
-		public FUR_COLLECT_STANDAR_PACKAGEConfiguration(string schema)
-        {
-			ToTable("FUR_COLLECT_STANDAR_PACKAGE", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class FUR_COMPLETEQTYConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_COMPLETEQTY> 
-    {
-		public FUR_COMPLETEQTYConfiguration()
-        {
-        }
-		public FUR_COMPLETEQTYConfiguration(string schema)
-        {
-			ToTable("FUR_COMPLETEQTY", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class FUR_MERGEBILL_SECONDARYSPLITConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_MERGEBILL_SECONDARYSPLIT> 
-    {
-		public FUR_MERGEBILL_SECONDARYSPLITConfiguration()
-        {
-        }
-		public FUR_MERGEBILL_SECONDARYSPLITConfiguration(string schema)
-        {
-			ToTable("FUR_MERGEBILL_SECONDARYSPLIT", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class FUR_MERGEBILL_SECONDARYSPLIT_RConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_MERGEBILL_SECONDARYSPLIT_R> 
-    {
-		public FUR_MERGEBILL_SECONDARYSPLIT_RConfiguration()
-        {
-        }
-		public FUR_MERGEBILL_SECONDARYSPLIT_RConfiguration(string schema)
-        {
-			ToTable("FUR_MERGEBILL_SECONDARYSPLIT_R", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class FUR_PICK_TYPEConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_PICK_TYPE> 
-    {
-		public FUR_PICK_TYPEConfiguration()
-        {
-        }
-		public FUR_PICK_TYPEConfiguration(string schema)
-        {
-			ToTable("FUR_PICK_TYPE", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class FUR_PICKINGConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_PICKING> 
-    {
-		public FUR_PICKINGConfiguration()
-        {
-        }
-		public FUR_PICKINGConfiguration(string schema)
-        {
-			ToTable("FUR_PICKING", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class FUR_PICKING_DETAILConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_PICKING_DETAIL> 
-    {
-		public FUR_PICKING_DETAILConfiguration()
-        {
-        }
-		public FUR_PICKING_DETAILConfiguration(string schema)
-        {
-			ToTable("FUR_PICKING_DETAIL", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class FUR_PICKING_MERGEConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_PICKING_MERGE> 
-    {
-		public FUR_PICKING_MERGEConfiguration()
-        {
-        }
-		public FUR_PICKING_MERGEConfiguration(string schema)
-        {
-			ToTable("FUR_PICKING_MERGE", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class FUR_PLAN_KL_SCHEDULEConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_PLAN_KL_SCHEDULE> 
-    {
-		public FUR_PLAN_KL_SCHEDULEConfiguration()
-        {
-        }
-		public FUR_PLAN_KL_SCHEDULEConfiguration(string schema)
-        {
-			ToTable("FUR_PLAN_KL_SCHEDULE", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class FUR_REJECTSINFOConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_REJECTSINFO> 
-    {
-		public FUR_REJECTSINFOConfiguration()
-        {
-        }
-		public FUR_REJECTSINFOConfiguration(string schema)
-        {
-			ToTable("FUR_REJECTSINFO", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class FUR_SALESORDERConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_SALESORDER> 
-    {
-		public FUR_SALESORDERConfiguration()
-        {
-        }
-		public FUR_SALESORDERConfiguration(string schema)
-        {
-			ToTable("FUR_SALESORDER", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class FUR_SALESORDERPROCESS_DETAILConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_SALESORDERPROCESS_DETAIL> 
-    {
-		public FUR_SALESORDERPROCESS_DETAILConfiguration()
-        {
-        }
-		public FUR_SALESORDERPROCESS_DETAILConfiguration(string schema)
-        {
-			ToTable("FUR_SALESORDERPROCESS_DETAIL", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class FUR_SAP_ROUTINGConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_SAP_ROUTING> 
-    {
-		public FUR_SAP_ROUTINGConfiguration()
-        {
-        }
-		public FUR_SAP_ROUTINGConfiguration(string schema)
-        {
-			ToTable("FUR_SAP_ROUTING", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class FUR_SHIPMENTConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_SHIPMENT> 
-    {
-		public FUR_SHIPMENTConfiguration()
-        {
-        }
-		public FUR_SHIPMENTConfiguration(string schema)
-        {
-			ToTable("FUR_SHIPMENT", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class FUR_SHIPMENT_NEWConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_SHIPMENT_NEW> 
-    {
-		public FUR_SHIPMENT_NEWConfiguration()
-        {
-        }
-		public FUR_SHIPMENT_NEWConfiguration(string schema)
-        {
-			ToTable("FUR_SHIPMENT_NEW", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class FUR_SHIPMENT_NEW_DETAILConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_SHIPMENT_NEW_DETAIL> 
-    {
-		public FUR_SHIPMENT_NEW_DETAILConfiguration()
-        {
-        }
-		public FUR_SHIPMENT_NEW_DETAILConfiguration(string schema)
-        {
-			ToTable("FUR_SHIPMENT_NEW_DETAIL", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class FUR_SHIPMENT_PICK_DETAILConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_SHIPMENT_PICK_DETAIL> 
-    {
-		public FUR_SHIPMENT_PICK_DETAILConfiguration()
-        {
-        }
-		public FUR_SHIPMENT_PICK_DETAILConfiguration(string schema)
-        {
-			ToTable("FUR_SHIPMENT_PICK_DETAIL", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class FUR_SHIPMENT_QTYINFOConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_SHIPMENT_QTYINFO> 
-    {
-		public FUR_SHIPMENT_QTYINFOConfiguration()
-        {
-        }
-		public FUR_SHIPMENT_QTYINFOConfiguration(string schema)
-        {
-			ToTable("FUR_SHIPMENT_QTYINFO", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class FUR_SHIPMENT_SO_DETAILConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_SHIPMENT_SO_DETAIL> 
-    {
-		public FUR_SHIPMENT_SO_DETAILConfiguration()
-        {
-        }
-		public FUR_SHIPMENT_SO_DETAILConfiguration(string schema)
-        {
-			ToTable("FUR_SHIPMENT_SO_DETAIL", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class FUR_SOURCE_PRODUCT_DETAIL_DOORConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_SOURCE_PRODUCT_DETAIL_DOOR> 
-    {
-		public FUR_SOURCE_PRODUCT_DETAIL_DOORConfiguration()
-        {
-        }
-		public FUR_SOURCE_PRODUCT_DETAIL_DOORConfiguration(string schema)
-        {
-			ToTable("FUR_SOURCE_PRODUCT_DETAIL_DOOR", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class FUR_SOURCE_PRODUCT_DETAIL_GTConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_SOURCE_PRODUCT_DETAIL_GT> 
-    {
-		public FUR_SOURCE_PRODUCT_DETAIL_GTConfiguration()
-        {
-        }
-		public FUR_SOURCE_PRODUCT_DETAIL_GTConfiguration(string schema)
-        {
-			ToTable("FUR_SOURCE_PRODUCT_DETAIL_GT", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class FUR_TRANSFER_ORDERConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_TRANSFER_ORDER> 
-    {
-		public FUR_TRANSFER_ORDERConfiguration()
-        {
-        }
-		public FUR_TRANSFER_ORDERConfiguration(string schema)
-        {
-			ToTable("FUR_TRANSFER_ORDER", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class FUR_TRANSFER_ORDER_DETAILConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_TRANSFER_ORDER_DETAIL> 
-    {
-		public FUR_TRANSFER_ORDER_DETAILConfiguration()
-        {
-        }
-		public FUR_TRANSFER_ORDER_DETAILConfiguration(string schema)
-        {
-			ToTable("FUR_TRANSFER_ORDER_DETAIL", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class FUR_TRANSFER_ORDER_GOODSDETAILConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_TRANSFER_ORDER_GOODSDETAIL> 
-    {
-		public FUR_TRANSFER_ORDER_GOODSDETAILConfiguration()
-        {
-        }
-		public FUR_TRANSFER_ORDER_GOODSDETAILConfiguration(string schema)
-        {
-			ToTable("FUR_TRANSFER_ORDER_GOODSDETAIL", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class FUR_TRANSPORTConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_TRANSPORT> 
-    {
-		public FUR_TRANSPORTConfiguration()
-        {
-        }
-		public FUR_TRANSPORTConfiguration(string schema)
-        {
-			ToTable("FUR_TRANSPORT", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class FUR_TRANSPORT_DETAILConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_TRANSPORT_DETAIL> 
-    {
-		public FUR_TRANSPORT_DETAILConfiguration()
-        {
-        }
-		public FUR_TRANSPORT_DETAILConfiguration(string schema)
-        {
-			ToTable("FUR_TRANSPORT_DETAIL", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class FUR_WORKORDER_REASONConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_WORKORDER_REASON> 
-    {
-		public FUR_WORKORDER_REASONConfiguration()
-        {
-        }
-		public FUR_WORKORDER_REASONConfiguration(string schema)
-        {
-			ToTable("FUR_WORKORDER_REASON", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class FUR_WORKORDER_TYPEConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_WORKORDER_TYPE> 
-    {
-		public FUR_WORKORDER_TYPEConfiguration()
-        {
-        }
-		public FUR_WORKORDER_TYPEConfiguration(string schema)
-        {
-			ToTable("FUR_WORKORDER_TYPE", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class MATERIAL_APPLYConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<MATERIAL_APPLY> 
-    {
-		public MATERIAL_APPLYConfiguration()
-        {
-        }
-		public MATERIAL_APPLYConfiguration(string schema)
-        {
-			ToTable("MATERIAL_APPLY", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class MATERIAL_APPLY_DETAILConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<MATERIAL_APPLY_DETAIL> 
-    {
-		public MATERIAL_APPLY_DETAILConfiguration()
-        {
-        }
-		public MATERIAL_APPLY_DETAILConfiguration(string schema)
-        {
-			ToTable("MATERIAL_APPLY_DETAIL", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class MATERIAL_APPLY_REFERConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<MATERIAL_APPLY_REFER> 
-    {
-		public MATERIAL_APPLY_REFERConfiguration()
-        {
-        }
-		public MATERIAL_APPLY_REFERConfiguration(string schema)
-        {
-			ToTable("MATERIAL_APPLY_REFER", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class PACK_ARCHIVEConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<PACK_ARCHIVE> 
-    {
-		public PACK_ARCHIVEConfiguration()
-        {
-        }
-		public PACK_ARCHIVEConfiguration(string schema)
-        {
-			ToTable("PACK_ARCHIVE", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class PLAN_CHECK_COLLECTDATAConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<PLAN_CHECK_COLLECTDATA> 
-    {
-		public PLAN_CHECK_COLLECTDATAConfiguration()
-        {
-        }
-		public PLAN_CHECK_COLLECTDATAConfiguration(string schema)
-        {
-			ToTable("PLAN_CHECK_COLLECTDATA", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class SYS_LOGConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<SYS_LOG> 
-    {
-		public SYS_LOGConfiguration()
-        {
-        }
-		public SYS_LOGConfiguration(string schema)
-        {
-			ToTable("SYS_LOG", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class SYS_POPEDOMPROGRAMConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<SYS_POPEDOMPROGRAM> 
-    {
-		public SYS_POPEDOMPROGRAMConfiguration()
-        {
-        }
-		public SYS_POPEDOMPROGRAMConfiguration(string schema)
-        {
-			ToTable("SYS_POPEDOMPROGRAM", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class SYS_PROGRAM_WINFORMConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<SYS_PROGRAM_WINFORM> 
-    {
-		public SYS_PROGRAM_WINFORMConfiguration()
-        {
-        }
-		public SYS_PROGRAM_WINFORMConfiguration(string schema)
-        {
-			ToTable("SYS_PROGRAM_WINFORM", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class SYS_ROLEAUTHORIZEConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<SYS_ROLEAUTHORIZE> 
-    {
-		public SYS_ROLEAUTHORIZEConfiguration()
-        {
-        }
-		public SYS_ROLEAUTHORIZEConfiguration(string schema)
-        {
-			ToTable("SYS_ROLEAUTHORIZE", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class SYS_ROLEINFOConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<SYS_ROLEINFO> 
-    {
-		public SYS_ROLEINFOConfiguration()
-        {
-        }
-		public SYS_ROLEINFOConfiguration(string schema)
-        {
-			ToTable("SYS_ROLEINFO", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class SYS_ROLEUSERConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<SYS_ROLEUSER> 
-    {
-		public SYS_ROLEUSERConfiguration()
-        {
-        }
-		public SYS_ROLEUSERConfiguration(string schema)
-        {
-			ToTable("SYS_ROLEUSER", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class SYS_SYSTEMINFOConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<SYS_SYSTEMINFO> 
-    {
-		public SYS_SYSTEMINFOConfiguration()
-        {
-        }
-		public SYS_SYSTEMINFOConfiguration(string schema)
-        {
-			ToTable("SYS_SYSTEMINFO", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class SYS_TESTConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<SYS_TEST> 
-    {
-		public SYS_TESTConfiguration()
-        {
-        }
-		public SYS_TESTConfiguration(string schema)
-        {
-			ToTable("SYS_TEST", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class SYS_USERINFOConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<SYS_USERINFO> 
-    {
-		public SYS_USERINFOConfiguration()
-        {
-        }
-		public SYS_USERINFOConfiguration(string schema)
-        {
-			ToTable("SYS_USERINFO", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class TR_MATERIAL_APPLY_DISPATCHBOMConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<TR_MATERIAL_APPLY_DISPATCHBOM> 
-    {
-		public TR_MATERIAL_APPLY_DISPATCHBOMConfiguration()
-        {
-        }
-		public TR_MATERIAL_APPLY_DISPATCHBOMConfiguration(string schema)
-        {
-			ToTable("TR_MATERIAL_APPLY_DISPATCHBOM", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class WAREHOUSE_COLLECT_LOGConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_COLLECT_LOG> 
-    {
-		public WAREHOUSE_COLLECT_LOGConfiguration()
-        {
-        }
-		public WAREHOUSE_COLLECT_LOGConfiguration(string schema)
-        {
-			ToTable("WAREHOUSE_COLLECT_LOG", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class WAREHOUSE_DELIVERY_BILLConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_DELIVERY_BILL> 
-    {
-		public WAREHOUSE_DELIVERY_BILLConfiguration()
-        {
-        }
-		public WAREHOUSE_DELIVERY_BILLConfiguration(string schema)
-        {
-			ToTable("WAREHOUSE_DELIVERY_BILL", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class WAREHOUSE_IN_COLLECTDATAConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_IN_COLLECTDATA> 
-    {
-		public WAREHOUSE_IN_COLLECTDATAConfiguration()
-        {
-        }
-		public WAREHOUSE_IN_COLLECTDATAConfiguration(string schema)
-        {
-			ToTable("WAREHOUSE_IN_COLLECTDATA", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class WAREHOUSE_IN_FORMConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_IN_FORM> 
-    {
-		public WAREHOUSE_IN_FORMConfiguration()
-        {
-        }
-		public WAREHOUSE_IN_FORMConfiguration(string schema)
-        {
-			ToTable("WAREHOUSE_IN_FORM", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class WAREHOUSE_IN_FORM_DETAILConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_IN_FORM_DETAIL> 
-    {
-		public WAREHOUSE_IN_FORM_DETAILConfiguration()
-        {
-        }
-		public WAREHOUSE_IN_FORM_DETAILConfiguration(string schema)
-        {
-			ToTable("WAREHOUSE_IN_FORM_DETAIL", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class WAREHOUSE_IN_STOCKConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_IN_STOCK> 
-    {
-		public WAREHOUSE_IN_STOCKConfiguration()
-        {
-        }
-		public WAREHOUSE_IN_STOCKConfiguration(string schema)
-        {
-			ToTable("WAREHOUSE_IN_STOCK", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class WAREHOUSE_IN_STOCK_LOCKConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_IN_STOCK_LOCK> 
-    {
-		public WAREHOUSE_IN_STOCK_LOCKConfiguration()
-        {
-        }
-		public WAREHOUSE_IN_STOCK_LOCKConfiguration(string schema)
-        {
-			ToTable("WAREHOUSE_IN_STOCK_LOCK", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class WAREHOUSE_OUT_FORMConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_OUT_FORM> 
-    {
-		public WAREHOUSE_OUT_FORMConfiguration()
-        {
-        }
-		public WAREHOUSE_OUT_FORMConfiguration(string schema)
-        {
-			ToTable("WAREHOUSE_OUT_FORM", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class WAREHOUSE_OUT_FORM_DETAILConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_OUT_FORM_DETAIL> 
-    {
-		public WAREHOUSE_OUT_FORM_DETAILConfiguration()
-        {
-        }
-		public WAREHOUSE_OUT_FORM_DETAILConfiguration(string schema)
-        {
-			ToTable("WAREHOUSE_OUT_FORM_DETAIL", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class WAREHOUSE_OUT_FORM_FAULTConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_OUT_FORM_FAULT> 
-    {
-		public WAREHOUSE_OUT_FORM_FAULTConfiguration()
-        {
-        }
-		public WAREHOUSE_OUT_FORM_FAULTConfiguration(string schema)
-        {
-			ToTable("WAREHOUSE_OUT_FORM_FAULT", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class WAREHOUSE_OUT_FORM_ITEMConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_OUT_FORM_ITEM> 
-    {
-		public WAREHOUSE_OUT_FORM_ITEMConfiguration()
-        {
-        }
-		public WAREHOUSE_OUT_FORM_ITEMConfiguration(string schema)
-        {
-			ToTable("WAREHOUSE_OUT_FORM_ITEM", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class WAREHOUSE_OUT_STOCK_LOCKConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_OUT_STOCK_LOCK> 
-    {
-		public WAREHOUSE_OUT_STOCK_LOCKConfiguration()
-        {
-        }
-		public WAREHOUSE_OUT_STOCK_LOCKConfiguration(string schema)
-        {
-			ToTable("WAREHOUSE_OUT_STOCK_LOCK", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class WAREHOUSE_QUALITY_FORMConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_QUALITY_FORM> 
-    {
-		public WAREHOUSE_QUALITY_FORMConfiguration()
-        {
-        }
-		public WAREHOUSE_QUALITY_FORMConfiguration(string schema)
-        {
-			ToTable("WAREHOUSE_QUALITY_FORM", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class WAREHOUSE_SCAN_CODE_INFOConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_SCAN_CODE_INFO> 
-    {
-		public WAREHOUSE_SCAN_CODE_INFOConfiguration()
-        {
-        }
-		public WAREHOUSE_SCAN_CODE_INFOConfiguration(string schema)
-        {
-			ToTable("WAREHOUSE_SCAN_CODE_INFO", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class SYS_PROGRAMConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<SYS_PROGRAM> 
-    {
-		public SYS_PROGRAMConfiguration()
-        {
-        }
-		public SYS_PROGRAMConfiguration(string schema)
-        {
-			ToTable("SYS_PROGRAM", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class SYS_PROGRAM_OPERATION_WEBConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<SYS_PROGRAM_OPERATION_WEB> 
-    {
-		public SYS_PROGRAM_OPERATION_WEBConfiguration()
-        {
-        }
-		public SYS_PROGRAM_OPERATION_WEBConfiguration(string schema)
-        {
-			ToTable("SYS_PROGRAM_OPERATION_WEB", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class BLOCKS_AUDITLOGSConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_AUDITLOGS> 
-    {
-		public BLOCKS_AUDITLOGSConfiguration()
-        {
-        }
-		public BLOCKS_AUDITLOGSConfiguration(string schema)
-        {
-			ToTable("BLOCKS_AUDITLOGS", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class BLOCKS_BACKGROUNDJOBSConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_BACKGROUNDJOBS> 
-    {
-		public BLOCKS_BACKGROUNDJOBSConfiguration()
-        {
-        }
-		public BLOCKS_BACKGROUNDJOBSConfiguration(string schema)
-        {
-			ToTable("BLOCKS_BACKGROUNDJOBS", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class BLOCKS_FEATURESConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_FEATURES> 
-    {
-		public BLOCKS_FEATURESConfiguration()
-        {
-        }
-		public BLOCKS_FEATURESConfiguration(string schema)
-        {
-			ToTable("BLOCKS_FEATURES", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class BLOCKS_EDITIONSConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_EDITIONS> 
-    {
-		public BLOCKS_EDITIONSConfiguration()
-        {
-        }
-		public BLOCKS_EDITIONSConfiguration(string schema)
-        {
-			ToTable("BLOCKS_EDITIONS", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class BLOCKS_LANGUAGESConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_LANGUAGES> 
-    {
-		public BLOCKS_LANGUAGESConfiguration()
-        {
-        }
-		public BLOCKS_LANGUAGESConfiguration(string schema)
-        {
-			ToTable("BLOCKS_LANGUAGES", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class BLOCKS_LANGUAGETEXTSConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_LANGUAGETEXTS> 
-    {
-		public BLOCKS_LANGUAGETEXTSConfiguration()
-        {
-        }
-		public BLOCKS_LANGUAGETEXTSConfiguration(string schema)
-        {
-			ToTable("BLOCKS_LANGUAGETEXTS", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class BLOCKS_NOTIFICATIONSConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_NOTIFICATIONS> 
-    {
-		public BLOCKS_NOTIFICATIONSConfiguration()
-        {
-        }
-		public BLOCKS_NOTIFICATIONSConfiguration(string schema)
-        {
-			ToTable("BLOCKS_NOTIFICATIONS", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class BLOCKS_NOTIFY_SUBSCRIPTIONSConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_NOTIFY_SUBSCRIPTIONS> 
-    {
-		public BLOCKS_NOTIFY_SUBSCRIPTIONSConfiguration()
-        {
-        }
-		public BLOCKS_NOTIFY_SUBSCRIPTIONSConfiguration(string schema)
-        {
-			ToTable("BLOCKS_NOTIFY_SUBSCRIPTIONS", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class BLOCKS_ORGANIZATION_UNITSConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_ORGANIZATION_UNITS> 
-    {
-		public BLOCKS_ORGANIZATION_UNITSConfiguration()
-        {
-        }
-		public BLOCKS_ORGANIZATION_UNITSConfiguration(string schema)
-        {
-			ToTable("BLOCKS_ORGANIZATION_UNITS", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class BLOCKS_PERMISSIONSConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_PERMISSIONS> 
-    {
-		public BLOCKS_PERMISSIONSConfiguration()
-        {
-        }
-		public BLOCKS_PERMISSIONSConfiguration(string schema)
-        {
-			ToTable("BLOCKS_PERMISSIONS", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class BLOCKS_ROLESConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_ROLES> 
-    {
-		public BLOCKS_ROLESConfiguration()
-        {
-        }
-		public BLOCKS_ROLESConfiguration(string schema)
-        {
-			ToTable("BLOCKS_ROLES", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class BLOCKS_USERSConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_USERS> 
-    {
-		public BLOCKS_USERSConfiguration()
-        {
-        }
-		public BLOCKS_USERSConfiguration(string schema)
-        {
-			ToTable("BLOCKS_USERS", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class BLOCKS_USER_CLAIMSConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_USER_CLAIMS> 
-    {
-		public BLOCKS_USER_CLAIMSConfiguration()
-        {
-        }
-		public BLOCKS_USER_CLAIMSConfiguration(string schema)
-        {
-			ToTable("BLOCKS_USER_CLAIMS", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class BLOCKS_USER_LOGINSConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_USER_LOGINS> 
-    {
-		public BLOCKS_USER_LOGINSConfiguration()
-        {
-        }
-		public BLOCKS_USER_LOGINSConfiguration(string schema)
-        {
-			ToTable("BLOCKS_USER_LOGINS", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class BLOCKS_USER_ROLESConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_USER_ROLES> 
-    {
-		public BLOCKS_USER_ROLESConfiguration()
-        {
-        }
-		public BLOCKS_USER_ROLESConfiguration(string schema)
-        {
-			ToTable("BLOCKS_USER_ROLES", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class BLOCKS_SETTINGSConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_SETTINGS> 
-    {
-		public BLOCKS_SETTINGSConfiguration()
-        {
-        }
-		public BLOCKS_SETTINGSConfiguration(string schema)
-        {
-			ToTable("BLOCKS_SETTINGS", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class BLOCKS_TENANT_NOTIFICATIONSConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_TENANT_NOTIFICATIONS> 
-    {
-		public BLOCKS_TENANT_NOTIFICATIONSConfiguration()
-        {
-        }
-		public BLOCKS_TENANT_NOTIFICATIONSConfiguration(string schema)
-        {
-			ToTable("BLOCKS_TENANT_NOTIFICATIONS", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class BLOCKS_TENANTSConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_TENANTS> 
-    {
-		public BLOCKS_TENANTSConfiguration()
-        {
-        }
-		public BLOCKS_TENANTSConfiguration(string schema)
-        {
-			ToTable("BLOCKS_TENANTS", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class BLOCKS_USER_ACCOUNTSConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_USER_ACCOUNTS> 
-    {
-		public BLOCKS_USER_ACCOUNTSConfiguration()
-        {
-        }
-		public BLOCKS_USER_ACCOUNTSConfiguration(string schema)
-        {
-			ToTable("BLOCKS_USER_ACCOUNTS", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class BLOCKS_USER_LOGINATTEMPTSConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_USER_LOGINATTEMPTS> 
-    {
-		public BLOCKS_USER_LOGINATTEMPTSConfiguration()
-        {
-        }
-		public BLOCKS_USER_LOGINATTEMPTSConfiguration(string schema)
-        {
-			ToTable("BLOCKS_USER_LOGINATTEMPTS", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class BLOCKS_USERNOTIFICATIONSConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_USERNOTIFICATIONS> 
-    {
-		public BLOCKS_USERNOTIFICATIONSConfiguration()
-        {
-        }
-		public BLOCKS_USERNOTIFICATIONSConfiguration(string schema)
-        {
-			ToTable("BLOCKS_USERNOTIFICATIONS", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class BLOCKS_USERORGANIZATION_UNITSConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_USERORGANIZATION_UNITS> 
-    {
-		public BLOCKS_USERORGANIZATION_UNITSConfiguration()
-        {
-        }
-		public BLOCKS_USERORGANIZATION_UNITSConfiguration(string schema)
-        {
-			ToTable("BLOCKS_USERORGANIZATION_UNITS", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class TESTENTITYConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<TESTENTITY> 
-    {
-		public TESTENTITYConfiguration()
-        {
-        }
-		public TESTENTITYConfiguration(string schema)
-        {
-			ToTable("TESTENTITY", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class TESTENTITY2Configuration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<TESTENTITY2> 
-    {
-		public TESTENTITY2Configuration()
-        {
-        }
-		public TESTENTITY2Configuration(string schema)
-        {
-			ToTable("TESTENTITY2", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
-    
- 
- 
-    public partial class TESTENTITY3Configuration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<TESTENTITY3> 
-    {
-		public TESTENTITY3Configuration()
-        {
-        }
-		public TESTENTITY3Configuration(string schema)
-        {
-			ToTable("TESTENTITY3", schema);
-			            HasKey(x => x.Id);
-		 
-	    }
-	}
 }

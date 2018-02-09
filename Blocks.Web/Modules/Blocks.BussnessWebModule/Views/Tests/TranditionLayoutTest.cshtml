@@ -1,22 +1,26 @@
 ﻿@using System.Web.Optimization
 @using Blocks.Framework.Web.Mvc.Extensions
 @using Blocks.Framework.Web.Mvc.UI.Resources
- 
+
 @{
-    Layout =  ResourceManager.GetTemplateNotCache("Tradition/_Layout", this.VirtualPath);
+    Layout = ResourceManager.GetTemplateNotCache("Tradition/_Layout", this.VirtualPath);
     Style.Include("IndexCss.css").AtHead();
 }
 @section body
 {
-    <div>
-        
-        @ViewBag.Index
-        123123123123123123123
-        @Html.Partial("_LayoutPartialViewFirst")
-       
-        
+
+    <div class="row clearfix">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="card">
+                @ViewBag.Index
+                123123123123123123123
+                @Html.Partial("_LayoutPartialViewFirst")
+
+
+            </div>
+        </div>
     </div>
 }
 
 
- 
+
