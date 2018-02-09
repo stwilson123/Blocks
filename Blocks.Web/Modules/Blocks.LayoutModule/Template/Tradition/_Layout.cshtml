@@ -165,15 +165,15 @@
 {
     <script>
         //Localizing momentjs
-        //moment.locale('@Thread.CurrentThread.CurrentUICulture.Name');
+        moment.locale('@Thread.CurrentThread.CurrentUICulture.Name');
     </script>
 
     <!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
-    @*<script src="~/api/AbpServiceProxies/GetAll?v=''"></script>
-    <script src="~/AbpScripts/GetScripts?v='" type="text/javascript"></script>*@
+    <script src="~/api/AbpServiceProxies/GetAll?v=''"></script>
+    <script src="~/AbpScripts/GetScripts?v='" type="text/javascript"></script>
 
     <!-- SignalR scripts -->
-    @*<script src="~/signalr/hubs"></script>
-    <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.signalr.js"></script>*@
+    <script src="~/signalr/hubs"></script>
+    <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.signalr.js"></script>
     @*    @Html.IncludeScript("~/lib/Abp/Framework/scripts/libs/abp.signalr.js")*@
 }
