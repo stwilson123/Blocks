@@ -1,3 +1,4 @@
+@using System.Linq;
 @using System.Threading
 @using Blocks
 @using Blocks.Framework.Web.Mvc.Extensions
@@ -15,39 +16,44 @@
         Style.Require("font_awesome").AtHead();
         Style.Require("waves").AtHead();
         Style.Require("animate").AtHead();
+        Style.Require("jqGridUI").AtHead();
+
         Style.Include("/css/materialize.css").AtHead();
         Style.Include("/css/style.css").AtHead();
         Style.Include("/css/themes/all-themes.css").AtHead();
         Style.Include("_Layout.css").AtHead();
 
+        
+
     }
 
     @{
+        Script.Require("json2");
+        Script.Require("bootstrap_select");
+        Script.Require("moment");
+        Script.Require("jquery_validate");
+        Script.Require("jquery_blockUI");
+        Script.Require("toastr");
+        Script.Require("sweetalert");
+        Script.Require("jquery_spin");
+        Script.Require("slimscroll");
+        Script.Require("waves");
+        Script.Require("push");
+
+        Script.Require("blocks");
+
+        Script.Include("/lib/abp-web-resources/Abp/Framework/scripts/abp.js");
+        Script.Include("/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js");
+        Script.Include("/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js");
+        Script.Include("/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js");
+        Script.Include("/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js");
+        Script.Include("/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js");
+        //Script.Include("../../js/admin.js");
+        //Script.Include("../../js/main.js");
+        Script.Include("_Layout.js");
+        Script.Include("/lib/signalr/jquery.signalR.js");
+
         Script.Require("requireJS").SetAttribute("data-main", "/Modules/Blocks.LayoutModule/Template/Tradition/RequireConfig").AtFoot();
-        //Script.Require("json2").AtFoot();
-        //Script.Require("bootstrap_select").AtFoot();
-        //Script.Require("moment").AtFoot();
-        //Script.Require("jquery_validate").AtFoot();
-        //Script.Require("jquery_blockUI").AtFoot();
-        //Script.Require("toastr").AtFoot();
-        //Script.Require("sweetalert").AtFoot();
-        //Script.Require("jquery_spin").AtFoot();
-        //Script.Require("slimscroll").AtFoot();
-        //Script.Require("waves").AtFoot();
-        //Script.Require("push").AtFoot();
-
-
-
-        //Script.Include("/lib/abp-web-resources/Abp/Framework/scripts/abp.js").AtFoot();
-        //Script.Include("/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js").AtFoot();
-        //Script.Include("/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js").AtFoot();
-        //Script.Include("/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js").AtFoot();
-        //Script.Include("/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js").AtFoot();
-        //Script.Include("/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js").AtFoot();
-        //Script.Include("/js/admin.js").AtFoot();
-        //Script.Include("/js/main.js").AtFoot();
-        //Script.Include("_Layout.js").AtFoot();
-        //Script.Include("/lib/signalr/jquery.signalR.js").AtFoot();
 
     }
 }
@@ -165,20 +171,31 @@
 @section script
 {
     <script>
-       
-      
+        var blocks = blocks || {};
+        (function () {
+            blocks.pageContext = {
+                listRegisteredJavaScripts: @Html.ConvertToJSObject(ResourceManager.GetRegisteredDisplayNonoScripts()),
+                subPageVirtualPath: "@this.ViewBag.subPageVirtualPath",
+                subPageJsVirtualPath: "@this.ViewBag.subPageJsVirtualPath",
+                subPageCssVirtualPath: "@this.ViewBag.subPageCssVirtualPath",
+                language: '@Thread.CurrentThread.CurrentUICulture.Name'
+                    };
+        })(blocks);
     </script>
     <script>
         //Localizing momentjs
-        moment.locale('@Thread.CurrentThread.CurrentUICulture.Name');
+        @*require(["moment"], function (moment) {
+             moment.locale('@Thread.CurrentThread.CurrentUICulture.Name');
+        });*@
+
     </script>
 
     <!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
-    <script src="~/api/AbpServiceProxies/GetAll?v=''"></script>
-    <script src="~/AbpScripts/GetScripts?v='" type="text/javascript"></script>
+    @*<script src="~/api/AbpServiceProxies/GetAll?v=''"></script>
+    <script src="~/AbpScripts/GetScripts?v='" type="text/javascript"></script>*@
 
     <!-- SignalR scripts -->
-    <script src="~/signalr/hubs"></script>
-    <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.signalr.js"></script>
+    @*<script src="~/signalr/hubs"></script>
+    <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.signalr.js"></script>*@
     @*    @Html.IncludeScript("~/lib/Abp/Framework/scripts/libs/abp.signalr.js")*@
 }

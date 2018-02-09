@@ -1,95 +1,97 @@
-﻿var abp = abp || {};
-(function () {
+﻿; define(['jquery', '/Modules/Blocks.ResourcesModule/lib/abp-web-resources/Abp/Framework/scripts/abp.js'], function ($,_abp) {
+    var abp = _abp || {};
+    (function () {
 
-    if (!$.fn.spin) {
-        return;
-    }
-
-    abp.libs = abp.libs || {};
-
-    abp.libs.spinjs = {
-
-        spinner_config: {
-            lines: 11,
-            length: 0,
-            width: 10,
-            radius: 20,
-            corners: 1.0,
-            trail: 60,
-            speed: 1.2
-        },
-
-        //Config for busy indicator in element's inner element that has '.abp-busy-indicator' class.
-        spinner_config_inner_busy_indicator: {
-            lines: 11,
-            length: 0,
-            width: 4,
-            radius: 7,
-            corners: 1.0,
-            trail: 60,
-            speed: 1.2
+        if (!$.fn.spin) {
+            return;
         }
 
-    };
+        abp.libs = abp.libs || {};
 
-    abp.ui.setBusy = function (elm, optionsOrPromise) {
-        optionsOrPromise = optionsOrPromise || {};
-        if (optionsOrPromise.always || optionsOrPromise['finally']) { //Check if it's promise
-            optionsOrPromise = {
-                promise: optionsOrPromise
-            };
-        }
+        abp.libs.spinjs = {
 
-        var options = $.extend({}, optionsOrPromise);
+            spinner_config: {
+                lines: 11,
+                length: 0,
+                width: 10,
+                radius: 20,
+                corners: 1.0,
+                trail: 60,
+                speed: 1.2
+            },
 
-        if (!elm) {
-            if (options.blockUI != false) {
-                abp.ui.block();
+            //Config for busy indicator in element's inner element that has '.abp-busy-indicator' class.
+            spinner_config_inner_busy_indicator: {
+                lines: 11,
+                length: 0,
+                width: 4,
+                radius: 7,
+                corners: 1.0,
+                trail: 60,
+                speed: 1.2
             }
 
-            $('body').spin(abp.libs.spinjs.spinner_config);
-        } else {
-            var $elm = $(elm);
-            var $busyIndicator = $elm.find('.abp-busy-indicator'); //TODO@Halil: What if  more than one element. What if there are nested elements?
-            if ($busyIndicator.length) {
-                $busyIndicator.spin(abp.libs.spinjs.spinner_config_inner_busy_indicator);
-            } else {
+        };
+
+        abp.ui.setBusy = function (elm, optionsOrPromise) {
+            optionsOrPromise = optionsOrPromise || {};
+            if (optionsOrPromise.always || optionsOrPromise['finally']) { //Check if it's promise
+                optionsOrPromise = {
+                    promise: optionsOrPromise
+                };
+            }
+
+            var options = $.extend({}, optionsOrPromise);
+
+            if (!elm) {
                 if (options.blockUI != false) {
-                    abp.ui.block(elm);
+                    abp.ui.block();
                 }
 
-                $elm.spin(abp.libs.spinjs.spinner_config);
-            }
-        }
-
-        if (options.promise) { //Supports Q and jQuery.Deferred
-            if (options.promise.always) {
-                options.promise.always(function () {
-                    abp.ui.clearBusy(elm);
-                });
-            } else if (options.promise['finally']) {
-                options.promise['finally'](function () {
-                    abp.ui.clearBusy(elm);
-                });
-            }
-        }
-    };
-
-    abp.ui.clearBusy = function (elm) {
-        //TODO@Halil: Maybe better to do not call unblock if it's not blocked by setBusy
-        if (!elm) {
-            abp.ui.unblock();
-            $('body').spin(false);
-        } else {
-            var $elm = $(elm);
-            var $busyIndicator = $elm.find('.abp-busy-indicator');
-            if ($busyIndicator.length) {
-                $busyIndicator.spin(false);
+                $('body').spin(abp.libs.spinjs.spinner_config);
             } else {
-                abp.ui.unblock(elm);
-                $elm.spin(false);
-            }
-        }
-    };
+                var $elm = $(elm);
+                var $busyIndicator = $elm.find('.abp-busy-indicator'); //TODO@Halil: What if  more than one element. What if there are nested elements?
+                if ($busyIndicator.length) {
+                    $busyIndicator.spin(abp.libs.spinjs.spinner_config_inner_busy_indicator);
+                } else {
+                    if (options.blockUI != false) {
+                        abp.ui.block(elm);
+                    }
 
-})();
+                    $elm.spin(abp.libs.spinjs.spinner_config);
+                }
+            }
+
+            if (options.promise) { //Supports Q and jQuery.Deferred
+                if (options.promise.always) {
+                    options.promise.always(function () {
+                        abp.ui.clearBusy(elm);
+                    });
+                } else if (options.promise['finally']) {
+                    options.promise['finally'](function () {
+                        abp.ui.clearBusy(elm);
+                    });
+                }
+            }
+        };
+
+        abp.ui.clearBusy = function (elm) {
+            //TODO@Halil: Maybe better to do not call unblock if it's not blocked by setBusy
+            if (!elm) {
+                abp.ui.unblock();
+                $('body').spin(false);
+            } else {
+                var $elm = $(elm);
+                var $busyIndicator = $elm.find('.abp-busy-indicator');
+                if ($busyIndicator.length) {
+                    $busyIndicator.spin(false);
+                } else {
+                    abp.ui.unblock(elm);
+                    $elm.spin(false);
+                }
+            }
+        };
+
+    })();
+});

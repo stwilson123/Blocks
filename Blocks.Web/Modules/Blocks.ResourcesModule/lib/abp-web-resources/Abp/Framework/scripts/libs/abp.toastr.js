@@ -1,34 +1,37 @@
-﻿var abp = abp || {};
-(function () {
+﻿; define(['toastr', '/Modules/Blocks.ResourcesModule/lib/abp-web-resources/Abp/Framework/scripts/abp.js'], function (toastr,_abp) {
 
-    if (!toastr) {
-        return;
-    }
+    var abp = _abp || {};
+    (function () {
 
-    /* DEFAULTS *************************************************/
+        if (!toastr) {
+            return;
+        }
 
-    toastr.options.positionClass = 'toast-bottom-right';
+        /* DEFAULTS *************************************************/
 
-    /* NOTIFICATION *********************************************/
+        toastr.options.positionClass = 'toast-bottom-right';
 
-    var showNotification = function (type, message, title, options) {
-        toastr[type](message, title, options);
-    };
+        /* NOTIFICATION *********************************************/
 
-    abp.notify.success = function (message, title, options) {
-        showNotification('success', message, title, options);
-    };
+        var showNotification = function (type, message, title, options) {
+            toastr[type](message, title, options);
+        };
 
-    abp.notify.info = function (message, title, options) {
-        showNotification('info', message, title, options);
-    };
+        abp.notify.success = function (message, title, options) {
+            showNotification('success', message, title, options);
+        };
 
-    abp.notify.warn = function (message, title, options) {
-        showNotification('warning', message, title, options);
-    };
+        abp.notify.info = function (message, title, options) {
+            showNotification('info', message, title, options);
+        };
 
-    abp.notify.error = function (message, title, options) {
-        showNotification('error', message, title, options);
-    };
+        abp.notify.warn = function (message, title, options) {
+            showNotification('warning', message, title, options);
+        };
 
-})();
+        abp.notify.error = function (message, title, options) {
+            showNotification('error', message, title, options);
+        };
+
+    })();
+});

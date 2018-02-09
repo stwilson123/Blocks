@@ -277,6 +277,7 @@ namespace Blocks.Framework.Web.Mvc.UI.Resources {
 
         public virtual IList<ScriptEntry> GetRegisteredDisplayNonoScripts()
         {
+           
             return _DisplayNonoScripts == null ? null : _DisplayNonoScripts.AsReadOnly();
         }
 
@@ -310,7 +311,7 @@ namespace Blocks.Framework.Web.Mvc.UI.Resources {
             // (2) If no require already exists, form a new settings object based on the given one but with its own type/name.
             settings = allResources.Contains(resource)
                 ? ((RequireSettings)allResources[resource]).Combine(settings)
-                : new RequireSettings { Type = resource.Type, Name = resource.Name, Dependencies = resource.Dependencies }.Combine(settings);
+                : new RequireSettings { Type = resource.Type, Name = resource.Name, Dependencies = resource.Dependencies, IsAMD = resource.IsAMD }.Combine(settings);
             if (resource.Dependencies != null) {
               
                 var dependencies = from d in resource.Dependencies
@@ -434,9 +435,10 @@ namespace Blocks.Framework.Web.Mvc.UI.Resources {
                 {
                     switch (context.Settings.Location)
                     {
-                        case ResourceLocation.Foot: this.RegisterFootScript(new ScriptEntry() { Src = path, Type = "text/javascript" }.SetAttributes(attributes)); break;
-                        case ResourceLocation.Head: this.RegisterHeadScript(new ScriptEntry() { Src = path, Type = "text/javascript" }.SetAttributes(attributes));break;
-                        default: this.RegisterDisplayNonoScript(new ScriptEntry() { Src = path, Type = "text/javascript" }.SetAttributes(attributes));break;
+                        case ResourceLocation.Foot: this.RegisterFootScript(new ScriptEntry() { Src = path, Type = "text/javascript", Name = context.Resource.Name,
+                            Dependencies = context.Resource.Dependencies?.ToList(), IsAMD = context.Resource.IsAMD }.SetAttributes(attributes)); break;
+                        case ResourceLocation.Head: this.RegisterHeadScript(new ScriptEntry() { Src = path, Type = "text/javascript", Name = context.Resource.Name, Dependencies = context.Resource.Dependencies?.ToList(), IsAMD = context.Resource.IsAMD }.SetAttributes(attributes)); break;
+                        default: this.RegisterDisplayNonoScript(new ScriptEntry() { Src = path, Type = "text/javascript", Name = context.Resource.Name, Dependencies = context.Resource.Dependencies?.ToList(), IsAMD = context.Resource.IsAMD }.SetAttributes(attributes)); break;
                     }
                 }
                 else if (context.Resource.Type == "stylesheet")

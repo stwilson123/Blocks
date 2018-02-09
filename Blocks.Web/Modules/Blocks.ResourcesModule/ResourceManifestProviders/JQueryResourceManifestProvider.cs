@@ -9,8 +9,8 @@ namespace Blocks.ResourcesModule.ResourceManifestProviders {
             var manifest = builder.Add();
 
             // jQuery.
-            manifest.DefineScript(ResourceName.jQuery).SetUrl(PathBuilder.BuilderScripts("jquery-1.9.1.min.js"),
-                PathBuilder.BuilderScripts("jquery-1.9.1.js")).SetVersion("1.9.1");
+            manifest.DefineScript(ResourceName.jquery).SetUrl(PathBuilder.BuilderScripts("jquery-1.9.1.min.js"),
+                PathBuilder.BuilderScripts("jquery-1.9.1.js")).SetVersion("1.9.1").SetAMD();
             
             
             manifest.DefineScript(ResourceName.jquery_validate).SetUrl("lib/jquery-validation/dist/jquery.validate.js",

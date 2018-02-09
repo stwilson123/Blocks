@@ -102,6 +102,7 @@
     <Compile Include="ResourceManifestProviders\JQueryResourceManifestProvider.cs" />
     <Compile Include="ResourceManifestProviders\ToolsResourceManifestProvider.cs" />
     <Compile Include="ResourceManifestProviders\UICommonResourceManifestProvider.cs" />
+    <Compile Include="ResourceManifestProviders\BlocksFrameworkResourceManifestProvider.cs" />
     <Compile Include="ResourceName.cs" />
     <Compile Include="ResourcesAppStartConfg.cs" />
     <Compile Include="ResourcesModule.cs" />
@@ -145,6 +146,14 @@
     <Content Include="fonts\roboto\roboto.css" />
     <Content Include="fonts\roboto\u0TOpm082MNkS5K0Q4rhqvesZW2xOQ-xsNqO47m55DA.woff2" />
     <Content Include="fonts\roboto\UX6i4JxQDm3fVTc1CPuwqhJtnKITppOI_IvcXXDNrsc.woff2" />
+    <Content Include="Framework\Abp\AbpWrapper.js" />
+    <Content Include="Framework\blocks.js" />
+    <Content Include="Framework\UI\1.0\UI.Grid.js" />
+    <Content Include="Framework\UI\1.0\UI.js" />
+    <Content Include="Framework\UI\Component\Grid.js" />
+    <Content Include="Framework\UI\UI.js" />
+    <Content Include="Framework\Utility\1.0\Common.js" />
+    <Content Include="Framework\Utility\utility.js" />
     <Content Include="lib\abp-web-resources\.bower.json" />
     <Content Include="lib\abp-web-resources\Abp\Framework\scripts\abp.js" />
     <Content Include="lib\abp-web-resources\Abp\Framework\scripts\libs\abp.blockUI.js" />
@@ -2403,7 +2412,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="lib\lib" />
+    <Folder Include="lib\lib\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

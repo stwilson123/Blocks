@@ -20,7 +20,7 @@ namespace Blocks.ResourcesModule.ResourceManifestProviders {
             manifest.DefineStyle(ResourceName.jqGrid).SetUrl("lib/jqGrid/css/ui.jqgrid-bootstrap.css",
                 "lib/jqGrid/css/ui.jqgrid-bootstrap.css").SetVersion("5.2.0");
             manifest.DefineStyle(ResourceName.jqGridUI).SetUrl("lib/jqGrid/css/ui.jqgrid-bootstrap-ui.css",
-                "lib/jqGrid/css/ui.jqgrid-bootstrap-ui.css").SetVersion("5.2.0");
+                "lib/jqGrid/css/ui.jqgrid-bootstrap-ui.css").SetVersion("5.2.0").SetDependencies(ResourceName.jqGrid);
             
             manifest.DefineScript(ResourceName.toastr).SetUrl("lib/toastr/toastr.min.js",
                 "lib/toastr/toastr.js").SetVersion("0.1");
@@ -40,7 +40,7 @@ namespace Blocks.ResourcesModule.ResourceManifestProviders {
                 "lib/spin.js/jquery.spin.js").SetVersion("0.1").SetDependencies(ResourceName.spin);
             
             manifest.DefineScript(ResourceName.slimscroll).SetUrl("lib/jquery-slimscroll/jquery.slimscroll.min.js",
-                "lib/jquery-slimscroll/jquery.slimscroll.js").SetVersion("0.1");
+                "lib/jquery-slimscroll/jquery.slimscroll.js").SetVersion("0.1").SetAMD();
             
             manifest.DefineScript(ResourceName.push).SetUrl("lib/push.js/push.min.js",
                 "lib/push.js/push.js").SetVersion("0.1");

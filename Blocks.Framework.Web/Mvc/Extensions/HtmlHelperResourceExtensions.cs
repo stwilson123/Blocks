@@ -10,7 +10,9 @@ using System.Web.Mvc;
 using Abp.Logging;
 using Abp.Web.Mvc.Resources;
 using Blocks.Framework.Collections;
+using Blocks.Framework.Json;
 using Blocks.Framework.Web.Mvc.UI.Resources;
+using Newtonsoft.Json;
 
 namespace Blocks.Framework.Web.Mvc.Extensions
 {
@@ -86,6 +88,7 @@ namespace Blocks.Framework.Web.Mvc.Extensions
             return html.Raw(sb.ToString());
         }
 
+       
 
         /// <summary>
         /// Includes a style to the page with versioning.
@@ -102,6 +105,19 @@ namespace Blocks.Framework.Web.Mvc.Extensions
             });
             return html.Raw(sb.ToString());
         }
+
+
+        /// <summary>
+        /// Includes a style to the page with versioning.
+        /// </summary>
+        /// <param name="html">Reference to the HtmlHelper object</param>
+        /// <param name="url">URL of the style file</param>
+        public static IHtmlString ConvertToJSObject(this HtmlHelper html, IList<ScriptEntry> urls)
+        {
+            return html.Raw(JsonConvert.SerializeObject(urls?.Select(t => new { t.Name,Src= GetPathWithVersioning(t.Src), t.Dependencies, t.IsAMD })));
+        }
+
+       
         private static string GetPathWithVersioning(string path)
         {
             if (Cache.ContainsKey(path))

@@ -9,6 +9,14 @@ namespace Blocks.Framework.Web.Mvc.UI.Resources
         {
 
         }
+        /// <summary>
+        /// alias name
+        /// </summary>
+        public string Name { get; set; }
+
+        public IList<string> Dependencies {get;set;}
+
+        public bool IsAMD { get; set; } = false;
         private readonly TagBuilder _builder = new TagBuilder("script");
         public string Condition { get; set; }
         public string Src {

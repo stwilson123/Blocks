@@ -86,6 +86,7 @@ namespace Blocks.Framework.Web.Mvc.UI.Resources {
         public string Name { get; private set; }
         public string Type { get; private set; }
         public string Version { get; private set; }
+        public bool IsAMD { get; private set; }
         public string BasePath {
             get {
                 if (!String.IsNullOrEmpty(_basePath)) {
@@ -166,6 +167,16 @@ namespace Blocks.Framework.Web.Mvc.UI.Resources {
         /// <param name="version">The version to set, in the form of <code>major.minor[.build[.revision]]</code></param>
         public ResourceDefinition SetVersion(string version) {
             Version = version;
+            return this;
+        }
+
+        
+        /// <summary>
+        /// Sets the version of the resource.
+        /// </summary>
+        /// <param name="version">The version to set, in the form of <code>major.minor[.build[.revision]]</code></param>
+        public ResourceDefinition SetAMD() {
+            IsAMD = true;
             return this;
         }
 

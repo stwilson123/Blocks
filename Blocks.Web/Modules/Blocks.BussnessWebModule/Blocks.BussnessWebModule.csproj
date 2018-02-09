@@ -105,12 +105,14 @@
     <Compile Include="API\Controllers\AccountTestController.cs" />
     <Compile Include="BlocksBussenssModule.cs" />
     <Compile Include="BussnessWebConfiguration.cs" />
+    <Compile Include="Controllers\MasterDataController.cs" />
     <Compile Include="Controllers\TestsMvcController.cs" />
     <Compile Include="Models\DefaultModel.cs" />
     <Compile Include="Module_Start\BlocksNavigationProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Styles\Index\IndexCss.css" />
+    <Content Include="Views\MasterData\Index.js" />
     <Content Include="Views\Tests\IndexCss.css" />
     <Content Include="Views\Tests\TranditionLayoutTest.cshtml" />
     <Content Include="Views\Tests\TranditionLayoutTestNew.js" />
@@ -131,6 +133,7 @@
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Views\Tests\TranditionLayoutTestNew.cshtml" />
+    <Content Include="Views\MasterData\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -143,6 +143,7 @@
     <Content Include="Scripts\jquery-1.9.1.min.map" />
     <Content Include="Scripts\site.js" />
     <Content Include="Template\Tradition\RequireConfig.js" />
+    <Content Include="Template\Tradition\_LayoutModule.js" />
     <Content Include="Template\Tradition\_Layout.cshtml" />
     <Content Include="Template\Tradition\_Layout.css" />
     <Content Include="Template\Tradition\_Layout.js" />

@@ -1,111 +1,114 @@
-﻿var abp = abp || {};
-(function ($) {
-    if (!sweetAlert || !$) {
-        return;
-    }
+﻿; define(['jquery', 'sweetalert', '/Modules/Blocks.ResourcesModule/lib/abp-web-resources/Abp/Framework/scripts/abp.js'], function (jQuery, sweetAlert,_abp) {
 
-    /* DEFAULTS *************************************************/
+    var abp = _abp || {};
+    (function ($) {
+        if (!sweetAlert || !$) {
+            return;
+        }
 
-    abp.libs = abp.libs || {};
-    abp.libs.sweetAlert = {
-        config: {
-            'default': {
+        /* DEFAULTS *************************************************/
 
-            },
-            info: {
-                type: 'info'
-            },
-            success: {
-                type: 'success'
-            },
-            warn: {
-                type: 'warning'
-            },
-            error: {
-                type: 'error'
-            },
-            confirm: {
-                type: 'warning',
-                title: 'Are you sure?',
-                showCancelButton: true,
-                cancelButtonText: 'Cancel',
-                confirmButtonColor: "#DD6B55",
-                confirmButtonText: 'Yes'
+        abp.libs = abp.libs || {};
+        abp.libs.sweetAlert = {
+            config: {
+                'default': {
+
+                },
+                info: {
+                    type: 'info'
+                },
+                success: {
+                    type: 'success'
+                },
+                warn: {
+                    type: 'warning'
+                },
+                error: {
+                    type: 'error'
+                },
+                confirm: {
+                    type: 'warning',
+                    title: 'Are you sure?',
+                    showCancelButton: true,
+                    cancelButtonText: 'Cancel',
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: 'Yes'
+                }
             }
-        }
-    };
+        };
 
-    /* MESSAGE **************************************************/
+        /* MESSAGE **************************************************/
 
-    var showMessage = function (type, message, title) {
-        if (!title) {
-            title = message;
-            message = undefined;
-        }
+        var showMessage = function (type, message, title) {
+            if (!title) {
+                title = message;
+                message = undefined;
+            }
 
-        var opts = $.extend(
-            {},
-            abp.libs.sweetAlert.config['default'],
-            abp.libs.sweetAlert.config[type],
-            {
-                title: title,
+            var opts = $.extend(
+                {},
+                abp.libs.sweetAlert.config['default'],
+                abp.libs.sweetAlert.config[type],
+                {
+                    title: title,
+                    text: message
+                }
+            );
+
+            return $.Deferred(function ($dfd) {
+                sweetAlert(opts, function () {
+                    $dfd.resolve();
+                });
+            });
+        };
+
+        abp.message.info = function (message, title) {
+            return showMessage('info', message, title);
+        };
+
+        abp.message.success = function (message, title) {
+            return showMessage('success', message, title);
+        };
+
+        abp.message.warn = function (message, title) {
+            return showMessage('warn', message, title);
+        };
+
+        abp.message.error = function (message, title) {
+            return showMessage('error', message, title);
+        };
+
+        abp.message.confirm = function (message, titleOrCallback, callback) {
+            var userOpts = {
                 text: message
-            }
-        );
+            };
 
-        return $.Deferred(function ($dfd) {
-            sweetAlert(opts, function () {
-                $dfd.resolve();
+            if ($.isFunction(titleOrCallback)) {
+                callback = titleOrCallback;
+            } else if (titleOrCallback) {
+                userOpts.title = titleOrCallback;
+            };
+
+            var opts = $.extend(
+                {},
+                abp.libs.sweetAlert.config['default'],
+                abp.libs.sweetAlert.config.confirm,
+                userOpts
+            );
+
+            return $.Deferred(function ($dfd) {
+                sweetAlert(opts, function (isConfirmed) {
+                    callback && callback(isConfirmed);
+                    $dfd.resolve(isConfirmed);
+                });
             });
-        });
-    };
-
-    abp.message.info = function (message, title) {
-        return showMessage('info', message, title);
-    };
-
-    abp.message.success = function (message, title) {
-        return showMessage('success', message, title);
-    };
-
-    abp.message.warn = function (message, title) {
-        return showMessage('warn', message, title);
-    };
-
-    abp.message.error = function (message, title) {
-        return showMessage('error', message, title);
-    };
-
-    abp.message.confirm = function (message, titleOrCallback, callback) {
-        var userOpts = {
-            text: message
         };
 
-        if ($.isFunction(titleOrCallback)) {
-            callback = titleOrCallback;
-        } else if (titleOrCallback) {
-            userOpts.title = titleOrCallback;
-        };
-
-        var opts = $.extend(
-            {},
-            abp.libs.sweetAlert.config['default'],
-            abp.libs.sweetAlert.config.confirm,
-            userOpts
-        );
-
-        return $.Deferred(function ($dfd) {
-            sweetAlert(opts, function (isConfirmed) {
-                callback && callback(isConfirmed);
-                $dfd.resolve(isConfirmed);
-            });
+        abp.event.on('abp.dynamicScriptsInitialized', function () {
+            abp.libs.sweetAlert.config.confirm.title = abp.localization.abpWeb('AreYouSure');
+            abp.libs.sweetAlert.config.confirm.cancelButtonText = abp.localization.abpWeb('Cancel');
+            abp.libs.sweetAlert.config.confirm.confirmButtonText = abp.localization.abpWeb('Yes');
         });
-    };
 
-    abp.event.on('abp.dynamicScriptsInitialized', function () {
-        abp.libs.sweetAlert.config.confirm.title = abp.localization.abpWeb('AreYouSure');
-        abp.libs.sweetAlert.config.confirm.cancelButtonText = abp.localization.abpWeb('Cancel');
-        abp.libs.sweetAlert.config.confirm.confirmButtonText = abp.localization.abpWeb('Yes');
-    });
-
-})(jQuery);
+    })(jQuery);
+});

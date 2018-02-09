@@ -16,7 +16,7 @@ namespace Blocks.ResourcesModule.ResourceManifestProviders {
             
             
             manifest.DefineScript(ResourceName.bootstrap).SetUrl(PathBuilder.BuilderScripts("bootstrap.min.js"),
-                PathBuilder.BuilderScripts("bootstrap.js")).SetVersion("3.3.7").SetDependencies(ResourceName.jQuery);
+                PathBuilder.BuilderScripts("bootstrap.js")).SetVersion("3.3.7").SetDependencies(ResourceName.jquery);
             
             manifest.DefineScript(ResourceName.bootstrap_select).SetUrl("lib/bootstrap-select/dist/js/bootstrap-select.min.js",
                 "lib/bootstrap-select/dist/js/bootstrap-select.js").SetVersion("3.3.7").SetDependencies(ResourceName.bootstrap);

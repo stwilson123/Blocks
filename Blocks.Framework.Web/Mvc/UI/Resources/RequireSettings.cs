@@ -16,6 +16,7 @@ namespace Blocks.Framework.Web.Mvc.UI.Resources {
         public string Condition { get; set; }
         public Action<ResourceDefinition> InlineDefinition { get; set; }
 
+        public bool IsAMD { get; set; } = false;
 
         public IEnumerable<string> Dependencies { get; set; } = new List<string>();
         public Dictionary<string, string> Attributes {
@@ -130,6 +131,13 @@ namespace Blocks.Framework.Web.Mvc.UI.Resources {
         {
             if (dependencies != null)
                 Dependencies = Dependencies.Concat(dependencies);
+            return this;
+        }
+
+
+        public RequireSettings SetAMD()
+        {
+            IsAMD = true;
             return this;
         }
         public RequireSettings Combine(RequireSettings other) {

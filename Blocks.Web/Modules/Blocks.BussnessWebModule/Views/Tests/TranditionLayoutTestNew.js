@@ -1,3 +1,3 @@
-﻿require(["jquery"], function ($) {
+﻿require(["jquery","Tradition/_LayoutModule"], function ($,layout) {
     ;
 });  

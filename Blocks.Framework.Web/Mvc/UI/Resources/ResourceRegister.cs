@@ -36,6 +36,7 @@ namespace Blocks.Framework.Web.Mvc.UI.Resources {
             return ResourceManager.Include(ResourceType, resourcePath, null, ResourceDefinition.GetBasePathFromViewPath(ResourceType, _viewVirtualPath));
         }
 
+
         /// <summary>
         /// Includes a resource with the specified path
         /// </summary>
