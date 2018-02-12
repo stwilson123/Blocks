@@ -47,6 +47,7 @@ namespace Blocks.ResourcesModule
 
         public static string blocks_utility { get; } = "blocks_utility";
 
+        public static string blocks_security { get; } = "blocks_security";
 
         public static string abp_wrapper { get; } = "abp_wrapper";
 

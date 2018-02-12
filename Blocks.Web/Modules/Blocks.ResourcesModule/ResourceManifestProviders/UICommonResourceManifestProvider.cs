@@ -40,7 +40,7 @@ namespace Blocks.ResourcesModule.ResourceManifestProviders {
                 "lib/spin.js/jquery.spin.js").SetVersion("0.1").SetDependencies(ResourceName.spin);
             
             manifest.DefineScript(ResourceName.slimscroll).SetUrl("lib/jquery-slimscroll/jquery.slimscroll.min.js",
-                "lib/jquery-slimscroll/jquery.slimscroll.js").SetVersion("0.1").SetAMD();
+                "lib/jquery-slimscroll/jquery.slimscroll.js").SetVersion("0.1").SetDependencies(ResourceName.jquery);
             
             manifest.DefineScript(ResourceName.push).SetUrl("lib/push.js/push.min.js",
                 "lib/push.js/push.js").SetVersion("0.1");

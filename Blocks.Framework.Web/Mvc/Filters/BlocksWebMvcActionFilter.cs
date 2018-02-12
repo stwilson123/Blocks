@@ -1,5 +1,6 @@
 ﻿using System.Web;
 using System.Web.Mvc;
+using Blocks.Framework.Environment.Extensions;
 using Blocks.Framework.FileSystems.VirtualPath;
 using Blocks.Framework.Ioc.Dependency;
 using Blocks.Framework.Web.FileSystems.VirtualPath;
@@ -24,6 +25,7 @@ namespace Blocks.Framework.Web.Mvc.Filters
     public class BlocksWebMvcResultFilter : IResultFilter, ITransientDependency
     {
         public IVirtualPathProvider pathProvider = new DefaultVirtualPathProvider();
+        public ExtensionManager extensionManager { set; get; }
         public void OnResultExecuted(ResultExecutedContext filterContext)
         {
             //throw new System.NotImplementedException();
@@ -53,6 +55,9 @@ namespace Blocks.Framework.Web.Mvc.Filters
                         var cssPath = viewPath + ".css";
                         if (pathProvider.FileExists(cssPath))
                             filterContext.Controller.ViewBag.subPageCssVirtualPath = cssPath;
+
+                        var extension = extensionManager.GetExtension(filterContext.Controller.GetType().Assembly.GetName().Name);
+                        filterContext.Controller.ViewBag.extensionName = extension?.Name;
 
                     }
 

@@ -26,4 +26,6 @@
 
         idKey: "ID"
     });
+
+    mainGrid.reloadGrid({ url: "/api/services/BussnessWebModule/MasterData/GetPageList"});
 });  

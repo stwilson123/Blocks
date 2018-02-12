@@ -4,6 +4,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.WebPages;
 using Abp.Dependency;
+using Abp.Web.Security.AntiForgery;
 using Blocks.Framework.Environment.Configuration;
 using Blocks.Framework.Web.Mvc.Spooling;
 using Blocks.Framework.Web.Mvc.UI.Extensions;
@@ -102,6 +103,11 @@ namespace Blocks.Framework.Web.Mvc.ViewEngines.Razor
         // review: (heskew) is it going to be a problem?
         public new dynamic Layout1 => _layout;
 
+        
+        protected virtual void SetAntiForgeryCookie()
+        {
+            SingletonDependency<IAbpAntiForgeryManager>.Instance.SetCookie(Context);
+        }
 //        public dynamic New { get { return ShapeFactory; } }
 
 //        private IDisplayHelperFactory _displayHelperFactory;
@@ -271,5 +277,7 @@ namespace Blocks.Framework.Web.Mvc.ViewEngines.Razor
 
     public abstract class WebViewPage : WebViewPage<dynamic>
     {
+        
+     
     }
 }

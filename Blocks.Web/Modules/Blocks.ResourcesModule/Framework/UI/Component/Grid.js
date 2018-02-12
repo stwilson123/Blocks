@@ -1,24 +1,26 @@
-﻿; define(['jquery', 'blocks_utility', 'jqGrid'], function ($, utility) {
+﻿;define(['jquery', 'blocks_utility', 'jqGrid'], function ($, utility) {
     var validate = utility.validate;
     var grid = function (option) {
-        if (validate.isNullOrEmpty(option) || validate.isNullOrEmpty(option.Id) || validate.isNullOrEmpty($("#"+option.Id).attr('id'))) {
-            throw "未指定ID的Grid对象"; 
+        if (validate.isNullOrEmpty(option) || validate.isNullOrEmpty(option.Id) || validate.isNullOrEmpty($("#" + option.Id).attr('id'))) {
+            throw "未指定ID的Grid对象";
         }
 
-      
+
         var gridID = option.Id;
         var jqObj = $("#" + gridID);
         //列名创建
-        var defColModel = { width: 100, align: 'left', sortable: true };
+        var defColModel = {width: 100, align: 'left', sortable: true};
 
         if (!validate.isNullOrEmpty(option.colModel)) {
             if (option.colModel.length !== option.colNames.length) {
-                alert("colModel与colNames长度不一致"); return;
+                alert("colModel与colNames长度不一致");
+                return;
             }
 
             for (var i = 0; i < option.colModel.length; i++) {
                 if (validate.isNullOrEmpty(option.colModel[i].name)) {
-                    alert("未指定name属性的colModel"); return;
+                    alert("未指定name属性的colModel");
+                    return;
                 }
 
                 if (validate.isNullOrEmpty(option.colModel[i].index)) option.colModel[i].index = option.colModel[i].name;
@@ -35,7 +37,10 @@
         } else {
             if (validate.isNullOrEmpty(option.colModel) && validate.isNullOrEmpty(option.colNames))
                 ;
-            else { alert("未指定colModel属性的Grid对象"); return; }
+            else {
+                alert("未指定colModel属性的Grid对象");
+                return;
+            }
         }
         jqObj.attr('gridstate', 'visible');
         var defaults = {
@@ -66,7 +71,9 @@
             localReader: {
                 id: "ID"
             },
-            loadError: function () { OpenTipWindowError("网络出错，请刷新页面重试"); },
+            loadError: function () {
+                OpenTipWindowError("网络出错，请刷新页面重试");
+            },
             caption: "",
             sortorder: "desc",   //默认倒序,
             scrollOffset: 19,
@@ -84,7 +91,8 @@
             //    gridID = $(this).attr("id");
             //    e.preventDefault();
             //},
-            onSelectHead: function (rowid, status, e) { },
+            onSelectHead: function (rowid, status, e) {
+            },
             onSelectRow: function (rowid, status) {
                 var rowData = $('#' + gridID).jqGrid('getGridParam', 'selarrrow');
                 if (rowData.length === $('#' + gridID)[0].p.reccount) {
@@ -102,7 +110,7 @@
                         else
                             $gridObj.jqGrid('editRow', rowid, true);
 
-                       jqObj.attr("lastsel", rowid);
+                        jqObj.attr("lastsel", rowid);
 
                     }
 
@@ -112,25 +120,36 @@
             },
             onHeaderClick: function (status) {
                 //visible or hidden
-               jqObj.attr("gridstate", status);
+                jqObj.attr("gridstate", status);
                 if (!validate.isNullOrEmpty(option.onHeaderClick)) option.onHeaderClick(status);
                 $(window).resize();
             },
 
-            colRDModel: { FormID: "", RDModel: [] },
+            colRDModel: {FormID: "", RDModel: []},
             showPager: true,
             styleUI: 'Bootstrap',
-            getGridWidth: function (width) { return width; },
-            getGridHeight: function (height) { return height; },
-            loadCompleteOnFaildCallBack: function () { },
+            getGridWidth: function (width) {
+                return width;
+            },
+            getGridHeight: function (height) {
+                return height;
+            },
+            loadCompleteOnFaildCallBack: function () {
+            },
             gridResize: null, //设置Grid的大小
             gridScroll: false, //是否显示Grid滚动条
-            mtype: "POST" // add by 何权洲 jq默认使用POST方式提交到服务端
+            mtype: "POST", // add by 何权洲 jq默认使用POST方式提交到服务端
+            serializeGridData: function (postData) {
+
+                return {page: postData};
+            }
         };
         var options = $.extend(true, defaults, option);
-        var $gridObj =jqObj.eq(0);
-       jqObj.attr("lastsel", "");
-        var customerLoadComplete = function (data) { ; };
+        var $gridObj = jqObj.eq(0);
+        jqObj.attr("lastsel", "");
+        var customerLoadComplete = function (data) {
+            ;
+        };
         if (options.loadComplete !== undefined && $.type(options.loadComplete) === 'function') {
             customerLoadComplete = options.loadComplete;
         }
@@ -155,7 +174,6 @@
             //$('#'+$gridObj.attr("id") +' tr').find("td:eq(0)").each(function () {
             //    $(this).css('width', w2);
             //})
-
 
 
             $('#cb_' + gridID).unbind('change', changeEventFun);
@@ -212,7 +230,6 @@
             options.pager = "#" + pagerId;
 
 
-
         }
         else {
 
@@ -239,7 +256,7 @@
                 var value = options.colRDModel.RDModel[j];
                 if (!(colTemp.indexOf(value) > 0)) {
                     option.colNames.push(value);
-                    var col = { name: value, index: value, hidden: true };
+                    var col = {name: value, index: value, hidden: true};
                     option.colModel.push(col);
                 }
             }
@@ -247,6 +264,7 @@
 
         var rMenu = null;
 
+        this.Id = gridID;
         this.init = function () {
             if (options.datatype === "local") {
                 this.loadLocalData();
@@ -320,28 +338,32 @@
         //);
 
     };
-    
+
     grid.prototype.reloadGrid = function (option) {
         var defaults = {
             url: "",
-         //   container: grid.Id,
+            //   container: grid.Id,
             formID: "SearchForm",
             datatype: "json",
             page: 1,
             ReloadType: "normal"
         };
-        var gridId = grid.Id;
+        var gridId = this.Id;
         var options = $.extend(defaults, option);
         if (options.ReloadType == "normal") {
             if (validate.isNullOrEmpty(option.url)) {
                 $("#" + gridId).jqGrid("clearGridData");
-                $("#" + gridId).jqGrid('setGridParam', { datatype: 'local', data: options.data }).trigger('reloadGrid', [{ page: options.page }]);
+                $("#" + gridId).jqGrid('setGridParam', {
+                    datatype: 'local',
+                    data: options.data
+                }).trigger('reloadGrid', [{page: options.page}]);
             }
             else {
 
-                options.url = UrlHelper.GetRandURL(options.url);
-                var postJsonData = FormHelper.getPostBodyToJson(options.formID);
-                postJsonData = $.extend(postJsonData, option.postData);
+                // options.url = UrlHelper.GetRandURL(options.url);
+                // var postJsonData = FormHelper.getPostBodyToJson(options.formID);
+                // postJsonData = $.extend(postJsonData, option.postData);
+                var postJsonData = option.postData;
                 if ("nodata" === postJsonData) return;
                 $("#" + gridId).jqGrid('setGridParam', {
                     url: options.url,
@@ -382,13 +404,24 @@
                     NewGridParam.data = content.rows;
                     var localReader = {
                         //id: "id",//设置返回参数中，表格ID的名字为blackId  
-                        rows: function (object) { return content.rows },
-                        page: function (object) { return content.pagerInfo.page },
-                        total: function (object) { return content.pagerInfo.total },
-                        records: function (object) { return content.pagerInfo.records },
+                        rows: function (object) {
+                            return content.rows
+                        },
+                        page: function (object) {
+                            return content.pagerInfo.page
+                        },
+                        total: function (object) {
+                            return content.pagerInfo.total
+                        },
+                        records: function (object) {
+                            return content.pagerInfo.records
+                        },
                         repeatitems: false
                     }
-                    $("#" + gridID).jqGrid('setGridParam', { data: content.rows, localReader: localReader }).trigger('reloadGrid', [{ page: options.page }]);
+                    $("#" + gridID).jqGrid('setGridParam', {
+                        data: content.rows,
+                        localReader: localReader
+                    }).trigger('reloadGrid', [{page: options.page}]);
                     $("#" + gridID).jqGrid('setGridParam', {
                         url: options.url,
                         datatype: options.datatype,
@@ -404,20 +437,21 @@
 
     };
     grid.prototype.delRowData = function (rowsId) {
+
         if (validate.isNullOrEmpty(rowsId) || !$.isArray(rowsId)) {
             throw "请输入合适的id数组";
         }
         while (rowsId.length > 0) {
             $(grid.Id).jqGrid('delRowData', rowsId[0]);
         }
-        var rowData = $(grid.Id).jqGrid('getGridParam', 'selarrrow');
+        var rowData = $(this.Id).jqGrid('getGridParam', 'selarrrow');
         if (rowData.length === 0) {
-            $('#cb_' + $(grid.Id).attr("id")).prop("checked", false);
+            $('#cb_' + $(this.Id).attr("id")).prop("checked", false);
 
         }
     };
     grid.prototype.addRowData = function (gridData) {
-        var jqObj = $(this);
+        var jqObj = $(this.Id);
         if (validate.isNullOrEmpty(gridData)) {
             throw "请输入合适的Json数组";
         }
@@ -436,7 +470,7 @@
         //if (validate.isNullOrEmpty(gridIds)) {
         //    throw "请输入合适的IDs数组";
         //}
-        var jqObj = $(this);
+        var jqObj = $(this.Id);
         var GridIds = validate.isNullOrEmpty(gridIds) ? jqObj.jqGrid("getDataIDs") : gridIds;
         var result = 0;
         for (var i = 0; i < GridIds.length; i++) {
@@ -448,7 +482,7 @@
     };
     grid.prototype.getRowData = function (gridIds, colNames) {
         var rowDataResult = [];
-        var jqObj = $(this);
+        var jqObj = $(this.Id);
         var isRownum = jqObj.jqGrid("getGridParam", "rownumbers");
         var isInputGirdIds = !validate.isNullOrEmpty(gridIds);
         isInputGirdIds = Array.isArray(gridIds) && gridIds.length < 1 ? true : isInputGirdIds;
@@ -479,8 +513,8 @@
 
     grid.prototype.getGridState = function () {
         //TODO 如果已非默认的方式打开grid，可能导致错误，
-        var jqObj = $(this);
-        return $(this).attr('gridstate');
+        var jqObj = $(this.Id);
+        return jqObj.attr('gridstate');
     };
 
 

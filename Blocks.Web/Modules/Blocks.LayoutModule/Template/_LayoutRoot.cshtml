@@ -1,7 +1,13 @@
 ﻿@using Blocks.Framework.Web.Mvc.Extensions
  
+@{
+    SetAntiForgeryCookie();
+}
 @RenderSection("register",false)
-@{ ResourceManager.WriteResources(); }
+@{
+    ResourceManager.WriteResources();
+   
+}
 <!DOCTYPE html>
 <html>
 <head>

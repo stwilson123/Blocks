@@ -39,6 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MasterData\IMasterDataAppService.cs" />
+    <Compile Include="MasterData\MasterDataAppService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestAppService\TestAppService.cs" />
     <Compile Include="TestAppService\ITestAppService.cs" />
