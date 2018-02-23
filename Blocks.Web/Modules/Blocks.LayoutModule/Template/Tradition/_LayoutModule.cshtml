@@ -68,6 +68,10 @@
     <link rel="shortcut icon" href="~/favicon.ico">
 
     <title>Blocks</title>
+    <style type="text/css">
+        
+        html, body{ margin:0; height:100%; }
+    </style>
     @*    <link rel="stylesheet" type="text/css" href="/fonts/material-icons/materialicons.css" > *@
     @*    *@
     @*    <link rel="stylesheet" type="text/css" href="/Modules/Blocks.ResourcesModule/lib/font-awesome/css/font-awesome.css?v=636512628386490276" > *@
@@ -159,8 +163,9 @@
 
         </section>
 
-        <section class="content">
-            <div class="container-fluid">
+        <section class="content" >
+        @*            <div class="container-fluid">*@
+            <div style="padding-bottom: 0px">
                 @RenderBody()
             </div>
         </section>

@@ -321,14 +321,16 @@
                 });
             } else {
                 setTimeout(function () {
+                  //  $("#gbox_gridInfo").parent().width()
 
+                    $gridObj.setGridWidth($('#gbox_'+$gridObj.attr('id')).parent().width());
                     //$gridObj.setGridWidth(options.getGridWidth(GridContainerLengthFactory.GetGridContainerWidth($("#ConfigName").val())));
                     //$gridObj.setGridHeight(options.getGridHeight(GridContainerLengthFactory.GetGridContainerHeight($("#ConfigName").val())));
 
                 }, 200);
                 $(window).resize(function () {
                     setTimeout(function () {
-
+                        $gridObj.setGridWidth($('#gbox_'+$gridObj.attr('id')).parent().width());
                         //$gridObj.setGridWidth(options.getGridWidth(
                         //    GridContainerLengthFactory.GetGridContainerWidth($("#ConfigName").val())
                         //));
