@@ -11,6 +11,7 @@ using Blocks.Framework.DBORM.Linq.Extends;
 using Blocks.Framework.Data.Paging;
 using System.Collections.ObjectModel;
 using Blocks.Framework.Data.Pager;
+using Blocks.Framework.Localization;
 
 namespace Blocks.Framework.DBORM.Linq
 {
@@ -208,8 +209,8 @@ namespace Blocks.Framework.DBORM.Linq
             ExceptionHelper.ThrowArgumentNullException(parameterCollection, "parameterCollection");
             foreach (var item in parameterCollection)
             {
-                if (!tableAlias.Any(t => t.TableAlias == item.Name))
-                    throw new BlocksDBORMException("Can't find table alias in the join expression.Please check join expression.");
+                if (tableAlias.Any() && !tableAlias.Any(t => t.TableAlias == item.Name))
+                    throw new BlocksDBORMException(StringLocal.Format("Can't find table alias in the join expression.Please check join expression."));
             }
         }
 

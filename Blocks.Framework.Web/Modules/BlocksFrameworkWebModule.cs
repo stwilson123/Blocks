@@ -13,8 +13,10 @@ using Abp.WebApi.Controllers.Dynamic.Selectors;
 using Blocks.Framework.Configurations;
 using Blocks.Framework.Environment.Extensions;
 using Blocks.Framework.Modules;
+using Blocks.Framework.Services.DataTransfer;
 using Blocks.Framework.Web.Api.Controllers;
 using Blocks.Framework.Web.Api.Controllers.Selectors;
+using Blocks.Framework.Web.Api.Filter;
 using Blocks.Framework.Web.Mvc;
 using Blocks.Framework.Web.Mvc.Controllers;
 using Blocks.Framework.Web.Mvc.Filters;
@@ -74,9 +76,13 @@ namespace Blocks.Framework.Web.Modules
         public override void PostInitialize()
         {
             //Config WebApi
-            var httpConfiguration = IocManager.Resolve<IAbpWebApiConfiguration>().HttpConfiguration;
+            var httpConfiguration = Configuration.Modules.AbpWebApi().HttpConfiguration;
             httpConfiguration.Services.Replace(typeof(IHttpControllerSelector), new BlocksHttpControllerSelector(httpConfiguration, IocManager.Resolve<DynamicApiControllerManager>(),IocManager));
-
+            httpConfiguration.Formatters.JsonFormatter.SerializerSettings.ContractResolver =
+                new JsonAttribuateContractResolver();
+            
+            httpConfiguration.Filters.Add(IocManager.Resolve<BlocksApiExceptionFilterAttribute>());
+            httpConfiguration.Filters.Add(IocManager.Resolve<BlocksApiActionFilterAttribute>());
 
            GlobalFilters.Filters.Add(IocManager.Resolve<BlocksWebMvcActionFilter>());
            GlobalFilters.Filters.Add(IocManager.Resolve<BlocksWebMvcResultFilter>());

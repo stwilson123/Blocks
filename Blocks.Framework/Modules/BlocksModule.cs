@@ -12,6 +12,7 @@ using Blocks.Framework.Environment.Exception;
 using Blocks.Framework.Environment.Extensions;
 using Blocks.Framework.Environment.Extensions.Models;
 using Blocks.Framework.Exceptions;
+using Blocks.Framework.Localization;
 
 namespace Blocks.Framework.Modules
 {
@@ -27,7 +28,7 @@ namespace Blocks.Framework.Modules
                 var Extension = IocManager.Resolve<IExtensionManager>().AvailableExtensions()
              .FirstOrDefault(t => t.Id == currentAssmeblyName);
                 if (Extension == null)
-                    throw new ExtensionNotFoundException($"{currentAssmeblyName} can't found extension depond on it.");
+                    throw new ExtensionNotFoundException(StringLocal.Format($"{currentAssmeblyName} can't found extension depond on it."));
                 return Extension;
             }
         }

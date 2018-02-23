@@ -15,7 +15,8 @@ namespace Blocks.ResourcesModule.ResourceManifestProviders {
             
             manifest.DefineScript(ResourceName.jquery_validate).SetUrl("lib/jquery-validation/dist/jquery.validate.js",
                 "lib/jquery-validation/dist/jquery.validate.js").SetVersion("1.9.1");
-           
+            manifest.DefineScript(ResourceName.jquery_cookies).SetUrl(PathBuilder.BuilderScripts("jquery.cookie.js"),
+                PathBuilder.BuilderScripts("jquery.cookie-1.4.1.min.js")).SetDependencies(ResourceName.jquery).SetVersion("1.4.1");
         }
 
         public Lazy<FeatureDescriptor> Feature { get; set; }

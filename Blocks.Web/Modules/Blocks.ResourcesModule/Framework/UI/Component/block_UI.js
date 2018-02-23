@@ -1,5 +1,5 @@
 ;define(['jquery', 'jquery_blockUI',
-    '/Modules/Blocks.ResourcesModule/Framework/UI/Component/Spin_UI.js'], function ($,jqueryBlockUI,spinUI) {
+    '/Modules/Blocks.ResourcesModule/Framework/UI/Component/spin_UI.js'], function ($,jqueryBlockUI,spinUI) {
 
     if (!$.blockUI) {
         return;

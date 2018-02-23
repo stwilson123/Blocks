@@ -3337,7 +3337,8 @@ namespace Blocks.BussnessEntityModule
 		public BDTA_MATERIAL_WORKINGConfiguration(string schema)
         {
 			ToTable("BDTA_MATERIAL_WORKING", schema);
-			            HasKey(x => x.Id);
+		
+            HasKey(x => x.Id);
 		 
 	    }
 	}
@@ -3352,7 +3353,8 @@ namespace Blocks.BussnessEntityModule
 		public BDTA_MATTYPEConfiguration(string schema)
         {
 			ToTable("BDTA_MATTYPE", schema);
-			            HasKey(x => x.Id);
+		
+            HasKey(x => x.Id);
 		 
 	    }
 	}
@@ -3367,7 +3369,8 @@ namespace Blocks.BussnessEntityModule
 		public BDTA_MOLDConfiguration(string schema)
         {
 			ToTable("BDTA_MOLD", schema);
-			            HasKey(x => x.Id);
+		
+            HasKey(x => x.Id);
 		 
 	    }
 	}
@@ -3382,7 +3385,8 @@ namespace Blocks.BussnessEntityModule
 		public BDTA_MOLD_ADDConfiguration(string schema)
         {
 			ToTable("BDTA_MOLD_ADD", schema);
-			            HasKey(x => x.Id);
+		
+            HasKey(x => x.Id);
 		 
 	    }
 	}
@@ -3397,7 +3401,8 @@ namespace Blocks.BussnessEntityModule
 		public BDTA_ORG_FACTORYConfiguration(string schema)
         {
 			ToTable("BDTA_ORG_FACTORY", schema);
-			            HasKey(x => x.Id);
+		
+            HasKey(x => x.Id);
 		 
 	    }
 	}
@@ -3412,7 +3417,8 @@ namespace Blocks.BussnessEntityModule
 		public BDTA_ORG_ORGRELATIONConfiguration(string schema)
         {
 			ToTable("BDTA_ORG_ORGRELATION", schema);
-			            HasKey(x => x.Id);
+		
+            HasKey(x => x.Id);
 		 
 	    }
 	}
@@ -3427,7 +3433,8 @@ namespace Blocks.BussnessEntityModule
 		public BDTA_ORG_STOREROOMConfiguration(string schema)
         {
 			ToTable("BDTA_ORG_STOREROOM", schema);
-			            HasKey(x => x.Id);
+		
+            HasKey(x => x.Id);
 		 
 	    }
 	}
@@ -3442,7 +3449,8 @@ namespace Blocks.BussnessEntityModule
 		public BDTA_ORG_STORESITEConfiguration(string schema)
         {
 			ToTable("BDTA_ORG_STORESITE", schema);
-			            HasKey(x => x.Id);
+		
+            HasKey(x => x.Id);
 		 
 	    }
 	}
@@ -3457,7 +3465,8 @@ namespace Blocks.BussnessEntityModule
 		public BDTA_PROCESSPATHConfiguration(string schema)
         {
 			ToTable("BDTA_PROCESSPATH", schema);
-			            HasKey(x => x.Id);
+		
+            HasKey(x => x.Id);
 		 
 	    }
 	}
@@ -3472,7 +3481,8 @@ namespace Blocks.BussnessEntityModule
 		public BDTA_QUEUEConfiguration(string schema)
         {
 			ToTable("BDTA_QUEUE", schema);
-			            HasKey(x => x.Id);
+		
+            HasKey(x => x.Id);
 		 
 	    }
 	}
@@ -3487,7 +3497,8 @@ namespace Blocks.BussnessEntityModule
 		public BDTA_ROUTINGConfiguration(string schema)
         {
 			ToTable("BDTA_ROUTING", schema);
-			            HasKey(x => x.Id);
+		
+            HasKey(x => x.Id);
 		 
 	    }
 	}
@@ -3502,7 +3513,8 @@ namespace Blocks.BussnessEntityModule
 		public BDTA_SETUPConfiguration(string schema)
         {
 			ToTable("BDTA_SETUP", schema);
-			            HasKey(x => x.Id);
+		
+            HasKey(x => x.Id);
 		 
 	    }
 	}
@@ -3517,7 +3529,8 @@ namespace Blocks.BussnessEntityModule
 		public BDTA_STATIONConfiguration(string schema)
         {
 			ToTable("BDTA_STATION", schema);
-			            HasKey(x => x.Id);
+		
+            HasKey(x => x.Id);
 		 
 	    }
 	}
@@ -3532,7 +3545,8 @@ namespace Blocks.BussnessEntityModule
 		public BDTA_CALDETAILConfiguration(string schema)
         {
 			ToTable("BDTA_CALDETAIL", schema);
-			            HasKey(x => x.Id);
+		
+            HasKey(x => x.Id);
 		 
 	    }
 	}
@@ -3547,7 +3561,8 @@ namespace Blocks.BussnessEntityModule
 		public BDTA_CALNUMBERConfiguration(string schema)
         {
 			ToTable("BDTA_CALNUMBER", schema);
-			            HasKey(x => x.Id);
+		
+            HasKey(x => x.Id);
 		 
 	    }
 	}
@@ -3562,7 +3577,8 @@ namespace Blocks.BussnessEntityModule
 		public BDTA_CHECKTOOLConfiguration(string schema)
         {
 			ToTable("BDTA_CHECKTOOL", schema);
-			            HasKey(x => x.Id);
+		
+            HasKey(x => x.Id);
 		 
 	    }
 	}
@@ -3577,7 +3593,8 @@ namespace Blocks.BussnessEntityModule
 		public BDTA_CODE_FORMATConfiguration(string schema)
         {
 			ToTable("BDTA_CODE_FORMAT", schema);
-			            HasKey(x => x.Id);
+		
+            HasKey(x => x.Id);
 		 
 	    }
 	}
@@ -3592,7 +3609,8 @@ namespace Blocks.BussnessEntityModule
 		public BDTA_CODE_FORMAT_DEFINEConfiguration(string schema)
         {
 			ToTable("BDTA_CODE_FORMAT_DEFINE", schema);
-			            HasKey(x => x.Id);
+		
+            HasKey(x => x.Id);
 		 
 	    }
 	}
@@ -3607,7 +3625,8 @@ namespace Blocks.BussnessEntityModule
 		public BDTA_CODE_FORMAT_ELEMENTConfiguration(string schema)
         {
 			ToTable("BDTA_CODE_FORMAT_ELEMENT", schema);
-			            HasKey(x => x.Id);
+		
+            HasKey(x => x.Id);
 		 
 	    }
 	}
@@ -3622,7 +3641,8 @@ namespace Blocks.BussnessEntityModule
 		public BDTA_COLLECT_STATIONConfiguration(string schema)
         {
 			ToTable("BDTA_COLLECT_STATION", schema);
-			            HasKey(x => x.Id);
+		
+            HasKey(x => x.Id);
 		 
 	    }
 	}
@@ -3637,7 +3657,8 @@ namespace Blocks.BussnessEntityModule
 		public BDTA_COLLECT_STATION_DETAILConfiguration(string schema)
         {
 			ToTable("BDTA_COLLECT_STATION_DETAIL", schema);
-			            HasKey(x => x.Id);
+		
+            HasKey(x => x.Id);
 		 
 	    }
 	}
@@ -3652,7 +3673,8 @@ namespace Blocks.BussnessEntityModule
 		public BDTA_COLLECT_STATION_SKILLConfiguration(string schema)
         {
 			ToTable("BDTA_COLLECT_STATION_SKILL", schema);
-			            HasKey(x => x.Id);
+		
+            HasKey(x => x.Id);
 		 
 	    }
 	}
@@ -3667,7 +3689,8 @@ namespace Blocks.BussnessEntityModule
 		public BDTA_COMMON_EQUIPMENTConfiguration(string schema)
         {
 			ToTable("BDTA_COMMON_EQUIPMENT", schema);
-			            HasKey(x => x.Id);
+		
+            HasKey(x => x.Id);
 		 
 	    }
 	}
@@ -3682,7 +3705,8 @@ namespace Blocks.BussnessEntityModule
 		public BDTA_DEPARTMENTConfiguration(string schema)
         {
 			ToTable("BDTA_DEPARTMENT", schema);
-			            HasKey(x => x.Id);
+		
+            HasKey(x => x.Id);
 		 
 	    }
 	}
@@ -3697,7 +3721,8 @@ namespace Blocks.BussnessEntityModule
 		public BDTA_DICTIONARYConfiguration(string schema)
         {
 			ToTable("BDTA_DICTIONARY", schema);
-			            HasKey(x => x.Id);
+		
+            HasKey(x => x.Id);
 		 
 	    }
 	}
@@ -3712,7 +3737,8 @@ namespace Blocks.BussnessEntityModule
 		public BDTA_DICTIONARY_TYPEConfiguration(string schema)
         {
 			ToTable("BDTA_DICTIONARY_TYPE", schema);
-			            HasKey(x => x.Id);
+		
+            HasKey(x => x.Id);
 		 
 	    }
 	}
@@ -3727,7 +3753,8 @@ namespace Blocks.BussnessEntityModule
 		public BDTA_EMPLOYEEConfiguration(string schema)
         {
 			ToTable("BDTA_EMPLOYEE", schema);
-			            HasKey(x => x.Id);
+		
+            HasKey(x => x.Id);
 		 
 	    }
 	}
@@ -3742,7 +3769,8 @@ namespace Blocks.BussnessEntityModule
 		public BDTA_EMPLOYEE_SKILLConfiguration(string schema)
         {
 			ToTable("BDTA_EMPLOYEE_SKILL", schema);
-			            HasKey(x => x.Id);
+		
+            HasKey(x => x.Id);
 		 
 	    }
 	}
@@ -3757,7 +3785,8 @@ namespace Blocks.BussnessEntityModule
 		public BDTA_FILEConfiguration(string schema)
         {
 			ToTable("BDTA_FILE", schema);
-			            HasKey(x => x.Id);
+		
+            HasKey(x => x.Id);
 		 
 	    }
 	}
@@ -3772,7 +3801,8 @@ namespace Blocks.BussnessEntityModule
 		public BDTA_FROCKConfiguration(string schema)
         {
 			ToTable("BDTA_FROCK", schema);
-			            HasKey(x => x.Id);
+		
+            HasKey(x => x.Id);
 		 
 	    }
 	}
@@ -3787,7 +3817,8 @@ namespace Blocks.BussnessEntityModule
 		public BDTA_KEY_EQUIPMENTConfiguration(string schema)
         {
 			ToTable("BDTA_KEY_EQUIPMENT", schema);
-			            HasKey(x => x.Id);
+		
+            HasKey(x => x.Id);
 		 
 	    }
 	}
@@ -3802,7 +3833,8 @@ namespace Blocks.BussnessEntityModule
 		public BDTA_MACHING_CENTERConfiguration(string schema)
         {
 			ToTable("BDTA_MACHING_CENTER", schema);
-			            HasKey(x => x.Id);
+		
+            HasKey(x => x.Id);
 		 
 	    }
 	}
@@ -3817,7 +3849,8 @@ namespace Blocks.BussnessEntityModule
 		public BDTA_MAINTAIN_STATIONConfiguration(string schema)
         {
 			ToTable("BDTA_MAINTAIN_STATION", schema);
-			            HasKey(x => x.Id);
+		
+            HasKey(x => x.Id);
 		 
 	    }
 	}
@@ -3832,7 +3865,8 @@ namespace Blocks.BussnessEntityModule
 		public BDTA_MATERIALConfiguration(string schema)
         {
 			ToTable("BDTA_MATERIAL", schema);
-			            HasKey(x => x.Id);
+		
+            HasKey(x => x.Id);
 		 
 	    }
 	}
@@ -3847,7 +3881,8 @@ namespace Blocks.BussnessEntityModule
 		public BDTA_MATERIAL_BOMConfiguration(string schema)
         {
 			ToTable("BDTA_MATERIAL_BOM", schema);
-			            HasKey(x => x.Id);
+		
+            HasKey(x => x.Id);
 		 
 	    }
 	}
@@ -3862,7 +3897,8 @@ namespace Blocks.BussnessEntityModule
 		public BDTA_MATERIAL_CATEGORYConfiguration(string schema)
         {
 			ToTable("BDTA_MATERIAL_CATEGORY", schema);
-			            HasKey(x => x.Id);
+		
+            HasKey(x => x.Id);
 		 
 	    }
 	}
@@ -3877,7 +3913,8 @@ namespace Blocks.BussnessEntityModule
 		public BDTA_MATERIAL_PACKAGEConfiguration(string schema)
         {
 			ToTable("BDTA_MATERIAL_PACKAGE", schema);
-			            HasKey(x => x.Id);
+		
+            HasKey(x => x.Id);
 		 
 	    }
 	}
@@ -3892,7 +3929,8 @@ namespace Blocks.BussnessEntityModule
 		public BDTA_MATERIAL_TYPEConfiguration(string schema)
         {
 			ToTable("BDTA_MATERIAL_TYPE", schema);
-			            HasKey(x => x.Id);
+		
+            HasKey(x => x.Id);
 		 
 	    }
 	}
@@ -3907,7 +3945,8 @@ namespace Blocks.BussnessEntityModule
 		public BDTA_MATERIAL_WORKCENTERConfiguration(string schema)
         {
 			ToTable("BDTA_MATERIAL_WORKCENTER", schema);
-			            HasKey(x => x.Id);
+		
+            HasKey(x => x.Id);
 		 
 	    }
 	}
@@ -3922,7 +3961,8 @@ namespace Blocks.BussnessEntityModule
 		public BDTA_SUPPLIERConfiguration(string schema)
         {
 			ToTable("BDTA_SUPPLIER", schema);
-			            HasKey(x => x.Id);
+		
+            HasKey(x => x.Id);
 		 
 	    }
 	}
@@ -3937,7 +3977,8 @@ namespace Blocks.BussnessEntityModule
 		public BDTA_WORKINGConfiguration(string schema)
         {
 			ToTable("BDTA_WORKING", schema);
-			            HasKey(x => x.Id);
+		
+            HasKey(x => x.Id);
 		 
 	    }
 	}
@@ -3952,7 +3993,8 @@ namespace Blocks.BussnessEntityModule
 		public BDTA_WORKNUMBERConfiguration(string schema)
         {
 			ToTable("BDTA_WORKNUMBER", schema);
-			            HasKey(x => x.Id);
+		
+            HasKey(x => x.Id);
 		 
 	    }
 	}
@@ -3967,7 +4009,8 @@ namespace Blocks.BussnessEntityModule
 		public BDTA_WORKPROCEDUREConfiguration(string schema)
         {
 			ToTable("BDTA_WORKPROCEDURE", schema);
-			            HasKey(x => x.Id);
+		
+            HasKey(x => x.Id);
 		 
 	    }
 	}
@@ -3982,7 +4025,8 @@ namespace Blocks.BussnessEntityModule
 		public BDTA_WORKSECTIONConfiguration(string schema)
         {
 			ToTable("BDTA_WORKSECTION", schema);
-			            HasKey(x => x.Id);
+		
+            HasKey(x => x.Id);
 		 
 	    }
 	}
@@ -3997,7 +4041,8 @@ namespace Blocks.BussnessEntityModule
 		public BDTA_WORKSHOPConfiguration(string schema)
         {
 			ToTable("BDTA_WORKSHOP", schema);
-			            HasKey(x => x.Id);
+		
+            HasKey(x => x.Id);
 		 
 	    }
 	}
@@ -4012,7 +4057,8 @@ namespace Blocks.BussnessEntityModule
 		public BDTA_WORKTEAMConfiguration(string schema)
         {
 			ToTable("BDTA_WORKTEAM", schema);
-			            HasKey(x => x.Id);
+		
+            HasKey(x => x.Id);
 		 
 	    }
 	}
@@ -4027,7 +4073,8 @@ namespace Blocks.BussnessEntityModule
 		public BDTA_WORKTEAM_MEMBERConfiguration(string schema)
         {
 			ToTable("BDTA_WORKTEAM_MEMBER", schema);
-			            HasKey(x => x.Id);
+		
+            HasKey(x => x.Id);
 		 
 	    }
 	}
@@ -4042,12 +4089,1577 @@ namespace Blocks.BussnessEntityModule
 		public FUR_ARRIVALS_BILLConfiguration(string schema)
         {
 			ToTable("FUR_ARRIVALS_BILL", schema);
-			            HasKey(x => x.Id);
+		
+            HasKey(x => x.Id);
 		 
 	    }
 	}
     
  
  
+    public partial class FUR_ARRIVALS_BILL_DETAILConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_ARRIVALS_BILL_DETAIL> 
+    {
+		public FUR_ARRIVALS_BILL_DETAILConfiguration()
+        {
+        }
+		public FUR_ARRIVALS_BILL_DETAILConfiguration(string schema)
+        {
+			ToTable("FUR_ARRIVALS_BILL_DETAIL", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
     
+ 
+ 
+    public partial class FUR_BDTA_CARRIERConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_BDTA_CARRIER> 
+    {
+		public FUR_BDTA_CARRIERConfiguration()
+        {
+        }
+		public FUR_BDTA_CARRIERConfiguration(string schema)
+        {
+			ToTable("FUR_BDTA_CARRIER", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_BDTA_CLIENT_INFOConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_BDTA_CLIENT_INFO> 
+    {
+		public FUR_BDTA_CLIENT_INFOConfiguration()
+        {
+        }
+		public FUR_BDTA_CLIENT_INFOConfiguration(string schema)
+        {
+			ToTable("FUR_BDTA_CLIENT_INFO", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_BDTA_CLIENT_TELConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_BDTA_CLIENT_TEL> 
+    {
+		public FUR_BDTA_CLIENT_TELConfiguration()
+        {
+        }
+		public FUR_BDTA_CLIENT_TELConfiguration(string schema)
+        {
+			ToTable("FUR_BDTA_CLIENT_TEL", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_BDTA_DEPT_AIMConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_BDTA_DEPT_AIM> 
+    {
+		public FUR_BDTA_DEPT_AIMConfiguration()
+        {
+        }
+		public FUR_BDTA_DEPT_AIMConfiguration(string schema)
+        {
+			ToTable("FUR_BDTA_DEPT_AIM", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_BDTA_DEPT_MGETYPEConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_BDTA_DEPT_MGETYPE> 
+    {
+		public FUR_BDTA_DEPT_MGETYPEConfiguration()
+        {
+        }
+		public FUR_BDTA_DEPT_MGETYPEConfiguration(string schema)
+        {
+			ToTable("FUR_BDTA_DEPT_MGETYPE", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_BDTA_DISCOUNTConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_BDTA_DISCOUNT> 
+    {
+		public FUR_BDTA_DISCOUNTConfiguration()
+        {
+        }
+		public FUR_BDTA_DISCOUNTConfiguration(string schema)
+        {
+			ToTable("FUR_BDTA_DISCOUNT", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_BDTA_IMOS_SO_MATCODEConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_BDTA_IMOS_SO_MATCODE> 
+    {
+		public FUR_BDTA_IMOS_SO_MATCODEConfiguration()
+        {
+        }
+		public FUR_BDTA_IMOS_SO_MATCODEConfiguration(string schema)
+        {
+			ToTable("FUR_BDTA_IMOS_SO_MATCODE", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_BDTA_PROPER_GTHConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_BDTA_PROPER_GTH> 
+    {
+		public FUR_BDTA_PROPER_GTHConfiguration()
+        {
+        }
+		public FUR_BDTA_PROPER_GTHConfiguration(string schema)
+        {
+			ToTable("FUR_BDTA_PROPER_GTH", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_BDTA_SPLITCREATEINFOConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_BDTA_SPLITCREATEINFO> 
+    {
+		public FUR_BDTA_SPLITCREATEINFOConfiguration()
+        {
+        }
+		public FUR_BDTA_SPLITCREATEINFOConfiguration(string schema)
+        {
+			ToTable("FUR_BDTA_SPLITCREATEINFO", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_BDTA_STATION_PAGConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_BDTA_STATION_PAG> 
+    {
+		public FUR_BDTA_STATION_PAGConfiguration()
+        {
+        }
+		public FUR_BDTA_STATION_PAGConfiguration(string schema)
+        {
+			ToTable("FUR_BDTA_STATION_PAG", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_COLLECT_DATA_LOGConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_COLLECT_DATA_LOG> 
+    {
+		public FUR_COLLECT_DATA_LOGConfiguration()
+        {
+        }
+		public FUR_COLLECT_DATA_LOGConfiguration(string schema)
+        {
+			ToTable("FUR_COLLECT_DATA_LOG", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_COLLECT_DATA_QWPBConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_COLLECT_DATA_QWPB> 
+    {
+		public FUR_COLLECT_DATA_QWPBConfiguration()
+        {
+        }
+		public FUR_COLLECT_DATA_QWPBConfiguration(string schema)
+        {
+			ToTable("FUR_COLLECT_DATA_QWPB", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_COLLECT_STANDAR_PACKAGEConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_COLLECT_STANDAR_PACKAGE> 
+    {
+		public FUR_COLLECT_STANDAR_PACKAGEConfiguration()
+        {
+        }
+		public FUR_COLLECT_STANDAR_PACKAGEConfiguration(string schema)
+        {
+			ToTable("FUR_COLLECT_STANDAR_PACKAGE", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_COMPLETEQTYConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_COMPLETEQTY> 
+    {
+		public FUR_COMPLETEQTYConfiguration()
+        {
+        }
+		public FUR_COMPLETEQTYConfiguration(string schema)
+        {
+			ToTable("FUR_COMPLETEQTY", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_MERGEBILL_SECONDARYSPLITConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_MERGEBILL_SECONDARYSPLIT> 
+    {
+		public FUR_MERGEBILL_SECONDARYSPLITConfiguration()
+        {
+        }
+		public FUR_MERGEBILL_SECONDARYSPLITConfiguration(string schema)
+        {
+			ToTable("FUR_MERGEBILL_SECONDARYSPLIT", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_MERGEBILL_SECONDARYSPLIT_RConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_MERGEBILL_SECONDARYSPLIT_R> 
+    {
+		public FUR_MERGEBILL_SECONDARYSPLIT_RConfiguration()
+        {
+        }
+		public FUR_MERGEBILL_SECONDARYSPLIT_RConfiguration(string schema)
+        {
+			ToTable("FUR_MERGEBILL_SECONDARYSPLIT_R", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_PICK_TYPEConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_PICK_TYPE> 
+    {
+		public FUR_PICK_TYPEConfiguration()
+        {
+        }
+		public FUR_PICK_TYPEConfiguration(string schema)
+        {
+			ToTable("FUR_PICK_TYPE", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_PICKINGConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_PICKING> 
+    {
+		public FUR_PICKINGConfiguration()
+        {
+        }
+		public FUR_PICKINGConfiguration(string schema)
+        {
+			ToTable("FUR_PICKING", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_PICKING_DETAILConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_PICKING_DETAIL> 
+    {
+		public FUR_PICKING_DETAILConfiguration()
+        {
+        }
+		public FUR_PICKING_DETAILConfiguration(string schema)
+        {
+			ToTable("FUR_PICKING_DETAIL", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_PICKING_MERGEConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_PICKING_MERGE> 
+    {
+		public FUR_PICKING_MERGEConfiguration()
+        {
+        }
+		public FUR_PICKING_MERGEConfiguration(string schema)
+        {
+			ToTable("FUR_PICKING_MERGE", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_PLAN_KL_SCHEDULEConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_PLAN_KL_SCHEDULE> 
+    {
+		public FUR_PLAN_KL_SCHEDULEConfiguration()
+        {
+        }
+		public FUR_PLAN_KL_SCHEDULEConfiguration(string schema)
+        {
+			ToTable("FUR_PLAN_KL_SCHEDULE", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_REJECTSINFOConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_REJECTSINFO> 
+    {
+		public FUR_REJECTSINFOConfiguration()
+        {
+        }
+		public FUR_REJECTSINFOConfiguration(string schema)
+        {
+			ToTable("FUR_REJECTSINFO", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_SALESORDERConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_SALESORDER> 
+    {
+		public FUR_SALESORDERConfiguration()
+        {
+        }
+		public FUR_SALESORDERConfiguration(string schema)
+        {
+			ToTable("FUR_SALESORDER", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_SALESORDERPROCESS_DETAILConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_SALESORDERPROCESS_DETAIL> 
+    {
+		public FUR_SALESORDERPROCESS_DETAILConfiguration()
+        {
+        }
+		public FUR_SALESORDERPROCESS_DETAILConfiguration(string schema)
+        {
+			ToTable("FUR_SALESORDERPROCESS_DETAIL", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_SAP_ROUTINGConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_SAP_ROUTING> 
+    {
+		public FUR_SAP_ROUTINGConfiguration()
+        {
+        }
+		public FUR_SAP_ROUTINGConfiguration(string schema)
+        {
+			ToTable("FUR_SAP_ROUTING", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_SHIPMENTConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_SHIPMENT> 
+    {
+		public FUR_SHIPMENTConfiguration()
+        {
+        }
+		public FUR_SHIPMENTConfiguration(string schema)
+        {
+			ToTable("FUR_SHIPMENT", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_SHIPMENT_NEWConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_SHIPMENT_NEW> 
+    {
+		public FUR_SHIPMENT_NEWConfiguration()
+        {
+        }
+		public FUR_SHIPMENT_NEWConfiguration(string schema)
+        {
+			ToTable("FUR_SHIPMENT_NEW", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_SHIPMENT_NEW_DETAILConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_SHIPMENT_NEW_DETAIL> 
+    {
+		public FUR_SHIPMENT_NEW_DETAILConfiguration()
+        {
+        }
+		public FUR_SHIPMENT_NEW_DETAILConfiguration(string schema)
+        {
+			ToTable("FUR_SHIPMENT_NEW_DETAIL", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_SHIPMENT_PICK_DETAILConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_SHIPMENT_PICK_DETAIL> 
+    {
+		public FUR_SHIPMENT_PICK_DETAILConfiguration()
+        {
+        }
+		public FUR_SHIPMENT_PICK_DETAILConfiguration(string schema)
+        {
+			ToTable("FUR_SHIPMENT_PICK_DETAIL", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_SHIPMENT_QTYINFOConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_SHIPMENT_QTYINFO> 
+    {
+		public FUR_SHIPMENT_QTYINFOConfiguration()
+        {
+        }
+		public FUR_SHIPMENT_QTYINFOConfiguration(string schema)
+        {
+			ToTable("FUR_SHIPMENT_QTYINFO", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_SHIPMENT_SO_DETAILConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_SHIPMENT_SO_DETAIL> 
+    {
+		public FUR_SHIPMENT_SO_DETAILConfiguration()
+        {
+        }
+		public FUR_SHIPMENT_SO_DETAILConfiguration(string schema)
+        {
+			ToTable("FUR_SHIPMENT_SO_DETAIL", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_SOURCE_PRODUCT_DETAIL_DOORConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_SOURCE_PRODUCT_DETAIL_DOOR> 
+    {
+		public FUR_SOURCE_PRODUCT_DETAIL_DOORConfiguration()
+        {
+        }
+		public FUR_SOURCE_PRODUCT_DETAIL_DOORConfiguration(string schema)
+        {
+			ToTable("FUR_SOURCE_PRODUCT_DETAIL_DOOR", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_SOURCE_PRODUCT_DETAIL_GTConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_SOURCE_PRODUCT_DETAIL_GT> 
+    {
+		public FUR_SOURCE_PRODUCT_DETAIL_GTConfiguration()
+        {
+        }
+		public FUR_SOURCE_PRODUCT_DETAIL_GTConfiguration(string schema)
+        {
+			ToTable("FUR_SOURCE_PRODUCT_DETAIL_GT", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_TRANSFER_ORDERConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_TRANSFER_ORDER> 
+    {
+		public FUR_TRANSFER_ORDERConfiguration()
+        {
+        }
+		public FUR_TRANSFER_ORDERConfiguration(string schema)
+        {
+			ToTable("FUR_TRANSFER_ORDER", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_TRANSFER_ORDER_DETAILConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_TRANSFER_ORDER_DETAIL> 
+    {
+		public FUR_TRANSFER_ORDER_DETAILConfiguration()
+        {
+        }
+		public FUR_TRANSFER_ORDER_DETAILConfiguration(string schema)
+        {
+			ToTable("FUR_TRANSFER_ORDER_DETAIL", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_TRANSFER_ORDER_GOODSDETAILConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_TRANSFER_ORDER_GOODSDETAIL> 
+    {
+		public FUR_TRANSFER_ORDER_GOODSDETAILConfiguration()
+        {
+        }
+		public FUR_TRANSFER_ORDER_GOODSDETAILConfiguration(string schema)
+        {
+			ToTable("FUR_TRANSFER_ORDER_GOODSDETAIL", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_TRANSPORTConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_TRANSPORT> 
+    {
+		public FUR_TRANSPORTConfiguration()
+        {
+        }
+		public FUR_TRANSPORTConfiguration(string schema)
+        {
+			ToTable("FUR_TRANSPORT", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_TRANSPORT_DETAILConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_TRANSPORT_DETAIL> 
+    {
+		public FUR_TRANSPORT_DETAILConfiguration()
+        {
+        }
+		public FUR_TRANSPORT_DETAILConfiguration(string schema)
+        {
+			ToTable("FUR_TRANSPORT_DETAIL", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_WORKORDER_REASONConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_WORKORDER_REASON> 
+    {
+		public FUR_WORKORDER_REASONConfiguration()
+        {
+        }
+		public FUR_WORKORDER_REASONConfiguration(string schema)
+        {
+			ToTable("FUR_WORKORDER_REASON", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class FUR_WORKORDER_TYPEConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<FUR_WORKORDER_TYPE> 
+    {
+		public FUR_WORKORDER_TYPEConfiguration()
+        {
+        }
+		public FUR_WORKORDER_TYPEConfiguration(string schema)
+        {
+			ToTable("FUR_WORKORDER_TYPE", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class MATERIAL_APPLYConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<MATERIAL_APPLY> 
+    {
+		public MATERIAL_APPLYConfiguration()
+        {
+        }
+		public MATERIAL_APPLYConfiguration(string schema)
+        {
+			ToTable("MATERIAL_APPLY", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class MATERIAL_APPLY_DETAILConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<MATERIAL_APPLY_DETAIL> 
+    {
+		public MATERIAL_APPLY_DETAILConfiguration()
+        {
+        }
+		public MATERIAL_APPLY_DETAILConfiguration(string schema)
+        {
+			ToTable("MATERIAL_APPLY_DETAIL", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class MATERIAL_APPLY_REFERConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<MATERIAL_APPLY_REFER> 
+    {
+		public MATERIAL_APPLY_REFERConfiguration()
+        {
+        }
+		public MATERIAL_APPLY_REFERConfiguration(string schema)
+        {
+			ToTable("MATERIAL_APPLY_REFER", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class PACK_ARCHIVEConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<PACK_ARCHIVE> 
+    {
+		public PACK_ARCHIVEConfiguration()
+        {
+        }
+		public PACK_ARCHIVEConfiguration(string schema)
+        {
+			ToTable("PACK_ARCHIVE", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class PLAN_CHECK_COLLECTDATAConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<PLAN_CHECK_COLLECTDATA> 
+    {
+		public PLAN_CHECK_COLLECTDATAConfiguration()
+        {
+        }
+		public PLAN_CHECK_COLLECTDATAConfiguration(string schema)
+        {
+			ToTable("PLAN_CHECK_COLLECTDATA", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class SYS_LOGConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<SYS_LOG> 
+    {
+		public SYS_LOGConfiguration()
+        {
+        }
+		public SYS_LOGConfiguration(string schema)
+        {
+			ToTable("SYS_LOG", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class SYS_POPEDOMPROGRAMConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<SYS_POPEDOMPROGRAM> 
+    {
+		public SYS_POPEDOMPROGRAMConfiguration()
+        {
+        }
+		public SYS_POPEDOMPROGRAMConfiguration(string schema)
+        {
+			ToTable("SYS_POPEDOMPROGRAM", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class SYS_PROGRAMConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<SYS_PROGRAM> 
+    {
+		public SYS_PROGRAMConfiguration()
+        {
+        }
+		public SYS_PROGRAMConfiguration(string schema)
+        {
+			ToTable("SYS_PROGRAM", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class SYS_PROGRAM_OPERATION_WEBConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<SYS_PROGRAM_OPERATION_WEB> 
+    {
+		public SYS_PROGRAM_OPERATION_WEBConfiguration()
+        {
+        }
+		public SYS_PROGRAM_OPERATION_WEBConfiguration(string schema)
+        {
+			ToTable("SYS_PROGRAM_OPERATION_WEB", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class SYS_PROGRAM_WINFORMConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<SYS_PROGRAM_WINFORM> 
+    {
+		public SYS_PROGRAM_WINFORMConfiguration()
+        {
+        }
+		public SYS_PROGRAM_WINFORMConfiguration(string schema)
+        {
+			ToTable("SYS_PROGRAM_WINFORM", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class SYS_ROLEAUTHORIZEConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<SYS_ROLEAUTHORIZE> 
+    {
+		public SYS_ROLEAUTHORIZEConfiguration()
+        {
+        }
+		public SYS_ROLEAUTHORIZEConfiguration(string schema)
+        {
+			ToTable("SYS_ROLEAUTHORIZE", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class SYS_ROLEINFOConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<SYS_ROLEINFO> 
+    {
+		public SYS_ROLEINFOConfiguration()
+        {
+        }
+		public SYS_ROLEINFOConfiguration(string schema)
+        {
+			ToTable("SYS_ROLEINFO", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class SYS_ROLEUSERConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<SYS_ROLEUSER> 
+    {
+		public SYS_ROLEUSERConfiguration()
+        {
+        }
+		public SYS_ROLEUSERConfiguration(string schema)
+        {
+			ToTable("SYS_ROLEUSER", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class SYS_SYSTEMINFOConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<SYS_SYSTEMINFO> 
+    {
+		public SYS_SYSTEMINFOConfiguration()
+        {
+        }
+		public SYS_SYSTEMINFOConfiguration(string schema)
+        {
+			ToTable("SYS_SYSTEMINFO", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class SYS_TESTConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<SYS_TEST> 
+    {
+		public SYS_TESTConfiguration()
+        {
+        }
+		public SYS_TESTConfiguration(string schema)
+        {
+			ToTable("SYS_TEST", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class SYS_USERINFOConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<SYS_USERINFO> 
+    {
+		public SYS_USERINFOConfiguration()
+        {
+        }
+		public SYS_USERINFOConfiguration(string schema)
+        {
+			ToTable("SYS_USERINFO", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class TESTENTITYConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<TESTENTITY> 
+    {
+		public TESTENTITYConfiguration()
+        {
+        }
+		public TESTENTITYConfiguration(string schema)
+        {
+			ToTable("TESTENTITY", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class TESTENTITY2Configuration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<TESTENTITY2> 
+    {
+		public TESTENTITY2Configuration()
+        {
+        }
+		public TESTENTITY2Configuration(string schema)
+        {
+			ToTable("TESTENTITY2", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class TESTENTITY3Configuration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<TESTENTITY3> 
+    {
+		public TESTENTITY3Configuration()
+        {
+        }
+		public TESTENTITY3Configuration(string schema)
+        {
+			ToTable("TESTENTITY3", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class TR_MATERIAL_APPLY_DISPATCHBOMConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<TR_MATERIAL_APPLY_DISPATCHBOM> 
+    {
+		public TR_MATERIAL_APPLY_DISPATCHBOMConfiguration()
+        {
+        }
+		public TR_MATERIAL_APPLY_DISPATCHBOMConfiguration(string schema)
+        {
+			ToTable("TR_MATERIAL_APPLY_DISPATCHBOM", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class WAREHOUSE_COLLECT_LOGConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_COLLECT_LOG> 
+    {
+		public WAREHOUSE_COLLECT_LOGConfiguration()
+        {
+        }
+		public WAREHOUSE_COLLECT_LOGConfiguration(string schema)
+        {
+			ToTable("WAREHOUSE_COLLECT_LOG", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class WAREHOUSE_DELIVERY_BILLConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_DELIVERY_BILL> 
+    {
+		public WAREHOUSE_DELIVERY_BILLConfiguration()
+        {
+        }
+		public WAREHOUSE_DELIVERY_BILLConfiguration(string schema)
+        {
+			ToTable("WAREHOUSE_DELIVERY_BILL", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class WAREHOUSE_IN_COLLECTDATAConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_IN_COLLECTDATA> 
+    {
+		public WAREHOUSE_IN_COLLECTDATAConfiguration()
+        {
+        }
+		public WAREHOUSE_IN_COLLECTDATAConfiguration(string schema)
+        {
+			ToTable("WAREHOUSE_IN_COLLECTDATA", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class WAREHOUSE_IN_FORMConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_IN_FORM> 
+    {
+		public WAREHOUSE_IN_FORMConfiguration()
+        {
+        }
+		public WAREHOUSE_IN_FORMConfiguration(string schema)
+        {
+			ToTable("WAREHOUSE_IN_FORM", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class WAREHOUSE_IN_FORM_DETAILConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_IN_FORM_DETAIL> 
+    {
+		public WAREHOUSE_IN_FORM_DETAILConfiguration()
+        {
+        }
+		public WAREHOUSE_IN_FORM_DETAILConfiguration(string schema)
+        {
+			ToTable("WAREHOUSE_IN_FORM_DETAIL", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class WAREHOUSE_IN_STOCKConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_IN_STOCK> 
+    {
+		public WAREHOUSE_IN_STOCKConfiguration()
+        {
+        }
+		public WAREHOUSE_IN_STOCKConfiguration(string schema)
+        {
+			ToTable("WAREHOUSE_IN_STOCK", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class WAREHOUSE_IN_STOCK_LOCKConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_IN_STOCK_LOCK> 
+    {
+		public WAREHOUSE_IN_STOCK_LOCKConfiguration()
+        {
+        }
+		public WAREHOUSE_IN_STOCK_LOCKConfiguration(string schema)
+        {
+			ToTable("WAREHOUSE_IN_STOCK_LOCK", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class WAREHOUSE_OUT_FORMConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_OUT_FORM> 
+    {
+		public WAREHOUSE_OUT_FORMConfiguration()
+        {
+        }
+		public WAREHOUSE_OUT_FORMConfiguration(string schema)
+        {
+			ToTable("WAREHOUSE_OUT_FORM", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class WAREHOUSE_OUT_FORM_DETAILConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_OUT_FORM_DETAIL> 
+    {
+		public WAREHOUSE_OUT_FORM_DETAILConfiguration()
+        {
+        }
+		public WAREHOUSE_OUT_FORM_DETAILConfiguration(string schema)
+        {
+			ToTable("WAREHOUSE_OUT_FORM_DETAIL", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class WAREHOUSE_OUT_FORM_FAULTConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_OUT_FORM_FAULT> 
+    {
+		public WAREHOUSE_OUT_FORM_FAULTConfiguration()
+        {
+        }
+		public WAREHOUSE_OUT_FORM_FAULTConfiguration(string schema)
+        {
+			ToTable("WAREHOUSE_OUT_FORM_FAULT", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class WAREHOUSE_OUT_FORM_ITEMConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_OUT_FORM_ITEM> 
+    {
+		public WAREHOUSE_OUT_FORM_ITEMConfiguration()
+        {
+        }
+		public WAREHOUSE_OUT_FORM_ITEMConfiguration(string schema)
+        {
+			ToTable("WAREHOUSE_OUT_FORM_ITEM", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class WAREHOUSE_OUT_STOCK_LOCKConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_OUT_STOCK_LOCK> 
+    {
+		public WAREHOUSE_OUT_STOCK_LOCKConfiguration()
+        {
+        }
+		public WAREHOUSE_OUT_STOCK_LOCKConfiguration(string schema)
+        {
+			ToTable("WAREHOUSE_OUT_STOCK_LOCK", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class WAREHOUSE_QUALITY_FORMConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_QUALITY_FORM> 
+    {
+		public WAREHOUSE_QUALITY_FORMConfiguration()
+        {
+        }
+		public WAREHOUSE_QUALITY_FORMConfiguration(string schema)
+        {
+			ToTable("WAREHOUSE_QUALITY_FORM", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class WAREHOUSE_SCAN_CODE_INFOConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_SCAN_CODE_INFO> 
+    {
+		public WAREHOUSE_SCAN_CODE_INFOConfiguration()
+        {
+        }
+		public WAREHOUSE_SCAN_CODE_INFOConfiguration(string schema)
+        {
+			ToTable("WAREHOUSE_SCAN_CODE_INFO", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class MIGRATIONHISTORYConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<MIGRATIONHISTORY> 
+    {
+		public MIGRATIONHISTORYConfiguration()
+        {
+        }
+		public MIGRATIONHISTORYConfiguration(string schema)
+        {
+			ToTable("MIGRATIONHISTORY", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BLOCKS_AUDITLOGSConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_AUDITLOGS> 
+    {
+		public BLOCKS_AUDITLOGSConfiguration()
+        {
+        }
+		public BLOCKS_AUDITLOGSConfiguration(string schema)
+        {
+			ToTable("BLOCKS_AUDITLOGS", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BLOCKS_BACKGROUNDJOBSConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_BACKGROUNDJOBS> 
+    {
+		public BLOCKS_BACKGROUNDJOBSConfiguration()
+        {
+        }
+		public BLOCKS_BACKGROUNDJOBSConfiguration(string schema)
+        {
+			ToTable("BLOCKS_BACKGROUNDJOBS", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BLOCKS_FEATURESConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_FEATURES> 
+    {
+		public BLOCKS_FEATURESConfiguration()
+        {
+        }
+		public BLOCKS_FEATURESConfiguration(string schema)
+        {
+			ToTable("BLOCKS_FEATURES", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BLOCKS_EDITIONSConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_EDITIONS> 
+    {
+		public BLOCKS_EDITIONSConfiguration()
+        {
+        }
+		public BLOCKS_EDITIONSConfiguration(string schema)
+        {
+			ToTable("BLOCKS_EDITIONS", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BLOCKS_LANGUAGESConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_LANGUAGES> 
+    {
+		public BLOCKS_LANGUAGESConfiguration()
+        {
+        }
+		public BLOCKS_LANGUAGESConfiguration(string schema)
+        {
+			ToTable("BLOCKS_LANGUAGES", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BLOCKS_LANGUAGETEXTSConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_LANGUAGETEXTS> 
+    {
+		public BLOCKS_LANGUAGETEXTSConfiguration()
+        {
+        }
+		public BLOCKS_LANGUAGETEXTSConfiguration(string schema)
+        {
+			ToTable("BLOCKS_LANGUAGETEXTS", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BLOCKS_NOTIFICATIONSConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_NOTIFICATIONS> 
+    {
+		public BLOCKS_NOTIFICATIONSConfiguration()
+        {
+        }
+		public BLOCKS_NOTIFICATIONSConfiguration(string schema)
+        {
+			ToTable("BLOCKS_NOTIFICATIONS", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BLOCKS_NOTIFY_SUBSCRIPTIONSConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_NOTIFY_SUBSCRIPTIONS> 
+    {
+		public BLOCKS_NOTIFY_SUBSCRIPTIONSConfiguration()
+        {
+        }
+		public BLOCKS_NOTIFY_SUBSCRIPTIONSConfiguration(string schema)
+        {
+			ToTable("BLOCKS_NOTIFY_SUBSCRIPTIONS", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BLOCKS_ORGANIZATION_UNITSConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_ORGANIZATION_UNITS> 
+    {
+		public BLOCKS_ORGANIZATION_UNITSConfiguration()
+        {
+        }
+		public BLOCKS_ORGANIZATION_UNITSConfiguration(string schema)
+        {
+			ToTable("BLOCKS_ORGANIZATION_UNITS", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BLOCKS_PERMISSIONSConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_PERMISSIONS> 
+    {
+		public BLOCKS_PERMISSIONSConfiguration()
+        {
+        }
+		public BLOCKS_PERMISSIONSConfiguration(string schema)
+        {
+			ToTable("BLOCKS_PERMISSIONS", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BLOCKS_ROLESConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_ROLES> 
+    {
+		public BLOCKS_ROLESConfiguration()
+        {
+        }
+		public BLOCKS_ROLESConfiguration(string schema)
+        {
+			ToTable("BLOCKS_ROLES", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BLOCKS_USERSConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_USERS> 
+    {
+		public BLOCKS_USERSConfiguration()
+        {
+        }
+		public BLOCKS_USERSConfiguration(string schema)
+        {
+			ToTable("BLOCKS_USERS", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BLOCKS_USER_CLAIMSConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_USER_CLAIMS> 
+    {
+		public BLOCKS_USER_CLAIMSConfiguration()
+        {
+        }
+		public BLOCKS_USER_CLAIMSConfiguration(string schema)
+        {
+			ToTable("BLOCKS_USER_CLAIMS", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BLOCKS_USER_LOGINSConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_USER_LOGINS> 
+    {
+		public BLOCKS_USER_LOGINSConfiguration()
+        {
+        }
+		public BLOCKS_USER_LOGINSConfiguration(string schema)
+        {
+			ToTable("BLOCKS_USER_LOGINS", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BLOCKS_USER_ROLESConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_USER_ROLES> 
+    {
+		public BLOCKS_USER_ROLESConfiguration()
+        {
+        }
+		public BLOCKS_USER_ROLESConfiguration(string schema)
+        {
+			ToTable("BLOCKS_USER_ROLES", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BLOCKS_SETTINGSConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_SETTINGS> 
+    {
+		public BLOCKS_SETTINGSConfiguration()
+        {
+        }
+		public BLOCKS_SETTINGSConfiguration(string schema)
+        {
+			ToTable("BLOCKS_SETTINGS", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BLOCKS_TENANT_NOTIFICATIONSConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_TENANT_NOTIFICATIONS> 
+    {
+		public BLOCKS_TENANT_NOTIFICATIONSConfiguration()
+        {
+        }
+		public BLOCKS_TENANT_NOTIFICATIONSConfiguration(string schema)
+        {
+			ToTable("BLOCKS_TENANT_NOTIFICATIONS", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BLOCKS_TENANTSConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_TENANTS> 
+    {
+		public BLOCKS_TENANTSConfiguration()
+        {
+        }
+		public BLOCKS_TENANTSConfiguration(string schema)
+        {
+			ToTable("BLOCKS_TENANTS", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BLOCKS_USER_ACCOUNTSConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_USER_ACCOUNTS> 
+    {
+		public BLOCKS_USER_ACCOUNTSConfiguration()
+        {
+        }
+		public BLOCKS_USER_ACCOUNTSConfiguration(string schema)
+        {
+			ToTable("BLOCKS_USER_ACCOUNTS", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BLOCKS_USER_LOGINATTEMPTSConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_USER_LOGINATTEMPTS> 
+    {
+		public BLOCKS_USER_LOGINATTEMPTSConfiguration()
+        {
+        }
+		public BLOCKS_USER_LOGINATTEMPTSConfiguration(string schema)
+        {
+			ToTable("BLOCKS_USER_LOGINATTEMPTS", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BLOCKS_USERNOTIFICATIONSConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_USERNOTIFICATIONS> 
+    {
+		public BLOCKS_USERNOTIFICATIONSConfiguration()
+        {
+        }
+		public BLOCKS_USERNOTIFICATIONSConfiguration(string schema)
+        {
+			ToTable("BLOCKS_USERNOTIFICATIONS", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BLOCKS_USERORGANIZATION_UNITSConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_USERORGANIZATION_UNITS> 
+    {
+		public BLOCKS_USERORGANIZATION_UNITSConfiguration()
+        {
+        }
+		public BLOCKS_USERORGANIZATION_UNITSConfiguration(string schema)
+        {
+			ToTable("BLOCKS_USERORGANIZATION_UNITS", schema);
+		
+            HasKey(x => x.Id);
+		 
+	    }
+	}
 }

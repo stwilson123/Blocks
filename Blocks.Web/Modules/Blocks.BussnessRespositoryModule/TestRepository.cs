@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using Blocks.BussnessApplicationModule.TestAppService.DTO;
 using Blocks.BussnessEntityModule;
+using Blocks.Framework.Data.Paging;
 using Blocks.Framework.DBORM.DBContext;
+using Blocks.Framework.DBORM.Linq;
 using Blocks.Framework.DBORM.Repository;
 
 namespace Blocks.BussnessRespositoryModule
@@ -41,6 +44,12 @@ namespace Blocks.BussnessRespositoryModule
             throw new NotImplementedException();
         }
 
-       
+        public PageList<PageResult> GetPageList(SearchModel search)
+        {
+            return GetContextTable().Paging((TESTENTITY t) => new PageResult{
+                ID = t.Id,
+                CollectStationNo = t.TESTENTITY2ID
+            }, search.page);
+        }
     }
 }

@@ -1,8 +1,10 @@
 ﻿using System;
 using Abp.Domain.Services;
 using Abp.Events.Bus;
+using Blocks.BussnessApplicationModule.TestAppService.DTO;
 using Blocks.BussnessEntityModule;
 using Blocks.BussnessRespositoryModule;
+using Blocks.Framework.Data.Paging;
 using Blocks.Framework.Event;
 
 namespace Blocks.BussnessDomainModule
@@ -29,6 +31,20 @@ namespace Blocks.BussnessDomainModule
         {
              
             return testRepository.Insert(new TESTENTITY()).Id;
+        }
+        
+        public virtual string GetList(string value)
+        {
+            EventBus.Trigger(new TaskEventData {id = "123123"});
+            testRepository.FirstOrDefault(t => t.Id == "123");
+            return testRepository.GetValue(value);
+        }
+        
+        
+        public virtual  PageList<PageResult>  GetPageList(SearchModel search)
+        {
+            var a =  testRepository.GetPageList(search);
+            return a;
         }
     }
     

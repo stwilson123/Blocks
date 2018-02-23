@@ -151,9 +151,10 @@
     <Content Include="Framework\Security\security.js" />
     <Content Include="Framework\UI\1.0\UI.Grid.js" />
     <Content Include="Framework\UI\1.0\UI.js" />
-    <Content Include="Framework\UI\Component\Block_UI.js" />
-    <Content Include="Framework\UI\Component\Grid.js" />
-    <Content Include="Framework\UI\Component\Spin_UI.js" />
+    <Content Include="Framework\UI\Component\block_UI.js" />
+    <Content Include="Framework\UI\Component\grid.js" />
+    <Content Include="Framework\UI\Component\msg_alert.js" />
+    <Content Include="Framework\UI\Component\spin_UI.js" />
     <Content Include="Framework\UI\UI.js" />
     <Content Include="Framework\Utility\1.0\Common.js" />
     <Content Include="Framework\Utility\utility.js" />
@@ -2435,6 +2436,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Scripts\jquery.cookie-1.4.1.min.js" />
+    <None Include="Scripts\jquery.cookie.js" />
     <None Include="Scripts\r.js" />
     <None Include="Scripts\require.js" />
   </ItemGroup>

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Blocks.Framework.Services.DataTransfer;
 
 namespace Blocks.Framework.Data.Pager
 {

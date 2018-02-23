@@ -2,6 +2,7 @@
 using Abp.Dependency;
 using Abp.Modules;
 using Blocks.Framework.Exceptions;
+using Blocks.Framework.Localization;
 
 namespace Blocks.Framework.Caching {
     public class CacheModule : AbpModule {
@@ -25,7 +26,7 @@ namespace Blocks.Framework.Caching {
                 var resolutionContext = creationContext.SelectScopeRoot((t) => t.Length >= 2 ? t[t.Length - 2] : null);
                 var handler = resolutionContext != null ? resolutionContext.Handler : null;
                 if (handler == null)
-                    throw new BlocksException("Can't find suitable handler in resolutionContext.");
+                    throw new BlocksException(StringLocal.Format("Can't find suitable handler in resolutionContext."));
                 return new DefaultCacheManager(handler.ComponentModel.Implementation.UnderlyingSystemType,  kernel.Resolve<ICacheHolder>());
             }, DependencyLifeStyle.Transient);
         }

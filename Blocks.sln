@@ -98,6 +98,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VueSample", "VueSample\VueS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blocks.BussnessDomainExtendModule", "Blocks.Web\Modules\Blocks.BussnessDomainExtendModule\Blocks.BussnessDomainExtendModule.csproj", "{CFCC17E1-DD89-4135-A35B-682E722D070B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blocks.BussnessDTOModule", "Blocks.Web\Modules\Blocks.BussnessDTOModule\Blocks.BussnessDTOModule.csproj", "{AD72F6ED-27BD-4FFF-AD43-B653DC8F67F5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -260,6 +262,10 @@ Global
 		{CFCC17E1-DD89-4135-A35B-682E722D070B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CFCC17E1-DD89-4135-A35B-682E722D070B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CFCC17E1-DD89-4135-A35B-682E722D070B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD72F6ED-27BD-4FFF-AD43-B653DC8F67F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD72F6ED-27BD-4FFF-AD43-B653DC8F67F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD72F6ED-27BD-4FFF-AD43-B653DC8F67F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD72F6ED-27BD-4FFF-AD43-B653DC8F67F5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -297,6 +303,7 @@ Global
 		{B26D0420-439F-4BC5-8551-A1A539803C4C} = {7E85C7E5-70BD-4C9D-B052-D95955F46609}
 		{7B52589F-3E98-4620-BA08-211174EE6AE3} = {7E85C7E5-70BD-4C9D-B052-D95955F46609}
 		{CFCC17E1-DD89-4135-A35B-682E722D070B} = {68AE0090-E9AF-466A-A898-5A7438A6ED41}
+		{AD72F6ED-27BD-4FFF-AD43-B653DC8F67F5} = {68AE0090-E9AF-466A-A898-5A7438A6ED41}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DDBAC820-4861-4751-880D-917BF12E2C5D}

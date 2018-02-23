@@ -58,6 +58,10 @@
       <Project>{d5acbcf7-a7a7-449e-9dca-c1fcde36b7b6}</Project>
       <Name>Blocks.Framework</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Blocks.BussnessDTOModule\Blocks.BussnessDTOModule.csproj">
+      <Project>{ad72f6ed-27bd-4fff-ad43-b653dc8f67f5}</Project>
+      <Name>Blocks.BussnessDTOModule</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

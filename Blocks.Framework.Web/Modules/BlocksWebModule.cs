@@ -16,6 +16,7 @@ using Blocks.Framework.Web.Configuartions;
 using Blocks.Framework.Web.Mvc.Controllers;
 using Blocks.Framework.Web.Route;
 using Blocks.Framework.Environment.Extensions.Models;
+using Blocks.Framework.Localization;
 
 namespace Blocks.Framework.Web.Modules
 {
@@ -31,7 +32,7 @@ namespace Blocks.Framework.Web.Modules
                 var Extension = IocManager.Resolve<IExtensionManager>().AvailableExtensions()
              .FirstOrDefault(t => t.Id == currentAssmeblyName);
                 if (Extension == null)
-                    throw new ExtensionNotFoundException($"{currentAssmeblyName} can't found extension depond on it.");
+                    throw new ExtensionNotFoundException(StringLocal.Format($"{currentAssmeblyName} can't found extension depond on it."));
                 return Extension;
             }
         }
@@ -97,9 +98,9 @@ namespace Blocks.Framework.Web.Modules
 
             var databaseType = IocManager.Resolve<ISettingManager>().GetSettingValueForApplication(typeof(DatabaseType).Name);
             if (databaseType == null)
-                throw new BlocksException($"{typeof(DatabaseType).Name} global configuartion can't found.");
+                throw new BlocksException(StringLocal.Format($"{typeof(DatabaseType).Name} global configuartion can't found."));
             if (!Enum.GetNames(typeof(DatabaseType)).Contains(databaseType))
-                throw new BlocksException($"{databaseType} isn't belong to global configuartion {typeof(DatabaseType).Name}.");
+                throw new BlocksException(StringLocal.Format($"{databaseType} isn't belong to global configuartion {typeof(DatabaseType).Name}."));
 
             if (moduleConfiguration != null && moduleConfiguration is IWebFrameworkConfiguration)
             {

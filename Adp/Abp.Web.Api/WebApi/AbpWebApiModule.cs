@@ -98,7 +98,8 @@ namespace Abp.WebApi
             httpConfiguration.Filters.Add(IocManager.Resolve<AbpApiAuditFilter>());
             httpConfiguration.Filters.Add(IocManager.Resolve<AbpApiValidationFilter>());
             httpConfiguration.Filters.Add(IocManager.Resolve<AbpApiUowFilter>());
-            httpConfiguration.Filters.Add(IocManager.Resolve<AbpApiExceptionFilterAttribute>());
+            //TODO extensions
+           // httpConfiguration.Filters.Add(IocManager.Resolve<AbpApiExceptionFilterAttribute>());
 
             httpConfiguration.MessageHandlers.Add(IocManager.Resolve<ResultWrapperHandler>());
         }

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Blocks.Framework.Services
+﻿namespace Blocks.Framework.Services.DataTransfer
 {
     public interface IDataTransferObject
     {

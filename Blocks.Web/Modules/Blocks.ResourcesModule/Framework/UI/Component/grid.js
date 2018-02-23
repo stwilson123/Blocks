@@ -1,4 +1,4 @@
-﻿;define(['jquery', 'blocks_utility', 'jqGrid'], function ($, utility) {
+﻿;define(['jquery', 'blocks_utility', 'jqGrid', '/Modules/Blocks.ResourcesModule/Framework/UI/Component/msg_alert.js'], function ($, utility, jqGrid, msgAlert) {
     var validate = utility.validate;
     var grid = function (option) {
         if (validate.isNullOrEmpty(option) || validate.isNullOrEmpty(option.Id) || validate.isNullOrEmpty($("#" + option.Id).attr('id'))) {
@@ -47,11 +47,11 @@
             ajaxGridOptions: {
                 type: "POST",
                 cache: false,
-                async: true
-                //error: function () {
-                //   OpenTipWindowError("意外出错，请刷新页面重试");
-
-                //}
+                async: true,
+                contentType: 'application/json',
+                error: function () {
+                    msgAlert.error({message: "意外出错，请刷新页面重试"});
+                }
             },
             loadui: "block",
             datatype: "local",
@@ -140,8 +140,25 @@
             gridScroll: false, //是否显示Grid滚动条
             mtype: "POST", // add by 何权洲 jq默认使用POST方式提交到服务端
             serializeGridData: function (postData) {
+                var postDataWrapper = {page: {}};
+                var gridPrmNames = jqObj.jqGrid("getGridParam", "prmNames");
+                $.each(postData, function (k, val) {
+                    var isExists = false;
+                    $.each(gridPrmNames, function (gK, gVal) {
+                        if (gVal === k) {
+                            isExists = true;
+                            return false;
+                        }
+                    });
 
-                return {page: postData};
+                    if (!isExists) {
+                        postDataWrapper[k] = val;
+                        return true;
+                    }
+                    postDataWrapper.page[k] = val;
+                });
+
+                return JSON.stringify(postDataWrapper);
             }
         };
         var options = $.extend(true, defaults, option);
@@ -194,8 +211,9 @@
             }
             var currenType = $gridObj.getGridParam('datatype');
             if (currenType === "json") {
-                if (xhr.code !== 100) {
-                    OpenTipWindowError(MessageHelper.getRemoveSpecialChar(xhr.msg));
+                if (xhr.code !== '200') {
+                    msgAlert.error({message: xhr.msg});
+
                     options.loadCompleteOnFaildCallBack(xhr);
                 }
                 //  ajaxSuccess(xhr, null, options.loadCompleteOnFaildCallBack);

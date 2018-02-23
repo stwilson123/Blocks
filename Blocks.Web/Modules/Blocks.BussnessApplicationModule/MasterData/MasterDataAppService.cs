@@ -1,6 +1,8 @@
 ﻿using System;
+using Blocks.BussnessApplicationModule.TestAppService.DTO;
 using Blocks.BussnessDomainModule;
 using Blocks.Framework.ApplicationServices;
+using Blocks.Framework.Data.Paging;
 
 namespace Blocks.BussnessApplicationModule.TestAppService
 {
@@ -13,9 +15,11 @@ namespace Blocks.BussnessApplicationModule.TestAppService
 
         private TestDomain testDomain { get; set; }
         
-        public string GetPageList(string a)
+        public  PageList<PageResult>  GetPageList(SearchModel a)
         {
-            return testDomain.GetValue(a);
+            
+            return testDomain.GetPageList(a);
+            //return testDomain.GetValue(a);
         }
 
         public string Add(string id)

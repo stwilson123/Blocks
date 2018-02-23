@@ -48,6 +48,10 @@
       <Project>{0f98c63c-d019-4f38-9ac3-f5d7bcad9107}</Project>
       <Name>Abp</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Blocks.BussnessDTOModule\Blocks.BussnessDTOModule.csproj">
+      <Project>{ad72f6ed-27bd-4fff-ad43-b653dc8f67f5}</Project>
+      <Name>Blocks.BussnessDTOModule</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Blocks.BussnessEntityModule\Blocks.BussnessEntityModule.csproj">
       <Project>{11206F21-DC7C-4F62-9AB9-9CD1095A78C0}</Project>
       <Name>Blocks.BussnessEntityModule</Name>

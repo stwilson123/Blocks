@@ -11,7 +11,8 @@ namespace Blocks.ResourcesModule.ResourceManifestProviders {
             
  
             manifest.DefineScript(ResourceName.blocks).SetUrl("Framework/Blocks.js",
-                "Framework/blocks.js").SetVersion("0.1").SetDependencies(ResourceName.blocks_UI,ResourceName.blocks_utility, ResourceName.abp_wrapper).SetAMD();
+                "Framework/blocks.js").SetVersion("0.1")
+                .SetDependencies(ResourceName.blocks_UI,ResourceName.blocks_utility, ResourceName.abp_wrapper,ResourceName.blocks_security).SetAMD();
             manifest.DefineScript(ResourceName.blocks_UI).SetUrl("Framework/UI/UI.js",
                 "Framework/UI/UI.js").SetVersion("0.1").SetDependencies(ResourceName.jqGrid).SetAMD();
             manifest.DefineScript(ResourceName.blocks_utility).SetUrl("Framework/Utility/utlity.js",

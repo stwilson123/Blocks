@@ -1,4 +1,5 @@
-﻿; define(['jquery'], function (jQuery) {
+﻿; define(['jquery',], function (jQuery) {
+
 
     var ValidateHelper = (function ($) {
         isNullOrEmpty: function isNullOrEmpty(v) {
@@ -340,25 +341,25 @@
         };
     })(jQuery);
 
-    // var cookies = {};
-    // cookies.getCookieValue = function (key) {
-    //     var equalities = document.cookie.split('; ');
-    //     for (var i = 0; i < equalities.length; i++) {
-    //         if (!equalities[i]) {
-    //             continue;
-    //         }
-    //
-    //         var splitted = equalities[i].split('=');
-    //         if (splitted.length != 2) {
-    //             continue;
-    //         }
-    //
-    //         if (decodeURIComponent(splitted[0]) === key) {
-    //             return decodeURIComponent(splitted[1] || '');
-    //         }
-    //     }
-    //
-    //     return null;
-    // };
-    return { validate: ValidateHelper }
+    var cookie = {};
+    cookie.getCookieValue = function (key) {
+        var equalities = document.cookie.split('; ');
+        for (var i = 0; i < equalities.length; i++) {
+            if (!equalities[i]) {
+                continue;
+            }
+
+            var splitted = equalities[i].split('=');
+            if (splitted.length != 2) {
+                continue;
+            }
+
+            if (decodeURIComponent(splitted[0]) === key) {
+                return decodeURIComponent(splitted[1] || '');
+            }
+        }
+
+        return null;
+    };
+    return { validate: ValidateHelper,cookie:cookie }
 });

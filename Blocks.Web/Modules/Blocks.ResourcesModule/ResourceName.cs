@@ -25,6 +25,8 @@ namespace Blocks.ResourcesModule
         public static string moment { get; } = "moment";
 
         public static string jquery_validate { get; } = "jquery_validate";
+        public static string jquery_cookies { get; } = "jquery_cookies";
+
         public static string jquery_blockUI { get; } = "jquery_blockUI";
         public static string spin { get; } = "spin";
         public static string jquery_spin { get; } = "jquery_spin";

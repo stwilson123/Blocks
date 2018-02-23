@@ -1,13 +1,13 @@
-; define(["jquery"], function ($) {
+;define(["jquery",'blocks_utility'], function ($,blocks_utility) {
 
 
-    var  antiForgery = {};
+    var antiForgery = {};
     antiForgery.tokenHeaderName = 'X-XSRF-TOKEN';
     antiForgery.tokenCookieName = 'XSRF-TOKEN';
 
-    antiForgery.antiForgery.getToken = function () {
-        return $.cookie(antiForgery.tokenCookieName);
+    antiForgery.getToken = function () {
+        return blocks_utility.cookie.getCookieValue(antiForgery.tokenCookieName);
     };
-     
-    return antiForgery;
+
+    return {antiForgery: antiForgery};
 });
