@@ -53,6 +53,7 @@ namespace Blocks.ResourcesModule
 
         public static string abp_wrapper { get; } = "abp_wrapper";
 
+        public static string layer { get; } = "layer";
 
     }
 }

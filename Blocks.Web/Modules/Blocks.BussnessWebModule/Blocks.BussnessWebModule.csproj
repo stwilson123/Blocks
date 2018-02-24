@@ -112,6 +112,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Styles\Index\IndexCss.css" />
+    <Content Include="Views\MasterData\Add.cshtml" />
+    <Content Include="Views\MasterData\Add.js" />
     <Content Include="Views\MasterData\Index.js" />
     <Content Include="Views\Tests\IndexCss.css" />
     <Content Include="Views\Tests\TranditionLayoutTest.cshtml" />

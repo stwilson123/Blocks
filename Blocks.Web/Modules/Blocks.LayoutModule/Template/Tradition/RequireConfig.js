@@ -10,7 +10,7 @@
             target[name] = options[name];
         }
         return target;
-    }
+    };
     var JsModule = {};
     var shimModule = {};
     for (var i = 0; i < blocks.pageContext.listRegisteredJavaScripts.length; i++) {

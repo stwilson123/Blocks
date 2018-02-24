@@ -47,6 +47,9 @@ namespace Blocks.ResourcesModule.ResourceManifestProviders {
             
             manifest.DefineScript(ResourceName.jqGrid).SetUrl("lib/jqGrid/script/jquery.jqGrid.min.js",
                 "lib/jqGrid/script/jquery.jqGrid.min.js").SetVersion("5.2.0");
+            
+            manifest.DefineScript(ResourceName.layer).SetUrl("lib/layer/layer.js",
+                "lib/layer/layer.js").SetVersion("3.1.1");
         }
 
         public Lazy<FeatureDescriptor> Feature { get; set; }

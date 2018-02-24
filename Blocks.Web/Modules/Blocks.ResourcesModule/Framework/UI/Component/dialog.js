@@ -1,0 +1,146 @@
+;define(['jquery', 'layer'], function ($,layer) {
+
+     
+
+    var dialogObj = {
+        config: {
+            'default': {},
+            info: {
+                 
+            },
+            success: {
+                icon: 1,
+                time: 3000
+                
+            },
+            warn: {
+                icon: 0
+            },
+            error: {
+                icon: 2
+            },
+            confirm: {
+                icon: 3,
+                title: 'Are you sure?',
+                btn: ['yes', 'cancel']
+                 
+            },
+            dialog:{ 
+                type: 1,
+                title: "",
+                offset: "auto",
+                isMaxmin: true,
+                area: ['100%', '100%'],
+                content: settings.url,
+                cancel: function () {
+                    return true;
+                },
+                end: function () {
+                    // if (!ValidateHelper.isNullOrEmpty(settings.onEnd)) {
+                    //     var returnData = ValidateHelper.isNullOrEmpty(returnValueFunction) ? null : returnValueFunction;
+                    //     settings.onEnd(returnData);
+                    // }
+
+                },
+                resize: false
+            }
+        }
+    };
+    /* MESSAGE **************************************************/
+    var show = function (option) {
+        if (!option)
+            throw "option can't be null";
+        var newOption = option;
+        // if (!newOption.title) {
+        //     newOption.title = newOption.message;
+        //     newOption.message = undefined;
+        // }
+        // newOption.title = newOption.message;
+        var opts = $.extend(
+            {},
+            dialogObj.config['default'],
+            dialogObj.config[option.type],
+            newOption
+        );
+
+        return layer.open(opts)
+    };
+
+    var dialogUI = {};
+    dialogUI.info = function (option) {
+        return show($.extend(option, {type: 'info'}));
+    };
+
+    dialogUI.success = function (option) {
+        return show($.extend(option, {type: 'success'}));
+    };
+
+    dialogUI.warn = function (option) {
+        return show($.extend(option, {type: 'warn'}));
+
+    };
+
+    dialogUI.error = function (option) {
+        return show($.extend(option, {type: 'warn'}));
+    };
+
+    dialogUI.confirm = function (option) {
+
+        return show($.extend(option, {type: 'confirm',content:option.url}));
+        // var userOpts = {
+        //     text: message
+        // };
+        //
+        // if ($.isFunction(titleOrCallback)) {
+        //     callback = titleOrCallback;
+        // } else if (titleOrCallback) {
+        //     userOpts.title = titleOrCallback;
+        // }
+        // ;
+        //
+        // var opts = $.extend(
+        //     {},
+        //     abp.libs.sweetAlert.config['default'],
+        //     abp.libs.sweetAlert.config.confirm,
+        //     userOpts
+        // );
+        //
+        // return $.Deferred(function ($dfd) {
+        //     sweetAlert(opts, function (isConfirmed) {
+        //         callback && callback(isConfirmed);
+        //         $dfd.resolve(isConfirmed);
+        //     });
+        // });
+    };
+
+    dialogUI.dialog = function (option) {
+
+        return show($.extend(option, {type: 'dialog'}));
+        // var userOpts = {
+        //     text: message
+        // };
+        //
+        // if ($.isFunction(titleOrCallback)) {
+        //     callback = titleOrCallback;
+        // } else if (titleOrCallback) {
+        //     userOpts.title = titleOrCallback;
+        // }
+        // ;
+        //
+        // var opts = $.extend(
+        //     {},
+        //     abp.libs.sweetAlert.config['default'],
+        //     abp.libs.sweetAlert.config.confirm,
+        //     userOpts
+        // );
+        //
+        // return $.Deferred(function ($dfd) {
+        //     sweetAlert(opts, function (isConfirmed) {
+        //         callback && callback(isConfirmed);
+        //         $dfd.resolve(isConfirmed);
+        //     });
+        // });
+    };
+    return dialogUI;
+
+});
