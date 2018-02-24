@@ -152,6 +152,7 @@
     <Content Include="Framework\UI\1.0\UI.Grid.js" />
     <Content Include="Framework\UI\1.0\UI.js" />
     <Content Include="Framework\UI\Component\block_UI.js" />
+    <Content Include="Framework\UI\Component\dialog.js" />
     <Content Include="Framework\UI\Component\grid.js" />
     <Content Include="Framework\UI\Component\msg_alert.js" />
     <Content Include="Framework\UI\Component\spin_UI.js" />
@@ -1842,6 +1843,15 @@
     <Content Include="lib\json2\json_parse.js" />
     <Content Include="lib\json2\json_parse_state.js" />
     <Content Include="lib\json2\README" />
+    <Content Include="lib\layer\layer.js" />
+    <Content Include="lib\layer\mobile\layer.js" />
+    <Content Include="lib\layer\mobile\need\layer.css" />
+    <Content Include="lib\layer\theme\default\icon-ext.png" />
+    <Content Include="lib\layer\theme\default\icon.png" />
+    <Content Include="lib\layer\theme\default\layer.css" />
+    <Content Include="lib\layer\theme\default\loading-0.gif" />
+    <Content Include="lib\layer\theme\default\loading-1.gif" />
+    <Content Include="lib\layer\theme\default\loading-2.gif" />
     <Content Include="lib\mocha\.bower.json" />
     <Content Include="lib\mocha\bower.json" />
     <Content Include="lib\mocha\History.md" />
