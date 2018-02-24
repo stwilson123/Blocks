@@ -53,5 +53,21 @@ namespace Abp
 
             return value;
         }
+
+        [ContractAnnotation("value:null => halt")]
+        public static T Condition<T>([NoEnumeration] T value, [NotNull] Predicate<T> condition, [InvokerParameterName] [NotNull] string parameterName)
+        {
+            NotNull(condition, nameof(condition));
+            NotNull(value, nameof(value));
+
+            if (!condition(value))
+            {
+                NotNullOrEmpty(parameterName, nameof(parameterName));
+
+                throw new ArgumentOutOfRangeException(parameterName);
+            }
+
+            return value;
+        }
     }
 }
