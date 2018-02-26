@@ -4,5 +4,5 @@
     '/Modules/Blocks.ResourcesModule/Framework/UI/Component/dialog.js'], function ($,scroll,waves,sweetalert,toastr,grid,bootstrap_select,dialog) {
      
 
-        return { 'grid': grid,'dialog':dialog }
+        return { 'grid': grid,'dialog':dialog, 'module'}
 });

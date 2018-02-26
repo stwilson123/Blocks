@@ -147,6 +147,7 @@
     <Content Include="Template\Tradition\_Layout.cshtml" />
     <Content Include="Template\Tradition\_Layout.css" />
     <Content Include="Template\Tradition\_Layout.js" />
+    <Content Include="Template\Tradition\_LayoutPartialModule.cshtml" />
     <Content Include="Template\Web.config" />
     <Content Include="Template\_LayoutFirst.cshtml" />
     <Content Include="Template\_LayoutPartialViewFirst.cshtml" />

@@ -148,6 +148,7 @@
     <Content Include="fonts\roboto\UX6i4JxQDm3fVTc1CPuwqhJtnKITppOI_IvcXXDNrsc.woff2" />
     <Content Include="Framework\Abp\AbpWrapper.js" />
     <Content Include="Framework\blocks.js" />
+    <Content Include="Framework\InitComponent\requireModule.js" />
     <Content Include="Framework\Security\security.js" />
     <Content Include="Framework\UI\1.0\UI.Grid.js" />
     <Content Include="Framework\UI\1.0\UI.js" />

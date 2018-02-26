@@ -23,7 +23,7 @@ namespace Blocks.BussnessWebModule.Module_Start
                         icon: "people",
                         requiredPermissionName: "Pages.Users"
                     ).AddItem(new MenuItemDefinition("Test", L("Test"), icon: "people",
-                    requiredPermissionName: "Pages.Users", url: "BussnessWebModule/Tests/TranditionLayoutTest"))
+                    requiredPermissionName: "Pages.Users", url: "BussnessWebModule/Tests/TranditionLayoutTestNew"))
                     .AddItem(new MenuItemDefinition("MasterData", L("MasterData"), icon: "people",
                     requiredPermissionName: "Pages.Users", url: "BussnessWebModule/MasterData/Index")
                     )

@@ -1399,7 +1399,7 @@ var requirejs, require, define;
                 return fn;
             },
 
-            makeRequire: function (relMap, options) {
+               makeRequire: function (relMap, options) {
                 options = options || {};
 
                 function localRequire(deps, callback, errback) {

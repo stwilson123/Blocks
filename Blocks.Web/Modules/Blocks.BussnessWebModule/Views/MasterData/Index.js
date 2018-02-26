@@ -1,6 +1,8 @@
-﻿require(["jquery", "Tradition/_LayoutModule",'blocks'], function ($,layout,blocks) {
+﻿; require(["jquery", "Tradition/_LayoutModule",'blocks'], function ($,layout,blocks) {
 
-
+  $("#add").on('click',function () {
+      blocks.ui.dialog.dialog({url:'Add'});
+  });
 
     var colNamesArray = ['ID', '站点号', '名称', '工序', '工序类型', '车间', '加工中心', '加工类型', '采集类型', '状态', '描述']; //数据列名称（数组） 
     var mainGrid = new blocks.ui.grid({

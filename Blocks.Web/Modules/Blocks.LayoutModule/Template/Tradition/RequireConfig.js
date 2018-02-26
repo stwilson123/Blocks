@@ -39,11 +39,13 @@
         , shim: shimModule
     });  
     if (blocks.pageContext.subPageJsVirtualPath)
-        require([blocks.pageContext.subPageJsVirtualPath]);  
+    {  
+        require([blocks.pageContext.subPageJsVirtualPath]);
+    }
 
-    
 
-    
+
+
 })();
 
 

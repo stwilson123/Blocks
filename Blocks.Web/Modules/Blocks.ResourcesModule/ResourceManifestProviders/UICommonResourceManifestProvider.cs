@@ -21,7 +21,10 @@ namespace Blocks.ResourcesModule.ResourceManifestProviders {
                 "lib/jqGrid/css/ui.jqgrid-bootstrap.css").SetVersion("5.2.0");
             manifest.DefineStyle(ResourceName.jqGridUI).SetUrl("lib/jqGrid/css/ui.jqgrid-bootstrap-ui.css",
                 "lib/jqGrid/css/ui.jqgrid-bootstrap-ui.css").SetVersion("5.2.0").SetDependencies(ResourceName.jqGrid);
-            
+            manifest.DefineStyle(ResourceName.layer).SetUrl("lib/layer/theme/default/layer.css",
+                "lib/layer/theme/default/layer.css").SetVersion("3.3.1");
+                
+                
             manifest.DefineScript(ResourceName.toastr).SetUrl("lib/toastr/toastr.min.js",
                 "lib/toastr/toastr.js").SetVersion("0.1");
             manifest.DefineScript(ResourceName.sweetalert).SetUrl("lib/sweetalert/dist/sweetalert.min.js",

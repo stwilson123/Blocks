@@ -1,4 +1,4 @@
-;define(['jquery', 'layer'], function ($,layer) {
+;define(['jquery', 'layer', 'blocks_utility'], function ($,layer,utility) {
 
      
 
@@ -30,7 +30,7 @@
                 title: "",
                 offset: "auto",
                 isMaxmin: true,
-                area: ['100%', '100%'],
+                //area: ['80%', '80%'],
                 content: settings.url,
                 cancel: function () {
                     return true;
@@ -59,7 +59,7 @@
         var opts = $.extend(
             {},
             dialogObj.config['default'],
-            dialogObj.config[option.type],
+            dialogObj.config[option.dialogType],
             newOption
         );
 
@@ -68,25 +68,26 @@
 
     var dialogUI = {};
     dialogUI.info = function (option) {
-        return show($.extend(option, {type: 'info'}));
+        return show($.extend(option, {dialogType: 'info'}));
     };
 
     dialogUI.success = function (option) {
-        return show($.extend(option, {type: 'success'}));
+        return show($.extend(option, {dialogType: 'success'}));
     };
 
     dialogUI.warn = function (option) {
-        return show($.extend(option, {type: 'warn'}));
+        return show($.extend(option, {dialogType: 'warn'}));
 
     };
 
     dialogUI.error = function (option) {
-        return show($.extend(option, {type: 'warn'}));
+        return show($.extend(option, {dialogType: 'warn'}));
     };
 
     dialogUI.confirm = function (option) {
 
-        return show($.extend(option, {type: 'confirm',content:option.url}));
+       
+        return show($.extend(option, {dialogType: 'confirm'}));
         // var userOpts = {
         //     text: message
         // };
@@ -114,8 +115,11 @@
     };
 
     dialogUI.dialog = function (option) {
-
-        return show($.extend(option, {type: 'dialog'}));
+        utility.ajax.pubAjax({ datatype:'text/html',
+            url:option.url,onSuccessCallBack:function (data) {
+            return show($.extend(option, {dialogType: 'dialog',content:data}));
+        }})
+      
         // var userOpts = {
         //     text: message
         // };

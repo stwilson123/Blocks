@@ -1,4 +1,4 @@
-﻿; define(['jquery',], function (jQuery) {
+﻿; define(['jquery'], function (jQuery) {
 
 
     var ValidateHelper = (function ($) {
@@ -81,11 +81,17 @@
                 datatype: settings.datatype,
                 statusCode: settings.statusCode,
                 success: function (data) {
+                    if (settings.datatype === 'text/html') {
+                        settings.onSuccessCallBack(data);
+                        return;
+                    }
                     if (!ValidateHelper.isNullOrEmpty(data)) {
                         var result = eval('(' + data + ')');
                         ajaxSuccess(result, settings.onSuccessCallBack, settings.onFailCallBack);
                         return;
                     }
+                    
+                   
                     ajaxSuccess({ msg: "Data from server is null.Please check response.", code: 901 }, settings.onSuccessCallBack, settings.onFailCallBack);
 
                 },
@@ -361,5 +367,9 @@
 
         return null;
     };
-    return { validate: ValidateHelper,cookie:cookie }
+    
+    
+    
+   
+    return { validate: ValidateHelper,ajax:AjaxHelper,cookie:cookie }
 });

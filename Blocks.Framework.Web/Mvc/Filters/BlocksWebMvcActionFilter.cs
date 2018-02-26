@@ -35,13 +35,13 @@ namespace Blocks.Framework.Web.Mvc.Filters
 
         public void OnResultExecuting(ResultExecutingContext filterContext)
         {
-            if (!filterContext.IsChildAction && filterContext.Result is ViewResult)
+            if (!filterContext.IsChildAction && isMvcViewResult(filterContext) )
             {
-                var viewResult = filterContext.Result as ViewResult;
+                ViewResultBase viewResult = (ViewResultBase)filterContext.Result;
                 if (viewResult != null)
                 {
                     var viewName = filterContext.RouteData.GetRequiredString("action"); ;
-                    var viewEngineResult = viewResult.ViewEngineCollection.FindView(filterContext.Controller.ControllerContext, viewName, viewResult.MasterName);
+                    var viewEngineResult = viewResult.ViewEngineCollection.FindView(filterContext.Controller.ControllerContext, viewName, null);
                     if(viewEngineResult != null && viewEngineResult.View != null)
                     {
                         var viewPath = VirtualPathUtility.ToAbsolute(((RazorView)viewEngineResult.View).ViewPath);
@@ -65,6 +65,12 @@ namespace Blocks.Framework.Web.Mvc.Filters
               
                 
             }
+        }
+
+        private static bool isMvcViewResult(ResultExecutingContext filterContext)
+        {
+            return (filterContext.Result is ViewResult) || filterContext.Result is PartialViewResult;
+
         }
     }
 }

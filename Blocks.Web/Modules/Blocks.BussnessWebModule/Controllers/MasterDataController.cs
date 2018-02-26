@@ -14,5 +14,10 @@ namespace Blocks.BussnessWebModule.Controllers
         {
             return View();
         }
+        
+        public ActionResult Add()
+        {
+            return PartialView();
+        }
     }
 }
