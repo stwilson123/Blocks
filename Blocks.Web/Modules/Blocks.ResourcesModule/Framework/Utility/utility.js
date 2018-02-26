@@ -367,9 +367,62 @@
 
         return null;
     };
-    
-    
+
+
+
+
+    /* LOGGING ***************************************************/
+    //Implements Logging API that provides secure & controlled usage of console.log
+
+    var log =  {};
+
+    log.levels = {
+        DEBUG: 1,
+        INFO: 2,
+        WARN: 3,
+        ERROR: 4,
+        FATAL: 5
+    };
+
+    log.level = log.levels.DEBUG;
+
+    log.log = function (logObject, logLevel) {
+        if (!window.console || !window.console.log) {
+            return;
+        }
+
+        if (logLevel != undefined && logLevel < abp.log.level) {
+            return;
+        }
+
+        console.log(logObject);
+    };
+
+    log.debug = function (logObject) {
+        abp.log.log("DEBUG: ", abp.log.levels.DEBUG);
+        abp.log.log(logObject, abp.log.levels.DEBUG);
+    };
+
+    log.info = function (logObject) {
+        abp.log.log("INFO: ", abp.log.levels.INFO);
+        abp.log.log(logObject, abp.log.levels.INFO);
+    };
+
+    log.warn = function (logObject) {
+        abp.log.log("WARN: ", abp.log.levels.WARN);
+        abp.log.log(logObject, abp.log.levels.WARN);
+    };
+
+    log.error = function (logObject) {
+        abp.log.log("ERROR: ", abp.log.levels.ERROR);
+        abp.log.log(logObject, abp.log.levels.ERROR);
+    };
+
+    log.fatal = function (logObject) {
+        abp.log.log("FATAL: ", abp.log.levels.FATAL);
+        abp.log.log(logObject, abp.log.levels.FATAL);
+    };
     
    
-    return { validate: ValidateHelper,ajax:AjaxHelper,cookie:cookie }
+    return { validate: ValidateHelper,ajax:AjaxHelper,cookie:cookie,log:log }
 });

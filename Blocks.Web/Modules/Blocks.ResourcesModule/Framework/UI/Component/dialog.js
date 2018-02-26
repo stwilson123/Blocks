@@ -1,17 +1,16 @@
-;define(['jquery', 'layer', 'blocks_utility'], function ($,layer,utility) {
-
+;define(function(req, exports, module) {
+    var $ = require('jquery'),layer =require('layer'),utility = require('blocks_utility');
      
-
+//define(['require', 'jquery', 'layer', 'blocks_utility'], function (req, $, layer, utility) {
+    
     var dialogObj = {
         config: {
             'default': {},
-            info: {
-                 
-            },
+            info: {},
             success: {
                 icon: 1,
                 time: 3000
-                
+
             },
             warn: {
                 icon: 0
@@ -23,9 +22,9 @@
                 icon: 3,
                 title: 'Are you sure?',
                 btn: ['yes', 'cancel']
-                 
+
             },
-            dialog:{ 
+            dialog: {
                 type: 1,
                 title: "",
                 offset: "auto",
@@ -86,7 +85,7 @@
 
     dialogUI.confirm = function (option) {
 
-       
+
         return show($.extend(option, {dialogType: 'confirm'}));
         // var userOpts = {
         //     text: message
@@ -115,11 +114,18 @@
     };
 
     dialogUI.dialog = function (option) {
-        utility.ajax.pubAjax({ datatype:'text/html',
-            url:option.url,onSuccessCallBack:function (data) {
-            return show($.extend(option, {dialogType: 'dialog',content:data}));
-        }})
-      
+        utility.ajax.pubAjax({
+            datatype: 'text/html',
+            url: option.url, onSuccessCallBack: function (data) {
+                var layerIndex = show($.extend(option, {dialogType: 'dialog', content: data}));
+
+                //req(['/Modules/Blocks.BussnessWebModule/Views/MasterData/Add.js']);
+                req(['jquery']);
+
+                return layerIndex;
+            }
+        })
+
         // var userOpts = {
         //     text: message
         // };
