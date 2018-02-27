@@ -23,13 +23,13 @@
     }
     extend(JsModule, {
         "Tradition/_LayoutModule": "/Modules/Blocks.LayoutModule/template/Tradition/_LayoutModule",
-
+       
     });
     require.config({
         //define all js file path base on this base path  
         //actually this can setting same to data-main attribute in script tag  
         //定义所有JS文件的基本路径,实际这可跟script标签的data-main有相同的根路径  
-        baseUrl: "/Modules"
+        baseUrl: "Modules"
 
         //define each js frame path, not need to add .js suffix name  
         //定义各个JS框架路径名,不用加后缀 .js  
