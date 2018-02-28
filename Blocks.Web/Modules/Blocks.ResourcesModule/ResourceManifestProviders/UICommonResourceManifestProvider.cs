@@ -48,6 +48,7 @@ namespace Blocks.ResourcesModule.ResourceManifestProviders {
             manifest.DefineScript(ResourceName.push).SetUrl("lib/push.js/push.min.js",
                 "lib/push.js/push.js").SetVersion("0.1");
             
+            
             manifest.DefineScript(ResourceName.jqGrid).SetUrl("lib/jqGrid/script/jquery.jqGrid.min.js",
                 "lib/jqGrid/script/jquery.jqGrid.min.js").SetVersion("5.2.0");
             

@@ -1,4 +1,4 @@
-﻿; define(['jquery', 'sweetalert', '/Modules/Blocks.ResourcesModule/lib/abp-web-resources/Abp/Framework/scripts/abp.js'], function (jQuery, sweetAlert,_abp) {
+﻿; define(['jquery', 'sweetalert', 'Blocks.ResourcesModule/lib/abp-web-resources/Abp/Framework/scripts/abp'], function (jQuery, sweetAlert,_abp) {
 
     var abp = _abp || {};
     (function ($) {

@@ -1,4 +1,4 @@
-﻿; require(["jquery",'blocks'], function ($,blocks) {
+﻿; require(["jquery"], function ($) {
 
 
  

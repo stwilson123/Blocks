@@ -1,4 +1,4 @@
-﻿; define(['toastr', '/Modules/Blocks.ResourcesModule/lib/abp-web-resources/Abp/Framework/scripts/abp.js'], function (toastr,_abp) {
+﻿; define(['toastr', 'Blocks.ResourcesModule/lib/abp-web-resources/Abp/Framework/scripts/abp'], function (toastr,_abp) {
 
     var abp = _abp || {};
     (function () {

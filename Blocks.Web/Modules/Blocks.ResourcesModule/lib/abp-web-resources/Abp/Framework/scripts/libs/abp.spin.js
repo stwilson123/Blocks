@@ -1,4 +1,4 @@
-﻿; define(['jquery', '/Modules/Blocks.ResourcesModule/lib/abp-web-resources/Abp/Framework/scripts/abp.js'], function ($,_abp) {
+﻿; define(['jquery', 'Blocks.ResourcesModule/lib/abp-web-resources/Abp/Framework/scripts/abp'], function ($,_abp) {
     var abp = _abp || {};
     (function () {
 

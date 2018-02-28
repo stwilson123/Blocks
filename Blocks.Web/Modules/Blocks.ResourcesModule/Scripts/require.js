@@ -568,7 +568,7 @@ var requirejs, require, define;
                 globalDefQueue = [];
             }
         }
-
+    
         handlers = {
             'require': function (mod) {
                 if (mod.require) {

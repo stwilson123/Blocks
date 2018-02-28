@@ -1,4 +1,4 @@
-﻿;define(['jquery', 'blocks_utility', 'jqGrid', '/Modules/Blocks.ResourcesModule/Framework/UI/Component/msg_alert.js'], function ($, utility, jqGrid, msgAlert) {
+﻿;define(['jquery', 'blocks_utility', 'jqGrid', 'Blocks.ResourcesModule/Framework/UI/Component/msg_alert','Blocks.ResourcesModule/lib/jqGrid/script/i18n/grid.locale-cn'], function ($, utility, jqGrid, msgAlert) {
     var validate = utility.validate;
     var grid = function (option) {
         if (validate.isNullOrEmpty(option) || validate.isNullOrEmpty(option.Id) || validate.isNullOrEmpty($("#" + option.Id).attr('id'))) {

@@ -1,4 +1,4 @@
-﻿; define(["jquery", "blocks", "/Modules/Blocks.LayoutModule/js/admin.js","/Modules/Blocks.LayoutModule/js/main.js"], function ($) {
+﻿; define(["jquery", "blocks", "Blocks.LayoutModule/js/admin","Blocks.LayoutModule/js/main"], function ($) {
   
     //Skin changer
     function skinChanger() {

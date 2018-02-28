@@ -114,17 +114,18 @@
     };
    
     dialogUI.dialog = function (option) {
-        utility.ajax.pubAjax({
-            datatype: 'text/html',
-            url: option.url, onSuccessCallBack: function (data) {
-                var layerIndex = show($.extend(option, {dialogType: 'dialog', content: data}));
-               
-                //req(['/Modules/Blocks.BussnessWebModule/Views/MasterData/Add.js']);
-              //  require.config({path:{'Blocks.BussnessWebModule/Views/MasterData/Add':'Blocks.BussnessWebModule/Views/MasterData/Add'}})
-                req(['Blocks.BussnessWebModule/Views/MasterData/Add']);
-                return layerIndex;
-            }
-        })
+        req(['Blocks.BussnessWebModule/Views/MasterData/Add']);
+        // utility.ajax.pubAjax({
+        //     datatype: 'text/html',
+        //     url: option.url, onSuccessCallBack: function (data) {
+        //         var layerIndex = show($.extend(option, {dialogType: 'dialog', content: data}));
+        //       
+        //         //req(['/Modules/Blocks.BussnessWebModule/Views/MasterData/Add.js']);
+        //       //  require.config({path:{'Blocks.BussnessWebModule/Views/MasterData/Add':'Blocks.BussnessWebModule/Views/MasterData/Add'}})
+        //         req(['Blocks.BussnessWebModule/Views/MasterData/Add']);
+        //         return layerIndex;
+        //     }
+        // })
 
         // var userOpts = {
         //     text: message

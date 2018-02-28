@@ -1,8 +1,8 @@
-﻿; define(['jquery', 'blocks_UI', '/Modules/Blocks.ResourcesModule/lib/abp-web-resources/Abp/Framework/scripts/abp.js',
-    '/Modules/Blocks.ResourcesModule/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js',
-    '/Modules/Blocks.ResourcesModule/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js',
-    '/Modules/Blocks.ResourcesModule/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js',
-    '/Modules/Blocks.ResourcesModule/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js'
+﻿; define(['jquery', 'blocks_UI', 'Blocks.ResourcesModule/lib/abp-web-resources/Abp/Framework/scripts/abp',
+    'Blocks.ResourcesModule/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr',
+    'Blocks.ResourcesModule/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI',
+    'Blocks.ResourcesModule/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin',
+    'Blocks.ResourcesModule/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert'
      ], function ($) {
       
     });

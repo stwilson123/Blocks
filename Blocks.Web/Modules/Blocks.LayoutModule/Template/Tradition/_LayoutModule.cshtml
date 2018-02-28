@@ -1,6 +1,7 @@
 @using System.Linq;
 @using System.Threading
 @using Blocks
+@using Blocks.Framework.Collections
 @using Blocks.Framework.Web.Mvc.Extensions
 @{
     Layout = ResourceManager.GetTemplateNotCache("_LayoutRoot", this.VirtualPath);//"~/Template/_LayoutRoot.cshtml";
@@ -173,6 +174,10 @@
 
 @section script
 {
+    @{
+        ResourceManager.GetRegisteredDisplayNonoScripts().ForEach(t => { t.Src = t.Src.Substring(t.Src.IndexOf("/Modules") + "/Modules".Length+1, t.Src.LastIndexOf(".js") - "/Modules".Length-1); }
+            );
+    }
     <script>
         var blocks = blocks || {};
         (function () {

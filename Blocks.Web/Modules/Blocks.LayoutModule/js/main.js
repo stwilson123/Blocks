@@ -1,4 +1,4 @@
-﻿define(['jquery', '/Modules/Blocks.ResourcesModule/lib/abp-web-resources/Abp/Framework/scripts/abp.js'], function (jQuery, _abp) {
+﻿define(['jquery', 'Blocks.ResourcesModule/lib/abp-web-resources/Abp/Framework/scripts/abp'], function (jQuery, _abp) {
     (function ($) {
         var abp = _abp;
         //Notification handler
