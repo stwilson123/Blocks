@@ -15,8 +15,7 @@
     if (typeof define === "function" && define.amd) {
         // AMD. Register as an anonymous module.
         define([
-			"jquery",
-			"../grid.base"
+			"jquery" 
         ], factory);
     } else {
         // Browser globals
