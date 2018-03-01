@@ -114,43 +114,42 @@
     };
    
     dialogUI.dialog = function (option) {
-        req(['Blocks.BussnessWebModule/Views/MasterData/Add']);
-        // utility.ajax.pubAjax({
-        //     datatype: 'text/html',
-        //     url: option.url, onSuccessCallBack: function (data) {
-        //         var layerIndex = show($.extend(option, {dialogType: 'dialog', content: data}));
-        //       
-        //         //req(['/Modules/Blocks.BussnessWebModule/Views/MasterData/Add.js']);
-        //       //  require.config({path:{'Blocks.BussnessWebModule/Views/MasterData/Add':'Blocks.BussnessWebModule/Views/MasterData/Add'}})
-        //         req(['Blocks.BussnessWebModule/Views/MasterData/Add']);
-        //         return layerIndex;
-        //     }
-        // })
+        utility.ajax.pubAjax({
+            datatype: 'text/html',
+            url: option.url, onSuccessCallBack: function (data) {
+                var layerIndex = show($.extend(option, {dialogType: 'dialog', content: data}));
 
-        // var userOpts = {
-        //     text: message
-        // };
-        //
-        // if ($.isFunction(titleOrCallback)) {
-        //     callback = titleOrCallback;
-        // } else if (titleOrCallback) {
-        //     userOpts.title = titleOrCallback;
-        // }
-        // ;
-        //
-        // var opts = $.extend(
-        //     {},
-        //     abp.libs.sweetAlert.config['default'],
-        //     abp.libs.sweetAlert.config.confirm,
-        //     userOpts
-        // );
-        //
-        // return $.Deferred(function ($dfd) {
-        //     sweetAlert(opts, function (isConfirmed) {
-        //         callback && callback(isConfirmed);
-        //         $dfd.resolve(isConfirmed);
-        //     });
-        // });
+                //req(['/Modules/Blocks.BussnessWebModule/Views/MasterData/Add.js']);
+              //  require.config({path:{'Blocks.BussnessWebModule/Views/MasterData/Add':'Blocks.BussnessWebModule/Views/MasterData/Add'}})
+                req(['Blocks.BussnessWebModule/Views/MasterData/Add']);
+                return layerIndex;
+            }
+        });
+
+        var userOpts = {
+            text: message
+        };
+
+        if ($.isFunction(titleOrCallback)) {
+            callback = titleOrCallback;
+        } else if (titleOrCallback) {
+            userOpts.title = titleOrCallback;
+        }
+        ;
+
+        var opts = $.extend(
+            {},
+            abp.libs.sweetAlert.config['default'],
+            abp.libs.sweetAlert.config.confirm,
+            userOpts
+        );
+
+        return $.Deferred(function ($dfd) {
+            sweetAlert(opts, function (isConfirmed) {
+                callback && callback(isConfirmed);
+                $dfd.resolve(isConfirmed);
+            });
+        });
     };
     return dialogUI;
 

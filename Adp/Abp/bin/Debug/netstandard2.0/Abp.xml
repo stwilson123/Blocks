@@ -9659,9 +9659,9 @@
             Value: 250.
             </summary>
         </member>
-        <member name="F:Abp.Notifications.NotificationInfo.MaxEntityTypeAssemblyQualifiedNameLength">
+        <member name="F:Abp.Notifications.NotificationInfo.MaxEntityTypeQualifiedNameLength">
             <summary>
-            Maximum length of <see cref="P:Abp.Notifications.NotificationInfo.EntityTypeAssemblyQualifiedName"/> property.
+            Maximum length of <see cref="P:Abp.Notifications.NotificationInfo.EntityTypeQualifiedName"/> property.
             Value: 512.
             </summary>
         </member>
@@ -9705,7 +9705,7 @@
             It's FullName of the entity type.
             </summary>
         </member>
-        <member name="P:Abp.Notifications.NotificationInfo.EntityTypeAssemblyQualifiedName">
+        <member name="P:Abp.Notifications.NotificationInfo.EntityTypeQualifiedName">
             <summary>
             AssemblyQualifiedName of the entity type.
             </summary>
@@ -9885,7 +9885,7 @@
             It's FullName of the entity type.
             </summary>
         </member>
-        <member name="P:Abp.Notifications.NotificationSubscriptionInfo.EntityTypeAssemblyQualifiedName">
+        <member name="P:Abp.Notifications.NotificationSubscriptionInfo.EntityTypeQualifiedName">
             <summary>
             AssemblyQualifiedName of the entity type.
             </summary>
@@ -10017,7 +10017,7 @@
             It's FullName of the entity type.
             </summary>
         </member>
-        <member name="P:Abp.Notifications.TenantNotificationInfo.EntityTypeAssemblyQualifiedName">
+        <member name="P:Abp.Notifications.TenantNotificationInfo.EntityTypeQualifiedName">
             <summary>
             AssemblyQualifiedName of the entity type.
             </summary>
