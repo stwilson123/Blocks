@@ -164,7 +164,7 @@
 
         <section class="content" >
         @*            <div class="container-fluid">*@
-            <div class="card" style="height:calc(100vh - 90px - 15px)">
+            <div id="container" class="card" style="height:calc(100vh - 90px - 15px)">
                 @RenderBody()
             </div>
         </section>
@@ -187,6 +187,7 @@
                 subPageJsVirtualPath: "@this.ViewBag.subPageJsVirtualPath",
                 subPageCssVirtualPath: "@this.ViewBag.subPageCssVirtualPath",
                 moduleName: "@this.ViewBag.extensionName",
+                modulePrefix: 'Modules',
                 language: '@Thread.CurrentThread.CurrentUICulture.Name'
                     };
         })(blocks);

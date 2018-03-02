@@ -14,5 +14,5 @@
             utility.log.debug('please implement dispose method!');
         };
     };
-    return {'grid': grid, 'dialog': dialog, 'module': module};
+    return {'grid': grid, 'dialog': dialog, 'module': { model: module}};
 });

@@ -391,7 +391,7 @@
             return;
         }
 
-        if (logLevel != undefined && logLevel < abp.log.level) {
+        if (logLevel != undefined && logLevel < log.level) {
             return;
         }
 
@@ -399,28 +399,28 @@
     };
 
     log.debug = function (logObject) {
-        abp.log.log("DEBUG: ", abp.log.levels.DEBUG);
-        abp.log.log(logObject, abp.log.levels.DEBUG);
+        log.log("DEBUG: ", log.levels.DEBUG);
+        log.log(logObject, log.levels.DEBUG);
     };
 
     log.info = function (logObject) {
-        abp.log.log("INFO: ", abp.log.levels.INFO);
-        abp.log.log(logObject, abp.log.levels.INFO);
+        log.log("INFO: ", log.levels.INFO);
+        log.log(logObject, log.levels.INFO);
     };
 
     log.warn = function (logObject) {
-        abp.log.log("WARN: ", abp.log.levels.WARN);
-        abp.log.log(logObject, abp.log.levels.WARN);
+        log.log("WARN: ", log.levels.WARN);
+        log.log(logObject, log.levels.WARN);
     };
 
     log.error = function (logObject) {
-        abp.log.log("ERROR: ", abp.log.levels.ERROR);
-        abp.log.log(logObject, abp.log.levels.ERROR);
+        log.log("ERROR: ", log.levels.ERROR);
+        log.log(logObject, log.levels.ERROR);
     };
 
     log.fatal = function (logObject) {
-        abp.log.log("FATAL: ", abp.log.levels.FATAL);
-        abp.log.log(logObject, abp.log.levels.FATAL);
+        log.log("FATAL: ", log.levels.FATAL);
+        log.log(logObject, log.levels.FATAL);
     };
     
    

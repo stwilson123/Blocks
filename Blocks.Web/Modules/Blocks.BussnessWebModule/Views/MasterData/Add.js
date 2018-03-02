@@ -1,5 +1,10 @@
-﻿; require(["jquery"], function ($) {
+﻿; define(["jquery",'blocks'], function ($,blocks) {
 
-   alert('Add');
- 
+    var currentModule = new blocks.ui.module.model();
+    currentModule.init = function (view) {
+        blocks.utility.log.debug('module init');
+    };
+   
+    
+    return currentModule;
 });     

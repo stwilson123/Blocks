@@ -112,7 +112,13 @@
         //     });
         // });
     };
-   
+    function pathToRelative(path,modulePrefix,fileExtensionName) {
+        var moduleFrefix=modulePrefix;
+        var startIndex = path.indexOf(moduleFrefix);
+        var endIndex = path.lastIndexOf(fileExtensionName);
+
+        return path.slice(startIndex > -1 ? startIndex + moduleFrefix.length + '\\'.length : 0,endIndex > -1 ? endIndex : undefined);
+    }
     dialogUI.dialog = function (option) {
         utility.ajax.pubAjax({
             datatype: 'text/html',
@@ -121,35 +127,37 @@
 
                 //req(['/Modules/Blocks.BussnessWebModule/Views/MasterData/Add.js']);
               //  require.config({path:{'Blocks.BussnessWebModule/Views/MasterData/Add':'Blocks.BussnessWebModule/Views/MasterData/Add'}})
-                req(['Blocks.BussnessWebModule/Views/MasterData/Add']);
+
+                if (blocks.pageContext || blocks.pageContext.subPageJsVirtualPath)
+                    req([pathToRelative(blocks.pageContext.subPageJsVirtualPath,blocks.pageContext.modulePrefix,'.js')]);
                 return layerIndex;
             }
         });
 
-        var userOpts = {
-            text: message
-        };
-
-        if ($.isFunction(titleOrCallback)) {
-            callback = titleOrCallback;
-        } else if (titleOrCallback) {
-            userOpts.title = titleOrCallback;
-        }
-        ;
-
-        var opts = $.extend(
-            {},
-            abp.libs.sweetAlert.config['default'],
-            abp.libs.sweetAlert.config.confirm,
-            userOpts
-        );
-
-        return $.Deferred(function ($dfd) {
-            sweetAlert(opts, function (isConfirmed) {
-                callback && callback(isConfirmed);
-                $dfd.resolve(isConfirmed);
-            });
-        });
+        // var userOpts = {
+        //     text: message
+        // };
+        //
+        // if ($.isFunction(titleOrCallback)) {
+        //     callback = titleOrCallback;
+        // } else if (titleOrCallback) {
+        //     userOpts.title = titleOrCallback;
+        // }
+        // ;
+        //
+        // var opts = $.extend(
+        //     {},
+        //     abp.libs.sweetAlert.config['default'],
+        //     abp.libs.sweetAlert.config.confirm,
+        //     userOpts
+        // );
+        //
+        // return $.Deferred(function ($dfd) {
+        //     sweetAlert(opts, function (isConfirmed) {
+        //         callback && callback(isConfirmed);
+        //         $dfd.resolve(isConfirmed);
+        //     });
+        // });
     };
     return dialogUI;
 

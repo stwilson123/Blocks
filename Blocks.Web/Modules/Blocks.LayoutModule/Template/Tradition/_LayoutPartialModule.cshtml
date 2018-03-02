@@ -9,13 +9,22 @@
     }
 }
 @RenderBody()
-@{
-    if (this.ViewBag.subPageJsVirtualPath != null)
-    {
-       // @Html.IncludeScript((string)this.ViewBag.subPageJsVirtualPath)
-    }
-   
-}
+<script>
+    var blocks = blocks || {};
+    (function() {
+        blocks.pageContext = blocks.pageContext || {};
+        //TODO save prepage context?
+        blocks.pageContext.subPageJsVirtualPath = "@this.ViewBag.subPageJsVirtualPath";
+        blocks.pageContext.subPageCssVirtualPath = "@this.ViewBag.subPageCssVirtualPath";
+    })(blocks);
+</script>
+@*@{*@
+@*    if (this.ViewBag.subPageJsVirtualPath != null)*@
+@*    {*@
+@*       // @Html.IncludeScript((string)this.ViewBag.subPageJsVirtualPath)*@
+@*    }*@
+@*   *@
+@*}*@
 
 
   

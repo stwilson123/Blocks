@@ -1,49 +1,256 @@
 ﻿;define(['jquery', 'blocks_utility', 'jqGrid', 'Blocks.ResourcesModule/Framework/UI/Component/msg_alert','Blocks.ResourcesModule/lib/jqGrid/script/i18n/grid.locale-cn'], function ($, utility, jqGrid, msgAlert) {
     var validate = utility.validate;
+
+
+    function initReader(options) {
+        //ID字段名
+        if (options.idKey !== undefined && options.idKey !== null) {
+            options.jsonReader.id = options.idKey;
+            options.localReader.id = options.idKey;
+
+        }
+    }
+
     var grid = function (option) {
-        if (validate.isNullOrEmpty(option) || validate.isNullOrEmpty(option.Id) || validate.isNullOrEmpty($("#" + option.Id).attr('id'))) {
-            throw "未指定ID的Grid对象";
-        }
-
-
+        if (! this instanceof grid)
+            return null;
+      
+    
+       
         var gridID = option.Id;
-        var jqObj = $("#" + gridID);
-        //列名创建
-        var defColModel = {width: 100, align: 'left', sortable: true};
+      
+        initLoadCompleted(option);
 
-        if (!validate.isNullOrEmpty(option.colModel)) {
-            if (option.colModel.length !== option.colNames.length) {
-                alert("colModel与colNames长度不一致");
-                return;
+        this._options = $.extend(true, this.config.default, option);
+        var jqObj = option.gridObj;
+        initGridObject(jqObj);
+        initColmodel(this._options,this.config.default.colModelTemplate);
+        initReader(this._options);
+        var $gridObj = option.gridObj;
+
+    
+        
+       
+
+       
+        initGridView(options);
+        initGridEvent(options);
+
+        //Grid数据
+        // if (!validate.isNullOrEmpty(options.colRDModel.FormID)) {
+        //     var $form = $("#" + options.colRDModel.FormID);
+        //     if ($form.length !== 0) {
+        //         var cols = options.colRDModel.RDModel.toString();
+        //         var hidObj = "<input type='hidden' GridID='" + $gridObj.attr('id');
+        //         hidObj += "' class='____HIDGRIDDATA' id='hidGridData_'" + $gridObj.attr('id') + " name='hidGridData' value=''";
+        //         hidObj += " RDModel='" + cols + "'/>";
+        //         //   $form.find('input[type="hidden"][name="hidGridData"]').remove();
+        //         $form.append(hidObj);
+        //     }
+        //     //显示和隐藏列hidden
+        //     var colTemp = [];
+        //     for (var k = 0; k < option.colModel.length; k++) {
+        //         colTemp.push(option.colModel[k].name);
+        //     }
+        //     for (var j = 0; j < options.colRDModel.RDModel.length; j++) {
+        //         var value = options.colRDModel.RDModel[j];
+        //         if (!(colTemp.indexOf(value) > 0)) {
+        //             option.colNames.push(value);
+        //             var col = {name: value, index: value, hidden: true};
+        //             option.colModel.push(col);
+        //         }
+        //     }
+        // }
+
+
+        this.init = function () {
+            if (options.datatype === "local") {
+                this.loadLocalData();
+            } else {
+                this.loadJsonData();
             }
+            //this.reload();
+        };
 
-            for (var i = 0; i < option.colModel.length; i++) {
-                if (validate.isNullOrEmpty(option.colModel[i].name)) {
-                    alert("未指定name属性的colModel");
-                    return;
-                }
+        this.loadLocalData = function () {
+            var firstOptions = {};
+            firstOptions.datatype = "local";
+            firstOptions = $.extend(defaults, firstOptions);
+            $gridObj.jqGrid(firstOptions);
+        };
 
-                if (validate.isNullOrEmpty(option.colModel[i].index)) option.colModel[i].index = option.colModel[i].name;
+        this.loadJsonData = function () {
+            $gridObj.jqGrid("setGridParam", {
+                datatype: "json",
+                url: options.url,
+                postData: getPostData('QueryForm')
+            });
+        };
 
-                if (validate.isNullOrEmpty(option.colModel[i].width)) option.colModel[i].width = defColModel.width;
+        this.reload = function () {
+            $gridObj.jqGrid().trigger("reloadGrid");
+        };
 
-                if (validate.isNullOrEmpty(option.colModel[i].align)) option.colModel[i].align = defColModel.align;
+       
 
-                //if (validate.isNullOrEmpty(option.colNames[i].align)) option.colNames[i].align = defColModel.align;
+        //大小重置
+        this.gridResize = function () {
+            if ($.type(options.gridResize) === "function") {
+                options.gridResize.call();
+                $(window).resize(function () {
+                    options.gridResize.call();
+                });
+            } else {
+                setTimeout(function () {
+                  //  $("#gbox_gridInfo").parent().width()
 
+                    $gridObj.setGridWidth($('#gbox_'+$gridObj.attr('id')).parent().width());
+                    $gridObj.setGridHeight($('#gbox_'+$gridObj.attr('id')).parent().height()- grid.prototype.getGridHeightWithoutBdiv());
+                    //$gridObj.setGridWidth(options.getGridWidth(GridContainerLengthFactory.GetGridContainerWidth($("#ConfigName").val())));
+                    //$gridObj.setGridHeight(options.getGridHeight(GridContainerLengthFactory.GetGridContainerHeight($("#ConfigName").val())));
 
-                if (option.colModel[i].sortable === undefined) option.colModel[i].sortable = defColModel.sortable;
+                }, 200);
+                $(window).resize(function () {
+                    setTimeout(function () {
+                        $gridObj.setGridWidth($('#gbox_'+$gridObj.attr('id')).parent().width());
+                        $gridObj.setGridHeight($('#gbox_'+$gridObj.attr('id')).parent().height()- grid.prototype.getGridHeightWithoutBdiv());
+                        //$gridObj.setGridWidth(options.getGridWidth(
+                        //    GridContainerLengthFactory.GetGridContainerWidth($("#ConfigName").val())
+                        //));
+                        //$gridObj.setGridHeight(options.getGridHeight(
+                        //    GridContainerLengthFactory.GetGridContainerHeight($("#ConfigName").val())
+                        //));
+                    }, 200)
+
+                });
             }
-        } else {
-            if (validate.isNullOrEmpty(option.colModel) && validate.isNullOrEmpty(option.colNames))
-                ;
-            else {
-                alert("未指定colModel属性的Grid对象");
-                return;
-            }
+        };
+
+        this.init();
+
+        this.gridResize();
+
+        //$(window).resize();
+
+        //$("#" + $gridObj.attr('id')).jqGrid('navGrid', options.pager,
+        //    { edit: false, add: false, del: false },
+        //    {},
+        //    {},
+        //    {},
+        //    { multipleSearch: true, multipleGroup: true, showQuery: true }
+        //);
+
+    };
+
+    function initColmodel(option,defColModel) {
+        if (validate.isNullOrEmpty(option.colModel) || validate.isNullOrEmpty(option.colNames))
+            throw("Grid对象必须含有colModel和colNames属性");
+ 
+        if (option.colModel.length !== option.colNames.length) {
+            throw "colModel与colNames长度不一致";
         }
-        jqObj.attr('gridstate', 'visible');
-        var defaults = {
+
+        for (var i = 0; i < option.colModel.length; i++) {
+            if (validate.isNullOrEmpty(option.colModel[i].name)) {
+                throw "colModel必须含有name属性";
+            }
+            
+            if (validate.isNullOrEmpty(option.colModel[i].index)) option.colModel[i].index = option.colModel[i].name;
+            $.extend(option.colModel[i], defColModel);
+        }
+
+    }
+    function initGridObject(option) {
+        if (validate.isNullOrEmpty(option) || !option.gridObj ||  validate.isNullOrEmpty(option.gridObj.attr('id'))) {
+            throw "未指定的Grid对象";
+        }
+        option.gridObj.attr('gridstate', 'visible');
+        option.gridObj.attr("lastsel", "");
+    }
+
+
+    function initLoadCompleted(options) {
+        var loadCompleteFn = function (xhr) {
+            
+            // $('.ui-jqgrid .ui-jqgrid-titlebar-close.HeaderButton').click(function () { $(window).trigger("resize"); })
+            $gridObj.find("#" + $gridObj.attr('id') + "_pager_center").width("300px");
+            //增加y轴滚动条
+            //$gridObj.closest(".ui-jqgrid-bdiv").css({ 'overflow-y': 'scroll' });
+            //var w2 = parseInt($('.ui-jqgrid-labels>th:eq(0)').css('width')) - 5;
+            //$('.ui-jqgrid-lables>th:eq(0)').css('width', w2);
+            //$('#'+$gridObj.attr("id") +' tr').find("td:eq(0)").each(function () {
+            //    $(this).css('width', w2);
+            //})
+
+
+          
+            //列表上下顺序拖拽
+            if (options.dragSortable) {
+                $gridObj.tableDnD({
+                    scrollAmount: 1,
+                    onDrop: function (table, row) {
+                        id = row.id;
+                        getMKXH(id, uid);
+                    },
+                    onAllowDrop: function (draggedRow, row) {
+                        uid = $(row).index();
+                        return true;
+                    }
+                });
+            }
+            var currenType = $gridObj.getGridParam('datatype');
+            if (currenType === "json") {
+                if (xhr.code !== '200') {
+                    msgAlert.error({message: xhr.msg});
+
+                    options.loadCompleteOnFaildCallBack(xhr);
+                }
+                //  ajaxSuccess(xhr, null, options.loadCompleteOnFaildCallBack);
+            }
+            customerLoadComplete(xhr);
+
+        };
+        //从服务器返回响应时执行
+        if (!validate.isNullOrEmpty(options.loadComplete))
+            this.loadComplete(options.loadComplete);
+        options.loadComplete = null;
+
+    }
+    function initGridView(options) {
+        var $gridObj= options.gridObj;
+        //创建分页区 
+        if (options.showPager) {
+            var pagerId = $gridObj.attr('id') + "_pager";
+            $gridObj.siblings('div.gridpager[id="' + pagerId + '"]').remove();
+            $gridObj.parent().append("<div id='" + pagerId + "' ></div>");
+            options.pager = "#" + pagerId;
+        }
+
+
+        //显示列序号 
+        if (options.rownumbers) {
+            this.loadComplete(function () {
+                $gridObj.jqGrid('setLabel', 0, '序号', 'labelstyle');
+            });
+           
+        }
+
+    }
+    function initGridEvent(options) {
+        var changeEventFun = function (e) {
+            if (!validate.isNullOrEmpty(options.onSelectHead) && $.isFunction(options.onSelectHead))
+                options.onSelectHead(gridID, false, e);
+
+        };
+        this.loadComplete(function () {
+            options.gridObj.find('#cb_' + gridID).unbind('change', changeEventFun);
+            options.gridObj.find('#cb_' + gridID).on('change', changeEventFun);
+        });
+    }
+    grid.prototype.config = {
+
+        'default':{
+
             ajaxGridOptions: {
                 type: "POST",
                 cache: false,
@@ -58,7 +265,7 @@
             gridview: true,
             viewrecords: true,
             multiselect: true,
-            rowNum: option.showPager || validate.isNullOrEmpty(option.showPager) ? 10 : 999999,   //不显示分页栏时，默认显示全部,注意设-1时无法显示最后一行
+            rowNum: 10, //option.showPager || validate.isNullOrEmpty(option.showPager) ? 10 : 999999,   //不显示分页栏时，默认显示全部,注意设-1时无法显示最后一行
             rowList: [10, 30, 50, 100, 200, 500],
             jsonReader: {
                 root: "content.rows",
@@ -72,7 +279,7 @@
                 id: "ID"
             },
             loadError: function () {
-                OpenTipWindowError("网络出错，请刷新页面重试");
+                msgAlert.error({message: "网络出错，请刷新页面重试"});
             },
             caption: "",
             sortorder: "desc",   //默认倒序,
@@ -159,207 +366,16 @@
                 });
 
                 return JSON.stringify(postDataWrapper);
-            }
-        };
-        var options = $.extend(true, defaults, option);
-        var $gridObj = jqObj.eq(0);
-        jqObj.attr("lastsel", "");
-        var customerLoadComplete = function (data) {
-            ;
-        };
-        if (options.loadComplete !== undefined && $.type(options.loadComplete) === 'function') {
-            customerLoadComplete = options.loadComplete;
-        }
-        var changeEventFun = function (e) {
-            if (!validate.isNullOrEmpty(option.onSelectHead) && $.isFunction(option.onSelectHead))
-                options.onSelectHead(gridID, false, e);
+            },
+            colModelTemplate : {width: 100, align: 'left', sortable: true},
+            eventsStore:{ 'loadComplete':[]},
+            loadComplete:function (xhr) {
 
-        };
-
-
-        var loadCompleteFn = function (xhr) {
-            //显示序号 
-            if (options.rownumbers) {
-                $gridObj.jqGrid('setLabel', 0, '序号', 'labelstyle');
-            }
-            // $('.ui-jqgrid .ui-jqgrid-titlebar-close.HeaderButton').click(function () { $(window).trigger("resize"); })
-            $("#" + $gridObj.attr('id') + "_pager_center").width("300px");
-            //增加y轴滚动条
-            //$gridObj.closest(".ui-jqgrid-bdiv").css({ 'overflow-y': 'scroll' });
-            //var w2 = parseInt($('.ui-jqgrid-labels>th:eq(0)').css('width')) - 5;
-            //$('.ui-jqgrid-lables>th:eq(0)').css('width', w2);
-            //$('#'+$gridObj.attr("id") +' tr').find("td:eq(0)").each(function () {
-            //    $(this).css('width', w2);
-            //})
-
-
-            $('#cb_' + gridID).unbind('change', changeEventFun);
-            $('#cb_' + gridID).on('change', changeEventFun);
-            //列表上下顺序拖拽
-            if (options.dragSortable) {
-                $gridObj.tableDnD({
-                    scrollAmount: 1,
-                    onDrop: function (table, row) {
-                        id = row.id;
-                        getMKXH(id, uid);
-                    },
-                    onAllowDrop: function (draggedRow, row) {
-                        uid = $(row).index();
-                        return true;
-                    }
-                });
-            }
-            var currenType = $gridObj.getGridParam('datatype');
-            if (currenType === "json") {
-                if (xhr.code !== '200') {
-                    msgAlert.error({message: xhr.msg});
-
-                    options.loadCompleteOnFaildCallBack(xhr);
-                }
-                //  ajaxSuccess(xhr, null, options.loadCompleteOnFaildCallBack);
-            }
-            customerLoadComplete(xhr);
-
-        };
-        //从服务器返回响应时执行
-        options.loadComplete = loadCompleteFn;
-
-        //ID字段名
-        if (options.idKey !== undefined && options.idKey !== null) {
-            options.jsonReader.id = options.idKey;
-            options.localReader.id = options.idKey;
-
-        }
-
-        //是否显示滚动条 
-        if (!options.gridScroll) {
-            // options.autoWidth = true;
-            //options.shrinkToFit = false;
-        } else {
-            options.shrinkToFit = false;
-            options.autoScroll = true;
-        }
-
-        //创建分页区 
-        if (options.showPager) {
-            var pagerId = $gridObj.attr('id') + "_pager";
-            $gridObj.siblings('div.gridpager[id="' + pagerId + '"]').remove();
-            $gridObj.parent().append("<div id='" + pagerId + "' ></div>");
-            options.pager = "#" + pagerId;
-
-
-        }
-        else {
-
-        }
-
-
-        //Grid数据
-        if (!validate.isNullOrEmpty(options.colRDModel.FormID)) {
-            var $form = $("#" + options.colRDModel.FormID);
-            if ($form.length !== 0) {
-                var cols = options.colRDModel.RDModel.toString();
-                var hidObj = "<input type='hidden' GridID='" + $gridObj.attr('id');
-                hidObj += "' class='____HIDGRIDDATA' id='hidGridData_'" + $gridObj.attr('id') + " name='hidGridData' value=''";
-                hidObj += " RDModel='" + cols + "'/>";
-                //   $form.find('input[type="hidden"][name="hidGridData"]').remove();
-                $form.append(hidObj);
-            }
-            //显示和隐藏列hidden
-            var colTemp = [];
-            for (var k = 0; k < option.colModel.length; k++) {
-                colTemp.push(option.colModel[k].name);
-            }
-            for (var j = 0; j < options.colRDModel.RDModel.length; j++) {
-                var value = options.colRDModel.RDModel[j];
-                if (!(colTemp.indexOf(value) > 0)) {
-                    option.colNames.push(value);
-                    var col = {name: value, index: value, hidden: true};
-                    option.colModel.push(col);
-                }
-            }
-        }
-
-        var rMenu = null;
-
-        this.Id = gridID;
-        this.init = function () {
-            if (options.datatype === "local") {
-                this.loadLocalData();
-            } else {
-                this.loadJsonData();
-            }
-            //this.reload();
-        }
-
-        this.loadLocalData = function () {
-            var firstOptions = {};
-            firstOptions.datatype = "local";
-            firstOptions = $.extend(defaults, firstOptions)
-            $gridObj.jqGrid(firstOptions);
-        };
-
-        this.loadJsonData = function () {
-            $gridObj.jqGrid("setGridParam", {
-                datatype: "json",
-                url: options.url,
-                postData: getPostData('QueryForm')
-            });
-        };
-
-        this.reload = function () {
-            $gridObj.jqGrid().trigger("reloadGrid");
-        };
-
-       
-
-        //大小重置
-        this.gridResize = function () {
-            if ($.type(options.gridResize) === "function") {
-                options.gridResize.call();
-                $(window).resize(function () {
-                    options.gridResize.call();
-                });
-            } else {
-                setTimeout(function () {
-                  //  $("#gbox_gridInfo").parent().width()
-
-                    $gridObj.setGridWidth($('#gbox_'+$gridObj.attr('id')).parent().width());
-                    $gridObj.setGridHeight($('#gbox_'+$gridObj.attr('id')).parent().height()- grid.prototype.getGridHeightWithoutBdiv());
-                    //$gridObj.setGridWidth(options.getGridWidth(GridContainerLengthFactory.GetGridContainerWidth($("#ConfigName").val())));
-                    //$gridObj.setGridHeight(options.getGridHeight(GridContainerLengthFactory.GetGridContainerHeight($("#ConfigName").val())));
-
-                }, 200);
-                $(window).resize(function () {
-                    setTimeout(function () {
-                        $gridObj.setGridWidth($('#gbox_'+$gridObj.attr('id')).parent().width());
-                        $gridObj.setGridHeight($('#gbox_'+$gridObj.attr('id')).parent().height()- grid.prototype.getGridHeightWithoutBdiv());
-                        //$gridObj.setGridWidth(options.getGridWidth(
-                        //    GridContainerLengthFactory.GetGridContainerWidth($("#ConfigName").val())
-                        //));
-                        //$gridObj.setGridHeight(options.getGridHeight(
-                        //    GridContainerLengthFactory.GetGridContainerHeight($("#ConfigName").val())
-                        //));
-                    }, 200)
-
+                $.each(eventsStore['loadComplete'], function (index, val) {
+                    val(xhr);
                 });
             }
         }
-
-        this.init();
-
-        this.gridResize();
-
-        //$(window).resize();
-
-        //$("#" + $gridObj.attr('id')).jqGrid('navGrid', options.pager,
-        //    { edit: false, add: false, del: false },
-        //    {},
-        //    {},
-        //    {},
-        //    { multipleSearch: true, multipleGroup: true, showQuery: true }
-        //);
-
     };
     grid.prototype.getGridHeightWithoutBdiv = function () {
         var hdiv = $(".ui-jqgrid-hdiv").filter(function (index, htmlObj) {
@@ -551,6 +567,12 @@
         return jqObj.attr('gridstate');
     };
 
+
+    grid.prototype.loadComplete = function (loadEventFun) {
+        if ($.type(loadEventFun) !== 'function')
+            throw 'loadEventFun must be function';
+        this._options.eventsStore['loadComplete'].push(loadEventFun);
+    };
 
     return grid;
 });
