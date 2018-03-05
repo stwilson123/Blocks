@@ -94,15 +94,17 @@
   transform: scale(1); }
 
 .navbar-header {
-  padding: 10px 7px; }
+  padding: 0px 7px; }
   .navbar-header .bars {
     float: left;
     text-decoration: none; }
 
 .navbar-nav > li > a {
-  padding: 7px 7px 2px 7px;
-  margin-top: 17px;
+  padding: 16px 2px 4px 2px;
+  /*margin-top: 17px;*/
   margin-left: 5px; }
+
+ 
 
 .navbar-nav .dropdown-menu {
   margin-top: -40px !important; }
@@ -2396,7 +2398,7 @@ a {
   animation: none !important; }
 
 section.content {
-  margin: 100px 15px 0 315px;
+  margin: 55px 5px 0 305px;
   -moz-transition: 0.5s;
   -o-transition: 0.5s;
   -webkit-transition: 0.5s;
@@ -2818,7 +2820,7 @@ section.content {
   min-height: 50px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
   position: relative;
-  margin-bottom: 30px; }
+  margin-bottom: 0px; }
   .card .card-inside-title {
     margin-top: 25px;
     margin-bottom: 15px;
@@ -6719,20 +6721,8 @@ fieldset[disabled] .form-control {
   -webkit-transform: scale(1);
   transform: scale(1); }
 
-.navbar-header {
-  padding: 10px 7px; }
-  .navbar-header .bars {
-    float: left;
-    text-decoration: none; }
-
-.navbar-nav > li > a {
-  padding: 7px 7px 2px 7px;
-  margin-top: 17px;
-  margin-left: 5px; }
-
-.navbar-nav .dropdown-menu {
-  margin-top: -40px !important; }
-
+ 
+ 
 .label-count {
   position: absolute;
   top: 2px;
@@ -7465,9 +7455,9 @@ fieldset[disabled] .form-control {
   width: 300px;
   overflow: hidden;
   display: inline-block;
-  height: calc(100vh - 70px);
+  height: calc(100vh - 50px);
   position: fixed;
-  top: 70px;
+  top: 50px;
   left: 0;
   -webkit-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
@@ -7653,10 +7643,10 @@ fieldset[disabled] .form-control {
 
 .right-sidebar {
   width: 280px;
-  height: calc(100vh - 70px);
+  height: calc(100vh - 50px);
   position: fixed;
   right: -300px;
-  top: 70px;
+  top: 50px;
   background: #fdfdfd;
   z-index: 11 !important;
   -webkit-box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.1);

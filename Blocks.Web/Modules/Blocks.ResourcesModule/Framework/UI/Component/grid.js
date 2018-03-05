@@ -2,15 +2,6 @@
     var validate = utility.validate;
 
 
-    function initReader(options) {
-        //ID字段名
-        if (options.idKey !== undefined && options.idKey !== null) {
-            options.jsonReader.id = options.idKey;
-            options.localReader.id = options.idKey;
-
-        }
-    }
-
     var grid = function (option) {
         if (! this instanceof grid)
             return null;
@@ -23,7 +14,7 @@
 
         this._options = $.extend(true, this.config.default, option);
         var jqObj = option.gridObj;
-        initGridObject(jqObj);
+        initGridObject(option);
         initColmodel(this._options,this.config.default.colModelTemplate);
         initReader(this._options);
         var $gridObj = option.gridObj;
@@ -33,8 +24,8 @@
        
 
        
-        initGridView(options);
-        initGridEvent(options);
+        initGridView(this._options);
+        initGridEvent.call(this,this._options);
 
         //Grid数据
         // if (!validate.isNullOrEmpty(options.colRDModel.FormID)) {
@@ -64,7 +55,7 @@
 
 
         this.init = function () {
-            if (options.datatype === "local") {
+            if (this._options.datatype === "local") {
                 this.loadLocalData();
             } else {
                 this.loadJsonData();
@@ -75,14 +66,14 @@
         this.loadLocalData = function () {
             var firstOptions = {};
             firstOptions.datatype = "local";
-            firstOptions = $.extend(defaults, firstOptions);
+            firstOptions = $.extend(this.config.default, firstOptions);
             $gridObj.jqGrid(firstOptions);
         };
 
         this.loadJsonData = function () {
             $gridObj.jqGrid("setGridParam", {
                 datatype: "json",
-                url: options.url,
+                url: _options.url,
                 postData: getPostData('QueryForm')
             });
         };
@@ -95,25 +86,27 @@
 
         //大小重置
         this.gridResize = function () {
-            if ($.type(options.gridResize) === "function") {
-                options.gridResize.call();
+            var option = this._options;
+            if ($.type(option.gridResize) === "function") {
+                option.gridResize.call();
                 $(window).resize(function () {
-                    options.gridResize.call();
+                    option.gridResize.call();
                 });
             } else {
                 setTimeout(function () {
                   //  $("#gbox_gridInfo").parent().width()
-
-                    $gridObj.setGridWidth($('#gbox_'+$gridObj.attr('id')).parent().width());
-                    $gridObj.setGridHeight($('#gbox_'+$gridObj.attr('id')).parent().height()- grid.prototype.getGridHeightWithoutBdiv());
+                    var parentContainer = $gridObj.parents('#gbox_'+$gridObj.attr('id')).parent(); 
+                    $gridObj.setGridWidth(parentContainer.width());
+                    $gridObj.setGridHeight(parentContainer.height()- grid.prototype.getGridHeightWithoutBdiv());
                     //$gridObj.setGridWidth(options.getGridWidth(GridContainerLengthFactory.GetGridContainerWidth($("#ConfigName").val())));
                     //$gridObj.setGridHeight(options.getGridHeight(GridContainerLengthFactory.GetGridContainerHeight($("#ConfigName").val())));
 
                 }, 200);
                 $(window).resize(function () {
                     setTimeout(function () {
-                        $gridObj.setGridWidth($('#gbox_'+$gridObj.attr('id')).parent().width());
-                        $gridObj.setGridHeight($('#gbox_'+$gridObj.attr('id')).parent().height()- grid.prototype.getGridHeightWithoutBdiv());
+                        var parentContainer = $gridObj.parents('#gbox_'+$gridObj.attr('id')).parent();
+                        $gridObj.setGridWidth(parentContainer.width());
+                        $gridObj.setGridHeight(parentContainer.height()- grid.prototype.getGridHeightWithoutBdiv());
                         //$gridObj.setGridWidth(options.getGridWidth(
                         //    GridContainerLengthFactory.GetGridContainerWidth($("#ConfigName").val())
                         //));
@@ -162,7 +155,7 @@
     }
     function initGridObject(option) {
         if (validate.isNullOrEmpty(option) || !option.gridObj ||  validate.isNullOrEmpty(option.gridObj.attr('id'))) {
-            throw "未指定的Grid对象";
+            throw new Error("未指定的Grid对象");
         }
         option.gridObj.attr('gridstate', 'visible');
         option.gridObj.attr("lastsel", "");
@@ -247,6 +240,17 @@
             options.gridObj.find('#cb_' + gridID).on('change', changeEventFun);
         });
     }
+
+
+    function initReader(options) {
+        //ID字段名
+        if (options.idKey !== undefined && options.idKey !== null) {
+            options.jsonReader.id = options.idKey;
+            options.localReader.id = options.idKey;
+
+        }
+    }
+
     grid.prototype.config = {
 
         'default':{
@@ -489,7 +493,7 @@
     grid.prototype.delRowData = function (rowsId) {
 
         if (validate.isNullOrEmpty(rowsId) || !$.isArray(rowsId)) {
-            throw "请输入合适的id数组";
+            throw new Error("请输入合适的id数组");
         }
         while (rowsId.length > 0) {
             $(grid.Id).jqGrid('delRowData', rowsId[0]);
@@ -503,14 +507,14 @@
     grid.prototype.addRowData = function (gridData) {
         var jqObj = $(this.Id);
         if (validate.isNullOrEmpty(gridData)) {
-            throw "请输入合适的Json数组";
+            throw new Error("请输入合适的Json数组");
         }
         var lastIndex = jqObj.jqGrid('getDataIDs').length;
         var result = 0;
         var idKey = jqObj.jqGrid("getGridParam", "idKey");
         for (var i = 0; i < gridData.length; i++) {
             if (validate.isNullOrEmpty(gridData[i][idKey])) {
-                throw "Grid数据中不包含列是" + idKey;
+                throw new Error("Grid数据中不包含列是" + idKey);
             }
             result = jqObj.jqGrid('addRowData', gridData[i][idKey], gridData[i], "After", lastIndex++) ? result + 1 : result;
 
@@ -570,7 +574,7 @@
 
     grid.prototype.loadComplete = function (loadEventFun) {
         if ($.type(loadEventFun) !== 'function')
-            throw 'loadEventFun must be function';
+            throw new Error('loadEventFun must be function');
         this._options.eventsStore['loadComplete'].push(loadEventFun);
     };
 
