@@ -13,10 +13,12 @@
 
 
 <div class="table-responsive" style="padding: 2px; height: 100%">
-    <button id="add" style="height: 20px">123</button>
-    
-    
-    <div style="top: 0px;bottom: 0px;position: absolute">
+    <input id="msg" v-model='value'/>
+    <button id="add" style="height: 20px" v-on:click="addClick">123</button>
+
+
+    @*    <div style="top: 0px;bottom: 0px;position: absolute">*@
+    <div>
         <table id="gridInfo"></table>
     </div>
 

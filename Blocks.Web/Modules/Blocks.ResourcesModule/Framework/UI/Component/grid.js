@@ -113,7 +113,7 @@
                         //$gridObj.setGridHeight(options.getGridHeight(
                         //    GridContainerLengthFactory.GetGridContainerHeight($("#ConfigName").val())
                         //));
-                    }, 200)
+                    }, 300)
 
                 });
             }

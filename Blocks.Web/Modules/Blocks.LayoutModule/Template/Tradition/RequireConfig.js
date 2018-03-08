@@ -21,10 +21,10 @@
         }
         
     }
-    extend(JsModule, {
-        "Tradition/_LayoutModule": "Blocks.LayoutModule/template/Tradition/_LayoutModule",
-       
-    });
+    // extend(JsModule, {
+    //     "Tradition/_LayoutModule": "Blocks.LayoutModule/template/Tradition/_LayoutModule",
+    //   
+    // });
     require.config({
         //define all js file path base on this base path  
         //actually this can setting same to data-main attribute in script tag  
@@ -47,22 +47,9 @@
         });
 
     };
-    function pathToRelative(path,modulePrefix,fileExtensionName) {
-        var moduleFrefix=modulePrefix;
-        var startIndex = path.indexOf(moduleFrefix);
-        var endIndex = path.lastIndexOf(fileExtensionName);
+    
 
-        return path.slice(startIndex > -1 ? startIndex + moduleFrefix.length + '\\'.length : 0,endIndex > -1 ? endIndex : undefined);
-    }
-
-    if (blocks.pageContext.subPageJsVirtualPath)
-    {  
-       require([pathToRelative(blocks.pageContext.subPageJsVirtualPath,blocks.pageContext.modulePrefix,'.js')],function (containerModules) {
-            containerModules.init(jQuery("#container"));
-        });
-        
-        //  require(['Blocks.BussnessWebModule/Views/MasterData/Index']);
-    }
+  
 
 
 

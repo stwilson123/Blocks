@@ -41,6 +41,8 @@ namespace Blocks.ResourcesModule
 
         public static string requireJS { get; } = "requireJS";
 
+        public static string vueJS { get; } = "vueJS";
+
         #endregion
 
         public static string blocks { get; } = "blocks";

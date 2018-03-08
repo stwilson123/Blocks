@@ -18,7 +18,16 @@
         isErrorCode: function isErrorCode(code) {
             return (code != 100 && code < 3000) || code > 10000;
         };
-        return { isNullOrEmpty: isNullOrEmpty, isDecimal: isDecimal, isHtml: isHtml, isInt: isInt, isErrorCode: isErrorCode };
+        mustFunction: function mustFunction(object,paramName) {
+            if (!isFunction(object))
+                throw new Error("object must be object");
+        };
+        isFunction: function isFunction(object) {
+            return $.isFunction(object);
+        };
+        return { isNullOrEmpty: isNullOrEmpty, isDecimal: isDecimal, isHtml: isHtml, isInt: isInt, isErrorCode: isErrorCode,mustFunction:mustFunction,
+            isFunction:isFunction
+        };
     })(jQuery);
 
 
@@ -423,6 +432,20 @@
         log.log(logObject, log.levels.FATAL);
     };
     
-   
-    return { validate: ValidateHelper,ajax:AjaxHelper,cookie:cookie,log:log }
+    var obj = {
+        inherit:function (parent,child) {
+            ValidateHelper.mustFunction(parent,'parent');
+            ValidateHelper.mustFunction(child,'child');
+
+            (function(){
+                // 创建一个没有实例方法的类
+                var Super = function(){};
+                Super.prototype = parent.prototype;
+                //将实例作为子类的原型
+                child.prototype = new Super();
+            })();
+        }
+        
+    };
+    return { validate: ValidateHelper,ajax:AjaxHelper,cookie:cookie,log:log,obj:obj }
 });

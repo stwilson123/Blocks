@@ -123,13 +123,18 @@
         utility.ajax.pubAjax({
             datatype: 'text/html',
             url: option.url, onSuccessCallBack: function (data) {
-                var layerIndex = show($.extend(option, {dialogType: 'dialog', content: data}));
+                var WrapperId = (''+Math.random()).replace('0.','');
+                var dataWrapper = '<div id="'+ WrapperId+'">' + data + '</div>'; 
+                var layerIndex = show($.extend(option, {dialogType: 'dialog', content: dataWrapper}));
 
                 //req(['/Modules/Blocks.BussnessWebModule/Views/MasterData/Add.js']);
               //  require.config({path:{'Blocks.BussnessWebModule/Views/MasterData/Add':'Blocks.BussnessWebModule/Views/MasterData/Add'}})
 
-                if (blocks.pageContext || blocks.pageContext.subPageJsVirtualPath)
-                    req([pathToRelative(blocks.pageContext.subPageJsVirtualPath,blocks.pageContext.modulePrefix,'.js')]);
+                if (blocks.pageContext || blocks.pageContext.subPageJsVirtualPath) {
+                    req([pathToRelative(blocks.pageContext.subPageJsVirtualPath, blocks.pageContext.modulePrefix, '.js')],function (containerModules) {
+                        containerModules.init($('#' + WrapperId).children());
+                    });
+                }
                 return layerIndex;
             }
         });

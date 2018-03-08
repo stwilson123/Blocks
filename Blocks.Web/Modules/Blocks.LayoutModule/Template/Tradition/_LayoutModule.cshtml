@@ -41,7 +41,7 @@
         Script.Require("slimscroll");
         Script.Require("waves");
         Script.Require("push");
-
+        Script.Require("vueJS");
         Script.Require("blocks");
 
 //        Script.Include("/lib/abp-web-resources/Abp/Framework/scripts/abp.js");
@@ -55,7 +55,7 @@
        // Script.Include("_Layout.js");
         Script.Include("/lib/signalr/jquery.signalR.js");
 
-        Script.Require("requireJS").SetAttribute("data-main", "/Modules/Blocks.LayoutModule/Template/Tradition/RequireConfig").AtFoot();
+        Script.Require("requireJS").SetAttribute("data-main", "/Modules/Blocks.LayoutModule/Template/Tradition/_LayoutModule").AtFoot();
 
     }
 }
@@ -79,7 +79,7 @@
 
 @section body
 {
-    <div class="theme-red">
+    <div class="theme-blue">
         <!-- Page Loader -->
         <div class="page-loader-wrapper">
             <div class="loader">
@@ -128,13 +128,13 @@
                             </a>
                         </li>
                         <!-- #END# Call Search -->
-                        @Html.Action("LanguageSelection", "Layout")
-
-                        <li class="pull-right">
-                            <a href="javascript:void(0);" class="js-right-sidebar" data-close="true">
-                                <i class="material-icons">more_vert</i>
-                            </a>
-                        </li>
+@*                        @Html.Action("LanguageSelection", "Layout")*@
+@**@
+@*                        <li class="pull-right">*@
+@*                            <a href="javascript:void(0);" class="js-right-sidebar" data-close="true">*@
+@*                                <i class="material-icons">more_vert</i>*@
+@*                            </a>*@
+@*                        </li>*@
                     </ul>
                 </div>
             </div>
@@ -143,7 +143,7 @@
         <section>
             <aside id="leftsidebar" class="sidebar">
 
-                @Html.Action("SideBarUserArea", "Layout")
+@*                @Html.Action("SideBarUserArea", "Layout")*@
                 @Html.Action("SideBarNav", "Layout", new { activeMenu = ViewBag.ActiveMenu })
 
                 <!-- Footer -->
@@ -191,6 +191,8 @@
                 language: '@Thread.CurrentThread.CurrentUICulture.Name'
                     };
         })(blocks);
+
+        
     </script>
     <script>
         //Localizing momentjs
