@@ -121,17 +121,16 @@
 
         this.init();
 
-        this.gridResize();
+        //this.gridResize();
 
-        //$(window).resize();
 
-        //$("#" + $gridObj.attr('id')).jqGrid('navGrid', options.pager,
-        //    { edit: false, add: false, del: false },
-        //    {},
-        //    {},
-        //    {},
-        //    { multipleSearch: true, multipleGroup: true, showQuery: true }
-        //);
+        $gridObj.jqGrid('navGrid', this._options.pager,
+           { edit: false, add: false, del: false },
+           {},
+           {},
+           {},
+           { multipleSearch: true, multipleGroup: true, showQuery: true }
+        );
 
     };
 
@@ -305,23 +304,24 @@
             onSelectHead: function (rowid, status, e) {
             },
             onSelectRow: function (rowid, status) {
-                var rowData = $('#' + gridID).jqGrid('getGridParam', 'selarrrow');
-                if (rowData.length === $('#' + gridID)[0].p.reccount) {
-                    $('#cb_' + gridID).prop("checked", 'true');
+                var jqGridObj = $(this);
+                var rowData = jqGridObj.jqGrid('getGridParam', 'selarrrow');
+                if (rowData.length === jqGridObj[0].p.reccount) {
+                    jqGridObj.find('#cb_' + gridID).prop("checked", 'true');
 
                 }
 
                 if (!validate.isNullOrEmpty(option.onSelectOnlyOneRow)) {
-                    var lastsel = parseInt($(this).attr("lastsel"));
+                    var lastsel = parseInt(jqGridObj.attr("lastsel"));
                     if (rowid && rowid !== lastsel) {
                         if (!isNaN(lastsel))
-                            $gridObj.jqGrid("saveRow", lastsel, null, 'clientArray');
+                            jqGridObj.jqGrid("saveRow", lastsel, null, 'clientArray');
                         if (!validate.isNullOrEmpty(options.editParams))
-                            $gridObj.jqGrid('editRow', rowid, true, options.editParams.oneditfunc, null, 'clientArray', null, options.editParams.aftersavefunc);
+                            jqGridObj.jqGrid('editRow', rowid, true, options.editParams.oneditfunc, null, 'clientArray', null, options.editParams.aftersavefunc);
                         else
-                            $gridObj.jqGrid('editRow', rowid, true);
+                            jqGridObj.jqGrid('editRow', rowid, true);
 
-                        jqObj.attr("lastsel", rowid);
+                        jqGridObj.attr("lastsel", rowid);
 
                     }
 
@@ -352,7 +352,8 @@
             mtype: "POST", // add by 何权洲 jq默认使用POST方式提交到服务端
             serializeGridData: function (postData) {
                 var postDataWrapper = {page: {}};
-                var gridPrmNames = jqObj.jqGrid("getGridParam", "prmNames");
+                var gridPrmNames = $(this).jqGrid("getGridParam", "prmNames");
+                gridPrmNames['filters'] = 'filters';
                 $.each(postData, function (k, val) {
                     var isExists = false;
                     $.each(gridPrmNames, function (gK, gVal) {
@@ -368,8 +369,9 @@
                     }
                     postDataWrapper.page[k] = val;
                 });
-
-                return JSON.stringify(postDataWrapper);
+                if(postDataWrapper.page.hasOwnProperty('filters'))
+                    postDataWrapper.page['filters'] = utility.Json.parse(postDataWrapper.page.filters);
+                return utility.Json.stringify(postDataWrapper);
             },
             colModelTemplate : {width: 100, align: 'left', sortable: true},
             eventsStore:{ 'loadComplete':[]},
@@ -382,16 +384,26 @@
         }
     };
     grid.prototype.getGridHeightWithoutBdiv = function () {
-        var hdiv = $(".ui-jqgrid-hdiv").filter(function (index, htmlObj) {
+        var jqGridObj = this._options.gridObj;
+        var jqGridTopObj = jqGridObj.parent().parent().parent().parent();
+        var hdiv = jqGridTopObj.find(".ui-jqgrid-hdiv").filter(function (index, htmlObj) {
             return $(htmlObj).css('display') != 'none'
         });
-        var pagerDiv = $(".ui-jqgrid-pager").filter(function (index, htmlObj) {
+        var pagerDiv =jqGridTopObj.find(".ui-jqgrid-pager").filter(function (index, htmlObj) {
             return $(htmlObj).css('display') != 'none'
         });
-        var captionDiv = $(".ui-jqgrid-caption").filter(function (index, htmlObj) {
+        var captionDiv = jqGridTopObj.find(".ui-jqgrid-caption").filter(function (index, htmlObj) {
             return $(htmlObj).css('display') != 'none'
         });
-        return hdiv.length * hdiv.outerHeight(true) + pagerDiv.length * pagerDiv.outerHeight(true) + captionDiv.length * captionDiv.outerHeight(true);//$(".ui-jqgrid-hdiv").length * $(".ui-jqgrid-hdiv").outerHeight() - $(".ui-jqgrid-pager").length * $(".ui-jqgrid-pager").outerHeight()
+        
+        return hdiv.length * hdiv.outerHeight(true) + pagerDiv.length * pagerDiv.outerHeight(true) + captionDiv.length * captionDiv.outerHeight(true)  + 2 ;//grid border is 2 //$(".ui-jqgrid-hdiv").length * $(".ui-jqgrid-hdiv").outerHeight() - $(".ui-jqgrid-pager").length * $(".ui-jqgrid-pager").outerHeight()
+    };
+   
+    grid.prototype.setGridWidth = function (width) {
+        this._options.gridObj.setGridWidth(width); //gird border is 2
+    };
+    grid.prototype.setGridHeight = function (height) {
+        this._options.gridObj.setGridHeight(height - this.getGridHeightWithoutBdiv());
     };
     grid.prototype.reloadGrid = function (option) {
         var defaults = {
@@ -402,12 +414,12 @@
             page: 1,
             ReloadType: "normal"
         };
-        var gridId = this.Id;
+        var gridObj = this._options.gridObj;
         var options = $.extend(defaults, option);
         if (options.ReloadType == "normal") {
             if (validate.isNullOrEmpty(option.url)) {
-                $("#" + gridId).jqGrid("clearGridData");
-                $("#" + gridId).jqGrid('setGridParam', {
+                gridObj.jqGrid("clearGridData");
+                gridObj.jqGrid('setGridParam', {
                     datatype: 'local',
                     data: options.data
                 }).trigger('reloadGrid', [{page: options.page}]);
@@ -419,7 +431,7 @@
                 // postJsonData = $.extend(postJsonData, option.postData);
                 var postJsonData = option.postData;
                 if ("nodata" === postJsonData) return;
-                $("#" + gridId).jqGrid('setGridParam', {
+                gridObj.jqGrid('setGridParam', {
                     url: options.url,
                     datatype: options.datatype,
                     page: options.page,

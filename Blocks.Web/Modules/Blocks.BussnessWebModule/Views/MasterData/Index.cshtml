@@ -13,11 +13,15 @@
 
 
 <div class="table-responsive" style="padding: 2px; height: 100%">
-    <input id="msg" v-model='value'/>
-    <button id="add" style="height: 20px" v-on:click="addClick">123</button>
+    <div id='query'>
+        <input id="msg" v-model='value'/>
+        <button id="add" style="height: 20px" v-action:add v-on:click="addClick">123</button>
+        <button id="query" style="height: 20px" v-action:query v-on:click="queryClick">查询</button>
 
+    </div>
 
     @*    <div style="top: 0px;bottom: 0px;position: absolute">*@
+    <div id="mysearch"></div>
     <div>
         <table id="gridInfo"></table>
     </div>

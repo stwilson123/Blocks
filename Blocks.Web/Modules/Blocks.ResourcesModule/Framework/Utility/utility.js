@@ -1,4 +1,4 @@
-﻿; define(['jquery'], function (jQuery) {
+﻿; define(['jquery','json2'], function (jQuery,json2) {
 
 
     var ValidateHelper = (function ($) {
@@ -447,5 +447,6 @@
         }
         
     };
-    return { validate: ValidateHelper,ajax:AjaxHelper,cookie:cookie,log:log,obj:obj }
+    //TODO JSON2 not work
+    return { validate: ValidateHelper,ajax:AjaxHelper,cookie:cookie,log:log,obj:obj,Json:JSON }
 });

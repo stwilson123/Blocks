@@ -120,6 +120,7 @@
     <Compile Include="Data\Entity\Entity.cs" />
     <Compile Include="Data\Entity\IEntityConfiguration.cs" />
     <Compile Include="Data\IRepository.cs" />
+    <Compile Include="Data\Paging\Group.cs" />
     <Compile Include="Data\Paging\Page.cs" />
     <Compile Include="Data\Paging\PageList.cs" />
     <Compile Include="Environment\Configuration\ExtensionLocations.cs" />

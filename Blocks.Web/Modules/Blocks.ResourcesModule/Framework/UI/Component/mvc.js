@@ -1,4 +1,9 @@
 define(['jquery','vueJS','blocks_utility'],function ($,vueJS,utility) {
+
+
+   
+    
+    
     var DefaultController = function (containerView) {
 
     };
@@ -57,6 +62,18 @@ define(['jquery','vueJS','blocks_utility'],function ($,vueJS,utility) {
 
     };
 
-
+    vueJS.directive('action', {
+        // inserted: function (el) {
+        //     // 聚焦元素
+        //     el.focus()
+        // },
+        bind: function (el, binding, vnode, oldVnode) {
+            //TODO 获取权限筛选,同时删除组件
+            if(binding.arg === 'add'){
+              
+                el.style.display = 'none';
+            }
+        }
+    });
     return { pageModel: module};
 });

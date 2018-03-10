@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Blocks.Framework.Data.Paging;
 using Blocks.Framework.Services.DataTransfer;
 
 namespace Blocks.Framework.Data.Pager
@@ -124,6 +125,9 @@ namespace Blocks.Framework.Data.Pager
         ///     数据总条数
         /// </summary>
         public int records { get; set; }
+        
+        
+        public Filters filters { get; set; }
 
     }
 }

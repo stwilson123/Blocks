@@ -13,6 +13,7 @@
                 viewModel = vm;
                 var colNamesArray = ['ID', '站点号', '名称', '工序', '工序类型', '车间', '加工中心', '加工类型', '采集类型', '状态', '描述']; //数据列名称（数组） 
                 mainGrid = new blocks.ui.grid({
+                   // url: "/api/services/BussnessWebModule/MasterData/GetPageList",
                     gridObj:view.find("#gridInfo"),
                     colNames: colNamesArray,
                     colModel: [
@@ -37,20 +38,29 @@
                 });
 
                 mainGrid.reloadGrid({ url: "/api/services/BussnessWebModule/MasterData/GetPageList"});
+
+ 
             },
             'dispose': function () {
 
             },
             'resize':function () {
-                blocks.ui.dialog.info({content:'resize'});
+                mainGrid.setGridWidth(view.children().width());
+                blocks.utility.log.info('height'+view.children().height());
+                blocks.utility.log.info('width'+view.children().width());
+                mainGrid.setGridHeight(view.children().height() - view.find('#query').height());
+                
+
             }
         };
 
         this.actions = {
             addClick:function (event) {
                 blocks.ui.dialog.dialog({url: 'Add'});
+            },
+            queryClick:function (event) {
+                mainGrid.reloadGrid({ url: "/api/services/BussnessWebModule/MasterData/GetPageList"});
             }
-
         };
     }
 

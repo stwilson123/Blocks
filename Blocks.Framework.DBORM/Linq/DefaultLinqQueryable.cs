@@ -234,6 +234,7 @@ namespace Blocks.Framework.DBORM.Linq
                 var a = ExpressionUtils.Convert(selector, iQuerable.ElementType);
                 iQuerable = iQuerable.Select(a);
             }
+            var orderBy = iQuerable.OrderBy(page.OrderBy).ToString();
             var pageResult = iQuerable.OrderBy(page.OrderBy).PageResult(page.page, page.pageSize);
 
             var pagelist = new PageList<dynamic>()
