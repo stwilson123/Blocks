@@ -1,0 +1,37 @@
+﻿{
+  "version": "3.2.4",
+  "restore": {
+    "projectUniqueName": "C:\\Blocks129\\Blocks\\Adp\\Abp.Zero\\Abp.Zero.csproj",
+    "projectName": "Abp.Zero",
+    "projectPath": "C:\\Blocks129\\Blocks\\Adp\\Abp.Zero\\Abp.Zero.csproj",
+    "outputPath": "C:\\Blocks129\\Blocks\\Adp\\Abp.Zero\\obj\\",
+    "projectStyle": "PackageReference",
+    "originalTargetFrameworks": [
+      "net461"
+    ],
+    "frameworks": {
+      "net461": {
+        "projectReferences": {
+          "C:\\Blocks129\\Blocks\\Adp\\Abp.Zero.Common\\Abp.Zero.Common.csproj": {
+            "projectPath": "C:\\Blocks129\\Blocks\\Adp\\Abp.Zero.Common\\Abp.Zero.Common.csproj"
+          }
+        }
+      }
+    }
+  },
+  "frameworks": {
+    "net461": {
+      "dependencies": {
+        "SourceLink.Create.CommandLine": {
+          "suppressParent": "All",
+          "target": "Package",
+          "version": "2.5.0"
+        },
+        "Microsoft.AspNet.Identity.Core": {
+          "target": "Package",
+          "version": "2.2.1"
+        }
+      }
+    }
+  }
+}

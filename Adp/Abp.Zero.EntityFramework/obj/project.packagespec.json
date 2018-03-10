@@ -1,0 +1,36 @@
+﻿{
+  "version": "3.2.4",
+  "restore": {
+    "projectUniqueName": "C:\\Blocks129\\Blocks\\Adp\\Abp.Zero.EntityFramework\\Abp.Zero.EntityFramework.csproj",
+    "projectName": "Abp.Zero.EntityFramework",
+    "projectPath": "C:\\Blocks129\\Blocks\\Adp\\Abp.Zero.EntityFramework\\Abp.Zero.EntityFramework.csproj",
+    "outputPath": "C:\\Blocks129\\Blocks\\Adp\\Abp.Zero.EntityFramework\\obj\\",
+    "projectStyle": "PackageReference",
+    "originalTargetFrameworks": [
+      "net461"
+    ],
+    "frameworks": {
+      "net461": {
+        "projectReferences": {
+          "C:\\Blocks129\\Blocks\\Adp\\Abp.EntityFramework\\Abp.EntityFramework.csproj": {
+            "projectPath": "C:\\Blocks129\\Blocks\\Adp\\Abp.EntityFramework\\Abp.EntityFramework.csproj"
+          },
+          "C:\\Blocks129\\Blocks\\Adp\\Abp.Zero\\Abp.Zero.csproj": {
+            "projectPath": "C:\\Blocks129\\Blocks\\Adp\\Abp.Zero\\Abp.Zero.csproj"
+          }
+        }
+      }
+    }
+  },
+  "frameworks": {
+    "net461": {
+      "dependencies": {
+        "SourceLink.Create.CommandLine": {
+          "suppressParent": "All",
+          "target": "Package",
+          "version": "2.5.0"
+        }
+      }
+    }
+  }
+}

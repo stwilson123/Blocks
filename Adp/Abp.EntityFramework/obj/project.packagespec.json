@@ -1,0 +1,44 @@
+﻿{
+  "version": "3.2.4",
+  "restore": {
+    "projectUniqueName": "C:\\Blocks129\\Blocks\\Adp\\Abp.EntityFramework\\Abp.EntityFramework.csproj",
+    "projectName": "Abp.EntityFramework",
+    "projectPath": "C:\\Blocks129\\Blocks\\Adp\\Abp.EntityFramework\\Abp.EntityFramework.csproj",
+    "outputPath": "C:\\Blocks129\\Blocks\\Adp\\Abp.EntityFramework\\obj\\",
+    "projectStyle": "PackageReference",
+    "originalTargetFrameworks": [
+      "net461"
+    ],
+    "frameworks": {
+      "net461": {
+        "projectReferences": {
+          "C:\\Blocks129\\Blocks\\Adp\\Abp\\Abp.csproj": {
+            "projectPath": "C:\\Blocks129\\Blocks\\Adp\\Abp\\Abp.csproj"
+          },
+          "C:\\Blocks129\\Blocks\\Adp\\Abp.EntityFramework.Common\\Abp.EntityFramework.Common.csproj": {
+            "projectPath": "C:\\Blocks129\\Blocks\\Adp\\Abp.EntityFramework.Common\\Abp.EntityFramework.Common.csproj"
+          }
+        }
+      }
+    }
+  },
+  "frameworks": {
+    "net461": {
+      "dependencies": {
+        "SourceLink.Create.CommandLine": {
+          "suppressParent": "All",
+          "target": "Package",
+          "version": "2.5.0"
+        },
+        "EntityFramework": {
+          "target": "Package",
+          "version": "6.2.0"
+        },
+        "EntityFramework.DynamicFilters": {
+          "target": "Package",
+          "version": "3.0.1"
+        }
+      }
+    }
+  }
+}

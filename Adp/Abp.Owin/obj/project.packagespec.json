@@ -1,0 +1,48 @@
+﻿{
+  "version": "3.2.4",
+  "restore": {
+    "projectUniqueName": "C:\\Blocks129\\Blocks\\Adp\\Abp.Owin\\Abp.Owin.csproj",
+    "projectName": "Abp.Owin",
+    "projectPath": "C:\\Blocks129\\Blocks\\Adp\\Abp.Owin\\Abp.Owin.csproj",
+    "outputPath": "C:\\Blocks129\\Blocks\\Adp\\Abp.Owin\\obj\\",
+    "projectStyle": "PackageReference",
+    "originalTargetFrameworks": [
+      "net461"
+    ],
+    "frameworks": {
+      "net461": {
+        "projectReferences": {
+          "C:\\Blocks129\\Blocks\\Adp\\Abp\\Abp.csproj": {
+            "projectPath": "C:\\Blocks129\\Blocks\\Adp\\Abp\\Abp.csproj"
+          },
+          "C:\\Blocks129\\Blocks\\Adp\\Abp.Web.Common\\Abp.Web.Common.csproj": {
+            "projectPath": "C:\\Blocks129\\Blocks\\Adp\\Abp.Web.Common\\Abp.Web.Common.csproj"
+          }
+        }
+      }
+    }
+  },
+  "frameworks": {
+    "net461": {
+      "dependencies": {
+        "SourceLink.Create.CommandLine": {
+          "suppressParent": "All",
+          "target": "Package",
+          "version": "2.5.0"
+        },
+        "Owin": {
+          "target": "Package",
+          "version": "1.0.0"
+        },
+        "Microsoft.Owin": {
+          "target": "Package",
+          "version": "3.1.0"
+        },
+        "Microsoft.Owin.StaticFiles": {
+          "target": "Package",
+          "version": "3.1.0"
+        }
+      }
+    }
+  }
+}

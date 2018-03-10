@@ -1,0 +1,37 @@
+﻿{
+  "version": "3.2.4",
+  "restore": {
+    "projectUniqueName": "C:\\Blocks129\\Blocks\\Adp\\Abp.Web.Mvc\\Abp.Web.Mvc.csproj",
+    "projectName": "Abp.Web.Mvc",
+    "projectPath": "C:\\Blocks129\\Blocks\\Adp\\Abp.Web.Mvc\\Abp.Web.Mvc.csproj",
+    "outputPath": "C:\\Blocks129\\Blocks\\Adp\\Abp.Web.Mvc\\obj\\",
+    "projectStyle": "PackageReference",
+    "originalTargetFrameworks": [
+      "net461"
+    ],
+    "frameworks": {
+      "net461": {
+        "projectReferences": {
+          "C:\\Blocks129\\Blocks\\Adp\\Abp.Web\\Abp.Web.csproj": {
+            "projectPath": "C:\\Blocks129\\Blocks\\Adp\\Abp.Web\\Abp.Web.csproj"
+          }
+        }
+      }
+    }
+  },
+  "frameworks": {
+    "net461": {
+      "dependencies": {
+        "SourceLink.Create.CommandLine": {
+          "suppressParent": "All",
+          "target": "Package",
+          "version": "2.5.0"
+        },
+        "Microsoft.AspNet.Mvc": {
+          "target": "Package",
+          "version": "5.2.3"
+        }
+      }
+    }
+  }
+}

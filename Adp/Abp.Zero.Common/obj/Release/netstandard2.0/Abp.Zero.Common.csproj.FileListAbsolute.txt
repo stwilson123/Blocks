@@ -1,0 +1,14 @@
+R:\Blocks\Adp\Abp.Zero.Common\bin\Release\netstandard2.0\Abp.Zero.Common.deps.json
+R:\Blocks\Adp\Abp.Zero.Common\bin\Release\netstandard2.0\Abp.Zero.Common.dll
+R:\Blocks\Adp\Abp.Zero.Common\bin\Release\netstandard2.0\Abp.Zero.Common.pdb
+R:\Blocks\Adp\Abp.Zero.Common\bin\Release\netstandard2.0\Abp.Zero.Common.xml
+R:\Blocks\Adp\Abp.Zero.Common\bin\Release\netstandard2.0\Abp.dll
+R:\Blocks\Adp\Abp.Zero.Common\bin\Release\netstandard2.0\Abp.pdb
+R:\Blocks\Adp\Abp.Zero.Common\bin\Release\netstandard2.0\Abp.xml
+R:\Blocks\Adp\Abp.Zero.Common\obj\Release\netstandard2.0\Abp.Zero.Common.csprojResolveAssemblyReference.cache
+R:\Blocks\Adp\Abp.Zero.Common\obj\Release\netstandard2.0\Abp.Zero.Common.csproj.CoreCompileInputs.cache
+R:\Blocks\Adp\Abp.Zero.Common\obj\Release\netstandard2.0\Abp.Zero.Common.AssemblyInfoInputs.cache
+R:\Blocks\Adp\Abp.Zero.Common\obj\Release\netstandard2.0\Abp.Zero.Common.AssemblyInfo.cs
+R:\Blocks\Adp\Abp.Zero.Common\obj\Release\netstandard2.0\Abp.Zero.Common.dll
+R:\Blocks\Adp\Abp.Zero.Common\obj\Release\netstandard2.0\Abp.Zero.Common.xml
+R:\Blocks\Adp\Abp.Zero.Common\obj\Release\netstandard2.0\Abp.Zero.Common.pdb

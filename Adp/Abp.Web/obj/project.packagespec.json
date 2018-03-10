@@ -1,0 +1,33 @@
+﻿{
+  "version": "3.2.4",
+  "restore": {
+    "projectUniqueName": "C:\\Blocks129\\Blocks\\Adp\\Abp.Web\\Abp.Web.csproj",
+    "projectName": "Abp.Web",
+    "projectPath": "C:\\Blocks129\\Blocks\\Adp\\Abp.Web\\Abp.Web.csproj",
+    "outputPath": "C:\\Blocks129\\Blocks\\Adp\\Abp.Web\\obj\\",
+    "projectStyle": "PackageReference",
+    "originalTargetFrameworks": [
+      "net461"
+    ],
+    "frameworks": {
+      "net461": {
+        "projectReferences": {
+          "C:\\Blocks129\\Blocks\\Adp\\Abp.Web.Common\\Abp.Web.Common.csproj": {
+            "projectPath": "C:\\Blocks129\\Blocks\\Adp\\Abp.Web.Common\\Abp.Web.Common.csproj"
+          }
+        }
+      }
+    }
+  },
+  "frameworks": {
+    "net461": {
+      "dependencies": {
+        "SourceLink.Create.CommandLine": {
+          "suppressParent": "All",
+          "target": "Package",
+          "version": "2.5.0"
+        }
+      }
+    }
+  }
+}
