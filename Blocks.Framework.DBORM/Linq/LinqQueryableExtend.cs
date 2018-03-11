@@ -13,7 +13,7 @@ namespace Blocks.Framework.DBORM.Linq
     public static class LinqQueryableExtend  
     {
         #region where
-      
+        
         public static IDbLinqQueryable<TEntity> Where<TEntity, T1>(this IDbLinqQueryable<TEntity> dbLinqQueryable, Expression<Func<T1, bool>> predicate) where TEntity : Data.Entity.Entity
         {
             return dbLinqQueryable.Where((LambdaExpression)predicate);

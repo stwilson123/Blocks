@@ -224,6 +224,17 @@ namespace Blocks.Framework.DBORM.Linq
             validateParamter(selector.Parameters);
 
             var querable = transferQuaryable();
+            
+            
+            if (page.filters != null)
+            {
+                var whereString = getStringForGroup(page.filters,null);
+                iQuerable = querable.Where(whereString);
+              
+            }
+           
+            
+            
             if (querable != null)
             {
                 iQuerable = querable.Select(selector);
@@ -234,7 +245,8 @@ namespace Blocks.Framework.DBORM.Linq
                 var a = ExpressionUtils.Convert(selector, iQuerable.ElementType);
                 iQuerable = iQuerable.Select(a);
             }
-            var orderBy = iQuerable.OrderBy(page.OrderBy).ToString();
+
+          
             var pageResult = iQuerable.OrderBy(page.OrderBy).PageResult(page.page, page.pageSize);
 
             var pagelist = new PageList<dynamic>()
@@ -252,8 +264,78 @@ namespace Blocks.Framework.DBORM.Linq
 
             return pagelist;
         }
+        
+        string getStringForGroup(Group group,List<DbParam> listDbParam)
+        {
+            var alias = group.rules.Select(t =>  t.field.Contains('.') ?  t.field.Substring(0,t.field.IndexOf('.')) : "").Where(t => !string.IsNullOrEmpty(t));
+            var s = "{";
+            if (group.groups != null) {
+                for (var index = 0; index < group.groups.Count; index++) {
+                    if (s.Length > 1) {
+                        s += " " + group.groupOp + " ";
+                    }
+                    try {
+                        s += this.getStringForGroup(group.groups[index],null);
+                    } catch (Exception ex) {throw;}
+                }
+            }
+
+            if (group.rules != null) {
+                try{
+                    for (var index = 0; index < group.rules.Count; index++) {
+                        if (s.Length > 1) {
+                            s += " " + group.groupOp + " ";
+                        }
+                        s += this.getStringForRule(group.rules[index]);
+                    }
+                } catch (Exception ex) { throw;}
+            }
+
+            s += "}";
+
+            if (s == "{}") {
+                return ""; // ignore groups that don't have rules
+            }
+            s  = s.Insert(0, $"({string.Join(",", alias)})");
+            return s;
+        }
+        
+       string getStringForRule (Rule rule)
+        {
+            var opUF = "";
+            var opC = "";
+            var cm = "";
+            var ret = "";var val = "";
+              //  numtypes = ['int', 'integer', 'float', 'number', 'currency']; // jqGrid
+
+            if (Rule.opend.ContainsKey(rule.op))
+            {
+                opUF = Rule.opend[rule.op];
+                opC = rule.op;
+            }
+            cm = rule.field;
+            val = rule.data;
+            if(opC == "bw" || opC == "bn") { val = val+"%"; }
+            if(opC == "ew" || opC == "en") { val = "%"+val; }
+            if(opC == "cn" || opC == "nc") { val = "%"+val+"%"; }
+            if(opC == "in" || opC == "ni") { val = " ("+val+")"; }
+//            if(p.errorcheck) { checkData(rule.data, cm); }
+//            if($.inArray(cm.searchtype, numtypes) != -1 || opC == 'nn' || opC == 'nu') { ret = rule.field + " " + opUF + " " + val; }
+            else { ret = rule.field + " " + opUF + " \"" + val + "\""; }
+            return ret;
+        }
     }
 
+
+
+
+    class DbParam
+    {
+        public string param { set; get; }
+        
+        public object value { set; get; }
+
+    }
      
     class TableAlias
     {

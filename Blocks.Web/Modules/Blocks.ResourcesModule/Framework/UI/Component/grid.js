@@ -370,7 +370,10 @@
                     postDataWrapper.page[k] = val;
                 });
                 if(postDataWrapper.page.hasOwnProperty('filters'))
+                {  
                     postDataWrapper.page['filters'] = utility.Json.parse(postDataWrapper.page.filters);
+                  //  postDataWrapper.page['filters'].source = 
+                }
                 return utility.Json.stringify(postDataWrapper);
             },
             colModelTemplate : {width: 100, align: 'left', sortable: true},

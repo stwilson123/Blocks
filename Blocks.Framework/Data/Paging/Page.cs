@@ -127,7 +127,7 @@ namespace Blocks.Framework.Data.Pager
         public int records { get; set; }
         
         
-        public Filters filters { get; set; }
+        public Group filters { set; get; }
 
     }
 }
