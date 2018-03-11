@@ -7737,7 +7737,7 @@ function leave (vnode, rm) {
     }
   }
 }
-
+    
 // only used in dev mode
 function checkDuration (val, name, vnode) {
   if (typeof val !== 'number') {
