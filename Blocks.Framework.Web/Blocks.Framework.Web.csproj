@@ -144,6 +144,8 @@
     <Compile Include="Api\Filter\BlocksApiActionFilterAttribute.cs" />
     <Compile Include="Api\Filter\BlocksApiExceptionFilterAttribute.cs" />
     <Compile Include="Api\Route\RouteExtensions.cs" />
+    <Compile Include="Application\Navigation\BlocksNavigationProvider.cs" />
+    <Compile Include="Application\Navigation\INavigationProviderContext.cs" />
     <Compile Include="BlocksWebApplication.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="Configuartions\ConfiguartionConst.cs" />

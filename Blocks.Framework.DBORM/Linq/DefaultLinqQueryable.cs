@@ -219,19 +219,14 @@ namespace Blocks.Framework.DBORM.Linq
             ExceptionHelper.ThrowArgumentNullException(selector, "selector");
             ExceptionHelper.ThrowArgumentNullException(page, "page");
             //TODO check page property 
-
+ 
 
             validateParamter(selector.Parameters);
 
             var querable = transferQuaryable();
             
             
-            if (page.filters != null)
-            {
-                var whereString = getStringForGroup(page.filters,null);
-                iQuerable = querable.Where(whereString);
-              
-            }
+           
            
             
             
@@ -246,7 +241,14 @@ namespace Blocks.Framework.DBORM.Linq
                 iQuerable = iQuerable.Select(a);
             }
 
-          
+                 
+            if (page.filters != null)
+            {
+            
+                var whereString = getStringForGroup(page.filters,null);
+                iQuerable = iQuerable.Where(whereString);
+              
+            }
             var pageResult = iQuerable.OrderBy(page.OrderBy).PageResult(page.page, page.pageSize);
 
             var pagelist = new PageList<dynamic>()
@@ -267,8 +269,8 @@ namespace Blocks.Framework.DBORM.Linq
         
         string getStringForGroup(Group group,List<DbParam> listDbParam)
         {
-            var alias = group.rules.Select(t =>  t.field.Contains('.') ?  t.field.Substring(0,t.field.IndexOf('.')) : "").Where(t => !string.IsNullOrEmpty(t));
-            var s = "{";
+         //   var alias = group.rules.Select(t =>  t.field.Contains('.') ?  t.field.Substring(0,t.field.IndexOf('.')) : "").Where(t => !string.IsNullOrEmpty(t));
+            var s = "(";
             if (group.groups != null) {
                 for (var index = 0; index < group.groups.Count; index++) {
                     if (s.Length > 1) {
@@ -291,12 +293,12 @@ namespace Blocks.Framework.DBORM.Linq
                 } catch (Exception ex) { throw;}
             }
 
-            s += "}";
+            s += ")";
 
-            if (s == "{}") {
+            if (s == "()") {
                 return ""; // ignore groups that don't have rules
             }
-            s  = s.Insert(0, $"({string.Join(",", alias)})");
+         
             return s;
         }
         
@@ -315,13 +317,14 @@ namespace Blocks.Framework.DBORM.Linq
             }
             cm = rule.field;
             val = rule.data;
-            if(opC == "bw" || opC == "bn") { val = val+"%"; }
-            if(opC == "ew" || opC == "en") { val = "%"+val; }
-            if(opC == "cn" || opC == "nc") { val = "%"+val+"%"; }
-            if(opC == "in" || opC == "ni") { val = " ("+val+")"; }
-//            if(p.errorcheck) { checkData(rule.data, cm); }
-//            if($.inArray(cm.searchtype, numtypes) != -1 || opC == 'nn' || opC == 'nu') { ret = rule.field + " " + opUF + " " + val; }
-            else { ret = rule.field + " " + opUF + " \"" + val + "\""; }
+            //if (opC == "bw" || opC == "bn") { val = val + "%"; }
+            //if (opC == "ew" || opC == "en") { val = "%" + val; }
+            //if (opC == "cn" || opC == "nc") { val = "%" + val + "%"; }
+            //if (opC == "in" || opC == "ni") { val = " (" + val + ")"; }
+
+            //            if(p.errorcheck) { checkData(rule.data, cm); }
+            //            if($.inArray(cm.searchtype, numtypes) != -1 || opC == 'nn' || opC == 'nu') { ret = rule.field + " " + opUF + " " + val; }
+             ret = string.Format(opUF,rule.field,"(\"" + val + "\")");
             return ret;
         }
     }
