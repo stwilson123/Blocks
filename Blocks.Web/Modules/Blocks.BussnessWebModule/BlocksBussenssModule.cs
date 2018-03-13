@@ -12,7 +12,7 @@ namespace Blocks.BussnessWebModule
 
         public override void InitializeEvent()
         {
-            Configuration.Navigation.Providers.Add<BlocksNavigationProvider>();
+            Configuration.Navigation.Providers.Add<BussnesWebModuleNavigationProvider>();
 
         }
     }

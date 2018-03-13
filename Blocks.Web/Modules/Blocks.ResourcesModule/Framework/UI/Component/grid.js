@@ -60,6 +60,19 @@
             } else {
                 this.loadJsonData();
             }
+            if( this._options.dynamicConditionQuery &&  this._options.dynamicConditionQuery.active === true)
+            {
+                $gridObj.jqGrid('navGrid', this._options.pager,
+                    { edit: false, add: false, del: false },
+                    {},
+                    {},
+                    {},
+                    this._options.dynamicConditionQuery
+                );
+                this.getTopObj().find('#search_' +  $gridObj.attr('Id')).hide();
+                
+            }
+          
             //this.reload();
         };
 
@@ -124,13 +137,7 @@
         //this.gridResize();
 
 
-        $gridObj.jqGrid('navGrid', this._options.pager,
-           { edit: false, add: false, del: false },
-           {},
-           {},
-           {},
-           { multipleSearch: true, multipleGroup: true, showQuery: true }
-        );
+     
 
     };
 
@@ -212,7 +219,7 @@
         var $gridObj= options.gridObj;
         //创建分页区 
         if (options.showPager) {
-            var pagerId = $gridObj.attr('id') + "_pager";
+            var pagerId = $gridObj.attr('id') + "_pager" +~~(Math.random() * 1000000);
             $gridObj.siblings('div.gridpager[id="' + pagerId + '"]').remove();
             $gridObj.parent().append("<div id='" + pagerId + "' ></div>");
             options.pager = "#" + pagerId;
@@ -383,7 +390,8 @@
                 $.each(eventsStore['loadComplete'], function (index, val) {
                     val(xhr);
                 });
-            }
+            },
+            dynamicConditionQuery:{active:false, multipleSearch: true, multipleGroup: false, showQuery: false,closeAfterSearch: true  }
         }
     };
     grid.prototype.getGridHeightWithoutBdiv = function () {
@@ -503,6 +511,21 @@
 
 
         }
+
+    };
+
+    grid.prototype.getTopObj = function () {
+      return  this._options.gridObj.parent().parent().parent().parent();
+    };
+    grid.prototype.dynamicConditionLoad = function (option) {
+        var defaults = {
+        };
+        var gridObj = this._options.gridObj;
+        if (this._options.dynamicConditionQuery.active === true)
+        {
+            this.getTopObj().find('#search_' +  this._options.gridObj.attr('Id')).click();
+        }
+  
 
     };
     grid.prototype.delRowData = function (rowsId) {

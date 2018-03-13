@@ -222,7 +222,7 @@ define(['jquery'], function (jQuery) {
 
             //创建分页区 
             if (options.showPager) {
-                var pagerId = $gridObj.attr('id') + "_pager";
+                var pagerId = $gridObj.attr('id') + "_pager" + ~~(Math.random() * 1000000);
                 $gridObj.siblings('div.gridpager[id="' + pagerId + '"]').remove();
                 $gridObj.parent().append("<div id='" + pagerId + "' ></div>");
                 options.pager = "#" + pagerId;

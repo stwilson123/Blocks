@@ -107,8 +107,7 @@
     <Compile Include="BussnessWebConfiguration.cs" />
     <Compile Include="Controllers\MasterDataController.cs" />
     <Compile Include="Controllers\TestsMvcController.cs" />
-    <Compile Include="Models\DefaultModel.cs" />
-    <Compile Include="Module_Start\BlocksNavigationProvider.cs" />
+    <Compile Include="Module_Start\BussnesWebModuleNavigationProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Styles\Index\IndexCss.css" />
