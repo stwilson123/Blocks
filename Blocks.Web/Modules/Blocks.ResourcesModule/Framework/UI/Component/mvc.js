@@ -61,7 +61,24 @@ define(['jquery','vueJS','blocks_utility'],function ($,vueJS,utility) {
         }
 
     };
+    
+    var VueConfig = function () {
+      this.init = function () {
+          vueJS.config.errorHandler = function (err, vm, info) {
+              // handle error
+              // `info` 是 Vue 特定的错误信息，比如错误所在的生命周期钩子
+              // 只在 2.2.0+ 可用
+              throw new Error(err);
+          };
 
+          // vueJS.config.warnHandler = function (msg, vm, trace) {
+          //     // `trace` 是组件的继承关系追踪
+          //     throw new Error(msg);
+          // };
+      } ;
+    };
+    new VueConfig().init();
+   
     vueJS.directive('action', {
         // inserted: function (el) {
         //     // 聚焦元素

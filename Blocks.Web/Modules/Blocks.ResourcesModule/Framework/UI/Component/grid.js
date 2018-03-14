@@ -55,7 +55,8 @@
 
 
         this.init = function () {
-            if (this._options.datatype === "local") {
+             
+            if (this._options.datatype === "local" || (!this._options.url )) {
                 this.loadLocalData();
             } else {
                 this.loadJsonData();
@@ -84,11 +85,15 @@
         };
 
         this.loadJsonData = function () {
-            $gridObj.jqGrid("setGridParam", {
-                datatype: "json",
-                url: _options.url,
-                postData: getPostData('QueryForm')
-            });
+           
+                $gridObj.jqGrid("setGridParam", {
+                    datatype: "json",
+                    url: this._options.url,
+                    postData: getPostData('QueryForm')
+                });
+             
+            
+           
         };
 
         this.reload = function () {
@@ -271,7 +276,7 @@
                 }
             },
             loadui: "block",
-            datatype: "local",
+            datatype: "json",
             gridview: true,
             viewrecords: true,
             multiselect: true,
@@ -523,6 +528,11 @@
         var gridObj = this._options.gridObj;
         if (this._options.dynamicConditionQuery.active === true)
         {
+            this._options.gridObj.jqGrid('setGridParam', {
+                url: option.url,
+                postData: option.postData,
+                datatype: "json",
+            });
             this.getTopObj().find('#search_' +  this._options.gridObj.attr('Id')).click();
         }
   

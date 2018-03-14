@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Diagnostics;
+using System.IO;
+using System.Web;
 using Abp;
+using Abp.Castle.Logging.Log4Net;
 using Abp.Dependency;
 using Abp.Modules;
 using Abp.PlugIns;
@@ -9,20 +12,38 @@ using Abp.Web;
 using Abp.Web.Localization;
 using Blocks.Framework.FileSystems.VirtualPath;
 using Blocks.Framework.Web.FileSystems.VirtualPath;
+using Castle.Facilities.Logging;
 
 namespace Blocks.Framework.Web
 {
-    public abstract class BlocksWebApplication<TStartupModule> : AbpWebApplication<TStartupModule> where TStartupModule : AbpModule
+    public abstract class BlocksWebApplication<TStartupModule> : HttpApplication
+        where TStartupModule : AbpModule
     {
+        protected virtual string logConfigName
+        {
+            get { return "log4net.config"; }
+        }
+
+
+        /// <summary>
+        /// Gets a reference to the <see cref="P:Abp.Web.AbpWebApplication`1.AbpBootstrapper" /> instance.
+        /// </summary>
+        private static AbpBootstrapper abpBootstrapper = AbpBootstrapper.Create<TStartupModule>((Action<AbpBootstrapperOptions>)null);
+        public static AbpBootstrapper AbpBootstrapper { get { return abpBootstrapper; } }
         protected  virtual void Application_Start(object sender, EventArgs e)
         {
+            AbpBootstrapper.IocManager.IocContainer.AddFacility<LoggingFacility>(
+                f => f.UseAbpLog4Net().WithConfig(Server.MapPath(logConfigName))
+            );
             
             ThreadCultureSanitizer.Sanitize();
 
+             
             IVirtualPathProvider pathProvider = new DefaultVirtualPathProvider();
-            if (pathProvider.FileExists(@"~\Modules"))
-                AbpWebApplication<TStartupModule>.AbpBootstrapper.PlugInSources.AddFolder(@"~\Modules");
-            AbpWebApplication<TStartupModule>.AbpBootstrapper.Initialize();
+            if (pathProvider.DirectoryExists(@"~\Modules"))
+                AbpBootstrapper.PlugInSources.AddFolder(pathProvider.MapPath(@"~\Modules"),
+                    SearchOption.AllDirectories);
+            AbpBootstrapper.Initialize();
         }
 
         protected virtual void Application_End(object sender, EventArgs e)

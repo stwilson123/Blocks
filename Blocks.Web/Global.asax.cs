@@ -19,30 +19,20 @@ using Blocks.Framework.Web.FileSystems.VirtualPath;
 
 namespace Blocks.Web
 {
-    public class MvcApplication : HttpApplication
+    public class MvcApplication : BlocksWebApplication<BlocksWebModule>
     {
 
-        /// <summary>
-        /// Gets a reference to the <see cref="P:Abp.Web.AbpWebApplication`1.AbpBootstrapper" /> instance.
-        /// </summary>
-        private static AbpBootstrapper abpBootstrapper = AbpBootstrapper.Create<BlocksWebModule>((Action<AbpBootstrapperOptions>)null);
-        public static AbpBootstrapper AbpBootstrapper { get { return abpBootstrapper; } }
 
         protected  void Application_Start(object sender, EventArgs e)
         {
      
-            ThreadCultureSanitizer.Sanitize();
-            
-            IVirtualPathProvider pathProvider = new DefaultVirtualPathProvider();
-            if (pathProvider.DirectoryExists(@"~\Modules"))
-                AbpBootstrapper.PlugInSources.AddFolder(pathProvider.MapPath(@"~\Modules"),
-                    SearchOption.AllDirectories);
-            AbpBootstrapper.Initialize();
+            base.Application_Start(sender, e);
+        
         }
 
         protected  void Application_End(object sender, EventArgs e)
         {
-            AbpBootstrapper.Dispose();
+            base.Application_End(sender, e);
         }
 
         protected  void Session_Start(object sender, EventArgs e)
@@ -63,7 +53,8 @@ namespace Blocks.Web
 
         protected  void Application_PostAuthenticateRequest(object sender, EventArgs e)
         {
-            this.SetCurrentCulture();
+            base.Application_PostAuthenticateRequest(sender, e);
+
         }
 
         protected  void Application_EndRequest(object sender, EventArgs e)
@@ -74,9 +65,6 @@ namespace Blocks.Web
         {
         }
 
-        protected  void SetCurrentCulture()
-        {
-            AbpBootstrapper.IocManager.Using<ICurrentCultureSetter>((Action<ICurrentCultureSetter>) (cultureSetter => cultureSetter.SetCurrentCulture(this.Context)));
-        }
+        
     }
 }

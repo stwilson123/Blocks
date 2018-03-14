@@ -203,6 +203,10 @@
     <Compile Include="WorkContextExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Adp\Abp.Castle.Log4Net\Abp.Castle.Log4Net.csproj">
+      <Project>{2f287607-7f51-476e-9bbf-feb8131951aa}</Project>
+      <Name>Abp.Castle.Log4Net</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Adp\Abp.Web.Api\Abp.Web.Api.csproj">
       <Project>{e896ce38-6d25-45bb-bfae-0ebe00f58edb}</Project>
       <Name>Abp.Web.Api</Name>

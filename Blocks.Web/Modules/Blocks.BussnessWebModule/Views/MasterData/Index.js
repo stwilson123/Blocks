@@ -47,7 +47,7 @@
                     dynamicConditionQuery: {active: true}
                 });
 
-                mainGrid.reloadGrid({url: "/api/services/BussnessWebModule/MasterData/GetPageList"});
+               // mainGrid.reloadGrid({url: "/api/services/BussnessWebModule/MasterData/GetPageList"});
 
 
             },
@@ -69,7 +69,8 @@
                 blocks.ui.dialog.dialog({url: 'Add'});
             },
             queryClick: function (event) {
-                mainGrid.dynamicConditionLoad();
+             //   mainGrid.reloadGrid({url: "/api/services/BussnessWebModule/MasterData/GetPageList"});
+                mainGrid.dynamicConditionLoad({url: "/api/services/BussnessWebModule/MasterData/GetPageList"});
             }
         };
     }
