@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity;
+using System.Text;
 using System.Threading.Tasks;
 using Abp.Application.Services.Dto;
 using Blocks.Users;
@@ -30,6 +31,8 @@ namespace Blocks.Tests.Users
         [Fact]
         public async Task CreateUser_Test()
         {
+
+
             //Act
             await _userAppService.Create(
                 new CreateUserDto

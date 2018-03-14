@@ -99,6 +99,7 @@ C:\Blocks129\Blocks\Blocks.Web\Modules\Blocks.BussnessRespositoryModule.Sqlserve
 C:\Blocks129\Blocks\Blocks.Web\Modules\Blocks.BussnessRespositoryModule.SqlserverModule\bin\Debug\Abp.dll
 C:\Blocks129\Blocks\Blocks.Web\Modules\Blocks.BussnessRespositoryModule.SqlserverModule\bin\Debug\Blocks.BussnessEntityModule.dll
 C:\Blocks129\Blocks\Blocks.Web\Modules\Blocks.BussnessRespositoryModule.SqlserverModule\bin\Debug\Blocks.BussnessRespositoryModule.dll
+C:\Blocks129\Blocks\Blocks.Web\Modules\Blocks.BussnessRespositoryModule.SqlserverModule\bin\Debug\Blocks.Framework.DBORM.dll
 C:\Blocks129\Blocks\Blocks.Web\Modules\Blocks.BussnessRespositoryModule.SqlserverModule\bin\Debug\Castle.Core.dll
 C:\Blocks129\Blocks\Blocks.Web\Modules\Blocks.BussnessRespositoryModule.SqlserverModule\bin\Debug\Castle.Windsor.dll
 C:\Blocks129\Blocks\Blocks.Web\Modules\Blocks.BussnessRespositoryModule.SqlserverModule\bin\Debug\Newtonsoft.Json.dll

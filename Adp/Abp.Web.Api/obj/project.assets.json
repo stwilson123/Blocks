@@ -1399,7 +1399,9 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\权洲\\.nuget\\packages\\": {}
+    "C:\\Users\\权洲\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "3.2.4",
@@ -1410,6 +1412,10 @@
       "packagesPath": "C:\\Users\\权洲\\.nuget\\packages\\",
       "outputPath": "C:\\Blocks129\\Blocks\\Adp\\Abp.Web.Api\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback",
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
         "C:\\Blocks129\\Blocks\\.nuget\\NuGet.Config",
         "C:\\Users\\权洲\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -1431,19 +1437,24 @@
             }
           }
         }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
       }
     },
     "frameworks": {
       "net461": {
         "dependencies": {
+          "Microsoft.AspNet.WebApi": {
+            "target": "Package",
+            "version": "[5.2.3, )"
+          },
           "SourceLink.Create.CommandLine": {
             "suppressParent": "All",
             "target": "Package",
-            "version": "2.5.0"
-          },
-          "Microsoft.AspNet.WebApi": {
-            "target": "Package",
-            "version": "5.2.3"
+            "version": "[2.5.0, )"
           }
         }
       }

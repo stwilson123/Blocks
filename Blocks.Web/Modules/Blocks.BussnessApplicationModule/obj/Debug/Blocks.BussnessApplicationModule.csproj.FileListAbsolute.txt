@@ -156,7 +156,6 @@ C:\Blocks129\Blocks\Blocks.Web\Modules\Blocks.BussnessApplicationModule\bin\Debu
 C:\Blocks129\Blocks\Blocks.Web\Modules\Blocks.BussnessApplicationModule\bin\Debug\Z.EntityFramework.Plus.EF6.pdb
 C:\Blocks129\Blocks\Blocks.Web\Modules\Blocks.BussnessApplicationModule\bin\Debug\EntityFramework.DynamicFilters.xml
 C:\Blocks129\Blocks\Blocks.Web\Modules\Blocks.BussnessApplicationModule\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.xml
-C:\Blocks129\Blocks\Blocks.Web\Modules\Blocks.BussnessApplicationModule\obj\Debug\Blocks.BussnessApplicationModule.csprojResolveAssemblyReference.cache
 C:\Blocks129\Blocks\Blocks.Web\Modules\Blocks.BussnessApplicationModule\obj\Debug\Blocks.BussnessApplicationModule.csproj.CoreCompileInputs.cache
 C:\Blocks129\Blocks\Blocks.Web\Modules\Blocks.BussnessApplicationModule\obj\Debug\Blocks.BussnessApplicationModule.dll
 C:\Blocks129\Blocks\Blocks.Web\Modules\Blocks.BussnessApplicationModule\obj\Debug\Blocks.BussnessApplicationModule.pdb

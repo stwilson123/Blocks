@@ -130,7 +130,6 @@ C:\Blocks129\Blocks\Blocks.Web\Modules\Blocks.BussnessDomainModule\bin\Debug\Blo
 C:\Blocks129\Blocks\Blocks.Web\Modules\Blocks.BussnessDomainModule\bin\Debug\Blocks.Framework.pdb
 C:\Blocks129\Blocks\Blocks.Web\Modules\Blocks.BussnessDomainModule\bin\Debug\Castle.Windsor.xml
 C:\Blocks129\Blocks\Blocks.Web\Modules\Blocks.BussnessDomainModule\bin\Debug\Newtonsoft.Json.xml
-C:\Blocks129\Blocks\Blocks.Web\Modules\Blocks.BussnessDomainModule\bin\Debug\System.Collections.Immutable.xml
 C:\Blocks129\Blocks\Blocks.Web\Modules\Blocks.BussnessDomainModule\bin\Debug\System.Linq.Dynamic.Core.pdb
 C:\Blocks129\Blocks\Blocks.Web\Modules\Blocks.BussnessDomainModule\bin\Debug\System.Linq.Dynamic.Core.xml
 C:\Blocks129\Blocks\Blocks.Web\Modules\Blocks.BussnessDomainModule\bin\Debug\EntityFramework.xml

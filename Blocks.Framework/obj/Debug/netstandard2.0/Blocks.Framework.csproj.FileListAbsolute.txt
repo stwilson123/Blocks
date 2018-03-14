@@ -1,9 +1,0 @@
-C:\Myproject\第三方项目\微软开源项目\Blocks_NetStandrad\3.1.3\src\Blocks.Framework\bin\Debug\netstandard2.0\Blocks.Framework.deps.json
-C:\Myproject\第三方项目\微软开源项目\Blocks_NetStandrad\3.1.3\src\Blocks.Framework\bin\Debug\netstandard2.0\Blocks.Framework.dll
-C:\Myproject\第三方项目\微软开源项目\Blocks_NetStandrad\3.1.3\src\Blocks.Framework\bin\Debug\netstandard2.0\Blocks.Framework.pdb
-C:\Myproject\第三方项目\微软开源项目\Blocks_NetStandrad\3.1.3\src\Blocks.Framework\obj\Debug\netstandard2.0\Blocks.Framework.csprojResolveAssemblyReference.cache
-C:\Myproject\第三方项目\微软开源项目\Blocks_NetStandrad\3.1.3\src\Blocks.Framework\obj\Debug\netstandard2.0\Blocks.Framework.csproj.CoreCompileInputs.cache
-C:\Myproject\第三方项目\微软开源项目\Blocks_NetStandrad\3.1.3\src\Blocks.Framework\obj\Debug\netstandard2.0\Blocks.Framework.AssemblyInfoInputs.cache
-C:\Myproject\第三方项目\微软开源项目\Blocks_NetStandrad\3.1.3\src\Blocks.Framework\obj\Debug\netstandard2.0\Blocks.Framework.AssemblyInfo.cs
-C:\Myproject\第三方项目\微软开源项目\Blocks_NetStandrad\3.1.3\src\Blocks.Framework\obj\Debug\netstandard2.0\Blocks.Framework.dll
-C:\Myproject\第三方项目\微软开源项目\Blocks_NetStandrad\3.1.3\src\Blocks.Framework\obj\Debug\netstandard2.0\Blocks.Framework.pdb

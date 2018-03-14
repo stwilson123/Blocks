@@ -101,9 +101,17 @@ C:\Blocks129\Blocks\Blocks.Web\Modules\Blocks.BussnessWebModule\bin\Abp.dll
 C:\Blocks129\Blocks\Blocks.Web\Modules\Blocks.BussnessWebModule\bin\Blocks.BussnessDomainModule.dll
 C:\Blocks129\Blocks\Blocks.Web\Modules\Blocks.BussnessWebModule\bin\Blocks.Framework.dll
 C:\Blocks129\Blocks\Blocks.Web\Modules\Blocks.BussnessWebModule\bin\Blocks.Framework.Web.dll
+C:\Blocks129\Blocks\Blocks.Web\Modules\Blocks.BussnessWebModule\bin\Microsoft.Web.Infrastructure.dll
 C:\Blocks129\Blocks\Blocks.Web\Modules\Blocks.BussnessWebModule\bin\Newtonsoft.Json.dll
+C:\Blocks129\Blocks\Blocks.Web\Modules\Blocks.BussnessWebModule\bin\System.Net.Http.Formatting.dll
 C:\Blocks129\Blocks\Blocks.Web\Modules\Blocks.BussnessWebModule\bin\System.Web.Http.dll
+C:\Blocks129\Blocks\Blocks.Web\Modules\Blocks.BussnessWebModule\bin\System.Web.Http.WebHost.dll
+C:\Blocks129\Blocks\Blocks.Web\Modules\Blocks.BussnessWebModule\bin\System.Web.Mvc.dll
 C:\Blocks129\Blocks\Blocks.Web\Modules\Blocks.BussnessWebModule\bin\System.Web.Optimization.dll
+C:\Blocks129\Blocks\Blocks.Web\Modules\Blocks.BussnessWebModule\bin\System.Web.Razor.dll
+C:\Blocks129\Blocks\Blocks.Web\Modules\Blocks.BussnessWebModule\bin\System.Web.WebPages.Deployment.dll
+C:\Blocks129\Blocks\Blocks.Web\Modules\Blocks.BussnessWebModule\bin\System.Web.WebPages.dll
+C:\Blocks129\Blocks\Blocks.Web\Modules\Blocks.BussnessWebModule\bin\System.Web.WebPages.Razor.dll
 C:\Blocks129\Blocks\Blocks.Web\Modules\Blocks.BussnessWebModule\bin\Castle.Core.dll
 C:\Blocks129\Blocks\Blocks.Web\Modules\Blocks.BussnessWebModule\bin\Castle.Windsor.dll
 C:\Blocks129\Blocks\Blocks.Web\Modules\Blocks.BussnessWebModule\bin\System.ComponentModel.Annotations.dll
