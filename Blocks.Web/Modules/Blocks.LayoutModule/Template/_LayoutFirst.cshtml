@@ -1,0 +1,17 @@
+@using Blocks.Framework.Web.Mvc.Extensions
+@{
+   Layout = ResourceManager.GetTemplateNotCache("_LayoutRoot",this.VirtualPath);//"~/Template/_LayoutRoot.cshtml";
+}
+@section register
+{
+  @{ Script.Require("jQuery").AtHead(); }
+}
+ 
+
+@section body
+{
+
+    @*    @Html.Action("GetTestPartialView","Layout")*@
+    @{ Html.RenderPartial(ResourceManager.GetTemplateNotCache("_LayoutPartialViewFirst",this.VirtualPath)); }
+    @RenderSection("body",false)
+}

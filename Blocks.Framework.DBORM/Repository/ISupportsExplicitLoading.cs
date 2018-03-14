@@ -1,0 +1,25 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq.Expressions;
+using System.Threading;
+using System.Threading.Tasks;
+using Abp.Domain.Entities;
+
+namespace Blocks.Framework.DBORM.Repository
+{
+    public interface ISupportsExplicitLoading<TEntity, TPrimaryKey>
+        where TEntity : class, IEntity<TPrimaryKey>
+    {
+        Task EnsureCollectionLoadedAsync<TProperty>(
+            TEntity entity,
+            Expression<Func<TEntity, ICollection<TProperty>>> collectionExpression,
+            CancellationToken cancellationToken)
+            where TProperty : class;
+
+        Task EnsurePropertyLoadedAsync<TProperty>(
+            TEntity entity,
+            Expression<Func<TEntity, TProperty>> propertyExpression,
+            CancellationToken cancellationToken)
+            where TProperty : class;
+    }
+}

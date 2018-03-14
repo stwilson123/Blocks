@@ -1,0 +1,28 @@
+﻿@using System.Web.Optimization
+@using Blocks.Framework.Web.Mvc.Extensions
+@using Blocks.Framework.Web.Mvc.UI.Resources
+
+@{
+    Layout = ResourceManager.GetTemplateNotCache("Tradition/_LayoutModule", this.VirtualPath);
+    // Style.Include("IndexCss.css").AtHead();
+}
+@section body
+{
+
+}
+
+
+<div class="table-responsive" style="padding: 2px; height: 100%">
+    <div id='query'>
+        <input id="msg" v-model='value'/>
+        <button id="add" style="height: 20px" v-action:add v-on:click="addClick">123</button>
+        <button id="query" style="height: 20px" v-action:query v-on:click="queryClick">查询</button>
+
+    </div>
+
+    @*    <div style="top: 0px;bottom: 0px;position: absolute">*@
+    <div>
+        <table id="gridInfo"></table>
+    </div>
+
+</div>

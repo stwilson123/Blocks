@@ -1,0 +1,30 @@
+@using System.Linq;
+@using System.Threading
+@using Blocks
+@using Blocks.Framework.Web.Mvc.Extensions
+@{
+    if (this.ViewBag.subPageCssVirtualPath != null)
+    {
+        @Html.IncludeStyle((string)this.ViewBag.subPageCssVirtualPath)
+    }
+}
+@RenderBody()
+<script>
+    var blocks = blocks || {};
+    (function() {
+        blocks.pageContext = blocks.pageContext || {};
+        //TODO save prepage context?
+        blocks.pageContext.subPageJsVirtualPath = "@this.ViewBag.subPageJsVirtualPath";
+        blocks.pageContext.subPageCssVirtualPath = "@this.ViewBag.subPageCssVirtualPath";
+    })(blocks);
+</script>
+@*@{*@
+@*    if (this.ViewBag.subPageJsVirtualPath != null)*@
+@*    {*@
+@*       // @Html.IncludeScript((string)this.ViewBag.subPageJsVirtualPath)*@
+@*    }*@
+@*   *@
+@*}*@
+
+
+  

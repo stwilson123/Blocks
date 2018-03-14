@@ -1,0 +1,28 @@
+﻿@using Blocks.Framework.Web.Mvc.Extensions
+ 
+@{
+    SetAntiForgeryCookie();
+}
+@RenderSection("register",false)
+@{
+    ResourceManager.WriteResources();
+   
+}
+<!DOCTYPE html>
+<html>
+<head>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+@*    <title>@ViewData["Title"] - WebApplication</title>*@ 
+    @RenderSection("resource",false)
+    @RenderSection("style",false)
+    @Html.IncludeStyle(ResourceManager.GetRegisteredLinks())
+</head>
+<body>
+@RenderSection("body",false)
+@Html.IncludeScript(ResourceManager.GetRegisteredHeadScripts())
+@Html.IncludeScript(ResourceManager.GetRegisteredFootScripts())
+@RenderSection("script", required: false)
+
+</body>
+</html>
