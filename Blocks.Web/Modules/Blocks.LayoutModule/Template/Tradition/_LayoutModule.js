@@ -1,6 +1,6 @@
 ﻿; define(/*['RequireConfig',"jquery", "blocks", "Blocks.LayoutModule/js/admin","Blocks.LayoutModule/js/main"],*/ function (req) {
     req(['RequireConfig'],function () {
-        req(['jquery', 'blocks', 'Blocks.LayoutModule/js/admin', 'Blocks.LayoutModule/js/main'], function ($) {
+        req(['jquery', 'blocks', 'Blocks.LayoutModule/js/admin', 'Blocks.LayoutModule/js/main'], function ($,blockFramework) {
             //Skin changer
             function skinChanger() {
                 $('.right-sidebar .demo-choose-skin li').on('click', function() {
@@ -87,16 +87,10 @@
 
             })(jQuery);
 
-            function pathToRelative(path,modulePrefix,fileExtensionName) {
-                var moduleFrefix=modulePrefix;
-                var startIndex = path.indexOf(moduleFrefix);
-                var endIndex = path.lastIndexOf(fileExtensionName);
-
-                return path.slice(startIndex > -1 ? startIndex + moduleFrefix.length + '\\'.length : 0,endIndex > -1 ? endIndex : undefined);
-            }
+         
             if (blocks.pageContext.subPageJsVirtualPath)
             {
-                require([pathToRelative(blocks.pageContext.subPageJsVirtualPath,blocks.pageContext.modulePrefix,'.js')],function (containerModules) {
+                require([blockFramework.utility.url.pathToRelative(blocks.pageContext.subPageJsVirtualPath,blocks.pageContext.modulePrefix,'.js')],function (containerModules) {
                     containerModules.init($("#container"));
                 });
 

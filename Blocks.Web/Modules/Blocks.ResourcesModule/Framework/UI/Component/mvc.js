@@ -53,11 +53,23 @@ define(['jquery','vueJS','blocks_utility'],function ($,vueJS,utility) {
             containerModules._controllersCode[controllerName] = currentController;
             containerModules._viewModelsCode[controllerName] = currentViewModel;
             currentController.events.resize();
-            $(window).resize(function () {
+            currentController._windowResizeObject = function () {
                 setTimeout(function () {
                     currentController.events.resize();
                 },200);
-            });
+            };
+            $(window).on('resize',currentController._windowResizeObject);
+        }
+
+    };
+
+    module.prototype.displose =  function (view) {
+        var containerModules = this;
+        for(controller in containerModules._controllersCode)
+        {
+           
+            currentController.events.resize();
+            $(window).off('resize',controller._windowResizeObject);
         }
 
     };

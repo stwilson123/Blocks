@@ -41,7 +41,7 @@
                     // }
 
                 },
-                resize: false
+                resize: true
             }
         }
     };
@@ -129,11 +129,15 @@
 
                 //req(['/Modules/Blocks.BussnessWebModule/Views/MasterData/Add.js']);
               //  require.config({path:{'Blocks.BussnessWebModule/Views/MasterData/Add':'Blocks.BussnessWebModule/Views/MasterData/Add'}})
+ 
 
-                if (blocks.pageContext || blocks.pageContext.subPageJsVirtualPath) {
-                    req([pathToRelative(blocks.pageContext.subPageJsVirtualPath, blocks.pageContext.modulePrefix, '.js')],function (containerModules) {
+                if (blocks.pageContext && blocks.pageContext.subPageJsVirtualPath)
+                {
+                    require([utility.url.pathToRelative(blocks.pageContext.subPageJsVirtualPath,blocks.pageContext.modulePrefix,'.js')],function (containerModules) {
                         containerModules.init($('#' + WrapperId).children());
                     });
+
+                    //  require(['Blocks.BussnessWebModule/Views/MasterData/Index']);
                 }
                 return layerIndex;
             }

@@ -66,7 +66,7 @@
 
         this.actions = {
             addClick: function (event) {
-                blocks.ui.dialog.dialog({url: 'Add'});
+                blocks.ui.dialog.dialog({url: 'Add',title: 'title'});
             },
             queryClick: function (event) {
              //   mainGrid.reloadGrid({url: "/api/services/BussnessWebModule/MasterData/GetPageList"});

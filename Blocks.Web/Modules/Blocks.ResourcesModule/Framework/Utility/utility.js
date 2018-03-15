@@ -328,10 +328,19 @@
             var r = window.location.search.substr(1).match(reg);
             if (r != null) return unescape(decodeURI(r[2])); return null;
         };
+
+        pathToRelative: function pathToRelative(path,modulePrefix,fileExtensionName) {
+            var moduleFrefix=modulePrefix;
+            var startIndex = path.indexOf(moduleFrefix);
+            var endIndex = path.lastIndexOf(fileExtensionName);
+
+            return path.slice(startIndex > -1 ? startIndex + moduleFrefix.length + '\\'.length : 0,endIndex > -1 ? endIndex : undefined);
+        };
         return {
             GetRandURL: GetRandURL,
             setUrlParam: setUrlParam,
-            GetUrlParam: GetUrlParam
+            GetUrlParam: GetUrlParam,
+            pathToRelative: pathToRelative
         };
 
     })(jQuery, MathHelper);
@@ -448,5 +457,5 @@
         
     };
     //TODO JSON2 not work
-    return { validate: ValidateHelper,ajax:AjaxHelper,cookie:cookie,log:log,obj:obj,Json:JSON }
+    return { validate: ValidateHelper,ajax:AjaxHelper,url:UrlHelper,cookie:cookie,log:log,obj:obj,Json:JSON }
 });
