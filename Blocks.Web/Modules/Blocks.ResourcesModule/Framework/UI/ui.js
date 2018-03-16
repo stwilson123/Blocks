@@ -4,7 +4,7 @@ define(["jquery", "slimscroll", "waves", 'sweetalert', 'toastr',
     'bootstrap_select',
     './Component/dialog',
     'blocks_utility',
-    './Component/mvc'], function ($, scroll, waves, sweetalert, toastr, grid, bootstrap_select,dialog, utility,mvc) {
+    './Component/mvc','./Component/input'], function ($, scroll, waves, sweetalert, toastr, grid, bootstrap_select,dialog, utility,mvc) {
 
   //  var a = require(['Blocks.ResourcesModule/Framework/UI/Component/dialog']);
 

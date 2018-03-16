@@ -1,4 +1,4 @@
-define(['jquery','vueJS','blocks_utility'],function ($,vueJS,utility) {
+define(['jquery','vueJS','blocks_utility','../../Event/event'],function ($,vueJS,utility,eventBus) {
 
 
    
@@ -36,7 +36,7 @@ define(['jquery','vueJS','blocks_utility'],function ($,vueJS,utility) {
     module.prototype.createViewModel =  function (data,view,controller) {
 
         return new vueJS({ el:view[0], data:data,methods:controller.actions,mounted:function () {
-
+            controller._view = $(this.$el);
             controller.events.init($(this.$el),this._data);
         }});
 
@@ -59,6 +59,13 @@ define(['jquery','vueJS','blocks_utility'],function ($,vueJS,utility) {
                 },200);
             };
             $(window).on('resize',currentController._windowResizeObject);
+            try 
+            {
+                eventBus.trigger("moduleInit",currentController._view);
+            }finally 
+            {
+                
+            }
         }
 
     };
@@ -70,6 +77,14 @@ define(['jquery','vueJS','blocks_utility'],function ($,vueJS,utility) {
             $(window).off('resize',containerModules._controllersCode[controller]._windowResizeObject);
         }
 
+        for(vm in containerModules._viewModelsCode)
+        {
+            containerModules._viewModelsCode[vm].$destroy();
+        }
+        containerModules._controllersCode = {};
+        containerModules._viewModelsCode = {};
+        containerModules.controllers = {};
+        containerModules.viewModels = {};
     };
     
     var VueConfig = function () {

@@ -157,6 +157,7 @@
     <Content Include="Framework\UI\Component\block_UI.js" />
     <Content Include="Framework\UI\Component\dialog.js" />
     <Content Include="Framework\UI\Component\grid.js" />
+    <Content Include="Framework\UI\Component\input.js" />
     <Content Include="Framework\UI\Component\msg_alert.js" />
     <Content Include="Framework\UI\Component\mvc.js" />
     <Content Include="Framework\UI\Component\spin_UI.js" />
