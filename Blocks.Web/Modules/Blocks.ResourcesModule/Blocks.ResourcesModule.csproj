@@ -108,6 +108,8 @@
     <Compile Include="ResourcesModule.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="build.js" />
+    <Content Include="config.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -158,8 +160,7 @@
     <Content Include="Framework\UI\Component\msg_alert.js" />
     <Content Include="Framework\UI\Component\mvc.js" />
     <Content Include="Framework\UI\Component\spin_UI.js" />
-    <Content Include="Framework\UI\UI.js" />
-    <Content Include="Framework\Utility\1.0\Common.js" />
+    <Content Include="Framework\UI\ui.js" />
     <Content Include="Framework\Utility\utility.js" />
     <Content Include="lib\abp-web-resources\.bower.json" />
     <Content Include="lib\abp-web-resources\Abp\Framework\scripts\abp.js" />
@@ -2428,7 +2429,6 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Framework\Utility\component\" />
     <Folder Include="lib\lib\" />
     <Folder Include="Models\" />
   </ItemGroup>

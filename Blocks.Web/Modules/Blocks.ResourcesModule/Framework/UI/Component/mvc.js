@@ -67,9 +67,7 @@ define(['jquery','vueJS','blocks_utility'],function ($,vueJS,utility) {
         var containerModules = this;
         for(controller in containerModules._controllersCode)
         {
-           
-            currentController.events.resize();
-            $(window).off('resize',controller._windowResizeObject);
+            $(window).off('resize',containerModules._controllersCode[controller]._windowResizeObject);
         }
 
     };

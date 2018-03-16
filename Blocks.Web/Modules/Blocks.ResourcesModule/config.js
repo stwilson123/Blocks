@@ -1,0 +1,31 @@
+require.config({
+    paths: {'jquery': '../Scripts/jquery-1.9.1.min',
+        'abp_wrapper': "./Utility/Abp/AbpWrapper",
+        'blocks_UI': "./Utility/UI/UI",
+        'blocks_security': "./Utility/Security/security",
+        'blocks_utility': "./Utility/utility",
+        'bootstrap': "../Scripts/bootstrap",
+        'bootstrap_select': "../lib/bootstrap-select/dist/js/bootstrap-select",
+        'jqGrid': "../lib/jqGrid/script/jquery.jqGrid.min",
+        'jquery': "../Scripts/jquery-1.9.1",
+        'jquery_blockUI': "../lib/blockUI/jquery.blockUI",
+        'jquery_spin': "../lib/spin.js/jquery.spin",
+        'jquery_validate': "../lib/jquery-validation/dist/jquery.validate",
+        'json2': "../lib/json2/json2",
+        'layer': "../lib/layer/layer",
+        'moment': "../lib/moment/min/moment-with-locales",
+        'push': "../lib/push.js/push",
+        'slimscroll': "../lib/jquery-slimscroll/jquery.slimscroll",
+        'spin': "../lib/spin.js/spin",
+        'sweetalert': "../lib/sweetalert/dist/sweetalert-dev",
+        'toastr': "../lib/toastr/toastr",
+        'vueJS': "../Scripts/vue",
+        'waves': "../lib/Waves/dist/waves",
+        'Blocks.ResourcesModule/lib/abp-web-resources/Abp/Framework/scripts/abp':'../lib/abp-web-resources/Abp/Framework/scripts/abp',
+        'Blocks.ResourcesModule/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr':'../lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr',
+        'Blocks.ResourcesModule/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI':'../lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI',
+        'Blocks.ResourcesModule/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin':'../lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin',
+        'Blocks.ResourcesModule/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert':'../lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert'
+        
+    }
+});

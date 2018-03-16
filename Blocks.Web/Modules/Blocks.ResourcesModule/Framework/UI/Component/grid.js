@@ -1,4 +1,4 @@
-﻿;define(['jquery', 'blocks_utility', 'jqGrid', 'Blocks.ResourcesModule/Framework/UI/Component/msg_alert','Blocks.ResourcesModule/lib/jqGrid/script/i18n/grid.locale-cn'], function ($, utility, jqGrid, msgAlert) {
+﻿;define(['jquery', 'blocks_utility', 'jqGrid', './msg_alert','../../../lib/jqGrid/script/i18n/grid.locale-cn'], function ($, utility, jqGrid, msgAlert) {
     var validate = utility.validate;
 
 

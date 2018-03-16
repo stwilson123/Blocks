@@ -125,7 +125,22 @@
             url: option.url, onSuccessCallBack: function (data) {
                 var WrapperId = (''+Math.random()).replace('0.','');
                 var dataWrapper = '<div id="'+ WrapperId+'">' + data + '</div>'; 
-                var layerIndex = show($.extend(option, {dialogType: 'dialog', content: dataWrapper}));
+                var endCallback = option.end;
+                var currentModule ;
+                var layerIndex = show($.extend(option, {
+                    dialogType: 'dialog', content: dataWrapper,end:function () {
+                        try {
+                            if (currentModule)
+                                currentModule.displose();
+                        }  
+                        finally {
+                            if (endCallback)
+                                endCallback();
+                        }
+                       
+                    }
+
+                }));
 
                 //req(['/Modules/Blocks.BussnessWebModule/Views/MasterData/Add.js']);
               //  require.config({path:{'Blocks.BussnessWebModule/Views/MasterData/Add':'Blocks.BussnessWebModule/Views/MasterData/Add'}})
@@ -134,6 +149,7 @@
                 if (blocks.pageContext && blocks.pageContext.subPageJsVirtualPath)
                 {
                     require([utility.url.pathToRelative(blocks.pageContext.subPageJsVirtualPath,blocks.pageContext.modulePrefix,'.js')],function (containerModules) {
+                        currentModule = containerModules;
                         containerModules.init($('#' + WrapperId).children());
                     });
 

@@ -42,8 +42,8 @@
 
 
     require.onError = function (err) {
-        require(['Blocks.ResourcesModule/Framework/Exception/exception'],function (error) {
-            error.handle(err);
+        require(['blocks'],function (blocks) {
+            blocks.exception.handle(err);
         });
 
     };
