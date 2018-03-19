@@ -14,7 +14,7 @@
                 viewModel = vm;
 
                  combobox = new blocks.ui.combobox({viewObj:view.find("#city"),data:
-                     { content:[{'ID':'123','Text':'111'}]}
+                     { content:[{'ID':'123','Text':'111'}]},minChars:0
                  });
 
 

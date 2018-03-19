@@ -4,7 +4,7 @@
         if (! this instanceof combobox)
             return null;
         beforeInit.call(this,setting );
-        var option = $.extend(this.config.default,setting);
+        var option = this.createOption(setting);
         option.dataUrlParams = $.extend({ comboxTopNum: option.maxSuggestions }, option.postData );
         option.data = setting.url ? setting.url : option.data;
         this._options = option;
@@ -33,10 +33,24 @@
             minCharsRenderer: function (v) {
                 return '请输入超过' + 3 + '位字符';
             }
-        }
+        },
+        'notCombobox':{
+            viewObj:undefined,
+            resultsField: 'content',
+            placeholder: '请选择',
+    
+            valueField: 'ID',
+            displayField: 'Text',
+            //expandOnFocus: true,
+        },
         
     };
-    
+    combobox.prototype.createOption = function (option) {
+        if(option.isCombobox)
+            return $.extend(this.config.default,option);
+        
+        return $.extend(this.config.notCombobox,option);
+    };
     var beforeInit = function (setting) {
         if (!setting || !setting.viewObj || validate.isNullOrEmpty(setting.viewObj.attr('id')))
             throw new Error("未指定的viewObj");
