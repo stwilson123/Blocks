@@ -33,6 +33,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Abp, Version=3.2.4.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\..\lib\Abp.dll</HintPath>
+    </Reference>
+    <Reference Include="Blocks.Framework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\..\lib\Blocks.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Blocks.Framework.DBORM, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\..\lib\Blocks.Framework.DBORM.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
@@ -44,10 +53,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Adp\Abp\Abp.csproj">
-      <Project>{0f98c63c-d019-4f38-9ac3-f5d7bcad9107}</Project>
-      <Name>Abp</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Blocks.BussnessDTOModule\Blocks.BussnessDTOModule.csproj">
       <Project>{ad72f6ed-27bd-4fff-ad43-b653dc8f67f5}</Project>
       <Name>Blocks.BussnessDTOModule</Name>
@@ -55,14 +60,6 @@
     <ProjectReference Include="..\Blocks.BussnessEntityModule\Blocks.BussnessEntityModule.csproj">
       <Project>{11206F21-DC7C-4F62-9AB9-9CD1095A78C0}</Project>
       <Name>Blocks.BussnessEntityModule</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\Blocks.Framework.DBORM\Blocks.Framework.DBORM.csproj">
-      <Project>{9CA5B764-D047-4662-BA93-DB578ED89E4E}</Project>
-      <Name>Blocks.Framework.DBORM</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\Blocks.Framework\Blocks.Framework.csproj">
-      <Project>{d5acbcf7-a7a7-449e-9dca-c1fcde36b7b6}</Project>
-      <Name>Blocks.Framework</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

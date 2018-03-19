@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Abp, Version=3.2.4.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\..\lib\Abp.dll</HintPath>
+    </Reference>
     <Reference Include="Blocks.Framework.DBORM, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>..\Blocks.Web\Modules\Blocks.BussnessWebModule\Bin\Blocks.Framework.DBORM.dll</HintPath>
     </Reference>
@@ -46,10 +49,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Adp\Abp\Abp.csproj">
-      <Project>{0f98c63c-d019-4f38-9ac3-f5d7bcad9107}</Project>
-      <Name>Abp</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Blocks.BussnessEntityModule\Blocks.BussnessEntityModule.csproj">
       <Project>{11206f21-dc7c-4f62-9ab9-9cd1095a78c0}</Project>
       <Name>Blocks.BussnessEntityModule</Name>

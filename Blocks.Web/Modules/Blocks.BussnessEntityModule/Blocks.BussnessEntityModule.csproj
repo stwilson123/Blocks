@@ -33,6 +33,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Abp, Version=3.2.4.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\..\lib\Abp.dll</HintPath>
+    </Reference>
+    <Reference Include="Blocks.Framework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\..\lib\Blocks.Framework.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
       <HintPath>..\..\..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -56,16 +62,6 @@
       <DependentUpon>Entity.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\Adp\Abp\Abp.csproj">
-      <Project>{0f98c63c-d019-4f38-9ac3-f5d7bcad9107}</Project>
-      <Name>Abp</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\Blocks.Framework\Blocks.Framework.csproj">
-      <Project>{D5ACBCF7-A7A7-449E-9DCA-C1FCDE36B7B6}</Project>
-      <Name>Blocks.Framework</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">

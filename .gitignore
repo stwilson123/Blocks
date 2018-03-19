@@ -6,3 +6,4 @@ PublishProfiles/*
 *.zip
 *.rar
 /adp
+build_home/

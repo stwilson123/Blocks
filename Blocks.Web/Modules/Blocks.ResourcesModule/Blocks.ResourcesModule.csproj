@@ -109,6 +109,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="build.js" />
+    <Content Include="build_home\blocks.js" />
     <Content Include="config.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.css.map" />
@@ -148,21 +149,21 @@
     <Content Include="fonts\roboto\roboto.css" />
     <Content Include="fonts\roboto\u0TOpm082MNkS5K0Q4rhqvesZW2xOQ-xsNqO47m55DA.woff2" />
     <Content Include="fonts\roboto\UX6i4JxQDm3fVTc1CPuwqhJtnKITppOI_IvcXXDNrsc.woff2" />
-    <Content Include="Framework\Abp\AbpWrapper.js" />
-    <Content Include="Framework\blocks.js" />
-    <Content Include="Framework\Event\event.js" />
-    <Content Include="Framework\Exception\exception.js" />
-    <Content Include="Framework\InitComponent\requireModule.js" />
-    <Content Include="Framework\Security\security.js" />
-    <Content Include="Framework\UI\Component\block_UI.js" />
-    <Content Include="Framework\UI\Component\dialog.js" />
-    <Content Include="Framework\UI\Component\grid.js" />
-    <Content Include="Framework\UI\Component\input.js" />
-    <Content Include="Framework\UI\Component\msg_alert.js" />
-    <Content Include="Framework\UI\Component\mvc.js" />
-    <Content Include="Framework\UI\Component\spin_UI.js" />
-    <Content Include="Framework\UI\ui.js" />
-    <Content Include="Framework\Utility\utility.js" />
+    <None Include="Framework\Abp\AbpWrapper.js" />
+    <None Include="Framework\blocks.js" />
+    <None Include="Framework\Event\event.js" />
+    <None Include="Framework\Exception\exception.js" />
+    <None Include="Framework\InitComponent\requireModule.js" />
+    <None Include="Framework\Security\security.js" />
+    <None Include="Framework\UI\Component\block_UI.js" />
+    <None Include="Framework\UI\Component\dialog.js" />
+    <None Include="Framework\UI\Component\grid.js" />
+    <None Include="Framework\UI\Component\input.js" />
+    <None Include="Framework\UI\Component\msg_alert.js" />
+    <None Include="Framework\UI\Component\mvc.js" />
+    <None Include="Framework\UI\Component\spin_UI.js" />
+    <None Include="Framework\UI\ui.js" />
+    <None Include="Framework\Utility\utility.js" />
     <Content Include="lib\abp-web-resources\.bower.json" />
     <Content Include="lib\abp-web-resources\Abp\Framework\scripts\abp.js" />
     <Content Include="lib\abp-web-resources\Abp\Framework\scripts\libs\abp.blockUI.js" />
@@ -1363,7 +1364,6 @@
     <Content Include="lib\famfamfam-flags\LICENSE.md" />
     <Content Include="lib\famfamfam-flags\README.md" />
     <Content Include="lib\Flot\.bower.json" />
-    <Content Include="lib\Flot\.gitignore" />
     <Content Include="lib\Flot\.travis.yml" />
     <Content Include="lib\Flot\API.md" />
     <Content Include="lib\Flot\component.json" />
@@ -1460,7 +1460,6 @@
     <Content Include="lib\Flot\PLUGINS.md" />
     <Content Include="lib\Flot\README.md" />
     <Content Include="lib\font-awesome\.bower.json" />
-    <Content Include="lib\font-awesome\.gitignore" />
     <Content Include="lib\font-awesome\.npmignore" />
     <Content Include="lib\font-awesome\bower.json" />
     <Content Include="lib\font-awesome\css\font-awesome.css" />
@@ -2202,7 +2201,6 @@
     <Content Include="lib\moment\templates\locale-header.js" />
     <Content Include="lib\moment\templates\test-header.js" />
     <Content Include="lib\morris.js\.bower.json" />
-    <Content Include="lib\morris.js\.gitignore" />
     <Content Include="lib\morris.js\.travis.yml" />
     <Content Include="lib\morris.js\bower.json" />
     <Content Include="lib\morris.js\bower.travis.json" />
@@ -2306,7 +2304,6 @@
     <Content Include="lib\signalr\LICENSE.md" />
     <Content Include="lib\signalr\README.md" />
     <Content Include="lib\spin.js\.bower.json" />
-    <Content Include="lib\spin.js\.gitignore" />
     <Content Include="lib\spin.js\.jshintrc" />
     <Content Include="lib\spin.js\.npmignore" />
     <Content Include="lib\spin.js\.spmignore" />
@@ -2318,7 +2315,6 @@
     <Content Include="lib\spin.js\spin.min.js" />
     <Content Include="lib\sweetalert\.bower.json" />
     <Content Include="lib\sweetalert\.editorconfig" />
-    <Content Include="lib\sweetalert\.gitignore" />
     <Content Include="lib\sweetalert\.jshintrc" />
     <Content Include="lib\sweetalert\.travis.yml" />
     <Content Include="lib\sweetalert\bower.json" />
@@ -2450,6 +2446,7 @@
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery.cookie-1.4.1.min.js" />
     <None Include="Scripts\jquery.cookie.js" />
     <None Include="Scripts\r.js" />

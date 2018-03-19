@@ -33,6 +33,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Abp, Version=3.2.4.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\..\lib\Abp.dll</HintPath>
+    </Reference>
+    <Reference Include="Blocks.Framework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\..\lib\Blocks.Framework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
@@ -46,17 +52,9 @@
     <Compile Include="TestAppService\ITestAppService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Adp\Abp\Abp.csproj">
-      <Project>{0f98c63c-d019-4f38-9ac3-f5d7bcad9107}</Project>
-      <Name>Abp</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Blocks.BussnessDomainModule\Blocks.BussnessDomainModule.csproj">
       <Project>{515b2afd-abe4-4d33-8332-8d900ed947f1}</Project>
       <Name>Blocks.BussnessDomainModule</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\Blocks.Framework\Blocks.Framework.csproj">
-      <Project>{d5acbcf7-a7a7-449e-9dca-c1fcde36b7b6}</Project>
-      <Name>Blocks.Framework</Name>
     </ProjectReference>
     <ProjectReference Include="..\Blocks.BussnessDTOModule\Blocks.BussnessDTOModule.csproj">
       <Project>{ad72f6ed-27bd-4fff-ad43-b653dc8f67f5}</Project>
