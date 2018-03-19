@@ -81,8 +81,8 @@ define(['jquery','vueJS','blocks_utility','../../Event/event'],function ($,vueJS
         {
             containerModules._viewModelsCode[vm].$destroy();
         }
-        containerModules._controllersCode = {};
-        containerModules._viewModelsCode = {};
+        //containerModules._controllersCode = {};
+        //containerModules._viewModelsCode = {};
         containerModules.controllers = {};
         containerModules.viewModels = {};
     };
