@@ -16,6 +16,7 @@ define(['jquery', '../../Event/event'], function ($, eventBus) {
                 $this.parents('.form-line').removeClass('focused');
             }
         });
+
     });
     return {};
 });

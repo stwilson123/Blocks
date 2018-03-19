@@ -57,5 +57,8 @@ namespace Blocks.ResourcesModule
 
         public static string layer { get; } = "layer";
 
+        
+        public static string magicsuggest { get; } = "magicsuggest";
+
     }
 }

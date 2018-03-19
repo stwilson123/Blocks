@@ -4,11 +4,10 @@ define(["jquery", "slimscroll", "waves", 'sweetalert', 'toastr',
     'bootstrap_select',
     './Component/dialog',
     'blocks_utility',
-    './Component/mvc','./Component/input'], function ($, scroll, waves, sweetalert, toastr, grid, bootstrap_select,dialog, utility,mvc) {
+    './Component/mvc', './Component/input', './Component/combobox'], function ($, scroll, waves, sweetalert, toastr, grid, bootstrap_select, dialog, utility, mvc, input, combobox) {
 
-  //  var a = require(['Blocks.ResourcesModule/Framework/UI/Component/dialog']);
+    //  var a = require(['Blocks.ResourcesModule/Framework/UI/Component/dialog']);
 
-   
-     
-    return {'grid': grid, 'dialog': dialog, 'module':mvc };
+
+    return {'grid': grid, 'dialog': dialog, 'module': mvc,'combobox': combobox};
 });

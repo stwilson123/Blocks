@@ -5034,7 +5034,7 @@ section.content {
 .form-group {
   width: 100%;
   margin-bottom: 25px; }
-  .form-group .form-control {
+    .form-group input.form-control  {
     width: 100%;
     border: none;
     box-shadow: none;
@@ -5086,6 +5086,11 @@ section.content {
       -o-transition: 0.2s;
       -webkit-transition: 0.2s;
       transition: 0.2s; }
+.form-group .form-label {
+  font-weight: normal;
+  color: #aaa;
+ 
+ }
   .form-group .form-line.error:after {
     border-bottom: 2px solid #F44336; }
   .form-group .form-line.success:after {
@@ -7325,7 +7330,7 @@ fieldset[disabled] .form-control {
   background-color: rgba(0, 0, 0, 0.08); }
 
 /* Dropdown Menu =============================== */
-.dropdown-menu {
+.dropdown-menu:not(div) {
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
   -ms-border-radius: 0;

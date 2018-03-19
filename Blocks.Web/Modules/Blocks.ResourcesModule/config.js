@@ -21,6 +21,7 @@ require.config({
         'toastr': "../lib/toastr/toastr",
         'vueJS': "../Scripts/vue",
         'waves': "../lib/Waves/dist/waves",
+        'magicsuggest': "../lib/combobox/magicsuggest",
         'Blocks.ResourcesModule/lib/abp-web-resources/Abp/Framework/scripts/abp':'../lib/abp-web-resources/Abp/Framework/scripts/abp',
         'Blocks.ResourcesModule/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr':'../lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr',
         'Blocks.ResourcesModule/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI':'../lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI',

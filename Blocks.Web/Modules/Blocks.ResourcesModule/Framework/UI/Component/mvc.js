@@ -81,10 +81,10 @@ define(['jquery','vueJS','blocks_utility','../../Event/event'],function ($,vueJS
         {
             containerModules._viewModelsCode[vm].$destroy();
         }
-        //containerModules._controllersCode = {};
-        //containerModules._viewModelsCode = {};
-        containerModules.controllers = {};
-        containerModules.viewModels = {};
+        containerModules._controllersCode = {};
+        containerModules._viewModelsCode = {};
+        //containerModules.controllers = {};
+        //containerModules.viewModels = {};
     };
     
     var VueConfig = function () {
@@ -93,7 +93,8 @@ define(['jquery','vueJS','blocks_utility','../../Event/event'],function ($,vueJS
               // handle error
               // `info` 是 Vue 特定的错误信息，比如错误所在的生命周期钩子
               // 只在 2.2.0+ 可用
-              throw new Error(err);
+              //throw new Error(err);
+              utility.log.error(err);
           };
 
           // vueJS.config.warnHandler = function (msg, vm, trace) {

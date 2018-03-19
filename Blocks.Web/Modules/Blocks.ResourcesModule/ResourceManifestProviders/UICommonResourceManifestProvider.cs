@@ -23,7 +23,8 @@ namespace Blocks.ResourcesModule.ResourceManifestProviders {
                 "lib/jqGrid/css/ui.jqgrid-bootstrap-ui.css").SetVersion("5.2.0").SetDependencies(ResourceName.jqGrid);
             manifest.DefineStyle(ResourceName.layer).SetUrl("lib/layer/theme/default/layer.css",
                 "lib/layer/theme/default/layer.css").SetVersion("3.3.1");
-                
+            manifest.DefineStyle(ResourceName.magicsuggest).SetUrl("lib/combobox/magicsuggest.min.css",
+                "lib/combobox/magicsuggest.css").SetVersion("3.3.1");
                 
             manifest.DefineScript(ResourceName.toastr).SetUrl("lib/toastr/toastr.min.js",
                 "lib/toastr/toastr.js").SetVersion("0.1");
@@ -53,7 +54,10 @@ namespace Blocks.ResourcesModule.ResourceManifestProviders {
                 "lib/jqGrid/script/jquery.jqGrid.min.js").SetVersion("5.2.0");
             
             manifest.DefineScript(ResourceName.layer).SetUrl("lib/layer/layer.js",
-                "lib/layer/layer.js").SetVersion("3.1.1");
+                "lib/layer/layer.js").SetVersion("3.1.1").SetAMD();
+            
+            manifest.DefineScript(ResourceName.magicsuggest).SetUrl("lib/combobox/magicsuggest.min.js",
+                "lib/combobox/magicsuggest.js").SetVersion("2.1.4");
         }
 
         public Lazy<FeatureDescriptor> Feature { get; set; }

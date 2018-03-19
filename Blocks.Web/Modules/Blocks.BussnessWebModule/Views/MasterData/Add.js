@@ -12,7 +12,10 @@
             'init': function (v, vm) {
                 view = v;
                 viewModel = vm;
-                 
+
+                 combobox = new blocks.ui.combobox({viewObj:view.find("#city"),data:
+                     { content:[{'ID':'123','Text':'111'}]}
+                 });
 
 
             },
