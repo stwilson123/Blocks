@@ -17,6 +17,15 @@ define(['jquery', '../../Event/event'], function ($, eventBus) {
             }
         });
 
+        view.find('input.form-control,textarea.form-control').each(function(){
+            var $this =  $(this);
+            if ($this.parents('.form-group').hasClass('form-float')) {
+                if ($this.val() != '') {
+                    $this.parents('.form-line').addClass('focused');
+                }
+            }
+        });
+         
     });
     return {};
 });

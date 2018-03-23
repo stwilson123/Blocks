@@ -18,7 +18,7 @@ namespace Blocks.ResourcesModule.ResourceManifestProviders {
                 .SetDependencies(ResourceName.bootstrap_select,ResourceName.moment,ResourceName.jqGrid,
                     ResourceName.jquery_blockUI, ResourceName.toastr,ResourceName.sweetalert,ResourceName.jquery_spin,
                     ResourceName.slimscroll,ResourceName.waves,ResourceName.push,ResourceName.layer,ResourceName.vueJS,
-                    ResourceName.magicsuggest)
+                    ResourceName.magicsuggest,ResourceName.select2)
                 .SetAMD();
             manifest.DefineScript(ResourceName.blocks_utility).SetUrl("Framework/Utility/utlity.js",
               "Framework/Utility/utility.js").SetVersion("0.1").SetDependencies(ResourceName.json2).SetAMD();

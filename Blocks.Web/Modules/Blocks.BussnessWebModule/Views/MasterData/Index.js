@@ -1,4 +1,4 @@
-﻿;define(['blocks'], function (blocks) {
+﻿;define(['blocks','select2'], function (blocks) {
 
     var currentModule = new blocks.ui.module.pageModel();
     currentModule.controllers = {'Main': main};
@@ -47,9 +47,15 @@
                     idKey: "ID",
                     dynamicConditionQuery: {active: true}
                 });
-
+              
                 // mainGrid.reloadGrid({url: "/api/services/BussnessWebModule/MasterData/GetPageList"});
 
+                var citySelect = new blocks.ui.select({
+                    viewObj:view.find("#city"),
+                    data: [{id: 'china', text: 'china'}, {id: 'us', text: 'us'}],
+                    allowClear: true
+                });
+                
             },
             'dispose': function () {
 
@@ -71,13 +77,15 @@
         queryClick: function (event) {
             //   mainGrid.reloadGrid({url: "/api/services/BussnessWebModule/MasterData/GetPageList"});
             mainGrid.dynamicConditionLoad({url: "/api/services/BussnessWebModule/MasterData/GetPageList"});
+            var a =  viewModel.cityTest;
+            viewModel.city = a;
         }
     };
 }
 
 
 function mainViewModel() {
-    return {value: ''};
+    return {city: '',cityTest:''};
 }
 
     return currentModule;

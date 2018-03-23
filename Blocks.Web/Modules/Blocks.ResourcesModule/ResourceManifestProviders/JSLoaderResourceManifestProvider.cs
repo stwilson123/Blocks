@@ -14,7 +14,7 @@ namespace Blocks.ResourcesModule.ResourceManifestProviders {
                 PathBuilder.BuilderScripts("require.js")).SetVersion("2.3.5");
             
             manifest.DefineScript(ResourceName.vueJS).SetUrl(PathBuilder.BuilderScripts("vue.min.js"),
-                PathBuilder.BuilderScripts("vue.js")).SetVersion("2.5.13");
+                PathBuilder.BuilderScripts("vue.js")).SetVersion("2.5.16").SetAMD();
    
         }
 

@@ -1,305 +1,352 @@
 ﻿; define(['jquery','json2'], function (jQuery,json2) {
 
 
-    var ValidateHelper = (function ($) {
-        isNullOrEmpty: function isNullOrEmpty(v) {
+    
+    var validateDefine = function () {
+        this.isNullOrEmpty = function isNullOrEmpty(v) {
             return v === '' || v == undefined || v == null || typeof (v) == "undefined";
 
         };
-        isDecimal: function isDecimal(v) {
+        this.isDecimal = function isDecimal(v) {
             return /^(-?\d+)(\.\d+)?$/.test(v);
         };
-        isHtml: function isHtml(v) {
+        this.isHtml = function isHtml(v) {
             return new RegExp('^<([^>\s]+)[^>]*>(.*?<\/\\1>)?$').test(v);
         };
-        isInt: function isInt(v) {
+        this.isInt = function isInt(v) {
             return /^[+]{0,1}(\d+)$/.test(v)
         };
-        isErrorCode: function isErrorCode(code) {
+        this.isErrorCode = function isErrorCode(code) {
             return (code != 100 && code < 3000) || code > 10000;
         };
-        mustFunction: function mustFunction(object,paramName) {
-            if (!isFunction(object))
-                throw new Error("object must be object");
+        this.mustFunction = function mustFunction(object, paramName) {
+            if (!this.isFunction(object))
+                throw new Error(paramName + " must be function");
         };
-        isFunction: function isFunction(object) {
+        this.mustNotNullAndEmpty = function mustNotNullAndEmpty(object, paramName) {
+            if (!this.isNullOrEmpty(object))
+                throw new Error(paramName + " must be NotNull And NotEmpty");
+        };
+        this.mustJQueryObj = function mustJQueryObj(object, paramName) {
+            if (this.isNullOrEmpty(object) || !object.attr || this.isNullOrEmpty(object.attr("id")))
+                throw new Error(paramName + " must be JQueryObj");
+        };
+        this.isFunction = function isFunction(object) {
             return $.isFunction(object);
-        };
-        return { isNullOrEmpty: isNullOrEmpty, isDecimal: isDecimal, isHtml: isHtml, isInt: isInt, isErrorCode: isErrorCode,mustFunction:mustFunction,
-            isFunction:isFunction
-        };
-    })(jQuery);
-
-
-    var AjaxHelper = (function ($) {
-        pubAjax = function (settings) {
-            if (settings.url != "" && settings.url != null) {
-                settings.url = UrlHelper.GetRandURL(settings.url);
-                settings = jQuery.extend({
-                    errorHandle: true, //是否处理服务器错误 error.call
-                    onFailCallBack: function () { },
-                    type: "post",
-                    contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-                    data: settings.data,
-                    datatype: ValidateHelper.isNullOrEmpty(settings.url) ? 'json' : settings.url,
-                    async: false, //同步
-                    cache: false,
-                    statusCode: {
-                        404: function () { alert('无效的URL'); }
-                    },
-                    beforeSend: function (XMLHttpRequest) {
-                        this;
-                    },
-                    complete: function (XMLHttpRequest, Status) {
-                        this;
-                    },
-                    success: function (data) {
-                        this;
-                    },
-                    error: function (XMLHttpRequest, Status, errorThrown) {
-                        this;
-                    },
-                    ajaxError: function () { }
-                }, settings);
-            } else {
-                alert('请指定URL');
-                return;
-            }
-
-            var btnObj = null;
-            var currentWindow = null;
-
-            if (!ValidateHelper.isNullOrEmpty(settings.buttonEvent)) {
-                //ie and firefox
-                if ($.browser.msie || $.browser.mozilla) btnObj = $(settings.buttonEvent.target);
-                //chrome
-                else btnObj = $(settings.buttonEvent.currentTarget);
-            }
-
-            if (!ValidateHelper.isNullOrEmpty(settings.currentWindow)) {
-                currentWindow = settings.currentWindow;
-            }
-
-            jQuery.ajax({
-                type: settings.type,
-                url: settings.url,
-                cache: settings.cache,
-                sync: settings.async,
-                contentType: settings.contentType,
-                data: settings.data,
-                datatype: settings.datatype,
-                statusCode: settings.statusCode,
-                success: function (data) {
-                    if (settings.datatype === 'text/html') {
-                        settings.onSuccessCallBack(data);
-                        return;
-                    }
-                    if (!ValidateHelper.isNullOrEmpty(data)) {
-                        var result = eval('(' + data + ')');
-                        ajaxSuccess(result, settings.onSuccessCallBack, settings.onFailCallBack);
-                        return;
-                    }
-                    
-                   
-                    ajaxSuccess({ msg: "Data from server is null.Please check response.", code: 901 }, settings.onSuccessCallBack, settings.onFailCallBack);
-
-                },
-                error: function (XMLHttpRequest, Status, errorThrown) {
-                    if (settings.errorHandle) {
-                        settings.error(XMLHttpRequest, Status, errorThrown);
-
-
-                    } else {
-                        ;
-                    }
-                    if (null != btnObj) btnObj.button('enable'); //启用按钮 
-                    if (null != currentWindow) {
-                        UnLockWindow(currentWindow); //解锁窗口
-                        HidePrompt(currentWindow);
-                    }
-                },
-                beforeSend: function (XMLHttpRequest) {
-                    settings.beforeSend(XMLHttpRequest);
-
-                    if (null != btnObj) btnObj.button('disable'); //禁用按钮 
-                    if (null != currentWindow) {
-                        LockWindow(currentWindow); //锁定窗口
-                        ShowPrompt(currentWindow);
-                    }
-                },
-                complete: function (XMLHttpRequest, Status) {
-                    settings.complete(XMLHttpRequest, Status);
-
-                    if (null != btnObj) btnObj.button('enable'); //启用按钮 
-                    if (null != currentWindow) {
-                        UnLockWindow(currentWindow); //解锁窗口
-                        HidePrompt(currentWindow);
-                    }
-                }
-            });
-        };
-
-
-         
-        //submitJSONForm: function submitJSONForm(setting) {
-        //    var option = $.extend(setting, {});
-
-        //    //if (!EasyUiValidate(option.htmlFormId)) {
-        //    //    return false;
-        //    //}
-
-        //    var vPostData = FormHelper.getPostBodyToJson(option.htmlFormId);
-        //    if ($.type(vPostData) == "string") {
-        //        if (vPostData == "nodata")
-        //            return;
-        //    }
-        //    var extendSetting = $.extend(true, {
-        //        postJsonData: vPostData
-        //    }, setting);
-        //    pubAjax({
-        //        url: setting.URL,
-        //        data: extendSetting.postJsonData,
-        //        type: "POST",
-        //        currentWindow: option.currentWindow,
-        //        buttonEvent: option.btnEvent,
-        //        errorMessageAlertCallBack: option.onFailCallBack,
-        //        onSuccessCallBack: function (msg, data, code) {
-        //            extendSetting.onSuccessCallBack(msg, data, code);
-        //        },
-        //        error: function (XMLHttpRequest, Status, errorThrown) {
-
-        //            extendSetting.onFailCallBack(XMLHttpRequest, Status, errorThrown);
-        //        },
-        //        complete: function (XMLHttpRequest, Status) {
-        //        }
-        //    });
-        //};
-        //submitJSONFormWithLoadDialog: function submitJSONFormWithLoadDialog(setting) {
-        //    // ShowLoading();//显示loading
-        //    var onSuccessCallBackFun = setting.onSuccessCallBack;
-        //    var onFailCallBackFun = setting.onFailCallBack;
-
-
-        //    var option = $.extend(setting, {
-        //        onSuccessCallBack: function (msg, content, code) {
-
-        //            if (ValidateHelper.isErrorCode(code)) {
-        //                OpenTipWindowError(MessageHelper.getRemoveSpecialChar(msg));
-        //                try {
-        //                    if (DataType.isFunction(onFailCallBackFun))
-        //                        onFailCallBackFun(msg, content, code);
-        //                }
-        //                catch (e) {
-        //                    throw e;
-        //                }
-        //                finally {
-        //                    // CloseLoading();
-
-        //                }
-        //                return;
-        //            }
-        //            try {
-        //                onSuccessCallBackFun(msg, content, code);
-        //            }
-        //            catch (e) {
-        //                throw e;
-        //            }
-        //            finally {
-        //                // CloseLoading();
-
-        //            }
-        //        },
-        //        onFailCallBack: function (XMLHttpRequest, Status, errorThrown) {
-        //            OpenTipWindowError("意外出错，请刷新页面重试。");
-
-        //            try {
-        //                if (DataType.isFunction(onFailCallBackFun))
-        //                    onFailCallBackFun(Status, XMLHttpRequest, errorThrown);
-        //            }
-        //            catch (e) {
-        //                throw e;
-        //            }
-        //            finally {
-        //                //   CloseLoading();
-
-        //            }
-        //        }
-        //    });
-
-        //    submitJSONForm(option);
-        //};
-        LockWindow: function LockWindow(o) {
-            if (isNullOrEmpty(o)) return;
-            var wo = null;
-
-            if ($.type(o) == "string") {
-                wo = $("#" + o);
-            }
-            if ($.type(o) == "object") {
-                wo = o;
-            }
-            if (0 < wo.length) {
-                wo.data('_Dialog_CanClose', false);
-            }
-        };
-
-        UnLockWindow: function UnLockWindow(o) {
-            if (isNullOrEmpty(o)) return;
-            var wo = null;
-
-            if ($.type(o) == "string") {
-                wo = $("#" + o);
-            }
-            if ($.type(o) == "object") {
-                wo = o;
-            }
-            if (0 < wo.length) {
-                wo.data('_Dialog_CanClose', true);
-            }
-        };
-
-        ShowPrompt: function ShowPrompt(o) {
-            if (isNullOrEmpty(o)) return;
-            var wo = null;
-
-            if ($.type(o) == "string") {
-                wo = $("#" + o);
-            }
-            if ($.type(o) == "object") {
-                wo = o;
-            }
-            if (0 < wo.length) {
-                var html = "<div class='post_tipp' style='width:86px;height:6px;float:left;margin:1.2em 0 0.5em 0.4em'><img src=\"/Images/ajaxtipimage.gif\" /></div>";
-                $("div.ui-dialog[role='dialog'][aria-describedby='" + wo.attr('id') + "']").find('.ui-dialog-buttonpane').append(html);
-            }
-        };
-
-        HidePrompt: function HidePrompt(o) {
-            if (isNullOrEmpty(o)) return;
-            var wo = null;
-
-            if ($.type(o) == "string") {
-                wo = $("#" + o);
-            }
-            if ($.type(o) == "object") {
-                wo = o;
-            }
-            if (0 < wo.length) {
-                $("div.ui-dialog[role='dialog'][aria-describedby='" + wo.attr('id') + "']").find('.post_tipp').remove();
-            }
-        };
-
-
-        ajaxSuccess: function ajaxSuccess(result, callback, jqAlertCallBack) {
-           
-            if (!ValidateHelper.isNullOrEmpty(callback))
-                callback(result.msg, result.content, result.code);
-
         }
-        // return { pubAjax: pubAjax, submitJSONForm: submitJSONForm, submitJSONFormWithLoadDialog: submitJSONFormWithLoadDialog };
-        return { pubAjax: pubAjax,  };
 
-    })(jQuery, ValidateHelper, UrlHelper, MessageHelper);
+    };
+    var ValidateHelper = new validateDefine();
+
+    var ajax = {};
+    ajax.pubAjax = function (userOptions) {
+        userOptions = userOptions || {};
+
+        var options = $.extend({}, ajax.config.default, userOptions);
+        options.url = options.url ? UrlHelper.GetRandURL(options.url) :options.url;
+
+        return $.Deferred(function ($dfd) {
+            $.ajax(options)
+                .done(function (data, textStatus, jqXHR) {
+                    ajax.handleResponse(data,options,$dfd, jqXHR);
+                    $dfd.resolve(data);
+                })
+                .fail(function (jqXHR, textStatus, errorThrown) {
+                    userOptions.onFailCallBack && userOptions.onFailCallBack(jqXHR, textStatus, errorThrown);
+                    $dfd.reject(jqXHR);
+                })
+                //data|jqXHR, textStatus, jqXHR|errorThrown
+                .always(function (obj, textStatus, jqXHR) {
+                    userOptions.onCompleteCallBack && userOptions.onCompleteCallBack(obj, textStatus, jqXHR);
+                    //$dfd.resolve(jqXHR);
+                });
+        });
+    };
+    ajax.config = {
+        'default': {
+            dataType: 'json',
+            type: 'POST',
+            contentType: 'application/json',
+            async: true, //同步
+            cache: false,
+            beforeSend: function(){
+                // Handle the beforeSend event
+            }
+        }
+
+    };
+    ajax.handleResponse = function (data, userOptions, $dfd, jqXHR) {
+        userOptions && userOptions.onSuccessCallBack&& userOptions.onSuccessCallBack(data);
+    };
+    // var AjaxHelper = (function ($) {
+    //     pubAjax = function (settings) {
+    //         if (settings.url != "" && settings.url != null) {
+    //             settings.url = UrlHelper.GetRandURL(settings.url);
+    //             settings = jQuery.extend({
+    //                 errorHandle: true, //是否处理服务器错误 error.call
+    //                 onFailCallBack: function () { },
+    //                 type: "post",
+    //                 contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+    //                 data: settings.data,
+    //                 datatype: ValidateHelper.isNullOrEmpty(settings.url) ? 'json' : settings.url,
+    //                 async: false, //同步
+    //                 cache: false,
+    //                 statusCode: {
+    //                     404: function () { alert('无效的URL'); }
+    //                 },
+    //                 beforeSend: function (XMLHttpRequest) {
+    //                     this;
+    //                 },
+    //                 complete: function (XMLHttpRequest, Status) {
+    //                     this;
+    //                 },
+    //                 success: function (data) {
+    //                     this;
+    //                 },
+    //                 error: function (XMLHttpRequest, Status, errorThrown) {
+    //                     this;
+    //                 },
+    //                 ajaxError: function () { }
+    //             }, settings);
+    //         } else {
+    //             alert('请指定URL');
+    //             return;
+    //         }
+    //
+    //         var btnObj = null;
+    //         var currentWindow = null;
+    //
+    //         if (!ValidateHelper.isNullOrEmpty(settings.buttonEvent)) {
+    //             //ie and firefox
+    //             if ($.browser.msie || $.browser.mozilla) btnObj = $(settings.buttonEvent.target);
+    //             //chrome
+    //             else btnObj = $(settings.buttonEvent.currentTarget);
+    //         }
+    //
+    //         if (!ValidateHelper.isNullOrEmpty(settings.currentWindow)) {
+    //             currentWindow = settings.currentWindow;
+    //         }
+    //
+    //         jQuery.ajax({
+    //             type: settings.type,
+    //             url: settings.url,
+    //             cache: settings.cache,
+    //             sync: settings.async,
+    //             contentType: settings.contentType,
+    //             data: settings.data,
+    //             datatype: settings.datatype,
+    //             statusCode: settings.statusCode,
+    //             success: function (data) {
+    //                 if (settings.datatype === 'text/html') {
+    //                     settings.onSuccessCallBack(data);
+    //                     return;
+    //                 }
+    //                 if (!ValidateHelper.isNullOrEmpty(data)) {
+    //                     var result = eval('(' + data + ')');
+    //                     ajaxSuccess(result, settings.onSuccessCallBack, settings.onFailCallBack);
+    //                     return;
+    //                 }
+    //                
+    //               
+    //                 ajaxSuccess({ msg: "Data from server is null.Please check response.", code: 901 }, settings.onSuccessCallBack, settings.onFailCallBack);
+    //
+    //             },
+    //             error: function (XMLHttpRequest, Status, errorThrown) {
+    //                 if (settings.errorHandle) {
+    //                     settings.error(XMLHttpRequest, Status, errorThrown);
+    //
+    //
+    //                 } else {
+    //                     ;
+    //                 }
+    //                 if (null != btnObj) btnObj.button('enable'); //启用按钮 
+    //                 if (null != currentWindow) {
+    //                     UnLockWindow(currentWindow); //解锁窗口
+    //                     HidePrompt(currentWindow);
+    //                 }
+    //             },
+    //             beforeSend: function (XMLHttpRequest) {
+    //                 settings.beforeSend(XMLHttpRequest);
+    //
+    //                 if (null != btnObj) btnObj.button('disable'); //禁用按钮 
+    //                 if (null != currentWindow) {
+    //                     LockWindow(currentWindow); //锁定窗口
+    //                     ShowPrompt(currentWindow);
+    //                 }
+    //             },
+    //             complete: function (XMLHttpRequest, Status) {
+    //                 settings.complete(XMLHttpRequest, Status);
+    //
+    //                 if (null != btnObj) btnObj.button('enable'); //启用按钮 
+    //                 if (null != currentWindow) {
+    //                     UnLockWindow(currentWindow); //解锁窗口
+    //                     HidePrompt(currentWindow);
+    //                 }
+    //             }
+    //         });
+    //     };
+    //
+    //
+    //     
+    //     //submitJSONForm: function submitJSONForm(setting) {
+    //     //    var option = $.extend(setting, {});
+    //
+    //     //    //if (!EasyUiValidate(option.htmlFormId)) {
+    //     //    //    return false;
+    //     //    //}
+    //
+    //     //    var vPostData = FormHelper.getPostBodyToJson(option.htmlFormId);
+    //     //    if ($.type(vPostData) == "string") {
+    //     //        if (vPostData == "nodata")
+    //     //            return;
+    //     //    }
+    //     //    var extendSetting = $.extend(true, {
+    //     //        postJsonData: vPostData
+    //     //    }, setting);
+    //     //    pubAjax({
+    //     //        url: setting.URL,
+    //     //        data: extendSetting.postJsonData,
+    //     //        type: "POST",
+    //     //        currentWindow: option.currentWindow,
+    //     //        buttonEvent: option.btnEvent,
+    //     //        errorMessageAlertCallBack: option.onFailCallBack,
+    //     //        onSuccessCallBack: function (msg, data, code) {
+    //     //            extendSetting.onSuccessCallBack(msg, data, code);
+    //     //        },
+    //     //        error: function (XMLHttpRequest, Status, errorThrown) {
+    //
+    //     //            extendSetting.onFailCallBack(XMLHttpRequest, Status, errorThrown);
+    //     //        },
+    //     //        complete: function (XMLHttpRequest, Status) {
+    //     //        }
+    //     //    });
+    //     //};
+    //     //submitJSONFormWithLoadDialog: function submitJSONFormWithLoadDialog(setting) {
+    //     //    // ShowLoading();//显示loading
+    //     //    var onSuccessCallBackFun = setting.onSuccessCallBack;
+    //     //    var onFailCallBackFun = setting.onFailCallBack;
+    //
+    //
+    //     //    var option = $.extend(setting, {
+    //     //        onSuccessCallBack: function (msg, content, code) {
+    //
+    //     //            if (ValidateHelper.isErrorCode(code)) {
+    //     //                OpenTipWindowError(MessageHelper.getRemoveSpecialChar(msg));
+    //     //                try {
+    //     //                    if (DataType.isFunction(onFailCallBackFun))
+    //     //                        onFailCallBackFun(msg, content, code);
+    //     //                }
+    //     //                catch (e) {
+    //     //                    throw e;
+    //     //                }
+    //     //                finally {
+    //     //                    // CloseLoading();
+    //
+    //     //                }
+    //     //                return;
+    //     //            }
+    //     //            try {
+    //     //                onSuccessCallBackFun(msg, content, code);
+    //     //            }
+    //     //            catch (e) {
+    //     //                throw e;
+    //     //            }
+    //     //            finally {
+    //     //                // CloseLoading();
+    //
+    //     //            }
+    //     //        },
+    //     //        onFailCallBack: function (XMLHttpRequest, Status, errorThrown) {
+    //     //            OpenTipWindowError("意外出错，请刷新页面重试。");
+    //
+    //     //            try {
+    //     //                if (DataType.isFunction(onFailCallBackFun))
+    //     //                    onFailCallBackFun(Status, XMLHttpRequest, errorThrown);
+    //     //            }
+    //     //            catch (e) {
+    //     //                throw e;
+    //     //            }
+    //     //            finally {
+    //     //                //   CloseLoading();
+    //
+    //     //            }
+    //     //        }
+    //     //    });
+    //
+    //     //    submitJSONForm(option);
+    //     //};
+    //     LockWindow: function LockWindow(o) {
+    //         if (isNullOrEmpty(o)) return;
+    //         var wo = null;
+    //
+    //         if ($.type(o) == "string") {
+    //             wo = $("#" + o);
+    //         }
+    //         if ($.type(o) == "object") {
+    //             wo = o;
+    //         }
+    //         if (0 < wo.length) {
+    //             wo.data('_Dialog_CanClose', false);
+    //         }
+    //     };
+    //
+    //     UnLockWindow: function UnLockWindow(o) {
+    //         if (isNullOrEmpty(o)) return;
+    //         var wo = null;
+    //
+    //         if ($.type(o) == "string") {
+    //             wo = $("#" + o);
+    //         }
+    //         if ($.type(o) == "object") {
+    //             wo = o;
+    //         }
+    //         if (0 < wo.length) {
+    //             wo.data('_Dialog_CanClose', true);
+    //         }
+    //     };
+    //
+    //     ShowPrompt: function ShowPrompt(o) {
+    //         if (isNullOrEmpty(o)) return;
+    //         var wo = null;
+    //
+    //         if ($.type(o) == "string") {
+    //             wo = $("#" + o);
+    //         }
+    //         if ($.type(o) == "object") {
+    //             wo = o;
+    //         }
+    //         if (0 < wo.length) {
+    //             var html = "<div class='post_tipp' style='width:86px;height:6px;float:left;margin:1.2em 0 0.5em 0.4em'><img src=\"/Images/ajaxtipimage.gif\" /></div>";
+    //             $("div.ui-dialog[role='dialog'][aria-describedby='" + wo.attr('id') + "']").find('.ui-dialog-buttonpane').append(html);
+    //         }
+    //     };
+    //
+    //     HidePrompt: function HidePrompt(o) {
+    //         if (isNullOrEmpty(o)) return;
+    //         var wo = null;
+    //
+    //         if ($.type(o) == "string") {
+    //             wo = $("#" + o);
+    //         }
+    //         if ($.type(o) == "object") {
+    //             wo = o;
+    //         }
+    //         if (0 < wo.length) {
+    //             $("div.ui-dialog[role='dialog'][aria-describedby='" + wo.attr('id') + "']").find('.post_tipp').remove();
+    //         }
+    //     };
+    //
+    //
+    //     ajaxSuccess: function ajaxSuccess(result, callback, jqAlertCallBack) {
+    //       
+    //         if (!ValidateHelper.isNullOrEmpty(callback))
+    //             callback(result.msg, result.content, result.code);
+    //
+    //     }
+    //     // return { pubAjax: pubAjax, submitJSONForm: submitJSONForm, submitJSONFormWithLoadDialog: submitJSONFormWithLoadDialog };
+    //     return { pubAjax: pubAjax,  };
+    //
+    // })(jQuery, ValidateHelper, UrlHelper, MessageHelper);
 
 
 //Url
@@ -457,5 +504,5 @@
         
     };
     //TODO JSON2 not work
-    return { validate: ValidateHelper,ajax:AjaxHelper,url:UrlHelper,cookie:cookie,log:log,obj:obj,Json:JSON }
+    return { validate: ValidateHelper,ajax:ajax,url:UrlHelper,cookie:cookie,log:log,obj:obj,Json:JSON }
 });

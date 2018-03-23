@@ -1,3 +1,7 @@
 ﻿.famfamfam-flags {
     display: inline-block;
 }
+
+.select2-container--open{
+    z-index:99999999
+}  

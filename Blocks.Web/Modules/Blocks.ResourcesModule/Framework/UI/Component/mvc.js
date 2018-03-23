@@ -118,5 +118,6 @@ define(['jquery','vueJS','blocks_utility','../../Event/event'],function ($,vueJS
             }
         }
     });
-    return { pageModel: module};
+
+    return {pageModel: module};
 });

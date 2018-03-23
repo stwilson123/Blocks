@@ -26,6 +26,10 @@ namespace Blocks.ResourcesModule.ResourceManifestProviders {
             manifest.DefineStyle(ResourceName.magicsuggest).SetUrl("lib/combobox/magicsuggest.min.css",
                 "lib/combobox/magicsuggest.css").SetVersion("3.3.1");
                 
+            manifest.DefineStyle(ResourceName.select2).SetUrl("lib/select2-develop/dist/css/select2.min.css",
+                "lib/select2-develop/dist/css/select2.css").SetVersion("4.0.6");
+            
+            
             manifest.DefineScript(ResourceName.toastr).SetUrl("lib/toastr/toastr.min.js",
                 "lib/toastr/toastr.js").SetVersion("0.1");
             manifest.DefineScript(ResourceName.sweetalert).SetUrl("lib/sweetalert/dist/sweetalert.min.js",
@@ -56,8 +60,11 @@ namespace Blocks.ResourcesModule.ResourceManifestProviders {
             manifest.DefineScript(ResourceName.layer).SetUrl("lib/layer/layer.js",
                 "lib/layer/layer.js").SetVersion("3.1.1").SetAMD();
             
-            manifest.DefineScript(ResourceName.magicsuggest).SetUrl("lib/combobox/magicsuggest.min.js",
+            manifest.DefineScript(ResourceName.magicsuggest).SetUrl("lib/combobox/dist/js/magicsuggest.min.js",
                 "lib/combobox/magicsuggest.js").SetVersion("2.1.4");
+            
+            manifest.DefineScript(ResourceName.select2).SetUrl("lib/select2-develop/dist/js/select2.full.min.js",
+                "lib/select2-develop/dist/js/select2.full.js").SetVersion("4.0.6").SetAMD();
         }
 
         public Lazy<FeatureDescriptor> Feature { get; set; }

@@ -42,7 +42,8 @@
 
                 },
                 resize: true
-            }
+            },
+            loading: {type: 3, icon: 1, resize: !1, shade: .1}
         }
     };
     /* MESSAGE **************************************************/
@@ -120,70 +121,71 @@
         return path.slice(startIndex > -1 ? startIndex + moduleFrefix.length + '\\'.length : 0,endIndex > -1 ? endIndex : undefined);
     }
     dialogUI.dialog = function (option) {
+
         utility.ajax.pubAjax({
-            datatype: 'text/html',
-            url: option.url, onSuccessCallBack: function (data) {
-                var WrapperId = (''+Math.random()).replace('0.','');
-                var dataWrapper = '<div id="'+ WrapperId+'">' + data + '</div>'; 
-                var endCallback = option.end;
-                var currentModule ;
-                var layerIndex = show($.extend(option, {
-                    dialogType: 'dialog', content: dataWrapper,end:function () {
-                        try {
-                            if (currentModule)
-                                currentModule.displose();
-                        }  
-                        finally {
-                            if (endCallback)
-                                endCallback();
-                        }
-                       
+            dataType: 'html',
+            url: option.url, beforeSend: function () {
+                dialogUI.loading.open();
+            }
+        }).done(function (data) {
+            var WrapperId = ('' + Math.random()).replace('0.', '');
+            var dataWrapper = '<div id="' + WrapperId + '">' + data + '</div>';
+            var endCallback = option.end;
+            var currentModule;
+            var layerIndex = show($.extend(option, {
+                dialogType: 'dialog', content: dataWrapper, end: function () {
+                    try {
+                        if (currentModule)
+                            currentModule.displose();
+                    }
+                    finally {
+                        if (endCallback)
+                            endCallback();
                     }
 
-                }));
-
-                //req(['/Modules/Blocks.BussnessWebModule/Views/MasterData/Add.js']);
-              //  require.config({path:{'Blocks.BussnessWebModule/Views/MasterData/Add':'Blocks.BussnessWebModule/Views/MasterData/Add'}})
- 
-
-                if (blocks.pageContext && blocks.pageContext.subPageJsVirtualPath)
-                {
-                    require([utility.url.pathToRelative(blocks.pageContext.subPageJsVirtualPath,blocks.pageContext.modulePrefix,'.js')],function (containerModules) {
-                        currentModule = containerModules;
-                        containerModules.init($('#' + WrapperId).children());
-                    });
-
-                    //  require(['Blocks.BussnessWebModule/Views/MasterData/Index']);
                 }
-                return layerIndex;
+
+            }));
+
+            //req(['/Modules/Blocks.BussnessWebModule/Views/MasterData/Add.js']);
+            //  require.config({path:{'Blocks.BussnessWebModule/Views/MasterData/Add':'Blocks.BussnessWebModule/Views/MasterData/Add'}})
+
+
+            if (blocks.pageContext && blocks.pageContext.subPageJsVirtualPath) {
+                require([utility.url.pathToRelative(blocks.pageContext.subPageJsVirtualPath, blocks.pageContext.modulePrefix, '.js')], function (containerModules) {
+                    currentModule = containerModules;
+                    containerModules.init($('#' + WrapperId).children());
+                });
+
+                //  require(['Blocks.BussnessWebModule/Views/MasterData/Index']);
             }
+            return layerIndex;
+
+
+        }).always(function () {
+            dialogUI.loading.close();
         });
 
-        // var userOpts = {
-        //     text: message
-        // };
-        //
-        // if ($.isFunction(titleOrCallback)) {
-        //     callback = titleOrCallback;
-        // } else if (titleOrCallback) {
-        //     userOpts.title = titleOrCallback;
-        // }
-        // ;
-        //
-        // var opts = $.extend(
-        //     {},
-        //     abp.libs.sweetAlert.config['default'],
-        //     abp.libs.sweetAlert.config.confirm,
-        //     userOpts
-        // );
-        //
-        // return $.Deferred(function ($dfd) {
-        //     sweetAlert(opts, function (isConfirmed) {
-        //         callback && callback(isConfirmed);
-        //         $dfd.resolve(isConfirmed);
-        //     });
-        // });
+    
     };
+
+    var loadingDep = 0,dialogIndex = null;
+    
+    dialogUI.loading =
+        {
+            open: function (option) {
+                if (loadingDep < 1)
+                    dialogIndex = show($.extend(option, {dialogType: 'loading'}));
+
+                loadingDep++;
+                return dialogIndex;
+
+            },
+            close: function () {
+                if (--loadingDep < 1)
+                    layer.close(dialogIndex);
+            }
+        };
     return dialogUI;
 
 });

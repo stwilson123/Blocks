@@ -4,7 +4,7 @@ using Blocks.BussnessDomainModule;
 using Blocks.Framework.ApplicationServices;
 using Blocks.Framework.Data.Paging;
 
-namespace Blocks.BussnessApplicationModule.TestAppService
+namespace Blocks.BussnessApplicationModule.MasterData
 {
     public class MasterDataAppService : AppService,IMasterDataAppService
     {
@@ -22,9 +22,9 @@ namespace Blocks.BussnessApplicationModule.TestAppService
             //return testDomain.GetValue(a);
         }
 
-        public string Add(string id)
+        public string Add(MasterDataInfo masterDataInfo)
         {
-            return testDomain.AddValue(Guid.NewGuid().ToString());
+            return "success";
         }
     }
 }

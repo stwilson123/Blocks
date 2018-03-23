@@ -30,7 +30,8 @@
                 'toastr',
                 'vueJS',
                 'waves',
-                'magicsuggest'
+                'magicsuggest',
+                'select2'
                 // 'Blocks.ResourcesModule/lib/abp-web-resources/Abp/Framework/scripts/abp',
                 // 'Blocks.ResourcesModule/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr',
                 // 'Blocks.ResourcesModule/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI',
