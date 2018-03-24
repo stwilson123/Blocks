@@ -88,6 +88,7 @@
   <ItemGroup>
     <Compile Include="ApplicationServices\AppService.cs" />
     <Compile Include="ApplicationServices\IApplicationService.cs" />
+    <Compile Include="AutoMapper\AutoMapperExtensions.cs" />
     <Compile Include="AutoMapper\FrameworkProfile.cs" />
     <Compile Include="Caching\AcquireContext.cs" />
     <Compile Include="Caching\Cache.cs" />

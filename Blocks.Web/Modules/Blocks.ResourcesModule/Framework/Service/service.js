@@ -6,12 +6,20 @@
         var onCompleteCallBack = userOptions.onCompleteCallBack;
         var combineOptions = $.extend({},userOptions,{
             onCompleteCallBack:function () {
-                safePubAjax.config.default.onCompleteCallBack();
-                onCompleteCallBack && onCompleteCallBack();
+                try {
+                    onCompleteCallBack && onCompleteCallBack();
+                }
+                finally {
+                    safePubAjax.config.default.onCompleteCallBack();
+
+                }
+               
+               
             },
             
         });
-        return utility.ajax.pubAjax(userOptions);
+        safePubAjax.config.default.beforeSend();
+        return utility.ajax.pubAjax(combineOptions);
     };
 
     safePubAjax.config = {

@@ -372,8 +372,8 @@ namespace Blocks.Framework.DBORM.DBContext
         protected virtual void CheckAndSetId(object entityAsObj)
         {
             //Set GUID Ids
-            var entity = entityAsObj as IEntity<Guid>;
-            if (entity != null && entity.Id == Guid.Empty)
+            var entity = entityAsObj as IEntity<string>;
+            if (entity != null && string.IsNullOrEmpty(entity.Id))
             {
                 var entityType = ObjectContext.GetObjectType(entityAsObj.GetType());
                 var idProperty = entityType.GetProperty("Id");
@@ -381,7 +381,7 @@ namespace Blocks.Framework.DBORM.DBContext
                     ReflectionHelper.GetSingleAttributeOrDefault<DatabaseGeneratedAttribute>(idProperty);
                 if (dbGeneratedAttr == null || dbGeneratedAttr.DatabaseGeneratedOption == DatabaseGeneratedOption.None)
                 {
-                    entity.Id = GuidGenerator.Create();
+                    entity.Id = GuidGenerator.Create().ToString();
                 }
             }
         }

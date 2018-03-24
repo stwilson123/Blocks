@@ -4,6 +4,7 @@ using Abp.Events.Bus;
 using Blocks.BussnessApplicationModule.TestAppService.DTO;
 using Blocks.BussnessEntityModule;
 using Blocks.BussnessRespositoryModule;
+using Blocks.Framework.AutoMapper;
 using Blocks.Framework.Data.Paging;
 using Blocks.Framework.Event;
 
@@ -27,10 +28,11 @@ namespace Blocks.BussnessDomainModule
         }
         
         
-        public virtual string AddValue(string value)
+        public virtual string Add(MasterData.MasterData data)
         {
-             
-            return testRepository.Insert(new TESTENTITY()).Id;
+
+            var newMasterData =  data.AutoMapTo<TESTENTITY>();
+            return testRepository.Insert(newMasterData).Id;
         }
         
         public virtual string GetList(string value)

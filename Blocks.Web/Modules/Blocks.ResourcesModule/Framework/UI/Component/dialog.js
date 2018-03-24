@@ -121,12 +121,12 @@
         return path.slice(startIndex > -1 ? startIndex + moduleFrefix.length + '\\'.length : 0,endIndex > -1 ? endIndex : undefined);
     }
     dialogUI.dialog = function (option) {
-
+        
+        
+        dialogUI.loading.open();
         utility.ajax.pubAjax({
             dataType: 'html',
-            url: option.url, beforeSend: function () {
-                dialogUI.loading.open();
-            }
+            url: option.url
         }).done(function (data) {
             var WrapperId = ('' + Math.random()).replace('0.', '');
             var dataWrapper = '<div id="' + WrapperId + '">' + data + '</div>';

@@ -20,7 +20,8 @@ namespace Blocks.BussnessApplicationModule.TestAppService
 
         public string Add(string id)
         {
-            return testDomain.AddValue(Guid.NewGuid().ToString());
+            return "";
+            //  return testDomain.AddValue(Guid.NewGuid().ToString());
         }
     }
 }
