@@ -28,6 +28,10 @@ namespace Blocks.Framework.Test.DBORM.Linq
                     .InnerJoin((TESTENTITY t) => t.TESTENTITY2ID_NULLABLE, (TESTENTITY2 b) => b.Id);
                 var default2Sql = defaultLinqQuery.ToString();
                 //Assert.NotEqual(testEntity.TESTENTITY2ID, newGuid);
+                
+                var testLeftJoin2Entity = defaultLinqQuery
+                    .LeftJoin((TESTENTITY t) => t.TESTENTITY2ID_NULLABLE, (TESTENTITY2 b) => b.Id);
+                var default3Sql = defaultLinqQuery.ToString();
             }
         }
 
@@ -163,6 +167,22 @@ namespace Blocks.Framework.Test.DBORM.Linq
                     .Where((TESTENTITY2 t) => t.Id == constKeyId);
                 var default2Sql = defaultLinqQuery.ToString();
                 //Assert.NotEqual(testEntity.TESTENTITY2ID, newGuid);
+            }
+        }
+        
+        
+        [Fact]
+        public void countGenSql()
+        {
+            using (var context = new BlocksEntities())
+            {
+                var constKeyId = "123";
+                var defaultLinqQuery = new DefaultLinqQueryable<TESTENTITY>(context.TestEntity.AsQueryable(), context);
+                var testEntityLinq = defaultLinqQuery.InnerJoin((TESTENTITY t) => t.TESTENTITY2ID, (TESTENTITY2 b) => b.Id);
+
+                var entityCount = testEntityLinq.Count();
+
+                var entityCount2 = testEntityLinq.SelectToList((TESTENTITY t,TESTENTITY2 b) => new{ t.TESTENTITY2ID, b.Id});
             }
         }
     }

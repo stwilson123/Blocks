@@ -18,7 +18,7 @@ namespace Blocks.Framework.Data.Pager
         /// <summary>
         ///     每页数据条数
         /// </summary>
-        [DataTransfer("rows")]
+        [DataTransfer("pageSize")]
         public int pageSize
         {
             get

@@ -1,14 +1,14 @@
 ﻿using Blocks.BussnessDTOModule;
 using Blocks.BussnessDTOModule.MasterData;
 using Blocks.Framework.ApplicationServices;
+using Blocks.Framework.Data.Combobox;
 using Blocks.Framework.Data.Paging;
 
 namespace Blocks.BussnessApplicationModule.MasterData
 {
-    public interface IMasterDataAppService : IAppService
+    public interface IComboboxAppService : IAppService
     {
-        PageList<PageResult>  GetPageList(SearchModel a);
-
-        string Add(MasterDataInfo masterDataInfo);
+        PageList<ComboboxData>  GetComboboxList(SearchModel a);
+ 
     }
 }

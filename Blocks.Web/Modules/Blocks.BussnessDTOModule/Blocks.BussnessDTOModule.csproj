@@ -41,9 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Combobox\ComboboxResult.cs" />
     <Compile Include="MasterData\MasterDataInfo.cs" />
-    <Compile Include="MasterData\PageResult.cs" />
     <Compile Include="MasterData\SearchModel.cs" />
+    <Compile Include="PageResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

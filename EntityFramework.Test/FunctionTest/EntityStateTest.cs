@@ -96,7 +96,8 @@ namespace EntityFramework.Test.FunctionTest
 
             using (var context = new BlocksEntities())
             {
-                var testEntity = context.TestEntity.AsNoTracking().FirstOrDefault(t => t.Id == id);
+                 
+                var testEntity = context.TestEntity.FirstOrDefault(t => t.Id == id);
 
                 Assert.NotEqual(testEntity.TESTENTITY2ID, newGuid);
             }

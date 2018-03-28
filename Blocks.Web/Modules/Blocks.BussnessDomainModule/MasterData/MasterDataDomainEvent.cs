@@ -1,5 +1,6 @@
 ﻿using Abp.Domain.Services;
-using Blocks.BussnessApplicationModule.TestAppService.DTO;
+using Blocks.BussnessDTOModule;
+using Blocks.BussnessDTOModule.MasterData;
 using Blocks.BussnessEntityModule;
 using Blocks.BussnessRespositoryModule;
 using Blocks.Framework.Data.Paging;
@@ -23,7 +24,7 @@ namespace Blocks.BussnessDomainModule.MasterData
             newMasterData.STRING = data.city;
             newMasterData.ISACTIVE = SafeConvert.ToInt64(data.isActive);
             newMasterData.COMMENT = data.comment;
-            newMasterData.TESTENTITY2ID = "";
+            newMasterData.TESTENTITY2ID = data.combobox;
             return testRepository.Insert(newMasterData).Id;
         }
         

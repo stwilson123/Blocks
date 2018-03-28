@@ -118,6 +118,7 @@
     <Compile Include="Configurations\DebugState.cs" />
     <Compile Include="Configurations\IConfiguration.cs" />
     <Compile Include="Configurations\Provider\SettingProvider.cs" />
+    <Compile Include="Data\Combobox\ComboboxData.cs" />
     <Compile Include="Data\Entity\Entity.cs" />
     <Compile Include="Data\Entity\IEntityConfiguration.cs" />
     <Compile Include="Data\IRepository.cs" />

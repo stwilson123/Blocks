@@ -3,6 +3,8 @@
     public class MasterData
     {
         public string tenancyName { get; set; }
+
+        public string combobox { get; set; }
         
         public string city { get; set; }
         

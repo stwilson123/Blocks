@@ -45,6 +45,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MasterData\ComboboxAppService .cs" />
+    <Compile Include="MasterData\IComboboxAppService.cs" />
     <Compile Include="MasterData\IMasterDataAppService.cs" />
     <Compile Include="MasterData\MasterDataAppService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

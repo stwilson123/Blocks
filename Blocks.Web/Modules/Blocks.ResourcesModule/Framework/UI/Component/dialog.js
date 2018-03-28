@@ -1,9 +1,8 @@
-;define(function(req, exports, module) {
-    var $ = require('jquery'),layer =require('layer'),utility = require('blocks_utility');
-     
-//define(['require', 'jquery', 'layer', 'blocks_utility'], function (req, $, layer, utility) {
-    
-    var dialogObj = {
+;define(function (req, exports, module) {
+    var $ = require('jquery'), layer = require('layer'), utility = require('blocks_utility');
+
+
+    var dialogOption = {
         config: {
             'default': {},
             info: {},
@@ -30,6 +29,7 @@
                 offset: "auto",
                 isMaxmin: true,
                 //area: ['80%', '80%'],
+                closeBtn: 0,
                 content: settings.url,
                 cancel: function () {
                     return true;
@@ -46,6 +46,22 @@
             loading: {type: 3, icon: 1, resize: !1, shade: .1}
         }
     };
+
+    var dialog = function (setting) {
+        this.dialogIndex = setting.dialogIndex;
+        this.viewComponent = layer;
+    };
+    dialog.prototype = {
+        close: function () {
+            this.viewComponent.close(this.dialogIndex);
+        },
+        style: function (style) {
+            this.viewComponent.style(style);
+        },
+        title: function (title) {
+            this.viewComponent.title(title);
+        }
+    };
     /* MESSAGE **************************************************/
     var show = function (option) {
         if (!option)
@@ -58,8 +74,8 @@
         // newOption.title = newOption.message;
         var opts = $.extend(
             {},
-            dialogObj.config['default'],
-            dialogObj.config[option.dialogType],
+            dialogOption.config['default'],
+            dialogOption.config[option.dialogType],
             newOption
         );
 
@@ -113,16 +129,18 @@
         //     });
         // });
     };
-    function pathToRelative(path,modulePrefix,fileExtensionName) {
-        var moduleFrefix=modulePrefix;
+
+    function pathToRelative(path, modulePrefix, fileExtensionName) {
+        var moduleFrefix = modulePrefix;
         var startIndex = path.indexOf(moduleFrefix);
         var endIndex = path.lastIndexOf(fileExtensionName);
 
-        return path.slice(startIndex > -1 ? startIndex + moduleFrefix.length + '\\'.length : 0,endIndex > -1 ? endIndex : undefined);
+        return path.slice(startIndex > -1 ? startIndex + moduleFrefix.length + '\\'.length : 0, endIndex > -1 ? endIndex : undefined);
     }
+
     dialogUI.dialog = function (option) {
-        
-        
+
+
         dialogUI.loading.open();
         utility.ajax.pubAjax({
             dataType: 'html',
@@ -134,13 +152,14 @@
             var currentModule;
             var layerIndex = show($.extend(option, {
                 dialogType: 'dialog', content: dataWrapper, end: function () {
+                    var currentModuleResult;
                     try {
                         if (currentModule)
-                            currentModule.displose();
+                            currentModuleResult = currentModule.displose();
                     }
                     finally {
                         if (endCallback)
-                            endCallback();
+                            endCallback(currentModuleResult);
                     }
 
                 }
@@ -154,7 +173,7 @@
             if (blocks.pageContext && blocks.pageContext.subPageJsVirtualPath) {
                 require([utility.url.pathToRelative(blocks.pageContext.subPageJsVirtualPath, blocks.pageContext.modulePrefix, '.js')], function (containerModules) {
                     currentModule = containerModules;
-                    containerModules.init($('#' + WrapperId).children());
+                    containerModules.init($.extend($('#' + WrapperId).children(),{ currentPage: new dialog({dialogIndex: layerIndex})}));
                 });
 
                 //  require(['Blocks.BussnessWebModule/Views/MasterData/Index']);
@@ -166,11 +185,11 @@
             dialogUI.loading.close();
         });
 
-    
+
     };
 
-    var loadingDep = 0,dialogIndex = null;
-    
+    var loadingDep = 0, dialogIndex = null;
+
     dialogUI.loading =
         {
             open: function (option) {

@@ -1,7 +1,8 @@
 ﻿using System;
 using Abp.Domain.Services;
 using Abp.Events.Bus;
-using Blocks.BussnessApplicationModule.TestAppService.DTO;
+using Blocks.BussnessDTOModule;
+using Blocks.BussnessDTOModule.MasterData;
 using Blocks.BussnessEntityModule;
 using Blocks.BussnessRespositoryModule;
 using Blocks.Framework.AutoMapper;

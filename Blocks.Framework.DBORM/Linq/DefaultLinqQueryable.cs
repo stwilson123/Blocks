@@ -10,6 +10,7 @@ using System.Data.Entity;
 using Blocks.Framework.DBORM.Linq.Extends;
 using Blocks.Framework.Data.Paging;
 using System.Collections.ObjectModel;
+using System.Linq.Dynamic;
 using Blocks.Framework.Data.Pager;
 using Blocks.Framework.Localization;
 
@@ -64,12 +65,12 @@ namespace Blocks.Framework.DBORM.Linq
             var querable = transferQuaryable();
             if (querable != null)
             {
-                iQuerable = iQuerable.Join(dbContext.Set(typeof(TInner)), $"{((MemberExpression)outerKeySelector.Body).Member.Name}",
+                iQuerable = DynamicQueryableExtensions.Join(iQuerable, dbContext.Set(typeof(TInner)), $"{((MemberExpression)outerKeySelector.Body).Member.Name}",
                        $"{((MemberExpression)innerKeySelector.Body).Member.Name}", tableAlias.CreateResultSelector());
             }
             else
             {
-                iQuerable = iQuerable.Join(dbContext.Set(typeof(TInner)), $"{outerParam.Name}.{((MemberExpression)outerKeySelector.Body).Member.Name}",
+                iQuerable = DynamicQueryableExtensions.Join(iQuerable, dbContext.Set(typeof(TInner)), $"{outerParam.Name}.{((MemberExpression)outerKeySelector.Body).Member.Name}",
                     $"{((MemberExpression)innerKeySelector.Body).Member.Name}", tableAlias.CreateResultSelector());
             }
            
@@ -90,6 +91,38 @@ namespace Blocks.Framework.DBORM.Linq
             return this;
         }
 
+        
+         public IDbLinqQueryable<TEntity> LeftJoin<TOuter, TInner, TKey>(
+            Expression<Func<TOuter, TKey>> outerKeySelector,
+            Expression<Func<TInner, TKey>> innerKeySelector) where TKey : IComparable, IConvertible
+        {
+          
+            var outerParam = outerKeySelector.Parameters.FirstOrDefault();
+            var innerParam = innerKeySelector.Parameters.FirstOrDefault();
+            ExceptionHelper.ThrowArgumentNullException(outerParam, "outerKeySelector.Parameters");
+            ExceptionHelper.ThrowArgumentNullException(innerParam, "innerKeySelector.Parameters");
+
+
+            //TODO validate table alias;
+
+            tableAlias.Add((typeof(TOuter), outerParam.Name));
+            tableAlias.Add((typeof(TInner), innerParam.Name));
+
+            var querable = transferQuaryable();
+            if (querable != null)
+            {
+                iQuerable = DynamicQueryableExtensions.Join(iQuerable, dbContext.Set(typeof(TInner)), $"{((MemberExpression)outerKeySelector.Body).Member.Name}",
+                       $"{((MemberExpression)innerKeySelector.Body).Member.Name}", tableAlias.CreateResultSelector()).DefaultIfEmpty();
+            }
+            else
+            {
+                iQuerable = DynamicQueryableExtensions.Join(iQuerable, dbContext.Set(typeof(TInner)), $"{outerParam.Name}.{((MemberExpression)outerKeySelector.Body).Member.Name}",
+                    $"{((MemberExpression)innerKeySelector.Body).Member.Name}", tableAlias.CreateResultSelector()).DefaultIfEmpty();
+            }
+           
+              
+            return this;
+        }
         public IDbLinqQueryable<TEntity> Where(LambdaExpression predicate)
         {
             ExceptionHelper.ThrowArgumentNullException(predicate, "predicate");
@@ -110,7 +143,11 @@ namespace Blocks.Framework.DBORM.Linq
             return this;
         }
 
-       
+
+        public long Count()
+        {
+            return transferQuaryable().LongCount();
+        }
 
         public override string ToString()
         {
@@ -163,14 +200,14 @@ namespace Blocks.Framework.DBORM.Linq
 
         public IDbLinqQueryable<TEntity> Take(int count)
         {
-            iQuerable = iQuerable.Take(count);
+            iQuerable = DynamicQueryableExtensions.Take(iQuerable, count);
            
             return this;
         }
 
         public IDbLinqQueryable<TEntity> Skip(int count)
         {
-            iQuerable = iQuerable.Skip(count);
+            iQuerable = DynamicQueryableExtensions.Skip(iQuerable, count);
             return this;
 
         }
@@ -242,29 +279,55 @@ namespace Blocks.Framework.DBORM.Linq
             }
 
                  
-            if (page.filters != null)
+            if (page.filters != null && page.filters.rules != null && page.filters.rules.Any())
             {
             
                 var whereString = getStringForGroup(page.filters,null);
-                iQuerable = iQuerable.Where(whereString);
+                iQuerable = DynamicQueryableExtensions.Where(iQuerable, whereString);
               
             }
-            var pageResult = iQuerable.OrderBy(page.OrderBy).PageResult(page.page, page.pageSize);
 
-            var pagelist = new PageList<dynamic>()
+            
+            if (page.pageSize == -1)
             {
-                Rows = pageResult.Queryable.ToDynamicList(),
-                PagerInfo = new Page()
+                var pageResult =  DynamicQueryableExtensions.OrderBy(iQuerable, page.OrderBy);
+                var rows = pageResult.ToDynamicList();
+                var pagelist = new PageList<dynamic>()
                 {
-                    page = pageResult.PageCount,
-                    pageSize = pageResult.PageSize,
-                    records = pageResult.RowCount,
-                    sortColumn = page.sortColumn,
-                    sortOrder = page.sortOrder
-                }
-            };
+                    Rows = rows,
+                    PagerInfo = new Page()
+                    {
+                        page = page.page,
+                        pageSize = page.pageSize,
+                        records = rows.Count,
+                        sortColumn = page.sortColumn,
+                        sortOrder = page.sortOrder
+                    }
+                };
 
-            return pagelist;
+                return pagelist;
+            }
+            else
+            {
+                
+                var pageResult =  DynamicQueryableExtensions.OrderBy(iQuerable, page.OrderBy).PageResult(page.page, page.pageSize);
+
+                var pagelist = new PageList<dynamic>()
+                {
+                    Rows = pageResult.Queryable.ToDynamicList(),
+                    PagerInfo = new Page()
+                    {
+                        page = pageResult.CurrentPage,
+                        pageSize = pageResult.PageSize,
+                        records = pageResult.RowCount,
+                        sortColumn = page.sortColumn,
+                        sortOrder = page.sortOrder
+                    }
+                };
+
+                return pagelist;
+            }
+           
         }
         
         string getStringForGroup(Group group,List<DbParam> listDbParam)

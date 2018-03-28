@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using Blocks.BussnessApplicationModule.TestAppService.DTO;
+using Blocks.BussnessDTOModule;
+using Blocks.BussnessDTOModule.MasterData;
 using Blocks.BussnessEntityModule;
 using Blocks.Framework.Data.Paging;
 using Blocks.Framework.DBORM.DBContext;
 using Blocks.Framework.DBORM.Linq;
 using Blocks.Framework.DBORM.Repository;
+using Blocks.Framework.Utility.SafeConvert;
 
 namespace Blocks.BussnessRespositoryModule
 {
@@ -46,11 +48,16 @@ namespace Blocks.BussnessRespositoryModule
 
         public PageList<PageResult> GetPageList(SearchModel search)
         {
-            
-            return GetContextTable().Paging((TESTENTITY t) => new PageResult{
-                ID = t.Id,
-                CollectStationNo = t.TESTENTITY2ID
-            }, search.page);
+            return GetContextTable().InnerJoin((TESTENTITY testEntity) => testEntity.TESTENTITY2ID,
+                    (TESTENTITY2 testEntity2) => testEntity2.Id)
+                .Paging((TESTENTITY testEntity,TESTENTITY2 testEntity2) => new PageResult
+                {
+                    Id = testEntity.Id,
+                    comboboxText = testEntity2.Text,
+                    city = testEntity.STRING,
+                    isActive = testEntity.ISACTIVE,
+                    comment = testEntity.COMMENT,
+                }, search.page);
         }
     }
 }

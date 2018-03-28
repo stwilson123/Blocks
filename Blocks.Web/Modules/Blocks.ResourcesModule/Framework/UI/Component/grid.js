@@ -1,31 +1,26 @@
-﻿;define(['jquery', 'blocks_utility', 'jqGrid', './msg_alert','../../../lib/jqGrid/script/i18n/grid.locale-cn'], function ($, utility, jqGrid, msgAlert) {
+﻿;define(['jquery', 'blocks_utility', 'jqGrid', './dialog', '../../../lib/jqGrid/script/i18n/grid.locale-cn'], function ($, utility, jqGrid, dialog) {
     var validate = utility.validate;
 
 
     var grid = function (option) {
-        if (! this instanceof grid)
+        if (!this instanceof grid)
             return null;
-      
-    
-       
+
+
         var gridID = option.Id;
-      
+
         initLoadCompleted(option);
 
         this._options = $.extend(true, this.config.default, option);
         var jqObj = option.gridObj;
         initGridObject(option);
-        initColmodel(this._options,this.config.default.colModelTemplate);
+        initColmodel(this._options, this.config.default.colModelTemplate);
         initReader(this._options);
         var $gridObj = option.gridObj;
 
-    
-        
-       
 
-       
         initGridView(this._options);
-        initGridEvent.call(this,this._options);
+        initGridEvent.call(this, this._options);
 
         //Grid数据
         // if (!validate.isNullOrEmpty(options.colRDModel.FormID)) {
@@ -55,25 +50,24 @@
 
 
         this.init = function () {
-             
+
             if (this._options.datatype === "local" || (!this._options.url )) {
                 this.loadLocalData();
             } else {
                 this.loadJsonData();
             }
-            if( this._options.dynamicConditionQuery &&  this._options.dynamicConditionQuery.active === true)
-            {
+            if (this._options.dynamicConditionQuery && this._options.dynamicConditionQuery.active === true) {
                 $gridObj.jqGrid('navGrid', this._options.pager,
-                    { edit: false, add: false, del: false },
+                    {edit: false, add: false, del: false},
                     {},
                     {},
                     {},
                     this._options.dynamicConditionQuery
                 );
-                this.getTopObj().find('#search_' +  $gridObj.attr('Id')).hide();
-                
+                this.getTopObj().find('#search_' + $gridObj.attr('Id')).hide();
+
             }
-          
+
             //this.reload();
         };
 
@@ -85,22 +79,20 @@
         };
 
         this.loadJsonData = function () {
-           
-                $gridObj.jqGrid("setGridParam", {
-                    datatype: "json",
-                    url: this._options.url,
-                    postData: getPostData('QueryForm')
-                });
-             
-            
-           
+
+            $gridObj.jqGrid("setGridParam", {
+                datatype: "json",
+                url: this._options.url,
+                postData: getPostData('QueryForm')
+            });
+
+
         };
 
         this.reload = function () {
             $gridObj.jqGrid().trigger("reloadGrid");
         };
 
-       
 
         //大小重置
         this.gridResize = function () {
@@ -112,19 +104,19 @@
                 });
             } else {
                 setTimeout(function () {
-                  //  $("#gbox_gridInfo").parent().width()
-                    var parentContainer = $gridObj.parents('#gbox_'+$gridObj.attr('id')).parent(); 
+                    //  $("#gbox_gridInfo").parent().width()
+                    var parentContainer = $gridObj.parents('#gbox_' + $gridObj.attr('id')).parent();
                     $gridObj.setGridWidth(parentContainer.width());
-                    $gridObj.setGridHeight(parentContainer.height()- grid.prototype.getGridHeightWithoutBdiv());
+                    $gridObj.setGridHeight(parentContainer.height() - grid.prototype.getGridHeightWithoutBdiv());
                     //$gridObj.setGridWidth(options.getGridWidth(GridContainerLengthFactory.GetGridContainerWidth($("#ConfigName").val())));
                     //$gridObj.setGridHeight(options.getGridHeight(GridContainerLengthFactory.GetGridContainerHeight($("#ConfigName").val())));
 
                 }, 200);
                 $(window).resize(function () {
                     setTimeout(function () {
-                        var parentContainer = $gridObj.parents('#gbox_'+$gridObj.attr('id')).parent();
+                        var parentContainer = $gridObj.parents('#gbox_' + $gridObj.attr('id')).parent();
                         $gridObj.setGridWidth(parentContainer.width());
-                        $gridObj.setGridHeight(parentContainer.height()- grid.prototype.getGridHeightWithoutBdiv());
+                        $gridObj.setGridHeight(parentContainer.height() - grid.prototype.getGridHeightWithoutBdiv());
                         //$gridObj.setGridWidth(options.getGridWidth(
                         //    GridContainerLengthFactory.GetGridContainerWidth($("#ConfigName").val())
                         //));
@@ -142,14 +134,12 @@
         //this.gridResize();
 
 
-     
-
     };
 
-    function initColmodel(option,defColModel) {
+    function initColmodel(option, defColModel) {
         if (validate.isNullOrEmpty(option.colModel) || validate.isNullOrEmpty(option.colNames))
             throw("Grid对象必须含有colModel和colNames属性");
- 
+
         if (option.colModel.length !== option.colNames.length) {
             throw "colModel与colNames长度不一致";
         }
@@ -158,14 +148,15 @@
             if (validate.isNullOrEmpty(option.colModel[i].name)) {
                 throw "colModel必须含有name属性";
             }
-            
+
             if (validate.isNullOrEmpty(option.colModel[i].index)) option.colModel[i].index = option.colModel[i].name;
             $.extend(option.colModel[i], defColModel);
         }
 
     }
+
     function initGridObject(option) {
-        if (validate.isNullOrEmpty(option) || !option.gridObj ||  validate.isNullOrEmpty(option.gridObj.attr('id'))) {
+        if (validate.isNullOrEmpty(option) || !option.gridObj || validate.isNullOrEmpty(option.gridObj.attr('id'))) {
             throw new Error("未指定的Grid对象");
         }
         option.gridObj.attr('gridstate', 'visible');
@@ -175,7 +166,7 @@
 
     function initLoadCompleted(options) {
         var loadCompleteFn = function (xhr) {
-            
+
             // $('.ui-jqgrid .ui-jqgrid-titlebar-close.HeaderButton').click(function () { $(window).trigger("resize"); })
             $gridObj.find("#" + $gridObj.attr('id') + "_pager_center").width("300px");
             //增加y轴滚动条
@@ -187,7 +178,6 @@
             //})
 
 
-          
             //列表上下顺序拖拽
             if (options.dragSortable) {
                 $gridObj.tableDnD({
@@ -216,15 +206,16 @@
         };
         //从服务器返回响应时执行
         if (!validate.isNullOrEmpty(options.loadComplete))
-            this.loadComplete(options.loadComplete);
+            this.on('loadComplete',options.loadComplete);
         options.loadComplete = null;
 
     }
+
     function initGridView(options) {
-        var $gridObj= options.gridObj;
+        var $gridObj = options.gridObj;
         //创建分页区 
         if (options.showPager) {
-            var pagerId = $gridObj.attr('id') + "_pager" +~~(Math.random() * 1000000);
+            var pagerId = $gridObj.attr('id') + "_pager" + ~~(Math.random() * 1000000);
             $gridObj.siblings('div.gridpager[id="' + pagerId + '"]').remove();
             $gridObj.parent().append("<div id='" + pagerId + "' ></div>");
             options.pager = "#" + pagerId;
@@ -233,23 +224,92 @@
 
         //显示列序号 
         if (options.rownumbers) {
-            this.loadComplete(function () {
+            this.on('loadComplete',function () {
                 $gridObj.jqGrid('setLabel', 0, '序号', 'labelstyle');
             });
-           
+
         }
 
     }
+
     function initGridEvent(options) {
+        var gridOptions= options;
+
+        var gridID = options.gridObj.attr('Id');
+        var onSelectRow = options.onSelectRow;
+       
+        options.onSelectRow = function (rowid, status) {
+            var eventArray = gridOptions.eventsStore['selectRow'];
+
+            for(var i = 0; i < eventArray.length; i++)
+            {
+                eventArray[i].apply(this,arguments);
+            }
+        };
+
+
+        this.on('selectRow',onSelectRow);
+
+        var loadComplete = options.loadComplete;
+
+        options.loadComplete = function (xhr) {
+
+            var eventArray = gridOptions.eventsStore['loadComplete'];
+            
+            for(var i = 0; i < eventArray.length; i++)
+            {
+                eventArray[i].apply(this,arguments);
+            }
+           
+        };
+
+        if (loadComplete)
+            this.on('loadComplete', loadComplete);
+        
+        
+        
         var changeEventFun = function (e) {
-            if (!validate.isNullOrEmpty(options.onSelectHead) && $.isFunction(options.onSelectHead))
-                options.onSelectHead(gridID, false, e);
+            if (!validate.isNullOrEmpty(gridOptions.onSelectHead) && $.isFunction(gridOptions.onSelectHead))
+                gridOptions.onSelectHead(gridID, false, e);
 
         };
-        this.loadComplete(function () {
-            options.gridObj.find('#cb_' + gridID).unbind('change', changeEventFun);
-            options.gridObj.find('#cb_' + gridID).on('change', changeEventFun);
+        this.on('loadComplete',function () {
+            gridOptions.gridObj.find('#cb_' + gridID).unbind('change', changeEventFun);
+            gridOptions.gridObj.find('#cb_' + gridID).on('change', changeEventFun);
         });
+
+        var checkedAll = function (rowid, status) {
+            var jqGridObj = $(this);
+            var rowData = jqGridObj.jqGrid('getGridParam', 'selarrrow');
+            if (rowData.length === jqGridObj[0].p.reccount) {
+                jqGridObj.find('#cb_' + gridID).prop("checked", 'true');
+
+            }
+        };
+        
+        var editSelectOneRow = function (rowid, status) {
+            var jqGridObj = $(this);
+            if (!validate.isNullOrEmpty(gridOptions.onSelectRow && gridOptions.multiselectEdit === false)) {
+                var lastsel = jqGridObj.attr("lastsel");
+                if (rowid && rowid !== lastsel) {
+                    if (lastsel)
+                        jqGridObj.jqGrid("saveRow", lastsel, null, 'clientArray');
+                    if (!validate.isNullOrEmpty(options.editParams))
+                        jqGridObj.jqGrid('editRow', rowid, true, options.editParams.oneditfunc, null, 'clientArray', null, options.editParams.aftersavefunc);
+                    else
+                        jqGridObj.jqGrid('editRow', rowid, true);
+
+                    jqGridObj.attr("lastsel", rowid);
+
+                }
+            }
+        };
+
+        this.on('selectRow',checkedAll);
+        this.on('selectRow',editSelectOneRow);
+        
+        
+        
     }
 
 
@@ -264,7 +324,7 @@
 
     grid.prototype.config = {
 
-        'default':{
+        'default': {
 
             ajaxGridOptions: {
                 type: "POST",
@@ -272,7 +332,7 @@
                 async: true,
                 contentType: 'application/json',
                 error: function () {
-                    msgAlert.error({message: "意外出错，请刷新页面重试"});
+                    dialog.error({content: "意外出错，请刷新页面重试"});
                 }
             },
             loadui: "block",
@@ -280,6 +340,7 @@
             gridview: true,
             viewrecords: true,
             multiselect: true,
+            multiselectEdit: false,
             rowNum: 10, //option.showPager || validate.isNullOrEmpty(option.showPager) ? 10 : 999999,   //不显示分页栏时，默认显示全部,注意设-1时无法显示最后一行
             rowList: [10, 30, 50, 100, 200, 500],
             jsonReader: {
@@ -290,16 +351,19 @@
                 repeatitems: false,
                 id: "ID"
             },
+            prmNames:{
+                rows:"pageSize",
+            },
             localReader: {
                 id: "ID"
             },
             loadError: function () {
-                msgAlert.error({message: "网络出错，请刷新页面重试"});
+                dialog.error({content: "网络出错，请刷新页面重试"});
             },
             caption: "",
             sortorder: "desc",   //默认倒序,
             scrollOffset: 19,
-            viewsortcols: [true],
+            viewsortcols: [true], 
             // sortname: "createDate", //默认排序字段
             //onRightClickRow: function (rowid, iRow, iCol, e) {
             //    if (!$.browser.msie) return;
@@ -316,30 +380,7 @@
             onSelectHead: function (rowid, status, e) {
             },
             onSelectRow: function (rowid, status) {
-                var jqGridObj = $(this);
-                var rowData = jqGridObj.jqGrid('getGridParam', 'selarrrow');
-                if (rowData.length === jqGridObj[0].p.reccount) {
-                    jqGridObj.find('#cb_' + gridID).prop("checked", 'true');
-
-                }
-
-                if (!validate.isNullOrEmpty(option.onSelectOnlyOneRow)) {
-                    var lastsel = parseInt(jqGridObj.attr("lastsel"));
-                    if (rowid && rowid !== lastsel) {
-                        if (!isNaN(lastsel))
-                            jqGridObj.jqGrid("saveRow", lastsel, null, 'clientArray');
-                        if (!validate.isNullOrEmpty(options.editParams))
-                            jqGridObj.jqGrid('editRow', rowid, true, options.editParams.oneditfunc, null, 'clientArray', null, options.editParams.aftersavefunc);
-                        else
-                            jqGridObj.jqGrid('editRow', rowid, true);
-
-                        jqGridObj.attr("lastsel", rowid);
-
-                    }
-
-                    option.onSelectOnlyOneRow(rowid, status);
-                }
-
+                
             },
             onHeaderClick: function (status) {
                 //visible or hidden
@@ -381,22 +422,25 @@
                     }
                     postDataWrapper.page[k] = val;
                 });
-                if(postDataWrapper.page.hasOwnProperty('filters'))
-                {  
+                if (postDataWrapper.page.hasOwnProperty('filters')) {
                     postDataWrapper.page['filters'] = utility.Json.parse(postDataWrapper.page.filters);
-                  //  postDataWrapper.page['filters'].source = 
+                    //  postDataWrapper.page['filters'].source = 
                 }
                 return utility.Json.stringify(postDataWrapper);
             },
-            colModelTemplate : {width: 100, align: 'left', sortable: true},
-            eventsStore:{ 'loadComplete':[]},
-            loadComplete:function (xhr) {
+            colModelTemplate: {width: 100, align: 'left', sortable: true},
+            eventsStore: {'loadComplete': [],'selectRow':[]},
+            loadComplete: function (xhr) {
 
-                $.each(eventsStore['loadComplete'], function (index, val) {
-                    val(xhr);
-                });
+               
             },
-            dynamicConditionQuery:{active:false, multipleSearch: true, multipleGroup: false, showQuery: false,closeAfterSearch: true  }
+            dynamicConditionQuery: {
+                active: false,
+                multipleSearch: true,
+                multipleGroup: false,
+                showQuery: false,
+                closeAfterSearch: true
+            }
         }
     };
     grid.prototype.getGridHeightWithoutBdiv = function () {
@@ -405,16 +449,16 @@
         var hdiv = jqGridTopObj.find(".ui-jqgrid-hdiv").filter(function (index, htmlObj) {
             return $(htmlObj).css('display') != 'none'
         });
-        var pagerDiv =jqGridTopObj.find(".ui-jqgrid-pager").filter(function (index, htmlObj) {
+        var pagerDiv = jqGridTopObj.find(".ui-jqgrid-pager").filter(function (index, htmlObj) {
             return $(htmlObj).css('display') != 'none'
         });
         var captionDiv = jqGridTopObj.find(".ui-jqgrid-caption").filter(function (index, htmlObj) {
             return $(htmlObj).css('display') != 'none'
         });
-        
-        return hdiv.length * hdiv.outerHeight(true) + pagerDiv.length * pagerDiv.outerHeight(true) + captionDiv.length * captionDiv.outerHeight(true)  + 2 ;//grid border is 2 //$(".ui-jqgrid-hdiv").length * $(".ui-jqgrid-hdiv").outerHeight() - $(".ui-jqgrid-pager").length * $(".ui-jqgrid-pager").outerHeight()
+
+        return hdiv.length * hdiv.outerHeight(true) + pagerDiv.length * pagerDiv.outerHeight(true) + captionDiv.length * captionDiv.outerHeight(true) + 2;//grid border is 2 //$(".ui-jqgrid-hdiv").length * $(".ui-jqgrid-hdiv").outerHeight() - $(".ui-jqgrid-pager").length * $(".ui-jqgrid-pager").outerHeight()
     };
-   
+
     grid.prototype.setGridWidth = function (width) {
         this._options.gridObj.setGridWidth(width); //gird border is 2
     };
@@ -520,22 +564,20 @@
     };
 
     grid.prototype.getTopObj = function () {
-      return  this._options.gridObj.parent().parent().parent().parent();
+        return this._options.gridObj.parent().parent().parent().parent();
     };
     grid.prototype.dynamicConditionLoad = function (option) {
-        var defaults = {
-        };
+        var defaults = {};
         var gridObj = this._options.gridObj;
-        if (this._options.dynamicConditionQuery.active === true)
-        {
+        if (this._options.dynamicConditionQuery.active === true) {
             this._options.gridObj.jqGrid('setGridParam', {
                 url: option.url,
                 postData: option.postData,
                 datatype: "json",
             });
-            this.getTopObj().find('#search_' +  this._options.gridObj.attr('Id')).click();
+            this.getTopObj().find('#search_' + this._options.gridObj.attr('Id')).click();
         }
-  
+
 
     };
     grid.prototype.delRowData = function (rowsId) {
@@ -619,11 +661,14 @@
         return jqObj.attr('gridstate');
     };
 
-
-    grid.prototype.loadComplete = function (loadEventFun) {
+ 
+    grid.prototype.on = function (eventName,loadEventFun) {
         if ($.type(loadEventFun) !== 'function')
             throw new Error('loadEventFun must be function');
-        this._options.eventsStore['loadComplete'].push(loadEventFun);
+        var event =  this._options.eventsStore[eventName];
+        if (!event)
+            throw new Error("eventName " + eventName + " can't implement");
+        event.push(loadEventFun);
     };
 
     return grid;

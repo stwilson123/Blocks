@@ -1354,6 +1354,7 @@ namespace Blocks.BussnessEntityModule
  
     	    [Column("ID")]
 		public override string Id { set ; get ; }
+	    	    public string Text { set; get; }
 		}
     
     public partial class TESTENTITY3   : Entity   

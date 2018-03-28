@@ -7,89 +7,98 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
     <EncryptedPassword />
-    <_PublishTargetUrl>ftp://laptop-05a6m54k/Blocks.ResourcesModule</_PublishTargetUrl>
+    <_PublishTargetUrl>ftp://192.168.137.182/Blocks.ResourcesModule</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/Abp.AutoMapper.dll">
-      <publishTime>03/13/2018 09:00:38</publishTime>
+      <publishTime>03/19/2018 09:59:37</publishTime>
     </File>
     <File Include="bin/Abp.AutoMapper.pdb">
-      <publishTime>03/13/2018 09:00:38</publishTime>
+      <publishTime>03/19/2018 09:59:37</publishTime>
+    </File>
+    <File Include="bin/Abp.Castle.Log4Net.dll">
+      <publishTime>03/19/2018 09:59:39</publishTime>
+    </File>
+    <File Include="bin/Abp.Castle.Log4Net.pdb">
+      <publishTime>03/19/2018 09:59:39</publishTime>
     </File>
     <File Include="bin/Abp.dll">
-      <publishTime>03/13/2018 09:00:36</publishTime>
+      <publishTime>03/19/2018 09:59:36</publishTime>
     </File>
     <File Include="bin/Abp.pdb">
-      <publishTime>03/13/2018 09:00:36</publishTime>
+      <publishTime>03/19/2018 09:59:36</publishTime>
     </File>
     <File Include="bin/Abp.Web.Api.dll">
-      <publishTime>03/13/2018 09:00:40</publishTime>
+      <publishTime>03/19/2018 09:59:38</publishTime>
     </File>
     <File Include="bin/Abp.Web.Api.pdb">
-      <publishTime>03/13/2018 09:00:40</publishTime>
+      <publishTime>03/19/2018 09:59:38</publishTime>
     </File>
     <File Include="bin/Abp.Web.Common.dll">
-      <publishTime>03/13/2018 09:00:38</publishTime>
+      <publishTime>03/19/2018 09:59:37</publishTime>
     </File>
     <File Include="bin/Abp.Web.Common.pdb">
-      <publishTime>03/13/2018 09:00:38</publishTime>
+      <publishTime>03/19/2018 09:59:37</publishTime>
     </File>
     <File Include="bin/Abp.Web.dll">
-      <publishTime>03/13/2018 09:00:39</publishTime>
+      <publishTime>03/19/2018 09:59:37</publishTime>
     </File>
     <File Include="bin/Abp.Web.Mvc.dll">
-      <publishTime>03/13/2018 09:00:41</publishTime>
+      <publishTime>03/19/2018 09:59:40</publishTime>
     </File>
     <File Include="bin/Abp.Web.Mvc.pdb">
-      <publishTime>03/13/2018 09:00:41</publishTime>
+      <publishTime>03/19/2018 09:59:40</publishTime>
     </File>
     <File Include="bin/Abp.Web.pdb">
-      <publishTime>03/13/2018 09:00:39</publishTime>
+      <publishTime>03/19/2018 09:59:37</publishTime>
     </File>
     <File Include="bin/Abp.Zero.Common.dll">
-      <publishTime>03/13/2018 09:00:37</publishTime>
+      <publishTime>03/19/2018 09:59:40</publishTime>
     </File>
     <File Include="bin/Abp.Zero.Common.pdb">
-      <publishTime>03/13/2018 09:00:37</publishTime>
+      <publishTime>03/19/2018 09:59:40</publishTime>
     </File>
     <File Include="bin/Abp.Zero.dll">
-      <publishTime>03/13/2018 09:00:41</publishTime>
+      <publishTime>03/19/2018 09:59:42</publishTime>
     </File>
     <File Include="bin/Abp.Zero.pdb">
-      <publishTime>03/13/2018 09:00:41</publishTime>
+      <publishTime>03/19/2018 09:59:42</publishTime>
     </File>
     <File Include="bin/AutoMapper.dll">
       <publishTime>11/16/2017 14:53:52</publishTime>
     </File>
     <File Include="bin/Blocks.Core.dll">
-      <publishTime>03/13/2018 09:00:44</publishTime>
+      <publishTime>03/19/2018 09:59:44</publishTime>
     </File>
     <File Include="bin/Blocks.Core.dll.config">
       <publishTime>01/17/2018 16:27:21</publishTime>
     </File>
     <File Include="bin/Blocks.Core.pdb">
-      <publishTime>03/13/2018 09:00:44</publishTime>
+      <publishTime>03/19/2018 09:59:44</publishTime>
     </File>
     <File Include="bin/Blocks.Framework.dll">
-      <publishTime>03/13/2018 09:00:46</publishTime>
+      <publishTime>03/19/2018 09:59:46</publishTime>
     </File>
     <File Include="bin/Blocks.Framework.pdb">
-      <publishTime>03/13/2018 09:00:46</publishTime>
+      <publishTime>03/19/2018 09:59:46</publishTime>
     </File>
     <File Include="bin/Blocks.Framework.Web.dll">
-      <publishTime>03/13/2018 09:00:47</publishTime>
+      <publishTime>03/19/2018 09:59:47</publishTime>
     </File>
     <File Include="bin/Blocks.Framework.Web.pdb">
-      <publishTime>03/13/2018 09:00:47</publishTime>
+      <publishTime>03/19/2018 09:59:47</publishTime>
     </File>
     <File Include="bin/Blocks.ResourcesModule.dll">
-      <publishTime>03/13/2018 09:00:49</publishTime>
+      <publishTime>03/19/2018 10:21:08</publishTime>
     </File>
     <File Include="bin/Blocks.ResourcesModule.pdb">
-      <publishTime>03/13/2018 09:00:49</publishTime>
+      <publishTime>03/19/2018 10:21:08</publishTime>
     </File>
     <File Include="bin/Castle.Core.dll">
       <publishTime>10/10/2017 08:13:52</publishTime>
+    </File>
+    <File Include="bin/Castle.Facilities.Logging.dll">
+      <publishTime>09/28/2017 05:14:58</publishTime>
     </File>
     <File Include="bin/Castle.Windsor.dll">
       <publishTime>09/28/2017 05:15:10</publishTime>
@@ -426,6 +435,15 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="bin/System.Xml.XPath.XDocument.dll">
       <publishTime>01/29/2018 14:53:45</publishTime>
+    </File>
+    <File Include="build.js">
+      <publishTime>03/16/2018 15:18:29</publishTime>
+    </File>
+    <File Include="build_home/blocks.js">
+      <publishTime>03/19/2018 09:25:45</publishTime>
+    </File>
+    <File Include="config.js">
+      <publishTime>03/16/2018 14:57:15</publishTime>
     </File>
     <File Include="Content/bootstrap-theme.css">
       <publishTime>01/17/2018 16:27:21</publishTime>

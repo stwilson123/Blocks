@@ -17,5 +17,19 @@ namespace Blocks.Framework.Test
             var a = JsonConvert.DeserializeObject<Filters>(
                 "{\"groupOp\":\"AND\",\"rules\":[{\"field\":\"COLLECT_STATION_NO\",\"op\":\"eq\",\"data\":\"11\"},{\"field\":\"COLLECT_STATION_NO\",\"op\":\"eq\",\"data\":\"12\"}],\"groups\":[{\"groupOp\":\"AND\",\"rules\":[{\"field\":\"COLLECT_STATION_NO\",\"op\":\"eq\",\"data\":\"1\"}],\"groups\":[{\"groupOp\":\"AND\",\"rules\":[{\"field\":\"BDTA_WORKPROCEDURE.WORKPROCEDURE_TYPE\",\"op\":\"eq\",\"data\":\"12\"}],\"groups\":[]}]}]}");
         }
+        
+        
+        
+        [Fact]
+        public void TestIsClass()
+        {
+            Assert.True(new Tests().GetType().IsClass);
+            
+            Assert.False(typeof(int).IsClass);
+            Assert.False(typeof(decimal).IsClass);
+            Assert.False(typeof(int?).IsClass);
+            Assert.False(typeof(char).IsClass);
+            Assert.True("".GetType().IsClass && "" is string);
+        }
     }
 }

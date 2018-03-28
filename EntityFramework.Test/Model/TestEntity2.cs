@@ -4,12 +4,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Blocks.BussnessEntityModule
 {
-    public partial class TESTENTITY2 : Entity
+    public partial class TESTENTITY2   : Entity   
     {
+ 
         [Column("ID")]
-        public override string Id { get; set; }
+        public override string Id { set ; get ; }
+        public string Text { set; get; }
     }
-
     public class TestEntity2Configuration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<TESTENTITY2>
     {
         public TestEntity2Configuration() 

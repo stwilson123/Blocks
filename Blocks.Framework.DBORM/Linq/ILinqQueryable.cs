@@ -19,7 +19,10 @@ namespace Blocks.Framework.DBORM.Linq
             Expression<Func<TOuter, TKey>> outerKeySelector,
             Expression<Func<TInner, TKey>> innerKeySelector) where TKey : IComparable, IConvertible;
 
-
+//        IDbLinqQueryable<TEntity> LeftJoin<TOuter, TInner, TKey>(
+//            Expression<Func<TOuter, TKey>> outerKeySelector,
+//            Expression<Func<TInner, TKey>> innerKeySelector) where TKey : IComparable, IConvertible;
+        
         IDbLinqQueryable<TEntity> Take(int count);
 
         IDbLinqQueryable<TEntity> Skip(int count);
@@ -30,6 +33,8 @@ namespace Blocks.Framework.DBORM.Linq
 
         PageList<dynamic> Paging(LambdaExpression selector,Page page);
          
+        
+        long Count();
         string ToString(); 
     }
 
