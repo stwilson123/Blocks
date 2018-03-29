@@ -41,8 +41,8 @@
             },
             'resize': function () {
                 mainGrid.setGridWidth(view.children().width());
-                blocks.utility.log.info('height' + view.children().height());
-                blocks.utility.log.info('width' + view.children().width());
+                // blocks.utility.log.info('height' + view.children().height());
+                // blocks.utility.log.info('width' + view.children().width());
                 mainGrid.setGridHeight(view.children().height() - view.find('#query').height());
 
 

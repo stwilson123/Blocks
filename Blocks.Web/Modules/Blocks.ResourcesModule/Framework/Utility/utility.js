@@ -27,12 +27,20 @@
             if (!this.isNullOrEmpty(object))
                 throw new Error(paramName + " must be NotNull And NotEmpty");
         };
+
+        this.mustArray = function mustArray(object, paramName) {
+            if (!this.isArray(object))
+                throw new Error(paramName + " must be Array");
+        }
         this.mustJQueryObj = function mustJQueryObj(object, paramName) {
             if (this.isNullOrEmpty(object) || !object.attr || this.isNullOrEmpty(object.attr("id")))
                 throw new Error(paramName + " must be JQueryObj");
         };
         this.isFunction = function isFunction(object) {
             return $.isFunction(object);
+        };
+        this.isArray = function isArray(object) {
+            return $.isArray(object);
         }
 
     };

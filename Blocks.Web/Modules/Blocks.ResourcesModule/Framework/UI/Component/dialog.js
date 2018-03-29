@@ -21,7 +21,7 @@
                 icon: 3,
                 title: 'Are you sure?',
                 btn: ['yes', 'cancel']
-
+               
             },
             dialog: {
                 type: 1,

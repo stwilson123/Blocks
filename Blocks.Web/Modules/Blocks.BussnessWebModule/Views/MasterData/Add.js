@@ -20,13 +20,15 @@
                 var citySelect = new blocks.ui.select({
                     viewObj: view.find("#city"),
                     data: [{id: 'china', text: 'china'}, {id: 'us', text: 'us'}],
+                    isCombobox:false
                  //   isRmote:true,
                   //  url:"/api/services/BussnessWebModule/Combobox/GetComboboxList"
                 });
                 var comboboxSelect = new blocks.ui.select({
                     viewObj: view.find("#combobox"),
                     //data: [{id: 'china', text: 'china'}, {id: 'us', text: 'us'}],
-                    isRmote:true,
+                    isRemote :true,
+                   // isCombobox:false,
                     url:"/api/services/BussnessWebModule/Combobox/GetComboboxList"
                 });
             
@@ -44,9 +46,11 @@
             saveClick: function (event) {
                 blocks.service.safePubAjax({
                     url: '/api/services/BussnessWebModule/MasterData/Add', data: blocks.utility.Json.stringify(viewModel),
-                    onSuccessCallBack: function (content) {
-                        blocks.ui.dialog.info(content);
-                        view.currentPage.close();
+                    onSuccessCallBack: function (result) {
+                        blocks.ui.dialog.info({content:result.content, end:function () {
+                                view.currentPage.close();
+                            }});
+                       
                     }
                 });
             },

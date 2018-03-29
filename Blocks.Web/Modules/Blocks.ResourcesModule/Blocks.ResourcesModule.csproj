@@ -167,6 +167,7 @@
     <None Include="Framework\Service\service.js" />
     <None Include="Framework\UI\Component\combobox.js" />
     <None Include="Framework\UI\Component\select.js" />
+    <Content Include="Framework\Design\decorator.js" />
     <Content Include="lib\abp-web-resources\.bower.json" />
     <Content Include="lib\abp-web-resources\Abp\Framework\scripts\abp.js" />
     <Content Include="lib\abp-web-resources\Abp\Framework\scripts\libs\abp.blockUI.js" />

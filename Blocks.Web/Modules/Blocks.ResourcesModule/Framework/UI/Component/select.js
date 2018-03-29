@@ -69,18 +69,51 @@ define(['jquery', 'blocks_utility', 'vueJS', 'select2', './dialog'], function ($
     var select2Fun = select2;
     var validate = utility.validate;
     var select = function (setting) {
-
+       
         var options = $.extend({}, this.config.default, setting);
         validate.mustJQueryObj(options.viewObj, 'options.viewObj');
-        options=  this.initOptions(options);
-        select2Fun.call(this, options.viewObj, options);
+        this._options = options;
+
+        // var selectObj = new select2Fun(options.viewObj, options);
+        // this._options = selectObj;
+       // this.initEvent();
+    }; 
+    select.prototype.on = function (eventName,eventCallback) {
+        if ($.type(eventCallback) !== 'function')
+            throw new Error('eventCallback must be function');
+        var event = this._options.eventsStore[eventName];
+        if (!event)
+            throw new Error("eventName " + eventName + " can't implement");
+        event.push(eventCallback);
     };
-    utility.obj.inherit(select2Fun, select);
+
+    select.prototype.initEvent = function () {
+        for (eventsTemp in this._options.eventsStore) {
+            var currentEvents = this._options.eventsStore[eventsTemp];
+            if (currentEvents.length > 0) {
+                var callbackWrapper = function (event) {
+                    for (currentEventIndex in currentEvents) {
+                        currentEvents[currentEventIndex].apply(this, arguments)
+                    }
+                }
+                this._options.viewObj.on(eventsTemp, callbackWrapper);
+            }
+        }
+
+
+    };
+    select.prototype.load = function () {
+        
+        this._options.viewObj.select2(this._options);
+        this.initEvent();
+    };
     select.prototype.config = {
         'default': {
             viewObj: undefined, placeholder: "请选择",
             multiple: false, allowClear: true, url: '', postData: undefined, isRmote: false,
-
+            isCombobox: true,
+            eventsStore :{'select2:opening select2:closing': []}
+            
         },
         'SelectLocal': {
             data: [{id: '', text: ''}],
@@ -117,50 +150,73 @@ define(['jquery', 'blocks_utility', 'vueJS', 'select2', './dialog'], function ($
                 },
                 cache: true
             }
-        },
+        }
 
     };
-    select.prototype.initOptions = function (options) {
-        function localDataInit(selectOptions) {
-            var options = selectOptions;
-            options = $.extend({}, this.config.SelectLocal, options);
-            var selectThis = this;
-            if (options && options.url) {
-                dialog.loading.open();
 
-                var queryParams = $.extend({}, options.postData, {'page': options.page});
-                utility.ajax.pubAjax({
-                    url: options.url,
-                    data: utility.Json.stringify(queryParams)
-                }).done(function (data) {
-                    var option = $.extend({}, options, {data: data.content.rows});
-                    dataInsertPlaceholder.call(selectThis,option );
-                    options.viewObj.select2(option);
-                }).always(function () {
-                    dialog.loading.close();
-                });
+    var localSelect = function (setting) {
+        select.call(this, setting);
+        this._options = $.extend({}, this.config.SelectLocal, this._options);
+        this.loadData(this._options);
+        this.buildSearchbox(this._options);
+        this.load();
+    };
+    utility.obj.inherit(select, localSelect);
+    localSelect.prototype.loadData = function (options) {
 
-                return;
-            }
-
-            function dataInsertPlaceholder(options) {
-
-                if (options.data[0].id !== '')
-                    options.data.unshift(this.config.SelectLocal.data[0]);
-            }
-
-            dataInsertPlaceholder.call(this, options);
-            return options;
-        }
-
-        if (options.isRmote === false) {
-            return localDataInit.call(this, options);
+        var selectThis = this;
+        if (options && options.url) {
+            dialog.loading.open();
+           
+            var queryParams = $.extend({}, options.postData, {'page': options.page});
+            utility.ajax.pubAjax({
+                url: options.url,
+                data: utility.Json.stringify(queryParams)
+            }).done(function (data) {
+                var option = $.extend({}, options, {data: data.content.rows});
+                dataInsertPlaceholder.call(selectThis, option.data);
+                options.viewObj.select2(option);
+            }).always(function () {
+                dialog.loading.close();
+            });
         }
         else {
-            var option = $.extend({}, this.config.SelectRemote, options);
-            option.ajax.url = options.url;
-            return option;
+            dataInsertPlaceholder.call(selectThis, options.data);
+        }
+        function dataInsertPlaceholder(data) {
+            utility.validate.mustArray(data, "options.data")
+            if (data[0].id !== '')
+                data.unshift(this.config.SelectLocal.data[0]);
         }
     }
-    return select;
+    localSelect.prototype.buildSearchbox = function (options) {
+        if (!options.isCombobox)
+            options.minimumResultsForSearch = Infinity;
+    }
+
+    var remoteSelect = function (setting) {
+        select.call(this, setting);
+        this._options = $.extend({}, this.config.SelectRemote, this._options);
+        this._options.ajax.url = this._options.url;
+        this.buildSearchbox(this._options);
+        this.load();
+    };
+    utility.obj.inherit(select, remoteSelect);
+    remoteSelect.prototype.buildSearchbox = function (options) {
+        if (!options.isCombobox) {
+            options.minimumResultsForSearch = Infinity;
+            // this.on('select2:opening select2:closing', function (event) {
+            //     var $searchfield = $(this).parent().find('.select2-search--dropdown');
+            //     $searchfield.css('display', 'none');
+            // });
+        }
+    }
+    
+   var selectFactory =function create(setting) {
+       if (setting && setting.isRemote === true)
+           return new remoteSelect(setting);
+       else
+           return new localSelect(setting);
+   }
+    return selectFactory;
 });

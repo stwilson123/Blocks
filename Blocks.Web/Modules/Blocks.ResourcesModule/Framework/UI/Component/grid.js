@@ -14,7 +14,7 @@
         this._options = $.extend(true, this.config.default, option);
         var jqObj = option.gridObj;
         initGridObject(option);
-        initColmodel(this._options, this.config.default.colModelTemplate);
+        initColmodel(this._options, this.config.default.colModelConfig.default);
         initReader(this._options);
         var $gridObj = option.gridObj;
 
@@ -51,7 +51,7 @@
 
         this.init = function () {
 
-            if (this._options.datatype === "local" || (!this._options.url )) {
+            if (this._options.datatype === "local" || (!this._options.url)) {
                 this.loadLocalData();
             } else {
                 this.loadJsonData();
@@ -206,7 +206,7 @@
         };
         //从服务器返回响应时执行
         if (!validate.isNullOrEmpty(options.loadComplete))
-            this.on('loadComplete',options.loadComplete);
+            this.on('loadComplete', options.loadComplete);
         options.loadComplete = null;
 
     }
@@ -224,7 +224,7 @@
 
         //显示列序号 
         if (options.rownumbers) {
-            this.on('loadComplete',function () {
+            this.on('loadComplete', function () {
                 $gridObj.jqGrid('setLabel', 0, '序号', 'labelstyle');
             });
 
@@ -233,47 +233,44 @@
     }
 
     function initGridEvent(options) {
-        var gridOptions= options;
+        var gridOptions = options;
 
         var gridID = options.gridObj.attr('Id');
         var onSelectRow = options.onSelectRow;
-       
+
         options.onSelectRow = function (rowid, status) {
             var eventArray = gridOptions.eventsStore['selectRow'];
 
-            for(var i = 0; i < eventArray.length; i++)
-            {
-                eventArray[i].apply(this,arguments);
+            for (var i = 0; i < eventArray.length; i++) {
+                eventArray[i].apply(this, arguments);
             }
         };
 
 
-        this.on('selectRow',onSelectRow);
+        this.on('selectRow', onSelectRow);
 
         var loadComplete = options.loadComplete;
 
         options.loadComplete = function (xhr) {
 
             var eventArray = gridOptions.eventsStore['loadComplete'];
-            
-            for(var i = 0; i < eventArray.length; i++)
-            {
-                eventArray[i].apply(this,arguments);
+
+            for (var i = 0; i < eventArray.length; i++) {
+                eventArray[i].apply(this, arguments);
             }
-           
+
         };
 
         if (loadComplete)
             this.on('loadComplete', loadComplete);
-        
-        
-        
+
+
         var changeEventFun = function (e) {
             if (!validate.isNullOrEmpty(gridOptions.onSelectHead) && $.isFunction(gridOptions.onSelectHead))
                 gridOptions.onSelectHead(gridID, false, e);
 
         };
-        this.on('loadComplete',function () {
+        this.on('loadComplete', function () {
             gridOptions.gridObj.find('#cb_' + gridID).unbind('change', changeEventFun);
             gridOptions.gridObj.find('#cb_' + gridID).on('change', changeEventFun);
         });
@@ -286,7 +283,7 @@
 
             }
         };
-        
+
         var editSelectOneRow = function (rowid, status) {
             var jqGridObj = $(this);
             if (!validate.isNullOrEmpty(gridOptions.onSelectRow && gridOptions.multiselectEdit === false)) {
@@ -305,11 +302,10 @@
             }
         };
 
-        this.on('selectRow',checkedAll);
-        this.on('selectRow',editSelectOneRow);
-        
-        
-        
+        this.on('selectRow', checkedAll);
+        this.on('selectRow', editSelectOneRow);
+
+
     }
 
 
@@ -351,8 +347,8 @@
                 repeatitems: false,
                 id: "ID"
             },
-            prmNames:{
-                rows:"pageSize",
+            prmNames: {
+                rows: "pageSize",
             },
             localReader: {
                 id: "ID"
@@ -363,7 +359,7 @@
             caption: "",
             sortorder: "desc",   //默认倒序,
             scrollOffset: 19,
-            viewsortcols: [true], 
+            viewsortcols: [true],
             // sortname: "createDate", //默认排序字段
             //onRightClickRow: function (rowid, iRow, iCol, e) {
             //    if (!$.browser.msie) return;
@@ -380,7 +376,7 @@
             onSelectHead: function (rowid, status, e) {
             },
             onSelectRow: function (rowid, status) {
-                
+
             },
             onHeaderClick: function (status) {
                 //visible or hidden
@@ -428,21 +424,40 @@
                 }
                 return utility.Json.stringify(postDataWrapper);
             },
-            colModelTemplate: {width: 100, align: 'left', sortable: true},
-            eventsStore: {'loadComplete': [],'selectRow':[]},
-            loadComplete: function (xhr) {
-
-               
+            colModelConfig: {
+                default: {width: 100, align: 'left', sortable: true, datatype: 'string'}
             },
-            dynamicConditionQuery: {
-                active: false,
-                multipleSearch: true,
-                multipleGroup: false,
-                showQuery: false,
-                closeAfterSearch: true
+            eventsStore: {
+                'loadComplete'
+            :
+                [], 'selectRow'
+            :
+                []
             }
-        }
-    };
+,
+    loadComplete: function (xhr) {
+
+
+    }
+,
+    dynamicConditionQuery: {
+        active: false,
+            multipleSearch
+    :
+        true,
+            multipleGroup
+    :
+        false,
+            showQuery
+    :
+        false,
+            closeAfterSearch
+    :
+        true
+    }
+}
+}
+    ;
     grid.prototype.getGridHeightWithoutBdiv = function () {
         var jqGridObj = this._options.gridObj;
         var jqGridTopObj = jqGridObj.parent().parent().parent().parent();
@@ -661,11 +676,11 @@
         return jqObj.attr('gridstate');
     };
 
- 
-    grid.prototype.on = function (eventName,loadEventFun) {
+
+    grid.prototype.on = function (eventName, loadEventFun) {
         if ($.type(loadEventFun) !== 'function')
             throw new Error('loadEventFun must be function');
-        var event =  this._options.eventsStore[eventName];
+        var event = this._options.eventsStore[eventName];
         if (!event)
             throw new Error("eventName " + eventName + " can't implement");
         event.push(loadEventFun);
