@@ -1,5 +1,5 @@
-define(['./gridbase'], function (grid) {
-
+define(['./gridbase','blocks_utility'], function (grid,utility) {
+    var validate = utility.validate;
     var dataBuilder = function (gridObj) {
         initReader(gridObj);
 
@@ -23,20 +23,7 @@ define(['./gridbase'], function (grid) {
 
 
     };
-
-    // function initDynamicSelect(options) {
-    //     var $gridObj = options.gridObj;
-    //
-    //     $gridObj.jqGrid('navGrid', options.pager,
-    //         {edit: false, add: false, del: false},
-    //         {},
-    //         {},
-    //         {},
-    //         options.dynamicConditionQuery
-    //     );
-    //     this.getTopObj().find('#search_' + $gridObj.attr('Id')).hide();
-    //
-    // }
+ 
 
     function initReader(gridObj) {
         var options = gridObj._options;
@@ -47,7 +34,12 @@ define(['./gridbase'], function (grid) {
 
         }
     };
-
+    function initDataColumn(gridObj) {
+        for (var i = 0; i < options.colModel.length; i++) {
+            var searchOpt = $.extend({}, gridObj.config.body.searchoptions[options.colModel[i].datatype.type], options.colModel[i].searchoptions);
+            options.colModel[i].searchoptions = searchOpt;
+        }
+    }
     grid.prototype.reloadGrid = function (option) {
         var defaults = {
             url: "",
@@ -159,64 +151,61 @@ define(['./gridbase'], function (grid) {
 
 
     };
-    grid.prototype.delRowData = function (rowsId) {
+    grid.prototype.delRowData = function (rowIds) {
         var jqObj = this._options.gridObj;
-        if (validate.isNullOrEmpty(rowsId) || !$.isArray(rowsId)) {
+        if (validate.isNullOrEmpty(rowIds) || !$.isArray(rowIds)) {
             throw new Error("请输入合适的id数组");
         }
-        while (rowsId.length > 0) {
-            jqObj.jqGrid('delRowData', rowsId[0]);
+        for(var i = 0; i < rowIds.length; i++)
+        {
+            jqObj.jqGrid('delRowData', rowIds[i]);
         }
-        var rowData = jqObj.jqGrid('getGridParam', 'selarrrow');
-        if (rowData.length === 0) {
+        if (this.getSelectRowIds().length === 0) {
             $('#cb_' + jqObj.attr("id")).prop("checked", false);
         }
     };
-    grid.prototype.addRowData = function (gridData) {
+    grid.prototype.addRowData = function (rowDatas) {
         var jqObj = this._options.gridObj;
-        if (validate.isNullOrEmpty(gridData)) {
+        if (validate.isNullOrEmpty(rowDatas)) {
             throw new Error("请输入合适的Json数组");
         }
         var lastIndex = jqObj.jqGrid('getDataIDs').length;
         var result = 0;
         var idKey = jqObj.jqGrid("getGridParam", "idKey");
-        for (var i = 0; i < gridData.length; i++) {
-            if (validate.isNullOrEmpty(gridData[i][idKey])) {
+        for (var i = 0; i < rowDatas.length; i++) {
+            if (validate.isNullOrEmpty(rowDatas[i][idKey])) {
                 throw new Error("Grid数据中不包含列是" + idKey);
             }
-            result = jqObj.jqGrid('addRowData', gridData[i][idKey], gridData[i], "After", lastIndex++) ? result + 1 : result;
+            result = jqObj.jqGrid('addRowData', rowDatas[i][idKey], rowDatas[i], "After", lastIndex++) ? result + 1 : result;
 
         }
     };
-    grid.prototype.getRowData = function (gridIds, colNames) {
+    grid.prototype.getRowData = function (rowIds, colNames) {
+        var isFitercol = false;
+        var isFilterrow = false;
+        if (rowIds){ isFilterrow = true; validate.mustArray(rowIds);}
+        if (colNames) {isFitercol = true;validate.mustArray(colNames);}
         var rowDataResult = [];
         var jqObj = this._options.gridObj;
         var isRownum = jqObj.jqGrid("getGridParam", "rownumbers");
-        var isInputGirdIds = !validate.isNullOrEmpty(gridIds);
-        isInputGirdIds = Array.isArray(gridIds) && gridIds.length < 1 ? true : isInputGirdIds;
-        var gridData = jqObj.jqGrid("getRowData");
-        var gridLength = isInputGirdIds ? gridIds.length : gridData.length;
-        for (var i = 0; i < gridLength; i++) {
-            var rowData = isInputGirdIds ? jqObj.jqGrid("getRowData", gridIds[i]) : gridData[i];
+        var actRowIds = isFilterrow ? rowIds : jqObj.jqGrid("getDataIDs");
+        var length = isFilterrow ? rowIds.length : jqObj.getGridParam("records");
+        for (var i = 0; i < length; i++) {
+            var rowData = jqObj.jqGrid("getRowData",actRowIds[i]);
+            if (validate.isObjectNull(rowData)) continue;
             if (isRownum) // TODO gridRowNum 计算不准确
                 rowData.gridRowNum = i + 1;
-            if (validate.isNullOrEmpty(colNames)) {
+
+            if (!isFitercol) {
                 rowDataResult.push(rowData);
                 continue;
             }
-            var jsonObj = {};
-            for (var j = 0; j < colNames.length; j++) {
-                var v = rowData[colNames[j]]
-                if (validate.isNullOrEmpty(v)) {
-                    v = "";
-                }
-                jsonObj[colNames[j]] = v;
-            }
-            rowDataResult.push(jsonObj);
+            rowDataResult.push(utility.obj.filter(rowData,colNames));
         }
-
-
+     
         return rowDataResult;
     };
+    
+   
     return dataBuilder;
 });

@@ -138,6 +138,13 @@ define(['jquery','../../datepicker','blocks_utility'],function ($,datepicker,uti
                     sopt: ['cn']
                 },
             }
+        },
+        'data':{
+            'default': {
+            },
+            'dataFormat':{
+                
+            }
         }
     }
     

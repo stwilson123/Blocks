@@ -10,8 +10,8 @@ define(['../gridbase', 'blocks_utility'], function (grid, utility) {
     };
     grid.prototype.getSelectRowIds = function () {
         var gridObj = this._options.gridObj;
-        return !this._options.multiselect ? [gridObj.jqGrid('getGridParam','selrow')] :gridObj.jqGrid('getGridParam','selarrrow');
-        
+        return !this._options.multiselect ? [gridObj.jqGrid('getGridParam','selrow')] :gridObj.jqGrid('getGridParam','selarrrow').concat()
+            ;
     };
     
     function initColumn(gridObj) {
@@ -31,9 +31,6 @@ define(['../gridbase', 'blocks_utility'], function (grid, utility) {
             if (validate.isNullOrEmpty(options.colModel[i].index)) options.colModel[i].index = options.colModel[i].name;
             options.colModel[i] = $.extend(true, {}, gridObj.config.body.default.colModel, options.colModel[i]);
         }
-     
-
-
     }
 
     function initSelectRow(gridObj) {

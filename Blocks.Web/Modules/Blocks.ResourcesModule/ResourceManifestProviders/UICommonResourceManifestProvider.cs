@@ -25,10 +25,10 @@ namespace Blocks.ResourcesModule.ResourceManifestProviders {
                 "lib/layer/theme/default/layer.css").SetVersion("3.3.1");
             manifest.DefineStyle(ResourceName.magicsuggest).SetUrl("lib/combobox/magicsuggest.min.css",
                 "lib/combobox/magicsuggest.css").SetVersion("3.3.1");
-                
             manifest.DefineStyle(ResourceName.select2).SetUrl("lib/select2-develop/dist/css/select2.min.css",
                 "lib/select2-develop/dist/css/select2.css").SetVersion("4.0.6");
-            
+            manifest.DefineStyle(ResourceName.zTree).SetUrl("lib/zTree_v3/css/metroStyle/metroStyle.css",
+                "lib/zTree_v3/css/metroStyle/metroStyle.css").SetVersion("3.5.35");
             
             manifest.DefineScript(ResourceName.toastr).SetUrl("lib/toastr/toastr.min.js",
                 "lib/toastr/toastr.js").SetVersion("0.1");
@@ -67,7 +67,11 @@ namespace Blocks.ResourcesModule.ResourceManifestProviders {
                 "lib/select2-develop/dist/js/select2.full.js").SetVersion("4.0.6").SetAMD();
             
             manifest.DefineScript(ResourceName.my97DatePicker).SetUrl("lib/My97DatePicker/My97DatePicker/WdatePicker.js",
-                "lib/My97DatePicker/My97DatePicker/WdatePicker.js").SetVersion("4.8").SetDependencies(ResourceName.jquery);;
+                "lib/My97DatePicker/My97DatePicker/WdatePicker.js").SetVersion("4.8").SetDependencies(ResourceName.jquery);
+            
+            manifest.DefineScript(ResourceName.zTree).SetUrl("lib/zTree_v3/js/jquery.ztree.all.js",
+                "lib/zTree_v3/js/jquery.ztree.all.js").SetVersion("3.5.35").SetDependencies(ResourceName.jquery);
+     
         }
 
         public Lazy<FeatureDescriptor> Feature { get; set; }

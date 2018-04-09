@@ -46,6 +46,9 @@
             if (!this instanceof classObj)
                throw new Error(classObj.toString()+ " must be use new operator");
         }
+        this.isObjectNull = function isObjectNull(obj) {
+           return this.isNullOrEmpty(obj) || Object.getOwnPropertyNames(obj).length < 1;
+        }
     };
     var ValidateHelper = new validateDefine();
 
@@ -516,6 +519,15 @@
                 //将实例作为子类的原型
                 child.prototype = new Super();
             })();
+        },
+        filter:function (obj,propertyNames) {
+            ValidateHelper.mustArray(propertyNames,'propertyNames');
+            var jsonObj = {};
+            for (var j = 0; j < propertyNames.length; j++) {
+                var v = obj[propertyNames[j]]
+                jsonObj[propertyNames[j]] = v;
+            }
+            return jsonObj;
         }
         
     };

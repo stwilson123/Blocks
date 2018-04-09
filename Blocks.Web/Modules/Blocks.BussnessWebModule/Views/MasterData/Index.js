@@ -1,4 +1,4 @@
-﻿;define(['blocks'], function (blocks) {
+﻿;define(['blocks','zTree'], function (blocks) {
 
     var currentModule = new blocks.ui.module.pageModel();
     currentModule.controllers = {'Main': main};
@@ -8,6 +8,7 @@
         var viewModel;
         var view;
         var mainGrid;
+        
         var combobox;
         this.events = {
             'init': function (v, vm) {
@@ -24,7 +25,7 @@
                         {name: 'comboboxText'},
 
                         {
-                            name: 'registerTime', stype: 'text',datatype:{ type:'date', format:''}
+                            name: 'registerTime', datatype:{ type:'date', format:''}
                         },
                         {name: 'isActive', formatter: 'select', editoptions: {value: {'1': 'OK', '0': 'NO'}}},
                         {name: 'comment', sortable: false}
@@ -35,7 +36,7 @@
                     rownumbers:true,
                    
                 });
-
+                window.mainGrid = mainGrid;
                 // mainGrid.reloadGrid({url: "/api/services/BussnessWebModule/MasterData/GetPageList"});
 
 
