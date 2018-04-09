@@ -1,4 +1,5 @@
-﻿using Blocks.Framework.Services.DataTransfer;
+﻿using System;
+using Blocks.Framework.Services.DataTransfer;
 
 namespace Blocks.BussnessDTOModule.MasterData
 {
@@ -13,5 +14,7 @@ namespace Blocks.BussnessDTOModule.MasterData
         public bool isActive { get; set; }
 
         public string comment { get; set; }
+        
+        public DateTime registerTime { get; set; }
     }
 }

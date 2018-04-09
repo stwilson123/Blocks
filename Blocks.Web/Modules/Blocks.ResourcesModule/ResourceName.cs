@@ -60,5 +60,8 @@ namespace Blocks.ResourcesModule
         
         public static string magicsuggest { get; } = "magicsuggest";
         public static string select2 { get; } = "select2";
+        
+        public static string my97DatePicker { get; } = "my97DatePicker";
+
     }
 }

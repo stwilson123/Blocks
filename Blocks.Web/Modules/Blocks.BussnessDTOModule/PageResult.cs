@@ -1,4 +1,5 @@
-﻿using Blocks.Framework.Services.DataTransfer;
+﻿using System;
+using Blocks.Framework.Services.DataTransfer;
 
 namespace Blocks.BussnessDTOModule
 {
@@ -15,6 +16,8 @@ namespace Blocks.BussnessDTOModule
         public string comment { get; set; }
         
         public string comboboxText { get; set; }
+        
+        public DateTime registerTime { get; set; }
 
     }
 }

@@ -1,11 +1,10 @@
 define(['jquery', '../../Event/event'], function ($, eventBus) {
 
-    eventBus.on("moduleInit", function (view) {
-        view.find('.form-control').focus(function () {
+    var inputAnimation = {
+        'focus': function () {
             $(this).parent().addClass('focused');
-        });
-
-        view.find('.form-control').focusout(function () {
+        },
+        'focusout': function () {
             var $this = $(this);
             if ($this.parents('.form-group').hasClass('form-float')) {
                 if ($this.val() == '') {
@@ -15,6 +14,15 @@ define(['jquery', '../../Event/event'], function ($, eventBus) {
             else {
                 $this.parents('.form-line').removeClass('focused');
             }
+        },
+    };
+    eventBus.on("moduleInit", function (view) {
+        view.find('.form-control:not(.date)').focus(function () {
+            inputAnimation.focus.apply(this,arguments);
+        });
+
+        view.find('.form-control:not(.date)').focusout(function () {
+            inputAnimation.focusout.apply(this, arguments);
         });
 
         view.find('input.form-control,textarea.form-control').each(function(){
@@ -26,6 +34,13 @@ define(['jquery', '../../Event/event'], function ($, eventBus) {
             }
         });
          
+    });
+
+    eventBus.on("datepicker", function (view) {
+        inputAnimation.focus.apply(view,arguments);
+    });
+    eventBus.on("datepickerhided", function (view) {
+        inputAnimation.focusout.apply(view, arguments);
     });
     return {};
 });

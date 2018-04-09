@@ -20,11 +20,15 @@ namespace Blocks.BussnessDomainModule.MasterData
         public virtual string Add(MasterData data)
         {
 
-            var newMasterData = new TESTENTITY();
-            newMasterData.STRING = data.city;
-            newMasterData.ISACTIVE = SafeConvert.ToInt64(data.isActive);
-            newMasterData.COMMENT = data.comment;
-            newMasterData.TESTENTITY2ID = data.combobox;
+            var newMasterData = new TESTENTITY()
+            {
+                STRING = data.city,
+                ISACTIVE = SafeConvert.ToInt64(data.isActive),
+                COMMENT = data.comment,
+                TESTENTITY2ID = data.combobox,
+                REGISTERTIME =data.registerTime
+            };
+            
             return testRepository.Insert(newMasterData).Id;
         }
         

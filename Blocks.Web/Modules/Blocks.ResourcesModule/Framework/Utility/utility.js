@@ -1,4 +1,4 @@
-﻿; define(['jquery','json2'], function (jQuery,json2) {
+﻿; define(['jquery','json2','./Utility/Component/date'], function (jQuery,json2,dateConvert) {
 
 
     
@@ -42,7 +42,10 @@
         this.isArray = function isArray(object) {
             return $.isArray(object);
         }
-
+        this.mustUseNew = function mustUseNew(classObj) {
+            if (!this instanceof classObj)
+               throw new Error(classObj.toString()+ " must be use new operator");
+        }
     };
     var ValidateHelper = new validateDefine();
 
@@ -467,8 +470,13 @@
         if (logLevel != undefined && logLevel < log.level) {
             return;
         }
-
-        console.log(logObject);
+        switch(logLevel)
+        {
+            case log.levels.ERROR:  console.error(logObject);break;
+            case log.levels.WARN:  console.warn(logObject);break;
+            default:console.log(logObject);
+        }
+      
     };
 
     log.debug = function (logObject) {
@@ -511,6 +519,26 @@
         }
         
     };
+    
+    var nativeJs = {
+        trigger:function (el,eventName) {
+            if (!el)
+                throw new Error('Error el');
+            if (el.fireEvent){
+                el.fireEvent('on' + eventName);
+            }
+            else{
+                var ev = document.createEvent("HTMLEvents");
+                ev.initEvent(eventName, true, true);
+                el.dispatchEvent(ev);
+            }
+        }  
+        
+    };
+    
+    var extend = function () {
+       return $.extend.apply(this, arguments);  
+    };
     //TODO JSON2 not work
-    return { validate: ValidateHelper,ajax:ajax,url:UrlHelper,cookie:cookie,log:log,obj:obj,Json:JSON }
+    return { validate: ValidateHelper,ajax:ajax,url:UrlHelper,cookie:cookie,log:log,obj:obj,Json:JSON, nativeJs:nativeJs,dateConvert:dateConvert,extend:extend}
 });

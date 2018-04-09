@@ -112,6 +112,7 @@ define(['jquery', 'blocks_utility', 'vueJS', 'select2', './dialog'], function ($
             viewObj: undefined, placeholder: "请选择",
             multiple: false, allowClear: true, url: '', postData: undefined, isRmote: false,
             isCombobox: true,
+            width: "100%",
             eventsStore :{'select2:opening select2:closing': []}
             
         },

@@ -1,4 +1,6 @@
-﻿namespace Blocks.BussnessDomainModule.MasterData
+﻿using System;
+
+namespace Blocks.BussnessDomainModule.MasterData
 {
     public class MasterData
     {
@@ -11,5 +13,8 @@
         public bool isActive { get; set; }
 
         public string comment { get; set; }
+        
+        public DateTime registerTime { get; set; }
+
     }
 }

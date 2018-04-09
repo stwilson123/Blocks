@@ -1345,6 +1345,7 @@ namespace Blocks.BussnessEntityModule
 	    	    public string STRING { set; get; }
 	    	    public long ISACTIVE { set; get; }
 	    	    public string COMMENT { set; get; }
+	    	    public DateTime REGISTERTIME { set; get; }
 	    	    public TESTENTITY2 TESTENTITY2 { set; get; }
 	    	    public ICollection<TESTENTITY3> TESTENTITY3s { set; get; }
 		}
@@ -1698,6 +1699,40 @@ namespace Blocks.BussnessEntityModule
 	    	    public long IsDeleted { set; get; }
 	    	    public DateTime CreationTime { set; get; }
 	    	    public long? CreatorUserId { set; get; }
+		}
+    
+    public partial class SYS_ACTION_TYPE   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string TYPE_CODE { set; get; }
+	    	    public string TYPE_NAME { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+		}
+    
+    public partial class BDTA_WORK_CENTER   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string WORK_CENTER_NO { set; get; }
+	    	    public string WORK_CENTER_NAME { set; get; }
+	    	    public string WORK_CENTER_DESC { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string FACTORY_ID { set; get; }
 		}
 
 
@@ -2942,6 +2977,36 @@ namespace Blocks.BussnessEntityModule
 		public BLOCKS_USERORGANIZATION_UNITSConfiguration(string schema)
         {
 			ToTable("BLOCKS_USERORGANIZATION_UNITS", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class SYS_ACTION_TYPEConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<SYS_ACTION_TYPE> 
+    {
+		public SYS_ACTION_TYPEConfiguration()
+        {
+        }
+		public SYS_ACTION_TYPEConfiguration(string schema)
+        {
+			ToTable("SYS_ACTION_TYPE", schema);
+			            HasKey(x => x.Id);
+		 
+	    }
+	}
+    
+ 
+ 
+    public partial class BDTA_WORK_CENTERConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_WORK_CENTER> 
+    {
+		public BDTA_WORK_CENTERConfiguration()
+        {
+        }
+		public BDTA_WORK_CENTERConfiguration(string schema)
+        {
+			ToTable("BDTA_WORK_CENTER", schema);
 			            HasKey(x => x.Id);
 		 
 	    }

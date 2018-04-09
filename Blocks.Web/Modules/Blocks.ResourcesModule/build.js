@@ -31,7 +31,8 @@
                 'vueJS',
                 'waves',
                 'magicsuggest',
-                'select2'
+                'select2',
+                'my97DatePicker'
                 // 'Blocks.ResourcesModule/lib/abp-web-resources/Abp/Framework/scripts/abp',
                 // 'Blocks.ResourcesModule/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr',
                 // 'Blocks.ResourcesModule/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI',

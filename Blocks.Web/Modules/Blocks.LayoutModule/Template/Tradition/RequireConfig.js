@@ -37,7 +37,7 @@
         //include NOT AMD specification js frame code  
         //包含其它非AMD规范的JS框架  
         , shim: shimModule
-       // ,  waitSeconds: 0
+        ,  waitSeconds: 0
     });
 
 

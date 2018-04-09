@@ -1,4 +1,4 @@
-﻿;define(['blocks', 'select2'], function (blocks) {
+﻿;define(['blocks'], function (blocks) {
 
     var currentModule = new blocks.ui.module.pageModel();
     currentModule.controllers = {'Main': main};
@@ -13,23 +13,27 @@
             'init': function (v, vm) {
                 view = v;
                 viewModel = vm;
-                var colNamesArray = ['ID', '城市', 'comboboxText', '激活', '备注']; //数据列名称（数组） 
+                var colNamesArray = ['ID', '城市', 'comboboxText', '注册时间', '激活', '备注']; //数据列名称（数组） 
                 mainGrid = new blocks.ui.grid({
                     // url: "/api/services/BussnessWebModule/MasterData/GetPageList",
                     gridObj: view.find("#gridInfo"),
                     colNames: colNamesArray,
                     colModel: [
-                        {name: 'ID', hidden: true},
+                        {name: 'Id', hidden: true},
                         {name: 'city'},
                         {name: 'comboboxText'},
 
-                        //{ name: 'StationName', index: 'BDTA_WORKSECTION.WORKSECTION_NAME' },
+                        {
+                            name: 'registerTime', stype: 'text',datatype:{ type:'date', format:''}
+                        },
                         {name: 'isActive', formatter: 'select', editoptions: {value: {'1': 'OK', '0': 'NO'}}},
                         {name: 'comment', sortable: false}
                     ],
                     // caption: "",
-                    idKey: "ID",
-                    dynamicConditionQuery: {active: true}
+                    idKey: "Id",
+                    dynamicConditionQuery: {active: true},
+                    rownumbers:true,
+                   
                 });
 
                 // mainGrid.reloadGrid({url: "/api/services/BussnessWebModule/MasterData/GetPageList"});

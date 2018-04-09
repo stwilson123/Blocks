@@ -16,7 +16,8 @@ namespace Blocks.ResourcesModule.ResourceManifestProviders {
             
             manifest.DefineScript(ResourceName.json2).SetUrl("lib/json2/json2.js",
                 "lib/json2/json2.js").SetVersion("0.1");
-    
+            manifest.DefineScript(ResourceName.json2).SetUrl("lib/json2/json2.js",
+                "lib/json2/json2.js").SetVersion("0.1");
   
            
         }

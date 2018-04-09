@@ -15,8 +15,6 @@ namespace Blocks.Framework.Services.DataTransfer
         protected override JsonProperty CreatePropertyFromConstructorParameter(JsonProperty matchingMemberProperty, ParameterInfo parameterInfo)
         {
             var property = base.CreatePropertyFromConstructorParameter(matchingMemberProperty, parameterInfo);
-
-
             var attributeArray = parameterInfo.GetCustomAttributes(typeof(DataTransferAttribute), false).FirstOrDefault();
             if (attributeArray != null)
             {

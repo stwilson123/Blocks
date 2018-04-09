@@ -1,4 +1,4 @@
-﻿;define(['blocks', 'select2'], function (blocks) {
+﻿;define(['blocks'], function (blocks) {
 
     var currentModule = new blocks.ui.module.pageModel();
     currentModule.controllers = {'Main': main};
@@ -8,30 +8,31 @@
         var viewModel;
         var view;
         var mainGrid;
+        var _Blocks = blocks;
         this.events = {
             'init': function (v, vm) {
                 view = v;
                 viewModel = vm;
-
-                // combobox = new blocks.ui.combobox({viewObj:view.find("#city"),data:
-                //     { content:[{'ID':'123','Text':'111'}]},minChars:0
-                // });
-
+                window.test = vm;
                 var citySelect = new blocks.ui.select({
                     viewObj: view.find("#city"),
                     data: [{id: 'china', text: 'china'}, {id: 'us', text: 'us'}],
                     isCombobox:false
-                 //   isRmote:true,
                   //  url:"/api/services/BussnessWebModule/Combobox/GetComboboxList"
                 });
                 var comboboxSelect = new blocks.ui.select({
                     viewObj: view.find("#combobox"),
-                    //data: [{id: 'china', text: 'china'}, {id: 'us', text: 'us'}],
                     isRemote :true,
                    // isCombobox:false,
                     url:"/api/services/BussnessWebModule/Combobox/GetComboboxList"
                 });
-            
+                view.find("#registerTime").on('change',function () {
+                   console.log('1'); 
+               
+                });
+                var datepicker = new blocks.ui.datepicker({
+                    viewObj: view.find("#registerTime"),
+                });
             },
             'dispose': function () {
                 return "返回值";
@@ -44,8 +45,10 @@
 
         this.actions = {
             saveClick: function (event) {
+                var postData = _Blocks.utility.extend({},viewModel);
+                postData.registerTime = _Blocks.utility.dateConvert.toUtcDate(postData.registerTime);
                 blocks.service.safePubAjax({
-                    url: '/api/services/BussnessWebModule/MasterData/Add', data: blocks.utility.Json.stringify(viewModel),
+                    url: '/api/services/BussnessWebModule/MasterData/Add', data: blocks.utility.Json.stringify(postData),
                     onSuccessCallBack: function (result) {
                         blocks.ui.dialog.info({content:result.content, end:function () {
                                 view.currentPage.close();
@@ -55,14 +58,14 @@
                 });
             },
             cancelClick:function (event) {
-                view.currentPage.close();
+                 view.currentPage.close();
             }
         };
     }
 
 
     function mainViewModel() {
-        return {tenancyName: 'initvalue', city: '', isActive: true, comment: 'initcomment',combobox:''};
+        return {tenancyName: 'initvalue', city: '', isActive: true, comment: 'initcomment',combobox:'',registerTime:''};
     }
 
     return currentModule;

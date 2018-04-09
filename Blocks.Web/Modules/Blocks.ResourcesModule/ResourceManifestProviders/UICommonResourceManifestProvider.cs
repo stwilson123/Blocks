@@ -65,6 +65,9 @@ namespace Blocks.ResourcesModule.ResourceManifestProviders {
             
             manifest.DefineScript(ResourceName.select2).SetUrl("lib/select2-develop/dist/js/select2.full.min.js",
                 "lib/select2-develop/dist/js/select2.full.js").SetVersion("4.0.6").SetAMD();
+            
+            manifest.DefineScript(ResourceName.my97DatePicker).SetUrl("lib/My97DatePicker/My97DatePicker/WdatePicker.js",
+                "lib/My97DatePicker/My97DatePicker/WdatePicker.js").SetVersion("4.8").SetDependencies(ResourceName.jquery);;
         }
 
         public Lazy<FeatureDescriptor> Feature { get; set; }

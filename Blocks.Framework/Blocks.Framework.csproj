@@ -165,6 +165,7 @@
     <Compile Include="Ioc\DependencyConventionalRegistrar.cs" />
     <Compile Include="Ioc\Dependency\IDependency.cs" />
     <Compile Include="Ioc\IocManagersExtensions.cs" />
+    <Compile Include="Json\Convert\IsoDateTimeConverter.cs" />
     <Compile Include="Localization\StringFormat.cs" />
     <Compile Include="Services\DataTransfer\DataTransferAttribute.cs" />
     <Compile Include="Json\JsonHelper.cs" />
@@ -227,6 +228,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Ioc\Providers\" />
+    <Folder Include="Time" />
     <Folder Include="Web\" />
   </ItemGroup>
   <ItemGroup>

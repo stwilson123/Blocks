@@ -57,6 +57,7 @@ namespace Blocks.BussnessRespositoryModule
                     city = testEntity.STRING,
                     isActive = testEntity.ISACTIVE,
                     comment = testEntity.COMMENT,
+                     registerTime =   testEntity.REGISTERTIME
                 }, search.page);
         }
     }

@@ -12,6 +12,7 @@ using Abp.WebApi.Controllers.Dynamic;
 using Abp.WebApi.Controllers.Dynamic.Selectors;
 using Blocks.Framework.Configurations;
 using Blocks.Framework.Environment.Extensions;
+using Blocks.Framework.Json.Convert;
 using Blocks.Framework.Modules;
 using Blocks.Framework.Services.DataTransfer;
 using Blocks.Framework.Web.Api.Controllers;
@@ -80,7 +81,7 @@ namespace Blocks.Framework.Web.Modules
             httpConfiguration.Services.Replace(typeof(IHttpControllerSelector), new BlocksHttpControllerSelector(httpConfiguration, IocManager.Resolve<DynamicApiControllerManager>(),IocManager));
             httpConfiguration.Formatters.JsonFormatter.SerializerSettings.ContractResolver =
                 new JsonAttribuateContractResolver();
-            
+            httpConfiguration.Formatters.JsonFormatter.SerializerSettings.Converters.Add(new BlocksIsoDateTimeConverter());
             httpConfiguration.Filters.Add(IocManager.Resolve<BlocksApiExceptionFilterAttribute>());
             httpConfiguration.Filters.Add(IocManager.Resolve<BlocksApiActionFilterAttribute>());
 

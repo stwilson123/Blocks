@@ -28,7 +28,7 @@
                 title: "",
                 offset: "auto",
                 isMaxmin: true,
-                //area: ['80%', '80%'],
+                area: ['80%', 'auto'],
                 closeBtn: 0,
                 content: settings.url,
                 cancel: function () {

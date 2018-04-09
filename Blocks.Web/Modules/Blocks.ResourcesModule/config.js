@@ -23,6 +23,7 @@ require.config({
         'waves': "../lib/Waves/dist/waves",
         'magicsuggest': "../lib/combobox/magicsuggest",
         'select2': "../lib/select2-develop/dist/js/select2.full",
+        'my97DatePicker': "../lib/My97DatePicker/My97DatePicker/WdatePicker",
         'Blocks.ResourcesModule/lib/abp-web-resources/Abp/Framework/scripts/abp':'../lib/abp-web-resources/Abp/Framework/scripts/abp',
         'Blocks.ResourcesModule/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr':'../lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr',
         'Blocks.ResourcesModule/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI':'../lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI',
