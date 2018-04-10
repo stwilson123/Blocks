@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Reflection;
 using System.Web.Http;
 using System.Web.Http.Dispatcher;
@@ -15,6 +16,7 @@ using Blocks.Framework.Environment.Extensions;
 using Blocks.Framework.Json.Convert;
 using Blocks.Framework.Modules;
 using Blocks.Framework.Services.DataTransfer;
+using Blocks.Framework.Utility.SafeConvert;
 using Blocks.Framework.Web.Api.Controllers;
 using Blocks.Framework.Web.Api.Controllers.Selectors;
 using Blocks.Framework.Web.Api.Filter;
@@ -25,6 +27,7 @@ using Blocks.Framework.Web.Mvc.ViewEngines;
 using Blocks.Framework.Web.Mvc.ViewEngines.ThemeAwareness;
 using Blocks.Framework.Web.Route;
 using Castle.Core.Logging;
+using Newtonsoft.Json.Converters;
 
 namespace Blocks.Framework.Web.Modules
 {
@@ -78,11 +81,18 @@ namespace Blocks.Framework.Web.Modules
         {
             //Config WebApi
             var httpConfiguration = Configuration.Modules.AbpWebApi().HttpConfiguration;
-            httpConfiguration.Services.Replace(typeof(IHttpControllerSelector), new BlocksHttpControllerSelector(httpConfiguration, IocManager.Resolve<DynamicApiControllerManager>(),IocManager));
+            httpConfiguration.Services.Replace(typeof(IHttpControllerSelector),
+                new BlocksHttpControllerSelector(httpConfiguration, IocManager.Resolve<DynamicApiControllerManager>(),
+                    IocManager));
             httpConfiguration.Formatters.JsonFormatter.SerializerSettings.ContractResolver =
                 new JsonAttribuateContractResolver();
-            httpConfiguration.Formatters.JsonFormatter.SerializerSettings.Converters.Add(new BlocksIsoDateTimeConverter());
-            httpConfiguration.Filters.Add(IocManager.Resolve<BlocksApiExceptionFilterAttribute>());
+            httpConfiguration.Formatters.JsonFormatter.SerializerSettings.Converters.Insert(0,
+                new IsoDateTimeConverter()
+                {
+                    DateTimeFormat = SafeConvert.DateTimeFormat[(Int32) (TimeFormatEnum.UTCDateTime)]
+                });
+
+        httpConfiguration.Filters.Add(IocManager.Resolve<BlocksApiExceptionFilterAttribute>());
             httpConfiguration.Filters.Add(IocManager.Resolve<BlocksApiActionFilterAttribute>());
 
            GlobalFilters.Filters.Add(IocManager.Resolve<BlocksWebMvcActionFilter>());

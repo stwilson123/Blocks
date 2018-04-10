@@ -67,6 +67,9 @@ namespace Blocks.Framework.Utility.SafeConvert
         DateTimeVersionName = 11,
 
         Month =12,
+        
+        UTCDateTime =13,
+
     }
 
     public class DateTimeHelper
@@ -313,6 +316,30 @@ namespace Blocks.Framework.Utility.SafeConvert
         public static string ToDateTimeString(string dTime)
         {
             return ToDateTimeString(SafeConvert.ToDateTime(dTime), TimeFormatEnum.DateTimeName);
+        }
+        
+        /// <summary>
+        /// 将DateTime类型转换为yyyy-MM-dd类型带时区，如果传入的DateTime不能转换为String，返回空字符串
+        /// 服务器时区
+        /// </summary>
+        /// <param name="dTime"></param>
+        /// <returns></returns>
+        public static string ToGMTDateTime(DateTime? dTime)
+        {
+            if (!dTime.HasValue)
+                return string.Empty;
+            return ToGMTDateTime(dTime.Value);
+        }
+        
+        /// <summary>
+        /// 将DateTime类型转换为yyyy-MM-dd类型带时区，如果传入的DateTime不能转换为String，返回空字符串
+        /// 服务器时区
+        /// </summary>
+        /// <param name="dTime"></param>
+        /// <returns></returns>
+        public static string ToUTCDateTime(DateTime dTime)
+        {
+            return ToDateTimeString(dTime, TimeFormatEnum.UTCDateTime);
         }
     }
 }

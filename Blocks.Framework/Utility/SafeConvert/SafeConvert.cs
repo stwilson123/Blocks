@@ -8,7 +8,7 @@ namespace Blocks.Framework.Utility.SafeConvert
         private static string[] _dateTimeFormat =
         {
             "yyyy-MM-dd", "yyyy-MM-dd HH:mm:ss", "yyyy-MM-dd HH:mm:ss.fff", "HH:mm:ss", "yyMMdd", "yy", "yyyyMMdd",
-            "HHmmss", "yyyyMM", "yyMM", "yyyyMMddHHmmss", "yyyyMMddHHmmssfff", "yyyy-MM"
+            "HHmmss", "yyyyMM", "yyMM", "yyyyMMddHHmmss", "yyyyMMddHHmmssfff", "yyyy-MM","yyyy-MM-ddTHH:mm:sszzz"
         };
 
         /// <summary>

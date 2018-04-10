@@ -46,7 +46,7 @@
         this.actions = {
             saveClick: function (event) {
                 var postData = _Blocks.utility.extend({},viewModel);
-                postData.registerTime = _Blocks.utility.dateConvert.toUtcDate(postData.registerTime);
+           //     postData.registerTime = _Blocks.utility.dateConvert.toUtcDate(postData.registerTime);
                 blocks.service.safePubAjax({
                     url: '/api/services/BussnessWebModule/MasterData/Add', data: blocks.utility.Json.stringify(postData),
                     onSuccessCallBack: function (result) {

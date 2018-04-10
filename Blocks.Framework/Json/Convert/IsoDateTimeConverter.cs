@@ -1,4 +1,5 @@
 ﻿using System;
+using Blocks.Framework.Utility.SafeConvert;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
@@ -12,7 +13,6 @@ namespace Blocks.Framework.Json.Convert
             {
                 return true;
             }
-
             return false;
         }
 
@@ -33,7 +33,7 @@ namespace Blocks.Framework.Json.Convert
         {
             var date = value as DateTime?;
 //            base.WriteJson(writer, date.HasValue ? Clock.Normalize(date.Value) : value, serializer);
-            base.WriteJson(writer, date.HasValue ? date.Value : value, serializer);
+            base.WriteJson(writer,  DateTimeHelper.ToGMTDateTime(date), serializer);
 
         }
     }

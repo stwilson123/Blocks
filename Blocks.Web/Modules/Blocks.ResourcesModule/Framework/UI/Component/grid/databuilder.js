@@ -2,7 +2,7 @@ define(['./gridbase','blocks_utility'], function (grid,utility) {
     var validate = utility.validate;
     var dataBuilder = function (gridObj) {
         initReader(gridObj);
-
+        initDataColumn(gridObj);
     };
 
     grid.prototype.loadLocalData = function () {
@@ -35,9 +35,14 @@ define(['./gridbase','blocks_utility'], function (grid,utility) {
         }
     };
     function initDataColumn(gridObj) {
+        var options = gridObj._options;
         for (var i = 0; i < options.colModel.length; i++) {
-            var searchOpt = $.extend({}, gridObj.config.body.searchoptions[options.colModel[i].datatype.type], options.colModel[i].searchoptions);
-            options.colModel[i].searchoptions = searchOpt;
+            var dataOpt = options.colModel[i].datatype = $.extend({}, gridObj.config.data.dataFormat[options.colModel[i].datatype.type], options.colModel[i].datatype);
+            if (dataOpt) {
+                options.colModel[i].formatter = dataOpt.formatter;
+                options.colModel[i].unformat = dataOpt.unformatter;
+            }
+            
         }
     }
     grid.prototype.reloadGrid = function (option) {

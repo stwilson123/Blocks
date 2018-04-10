@@ -1,5 +1,5 @@
-define(['jquery','../../datepicker','blocks_utility'],function ($,datepicker,utility) {
-
+define(['jquery','../../datepicker','blocks_utility','../../dialog'],function ($,datepicker,utility,dialog) {
+    var utility = utility;
     var config = {
         'default': {
             ajaxGridOptions: {
@@ -121,7 +121,6 @@ define(['jquery','../../datepicker','blocks_utility'],function ($,datepicker,uti
                 'colModel': {width: 100, align: 'left', sortable: true, datatype: {type: 'string', format: ''}},
                 'multiselectEdit': false
             },
-            'datetype': {'date': {type: 'date', format: 'yyyy-MM-DD'}},
             'searchoptions': {
                 'date': {
                     dataInit: function (elem) {
@@ -141,11 +140,19 @@ define(['jquery','../../datepicker','blocks_utility'],function ($,datepicker,uti
         },
         'data':{
             'default': {
+         
             },
-            'dataFormat':{
-                
+            'dataFormat': {
+                'date': {
+                    srcformat: 'YYYY/MM/DD HH:mm:ss', desformat: 'YYYY/MM/DD HH:mm:ss', formatter: function (cellvalue, options, rowObject) {
+                       return utility.dateConvert.format(cellvalue,options.colModel.datatype.desformat);
+                    }, unformatter: function (cellvalue, options, rowObject) {
+                        return utility.dateConvert.toUtcDate(cellvalue);
+                    }
+                }
             }
         }
+      
     }
     
     

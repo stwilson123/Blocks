@@ -25,7 +25,7 @@
                         {name: 'comboboxText'},
 
                         {
-                            name: 'registerTime', datatype:{ type:'date', format:''}
+                            name: 'registerTime', datatype:{ type:'date'}
                         },
                         {name: 'isActive', formatter: 'select', editoptions: {value: {'1': 'OK', '0': 'NO'}}},
                         {name: 'comment', sortable: false}
