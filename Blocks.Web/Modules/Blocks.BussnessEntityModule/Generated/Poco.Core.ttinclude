@@ -545,7 +545,7 @@ void PKHandle(Tables tables)
 						WriteLine("Table Name " + table.Name + "'s can't find in generate tables. ");
 						break;
 				    }
-					if(item.foreign_key != null && !table.Columns.Any(t => t.PropertyName == item.foreign_key))
+					if(item.foreign_key == null || !table.Columns.Any(t => t.PropertyName == item.foreign_key))
 					{
 						WriteLine("Table Name " + table.Name + "'s can't find foreign key '"+ item.foreign_key +"'." +"Please check config xml.");
 						break;
@@ -567,7 +567,7 @@ void PKHandle(Tables tables)
 						WriteLine("Table Name " + table.Name + "'s can't find in generate tables. ");
 						break;
 				    }
-			        if(item.target_Entity_foreign_key != null && !targetEntity.Columns.Any(t => t.PropertyName == item.target_Entity_foreign_key))
+			        if(item.target_Entity_foreign_key == null || !targetEntity.Columns.Any(t => t.PropertyName == item.target_Entity_foreign_key))
 					{
 						WriteLine("Table Name " + targetEntity.Name + "'s can't find foreign key '"+ item.target_Entity_foreign_key +"'." +"Please check config xml.");
 						break;
