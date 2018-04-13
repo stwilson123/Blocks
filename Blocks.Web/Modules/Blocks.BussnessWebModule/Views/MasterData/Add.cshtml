@@ -6,9 +6,9 @@
     // Style.Include("IndexCss.css").AtHead();
 }
 
-<div>
-    <form name="tenantCreateForm" role="form" novalidate class="form-validation">
-        <div class="modal-body">
+<div class="modal-dialog">
+    <form name="tenantCreateForm" role="form" novalidate class="form-validation modal-body">
+        <div class="row">
             
             <div class="col-sm-12 col-md-6 col-lg-6">
                 <div class="form-group form-float  ">
@@ -73,17 +73,17 @@
                 </div>
             </div>
             
-@*            <div class="col-sm-12 col-md-6 col-lg-6 ">*@
-@*                <div class="form-group">*@
-@*                    <p>*@
-@*                        <input type="radio" name="gender" value="true" id="gender1"  />*@
-@*                        <label for="gender">男</label>*@
-@*                        <input type="radio" name="gender" value="true" id="gender2"   />*@
-@*                        <label for="gender">女</label>*@
-@*                    </p>*@
-@*                  *@
-@*                </div>*@
-@*            </div>*@
+            @*            <div class="col-sm-12 col-md-6 col-lg-6 ">*@
+            @*                <div class="form-group">*@
+            @*                    <p>*@
+            @*                        <input type="radio" name="gender" value="true" id="gender1"  />*@
+            @*                        <label for="gender">男</label>*@
+            @*                        <input type="radio" name="gender" value="true" id="gender2"   />*@
+            @*                        <label for="gender">女</label>*@
+            @*                    </p>*@
+            @*                  *@
+            @*                </div>*@
+            @*            </div>*@
             <div class=" col-sm-12 col-md-12 col-lg-12">
                 <div class="form-group form-float ">
                     <div class="form-line">
@@ -94,10 +94,11 @@
             </div>
         </div>
         <table id="gridInfo"></table>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-default waves-effect"   v-on:click="cancelClick"  data-dismiss="modal">Cancel</button>
-            <button type="button" class="btn btn-primary waves-effect" v-on:click="saveClick" >Save</button>
-        </div>
+        
     </form>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default waves-effect waves-light"   v-on:click="cancelClick"  data-dismiss="modal"><em class="fa fa-close"></em>&nbsp;Cancel</button>
+        <button type="button" class="btn btn-primary waves-effect waves-light" v-on:click="saveClick" ><em class="fa fa-plus"></em>&nbsp;Save</button>
+    </div>
 </div>
  

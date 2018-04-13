@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Runtime.InteropServices.ComTypes;
-using Blocks.BussnessEntityModule;
-using Blocks.BussnessRespositoryModule;
 using Blocks.Framework.DBORM.DBContext;
 using Blocks.Framework.DBORM.Repository;
 using System.Collections.Generic;
@@ -35,5 +33,12 @@ namespace EntityFramework.Test.Model
             return value;
         }
  
+    }
+
+    public class TestRepository3 : DBSqlRepositoryBase<TESTENTITY3>, ITestRepository3
+    {
+        public TestRepository3(IDbContextProvider dbContextProvider) : base(dbContextProvider)
+        {
+        }
     }
 }

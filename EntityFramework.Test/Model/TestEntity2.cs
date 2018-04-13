@@ -1,8 +1,7 @@
-﻿using Blocks.Framework.Data.Entity;
-using System;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using Blocks.Framework.Data.Entity;
 
-namespace Blocks.BussnessEntityModule
+namespace EntityFramework.Test.Model
 {
     public partial class TESTENTITY2   : Entity   
     {
@@ -15,13 +14,10 @@ namespace Blocks.BussnessEntityModule
     {
         public TestEntity2Configuration() 
         {
+            ToTable("TESTENTITY2");
+            HasKey(x => x.Id);
         }
 
-        public TestEntity2Configuration(string schema)
-        {
-            ToTable("TestEntity2", schema);
-            HasKey(x => x.Id);
-           
-        }
+       
     }
 }

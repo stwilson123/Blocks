@@ -48,17 +48,27 @@ namespace Blocks.BussnessRespositoryModule
 
         public PageList<PageResult> GetPageList(SearchModel search)
         {
-            return GetContextTable().InnerJoin((TESTENTITY testEntity) => testEntity.TESTENTITY2ID,
-                    (TESTENTITY2 testEntity2) => testEntity2.Id)
-                .Paging((TESTENTITY testEntity,TESTENTITY2 testEntity2) => new PageResult
+            return GetContextTable()
+                .Paging((TESTENTITY testEntity) => new PageResult
                 {
                     Id = testEntity.Id,
-                    comboboxText = testEntity2.Text,
+                    comboboxText = testEntity.TESTENTITY2.Text,
                     city = testEntity.STRING,
                     isActive = testEntity.ISACTIVE,
                     comment = testEntity.COMMENT,
-                     registerTime =   testEntity.REGISTERTIME
+                    registerTime =   testEntity.REGISTERTIME
                 }, search.page);
+//            return GetContextTable().InnerJoin((TESTENTITY testEntity) => testEntity.TESTENTITY2ID,
+//                    (TESTENTITY2 testEntity2) => testEntity2.Id)
+//                .Paging((TESTENTITY testEntity,TESTENTITY2 testEntity2) => new PageResult
+//                {
+//                    Id = testEntity.Id,
+//                    comboboxText = testEntity2.Text,
+//                    city = testEntity.STRING,
+//                    isActive = testEntity.ISACTIVE,
+//                    comment = testEntity.COMMENT,
+//                     registerTime =   testEntity.REGISTERTIME
+//                }, search.page);
         }
     }
 }

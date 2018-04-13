@@ -414,3 +414,5 @@ input[type=checkbox]:not(:disabled).tabbed:focus ~ .lever::after {
 .switch label input[type=checkbox][disabled]:checked + .lever:after {
   background-color: #BDBDBD;
 }
+
+ 

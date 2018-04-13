@@ -132,6 +132,7 @@
     <Compile Include="BlocksTestBase.cs" />
     <Compile Include="DBORM\Linq\LinqQueryableTest.cs" />
     <Compile Include="EntityConfig.cs" />
+    <Compile Include="FunctionTest\RelationShipTest.cs" />
     <Compile Include="FunctionTest\RepositoryTest.cs" />
     <Compile Include="GlobalSettingProvider.cs" />
     <Compile Include="Model\ITestRepository.cs" />

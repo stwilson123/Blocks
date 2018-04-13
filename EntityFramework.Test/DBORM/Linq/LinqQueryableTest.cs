@@ -1,11 +1,11 @@
-﻿using Blocks.BussnessEntityModule;
-using Blocks.Framework.DBORM.Linq;
+﻿using Blocks.Framework.DBORM.Linq;
 using EntityFramework.Test;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using EntityFramework.Test.Model;
 using Xunit;
 
 namespace Blocks.Framework.Test.DBORM.Linq

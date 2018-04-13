@@ -1364,6 +1364,7 @@ namespace Blocks.BussnessEntityModule
     	    [Column("ID")]
 		public override string Id { set ; get ; }
 	    	    public string TESTENTITYID { set; get; }
+	    	    public string TESTENTITYID1 { set; get; }
 		}
     
     public partial class MIGRATIONHISTORY   : Entity   
@@ -1701,6 +1702,63 @@ namespace Blocks.BussnessEntityModule
 	    	    public long? CreatorUserId { set; get; }
 		}
     
+    public partial class BDTA_PRODUCTELEMENT   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string PRODUCTELEMENT_CODE { set; get; }
+	    	    public string PRODUCTELEMENT_LENGTH { set; get; }
+	    	    public string PRODUCTELEMENT_NAME { set; get; }
+	    	    public string PRODUCTELEMENT_DESCRIPTION { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string BDTA_PRODUCTELEMENT_TYPEID { set; get; }
+		}
+    
+    public partial class BDTA_PRODUCTFORMAT_DETAIL   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string PRODUCTFORMATID { set; get; }
+	    	    public string PRODUCTELEMENTID { set; get; }
+	    	    public long? PRODUCTFORMAT_DETAIL_SEQ { set; get; }
+	    	    public string PRODUCTFORMAT_DETAIL_NAME { set; get; }
+	    	    public long? PRODUCTFORMAT_DETAIL_BEGIN { set; get; }
+	    	    public long? PRODUCTFORMAT_DETAIL_END { set; get; }
+	    	    public long? PRODUCTFORMAT_DETAIL_LENTH { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+		}
+    
+    public partial class BDTA_PRODUCTFORMAT   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string PRODUCTFORMAT_CODE { set; get; }
+	    	    public long? PRODUCTFORMAT_LENGTH { set; get; }
+	    	    public string PRODUCTFORMAT_NAME { set; get; }
+	    	    public string PRODUCTFORMAT_DESCRIPTION { set; get; }
+	    	    public DateTime? PRODUCTFORMAT_UTIME { set; get; }
+	    	    public string PRODUCTFORMAT_UUSER { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+		}
+    
     public partial class SYS_ACTION_TYPE   : Entity   
     {
  
@@ -1734,6 +1792,21 @@ namespace Blocks.BussnessEntityModule
 	    	    public long? ACTIVITY { set; get; }
 	    	    public string FACTORY_ID { set; get; }
 		}
+    
+    public partial class BDTA_PRODUCTELEMENT_TYPE   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string CODE { set; get; }
+	    	    public string NAME { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+		}
 
 
     
@@ -1743,13 +1816,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public BDTA_MATERIAL_WORKINGConfiguration()
         {
-        }
-		public BDTA_MATERIAL_WORKINGConfiguration(string schema)
-        {
-			ToTable("BDTA_MATERIAL_WORKING", schema);
+			ToTable("BDTA_MATERIAL_WORKING");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																																																														 
+        }
+		 
 	}
     
  
@@ -1758,13 +1831,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public BDTA_MATTYPEConfiguration()
         {
-        }
-		public BDTA_MATTYPEConfiguration(string schema)
-        {
-			ToTable("BDTA_MATTYPE", schema);
+			ToTable("BDTA_MATTYPE");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																																																																					 
+        }
+		 
 	}
     
  
@@ -1773,13 +1846,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public BDTA_MOLDConfiguration()
         {
-        }
-		public BDTA_MOLDConfiguration(string schema)
-        {
-			ToTable("BDTA_MOLD", schema);
+			ToTable("BDTA_MOLD");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																																																																																																																																																		 
+        }
+		 
 	}
     
  
@@ -1788,13 +1861,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public BDTA_MOLD_ADDConfiguration()
         {
-        }
-		public BDTA_MOLD_ADDConfiguration(string schema)
-        {
-			ToTable("BDTA_MOLD_ADD", schema);
+			ToTable("BDTA_MOLD_ADD");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																																																																																																	 
+        }
+		 
 	}
     
  
@@ -1803,13 +1876,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public BDTA_ORG_FACTORYConfiguration()
         {
-        }
-		public BDTA_ORG_FACTORYConfiguration(string schema)
-        {
-			ToTable("BDTA_ORG_FACTORY", schema);
+			ToTable("BDTA_ORG_FACTORY");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																																																							 
+        }
+		 
 	}
     
  
@@ -1818,13 +1891,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public BDTA_ORG_ORGRELATIONConfiguration()
         {
-        }
-		public BDTA_ORG_ORGRELATIONConfiguration(string schema)
-        {
-			ToTable("BDTA_ORG_ORGRELATION", schema);
+			ToTable("BDTA_ORG_ORGRELATION");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																																																							 
+        }
+		 
 	}
     
  
@@ -1833,13 +1906,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public BDTA_ORG_STOREROOMConfiguration()
         {
-        }
-		public BDTA_ORG_STOREROOMConfiguration(string schema)
-        {
-			ToTable("BDTA_ORG_STOREROOM", schema);
+			ToTable("BDTA_ORG_STOREROOM");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																																																																																																																																				 
+        }
+		 
 	}
     
  
@@ -1848,13 +1921,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public BDTA_ORG_STORESITEConfiguration()
         {
-        }
-		public BDTA_ORG_STORESITEConfiguration(string schema)
-        {
-			ToTable("BDTA_ORG_STORESITE", schema);
+			ToTable("BDTA_ORG_STORESITE");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																																																																																																																																																																																																										 
+        }
+		 
 	}
     
  
@@ -1863,13 +1936,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public BDTA_PROCESSPATHConfiguration()
         {
-        }
-		public BDTA_PROCESSPATHConfiguration(string schema)
-        {
-			ToTable("BDTA_PROCESSPATH", schema);
+			ToTable("BDTA_PROCESSPATH");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																																																																																			 
+        }
+		 
 	}
     
  
@@ -1878,13 +1951,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public BDTA_QUEUEConfiguration()
         {
-        }
-		public BDTA_QUEUEConfiguration(string schema)
-        {
-			ToTable("BDTA_QUEUE", schema);
+			ToTable("BDTA_QUEUE");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																																																														 
+        }
+		 
 	}
     
  
@@ -1893,13 +1966,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public BDTA_ROUTINGConfiguration()
         {
-        }
-		public BDTA_ROUTINGConfiguration(string schema)
-        {
-			ToTable("BDTA_ROUTING", schema);
+			ToTable("BDTA_ROUTING");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																																																																																			 
+        }
+		 
 	}
     
  
@@ -1908,13 +1981,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public BDTA_SETUPConfiguration()
         {
-        }
-		public BDTA_SETUPConfiguration(string schema)
-        {
-			ToTable("BDTA_SETUP", schema);
+			ToTable("BDTA_SETUP");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																																																																																			 
+        }
+		 
 	}
     
  
@@ -1923,13 +1996,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public BDTA_STATIONConfiguration()
         {
-        }
-		public BDTA_STATIONConfiguration(string schema)
-        {
-			ToTable("BDTA_STATION", schema);
+			ToTable("BDTA_STATION");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																																																																																										 
+        }
+		 
 	}
     
  
@@ -1938,13 +2011,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public BDTA_CALDETAILConfiguration()
         {
-        }
-		public BDTA_CALDETAILConfiguration(string schema)
-        {
-			ToTable("BDTA_CALDETAIL", schema);
+			ToTable("BDTA_CALDETAIL");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																																																																																																								 
+        }
+		 
 	}
     
  
@@ -1953,13 +2026,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public BDTA_CALNUMBERConfiguration()
         {
-        }
-		public BDTA_CALNUMBERConfiguration(string schema)
-        {
-			ToTable("BDTA_CALNUMBER", schema);
+			ToTable("BDTA_CALNUMBER");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																																																																												 
+        }
+		 
 	}
     
  
@@ -1968,13 +2041,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public BDTA_CHECKTOOLConfiguration()
         {
-        }
-		public BDTA_CHECKTOOLConfiguration(string schema)
-        {
-			ToTable("BDTA_CHECKTOOL", schema);
+			ToTable("BDTA_CHECKTOOL");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																																																																																																																																																																																																																																						 
+        }
+		 
 	}
     
  
@@ -1983,13 +2056,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public BDTA_CODE_FORMATConfiguration()
         {
-        }
-		public BDTA_CODE_FORMATConfiguration(string schema)
-        {
-			ToTable("BDTA_CODE_FORMAT", schema);
+			ToTable("BDTA_CODE_FORMAT");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																																																							 
+        }
+		 
 	}
     
  
@@ -1998,13 +2071,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public BDTA_CODE_FORMAT_DEFINEConfiguration()
         {
-        }
-		public BDTA_CODE_FORMAT_DEFINEConfiguration(string schema)
-        {
-			ToTable("BDTA_CODE_FORMAT_DEFINE", schema);
+			ToTable("BDTA_CODE_FORMAT_DEFINE");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																																																																												 
+        }
+		 
 	}
     
  
@@ -2013,13 +2086,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public BDTA_CODE_FORMAT_ELEMENTConfiguration()
         {
-        }
-		public BDTA_CODE_FORMAT_ELEMENTConfiguration(string schema)
-        {
-			ToTable("BDTA_CODE_FORMAT_ELEMENT", schema);
+			ToTable("BDTA_CODE_FORMAT_ELEMENT");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																																																																					 
+        }
+		 
 	}
     
  
@@ -2028,13 +2101,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public BDTA_COLLECT_STATIONConfiguration()
         {
-        }
-		public BDTA_COLLECT_STATIONConfiguration(string schema)
-        {
-			ToTable("BDTA_COLLECT_STATION", schema);
+			ToTable("BDTA_COLLECT_STATION");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																																																																																																																													 
+        }
+		 
 	}
     
  
@@ -2043,13 +2116,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public BDTA_COLLECT_STATION_DETAILConfiguration()
         {
-        }
-		public BDTA_COLLECT_STATION_DETAILConfiguration(string schema)
-        {
-			ToTable("BDTA_COLLECT_STATION_DETAIL", schema);
+			ToTable("BDTA_COLLECT_STATION_DETAIL");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																																																														 
+        }
+		 
 	}
     
  
@@ -2058,13 +2131,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public BDTA_COLLECT_STATION_SKILLConfiguration()
         {
-        }
-		public BDTA_COLLECT_STATION_SKILLConfiguration(string schema)
-        {
-			ToTable("BDTA_COLLECT_STATION_SKILL", schema);
+			ToTable("BDTA_COLLECT_STATION_SKILL");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																																																 
+        }
+		 
 	}
     
  
@@ -2073,13 +2146,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public BDTA_COMMON_EQUIPMENTConfiguration()
         {
-        }
-		public BDTA_COMMON_EQUIPMENTConfiguration(string schema)
-        {
-			ToTable("BDTA_COMMON_EQUIPMENT", schema);
+			ToTable("BDTA_COMMON_EQUIPMENT");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																																																																																																															 
+        }
+		 
 	}
     
  
@@ -2088,13 +2161,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public BDTA_DEPARTMENTConfiguration()
         {
-        }
-		public BDTA_DEPARTMENTConfiguration(string schema)
-        {
-			ToTable("BDTA_DEPARTMENT", schema);
+			ToTable("BDTA_DEPARTMENT");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																																																							 
+        }
+		 
 	}
     
  
@@ -2103,13 +2176,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public BDTA_DICTIONARYConfiguration()
         {
-        }
-		public BDTA_DICTIONARYConfiguration(string schema)
-        {
-			ToTable("BDTA_DICTIONARY", schema);
+			ToTable("BDTA_DICTIONARY");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																																																														 
+        }
+		 
 	}
     
  
@@ -2118,13 +2191,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public BDTA_DICTIONARY_TYPEConfiguration()
         {
-        }
-		public BDTA_DICTIONARY_TYPEConfiguration(string schema)
-        {
-			ToTable("BDTA_DICTIONARY_TYPE", schema);
+			ToTable("BDTA_DICTIONARY_TYPE");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																																																							 
+        }
+		 
 	}
     
  
@@ -2133,13 +2206,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public BDTA_EMPLOYEEConfiguration()
         {
-        }
-		public BDTA_EMPLOYEEConfiguration(string schema)
-        {
-			ToTable("BDTA_EMPLOYEE", schema);
+			ToTable("BDTA_EMPLOYEE");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																																																																																			 
+        }
+		 
 	}
     
  
@@ -2148,13 +2221,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public BDTA_EMPLOYEE_SKILLConfiguration()
         {
-        }
-		public BDTA_EMPLOYEE_SKILLConfiguration(string schema)
-        {
-			ToTable("BDTA_EMPLOYEE_SKILL", schema);
+			ToTable("BDTA_EMPLOYEE_SKILL");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																																																 
+        }
+		 
 	}
     
  
@@ -2163,13 +2236,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public BDTA_FILEConfiguration()
         {
-        }
-		public BDTA_FILEConfiguration(string schema)
-        {
-			ToTable("BDTA_FILE", schema);
+			ToTable("BDTA_FILE");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																																																																																																	 
+        }
+		 
 	}
     
  
@@ -2178,13 +2251,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public BDTA_FROCKConfiguration()
         {
-        }
-		public BDTA_FROCKConfiguration(string schema)
-        {
-			ToTable("BDTA_FROCK", schema);
+			ToTable("BDTA_FROCK");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																																																																																																																																																																																																																	 
+        }
+		 
 	}
     
  
@@ -2193,13 +2266,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public BDTA_KEY_EQUIPMENTConfiguration()
         {
-        }
-		public BDTA_KEY_EQUIPMENTConfiguration(string schema)
-        {
-			ToTable("BDTA_KEY_EQUIPMENT", schema);
+			ToTable("BDTA_KEY_EQUIPMENT");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																																																																																																	 
+        }
+		 
 	}
     
  
@@ -2208,13 +2281,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public BDTA_MACHING_CENTERConfiguration()
         {
-        }
-		public BDTA_MACHING_CENTERConfiguration(string schema)
-        {
-			ToTable("BDTA_MACHING_CENTER", schema);
+			ToTable("BDTA_MACHING_CENTER");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																																																																																																																																																																 
+        }
+		 
 	}
     
  
@@ -2223,13 +2296,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public BDTA_MAINTAIN_STATIONConfiguration()
         {
-        }
-		public BDTA_MAINTAIN_STATIONConfiguration(string schema)
-        {
-			ToTable("BDTA_MAINTAIN_STATION", schema);
+			ToTable("BDTA_MAINTAIN_STATION");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																																																							 
+        }
+		 
 	}
     
  
@@ -2238,13 +2311,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public BDTA_MATERIALConfiguration()
         {
-        }
-		public BDTA_MATERIALConfiguration(string schema)
-        {
-			ToTable("BDTA_MATERIAL", schema);
+			ToTable("BDTA_MATERIAL");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																																																																																																																																																																																																																																																																																																																																								 
+        }
+		 
 	}
     
  
@@ -2253,13 +2326,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public BDTA_MATERIAL_BOMConfiguration()
         {
-        }
-		public BDTA_MATERIAL_BOMConfiguration(string schema)
-        {
-			ToTable("BDTA_MATERIAL_BOM", schema);
+			ToTable("BDTA_MATERIAL_BOM");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																																																																																																								 
+        }
+		 
 	}
     
  
@@ -2268,13 +2341,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public BDTA_MATERIAL_CATEGORYConfiguration()
         {
-        }
-		public BDTA_MATERIAL_CATEGORYConfiguration(string schema)
-        {
-			ToTable("BDTA_MATERIAL_CATEGORY", schema);
+			ToTable("BDTA_MATERIAL_CATEGORY");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																																									 
+        }
+		 
 	}
     
  
@@ -2283,13 +2356,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public BDTA_MATERIAL_PACKAGEConfiguration()
         {
-        }
-		public BDTA_MATERIAL_PACKAGEConfiguration(string schema)
-        {
-			ToTable("BDTA_MATERIAL_PACKAGE", schema);
+			ToTable("BDTA_MATERIAL_PACKAGE");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																																																 
+        }
+		 
 	}
     
  
@@ -2298,13 +2371,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public BDTA_MATERIAL_TYPEConfiguration()
         {
-        }
-		public BDTA_MATERIAL_TYPEConfiguration(string schema)
-        {
-			ToTable("BDTA_MATERIAL_TYPE", schema);
+			ToTable("BDTA_MATERIAL_TYPE");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																																																																																																	 
+        }
+		 
 	}
     
  
@@ -2313,13 +2386,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public BDTA_MATERIAL_WORKCENTERConfiguration()
         {
-        }
-		public BDTA_MATERIAL_WORKCENTERConfiguration(string schema)
-        {
-			ToTable("BDTA_MATERIAL_WORKCENTER", schema);
+			ToTable("BDTA_MATERIAL_WORKCENTER");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																																																																																			 
+        }
+		 
 	}
     
  
@@ -2328,13 +2401,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public BDTA_SUPPLIERConfiguration()
         {
-        }
-		public BDTA_SUPPLIERConfiguration(string schema)
-        {
-			ToTable("BDTA_SUPPLIER", schema);
+			ToTable("BDTA_SUPPLIER");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																																																																																																															 
+        }
+		 
 	}
     
  
@@ -2343,13 +2416,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public BDTA_WORKINGConfiguration()
         {
-        }
-		public BDTA_WORKINGConfiguration(string schema)
-        {
-			ToTable("BDTA_WORKING", schema);
+			ToTable("BDTA_WORKING");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																																																																																																																																				 
+        }
+		 
 	}
     
  
@@ -2358,13 +2431,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public BDTA_WORKNUMBERConfiguration()
         {
-        }
-		public BDTA_WORKNUMBERConfiguration(string schema)
-        {
-			ToTable("BDTA_WORKNUMBER", schema);
+			ToTable("BDTA_WORKNUMBER");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																																																																					 
+        }
+		 
 	}
     
  
@@ -2373,13 +2446,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public BDTA_WORKPROCEDUREConfiguration()
         {
-        }
-		public BDTA_WORKPROCEDUREConfiguration(string schema)
-        {
-			ToTable("BDTA_WORKPROCEDURE", schema);
+			ToTable("BDTA_WORKPROCEDURE");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																																																																												 
+        }
+		 
 	}
     
  
@@ -2388,13 +2461,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public BDTA_WORKSECTIONConfiguration()
         {
-        }
-		public BDTA_WORKSECTIONConfiguration(string schema)
-        {
-			ToTable("BDTA_WORKSECTION", schema);
+			ToTable("BDTA_WORKSECTION");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																																																														 
+        }
+		 
 	}
     
  
@@ -2403,13 +2476,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public BDTA_WORKSHOPConfiguration()
         {
-        }
-		public BDTA_WORKSHOPConfiguration(string schema)
-        {
-			ToTable("BDTA_WORKSHOP", schema);
+			ToTable("BDTA_WORKSHOP");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																																																																																																																						 
+        }
+		 
 	}
     
  
@@ -2418,13 +2491,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public BDTA_WORKTEAMConfiguration()
         {
-        }
-		public BDTA_WORKTEAMConfiguration(string schema)
-        {
-			ToTable("BDTA_WORKTEAM", schema);
+			ToTable("BDTA_WORKTEAM");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																																																																																																																						 
+        }
+		 
 	}
     
  
@@ -2433,13 +2506,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public BDTA_WORKTEAM_MEMBERConfiguration()
         {
-        }
-		public BDTA_WORKTEAM_MEMBERConfiguration(string schema)
-        {
-			ToTable("BDTA_WORKTEAM_MEMBER", schema);
+			ToTable("BDTA_WORKTEAM_MEMBER");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																																																							 
+        }
+		 
 	}
     
  
@@ -2448,13 +2521,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public SYS_LOGConfiguration()
         {
-        }
-		public SYS_LOGConfiguration(string schema)
-        {
-			ToTable("SYS_LOG", schema);
+			ToTable("SYS_LOG");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																																									 
+        }
+		 
 	}
     
  
@@ -2463,13 +2536,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public SYS_POPEDOMPROGRAMConfiguration()
         {
-        }
-		public SYS_POPEDOMPROGRAMConfiguration(string schema)
-        {
-			ToTable("SYS_POPEDOMPROGRAM", schema);
+			ToTable("SYS_POPEDOMPROGRAM");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																																																 
+        }
+		 
 	}
     
  
@@ -2478,13 +2551,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public SYS_PROGRAMConfiguration()
         {
-        }
-		public SYS_PROGRAMConfiguration(string schema)
-        {
-			ToTable("SYS_PROGRAM", schema);
+			ToTable("SYS_PROGRAM");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																																																																																																																													 
+        }
+		 
 	}
     
  
@@ -2493,13 +2566,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public SYS_PROGRAM_OPERATION_WEBConfiguration()
         {
-        }
-		public SYS_PROGRAM_OPERATION_WEBConfiguration(string schema)
-        {
-			ToTable("SYS_PROGRAM_OPERATION_WEB", schema);
+			ToTable("SYS_PROGRAM_OPERATION_WEB");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																																																 
+        }
+		 
 	}
     
  
@@ -2508,13 +2581,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public SYS_PROGRAM_WINFORMConfiguration()
         {
-        }
-		public SYS_PROGRAM_WINFORMConfiguration(string schema)
-        {
-			ToTable("SYS_PROGRAM_WINFORM", schema);
+			ToTable("SYS_PROGRAM_WINFORM");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																																																																																																																						 
+        }
+		 
 	}
     
  
@@ -2523,13 +2596,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public SYS_ROLEAUTHORIZEConfiguration()
         {
-        }
-		public SYS_ROLEAUTHORIZEConfiguration(string schema)
-        {
-			ToTable("SYS_ROLEAUTHORIZE", schema);
+			ToTable("SYS_ROLEAUTHORIZE");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																																																							 
+        }
+		 
 	}
     
  
@@ -2538,13 +2611,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public SYS_ROLEINFOConfiguration()
         {
-        }
-		public SYS_ROLEINFOConfiguration(string schema)
-        {
-			ToTable("SYS_ROLEINFO", schema);
+			ToTable("SYS_ROLEINFO");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																																																 
+        }
+		 
 	}
     
  
@@ -2553,13 +2626,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public SYS_ROLEUSERConfiguration()
         {
-        }
-		public SYS_ROLEUSERConfiguration(string schema)
-        {
-			ToTable("SYS_ROLEUSER", schema);
+			ToTable("SYS_ROLEUSER");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																																									 
+        }
+		 
 	}
     
  
@@ -2568,13 +2641,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public SYS_SYSTEMINFOConfiguration()
         {
-        }
-		public SYS_SYSTEMINFOConfiguration(string schema)
-        {
-			ToTable("SYS_SYSTEMINFO", schema);
+			ToTable("SYS_SYSTEMINFO");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																																		 
+        }
+		 
 	}
     
  
@@ -2583,13 +2656,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public SYS_USERINFOConfiguration()
         {
-        }
-		public SYS_USERINFOConfiguration(string schema)
-        {
-			ToTable("SYS_USERINFO", schema);
+			ToTable("SYS_USERINFO");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																																																																					 
+        }
+		 
 	}
     
  
@@ -2598,13 +2671,15 @@ namespace Blocks.BussnessEntityModule
     {
 		public TESTENTITYConfiguration()
         {
-        }
-		public TESTENTITYConfiguration(string schema)
-        {
-			ToTable("TESTENTITY", schema);
+			ToTable("TESTENTITY");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																																								 HasRequired(t => t.TESTENTITY2).WithMany().HasForeignKey(t => t.TESTENTITY2ID_NULLABLE);	
+															     HasMany(t => t.TESTENTITY3s).WithOptional().HasForeignKey(t => t.TESTENTITYID1);
+										 
+        }
+		 
 	}
     
  
@@ -2613,13 +2688,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public TESTENTITY2Configuration()
         {
-        }
-		public TESTENTITY2Configuration(string schema)
-        {
-			ToTable("TESTENTITY2", schema);
+			ToTable("TESTENTITY2");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																	 
+        }
+		 
 	}
     
  
@@ -2628,13 +2703,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public TESTENTITY3Configuration()
         {
-        }
-		public TESTENTITY3Configuration(string schema)
-        {
-			ToTable("TESTENTITY3", schema);
+			ToTable("TESTENTITY3");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																								 
+        }
+		 
 	}
     
  
@@ -2643,13 +2718,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public MIGRATIONHISTORYConfiguration()
         {
-        }
-		public MIGRATIONHISTORYConfiguration(string schema)
-        {
-			ToTable("MIGRATIONHISTORY", schema);
+			ToTable("MIGRATIONHISTORY");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																															 
+        }
+		 
 	}
     
  
@@ -2658,13 +2733,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public BLOCKS_AUDITLOGSConfiguration()
         {
-        }
-		public BLOCKS_AUDITLOGSConfiguration(string schema)
-        {
-			ToTable("BLOCKS_AUDITLOGS", schema);
+			ToTable("BLOCKS_AUDITLOGS");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																																																																												 
+        }
+		 
 	}
     
  
@@ -2673,13 +2748,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public BLOCKS_BACKGROUNDJOBSConfiguration()
         {
-        }
-		public BLOCKS_BACKGROUNDJOBSConfiguration(string schema)
-        {
-			ToTable("BLOCKS_BACKGROUNDJOBS", schema);
+			ToTable("BLOCKS_BACKGROUNDJOBS");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																																									 
+        }
+		 
 	}
     
  
@@ -2688,13 +2763,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public BLOCKS_FEATURESConfiguration()
         {
-        }
-		public BLOCKS_FEATURESConfiguration(string schema)
-        {
-			ToTable("BLOCKS_FEATURES", schema);
+			ToTable("BLOCKS_FEATURES");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																											 
+        }
+		 
 	}
     
  
@@ -2703,13 +2778,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public BLOCKS_EDITIONSConfiguration()
         {
-        }
-		public BLOCKS_EDITIONSConfiguration(string schema)
-        {
-			ToTable("BLOCKS_EDITIONS", schema);
+			ToTable("BLOCKS_EDITIONS");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																																									 
+        }
+		 
 	}
     
  
@@ -2718,13 +2793,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public BLOCKS_LANGUAGESConfiguration()
         {
-        }
-		public BLOCKS_LANGUAGESConfiguration(string schema)
-        {
-			ToTable("BLOCKS_LANGUAGES", schema);
+			ToTable("BLOCKS_LANGUAGES");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																																																														 
+        }
+		 
 	}
     
  
@@ -2733,13 +2808,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public BLOCKS_LANGUAGETEXTSConfiguration()
         {
-        }
-		public BLOCKS_LANGUAGETEXTSConfiguration(string schema)
-        {
-			ToTable("BLOCKS_LANGUAGETEXTS", schema);
+			ToTable("BLOCKS_LANGUAGETEXTS");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																																									 
+        }
+		 
 	}
     
  
@@ -2748,13 +2823,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public BLOCKS_NOTIFICATIONSConfiguration()
         {
-        }
-		public BLOCKS_NOTIFICATIONSConfiguration(string schema)
-        {
-			ToTable("BLOCKS_NOTIFICATIONS", schema);
+			ToTable("BLOCKS_NOTIFICATIONS");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																																																														 
+        }
+		 
 	}
     
  
@@ -2763,13 +2838,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public BLOCKS_NOTIFY_SUBSCRIPTIONSConfiguration()
         {
-        }
-		public BLOCKS_NOTIFY_SUBSCRIPTIONSConfiguration(string schema)
-        {
-			ToTable("BLOCKS_NOTIFY_SUBSCRIPTIONS", schema);
+			ToTable("BLOCKS_NOTIFY_SUBSCRIPTIONS");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																																		 
+        }
+		 
 	}
     
  
@@ -2778,13 +2853,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public BLOCKS_ORGANIZATION_UNITSConfiguration()
         {
-        }
-		public BLOCKS_ORGANIZATION_UNITSConfiguration(string schema)
-        {
-			ToTable("BLOCKS_ORGANIZATION_UNITS", schema);
+			ToTable("BLOCKS_ORGANIZATION_UNITS");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																																																							 
+        }
+		 
 	}
     
  
@@ -2793,13 +2868,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public BLOCKS_PERMISSIONSConfiguration()
         {
-        }
-		public BLOCKS_PERMISSIONSConfiguration(string schema)
-        {
-			ToTable("BLOCKS_PERMISSIONS", schema);
+			ToTable("BLOCKS_PERMISSIONS");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																																		 
+        }
+		 
 	}
     
  
@@ -2808,13 +2883,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public BLOCKS_ROLESConfiguration()
         {
-        }
-		public BLOCKS_ROLESConfiguration(string schema)
-        {
-			ToTable("BLOCKS_ROLES", schema);
+			ToTable("BLOCKS_ROLES");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																																																																					 
+        }
+		 
 	}
     
  
@@ -2823,13 +2898,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public BLOCKS_USERSConfiguration()
         {
-        }
-		public BLOCKS_USERSConfiguration(string schema)
-        {
-			ToTable("BLOCKS_USERS", schema);
+			ToTable("BLOCKS_USERS");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																																																																																																																																																																 
+        }
+		 
 	}
     
  
@@ -2838,13 +2913,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public BLOCKS_USER_CLAIMSConfiguration()
         {
-        }
-		public BLOCKS_USER_CLAIMSConfiguration(string schema)
-        {
-			ToTable("BLOCKS_USER_CLAIMS", schema);
+			ToTable("BLOCKS_USER_CLAIMS");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																				 
+        }
+		 
 	}
     
  
@@ -2853,13 +2928,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public BLOCKS_USER_LOGINSConfiguration()
         {
-        }
-		public BLOCKS_USER_LOGINSConfiguration(string schema)
-        {
-			ToTable("BLOCKS_USER_LOGINS", schema);
+			ToTable("BLOCKS_USER_LOGINS");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																						 
+        }
+		 
 	}
     
  
@@ -2868,13 +2943,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public BLOCKS_USER_ROLESConfiguration()
         {
-        }
-		public BLOCKS_USER_ROLESConfiguration(string schema)
-        {
-			ToTable("BLOCKS_USER_ROLES", schema);
+			ToTable("BLOCKS_USER_ROLES");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																													 
+        }
+		 
 	}
     
  
@@ -2883,13 +2958,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public BLOCKS_SETTINGSConfiguration()
         {
-        }
-		public BLOCKS_SETTINGSConfiguration(string schema)
-        {
-			ToTable("BLOCKS_SETTINGS", schema);
+			ToTable("BLOCKS_SETTINGS");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																																		 
+        }
+		 
 	}
     
  
@@ -2898,13 +2973,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public BLOCKS_TENANT_NOTIFICATIONSConfiguration()
         {
-        }
-		public BLOCKS_TENANT_NOTIFICATIONSConfiguration(string schema)
-        {
-			ToTable("BLOCKS_TENANT_NOTIFICATIONS", schema);
+			ToTable("BLOCKS_TENANT_NOTIFICATIONS");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																																																 
+        }
+		 
 	}
     
  
@@ -2913,13 +2988,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public BLOCKS_TENANTSConfiguration()
         {
-        }
-		public BLOCKS_TENANTSConfiguration(string schema)
-        {
-			ToTable("BLOCKS_TENANTS", schema);
+			ToTable("BLOCKS_TENANTS");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																																																														 
+        }
+		 
 	}
     
  
@@ -2928,13 +3003,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public BLOCKS_USER_ACCOUNTSConfiguration()
         {
-        }
-		public BLOCKS_USER_ACCOUNTSConfiguration(string schema)
-        {
-			ToTable("BLOCKS_USER_ACCOUNTS", schema);
+			ToTable("BLOCKS_USER_ACCOUNTS");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																																																																					 
+        }
+		 
 	}
     
  
@@ -2943,13 +3018,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public BLOCKS_USER_LOGINATTEMPTSConfiguration()
         {
-        }
-		public BLOCKS_USER_LOGINATTEMPTSConfiguration(string schema)
-        {
-			ToTable("BLOCKS_USER_LOGINATTEMPTS", schema);
+			ToTable("BLOCKS_USER_LOGINATTEMPTS");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																																									 
+        }
+		 
 	}
     
  
@@ -2958,13 +3033,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public BLOCKS_USERNOTIFICATIONSConfiguration()
         {
-        }
-		public BLOCKS_USERNOTIFICATIONSConfiguration(string schema)
-        {
-			ToTable("BLOCKS_USERNOTIFICATIONS", schema);
+			ToTable("BLOCKS_USERNOTIFICATIONS");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																													 
+        }
+		 
 	}
     
  
@@ -2973,13 +3048,58 @@ namespace Blocks.BussnessEntityModule
     {
 		public BLOCKS_USERORGANIZATION_UNITSConfiguration()
         {
-        }
-		public BLOCKS_USERORGANIZATION_UNITSConfiguration(string schema)
-        {
-			ToTable("BLOCKS_USERORGANIZATION_UNITS", schema);
+			ToTable("BLOCKS_USERORGANIZATION_UNITS");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																				 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class BDTA_PRODUCTELEMENTConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_PRODUCTELEMENT> 
+    {
+		public BDTA_PRODUCTELEMENTConfiguration()
+        {
+			ToTable("BDTA_PRODUCTELEMENT");
+			            HasKey(x => x.Id);
+		 
+		 
+			 																																																																																							 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class BDTA_PRODUCTFORMAT_DETAILConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_PRODUCTFORMAT_DETAIL> 
+    {
+		public BDTA_PRODUCTFORMAT_DETAILConfiguration()
+        {
+			ToTable("BDTA_PRODUCTFORMAT_DETAIL");
+			            HasKey(x => x.Id);
+		 
+		 
+			 																																																																																																					 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class BDTA_PRODUCTFORMATConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_PRODUCTFORMAT> 
+    {
+		public BDTA_PRODUCTFORMATConfiguration()
+        {
+			ToTable("BDTA_PRODUCTFORMAT");
+			            HasKey(x => x.Id);
+		 
+		 
+			 																																																																																														 
+        }
+		 
 	}
     
  
@@ -2988,13 +3108,13 @@ namespace Blocks.BussnessEntityModule
     {
 		public SYS_ACTION_TYPEConfiguration()
         {
-        }
-		public SYS_ACTION_TYPEConfiguration(string schema)
-        {
-			ToTable("SYS_ACTION_TYPE", schema);
+			ToTable("SYS_ACTION_TYPE");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																																		 
+        }
+		 
 	}
     
  
@@ -3003,12 +3123,27 @@ namespace Blocks.BussnessEntityModule
     {
 		public BDTA_WORK_CENTERConfiguration()
         {
-        }
-		public BDTA_WORK_CENTERConfiguration(string schema)
-        {
-			ToTable("BDTA_WORK_CENTER", schema);
+			ToTable("BDTA_WORK_CENTER");
 			            HasKey(x => x.Id);
 		 
-	    }
+		 
+			 																																																																																														 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class BDTA_PRODUCTELEMENT_TYPEConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_PRODUCTELEMENT_TYPE> 
+    {
+		public BDTA_PRODUCTELEMENT_TYPEConfiguration()
+        {
+			ToTable("BDTA_PRODUCTELEMENT_TYPE");
+			            HasKey(x => x.Id);
+		 
+		 
+			 																																																																		 
+        }
+		 
 	}
 }

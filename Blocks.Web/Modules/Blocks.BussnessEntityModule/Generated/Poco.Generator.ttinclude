@@ -210,32 +210,24 @@ foreach(Table tbl in from t in tables where !t.Ignore select t)
     {
 		public <#=tbl.ClassName#>Configuration()
         {
-        }
-		public <#=tbl.ClassName#>Configuration(string schema)
-        {
-			ToTable("<#=tbl.ClassName#>", schema);
+			ToTable("<#=tbl.ClassName#>");
 			<# if(tbl.PK == null){ WriteLine("\""+tbl.ClassName + " can't find primary key.\"");break;}#>
             HasKey(x => x.Id);
 		 
-<# foreach(Column col in from c in tbl.Columns where !c.Ignore select c)
-{
-		// Column bindings
-#>
-<# if (false) { #>
-<# if (TrackModifiedColumns) { #>
- 
-		public <#=col.PropertyType #><#=CheckNullable(col)#> <#=col.PropertyName #> { set; get; }
-
-<# } else { #>
-<# if (col.Name!=col.PropertyName) { #>
-		[Column("<#=col.Name#>")] public <#=col.PropertyType #><#=CheckNullable(col)#> <#=col.PropertyName #> { get; set; }
-<# } else { #>
-		<# if (ExplicitColumns) { #>[Column] <# } #>public <#=col.PropertyType #><#=CheckNullable(col)#> <#=col.PropertyName #> { get; set;}	
-<# } #>	  
-<# } #>
-<# } #>
-<# } #>
-	    }
+		 
+			 <# foreach(Column col in from c in tbl.Columns where !c.Ignore select c)
+				{
+						// Column bindings
+				#>
+				<# if (col.relationship != null && col.relationship.isHasMany.HasValue && !col.relationship.isHasMany.Value) { #>
+					 HasOptional(t => t.<#=col.PropertyName #>).WithMany().HasForeignKey(t => t.<#=col.relationship.foreign_key #>);	
+				<# } else if(col.relationship != null && col.relationship.isHasMany.HasValue && col.relationship.isHasMany.Value) { #>
+				     HasMany(t => t.<#=col.PropertyName #>).WithOptional().HasForeignKey(t => t.<#=col.relationship.target_Entity_foreign_key #>);
+				<# } #>
+			<# } #>
+			 
+        }
+		 
 	}
 <# } #>
 <# } #>

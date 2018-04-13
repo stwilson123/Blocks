@@ -8,8 +8,9 @@
 //------------------------------------------------------------------------------
 
 using System.Data.Entity;
-using Blocks.BussnessEntityModule;
 using System.Configuration;
+using Castle.DynamicProxy.Generators.Emitters.SimpleAST;
+using EntityFramework.Test.Model;
 
 namespace EntityFramework.Test
 {
@@ -25,6 +26,9 @@ namespace EntityFramework.Test
             var schema = ConfigurationManager.AppSettings.Get("Schema");
             modelBuilder.HasDefaultSchema(schema);
             modelBuilder.Conventions.Remove<System.Data.Entity.ModelConfiguration.Conventions.PluralizingTableNameConvention>();
+            modelBuilder.Configurations.Add(new TestEntityConfiguration());
+            modelBuilder.Configurations.Add(new TestEntity2Configuration());
+            modelBuilder.Configurations.Add(new TestEntity3Configuration());
 
             //modelBuilder.Entity<TestEntity>().HasMany(t => t.TestEntity3s);
         }

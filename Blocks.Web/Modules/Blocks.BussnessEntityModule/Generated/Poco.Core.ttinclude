@@ -144,6 +144,15 @@ public class Column
 	public bool IsAutoIncrement;
 	public bool Ignore;
 	public bool IsFK;
+
+    public RelationShip relationship;
+}
+
+public class RelationShip
+{
+	public bool? isHasMany;
+    public string foreign_key;
+	public string target_Entity_foreign_key;
 }
 
 public class Tables : List<Table>
@@ -499,7 +508,7 @@ public class one_to_one
     public string target_Entity { set; get; }
 
     [XmlAttribute]
-    public string property_ref { set; get; }
+    public string foreign_key { set; get; }
 }
 public class one_to_many
 {
@@ -507,7 +516,7 @@ public class one_to_many
     public string target_Entity { set; get; }
 
     [XmlAttribute]
-    public string property_ref { set; get; }
+    public string target_Entity_foreign_key { set; get; }
 }
 void PKHandle(Tables tables)
 {
@@ -527,36 +536,44 @@ void PKHandle(Tables tables)
        {
            foreach (var item in fkEntityConfig.listOne2One)
            {
-				if(item.target_Entity != null && item.property_ref != null)
-			    {	WriteLine("Table Name " + table.Name + "'s property target_Entity and property_ref can't set value at the same time. ");
-				   break;
-                }
+			 
 				if(item.target_Entity != null) 
                 {
+					
 					if(!tables.Any(t => t.Name == item.target_Entity))
 					{	
 						WriteLine("Table Name " + table.Name + "'s can't find in generate tables. ");
 						break;
 				    }
-					table.Columns.Add(new Column(){ Name = item.target_Entity, PropertyName = item.target_Entity, PropertyType = item.target_Entity, IsFK = true });
+					if(item.foreign_key != null && !table.Columns.Any(t => t.PropertyName == item.foreign_key))
+					{
+						WriteLine("Table Name " + table.Name + "'s can't find foreign key '"+ item.foreign_key +"'." +"Please check config xml.");
+						break;
+					}
+					table.Columns.Add(new Column(){ Name = item.target_Entity, PropertyName = item.target_Entity, PropertyType = item.target_Entity, IsFK = true, relationship = new RelationShip(){ isHasMany = false, 
+					foreign_key = item.foreign_key}});
 				}
            }
 
 		   
            foreach (var item in fkEntityConfig.listOne2Many)
            {
-				if(item.target_Entity != null && item.property_ref != null)
-			    {	WriteLine("Table Name " + table.Name + "'s property target_Entity and property_ref can't set value at the same time. ");
-					break;
-                }
+				 
 				if(item.target_Entity != null) 
                 {
-					if(!tables.Any(t => t.Name == item.target_Entity))
+			        var targetEntity = tables.FirstOrDefault(t => t.Name == item.target_Entity);
+					if(targetEntity == null)
 					{	
 						WriteLine("Table Name " + table.Name + "'s can't find in generate tables. ");
 						break;
 				    }
-					table.Columns.Add(new Column(){  Name = item.target_Entity + "s",PropertyName = item.target_Entity + "s", PropertyType = "ICollection<"+ item.target_Entity+">", IsFK = true });
+			        if(item.target_Entity_foreign_key != null && !targetEntity.Columns.Any(t => t.PropertyName == item.target_Entity_foreign_key))
+					{
+						WriteLine("Table Name " + targetEntity.Name + "'s can't find foreign key '"+ item.target_Entity_foreign_key +"'." +"Please check config xml.");
+						break;
+					}
+					table.Columns.Add(new Column(){  Name = item.target_Entity + "s",PropertyName = item.target_Entity + "s", PropertyType = "ICollection<"+ item.target_Entity+">", IsFK = true,
+					relationship = new RelationShip(){ isHasMany = true,  target_Entity_foreign_key = item.target_Entity_foreign_key}});
 				}
            }
        }

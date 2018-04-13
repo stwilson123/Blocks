@@ -1,9 +1,8 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Collections.Generic;
 using Blocks.Framework.Data.Entity;
 
-namespace Blocks.BussnessEntityModule
+namespace EntityFramework.Test.Model
 {
     public partial class TESTENTITY   : Entity   
     {
@@ -13,6 +12,7 @@ namespace Blocks.BussnessEntityModule
         public string TESTENTITY2ID { set; get; }
         public decimal COLNUMINT { set; get; }
         public string TESTENTITY2ID_NULLABLE { set; get; }
+        
         public decimal? COLNUMINT_NULLABLE { set; get; }
         public string STRING { set; get; }
         public long ISACTIVE { set; get; }
@@ -25,16 +25,16 @@ namespace Blocks.BussnessEntityModule
     {
         public TestEntityConfiguration() 
         {
-        }
-        
-        
-
-        public TestEntityConfiguration(string schema)
-        {
-            ToTable("TestEntity", schema);
+            ToTable("TESTENTITY");
             HasKey(x => x.Id);
-           
+            HasOptional(t => t.TESTENTITY2).WithMany().HasForeignKey(t => t.TESTENTITY2ID_NULLABLE);
+            HasMany(t => t.TESTENTITY3s).WithOptional().HasForeignKey(t => t.TESTENTITYID1);
 
+ 
+     
         }
+        
+        
+ 
     }
 }

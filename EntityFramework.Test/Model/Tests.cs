@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Dynamic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using Blocks.Framework.DBORM.Linq;
-using Xunit;
 using Queryable = System.Linq.Queryable;
 
-namespace EntityFramework.Test
+namespace EntityFramework.Test.Model
 {
 //    public class Tests
 //    {

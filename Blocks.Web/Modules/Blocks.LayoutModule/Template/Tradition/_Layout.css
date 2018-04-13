@@ -4,4 +4,30 @@
 
 .select2-container--open{
     z-index:99999999
-}  
+}
+
+.modal-dialog .modal-body {
+    color: #777;
+    padding: 15px 25px; }
+.modal-dialog .modal-footer {
+    border: none; 
+}
+.layui-layer-content .modal-dialog{
+    width:auto;
+    margin: auto;
+}
+.layui-layer-title {
+    padding: 25px 25px 5px 25px;
+    height: 65px;
+    line-height: 42px;
+     border-bottom: 0px solid #eee; 
+    font-size: 16px;
+    color: #333;
+    overflow: hidden;
+    background-color: inherit;
+    border-radius: 2px 2px 0 0;
+    font-weight: bold;
+}
+
+
+ 

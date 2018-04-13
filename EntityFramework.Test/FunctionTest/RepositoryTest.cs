@@ -4,7 +4,6 @@ using Xunit;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using Blocks.BussnessEntityModule;
 
 namespace EntityFramework.Test.FunctionTest
 {

@@ -4,11 +4,11 @@
         <entityClass table="TESTENTITY">
             <generate-ones>
                 <!--<generate-one target_Entity="TestEntity2" property-ref="Id" />-->
-              <generate-one target_Entity="TESTENTITY2"/>
+              <generate-one target_Entity="TESTENTITY2" foreign_key="TESTENTITY2ID_NULLABLE" />
             </generate-ones>
           <generate-manys>
             <!--<generate-one target_Entity="TestEntity2" property-ref="Id" />-->
-            <generate-many target_Entity="TESTENTITY3"/>
+            <generate-many target_Entity="TESTENTITY3" target_Entity_foreign_key="TESTENTITYID1"  />
           </generate-manys>
         </entityClass>
     </entities>
