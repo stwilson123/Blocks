@@ -5,6 +5,7 @@ define(['../gridbase', 'blocks_utility'], function (grid, utility) {
         gridObj._options = $.extend(true, {}, this.config, gridObj._options);
         initColumn.call(this,gridObj);
         initSelectRow.call(this,gridObj);
+        initCheckBox.call(this, gridObj);
         this.bodyVisile = true;
 
     };
@@ -54,6 +55,22 @@ define(['../gridbase', 'blocks_utility'], function (grid, utility) {
             }
         };
         gridObj.on('onSelectRow', editSelectRow);
+    }
+    
+    function initCheckBox(gridObj) {
+        if (gridObj._options.multiselect) {
+            gridObj.on('loadComplete', function () {
+
+                gridObj.getTopObj().find("input:checkbox").each(function (i) {
+                    var curObj = $(this);
+                    if (i === 0 )
+                        $("<label for='"+curObj.attr("id")+"'></label>").insertAfter(curObj)
+                    else
+                        $("<label ></label>").insertAfter(curObj)
+                })
+
+            });
+        }
     }
     return gridBody;
 });

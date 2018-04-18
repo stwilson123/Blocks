@@ -13,12 +13,12 @@ and open the template in the editor.
 .ui-state-hover
 {
     border: .15em solid;
-	border-color: inherit;
+    border-color: inherit;
 
 }
 .ui-jqdialog .ui-jqdialog-titlebar  {
-	height:29px;
-	border-color: inherit;
+    height:29px;
+    border-color: inherit;
 }
 
 .ui-jqdialog-content input.FormElement {
@@ -29,20 +29,80 @@ and open the template in the editor.
     height:30px;
 }
 #nData, #pData { height:20px; width:18px; }
+/*.ui-th-column */
+/*{*/
+    /*font-family: 'Open Sans', 'Helvetica Neue', Helvetica, sans-serif;*/
+    /*background-color: #d8dce3;*/
+    /*!*color: #3b4354;*!*/
+    /*font-size: 12px;*/
+    /*letter-spacing: .5px;*/
+    /*vertical-align: bottom;*/
+/*}*/
 
-/*.ui-th-column, .ui-jqgrid .ui-jqgrid-htable th.ui-th-column {
-    text-align: center;
-}*/
+/*.ui-jqgrid-view*/
+/*{*/
+    /*background-color: #f0f1f4;*/
+/*}*/
 
-/*.ui-th-column, .ui-th-ltr {
-     background-color: #F2F2F2;
-            color: black;
-}*/
+/*.ui-jqgrid-btable > tbody > tr.active > td*/
+/*{*/
+    /*background-color: #e7e9ee;*/
+/*}*/
+/*.table>tbody>tr.active>td,.table>tbody>tr.active>th,.table>tbody>tr>td.active,.table>tbody>tr>th.active,.table>tfoot>tr.active>td,.table>tfoot>tr.active>th,.table>tfoot>tr>td.active,.table>tfoot>tr>th.active,.table>thead>tr.active>td,.table>thead>tr.active>th,.table>thead>tr>td.active,.table>thead>tr>th.active {*/
+    /*background-color: #f5f5f5;*/
+/*}*/
 
-.ui-jqgrid-hbox, .ui-jqgrid .ui-jqgrid-view .ui-jqgrid-hdiv div.ui-jqgrid-hbox
-{
-      background-color: #F2F2F2;
-            color: black;
+.ui-jqgrid .ui-jqgrid-btable tbody tr.jqgrow td {
+     padding-right: 8px; 
+}
+.ui-jqgrid .ui-jqgrid-titlebar {
+    min-height: 30px;
 }
 
+.ui-jqgrid tr.ui-jqgrid-labels > th {
+    padding: 8px;
+}
+
+.ui-jqgrid .ui-th-div .cbox{
+    margin-left: 4px;
+}
+.ui-jqgrid .ui-jqgrid-htable .ui-th-div {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    height: 20px;
+    font-size: 16px;
+}
+
+.ui-jqgrid table.ui-pg-table.ui-pager-table > tbody > tr > td {
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+.ui-jqgrid table.ui-jqgrid-btable > tbody > tr.jqgrow.ui-row-ltr > td {
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+.ui-jqgrid .ui-jqgrid-resize-ltr{
+    margin: -2px -4px -2px 0;
+}
+.ui-jqgrid-btable > tbody > tr > td > [type="checkbox"] + label {
+    height: 10px;
+}
+
+.ui-jqgrid-btable > tbody > tr > td > [type="checkbox"]:not(:checked) + label:before,
+.ui-jqgrid-btable > tbody > tr > td > [type="checkbox"]:not(:checked) + label:after {
+    border: 2px solid #ddd;
+}
+
+.opsel {
+    width:60%
+}
  
+/*.ui-jqgrid-btable > tbody > tr > td > [type="checkbox"] +  label:before,*/
+/*.ui-jqgrid-btable > tbody > tr > td > [type="checkbox"] +  label:after,*/
+/*.ui-jqgrid-htable > thead > tr > th > div > [type="checkbox"] +  label:before,*/
+/*.ui-jqgrid-htable > thead > tr > th > div > [type="checkbox"] +  label:after{*/
+    /*width: 15px;*/
+    /*height: 15px;*/
+/*}*/

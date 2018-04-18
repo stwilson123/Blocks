@@ -160,6 +160,49 @@ namespace Blocks.Framework.Web.Mvc.Extensions
             }
         }
 
+        private static string GetPathWithVersion(ScriptEntry scriptEntry)
+        {
+            var path = scriptEntry.Src;
+            if (Cache.ContainsKey(path))
+            {
+                return Cache[path];
+            }
+
+            lock (SyncObj)
+            {
+                if (Cache.ContainsKey(path))
+                {
+                    return Cache[path];
+                }
+
+                string result;
+                try
+                {
+                    // CDN resource
+                    if (path.StartsWith("http://", StringComparison.CurrentCultureIgnoreCase) || path.StartsWith("//", StringComparison.CurrentCultureIgnoreCase))
+                    {
+                        //Replace "http://" from beginning
+                        result = Regex.Replace(path, @"^http://", "//", RegexOptions.IgnoreCase);
+                    }
+                    else
+                    {
+                        var fullPath = HttpContext.Current.Server.MapPath(path.Replace("/", "\\"));
+                        result = File.Exists(fullPath)
+                            ? GetPathWithVersioningForPhysicalFile(path, fullPath)
+                            : GetPathWithVersioningForEmbeddedFile(path);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    LogHelper.Logger.Error("Can not find file for: " + path + "! " + ex.ToString());
+                    result = path;
+                }
+
+                Cache[path] = result;
+                return result;
+            }
+        }
+        
         private static string GetPathWithVersioningForPhysicalFile(string path, string filePath)
         {
             var fileVersion = new FileInfo(filePath).LastWriteTime.Ticks;

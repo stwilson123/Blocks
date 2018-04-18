@@ -1717,7 +1717,7 @@ namespace Blocks.BussnessEntityModule
 	    	    public DateTime? UPDATEDATE { set; get; }
 	    	    public string UPDATER { set; get; }
 	    	    public long? ACTIVITY { set; get; }
-	    	    public string BDTA_PRODUCTELEMENT_TYPEID { set; get; }
+	    	    public string BDTA_PRODUCTELEMENT_TYPE_ID { set; get; }
 		}
     
     public partial class BDTA_PRODUCTFORMAT_DETAIL   : Entity   
@@ -2675,8 +2675,8 @@ namespace Blocks.BussnessEntityModule
 			            HasKey(x => x.Id);
 		 
 		 
-			 																																																																								 HasRequired(t => t.TESTENTITY2).WithMany().HasForeignKey(t => t.TESTENTITY2ID_NULLABLE);	
-															     HasMany(t => t.TESTENTITY3s).WithOptional().HasForeignKey(t => t.TESTENTITYID1);
+			 																																																																								 HasOptional(t => t.TESTENTITY2).WithMany().HasForeignKey(t => t.TESTENTITY2ID);	
+															     HasMany(t => t.TESTENTITY3s).WithOptional().HasForeignKey(t => t.TESTENTITYID);
 										 
         }
 		 

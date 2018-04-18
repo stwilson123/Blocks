@@ -4,6 +4,8 @@ using Blocks.BussnessDTOModule.MasterData;
 using Blocks.BussnessEntityModule;
 using Blocks.BussnessRespositoryModule;
 using Blocks.Framework.Data.Paging;
+using Blocks.Framework.Exceptions;
+using Blocks.Framework.Localization;
 using Blocks.Framework.Utility.SafeConvert;
 
 namespace Blocks.BussnessDomainModule.MasterData
@@ -19,7 +21,6 @@ namespace Blocks.BussnessDomainModule.MasterData
         
         public virtual string Add(MasterData data)
         {
-
             var newMasterData = new TESTENTITY()
             {
                 STRING = data.city,

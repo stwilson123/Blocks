@@ -36,7 +36,28 @@
                     rownumbers:true,
                    
                 });
-                window.mainGrid = mainGrid;
+                colNamesArray = ['ID', '城市', 'comboboxText', '注册时间', '激活', '备注']; //数据列名称（数组） 
+               var mainDetailGrid = new blocks.ui.grid({
+                    // url: "/api/services/BussnessWebModule/MasterData/GetPageList",
+                    gridObj: view.find("#gridDetailInfo"),
+                    colNames: colNamesArray,
+                    colModel: [
+                        {name: 'Id', hidden: true},
+                        {name: 'city'},
+                        {name: 'comboboxText'},
+
+                        {
+                            name: 'registerTime', datatype:{ type:'date'}
+                        },
+                        {name: 'isActive', formatter: 'select', editoptions: {value: {'1': 'OK', '0': 'NO'}}},
+                        {name: 'comment', sortable: false}
+                    ],
+                    // caption: "",
+                    idKey: "Id",
+                    dynamicConditionQuery: {active: true},
+                    rownumbers:true,
+
+                });
                 // mainGrid.reloadGrid({url: "/api/services/BussnessWebModule/MasterData/GetPageList"});
 
 
@@ -57,7 +78,7 @@
         this.actions = {
             addClick: function (event) {
                 blocks.ui.dialog.dialog({
-                    url: 'Add', title: 'title', end: function (result) {
+                    url: 'Add',passData:{ isAdd:true}, title: 'title', end: function (result) {
                         blocks.ui.dialog.info({content: result});
                     }
                 });

@@ -49,6 +49,7 @@
 
     var dialog = function (setting) {
         this.dialogIndex = setting.dialogIndex;
+        this.passData = setting.passData;
         this.viewComponent = layer;
     };
     dialog.prototype = {
@@ -140,7 +141,7 @@
 
     dialogUI.dialog = function (option) {
 
-
+        var passData = option.passData;
         dialogUI.loading.open();
         utility.ajax.pubAjax({
             dataType: 'html',
@@ -173,7 +174,7 @@
             if (blocks.pageContext && blocks.pageContext.subPageJsVirtualPath) {
                 require([utility.url.pathToRelative(blocks.pageContext.subPageJsVirtualPath, blocks.pageContext.modulePrefix, '.js')], function (containerModules) {
                     currentModule = containerModules;
-                    containerModules.init($.extend($('#' + WrapperId).children(),{ currentPage: new dialog({dialogIndex: layerIndex})}));
+                    containerModules.init($.extend($('#' + WrapperId).children(),{ currentPage: new dialog({dialogIndex: layerIndex,passData:passData})}));
                 });
 
                 //  require(['Blocks.BussnessWebModule/Views/MasterData/Index']);

@@ -331,7 +331,10 @@ namespace Blocks.Framework.DBORM.Repository
             //Could not found the entity, do nothing.
         }
 
-       
+        public override long Delete(Expression<Func<TEntity, bool>> predicate)
+        {
+            return GetAllCode().Where(predicate).Delete();
+        }
 
         public override int Count(Expression<Func<TEntity, bool>> predicate)
         {

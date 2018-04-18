@@ -5,9 +5,9 @@
     var validate = utility.validate;
     var grid = function (option) {
         validate.mustUseNew(grid);
-        this._eventsStore = $.extend({},this.config.eventsStore);
+        this._eventsStore = $.extend(true, {},this.config.eventsStore);
         this._options = $.extend(true, this.config.default, option);
-        initEvent.call(this);
+        //initEvent.call(this);
     };
     function initEvent() 
     {
@@ -15,7 +15,7 @@
         var eventsStore = this._eventsStore;
 
         function eventFire(eventname) {
-          
+
             gridOptions[eventname] = function () {
                 var eventArray = eventsStore[eventname];
                 for (var i = 0; i < eventArray.length; i++) {
@@ -39,7 +39,9 @@
         var event = this._eventsStore[eventName];
         if (!event)
             throw new Error("eventName " + eventName + " can't implement");
+ 
         event.push(loadEventFun);
+        
     };
 
     grid.prototype.config = gridConfig;

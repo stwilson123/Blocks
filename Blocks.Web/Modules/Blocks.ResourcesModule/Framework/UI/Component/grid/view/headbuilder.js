@@ -12,7 +12,7 @@ define(function (grid) {
         //显示列序号 
         if (gridObj._options.rownumbers) {
             gridObj.on('loadComplete', function () {
-                $gridObj.jqGrid('setLabel', 0, '序号', 'labelstyle');
+               // $gridObj.jqGrid('setLabel', 0, '序号', 'labelstyle',{"style":"width:44px"});
             });
         }
     };

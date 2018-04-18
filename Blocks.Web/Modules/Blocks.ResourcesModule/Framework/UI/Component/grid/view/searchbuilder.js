@@ -18,7 +18,7 @@ define(['../gridbase', 'blocks_utility','../../../../Design/decorator'], functio
         var options = gridObj._options;
         if (options.dynamicConditionQuery && options.dynamicConditionQuery.active === true) {
             for (var i = 0; i < options.colModel.length; i++) {
-                var searchOpt = $.extend({}, gridObj.config.body.searchoptions[options.colModel[i].datatype.type], options.colModel[i].searchoptions);
+                var searchOpt = $.extend(true, {}, gridObj.config.body.searchoptions[options.colModel[i].datatype.type], options.colModel[i].searchoptions);
                 options.colModel[i].searchoptions = searchOpt;
             }
         }

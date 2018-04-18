@@ -735,11 +735,11 @@ a.g-menu-item, a.soptclass, a.clearsearchclass {
 .ui-jqgrid .ui-scroll-popup {
 	width: 100px;
 }
-.ui-search-table select,
-.ui-search-table input 
-{
-	padding: 4px 3px;
-}
+/*.ui-search-table select,*/
+/*.ui-search-table input */
+/*{*/
+	/*padding: 4px 3px;*/
+/*}*/
 	
 .ui-disabled {
 	opacity: .35;

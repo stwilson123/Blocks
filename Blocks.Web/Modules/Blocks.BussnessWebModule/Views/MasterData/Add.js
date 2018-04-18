@@ -35,7 +35,7 @@
                 });
             },
             'dispose': function () {
-                return "返回值";
+                return "返回值" +view.currentPage.passData;
             },
             'resize': function () {
                 //blocks.ui.dialog.info({content: '123'});
