@@ -7,7 +7,7 @@ define(['./gridbase','blocks_utility'], function (grid,utility) {
 
     grid.prototype.loadLocalData = function () {
         var $gridObj = this._options.gridObj;
-        var firstOptions = $.extend(true, this._options, {
+        var firstOptions = $.extend(true,{}, this._options, {
             datatype: 'local'
         });
         $gridObj.jqGrid(firstOptions);
@@ -54,6 +54,7 @@ define(['./gridbase','blocks_utility'], function (grid,utility) {
             page: 1,
             ReloadType: "normal"
         };
+        //option.showPager || validate.isNullOrEmpty() ? 10 : 999999,   //不显示分页栏时，默认显示全部,注意设-1时无法显示最后一行
         var gridObj = this._options.gridObj;
         var options = $.extend(defaults, option);
         if (options.ReloadType == "normal") {
@@ -61,7 +62,8 @@ define(['./gridbase','blocks_utility'], function (grid,utility) {
                 gridObj.jqGrid("clearGridData");
                 gridObj.jqGrid('setGridParam', {
                     datatype: 'local',
-                    data: options.data
+                    data: options.data,
+                    rowNum:this._options.showPager === false ? 999999 : this._options.rowNum
                 }).trigger('reloadGrid', [{page: options.page}]);
             }
             else {
@@ -75,7 +77,8 @@ define(['./gridbase','blocks_utility'], function (grid,utility) {
                     url: options.url,
                     datatype: options.datatype,
                     page: options.page,
-                    postData: postJsonData
+                    postData: postJsonData,
+                    rowNum:this._options.showPager === false ? -1 : this._options.rowNum
                 }).trigger("reloadGrid");
             }
         }
@@ -210,7 +213,10 @@ define(['./gridbase','blocks_utility'], function (grid,utility) {
      
         return rowDataResult;
     };
-    
-   
+
+    grid.prototype.setCell = function(e,t,i,r,o,a){
+        var jqObj = this._options.gridObj;
+        return jqObj.jqGrid("setCell", e, t, i, r, o, a);
+    };
     return dataBuilder;
 });

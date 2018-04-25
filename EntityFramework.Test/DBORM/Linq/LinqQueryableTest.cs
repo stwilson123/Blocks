@@ -78,13 +78,13 @@ namespace Blocks.Framework.Test.DBORM.Linq
                 var constKeyId = "123";
                 var defaultLinqQuery = new DefaultLinqQueryable<TESTENTITY>(context.TestEntity.AsQueryable(), context);
                  var testEntity = defaultLinqQuery.InnerJoin((TESTENTITY t) => t.TESTENTITY2ID_NULLABLE, (TESTENTITY2 b) => b.Id)
-                    .SelectToList((TESTENTITY t) => new { Id =  t.Id, TestEntity2 = new { Id =  t.TESTENTITY2ID } });
+                    .SelectToDynamicList((TESTENTITY t) => new { Id =  t.Id, TestEntity2 = new { Id =  t.TESTENTITY2ID } });
 
                 var default1Sql = defaultLinqQuery.ToString();
 
                 var defaultLinqQuery1 = new DefaultLinqQueryable<TESTENTITY>(context.TestEntity.AsQueryable(), context);
                 var testEntity1 = defaultLinqQuery1.InnerJoin((TESTENTITY t) => t.TESTENTITY2ID_NULLABLE, (TESTENTITY2 b) => b.Id)
-                   .SelectToList((TESTENTITY t,TESTENTITY2 b) => new { Id = t.Id, TestEntity2 = new { Id = b.Id } });
+                   .SelectToDynamicList((TESTENTITY t,TESTENTITY2 b) => new { Id = t.Id, TestEntity2 = new { Id = b.Id } });
 
                 var default1Sql1 = defaultLinqQuery1.ToString();
 
@@ -156,7 +156,7 @@ namespace Blocks.Framework.Test.DBORM.Linq
 
                 var defaultLinqQuery1 = new DefaultLinqQueryable<TESTENTITY>(context.TestEntity.AsQueryable(), context);
                 var testEntity1 = defaultLinqQuery1.InnerJoin((TESTENTITY t) => t.TESTENTITY2ID_NULLABLE, (TESTENTITY2 b) => b.Id)
-                   .SelectToList((TESTENTITY t, TESTENTITY2 b) => new { Id = t.Id, TestEntity2 = new { Id = b.Id } });
+                   .SelectToDynamicList((TESTENTITY t, TESTENTITY2 b) => new { Id = t.Id, TestEntity2 = new { Id = b.Id } });
 
                 var default1Sql1 = defaultLinqQuery1.ToString();
 
@@ -182,7 +182,7 @@ namespace Blocks.Framework.Test.DBORM.Linq
 
                 var entityCount = testEntityLinq.Count();
 
-                var entityCount2 = testEntityLinq.SelectToList((TESTENTITY t,TESTENTITY2 b) => new{ t.TESTENTITY2ID, b.Id});
+                var entityCount2 = testEntityLinq.SelectToDynamicList((TESTENTITY t,TESTENTITY2 b) => new{ t.TESTENTITY2ID, b.Id});
             }
         }
     }

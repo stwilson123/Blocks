@@ -52,7 +52,7 @@ define(['jquery','waves'], function ($, Waves) {
             var _this = this;
             var $body = $('body');
             var $overlay = $('.overlay');
-
+            var $bar = $('.navbar .navbar-collapse .bars');
             //Close sidebar
             $(window).click(function (e) {
                 var $target = $(e.target);
@@ -61,9 +61,14 @@ define(['jquery','waves'], function ($, Waves) {
                 if (!$target.hasClass('bars') && _this.isOpen() && $target.parents('#leftsidebar').length === 0) {
                     if (!$target.hasClass('js-right-sidebar')) $overlay.fadeOut();
                     $body.removeClass('overlay-open');
+                   
+
                 }
             });
-
+            $bar.on('click',function (e) {
+                _this.clickCollBar();
+              
+            });
             $.each($('.menu-toggle.toggled'), function (i, val) {
                 $(val).next().slideToggle(0);
             });
@@ -101,9 +106,10 @@ define(['jquery','waves'], function ($, Waves) {
             _this.checkStatuForResize(true);
             $(window).resize(function () {
                 _this.setMenuHeight();
-                _this.checkStatuForResize(false);
+              //  _this.checkStatuForResize(false);
             });
-
+            // var $openCloseBar = $('.navbar .navbar-header .bars');
+            // $openCloseBar.fadeIn();
             //Set Waves
             Waves.attach('.menu .list a', ['waves-block']);
             Waves.init();
@@ -137,23 +143,43 @@ define(['jquery','waves'], function ($, Waves) {
         },
         checkStatuForResize: function (firstTime) {
             var $body = $('body');
-            var $openCloseBar = $('.navbar .navbar-header .bars');
+            // var $openCloseBar = $('.navbar .navbar-header .bars');
             var width = $body.width();
 
             if (firstTime) {
                 $body.find('.content, .sidebar').addClass('no-animate').delay(1000).queue(function () {
                     $(this).removeClass('no-animate').dequeue();
                 });
+                if (width < $.AdminBSB.options.leftSideBar.breakpointWidth) {
+                    $body.addClass('ls-closed');
+                    // $openCloseBar.fadeIn();
+                }
+                else {
+                    $body.removeClass('ls-closed');
+                    // $openCloseBar.fadeOut();
+                }
             }
 
-            if (width < $.AdminBSB.options.leftSideBar.breakpointWidth) {
-                $body.addClass('ls-closed');
-                $openCloseBar.fadeIn();
-            }
-            else {
-                $body.removeClass('ls-closed');
-                $openCloseBar.fadeOut();
-            }
+           
+        },
+        clickCollBar: function () {
+            var $body = $('body');
+            var $head = $(".navbar .navbar-header");
+            $body.toggleClass('ls-closed');
+            $head.toggleClass('headCollapse');
+            
+          
+            // var $openCloseBar = $('.navbar .navbar-header .bars');
+            // var width = $body.width();
+            //
+            // if (width < $.AdminBSB.options.leftSideBar.breakpointWidth) {
+            //     $body.addClass('ls-closed');
+            //     // $openCloseBar.fadeIn();
+            // }
+            // else {
+            //     $body.removeClass('ls-closed');
+            //     // $openCloseBar.fadeOut();
+            // }
         },
         isOpen: function () {
             return $('body').hasClass('overlay-open');
@@ -241,8 +267,15 @@ define(['jquery','waves'], function ($, Waves) {
 
             //Open left sidebar panel
             $('.bars').on('click', function () {
-                $body.toggleClass('overlay-open');
-                if ($body.hasClass('overlay-open')) { $overlay.fadeIn(); } else { $overlay.fadeOut(); }
+                if ($body.width < $.AdminBSB.options.leftSideBar.breakpointWidth) {
+
+                    $body.toggleClass('overlay-open');
+                    if ($body.hasClass('overlay-open')) {
+                        $overlay.fadeIn();
+                    } else {
+                        $overlay.fadeOut();
+                    }
+                }
             });
 
             //Close collapse bar on click event

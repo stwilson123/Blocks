@@ -117,13 +117,14 @@
         <!-- Top Bar -->
         <nav class="navbar">
             <div class="container-fluid">
-                <div class="navbar-header">
+                <div class="navbar-header" >
                     <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
-                    <a href="javascript:void(0);" class="bars"></a>
+                
                     <a class="navbar-brand" asp-controller="Home" asp-action="Index"><i class="fa fa-cubes"></i> Blocks</a>
                 </div>
-                <div class="collapse navbar-collapse" id="navbar-collapse">
-                    <ul class="nav navbar-nav navbar-right">
+                <div class="navbar-collapse" id="navbar-collapse" >
+                    <a href="javascript:void(0);" class="bars"></a>
+                    <ul class="collapse nav navbar-nav navbar-right">
                         <!-- Call Search -->
                         <li>
                             <a href="javascript:void(0);" class="js-search" data-close="true">
@@ -131,13 +132,13 @@
                             </a>
                         </li>
                         <!-- #END# Call Search -->
-@*                        @Html.Action("LanguageSelection", "Layout")*@
-@**@
-@*                        <li class="pull-right">*@
-@*                            <a href="javascript:void(0);" class="js-right-sidebar" data-close="true">*@
-@*                                <i class="material-icons">more_vert</i>*@
-@*                            </a>*@
-@*                        </li>*@
+                        @*                        @Html.Action("LanguageSelection", "Layout")*@
+                        @**@
+                        @*                        <li class="pull-right">*@
+                        @*                            <a href="javascript:void(0);" class="js-right-sidebar" data-close="true">*@
+                        @*                                <i class="material-icons">more_vert</i>*@
+                        @*                            </a>*@
+                        @*                        </li>*@
                     </ul>
                 </div>
             </div>

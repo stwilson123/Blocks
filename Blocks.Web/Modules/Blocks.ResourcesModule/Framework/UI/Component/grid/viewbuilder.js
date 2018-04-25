@@ -5,10 +5,22 @@ define(['./gridbase','./view/headbuilder','./view/bodybuilder','./view/pagebuild
         var body = new bodyBuilder(gridObj);
         var page = new pageBuilder(gridObj);
         var search = new searchBuilder(gridObj);
+        
         gridObj.head = head;
         gridObj.body = body;
         gridObj.page = page;
         gridObj.search = search;
+        
+        {
+            var $gridTop = gridObj.getTopObj();
+            gridObj.on('resizeStop',function () {
+                $gridTop.find('.ui-jqgrid-htable').width('100%');
+                $gridTop.find('.ui-jqgrid-btable').width('100%');
+            });
+            gridObj.on('loadComplete',function () {
+                $gridTop.find('.ui-jqgrid-btable').width('100%');
+            });
+        }
     };
 
     decoratorPattern.func.call(grid.prototype,'init',function () {
@@ -18,8 +30,23 @@ define(['./gridbase','./view/headbuilder','./view/bodybuilder','./view/pagebuild
             this.loadJsonData();
         }
         //initDynamicSelect.call(this, this._options);
-    })
-
+    });
+    decoratorPattern.func.call(grid.prototype,'afterInit',function () {
+        //TODO auto width 
+        {
+            var $gridTop = this.getTopObj();
+            $gridTop.find('.jqgrid-overlay').width('100%');
+            $gridTop.find('.ui-jqgrid-view').width('100%');
+            $gridTop.find('.ui-jqgrid-hdiv').width('100%');
+            $gridTop.find('.ui-jqgrid-htable').width('100%');
+            $gridTop.find('.ui-jqgrid-bdiv').width('100%').css('overflow-y', 'scroll');
+            $gridTop.find('.ui-jqgrid-btable').width('100%');
+            $gridTop.find('.ui-jqgrid-pager').width('100%');
+            //TODO want to set 100%,but always plus 2% 
+            $gridTop.width('98%');
+            $gridTop.find('#' + this._options.gridObj.attr('id') + '_cb').css('text-align', 'center');
+        }
+    });
     grid.prototype.getGridHeightWithoutBdiv = function () {
         var jqGridObj = this._options.gridObj;
         var jqGridTopObj = jqGridObj.parent().parent().parent().parent();
@@ -46,15 +73,15 @@ define(['./gridbase','./view/headbuilder','./view/bodybuilder','./view/pagebuild
     grid.prototype.getTopObj = function () {
         return this._options.gridObj.parent().parent().parent().parent();
     };
-    grid.prototype.saveRow = function (gridIds) {
+    grid.prototype.saveRow = function (rowIds) {
         //if (validate.isNullOrEmpty(gridIds)) {
         //    throw "请输入合适的IDs数组";
         //}
-        var jqObj = $(this.Id);
-        var GridIds = validate.isNullOrEmpty(gridIds) ? jqObj.jqGrid("getDataIDs") : gridIds;
+        var jqObj = this._options.gridObj;
+        var RowIds = rowIds ?  rowIds : jqObj.jqGrid("getDataIDs");
         var result = 0;
-        for (var i = 0; i < GridIds.length; i++) {
-            result = jqObj.jqGrid("saveRow", GridIds[i], null, 'clientArray') ? result + 1 : result;
+        for (var i = 0; i < RowIds.length; i++) {
+            result = jqObj.jqGrid("saveRow", RowIds[i], null, 'clientArray') ? result + 1 : result;
         }
         //重置最后选择项目
        // jqObj.attr("lastsel", "");
@@ -63,7 +90,7 @@ define(['./gridbase','./view/headbuilder','./view/bodybuilder','./view/pagebuild
     };
     grid.prototype.getGridState = function () {
         //TODO 如果已非默认的方式打开grid，可能导致错误，
-        var jqObj = $(this.Id);
+        var jqObj = this._options.gridObj;
         return jqObj.attr('gridstate');
     };
 

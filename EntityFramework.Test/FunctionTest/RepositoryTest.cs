@@ -95,7 +95,7 @@ namespace EntityFramework.Test.FunctionTest
             var rep = Resolve<TestRepository>();
             var keyId = "123";
              rep.Delete(t => t.Id == keyId);
-          
+           
 
         }
     }

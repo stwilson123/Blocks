@@ -6,8 +6,8 @@
     var grid = function (option) {
         validate.mustUseNew(grid);
         this._eventsStore = $.extend(true, {},this.config.eventsStore);
-        this._options = $.extend(true, this.config.default, option);
-        //initEvent.call(this);
+        this._options = $.extend(true,{}, this.config.default, option);
+        initEvent.call(this);
     };
     function initEvent() 
     {

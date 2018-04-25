@@ -84,7 +84,7 @@ and open the template in the editor.
 }
 
 .ui-jqgrid .ui-jqgrid-resize-ltr{
-    margin: -2px -4px -2px 0;
+    margin: -2px -9px -2px 0;
 }
 .ui-jqgrid-btable > tbody > tr > td > [type="checkbox"] + label {
     height: 10px;
@@ -98,7 +98,9 @@ and open the template in the editor.
 .opsel {
     width:60%
 }
- 
+.ui-jqgrid .ui-jqgrid-hbox {
+    padding-right: 17px;
+}
 /*.ui-jqgrid-btable > tbody > tr > td > [type="checkbox"] +  label:before,*/
 /*.ui-jqgrid-btable > tbody > tr > td > [type="checkbox"] +  label:after,*/
 /*.ui-jqgrid-htable > thead > tr > th > div > [type="checkbox"] +  label:before,*/

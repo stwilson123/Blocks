@@ -11,8 +11,18 @@ define(['../gridbase', 'blocks_utility'], function (grid, utility) {
     };
     grid.prototype.getSelectRowIds = function () {
         var gridObj = this._options.gridObj;
-        return !this._options.multiselect ? [gridObj.jqGrid('getGridParam','selrow')] :gridObj.jqGrid('getGridParam','selarrrow').concat()
-            ;
+        var result = [];
+        if (!this._options.multiselect)
+        {
+            var selone = gridObj.jqGrid('getGridParam','selrow');
+            if (selone)
+                result.push(selone);
+        }
+        else 
+        {
+            result = gridObj.jqGrid('getGridParam','selarrrow').concat();
+        }
+        return result
     };
     
     function initColumn(gridObj) {

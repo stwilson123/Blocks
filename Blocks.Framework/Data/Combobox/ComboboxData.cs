@@ -2,7 +2,7 @@
 
 namespace Blocks.Framework.Data.Combobox
 {
-    public class ComboboxData
+    public class ComboboxData : IDataTransferObject
     {
         [DataTransfer("id")]
         public string Id { get; set; }

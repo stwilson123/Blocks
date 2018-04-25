@@ -114,7 +114,7 @@ define(['jquery','../../datepicker','blocks_utility','../../dialog'],function ($
             }
         },
         'eventsStore': {
-            'loadComplete': [], 'onSelectRow': []
+            'loadComplete': [], 'onSelectRow': [],'resizeStop':[]
         },
         'body': {
             'default': {
@@ -125,7 +125,7 @@ define(['jquery','../../datepicker','blocks_utility','../../dialog'],function ($
                 'date': {
                     dataInit: function (elem) {
                         new datepicker({viewObj: $(elem)});
-                    }, attr: {title: 'Select Date'}, sopt: ['ge', 'le']
+                    }, sopt: ['ge', 'le']
                 },
                 'string': {
                     sopt: ['eq', 'ne']
@@ -136,6 +136,13 @@ define(['jquery','../../datepicker','blocks_utility','../../dialog'],function ($
                 'select': {
                     sopt: ['cn']
                 },
+                'checkbox': {
+                    dataInit: function (elem) {
+                        var $elem =  $(elem);
+                        $elem.attr('type','checkbox');
+                        $("<label ></label>").insertAfter($elem);
+                    }, sopt: ['eq', 'ne']
+                }
             }
         },
         'data':{
@@ -144,12 +151,25 @@ define(['jquery','../../datepicker','blocks_utility','../../dialog'],function ($
             },
             'dataFormat': {
                 'date': {
-                    srcformat: 'YYYY/MM/DD HH:mm:ss', desformat: 'YYYY/MM/DD HH:mm:ss', formatter: function (cellvalue, options, rowObject) {
+                    srcformat: 'yyyy/MM/DD HH:mm:ss', desformat: 'yyyy/MM/DD HH:mm:ss', formatter: function (cellvalue, options, rowObject) {
                        return utility.dateConvert.format(cellvalue,options.colModel.datatype.desformat);
                     }, unformatter: function (cellvalue, options, rowObject) {
                         return utility.dateConvert.toUtcDate(cellvalue);
                     }
-                }
+                },
+                // 'checkbox':{format:{ 'true':'是','false':'否'},unFormat:{ '是':'true','否':'false'},
+                //     formatter: function (cellvalue, options, rowObject) {
+                //         var curModelFormat = options.colModel.datatype.format;
+                //         if (!curModelFormat.hasOwnProperty(cellvalue))
+                //             throw new Error('Cellvalue ['+ cellvalue +'] not found in format');
+                //         return curModelFormat[cellvalue];
+                //     }, unformatter: function (cellvalue, options, rowObject) {
+                //         var curModelFormat = options.colModel.datatype.unFormat;
+                //         if (!curModelFormat.hasOwnProperty(cellvalue))
+                //             throw new Error('Cellvalue ['+ cellvalue +'] not found in unFormat');
+                //         return curModelFormat[cellvalue];
+                //     }
+                // }
             }
         }
       

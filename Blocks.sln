@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2009
+VisualStudioVersion = 15.0.27130.2026
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{DFA48E27-7D53-4955-A722-3D91A7119BE7}"
 	ProjectSection(SolutionItems) = preProject
@@ -70,8 +70,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Abp.HangFire", "Adp\Abp.Han
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Abp.Owin", "Adp\Abp.Owin\Abp.Owin.csproj", "{1E36A97E-AD8A-492B-A700-BF7892FF8BC9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blocks.Framework", "Blocks.Framework\Blocks.Framework.csproj", "{D5ACBCF7-A7A7-449E-9DCA-C1FCDE36B7B6}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blocks.ResourcesModule", "Blocks.Web\Modules\Blocks.ResourcesModule\Blocks.ResourcesModule.csproj", "{E41A7336-941C-44AF-9FBD-6A85664CC957}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blocks.LayoutModule", "Blocks.Web\Modules\Blocks.LayoutModule\Blocks.LayoutModule.csproj", "{96319EA5-C353-4624-9E18-F50743C44E7E}"
@@ -99,6 +97,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blocks.BussnessDomainExtendModule", "Blocks.Web\Modules\Blocks.BussnessDomainExtendModule\Blocks.BussnessDomainExtendModule.csproj", "{CFCC17E1-DD89-4135-A35B-682E722D070B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blocks.BussnessDTOModule", "Blocks.Web\Modules\Blocks.BussnessDTOModule\Blocks.BussnessDTOModule.csproj", "{AD72F6ED-27BD-4FFF-AD43-B653DC8F67F5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blocks.Framework", "Blocks.Framework\Blocks.Framework.csproj", "{D5ACBCF7-A7A7-449E-9DCA-C1FCDE36B7B6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -206,10 +206,6 @@ Global
 		{1E36A97E-AD8A-492B-A700-BF7892FF8BC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1E36A97E-AD8A-492B-A700-BF7892FF8BC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1E36A97E-AD8A-492B-A700-BF7892FF8BC9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D5ACBCF7-A7A7-449E-9DCA-C1FCDE36B7B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D5ACBCF7-A7A7-449E-9DCA-C1FCDE36B7B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D5ACBCF7-A7A7-449E-9DCA-C1FCDE36B7B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D5ACBCF7-A7A7-449E-9DCA-C1FCDE36B7B6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E41A7336-941C-44AF-9FBD-6A85664CC957}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E41A7336-941C-44AF-9FBD-6A85664CC957}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E41A7336-941C-44AF-9FBD-6A85664CC957}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -266,6 +262,10 @@ Global
 		{AD72F6ED-27BD-4FFF-AD43-B653DC8F67F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AD72F6ED-27BD-4FFF-AD43-B653DC8F67F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AD72F6ED-27BD-4FFF-AD43-B653DC8F67F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5ACBCF7-A7A7-449E-9DCA-C1FCDE36B7B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5ACBCF7-A7A7-449E-9DCA-C1FCDE36B7B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5ACBCF7-A7A7-449E-9DCA-C1FCDE36B7B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5ACBCF7-A7A7-449E-9DCA-C1FCDE36B7B6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

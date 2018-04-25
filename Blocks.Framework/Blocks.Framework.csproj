@@ -16,7 +16,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\lib\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -107,7 +107,6 @@
     <Compile Include="Caching\IVolatileProvider.cs" />
     <Compile Include="Caching\IVolatileToken.cs" />
     <Compile Include="Caching\Weak.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="Collections\CollectionLInqExtend.cs" />
     <Compile Include="Collections\DependencyOrdering.cs" />
     <Compile Include="Collections\LazyConcurrentDictionary.cs" />
@@ -190,28 +189,12 @@
       <Project>{44ee7b2b-c3e5-42b9-95d9-79f8742d6129}</Project>
       <Name>Abp.AutoMapper</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Adp\Abp.Web.Api\Abp.Web.Api.csproj">
-      <Project>{e896ce38-6d25-45bb-bfae-0ebe00f58edb}</Project>
-      <Name>Abp.Web.Api</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Adp\Abp.Web.Common\Abp.Web.Common.csproj">
-      <Project>{e8fde65c-63ab-4b45-aca4-3369a9411236}</Project>
-      <Name>Abp.Web.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Adp\Abp.Web.Mvc\Abp.Web.Mvc.csproj">
-      <Project>{f25d3bc1-3070-422b-a0c5-f8478d9542da}</Project>
-      <Name>Abp.Web.Mvc</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Adp\Abp.Web\Abp.Web.csproj">
-      <Project>{d7355480-1c71-47d5-b7a3-023cdc5941f3}</Project>
-      <Name>Abp.Web</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Adp\Abp.Zero.Common\Abp.Zero.Common.csproj">
       <Project>{2f5783ee-a022-45a5-928f-2588cb5f6c8e}</Project>
       <Name>Abp.Zero.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\Adp\Abp.Zero\Abp.Zero.csproj">
-      <Project>{22F38673-D59E-4D44-92CD-1E0FB37E7858}</Project>
+      <Project>{22f38673-d59e-4d44-92cd-1e0fb37e7858}</Project>
       <Name>Abp.Zero</Name>
     </ProjectReference>
     <ProjectReference Include="..\Adp\Abp\Abp.csproj">

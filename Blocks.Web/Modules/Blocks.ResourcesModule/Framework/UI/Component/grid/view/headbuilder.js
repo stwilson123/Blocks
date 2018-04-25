@@ -39,7 +39,7 @@ define(function (grid) {
             var jqGridObj = $(this);
             var rowData = jqGridObj.jqGrid('getGridParam', 'selarrrow');
             if (rowData.length === jqGridObj[0].p.reccount) {
-                jqGridObj.find('#cb_' + gridID).prop("checked", 'true');
+                jqGridObj.find('#cb_' + jqGridObj.attr('id')).prop("checked", 'true');
 
             }
         };

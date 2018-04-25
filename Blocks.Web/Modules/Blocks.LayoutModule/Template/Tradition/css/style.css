@@ -48,7 +48,7 @@
   font-size: 24px;
   position: absolute;
   top: 18px;
-  left: 20px;
+  /*left: 20px;*/
   margin-right: 10px;
   -moz-transform: scale(0);
   -ms-transform: scale(0);
@@ -93,9 +93,20 @@
   -webkit-transform: scale(1);
   transform: scale(1); }
 
-.navbar-header {
-  padding: 0px 7px; }
-  .navbar-header .bars {
+.navbar .navbar-header {
+  padding: 0px 7px;
+  margin-right: 180px;
+  -moz-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.navbar .navbar-header.headCollapse{
+  margin-left:-300px;
+ }
+
+  .navbar-collapse .bars {
     float: left;
     text-decoration: none; }
 
@@ -6684,17 +6695,19 @@ fieldset[disabled] .form-control {
     overflow: visible; }
 
 .ls-closed .sidebar {
-  margin-left: -300px; }
+  margin-left: -300px;
+
+}
 
 .ls-closed section.content {
-  margin-left: 15px; }
+  margin-left: 5px; }
 
-.ls-closed .bars:after, .ls-closed .bars:before {
+.ls-closed .bars:after, .navbar-collapse .bars:before {
   font-family: 'Material Icons';
   font-size: 24px;
   position: absolute;
-  top: 18px;
-  left: 20px;
+  top: 10px;
+  /* left: 20px; */
   margin-right: 10px;
   -moz-transform: scale(0);
   -ms-transform: scale(0);
@@ -6706,7 +6719,7 @@ fieldset[disabled] .form-control {
   -webkit-transition: all 0.3s;
   transition: all 0.3s; }
 
-.ls-closed .bars:before {
+.navbar-collapse .bars:before {
   content: '\E5D2';
   -moz-transform: scale(1);
   -ms-transform: scale(1);

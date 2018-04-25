@@ -103,7 +103,7 @@
     Datepicker.prototype.config = {
       'default':  {
           skin: 'twoer',
-          dateFmt: 'YYYY/MM/dd HH:mm:ss',
+          dateFmt: 'yyyy/MM/dd HH:mm:ss',
           readOnly:true,
           // startDate: undefined,
           // minDate: undefined,

@@ -23,52 +23,31 @@
                         {name: 'Id', hidden: true},
                         {name: 'city'},
                         {name: 'comboboxText'},
-
                         {
                             name: 'registerTime', datatype:{ type:'date'}
                         },
-                        {name: 'isActive', formatter: 'select', editoptions: {value: {'1': 'OK', '0': 'NO'}}},
+                        {name: 'isActive',datatype:{ type:'checkbox'}, formatter: 'select', editoptions: {value: {'1': 'OK', '0': 'NO'}}},
                         {name: 'comment', sortable: false}
                     ],
                     // caption: "",
                     idKey: "Id",
                     dynamicConditionQuery: {active: true},
                     rownumbers:true,
+                    showPager:true
                    
                 });
                 colNamesArray = ['ID', '城市', 'comboboxText', '注册时间', '激活', '备注']; //数据列名称（数组） 
-               var mainDetailGrid = new blocks.ui.grid({
-                    // url: "/api/services/BussnessWebModule/MasterData/GetPageList",
-                    gridObj: view.find("#gridDetailInfo"),
-                    colNames: colNamesArray,
-                    colModel: [
-                        {name: 'Id', hidden: true},
-                        {name: 'city'},
-                        {name: 'comboboxText'},
-
-                        {
-                            name: 'registerTime', datatype:{ type:'date'}
-                        },
-                        {name: 'isActive', formatter: 'select', editoptions: {value: {'1': 'OK', '0': 'NO'}}},
-                        {name: 'comment', sortable: false}
-                    ],
-                    // caption: "",
-                    idKey: "Id",
-                    dynamicConditionQuery: {active: true},
-                    rownumbers:true,
-
-                });
-                // mainGrid.reloadGrid({url: "/api/services/BussnessWebModule/MasterData/GetPageList"});
-
-
+                 //window.mainGrid = mainGrid;
+             
+            
             },
             'dispose': function () {
 
             },
             'resize': function () {
-                mainGrid.setGridWidth(view.children().width());
-                // blocks.utility.log.info('height' + view.children().height());
-                // blocks.utility.log.info('width' + view.children().width());
+                // mainGrid.setGridWidth(view.children().width());
+                // // blocks.utility.log.info('height' + view.children().height());
+                // // blocks.utility.log.info('width' + view.children().width());
                 mainGrid.setGridHeight(view.children().height() - view.find('#query').height());
 
 
@@ -84,10 +63,9 @@
                 });
             },
             queryClick: function (event) {
-                //   mainGrid.reloadGrid({url: "/api/services/BussnessWebModule/MasterData/GetPageList"});
+               // mainGrid.reloadGrid({url: "/api/services/BussnessWebModule/MasterData/GetPageList"});
                 mainGrid.dynamicConditionLoad({url: "/api/services/BussnessWebModule/MasterData/GetPageList"});
-                var a = viewModel.cityTest;
-                viewModel.city = a;
+       
             }
         };
     }

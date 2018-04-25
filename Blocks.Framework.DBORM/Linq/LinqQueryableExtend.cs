@@ -1,6 +1,7 @@
 ﻿using Abp.AutoMapper;
 using Blocks.Framework.Data.Pager;
 using Blocks.Framework.Data.Paging;
+using Blocks.Framework.Services.DataTransfer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,27 +31,27 @@ namespace Blocks.Framework.DBORM.Linq
 
         #region select
 
-        public static List<TEntity> SelectToList<TEntity,T1>(this IDbLinqQueryable<TEntity> dbLinqQueryable, Expression<Func<T1, dynamic>> selector) where TEntity : Data.Entity.Entity
+        public static List<TEntity> SelectToDynamicList<TEntity,T1,TOut>(this IDbLinqQueryable<TEntity> dbLinqQueryable, Expression<Func<T1, TOut>> selector) where TEntity : Data.Entity.Entity
         {
             return dbLinqQueryable.SelectToList((LambdaExpression)selector).MapTo<List<TEntity>>();
         }
-        public static List<TEntity> SelectToList<TEntity, T1, T2>(this IDbLinqQueryable<TEntity> dbLinqQueryable, Expression<Func<T1, T2, dynamic>> selector) where TEntity : Data.Entity.Entity
-        {
-            return dbLinqQueryable.SelectToList((LambdaExpression)selector).MapTo<List<TEntity>>();
-        }
-
-        public static List<TEntity> SelectToList<TEntity, T1, T2, T3>(this IDbLinqQueryable<TEntity> dbLinqQueryable, Expression<Func<T1, T2, T3, dynamic>> selector) where TEntity : Data.Entity.Entity
+        public static List<TEntity> SelectToDynamicList<TEntity, T1, T2,TOut>(this IDbLinqQueryable<TEntity> dbLinqQueryable, Expression<Func<T1, T2, TOut>> selector) where TEntity : Data.Entity.Entity
         {
             return dbLinqQueryable.SelectToList((LambdaExpression)selector).MapTo<List<TEntity>>();
         }
 
+        public static List<TEntity> SelectToDynamicList<TEntity, T1, T2, T3,TOut>(this IDbLinqQueryable<TEntity> dbLinqQueryable, Expression<Func<T1, T2, T3, TOut>> selector) where TEntity : Data.Entity.Entity
+        {
+            return dbLinqQueryable.SelectToList((LambdaExpression)selector).MapTo<List<TEntity>>();
+        }
 
-        public static List<TDto> SelectToList<TEntity, T1, TDto>(this IDbLinqQueryable<TEntity> dbLinqQueryable, Expression<Func<T1, TDto>> selector) where TEntity : Data.Entity.Entity
+
+        public static List<TDto> SelectToList<TEntity, T1, TDto>(this IDbLinqQueryable<TEntity> dbLinqQueryable, Expression<Func<T1, TDto>> selector) where TEntity : Data.Entity.Entity where TDto: IDataTransferObject
         {
             return dbLinqQueryable.SelectToList ((LambdaExpression)selector).MapTo<List<TDto>>();
         }
 
-        public static List<TDto> SelectToList<TEntity, T1, T2, TDto>(this IDbLinqQueryable<TEntity> dbLinqQueryable, Expression<Func<T1, T2, TDto>> selector) where TEntity : Data.Entity.Entity
+        public static List<TDto> SelectToList<TEntity, T1, T2, TDto>(this IDbLinqQueryable<TEntity> dbLinqQueryable, Expression<Func<T1, T2, TDto>> selector) where TEntity : Data.Entity.Entity where TDto : IDataTransferObject
         {
             return dbLinqQueryable.SelectToList((LambdaExpression)selector).MapTo<List<TDto>>();
         }

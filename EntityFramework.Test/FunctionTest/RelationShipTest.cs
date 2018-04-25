@@ -10,11 +10,11 @@ namespace EntityFramework.Test.FunctionTest
         public void OneToOneMethod()
         {
             var rep =  Resolve<TestRepository>();
-            var firstData = rep.GetContextTable().SelectToList((TESTENTITY t) => t.TESTENTITY2.Text);
+            var firstData = rep.GetContextTable().SelectToDynamicList((TESTENTITY t) => t.TESTENTITY2.Text);
 
-            var firstData1 = rep.GetContextTable().SelectToList((TESTENTITY t) => t.TESTENTITY3s);
+            var firstData1 = rep.GetContextTable().SelectToDynamicList((TESTENTITY t) => t.TESTENTITY3s);
 
-            var firstData2 = Resolve<TestRepository3>().GetContextTable().SelectToList((TESTENTITY3 t) => t.TESTENTITY);
+            var firstData2 = Resolve<TestRepository3>().GetContextTable().SelectToDynamicList((TESTENTITY3 t) => t.TESTENTITY);
         }
 
     }
