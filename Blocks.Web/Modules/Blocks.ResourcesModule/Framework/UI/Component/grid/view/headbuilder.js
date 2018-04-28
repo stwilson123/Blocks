@@ -40,10 +40,13 @@ define(function (grid) {
             var rowData = jqGridObj.jqGrid('getGridParam', 'selarrrow');
             if (rowData.length === jqGridObj[0].p.reccount) {
                 jqGridObj.find('#cb_' + jqGridObj.attr('id')).prop("checked", 'true');
-
+                
             }
         };
         gridObj.on('onSelectRow', checkedAll);
+        
+        
+        
     };
     return gridHead;
 });

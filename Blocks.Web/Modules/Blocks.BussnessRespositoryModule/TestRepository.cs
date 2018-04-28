@@ -49,16 +49,6 @@ namespace Blocks.BussnessRespositoryModule
 
         public PageList<PageResult> GetPageList(SearchModel search)
         {
-            var a = GetContextTable()
-                .SelectToDynamicList((TESTENTITY testEntity) => new
-                {
-                    Id = testEntity.Id,
-                    comboboxText = testEntity.TESTENTITY2.Text,
-                    city = testEntity.STRING,
-                    isActive = testEntity.ISACTIVE,
-                    comment = testEntity.COMMENT,
-                    registerTime = testEntity.REGISTERTIME
-                });
             return GetContextTable()
                 .Paging((TESTENTITY testEntity) => new PageResult
                 {

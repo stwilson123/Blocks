@@ -1,4 +1,4 @@
-define(['jquery','../../datepicker','blocks_utility','../../dialog'],function ($,datepicker,utility,dialog) {
+define(['jquery', '../../datepicker', 'blocks_utility', '../../dialog','../../select'], function ($, datepicker, utility, dialog,select) {
     var utility = utility;
     var config = {
         'default': {
@@ -110,71 +110,201 @@ define(['jquery','../../datepicker','blocks_utility','../../dialog'],function ($
             // },
             dynamicConditionQuery: {
                 active: false, multipleSearch: true, multipleGroup: false, showQuery: false,
+                width: '60%',
                 closeAfterSearch: true
             }
         },
         'eventsStore': {
-            'loadComplete': [], 'onSelectRow': [],'resizeStop':[]
+            'loadComplete': [], 'onSelectRow': [], 'resizeStop': [], 'beforeShowSearch': []
         },
         'body': {
             'default': {
-                'colModel': {width: 100, align: 'left', sortable: true, datatype: {type: 'string', format: ''}},
+                'colModel': {
+                    width: 100, align: 'left', sortable: true, datatype: {type: 'string'},
+                    displaytype: {type: 'text'}, datasource: undefined
+                },
                 'multiselectEdit': false
             },
             'searchoptions': {
                 'date': {
-                    dataInit: function (elem) {
-                        new datepicker({viewObj: $(elem)});
-                    }, sopt: ['ge', 'le']
+                    'default': {
+                        dataInit: function (elem) {
+                            var picker = new datepicker({viewObj: $(elem)});
+                            picker.on('onpicked oncleared', function () {
+                                $($dp.el).trigger('change');
+                            });
+                            picker.on('onhided', function () {
+                                $(this.el).trigger('change');
+                            });
+                        }, sopt: ['ge', 'le']
+                    }
                 },
-                'string': {
-                    sopt: ['eq', 'ne']
-                },
-                'number': { 
-                    sopt: ['ge', 'le']
+                'text': {
+                    'default': {
+                        sopt: ['eq', 'ne']
+                    },
+                    'number': {sopt: ['ge', 'le']}
                 },
                 'select': {
-                    sopt: ['cn']
+                    'default': {
+                        sopt: ['cn']
+                    }
                 },
                 'checkbox': {
-                    dataInit: function (elem) {
-                        var $elem =  $(elem);
-                        $elem.attr('type','checkbox');
-                        $("<label ></label>").insertAfter($elem);
-                    }, sopt: ['eq', 'ne']
+                    'default': {
+                        dataInit: function (elem) {
+                            var $elem = $(elem);
+                            $elem.removeClass('form-control');
+                            var $checkbox = $elem.children();
+                            $("<label for='" + $checkbox.attr("id") + "'></label>").insertAfter($checkbox)
+                        }, sopt: ['eq'], custom_element: function (t, elem, type) {
+                            return '<input type="checkbox" >';
+                        }, custom_value: function (elem, type) {
+                            return $(elem).prop('checked') === true ? 1 : 0;
+                        }
+                    }
                 }
-            }
-        },
-        'data':{
-            'default': {
-         
             },
+            'searchType': {
+                'checkbox': 'custom'
+            },
+            'edittype': {
+                'date': 'text',
+                'checkbox': 'custom',
+                'select': 'custom'
+            },
+            'editoptions': {
+                'date': {
+                    'default': {
+                        dataInit: function (elem, cellModel) {
+                            var picker = new datepicker({viewObj: $(elem)});
+                            picker.on('onpicked oncleared', function () {
+                                $($dp.el).trigger('change');
+                            });
+
+                            picker.on('onhided', function () {
+                                $(this.el).trigger('change');
+                            });
+
+                            var curModel = $(this).jqGrid('getGridParam', 'colModel').filter(function (colmodel) {
+                                return colmodel.name === cellModel.name;
+                            });
+                            if (!curModel || curModel.length === 0)
+                                throw new Error('Not found curModel ' + cellModel.name + '.Please check Colmodel');
+                            var oldVal = $(elem).val();
+
+                            $(elem).val(utility.dateConvert.format(oldVal, curModel[0].datatype.desformat))
+                        }, custom_element: function (elem) {
+                            return '<input >';
+                        }, custom_value: function (a, b, c) {
+
+                        }
+                    }
+                },
+                'text': {
+                    'default': {
+                        sopt: ['eq', 'ne']
+                    },
+                    'number': {sopt: ['ge', 'le']}
+                },
+                'select': {
+                    'default': {
+                        dataInit: function (elem, cellModel) {
+                            
+                            // var oldVal = $(elem).val();
+                            // selectComponent.val("XXXXX").trigger("change");
+                        
+                            // 
+                            //
+                            // $(elem).val(utility.dateConvert.format(oldVal, curModel[0].datatype.desformat))
+                        }, custom_element: function (value, cellModel) {
+
+                            var curModel = $(this).jqGrid('getGridParam', 'colModel').filter(function (colmodel) {
+                                return colmodel.name === cellModel.name;
+                            });
+                            if (!curModel || curModel.length === 0)
+                                throw new Error('Not found curModel ' + cellModel.name + '.Please check Colmodel');
+                            var sourceObj = $('<select id="'+ cellModel.id+'" />');
+                            var selectComponent = new select({
+                                viewObj:sourceObj ,
+                                data: curModel[0].datasource,
+                                isCombobox:false
+                                //  url:"/api/services/BussnessWebModule/Combobox/GetComboboxList"
+                            });
+                            sourceObj.val(value).trigger("change");
+                            var parentObj = $("<div />");
+                            parentObj.append(sourceObj.next());
+                            parentObj.append(sourceObj);
+                            return parentObj;
+                        }, custom_value: function (a, b, c) {
+
+                        }
+                    }
+                },
+                'checkbox': {
+                    'default': {
+                        dataInit: function (elem) {
+                            var $elem = $(elem);
+                            $elem.removeClass('form-control');
+                            var $checkbox = $elem.children();
+                            $("<label for='" + $checkbox.attr("id") + "'></label>").insertAfter($checkbox)
+                        }, custom_element: function (t, elem, type) {
+                            return '<input type="checkbox" >';
+
+                        }, custom_value: function (elem, type) {
+                            return $(elem).prop('checked') === true ? 1 : 0;
+                        }
+                    }
+                }
+            },
+        },
+        'data': {
+            'default': {},
             'dataFormat': {
                 'date': {
-                    srcformat: 'yyyy/MM/DD HH:mm:ss', desformat: 'yyyy/MM/DD HH:mm:ss', formatter: function (cellvalue, options, rowObject) {
-                       return utility.dateConvert.format(cellvalue,options.colModel.datatype.desformat);
-                    }, unformatter: function (cellvalue, options, rowObject) {
+                    srcformat: 'yyyy/MM/DD HH:mm:ss',
+                    desformat: 'yyyy/MM/DD HH:mm:ss',
+                    formatter: function (cellvalue, options, rowObject) {
+                        return utility.dateConvert.format(cellvalue, options.colModel.datatype.desformat);
+                    },
+                    unformatter: function (cellvalue, options, rowObject) {
                         return utility.dateConvert.toUtcDate(cellvalue);
                     }
                 },
-                // 'checkbox':{format:{ 'true':'是','false':'否'},unFormat:{ '是':'true','否':'false'},
-                //     formatter: function (cellvalue, options, rowObject) {
-                //         var curModelFormat = options.colModel.datatype.format;
-                //         if (!curModelFormat.hasOwnProperty(cellvalue))
-                //             throw new Error('Cellvalue ['+ cellvalue +'] not found in format');
-                //         return curModelFormat[cellvalue];
-                //     }, unformatter: function (cellvalue, options, rowObject) {
-                //         var curModelFormat = options.colModel.datatype.unFormat;
-                //         if (!curModelFormat.hasOwnProperty(cellvalue))
-                //             throw new Error('Cellvalue ['+ cellvalue +'] not found in unFormat');
-                //         return curModelFormat[cellvalue];
-                //     }
-                // }
+                'bool': {
+                  //  'format': {1: '是', 0: '否'}, 'unFormat': {'是': 1, '否': 0},
+                    formatter: function (cellvalue, options, rowObject) {
+                        
+                        var curModelDatasource = options.colModel.datasource;
+                        utility.validate.mustArray(curModelDatasource,'colModel.datasource')
+                        var curCell = curModelDatasource.filter(function (v) {
+                            return v.id === cellvalue;
+                        });
+                        if (!curCell || curCell.length === 0)
+                            throw new Error('Cellvalue [' + cellvalue + '] not found in datasource');
+                        return curCell[0].Text;
+                    }, unformatter: function (cellvalue, options, rowObject) {
+
+                        var curModelDatasource = options.colModel.datasource;
+                        utility.validate.mustArray(curModelDatasource,'colModel.datasource')
+                        var curCell = curModelDatasource.filter(function (v) {
+                            return v.Text === cellvalue;
+                        });
+                        if (!curCell|| curCell.length === 0)
+                            throw new Error('Cellvalue [' + cellvalue + '] not found in datasource');
+                        return curCell[0].Id;
+                    }
+                },
+
+            },
+            'dataSource': {
+                'bool': [{ id:1, Text:'是'},{ id:0, Text:'否'}],
             }
+
         }
-      
+
     }
-    
-    
-     return config;
+
+
+    return config;
 });

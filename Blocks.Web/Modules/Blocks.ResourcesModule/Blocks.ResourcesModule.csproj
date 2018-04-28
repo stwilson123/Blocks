@@ -178,6 +178,7 @@
     <None Include="Framework\UI\Component\grid\view\pagebuilder.js" />
     <None Include="Framework\UI\Component\grid\view\searchbuilder.js" />
     <None Include="Framework\Utility\Component\date.js" />
+    <Content Include="Framework\UI\Component\viewStruct\viewEvent.js" />
     <Content Include="lib\abp-web-resources\.bower.json" />
     <Content Include="lib\abp-web-resources\Abp\Framework\scripts\abp.js" />
     <Content Include="lib\abp-web-resources\Abp\Framework\scripts\libs\abp.blockUI.js" />

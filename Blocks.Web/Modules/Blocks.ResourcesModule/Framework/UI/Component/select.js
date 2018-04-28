@@ -193,7 +193,8 @@ define(['jquery', 'blocks_utility', 'vueJS', 'select2', './dialog'], function ($
     localSelect.prototype.buildSearchbox = function (options) {
         if (!options.isCombobox)
             options.minimumResultsForSearch = Infinity;
-    }
+    };
+    
 
     var remoteSelect = function (setting) {
         select.call(this, setting);

@@ -3,6 +3,7 @@ define(['./gridbase','blocks_utility'], function (grid,utility) {
     var dataBuilder = function (gridObj) {
         initReader(gridObj);
         initDataColumn(gridObj);
+        initEditColumn(gridObj);
     };
 
     grid.prototype.loadLocalData = function () {
@@ -38,11 +39,25 @@ define(['./gridbase','blocks_utility'], function (grid,utility) {
         var options = gridObj._options;
         for (var i = 0; i < options.colModel.length; i++) {
             var dataOpt = options.colModel[i].datatype = $.extend(true, {}, gridObj.config.data.dataFormat[options.colModel[i].datatype.type], options.colModel[i].datatype);
-            if (dataOpt) {
+            if (dataOpt && !options.colModel[i].formatter) {
                 options.colModel[i].formatter = dataOpt.formatter;
+            }
+            if (dataOpt && !options.colModel[i].unformat) {
                 options.colModel[i].unformat = dataOpt.unformatter;
             }
-            
+            if (!options.colModel[i].datasource && gridObj.config.data.dataSource.hasOwnProperty(options.colModel[i].datatype.type))
+                  options.colModel[i].datasource =  gridObj.config.data.dataSource[options.colModel[i].datatype.type];
+        }
+    }
+    function initEditColumn(gridObj) {
+        var options = gridObj._options;
+        var editOptions =  gridObj.config.body.editoptions;
+        var colModel = options.colModel;
+        for (var i = 0; i < colModel.length; i++) {
+            var editOpt = $.extend(true, {},editOptions[colModel[i].displaytype.type].default,
+                editOptions[colModel[i].displaytype.type][colModel[i].datatype.type], colModel[i].editoptions);
+            colModel[i].editoptions = editOpt;
+            colModel[i].edittype = colModel[i].edittype ?  colModel[i].edittype : gridObj.config.body.edittype[colModel[i].displaytype.type];
         }
     }
     grid.prototype.reloadGrid = function (option) {
@@ -163,6 +178,7 @@ define(['./gridbase','blocks_utility'], function (grid,utility) {
         var jqObj = this._options.gridObj;
         if (validate.isNullOrEmpty(rowIds) || !$.isArray(rowIds)) {
             throw new Error("请输入合适的id数组");
+            
         }
         for(var i = 0; i < rowIds.length; i++)
         {

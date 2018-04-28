@@ -26,10 +26,7 @@
                    // isCombobox:false,
                     url:"/api/services/BussnessWebModule/Combobox/GetComboboxList"
                 });
-                view.find("#registerTime").on('change',function () {
-                   console.log('1'); 
-               
-                });
+             
                 var datepicker = new blocks.ui.datepicker({
                     viewObj: view.find("#registerTime"),
                 });

@@ -1,4 +1,4 @@
-;define(['jquery', 'blocks_utility','../../Event/event','my97DatePicker'],function ($,utility,event) {
+;define(['jquery','./viewStruct/viewEvent', 'blocks_utility','../../Event/event','my97DatePicker'],function ($,viewEvent,utility,event) {
 
     "use strict";
     var eventBus = event;
@@ -14,14 +14,17 @@
 
     */
     var Datepicker = function (settings) {
-
-        var pickerSettings  = jQuery.extend(this.config.default, settings);
-
-        utility.validate.mustJQueryObj(pickerSettings.viewObj,"pickerSettings.viewObj");
+        utility.validate.mustJQueryObj(settings.viewObj,"settings.viewObj");
+        var pickerSettings = $.extend(true, {}, this.config.default, settings);
         if (pickerSettings.afterDatepicker &&  !pickerSettings.afterDatepicker instanceof Datepicker)
             throw new Error("pickerSettings.afterDatepicker must be Datepicker type.");
+        viewEvent.call(this, {
+            eventsStore: $.extend(true, {}, this.config.eventsStore),
+            options: pickerSettings
+        });
+      
+     
        this.init(pickerSettings);
-       this._options = pickerSettings;
         // //单个日期控件
         // var isSingle = !ValidateHelper.isNullOrEmpty(settings.pickerID);
         // if (isSingle) {
@@ -99,7 +102,7 @@
         // }
  
     }
-
+    utility.obj.inherit(viewEvent,Datepicker);
     Datepicker.prototype.config = {
       'default':  {
           skin: 'twoer',
@@ -118,8 +121,8 @@
           onhided:function () {
               eventBus.trigger("datepickerhided", $(this.el));
           }
-      }
-        
+      },
+      'eventsStore':{'onpicked':[],'onpicking':[],'oncleared':[],'onclearing ':[],'onhided':[]}
     };
 
     Datepicker.prototype.init = function (option) {
