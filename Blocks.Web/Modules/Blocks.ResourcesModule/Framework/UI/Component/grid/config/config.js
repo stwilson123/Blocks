@@ -24,6 +24,7 @@ define(['jquery', '../../datepicker', 'blocks_utility', '../../dialog','../../se
                 total: "content.pagerInfo.total",
                 page: "content.pagerInfo.page",
                 records: "content.pagerInfo.records",
+                userdata : 'content.rows',
                 repeatitems: false,
                 id: "ID"
             },
@@ -120,13 +121,13 @@ define(['jquery', '../../datepicker', 'blocks_utility', '../../dialog','../../se
         'body': {
             'default': {
                 'colModel': {
-                    width: 100, align: 'left', sortable: true, datatype: {type: 'string'},
-                    displaytype: {type: 'text'}, datasource: undefined
+                    width: 100, align: 'left', sortable: true, formatType: {type: 'text'},
+                    displayType: {type: 'text'}, dataSource: undefined
                 },
                 'multiselectEdit': false
             },
-            'searchoptions': {
-                'date': {
+            'searchOptions': {
+                'datepicker': {
                     'default': {
                         dataInit: function (elem) {
                             var picker = new datepicker({viewObj: $(elem)});
@@ -147,7 +148,34 @@ define(['jquery', '../../datepicker', 'blocks_utility', '../../dialog','../../se
                 },
                 'select': {
                     'default': {
-                        sopt: ['cn']
+                        dataInit: function (elem, cellModel) { }, custom_element: function (value, cellModel) {
+
+                            var curModel = $(this).jqGrid('getGridParam', 'colModel').filter(function (colmodel) {
+                                return colmodel.name === cellModel.name;
+                            });
+                            if (!curModel || curModel.length === 0)
+                                throw new Error('Not found curModel ' + cellModel.name + '.Please check Colmodel');
+                            var sourceObj = $('<select id="' + cellModel.id + '" />');
+                            var selectComponent = new select({
+                                viewObj: sourceObj,
+                                data: curModel[0].dataSource,
+                                isCombobox: false,
+                                multiple:curModel[0].formatType.multiple
+                                //  url:"/api/services/BussnessWebModule/Combobox/GetComboboxList"
+                            });
+                            sourceObj.val(value).trigger("change");
+                            var parentObj = $("<div />");
+                            parentObj.append(sourceObj.next());
+                            parentObj.append(sourceObj);
+                            return parentObj;
+                        }, custom_value: function (el, b, c) {
+                            var selectOptions = $(el).find('select option:selected'), selectedVal = [];
+
+                            selectOptions.each(function (i, selected) {
+                                selectedVal[i] = $(selected).val();
+                            });
+                            return selectedVal.join(",");
+                        }, sopt: ['cn']
                     }
                 },
                 'checkbox': {
@@ -166,15 +194,16 @@ define(['jquery', '../../datepicker', 'blocks_utility', '../../dialog','../../se
                 }
             },
             'searchType': {
-                'checkbox': 'custom'
+                'checkbox': 'custom',
+                'select': 'custom'
             },
-            'edittype': {
+            'editType': {
                 'date': 'text',
                 'checkbox': 'custom',
                 'select': 'custom'
             },
-            'editoptions': {
-                'date': {
+            'editOptions': {
+                'datepicker': {
                     'default': {
                         dataInit: function (elem, cellModel) {
                             var picker = new datepicker({viewObj: $(elem)});
@@ -193,7 +222,7 @@ define(['jquery', '../../datepicker', 'blocks_utility', '../../dialog','../../se
                                 throw new Error('Not found curModel ' + cellModel.name + '.Please check Colmodel');
                             var oldVal = $(elem).val();
 
-                            $(elem).val(utility.dateConvert.format(oldVal, curModel[0].datatype.desformat))
+                            $(elem).val(utility.dateConvert.format(oldVal, curModel[0].formatType.desformat))
                         }, custom_element: function (elem) {
                             return '<input >';
                         }, custom_value: function (a, b, c) {
@@ -210,13 +239,6 @@ define(['jquery', '../../datepicker', 'blocks_utility', '../../dialog','../../se
                 'select': {
                     'default': {
                         dataInit: function (elem, cellModel) {
-                            
-                            // var oldVal = $(elem).val();
-                            // selectComponent.val("XXXXX").trigger("change");
-                        
-                            // 
-                            //
-                            // $(elem).val(utility.dateConvert.format(oldVal, curModel[0].datatype.desformat))
                         }, custom_element: function (value, cellModel) {
 
                             var curModel = $(this).jqGrid('getGridParam', 'colModel').filter(function (colmodel) {
@@ -227,8 +249,9 @@ define(['jquery', '../../datepicker', 'blocks_utility', '../../dialog','../../se
                             var sourceObj = $('<select id="'+ cellModel.id+'" />');
                             var selectComponent = new select({
                                 viewObj:sourceObj ,
-                                data: curModel[0].datasource,
-                                isCombobox:false
+                                data: curModel[0].dataSource,
+                                isCombobox:false,
+                                multiple:curModel[0].formatType.multiple
                                 //  url:"/api/services/BussnessWebModule/Combobox/GetComboboxList"
                             });
                             sourceObj.val(value).trigger("change");
@@ -236,8 +259,13 @@ define(['jquery', '../../datepicker', 'blocks_utility', '../../dialog','../../se
                             parentObj.append(sourceObj.next());
                             parentObj.append(sourceObj);
                             return parentObj;
-                        }, custom_value: function (a, b, c) {
+                        }, custom_value: function (el, b, c) {
+                            var selectOptions = $(el).find('select option:selected'),selectedVal = [];
 
+                            selectOptions.each(function (i,selected) {
+                                selectedVal[i] = $(selected).val();
+                            });
+                            return selectedVal.join(",");
                         }
                     }
                 },
@@ -257,51 +285,83 @@ define(['jquery', '../../datepicker', 'blocks_utility', '../../dialog','../../se
                     }
                 }
             },
+            'gridDisplayOptions': {
+                'default':{
+                    'default':{},
+                    'date': {
+                        formatter: function (cellvalue, options, rowObject) {
+                                return utility.dateConvert.format(cellvalue, options.colModel.formatType.desformat);
+                        },
+                        unformatter: function (cellvalue, options, rowObject) {
+                                return utility.dateConvert.toUtcDate(cellvalue);
+                        }
+                    },
+                    'select':{
+                        'isRemote':false, formatter: function (cellvalue, options, rowObject) {
+                            if (!options.colModel.gridDisplayOptions.isRemote)
+                            {
+                                var curModelDatasource = options.colModel.dataSource;
+                                var curCell = utility.collectUtility.FirstOrDefault(curModelDatasource,function (v) {
+                                    return v.id === cellvalue;
+                                });
+                                if (curCell === null)
+                                    throw new Error('Cellvalue [' + cellvalue + '] not found in datasource');
+                                return curCell.text;
+                            }
+                        },
+                        unformatter: function (cellvalue, options, rowObject) {
+                            if (!options.colModel.gridDisplayOptions.isRemote)
+                            {
+                                var curModelDatasource = options.colModel.dataSource;
+                                var curCell = utility.collectUtility.FirstOrDefault(curModelDatasource,function (v) {
+                                    return v.text === cellvalue;
+                                });
+                                if (curCell === null)
+                                    throw new Error('Cellvalue [' + cellvalue + '] not found in datasource');
+                                return curCell.id;
+                            }
+                        }
+                    },
+                    'checkbox': {
+                        //  'format': {1: '是', 0: '否'}, 'unFormat': {'是': 1, '否': 0},
+                        formatter: function (cellvalue, options, rowObject) {
+                            var curModelDatasource = options.colModel.dataSource;
+                            var curCell = utility.collectUtility.FirstOrDefault(curModelDatasource,function (v) {
+                                return v.id === cellvalue;
+                            });
+                            if (curCell === null)
+                                throw new Error('Cellvalue [' + cellvalue + '] not found in datasource');
+                            return curCell.text;
+                        }, unformatter: function (cellvalue, options, rowObject) {
+                            var curModelDatasource = options.colModel.dataSource;
+                            var curCell = utility.collectUtility.FirstOrDefault(curModelDatasource,function (v) {
+                                return v.text === cellvalue;
+                            });
+                            if (curCell === null)
+                                throw new Error('Cellvalue [' + cellvalue + '] not found in datasource');
+                            return curCell.id;
+                        }
+                    },
+                }
+              
+            },
+
+            'formatType':{
+                'text': {}, 'checkBox': {}, 'select': {}, 'date': {
+                    srcformat: 'yyyy/MM/DD HH:mm:ss',
+                    desformat: 'yyyy/MM/DD HH:mm:ss'
+                },'number':{}
+            }
         },
         'data': {
             'default': {},
-            'dataFormat': {
-                'date': {
-                    srcformat: 'yyyy/MM/DD HH:mm:ss',
-                    desformat: 'yyyy/MM/DD HH:mm:ss',
-                    formatter: function (cellvalue, options, rowObject) {
-                        return utility.dateConvert.format(cellvalue, options.colModel.datatype.desformat);
-                    },
-                    unformatter: function (cellvalue, options, rowObject) {
-                        return utility.dateConvert.toUtcDate(cellvalue);
-                    }
-                },
-                'bool': {
-                  //  'format': {1: '是', 0: '否'}, 'unFormat': {'是': 1, '否': 0},
-                    formatter: function (cellvalue, options, rowObject) {
-                        
-                        var curModelDatasource = options.colModel.datasource;
-                        utility.validate.mustArray(curModelDatasource,'colModel.datasource')
-                        var curCell = curModelDatasource.filter(function (v) {
-                            return v.id === cellvalue;
-                        });
-                        if (!curCell || curCell.length === 0)
-                            throw new Error('Cellvalue [' + cellvalue + '] not found in datasource');
-                        return curCell[0].Text;
-                    }, unformatter: function (cellvalue, options, rowObject) {
-
-                        var curModelDatasource = options.colModel.datasource;
-                        utility.validate.mustArray(curModelDatasource,'colModel.datasource')
-                        var curCell = curModelDatasource.filter(function (v) {
-                            return v.Text === cellvalue;
-                        });
-                        if (!curCell|| curCell.length === 0)
-                            throw new Error('Cellvalue [' + cellvalue + '] not found in datasource');
-                        return curCell[0].Id;
-                    }
-                },
-
-            },
             'dataSource': {
-                'bool': [{ id:1, Text:'是'},{ id:0, Text:'否'}],
+                'checkbox': [{ id:1, text:'是'},{ id:0, text:'否'}],
+                
             }
 
-        }
+        },
+      
 
     }
 

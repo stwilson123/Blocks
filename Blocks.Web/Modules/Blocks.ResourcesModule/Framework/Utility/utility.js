@@ -551,6 +551,15 @@
     var extend = function () {
        return $.extend.apply(this, arguments);  
     };
+    
+    var collectHelper = {
+        'FirstOrDefault':function (arrayObj,callbackfn) {
+            ValidateHelper.mustArray(arrayObj,"FirstOrDefault must be use in array. " + arrayObj );
+            var filterValue = arrayObj.filter(callbackfn);
+            return filterValue && filterValue.length > 0 ? filterValue[0] : null;
+        }
+    };
     //TODO JSON2 not work
-    return { validate: ValidateHelper,ajax:ajax,url:UrlHelper,cookie:cookie,log:log,obj:obj,Json:JSON, nativeJs:nativeJs,dateConvert:dateConvert,extend:extend}
+    return { validate: ValidateHelper,ajax:ajax,url:UrlHelper,cookie:cookie,log:log,obj:obj,Json:JSON, nativeJs:nativeJs,
+        dateConvert:dateConvert,extend:extend,collectUtility:collectHelper}
 });

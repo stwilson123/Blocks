@@ -87,7 +87,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationServices\AppService.cs" />
-    <Compile Include="ApplicationServices\IApplicationService.cs" />
+    <Compile Include="ApplicationServices\IAppService.cs" />
     <Compile Include="AutoMapper\AutoMapperExtensions.cs" />
     <Compile Include="AutoMapper\FrameworkProfile.cs" />
     <Compile Include="Caching\AcquireContext.cs" />
@@ -202,7 +202,7 @@
       <Name>Abp</Name>
     </ProjectReference>
     <ProjectReference Include="..\Blocks.Core\Blocks.Core.csproj">
-      <Project>{17298EA0-AF73-4F30-B6F1-2066100D7D74}</Project>
+      <Project>{17298ea0-af73-4f30-b6f1-2066100d7d74}</Project>
       <Name>Blocks.Core</Name>
     </ProjectReference>
   </ItemGroup>

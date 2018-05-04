@@ -23,18 +23,18 @@
                         {name: 'Id', hidden: true},
                         {
                             name: 'city',
-                            displaytype: {type: 'select'},datasource:[{id:'china',text:'china1'},{id:'us',text:'us1'}],editable:true
+                            displayType: { type: 'select' }, formatType: { type: 'select' }, dataSource: [{ id: 'chinaId', text: 'china' }, { id: 'usId', text: 'us' }],editable:true
                         },
                         {
                             name: 'comboboxText'
                         },
                         {
-                            name: 'registerTime', datatype: {type: 'date'}, displaytype: {type: 'date'},editable:true
+                            name: 'registerTime', formatType: {type: 'date'}, displayType: {type: 'datepicker'},editable:true
                         },
                         {
                             name: 'isActive',
-                            datatype: {type: 'bool'},
-                            displaytype:{type:'checkbox'},
+                            formatType: {type: 'checkbox'},
+                            displayType:{type:'checkbox'},
                             editable:true
                             // formatter: 'select',
                             // editoptions: {value: {'1': 'OK', '0': 'NO'}}

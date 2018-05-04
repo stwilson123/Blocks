@@ -37,27 +37,41 @@ define(['./gridbase','blocks_utility'], function (grid,utility) {
     };
     function initDataColumn(gridObj) {
         var options = gridObj._options;
+        var gridDisplayOptionsConfig = gridObj.config.body.gridDisplayOptions;
         for (var i = 0; i < options.colModel.length; i++) {
-            var dataOpt = options.colModel[i].datatype = $.extend(true, {}, gridObj.config.data.dataFormat[options.colModel[i].datatype.type], options.colModel[i].datatype);
-            if (dataOpt && !options.colModel[i].formatter) {
-                options.colModel[i].formatter = dataOpt.formatter;
+            var curColModel = options.colModel[i],gridDisplayOpt;
+            curColModel.formatType = $.extend(true, {}, gridObj.config.body.formatType[curColModel.formatType.type], curColModel.formatType);
+            if (curColModel.gridDisplayOptions && curColModel.gridDisplayOptions.type)
+            {
+                gridDisplayOpt = curColModel.gridDisplayOptions = $.extend(true, {},gridDisplayOptionsConfig[curColModel.displayType.type].default,
+                    gridDisplayOptionsConfig[curColModel.displayType.type][curColModel.formatType.type],  curColModel.gridDisplayOptions);
+            
             }
-            if (dataOpt && !options.colModel[i].unformat) {
-                options.colModel[i].unformat = dataOpt.unformatter;
+            else
+            {
+                gridDisplayOpt = curColModel.gridDisplayOptions = $.extend(true, {},gridDisplayOptionsConfig['default'].default,
+                    gridDisplayOptionsConfig['default'][curColModel.formatType.type], curColModel.gridDisplayOptions);
             }
-            if (!options.colModel[i].datasource && gridObj.config.data.dataSource.hasOwnProperty(options.colModel[i].datatype.type))
-                  options.colModel[i].datasource =  gridObj.config.data.dataSource[options.colModel[i].datatype.type];
+             
+            if (gridDisplayOpt && !curColModel.formatter) {
+                curColModel.formatter = gridDisplayOpt.formatter;
+            }
+            if (gridDisplayOpt && !curColModel.unformat) {
+                curColModel.unformat = gridDisplayOpt.unformatter;
+            }
+            if (!curColModel.dataSource && gridObj.config.data.dataSource.hasOwnProperty(curColModel.formatType.type))
+                  curColModel.dataSource =  gridObj.config.data.dataSource[curColModel.formatType.type];
         }
     }
     function initEditColumn(gridObj) {
         var options = gridObj._options;
-        var editOptions =  gridObj.config.body.editoptions;
+        var editOptions =  gridObj.config.body.editOptions;
         var colModel = options.colModel;
         for (var i = 0; i < colModel.length; i++) {
-            var editOpt = $.extend(true, {},editOptions[colModel[i].displaytype.type].default,
-                editOptions[colModel[i].displaytype.type][colModel[i].datatype.type], colModel[i].editoptions);
-            colModel[i].editoptions = editOpt;
-            colModel[i].edittype = colModel[i].edittype ?  colModel[i].edittype : gridObj.config.body.edittype[colModel[i].displaytype.type];
+            var editOpt = $.extend(true, {},editOptions[colModel[i].displayType.type].default,
+                editOptions[colModel[i].displayType.type][colModel[i].formatType.type], colModel[i].editOptions);
+            colModel[i].editoptions = colModel[i].editOptions = editOpt;
+            colModel[i].edittype = colModel[i].editType = colModel[i].editType ?  colModel[i].editType : gridObj.config.body.editType[colModel[i].displayType.type];
         }
     }
     grid.prototype.reloadGrid = function (option) {
@@ -229,7 +243,36 @@ define(['./gridbase','blocks_utility'], function (grid,utility) {
      
         return rowDataResult;
     };
+    grid.prototype.getOrginData = function (rowIds, colNames) {
+        var isFitercol = false;
+        var isFilterrow = false;
+        if (rowIds){ isFilterrow = true; validate.mustArray(rowIds);}
+        if (colNames) {isFitercol = true;validate.mustArray(colNames);}
+        var rowDataResult = [];
+        var jqObj = this._options.gridObj;
+        var isRownum = jqObj.jqGrid("getGridParam", "rownumbers");
+        var idKey =  jqObj.jqGrid("getGridParam", "idKey");
+        var actRowIds = isFilterrow ? rowIds : jqObj.jqGrid("getDataIDs");
+        var rowDatas =  $("#gridInfo").jqGrid('getGridParam','userData');
 
+        var length = isFilterrow ? rowIds.length : rowDatas.length;
+        for (var i = 0; i < length; i++) {
+            var rowData = rowDatas.filter(function (arrayItem) {
+               return actRowIds[i] === arrayItem[idKey];
+            });
+            if (validate.isObjectNull(rowData)) continue;
+            if (isRownum) // TODO gridRowNum 计算不准确
+                rowData.gridRowNum = i + 1;
+
+            if (!isFitercol) {
+                rowDataResult.push(rowData);
+                continue;
+            }
+            rowDataResult.push(utility.obj.filter(rowData,colNames));
+        }
+
+        return rowDataResult;
+    };
     grid.prototype.setCell = function(e,t,i,r,o,a){
         var jqObj = this._options.gridObj;
         return jqObj.jqGrid("setCell", e, t, i, r, o, a);

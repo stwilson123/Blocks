@@ -3,7 +3,7 @@
     var currentModule = new blocks.ui.module.pageModel();
     currentModule.controllers = {'Main': main};
     currentModule.viewModels = {'Main': mainViewModel};
-
+     
     function main() {
         var viewModel;
         var view;
@@ -13,10 +13,10 @@
             'init': function (v, vm) {
                 view = v;
                 viewModel = vm;
-                window.test = vm;
+                
                 var citySelect = new blocks.ui.select({
                     viewObj: view.find("#city"),
-                    data: [{id: 'china', text: 'china'}, {id: 'us', text: 'us'}],
+                    data: [{id: 'chinaId', text: 'china'}, {id: 'usId', text: 'us'}],
                     isCombobox:false
                   //  url:"/api/services/BussnessWebModule/Combobox/GetComboboxList"
                 });
@@ -43,7 +43,7 @@
         this.actions = {
             saveClick: function (event) {
                 var postData = _Blocks.utility.extend({},viewModel);
-           //     postData.registerTime = _Blocks.utility.dateConvert.toUtcDate(postData.registerTime);
+                postData.registerTime = _Blocks.utility.dateConvert.toUtcDate(postData.registerTime);
                 blocks.service.safePubAjax({
                     url: '/api/services/BussnessWebModule/MasterData/Add', data: blocks.utility.Json.stringify(postData),
                     onSuccessCallBack: function (result) {

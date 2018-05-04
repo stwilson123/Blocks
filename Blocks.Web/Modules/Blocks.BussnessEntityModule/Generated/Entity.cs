@@ -272,7 +272,7 @@ namespace Blocks.BussnessEntityModule
 	    	    public string ROUTING_DESC { set; get; }
 	    	    public long? ROUTING_CAPABILITY { set; get; }
 	    	    public string ROUTING_TYPE { set; get; }
-	    	    public string WORKSHOP_ID { set; get; }
+	    	    public string MACHING_CENTER_ID { set; get; }
 	    	    public DateTime? CREATEDATE { set; get; }
 	    	    public string CREATER { set; get; }
 	    	    public DateTime? UPDATEDATE { set; get; }
@@ -1113,20 +1113,16 @@ namespace Blocks.BussnessEntityModule
 	    	    public string WORKTEAM_EMP { set; get; }
 	    	    public DateTime? WORKTEAM_BGN { set; get; }
 	    	    public DateTime? WORKTEAM_END { set; get; }
-	    	    public string WORKSHOP_ID { set; get; }
+	    	    public string WORK_CENTER_ID { set; get; }
 	    	    public decimal? WORKTEAM_TARGET_QTY { set; get; }
 	    	    public decimal? WORKTEAM_ALLOWE_QTY { set; get; }
 	    	    public string WORKTEAM_DEPARTMENT { set; get; }
-	    	    public string WORKTEAM_WORSECTION { set; get; }
-	    	    public DateTime? WORKTEAM_UTIME { set; get; }
-	    	    public string WORKTEAM_UUSER { set; get; }
 	    	    public long DATAVERSION { set; get; }
 	    	    public DateTime? CREATEDATE { set; get; }
 	    	    public string CREATER { set; get; }
 	    	    public DateTime? UPDATEDATE { set; get; }
 	    	    public string UPDATER { set; get; }
 	    	    public string EXTENDFIELD { set; get; }
-	    	    public long? ISUSED { set; get; }
 	    	    public long? ACTIVITY { set; get; }
 		}
     
@@ -1718,6 +1714,7 @@ namespace Blocks.BussnessEntityModule
 	    	    public string UPDATER { set; get; }
 	    	    public long? ACTIVITY { set; get; }
 	    	    public string BDTA_PRODUCTELEMENT_TYPE_ID { set; get; }
+	    	    public string PRODUCTELEMENT_DEFAULT { set; get; }
 		}
     
     public partial class BDTA_PRODUCTFORMAT_DETAIL   : Entity   
@@ -2495,7 +2492,7 @@ namespace Blocks.BussnessEntityModule
 			            HasKey(x => x.Id);
 		 
 		 
-			 																																																																																																																																																						 
+			 																																																																																																																										 
         }
 		 
 	}
@@ -3067,7 +3064,7 @@ namespace Blocks.BussnessEntityModule
 			            HasKey(x => x.Id);
 		 
 		 
-			 																																																																																							 
+			 																																																																																														 
         }
 		 
 	}

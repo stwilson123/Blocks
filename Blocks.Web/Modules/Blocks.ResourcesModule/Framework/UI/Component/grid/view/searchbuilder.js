@@ -17,13 +17,13 @@ define(['../gridbase', 'blocks_utility','../../../../Design/decorator'], functio
     function initoptions(gridObj) {
         var options = gridObj._options;
         if (options.dynamicConditionQuery && options.dynamicConditionQuery.active === true) {
-            var searchoptions =  gridObj.config.body.searchoptions;
+            var searchOptions =  gridObj.config.body.searchOptions;
             var colModel = options.colModel;
             for (var i = 0; i < colModel.length; i++) {
-                var searchOpt = $.extend(true, {},searchoptions[colModel[i].displaytype.type].default,
-                    searchoptions[colModel[i].displaytype.type][colModel[i].datatype.type], colModel[i].searchoptions);
-                colModel[i].searchoptions = searchOpt;
-                colModel[i].stype = colModel[i].stype ?  colModel[i].stype : gridObj.config.body.searchType[colModel[i].displaytype.type];
+                var searchOpt = $.extend(true, {},searchOptions[colModel[i].displayType.type].default,
+                    searchOptions[colModel[i].displayType.type][colModel[i].formatType.type], colModel[i].searchOptions);
+                colModel[i].searchoptions = colModel[i].searchOptions = searchOpt;
+                colModel[i].stype = colModel[i].stype ?  colModel[i].stype : gridObj.config.body.searchType[colModel[i].displayType.type];
             }
         }
     }
