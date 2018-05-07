@@ -6,6 +6,7 @@ using Abp.Extensions;
 using Blocks.Framework.Environment.Extensions;
 using Blocks.Framework.Environment.Extensions.Models;
 using Blocks.Framework.Ioc.Dependency;
+using Blocks.Framework.NullObject;
 using Castle.MicroKernel.Registration;
 using ISingletonDependency = Blocks.Framework.Ioc.Dependency.ISingletonDependency;
 using ITransientDependency = Blocks.Framework.Ioc.Dependency.ITransientDependency;
@@ -30,6 +31,7 @@ namespace Blocks.Framework.Ioc
                 Classes.FromAssembly(context.Assembly)
                     .BasedOn<ISingletonDependency>()
                     .If(type => !type.GetTypeInfo().IsGenericTypeDefinition)
+                    .ConfigureIf(r => !r.Implementation.GetInterfaces().Contains(typeof(INullObject)),r=> r.IsDefault())
                     .ConfigureSpecial(_iIocManager,context.Assembly.GetName().Name)
                     .WithService.Self()
                     .WithService.DefaultInterfaces()
@@ -40,6 +42,7 @@ namespace Blocks.Framework.Ioc
                 Classes.FromAssembly(context.Assembly)
                     .BasedOn<ITransientDependency>()
                     .If(type => !type.GetTypeInfo().IsGenericTypeDefinition)
+                    .ConfigureIf(r => !r.Implementation.GetInterfaces().Contains(typeof(INullObject)),r=> r.IsDefault())
                     .ConfigureSpecial(_iIocManager,context.Assembly.GetName().Name)
                     .WithService.Self()
                     .WithService.DefaultInterfaces()
@@ -50,6 +53,7 @@ namespace Blocks.Framework.Ioc
                 Classes.FromAssembly(context.Assembly)
                     .BasedOn<IUnitOfWorkDependency>()
                     .If(type => !type.GetTypeInfo().IsGenericTypeDefinition)
+                    .ConfigureIf(r => !r.Implementation.GetInterfaces().Contains(typeof(INullObject)),r=> r.IsDefault())
                     .ConfigureSpecial(_iIocManager,context.Assembly.GetName().Name)
                     .WithService.Self()
                     .WithService.DefaultInterfaces()
@@ -68,6 +72,7 @@ namespace Blocks.Framework.Ioc
                     )
                     .ConfigureSpecial(_iIocManager,context.Assembly.GetName().Name)
                     .If(type => !type.GetTypeInfo().IsGenericTypeDefinition)
+                    .ConfigureIf(r => !r.Implementation.GetInterfaces().Contains(typeof(INullObject)),r=> r.IsDefault())
                     .WithService.Self()
                     .WithService.DefaultInterfaces()
                     .LifestyleTransient()

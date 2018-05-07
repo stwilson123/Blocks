@@ -166,6 +166,7 @@
     <Compile Include="Ioc\IocManagersExtensions.cs" />
     <Compile Include="Json\Convert\IsoDateTimeConverter.cs" />
     <Compile Include="Localization\StringFormat.cs" />
+    <Compile Include="NullObject\INullObject.cs" />
     <Compile Include="Services\DataTransfer\DataTransferAttribute.cs" />
     <Compile Include="Json\JsonHelper.cs" />
     <Compile Include="Localization\BlocksFrameworkLocalizationSource.cs" />

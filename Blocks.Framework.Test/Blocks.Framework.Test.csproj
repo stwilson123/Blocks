@@ -33,12 +33,23 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Abp.AutoMapper, Version=3.2.4.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\Blocks.Web\Modules\Blocks.LayoutModule\Bin\Abp.AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Abp.TestBase, Version=3.2.4.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\packages\Abp.TestBase.3.2.4\lib\netstandard2.0\Abp.TestBase.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Windsor, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc">
+      <HintPath>..\packages\Castle.Windsor.4.1.0\lib\net45\Castle.Windsor.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed">
       <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
     <Reference Include="xunit.abstractions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c">
@@ -55,15 +66,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BlocksTestBase.cs" />
     <Compile Include="DBORM\Linq\LinqQueryableTest.cs" />
+    <Compile Include="Ioc\DependencyConventionalRegistrarTest.cs" />
+    <Compile Include="Model\Log4Net.cs" />
+    <Compile Include="Model\NullLog.cs" />
+    <Compile Include="NetFramework\Tests.cs" />
+    <Compile Include="TestModule.cs" />
     <Compile Include="Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Web\Mvc\VirtualPathUtilityTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Blocks.Framework.Web\Blocks.Framework.Web.csproj">
-      <Project>{4a40a2ee-57bc-48a4-abd5-36c7d3cbdd34}</Project>
-      <Name>Blocks.Framework.Web</Name>
+    <ProjectReference Include="..\Adp\Abp\Abp.csproj">
+      <Project>{0f98c63c-d019-4f38-9ac3-f5d7bcad9107}</Project>
+      <Name>Abp</Name>
     </ProjectReference>
     <ProjectReference Include="..\Blocks.Framework\Blocks.Framework.csproj">
       <Project>{d5acbcf7-a7a7-449e-9dca-c1fcde36b7b6}</Project>
