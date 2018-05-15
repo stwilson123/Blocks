@@ -8,6 +8,7 @@ using Blocks.Framework.Environment.Extensions.Models;
 using Blocks.Framework.Ioc.Dependency;
 using Blocks.Framework.NullObject;
 using Castle.MicroKernel.Registration;
+using Castle.Winsdor.Aspnet.Web;
 using ISingletonDependency = Blocks.Framework.Ioc.Dependency.ISingletonDependency;
 using ITransientDependency = Blocks.Framework.Ioc.Dependency.ITransientDependency;
 
@@ -57,6 +58,7 @@ namespace Blocks.Framework.Ioc
                     .ConfigureSpecial(_iIocManager,context.Assembly.GetName().Name)
                     .WithService.Self()
                     .WithService.DefaultInterfaces()
+                    .LifestyleScoped()
                     .LifestylePerWebRequest()
             );
             

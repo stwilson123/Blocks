@@ -50,7 +50,7 @@ namespace Blocks.Framework.Modules
         public override void Initialize()
         {
             IocManager.RegisterAssemblyByConvention(Assembly.GetExecutingAssembly());
-
+            
             Configuration.Modules.AbpAutoMapper().Configurators.Add(FrameworkProfile.DefaultAutoMapperConfig());
         }
     }

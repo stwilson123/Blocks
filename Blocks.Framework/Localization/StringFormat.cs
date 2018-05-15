@@ -8,7 +8,11 @@ namespace Blocks.Framework.Localization
         
         public object[] FormatArgs { get; private set; }
 
-        public StringLocal(string formatStr, object[] formatArgs)
+        private StringLocal()
+        {
+            
+        }
+        private StringLocal(string formatStr, object[] formatArgs)
         {
             FormatStr = formatStr;
             FormatArgs = formatArgs;

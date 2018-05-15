@@ -16,8 +16,8 @@ namespace Blocks.Framework.FileSystems.VirtualPath
         StreamWriter CreateText(string virtualPath);
         Stream CreateFile(string virtualPath);
         DateTime GetFileLastWriteTimeUtc(string virtualPath);
-        string GetFileHash(string virtualPath);
-        string GetFileHash(string virtualPath, IEnumerable<string> dependencies);
+//        string GetFileHash(string virtualPath);
+//        string GetFileHash(string virtualPath, IEnumerable<string> dependencies);
         void DeleteFile(string virtualPath);
 
         bool DirectoryExists(string virtualPath);

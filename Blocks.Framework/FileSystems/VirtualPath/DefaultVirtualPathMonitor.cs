@@ -1,11 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Net.Http;
 using System.Web;
-using System.Web.Caching;
-using System.Web.Hosting;
+using Microsoft.Extensions.Caching.Memory;
 using Blocks.Framework.Caching;
+using Blocks.Framework.Collections;
 using Blocks.Framework.Services;
 using Castle.Core.Logging;
+using Castle.DynamicProxy.Generators;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Hosting.Internal;
 
 namespace Blocks.Framework.FileSystems.VirtualPath
 {
@@ -14,21 +19,38 @@ namespace Blocks.Framework.FileSystems.VirtualPath
         private readonly string _prefix = Guid.NewGuid().ToString("n");
         private readonly IDictionary<string, Weak<Token>> _tokens = new Dictionary<string, Weak<Token>>();
         private readonly IClock _clock;
+         private readonly IVirtualPathProvider _hostingVirtualPathProvider;
+         private readonly LazyConcurrentDictionary<string, object> _caches = new LazyConcurrentDictionary<string, object>();
 
-        public DefaultVirtualPathMonitor(IClock clock) {
+        public DefaultVirtualPathMonitor(IClock clock,IVirtualPathProvider hostingVirtualPathProvider) {
             _clock = clock;
+            _hostingVirtualPathProvider = hostingVirtualPathProvider;
             _thunk = new Thunk(this);
             Logger = NullLogger.Instance;
         }
+         private FileSystemWatcher CreateFileSystemWatcher(string directoryName,FileSystemEventHandler  fsy_Changed)
+         {
+             FileSystemWatcher fsy = new FileSystemWatcher(directoryName, "*.*");
+             fsy.EnableRaisingEvents = true;
+             fsy.IncludeSubdirectories = false;
+             fsy.NotifyFilter = NotifyFilters.LastWrite | NotifyFilters.Size | NotifyFilters.FileName | NotifyFilters.DirectoryName;
+             fsy.Changed += fsy_Changed;
+             return fsy;
+         }
 
         public ILogger Logger { get; set; }
 
-        public IVolatileToken WhenPathChanges(string virtualPath) {
-            var token = BindToken(virtualPath);
+        public IVolatileToken WhenPathChanges(string virtualPath)
+        {
+            
+            var fullPath = _hostingVirtualPathProvider.MapPath(virtualPath);
+            var token = BindToken(fullPath);
             try {
-                BindSignal(virtualPath);
+                BindSignal(fullPath);
+                
             }
-            catch (HttpException e) {
+            //TODO Exception must change to httpException but not found in .net code
+            catch (Exception  e) {
                 // This exception happens if trying to monitor a directory or file
                 // inside a directory which doesn't exist
                 Logger.InfoFormat(e, "Error monitoring file changes on virtual path '{0}'", virtualPath);
@@ -73,34 +95,43 @@ namespace Blocks.Framework.FileSystems.VirtualPath
 
         }
 
-        private void BindSignal(string virtualPath, CacheItemRemovedCallback callback) {
+        private void BindSignal(string virtualPath, Action<string,object> fileChangesCallback) {
             string key = _prefix + virtualPath;
 
             //PERF: Don't add in the cache if already present. Creating a "CacheDependency"
             //      object (below) is actually quite expensive.
-            if (HostingEnvironment.Cache.Get(key) != null)
-                return;
+       
+            _caches.GetOrAdd(key, (k) =>
+                {
+                    Logger.DebugFormat("Monitoring virtual path \"{0}\"", virtualPath);
+                    CreateFileSystemWatcher(virtualPath, (fileObject,args) => fileChangesCallback(key,virtualPath));
+                    return virtualPath;
+                });
 
-            var cacheDependency = HostingEnvironment.VirtualPathProvider.GetCacheDependency(
-                virtualPath,
-                new[] { virtualPath },
-                _clock.UtcNow);
-
-            Logger.DebugFormat("Monitoring virtual path \"{0}\"", virtualPath);
-
-            HostingEnvironment.Cache.Add(
-                key,
-                virtualPath,
-                cacheDependency,
-                Cache.NoAbsoluteExpiration,
-                Cache.NoSlidingExpiration,
-                CacheItemPriority.NotRemovable,
-                callback);
+           
+//            if ( _caches.get(key) != null)
+//                return;
+//
+//            var cacheDependency = HostingEnvironment.VirtualPathProvider.GetCacheDependency(
+//                virtualPath,
+//                new[] { virtualPath },
+//                _clock.UtcNow);
+//
+//            Logger.DebugFormat("Monitoring virtual path \"{0}\"", virtualPath);
+//
+//            cache.Set(
+//                key,
+//                virtualPath,
+//                cacheDependency,
+//                Cache.NoAbsoluteExpiration,
+//                Cache.NoSlidingExpiration,
+//                    CacheItemPriority.NotRemovable,
+//                callback);
         }
 
-        public void Signal(string key, object value, CacheItemRemovedReason reason) {
+        public void Signal(string key, object value) {
             var virtualPath = Convert.ToString(value);
-            Logger.DebugFormat("Virtual path changed ({1}) '{0}'", virtualPath, reason.ToString());
+            Logger.DebugFormat("Virtual path changed ({1}) '{0}'", virtualPath);
 
             var token = DetachToken(virtualPath);
             if (token != null)
@@ -127,10 +158,10 @@ namespace Blocks.Framework.FileSystems.VirtualPath
                 _weak = new Weak<DefaultVirtualPathMonitor>(provider);
             }
 
-            public void Signal(string key, object value, CacheItemRemovedReason reason) {
+            public void Signal(string key, object value) {
                 var provider = _weak.Target;
                 if (provider != null)
-                    provider.Signal(key, value, reason);
+                    provider.Signal(key, value);
             }
         }
     }

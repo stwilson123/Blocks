@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Web.Hosting;
 using Blocks.Framework.Caching;
 using Blocks.Framework.FileSystems.VirtualPath;
 using Castle.Core.Logging;
+using Microsoft.AspNetCore.Hosting.Internal;
+using Microsoft.Extensions.FileProviders;
 
 namespace Blocks.Framework.FileSystems.WebSite
 {
@@ -56,6 +57,8 @@ namespace Blocks.Framework.FileSystems.WebSite
 
             if (actualContent) {
                 var physicalPath = _virtualPathProvider.MapPath(virtualPath);
+                
+              
                 using (var stream = File.Open(physicalPath, FileMode.Open, FileAccess.Read)) {
                     using (var reader = new StreamReader(stream)) {
                         return reader.ReadToEnd();
@@ -98,10 +101,15 @@ namespace Blocks.Framework.FileSystems.WebSite
             return _virtualPathMonitor.WhenPathChanges(virtualPath);
         }
 
-        static string Normalize(string virtualPath) {
+//        static string Normalize(string virtualPath) {
+         string Normalize(string virtualPath) {
             // todo: use IVirtualPathProvider instance instead of static.
             // Currently IVirtualPathProvider has no way of doing normalization like this
-            return HostingEnvironment.VirtualPathProvider.GetFile(virtualPath).VirtualPath;
+
+          
+           
+             return virtualPath;
+          //  return HostingEnvironment.VirtualPathProvider.GetFile(virtualPath).VirtualPath;
         }
     }
 }
