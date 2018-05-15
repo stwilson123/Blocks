@@ -33,22 +33,42 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Abp.AutoMapper, Version=3.2.4.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\Blocks.Web\Modules\Blocks.LayoutModule\Bin\Abp.AutoMapper.dll</HintPath>
-    </Reference>
     <Reference Include="Abp.TestBase, Version=3.2.4.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>..\packages\Abp.TestBase.3.2.4\lib\netstandard2.0\Abp.TestBase.dll</HintPath>
     </Reference>
+    <Reference Include="Castle.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc">
+      <HintPath>..\packages\Castle.Core.4.2.1\lib\net45\Castle.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Castle.Facilities.Logging, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc">
+      <HintPath>..\packages\Castle.LoggingFacility.4.1.0\lib\net45\Castle.Facilities.Logging.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Castle.Windsor, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc">
       <HintPath>..\packages\Castle.Windsor.4.1.0\lib\net45\Castle.Windsor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Hosting, Version=2.0.2.0, Culture=neutral, PublicKeyToken=adb9793829ddae60">
+      <HintPath>..\..\..\Users\权洲\.nuget\packages\microsoft.aspnetcore.hosting\2.0.2\lib\netstandard2.0\Microsoft.AspNetCore.Hosting.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Hosting.Abstractions, Version=2.0.2.0, Culture=neutral, PublicKeyToken=adb9793829ddae60">
+      <HintPath>..\..\..\Users\权洲\.nuget\packages\microsoft.aspnetcore.hosting.abstractions\2.0.2\lib\netstandard2.0\Microsoft.AspNetCore.Hosting.Abstractions.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="mscorlib" />
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed">
       <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <HintPath>..\packages\System.ComponentModel.Annotations.4.4.1\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Remoting" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
@@ -67,7 +87,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BlocksTestBase.cs" />
-    <Compile Include="DBORM\Linq\LinqQueryableTest.cs" />
+    <Compile Include="FileSystems\VirtualPath\DefaultVirtualPathMonitorTest.cs" />
+    <Compile Include="FileSystems\VirtualPath\DefaultVirtualPathProviderTest.cs" />
+    <Compile Include="Interface\ILog.cs" />
     <Compile Include="Ioc\DependencyConventionalRegistrarTest.cs" />
     <Compile Include="Model\Log4Net.cs" />
     <Compile Include="Model\NullLog.cs" />
@@ -78,6 +100,10 @@
     <Compile Include="Web\Mvc\VirtualPathUtilityTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Adp\Abp.AutoMapper\Abp.AutoMapper.csproj">
+      <Project>{44ee7b2b-c3e5-42b9-95d9-79f8742d6129}</Project>
+      <Name>Abp.AutoMapper</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Adp\Abp\Abp.csproj">
       <Project>{0f98c63c-d019-4f38-9ac3-f5d7bcad9107}</Project>
       <Name>Abp</Name>
@@ -92,6 +118,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

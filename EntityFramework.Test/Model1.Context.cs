@@ -9,7 +9,6 @@
 
 using System.Data.Entity;
 using System.Configuration;
-using Castle.DynamicProxy.Generators.Emitters.SimpleAST;
 using EntityFramework.Test.Model;
 
 namespace EntityFramework.Test

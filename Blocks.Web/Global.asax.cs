@@ -15,7 +15,6 @@ using Abp.Threading;
 using Abp.Web;
 using Abp.Web.Localization;
 using Blocks.Framework.FileSystems.VirtualPath;
-using Blocks.Framework.Web.FileSystems.VirtualPath;
 
 namespace Blocks.Web
 {
@@ -45,6 +44,7 @@ namespace Blocks.Web
 
         protected  void Application_BeginRequest(object sender, EventArgs e)
         {
+            
         }
 
         protected  void Application_AuthenticateRequest(object sender, EventArgs e)
@@ -59,6 +59,7 @@ namespace Blocks.Web
 
         protected  void Application_EndRequest(object sender, EventArgs e)
         {
+            base.Application_EndRequest(sender,e);
         }
 
         protected  void Application_Error(object sender, EventArgs e)

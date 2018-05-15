@@ -67,7 +67,11 @@ namespace EntityFramework.Test.FunctionTest
         {
             var rep = Resolve<TestRepository>();
             var keyId = "123";
-            var id = rep.Update(t => t.Id == keyId, t => new TESTENTITY() {  TESTENTITY2ID = t.TESTENTITY2ID + "123" });
+            var id = rep.Update(t => t.Id == keyId, t => new TESTENTITY()
+            {
+                TESTENTITY2ID = t.TESTENTITY2ID + "123" + t.Id,
+                
+            });
             var inputPlus = "inputPlus";
             var id1 = rep.Update(t => t.Id == keyId, t => new TESTENTITY() { TESTENTITY2ID = t.TESTENTITY2ID + inputPlus });
 

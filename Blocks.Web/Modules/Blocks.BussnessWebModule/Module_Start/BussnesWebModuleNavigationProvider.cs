@@ -1,6 +1,7 @@
 ﻿using Abp.Application.Navigation;
 using Abp.Localization;
 using Blocks.Framework.Web.Application;
+using Blocks.Framework.Web.Application.Navigation;
 
 namespace Blocks.BussnessWebModule.Module_Start
 {

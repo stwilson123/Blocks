@@ -79,8 +79,8 @@
             dialogOption.config[option.dialogType],
             newOption
         );
-
-        return layer.open(opts)
+        var index = layer.open(opts);
+        return index;
     };
 
     var dialogUI = {};
@@ -148,12 +148,15 @@
             url: option.url
         }).done(function (data) {
             var WrapperId = ('' + Math.random()).replace('0.', '');
-            var dataWrapper = '<div id="' + WrapperId + '">' + data + '</div>';
+            var dialogContent = WrapperId+'dialog';
+            var dataWrapper = '<div id="' + WrapperId + '" style="height:100%">' + data + '</div>';
+            
             var endCallback = option.end;
             var currentModule;
             var layerIndex = show($.extend(option, {
-                dialogType: 'dialog', content: dataWrapper, end: function () {
+               id:dialogContent, dialogType: 'dialog', content: dataWrapper, end: function () {
                     var currentModuleResult;
+                      
                     try {
                         if (currentModule)
                             currentModuleResult = currentModule.displose();
@@ -166,7 +169,7 @@
                 }
 
             }));
-
+            $("#" + dialogContent).parents(".layui-layer").filter(':first').attr("role",'dialog');
             //req(['/Modules/Blocks.BussnessWebModule/Views/MasterData/Add.js']);
             //  require.config({path:{'Blocks.BussnessWebModule/Views/MasterData/Add':'Blocks.BussnessWebModule/Views/MasterData/Add'}})
 
@@ -174,7 +177,7 @@
             if (blocks.pageContext && blocks.pageContext.subPageJsVirtualPath) {
                 require([utility.url.pathToRelative(blocks.pageContext.subPageJsVirtualPath, blocks.pageContext.modulePrefix, '.js')], function (containerModules) {
                     currentModule = containerModules;
-                    containerModules.init($.extend($('#' + WrapperId).children(),{ currentPage: new dialog({dialogIndex: layerIndex,passData:passData})}));
+                    containerModules.init($.extend($('#' + WrapperId),{ currentPage: new dialog({dialogIndex: layerIndex,passData:passData})}));
                 });
 
                 //  require(['Blocks.BussnessWebModule/Views/MasterData/Index']);

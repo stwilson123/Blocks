@@ -1,4 +1,4 @@
-define(['./gridbase','blocks_utility'], function (grid,utility) {
+define(['./gridbase','blocks_utility','jquery'], function (grid,utility,$) {
     var validate = utility.validate;
     var dataBuilder = function (gridObj) {
         initReader(gridObj);
@@ -183,7 +183,14 @@ define(['./gridbase','blocks_utility'], function (grid,utility) {
                 postData: option.postData,
                 datatype: "json",
             });
-            this.getTopObj().find('#search_' + this._options.gridObj.attr('Id')).click();
+            var navGridData = gridObj.data('navGrid');;
+            
+            var searchOptions = this._options.dynamicConditionQuery;
+            if($.isFunction(navGridData.searchfunc))  
+                navGridData.searchfunc.call(gridObj, searchOptions) 
+            else 
+                gridObj.jqGrid("searchGrid", searchOptions);
+          //  this.getTopObj().find('#search_' + this._options.gridObj.attr('Id')).click();
         }
 
 

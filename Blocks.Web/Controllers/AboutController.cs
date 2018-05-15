@@ -6,6 +6,7 @@ namespace Blocks.Web.Controllers
     {
         public ActionResult Index()
         {
+             
             return View();
         }
 	}

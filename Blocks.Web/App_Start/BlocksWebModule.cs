@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using System.Reflection;
 using System.Web;
+using System.Web.Hosting;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
@@ -12,12 +14,14 @@ using Abp.Web.Mvc;
 using Abp.Web.SignalR;
 using Blocks.Api;
 using Blocks.Framework.DBORM;
+using Blocks.Framework.FileSystems;
 using Castle.MicroKernel.Registration;
 using Hangfire;
 using Microsoft.Owin.Security;
 using Blocks.Framework.Modules;
 using Blocks.Framework.Web.Modules;
 using Blocks.Framework.Web.Route;
+using Microsoft.AspNetCore.Hosting;
 
 namespace Blocks.Web
 {
@@ -27,7 +31,7 @@ namespace Blocks.Web
         typeof(BlocksWebApiModule),
         typeof(AbpWebSignalRModule),
         //typeof(AbpHangfireModule), - ENABLE TO USE HANGFIRE INSTEAD OF DEFAULT JOB MANAGER
-     //   typeof(AbpWebMvcModule),
+        typeof(AbpWebMvcModule),
         typeof(BlocksFrameworkWebModule),
         typeof(BlocksFrameworkDBORMModule))]
     public class BlocksWebModule : AbpModule
@@ -41,6 +45,12 @@ namespace Blocks.Web
             Configuration.Navigation.Providers.Add<BlocksNavigationProvider>();
 
             IocManager.Register<RouteCollection>(RouteTable.Routes);
+            var a = WebHostingEnvironment.CreateHostingEnvironment(new WebHostingEnvironment()
+            {
+                ContentRootPath = HostingEnvironment.ApplicationPhysicalPath
+            });
+            IocManager.Register<IHostingEnvironment>(a);
+
             RouteTable.Routes.RouteExistingFiles = true;
             Configuration.Settings.Providers.Add<GlobalSettingProvider>();
 
