@@ -52,7 +52,7 @@ namespace Blocks.Framework.DBORM
                     .ImplementedBy(typeof(UnitOfWorkDbContextProvider))
                     .LifestyleTransient()
             );
-            IocManager.IocContainer.Register(Component.For(typeof(BlocksDbContext<>)));
+            IocManager.IocContainer.Register(Component.For(typeof(BlocksDbContext<>)).LifestyleTransient());
                 
              
             RegisterGenericRepositoriesAndMatchDbContexes();

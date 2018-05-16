@@ -168,7 +168,7 @@
       <Project>{0f98c63c-d019-4f38-9ac3-f5d7bcad9107}</Project>
       <Name>Abp</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\Blocks.Framework.Web\Blocks.Framework.Web.csproj">
+    <ProjectReference Include="..\..\..\Blocks.Framework.Web.old\Blocks.Framework.Web.csproj">
       <Project>{4a40a2ee-57bc-48a4-abd5-36c7d3cbdd34}</Project>
       <Name>Blocks.Framework.Web</Name>
     </ProjectReference>

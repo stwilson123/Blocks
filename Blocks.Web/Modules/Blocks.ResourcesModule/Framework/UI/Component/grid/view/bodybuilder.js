@@ -1,4 +1,4 @@
-define(['../gridbase', 'blocks_utility'], function (grid, utility) {
+define(['../gridbase', 'blocks_utility','../extensions/checkboxPlugin'], function (grid, utility,checkboxHanlder) {
     var validate = utility.validate;
     var gridBody = function (gridObj) {
         this.lastsel;
@@ -72,11 +72,8 @@ define(['../gridbase', 'blocks_utility'], function (grid, utility) {
             gridObj.on('loadComplete', function () {
 
                 gridObj.getTopObj().find("input:checkbox").each(function (i) {
-                    var curObj = $(this);
-                    if (i === 0 )
-                        $("<label for='"+curObj.attr("id")+"'></label>").insertAfter(curObj)
-                    else
-                        $("<label ></label>").insertAfter(curObj)
+                    checkboxHanlder.call(this,i);
+                   
                 })
 
             });

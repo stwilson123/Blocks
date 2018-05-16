@@ -40,7 +40,7 @@ namespace Blocks.Web
         {
             //Enable database based localization
             Configuration.Modules.Zero().LanguageManagement.EnableDbLocalization();
-
+            Configuration.BackgroundJobs.IsJobExecutionEnabled = false;
             //Configure navigation/menu
             Configuration.Navigation.Providers.Add<BlocksNavigationProvider>();
 

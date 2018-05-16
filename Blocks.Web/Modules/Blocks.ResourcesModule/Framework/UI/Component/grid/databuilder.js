@@ -1,4 +1,4 @@
-define(['./gridbase','blocks_utility','jquery'], function (grid,utility,$) {
+define(['./gridbase','blocks_utility','jquery','./extensions/checkboxPlugin'], function (grid,utility,$,checkboxHanlder) {
     var validate = utility.validate;
     var dataBuilder = function (gridObj) {
         initReader(gridObj);
@@ -224,6 +224,10 @@ define(['./gridbase','blocks_utility','jquery'], function (grid,utility,$) {
             result = jqObj.jqGrid('addRowData', rowDatas[i][idKey], rowDatas[i], "After", lastIndex++) ? result + 1 : result;
 
         }
+        this.getTopObj().find("input:checkbox").each(function (i) {
+            checkboxHanlder.call(this,i);
+
+        })
     };
     grid.prototype.getRowData = function (rowIds, colNames) {
         var isFitercol = false;

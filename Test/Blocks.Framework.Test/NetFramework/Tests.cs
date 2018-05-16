@@ -8,7 +8,7 @@ namespace Blocks.Framework.Test.NetFramework
     public class Tests
     {
         [Fact]
-        public void Test1()
+        public void TestGetAllInterfaces()
         {
             var interfaces = typeof(TestInterface).GetInterfaces();
             Assert.True(interfaces.Contains(typeof(IBaseInterface)));
@@ -16,8 +16,20 @@ namespace Blocks.Framework.Test.NetFramework
 
         }
         
-        
-        
+        [Fact]
+        public void TestDyanmicJson()
+        {
+            var sourceObj = new sourceObj() {a = "123"};
+            var jsonStr = JsonConvert.SerializeObject(sourceObj);
+            var transferObj = JsonConvert.DeserializeObject<object>(jsonStr);
+            Assert.Equal(jsonStr,JsonConvert.SerializeObject(transferObj));
+
+        }
+
+        class sourceObj
+        {
+            public string a { get; set; }
+        }
         
     }
 
