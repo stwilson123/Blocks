@@ -10,9 +10,11 @@ using Abp.PlugIns;
 using Abp.Threading;
 using Abp.Web;
 using Abp.Web.Localization;
+using Blocks.Framework.FileSystems;
 using Blocks.Framework.FileSystems.VirtualPath;
-using Blocks.Framework.Web.FileSystems.VirtualPath;
+using Blocks.Framework.Web.Web.Localization;
 using Castle.Facilities.Logging;
+using Castle.Winsdor.Aspnet.Web;
 
 namespace Blocks.Framework.Web
 {
@@ -38,17 +40,22 @@ namespace Blocks.Framework.Web
             
             ThreadCultureSanitizer.Sanitize();
 
-             
-            IVirtualPathProvider pathProvider = new DefaultVirtualPathProvider();
+            var environment = WebHostingEnvironment.CreateHostingEnvironment(new WebHostingEnvironment()
+            {
+                ContentRootPath = Server.MapPath("~")
+            });    
+            IVirtualPathProvider pathProvider = new DefaultVirtualPathProvider(environment);
             if (pathProvider.DirectoryExists(@"~\Modules"))
                 AbpBootstrapper.PlugInSources.AddFolder(pathProvider.MapPath(@"~\Modules"),
                     SearchOption.AllDirectories);
             AbpBootstrapper.Initialize();
+            PerWebRequestLifestyleModule.FuncHttpCache = (noInput) => { return HttpContext.Current.Items; };
         }
 
         protected virtual void Application_End(object sender, EventArgs e)
         {
-            AbpWebApplication<TStartupModule>.AbpBootstrapper.Dispose();
+            AbpBootstrapper.Dispose();
+          //  AbpWebApplication<TStartupModule>.AbpBootstrapper.Dispose();
         }
 
         protected virtual void Session_Start(object sender, EventArgs e)
@@ -74,6 +81,7 @@ namespace Blocks.Framework.Web
 
         protected virtual void Application_EndRequest(object sender, EventArgs e)
         {
+            PerWebRequestLifestyleModule.EndRequest(sender,e);
         }
 
         protected virtual void Application_Error(object sender, EventArgs e)
@@ -82,7 +90,10 @@ namespace Blocks.Framework.Web
 
         protected virtual void SetCurrentCulture()
         {
-            AbpWebApplication<TStartupModule>.AbpBootstrapper.IocManager.Using<ICurrentCultureSetter>((Action<ICurrentCultureSetter>) (cultureSetter => cultureSetter.SetCurrentCulture(this.Context)));
+            
+            AbpBootstrapper.IocManager.Using<ICurrentCultureSetter>((Action<ICurrentCultureSetter>) (cultureSetter => cultureSetter.SetCurrentCulture(this.Context)));
+
+         //   AbpWebApplication<TStartupModule>.AbpBootstrapper.IocManager.Using<ICurrentCultureSetter>((Action<ICurrentCultureSetter>) (cultureSetter => cultureSetter.SetCurrentCulture(this.Context)));
         }
     }
 }

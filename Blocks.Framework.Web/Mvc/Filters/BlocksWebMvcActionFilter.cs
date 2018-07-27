@@ -3,7 +3,6 @@ using System.Web.Mvc;
 using Blocks.Framework.Environment.Extensions;
 using Blocks.Framework.FileSystems.VirtualPath;
 using Blocks.Framework.Ioc.Dependency;
-using Blocks.Framework.Web.FileSystems.VirtualPath;
 
 namespace Blocks.Framework.Web.Mvc.Filters
 {
@@ -24,7 +23,9 @@ namespace Blocks.Framework.Web.Mvc.Filters
 
     public class BlocksWebMvcResultFilter : IResultFilter, ITransientDependency
     {
-        public IVirtualPathProvider pathProvider = new DefaultVirtualPathProvider();
+//        public IVirtualPathProvider pathProvider = new DefaultVirtualPathProvider();
+        public IVirtualPathProvider pathProvider { set; get; }
+
         public ExtensionManager extensionManager { set; get; }
         public void OnResultExecuted(ResultExecutedContext filterContext)
         {

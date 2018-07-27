@@ -16,11 +16,14 @@ using Abp.Localization.Dictionaries.Xml;
 using Blocks.Framework.AutoMapper;
 using Blocks.Framework.Environment.Extensions;
 using Blocks.Framework.Ioc;
+using Blocks.Framework.Navigation;
 
 namespace Blocks.Framework.Modules
 {
     [DependsOn(typeof(CacheModule))]
     [DependsOn(typeof(EnvironmentModule))]
+    [DependsOn(typeof(LocalizationModule))]
+    [DependsOn(typeof(NavigationModule))]
     public class BlocksFrameworkModule: AbpModule
     {
          

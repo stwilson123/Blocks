@@ -1,6 +1,5 @@
 ﻿using System.Reflection;
 using Abp.Reflection;
-using Abp.Web;
 using Abp.Web.Security.AntiForgery;
 
 namespace Blocks.Framework.Web.Web.Security.AntiForgery
@@ -11,7 +10,7 @@ namespace Blocks.Framework.Web.Web.Security.AntiForgery
             this IAbpAntiForgeryManager manager,
             IAbpAntiForgeryWebConfiguration antiForgeryWebConfiguration,
             MethodInfo methodInfo, 
-            HttpVerb httpVerb, 
+            Abp.Web.HttpVerb httpVerb, 
             bool defaultValue)
         {
             if (!antiForgeryWebConfiguration.IsEnabled)

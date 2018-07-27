@@ -1,4 +1,8 @@
-﻿using System.Web.Routing;
+﻿using System.Web.Mvc;
+using System.Web.Routing;
+using Abp.Dependency;
+using Blocks.Framework.Web.Mvc.Controllers;
+using Castle.MicroKernel;
 
 namespace Blocks.Framework.Web.Mvc.Route
 {
@@ -31,5 +35,7 @@ namespace Blocks.Framework.Web.Mvc.Route
 
             return GetAreaName(routeData.Route);
         }
+
+       
     }
 }

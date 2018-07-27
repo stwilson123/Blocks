@@ -2669,11 +2669,8 @@ namespace Blocks.BussnessEntityModule
 		public TESTENTITYConfiguration()
         {
 			ToTable("TESTENTITY");
-			            HasKey(x => x.Id);
-		 
-		 
-			 																																																																								 HasOptional(t => t.TESTENTITY2).WithMany().HasForeignKey(t => t.TESTENTITY2ID);	
-															     HasMany(t => t.TESTENTITY3s).WithOptional().HasForeignKey(t => t.TESTENTITYID);
+			            HasKey(x => x.Id);																																																																						 HasOptional(t => t.TESTENTITY2).WithMany().HasForeignKey(t => t.TESTENTITY2ID);	
+			 HasMany(t => t.TESTENTITY3s).WithOptional().HasForeignKey(t => t.TESTENTITYID);
 										 
         }
 		 

@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Abp.Web;
 
 namespace Blocks.Framework.Web.Web.Security.AntiForgery
 {
@@ -18,6 +17,6 @@ namespace Blocks.Framework.Web.Web.Security.AntiForgery
         /// A list of ignored HTTP verbs for Anti Forgery token validation.
         /// Default list: Get, Head, Options, Trace.
         /// </summary>
-        HashSet<HttpVerb> IgnoredHttpVerbs { get; }
+        HashSet<Abp.Web.HttpVerb> IgnoredHttpVerbs { get; }
     }
 }

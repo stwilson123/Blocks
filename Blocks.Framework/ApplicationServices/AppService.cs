@@ -9,6 +9,8 @@ namespace Blocks.Framework.ApplicationServices
 {
     public abstract class AppService : ApplicationService
     {
+
+        public static string[] Postfixes = new string[] { "AppService", "ApplicationService" };
         //Move to Core 
 //        public TenantManager TenantManager { get; set; }
 //

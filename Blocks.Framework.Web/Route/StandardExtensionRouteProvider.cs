@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.SessionState;
+using Microsoft.AspNetCore.Mvc.Internal;
+using Microsoft.AspNetCore.Routing;
 
 namespace Blocks.Framework.Web.Route
 {

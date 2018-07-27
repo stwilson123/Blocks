@@ -1,6 +1,8 @@
 ﻿using System;
 using Blocks.Framework.Data.Paging;
 using Blocks.Framework.Json;
+using Blocks.Framework.Test.Interface;
+using Blocks.Framework.Test.Model;
 using Newtonsoft.Json;
 using Xunit;
 
@@ -30,6 +32,14 @@ namespace Blocks.Framework.Test
             Assert.False(typeof(int?).IsClass);
             Assert.False(typeof(char).IsClass);
             Assert.True(string.Empty.GetType().IsClass && string.Empty is string);
+        }
+
+
+        [Fact]
+        public void TestTransfer()
+        {
+            ILog log = new NullLog();
+            var newLog = (NullLog)log;
         }
     }
 }

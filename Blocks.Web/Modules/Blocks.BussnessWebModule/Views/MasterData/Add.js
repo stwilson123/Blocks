@@ -6,6 +6,7 @@
      
     function main() {
         var viewModel;
+      
         var view;
         var mainGrid;
         var _Blocks = blocks;
@@ -13,7 +14,7 @@
             'init': function (v, vm) {
                 view = v;
                 viewModel = vm;
-                
+                window.testViewModel = viewModel;
                 var citySelect = new blocks.ui.select({
                     viewObj: view.find("#city"),
                     data: [{id: 'chinaId', text: 'china'}, {id: 'usId', text: 'us'}],
@@ -62,7 +63,7 @@
 
 
     function mainViewModel() {
-        return {tenancyName: 'initvalue', city: '', isActive: true, comment: 'initcomment',combobox:'',registerTime:''};
+        return {tenancyName: 'initvalue', city: '', isActive: true, comment: 'initcomment',combobox:'',registerTime:'',email:''};
     }
 
     return currentModule;

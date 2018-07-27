@@ -4,6 +4,7 @@ using Abp.AutoMapper;
 using Abp.Modules;
 using Abp.TestBase;
 using Blocks.Framework.Configurations;
+using Blocks.Framework.Ioc;
 using Castle.MicroKernel.Registration;
 
 namespace Blocks.Framework.Test
@@ -15,8 +16,10 @@ namespace Blocks.Framework.Test
     )]
     public class TestModule : AbpModule
     {
+        
         public override void PreInitialize()
         {
+            IocManager.AddConventionalRegistrar(new DependencyConventionalRegistrar(IocManager)); 
 //            Configuration.Settings.Providers.Add<GlobalSettingProvider>();
 
         }

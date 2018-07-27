@@ -58,7 +58,9 @@ namespace Blocks.Framework.DBORM.Linq
 
 
             //TODO validate table alias;
-
+            var outerParamIsNotExist = false;
+            if (tableAlias.Any() && !tableAlias.Any(t => t.TableAlias == outerParam.Name))
+                outerParamIsNotExist = true;
             tableAlias.Add((typeof(TOuter), outerParam.Name));
             tableAlias.Add((typeof(TInner), innerParam.Name));
 
@@ -70,6 +72,9 @@ namespace Blocks.Framework.DBORM.Linq
             }
             else
             {
+                if(outerParamIsNotExist)
+                      throw new BlocksDBORMException(StringLocal.Format("Can't find table alias in the history join expression.Please check Touter join expression."));
+
                 iQuerable = DynamicQueryableExtensions.Join(iQuerable, dbContext.Set(typeof(TInner)), $"{outerParam.Name}.{((MemberExpression)outerKeySelector.Body).Member.Name}",
                     $"{((MemberExpression)innerKeySelector.Body).Member.Name}", tableAlias.CreateResultSelector());
             }

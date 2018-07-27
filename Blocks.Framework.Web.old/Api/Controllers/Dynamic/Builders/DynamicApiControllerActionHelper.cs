@@ -8,7 +8,7 @@ namespace Blocks.Framework.Web.Api.Controllers.Dynamic.Builders
 {
     internal static class DynamicApiControllerActionHelper
     {
-        public static List<MethodInfo> GetMethodsOfType(Type type)
+        public static IEnumerable<MethodInfo> GetMethodsOfType(Type type)
         {
             var allMethods = new List<MethodInfo>();
 
@@ -18,7 +18,7 @@ namespace Blocks.Framework.Web.Api.Controllers.Dynamic.Builders
                 method => method.DeclaringType != typeof (object) &&
                           method.DeclaringType != typeof (ApplicationService) &&
                           !IsPropertyAccessor(method)
-                ).ToList();
+                );
         }
 
         public static bool IsMethodOfType(MethodInfo methodInfo, Type type)

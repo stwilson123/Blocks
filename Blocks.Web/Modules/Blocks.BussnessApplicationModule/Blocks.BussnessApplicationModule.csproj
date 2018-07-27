@@ -42,6 +42,9 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\..\..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
@@ -54,6 +57,10 @@
     <Compile Include="TestAppService\ITestAppService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Blocks.Framework.Web.old\Blocks.Framework.Web.csproj">
+      <Project>{4a40a2ee-57bc-48a4-abd5-36c7d3cbdd34}</Project>
+      <Name>Blocks.Framework.Web</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Blocks.BussnessDomainModule\Blocks.BussnessDomainModule.csproj">
       <Project>{515b2afd-abe4-4d33-8332-8d900ed947f1}</Project>
       <Name>Blocks.BussnessDomainModule</Name>

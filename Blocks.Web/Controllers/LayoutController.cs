@@ -20,17 +20,20 @@ namespace Blocks.Web.Controllers
         private readonly ISessionAppService _sessionAppService;
         private readonly IMultiTenancyConfig _multiTenancyConfig;
         private readonly ILanguageManager _languageManager;
+        private readonly INavigationManager _navigationManager;
 
         public LayoutController(
             IUserNavigationManager userNavigationManager,
             ISessionAppService sessionAppService,
             IMultiTenancyConfig multiTenancyConfig,
-            ILanguageManager languageManager)
+            ILanguageManager languageManager,
+            INavigationManager navigationManager)
         {
             _userNavigationManager = userNavigationManager;
             _sessionAppService = sessionAppService;
             _multiTenancyConfig = multiTenancyConfig;
             _languageManager = languageManager;
+            _navigationManager = navigationManager;
         }
 
         [ChildActionOnly]

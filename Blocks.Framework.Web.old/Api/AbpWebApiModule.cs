@@ -60,8 +60,7 @@ namespace Blocks.Framework.Web.Api
             //IocManager.RegisterAssemblyByConvention(Assembly.GetExecutingAssembly());
 
             //Config WebMvc,Webi register
-            IocManager.AddConventionalRegistrar(
-                new ControllerConventionalRegistrar(IocManager.Resolve<IExtensionManager>().AvailableExtensions()));
+
             IocManager.AddConventionalRegistrar(
                 new ApiControllerConventionalRegistrar(IocManager.Resolve<IExtensionManager>().AvailableExtensions()));
 
@@ -150,8 +149,10 @@ namespace Blocks.Framework.Web.Api
                     DateTimeFormat = SafeConvert.DateTimeFormat[(Int32) (TimeFormatEnum.UTCDateTime)]
                 });
             
-            httpConfiguration.Formatters.JsonFormatter.SerializerSettings.ContractResolver =
-                new CamelCasePropertyNamesContractResolver();
+//            httpConfiguration.Formatters.JsonFormatter.SerializerSettings.ContractResolver =
+//                new CamelCasePropertyNamesContractResolver();
+            
+            
 //            httpConfiguration.Formatters.JsonFormatter.SerializerSettings.Converters.Insert(0,
 //                new AbpDateTimeConverter());
             //  httpConfiguration.Formatters.Add(new PlainTextFormatter());

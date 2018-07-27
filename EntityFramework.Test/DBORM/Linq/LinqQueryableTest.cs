@@ -1,5 +1,4 @@
-﻿using Blocks.Framework.DBORM.Linq;
-using EntityFramework.Test;
+﻿using EntityFramework.Test;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using EntityFramework.Test.Model;
 using Xunit;
+using Blocks.Framework.DBORM.Linq;
+using Blocks.Framework.Services.DataTransfer;
 
 namespace Blocks.Framework.Test.DBORM.Linq
 {
@@ -184,6 +185,46 @@ namespace Blocks.Framework.Test.DBORM.Linq
 
                 var entityCount2 = testEntityLinq.SelectToDynamicList((TESTENTITY t,TESTENTITY2 b) => new{ t.TESTENTITY2ID, b.Id});
             }
+        }
+
+
+        [Fact]
+        public void joinManyGenSql()
+        {
+            using (var context = new BlocksEntities())
+            {
+                var defaultLinqQuery = new DefaultLinqQueryable<TESTENTITY>(context.TestEntity.AsQueryable(), context);
+                var testEntity = defaultLinqQuery
+                    .InnerJoin((TESTENTITY t) => t.TESTENTITY2ID, (TESTENTITY2 b) => b.Id);
+
+                var default1Sql = defaultLinqQuery.ToString();
+
+                defaultLinqQuery = new DefaultLinqQueryable<TESTENTITY>(context.TestEntity.AsQueryable(), context);
+                var testLeftJoinEntity = defaultLinqQuery
+                    .InnerJoin((TESTENTITY t) => t.TESTENTITY2ID_NULLABLE, (TESTENTITY2 b) => b.Id);
+                var default2Sql = defaultLinqQuery.ToString();
+                //Assert.NotEqual(testEntity.TESTENTITY2ID, newGuid);
+
+                var testLeftJoin2Entity = defaultLinqQuery
+                    .InnerJoin((TESTENTITY t) => t.TESTENTITY2ID_NULLABLE, (TESTENTITY2 t2) => t2.Id)
+                    .InnerJoin((TESTENTITY3 t3) => t3.Id,(TESTENTITY2 t2) => t2.Id)
+                    .SelectToList((TESTENTITY t, TESTENTITY2 t2, TESTENTITY3 t3) =>
+                    new testDTO
+                    {
+                        Id = t.Id,
+                        Text = t2.Text,
+                        TESTENTITYID =  t3.TESTENTITYID
+                    });
+                var default3Sql = defaultLinqQuery.ToString();
+            }
+        }
+
+        class testDTO 
+        {
+            public string Id { get; set; }
+            public string Text { get; set; }
+            public string TESTENTITYID { get; set; }
+
         }
     }
 }

@@ -7,7 +7,7 @@ namespace Blocks.Framework.Ioc
     {
         public static void RegisterAssemblyByConventionEx(this IIocManager iocManager,Assembly assembly)
         {
-            
+          
             iocManager.RegisterAssemblyByConvention(assembly);
         }
     }

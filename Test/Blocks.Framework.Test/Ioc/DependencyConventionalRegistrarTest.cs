@@ -13,26 +13,32 @@ namespace Blocks.Framework.Test.Ioc
 {
     public class DependencyConventionalRegistrarTest : BlocksTestBase
     {
-    
+        private IIocManager _iocManager;
+        public DependencyConventionalRegistrarTest()
+        {
+            _iocManager = new IocManager();
+        }
+
         [Fact]
         public void MultObjectUseSameInterfaceDefaultFirst()
         {
-            IConventionalDependencyRegistrar register = new MultObjectConventionalRegistrar(this.LocalIocManager);
+            IConventionalDependencyRegistrar register = new MultObjectConventionalRegistrar();
  
-            register.RegisterAssembly( new Blocks.Framework.Ioc.Dependency.ConventionalRegistrationContext(this.GetType().Assembly, LocalIocManager, null));
+            register.RegisterAssembly( new Blocks.Framework.Ioc.Dependency.ConventionalRegistrationContext(this.GetType().Assembly, _iocManager, null));
 
-            var actualObject = this.LocalIocManager.Resolve<ILog>();
+            var actualObject = _iocManager.Resolve<ILog>();
             Assert.True(actualObject is Log4Net );
         }
         
         [Fact]
         public void TestActalObjectReplaceNullObject()
         {
-            IConventionalDependencyRegistrar register = new DependencyConventionalRegistrar(this.LocalIocManager);
+            var iocManager = new IocManager();
+            IConventionalDependencyRegistrar register = new DependencyConventionalRegistrar(iocManager);
  
-            register.RegisterAssembly( new Blocks.Framework.Ioc.Dependency.ConventionalRegistrationContext(this.GetType().Assembly, LocalIocManager, null));
+            register.RegisterAssembly( new Blocks.Framework.Ioc.Dependency.ConventionalRegistrationContext(this.GetType().Assembly, iocManager, null));
 
-            var actualObject = this.LocalIocManager.Resolve<INullObjectTest>();
+            var actualObject = iocManager.Resolve<INullObjectTest>();
             Assert.True(actualObject is NullObjectTestActual );
         }
 
@@ -58,10 +64,7 @@ namespace Blocks.Framework.Test.Ioc
     {
         private IIocManager _iIocManager;
 
-        public MultObjectConventionalRegistrar(IIocManager iIocManager)
-        {
-            _iIocManager = iIocManager;
-        }
+        
         /// <inheritdoc/>
         public void RegisterAssembly(IConventionalRegistrationContext context)
         {

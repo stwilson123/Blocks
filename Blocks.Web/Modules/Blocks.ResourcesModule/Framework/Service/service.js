@@ -5,6 +5,14 @@
         var onFailCallBack = userOptions.onFailCallBack;
         var onCompleteCallBack = userOptions.onCompleteCallBack;
         var combineOptions = $.extend({}, userOptions, {
+            onSuccessCallBack:function(data){
+                if(data.code === '200')
+                    onSuccessCallBack && onSuccessCallBack(data);
+                else {
+                    if (onFailCallBack) {onFailCallBack(data);return;};
+                    safePubAjax.config.default.onFailCallBack(data, undefined, data.msg);
+                }
+                },
             onCompleteCallBack: function () {
                 try {
                     onCompleteCallBack && onCompleteCallBack();
@@ -18,7 +26,7 @@
                     safePubAjax.config.default.onFailCallBack(jqXHR, textStatus, errorThrown);
                 }
                 finally {
-                    onFailCallBack && onFailCallBack(jqXHR, textStatus, errorThrown);
+                    onFailCallBack && onFailCallBack(undefined,jqXHR, textStatus, errorThrown);
                 }
             }
 

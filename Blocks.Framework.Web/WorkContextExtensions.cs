@@ -4,6 +4,9 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using Abp.Dependency;
 using Castle.MicroKernel.Lifestyle.Scoped;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Routing;
 
 namespace Blocks.Framework.Web
 {
@@ -81,7 +84,7 @@ namespace Blocks.Framework.Web
             if (controllerContext == null)
                 return null;
 
-            return GetWorkContext(controllerContext.RequestContext);
+            return GetWorkContext(controllerContext.HttpContext);
         }
 
 //        public static IWorkContextScope CreateWorkContextScope(this ILifetimeScope lifetimeScope, HttpContextBase httpContext) {

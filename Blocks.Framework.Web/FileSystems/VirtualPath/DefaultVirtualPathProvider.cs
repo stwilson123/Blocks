@@ -18,6 +18,7 @@ namespace Blocks.Framework.Web.FileSystems.VirtualPath
         public ILogger Logger { get; set; }
 
         public virtual string GetDirectoryName(string virtualPath) {
+            
             return Path.GetDirectoryName(virtualPath).Replace(Path.DirectorySeparatorChar, '/');
         }
 

@@ -2,11 +2,15 @@
     var _callbacks = {};
 
     var on = function (eventName, callback) {
-        if (!_callbacks[eventName]) {
-            _callbacks[eventName] = [];
-        }
+        var events = eventName.split(" ");
+        events.forEach(function (event) {
+            if (!_callbacks[event]) {
+                _callbacks[event] = [];
+            }
 
-        _callbacks[eventName].push(callback);
+            _callbacks[event].push(callback);
+        })
+         
     };
 
     var off = function (eventName, callback) {

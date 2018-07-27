@@ -30,7 +30,7 @@ namespace Blocks.Web
                 //        L("Users"),
                 //        url: "BussnessWebModule/Tests",
                 //        icon: "people",
-                //        requiredPermissionName: PermissionNames.Pages_Users
+                //        HasPermissions: HasPermissions.Pages_Users
                 //    )
                 //)
                 .AddItem(

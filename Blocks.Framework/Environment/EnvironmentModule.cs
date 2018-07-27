@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Linq;
 using System.Reflection;
 using Abp.Dependency;
@@ -11,13 +12,21 @@ using Castle.MicroKernel;
 using Castle.MicroKernel.Resolvers.SpecializedResolvers;
 using Abp.PlugIns;
 using Blocks.Framework.Environment.Exception;
+using Blocks.Framework.Environment.Extensions.Models;
+using Castle.Core;
 
 namespace Blocks.Framework.Environment
 {
-    public class EnvironmentModule: AbpModule
+    public class EnvironmentModule: BlocksModule
     {
+        public EnvironmentModule()
+        {
+           
+        }
         public override void PreInitialize()
         {
+            IocManager.IocContainer.Kernel.ComponentModelBuilder.AddContributor(new ProcessModelEvent());
+            IocManager.AddConventionalRegistrar(new DependencyConventionalRegistrar(IocManager)); 
             ExtensionLocations extensionLocations = new ExtensionLocations();
 
             IocManager.Register<IExtensionFolders, ModuleFolders>((IKernel kernel, IDictionary parameters) =>
@@ -35,7 +44,7 @@ namespace Blocks.Framework.Environment
         public override void Initialize()
         {
             
-            IocManager.AddConventionalRegistrar(new DependencyConventionalRegistrar(IocManager)); 
+          
 
         }
         
@@ -61,6 +70,46 @@ namespace Blocks.Framework.Environment
 //            }
             #endregion
 
+        }
+
+
+        public override void OnRegistered(IKernel kernel, ComponentModel model)
+        {
+            ;
+        }
+
+        public override void OnActivated(object instance)
+        {
+            TypeInfo instanceType = instance.GetType().GetTypeInfo();
+ 
+            var moduleId = instanceType.Assembly.GetName().Name;
+            var userProperty = FindFeatureProperty(instanceType);
+            if (userProperty != null)
+            {
+                userProperty.SetValue(instance,new Lazy<FeatureDescriptor>(
+                    () =>
+                    {
+                        return IocManager.Resolve<IExtensionManager>().AvailableFeatures()
+                            .FirstOrDefault(f => f.Id == moduleId);
+                    }));
+            }
+            
+            var extensionProperty = FindExtensionProperty(instanceType);
+            if (extensionProperty != null)
+            {
+                extensionProperty.SetValue(instance,IocManager.Resolve<IExtensionManager>().AvailableExtensions()
+                    .FirstOrDefault(f => f.Id == moduleId));
+            }
+        }
+        
+        private static PropertyInfo FindFeatureProperty(TypeInfo type)
+        {
+            return type.GetProperty("Feature", typeof(Lazy<FeatureDescriptor>));
+        }
+        
+        private static PropertyInfo FindExtensionProperty(TypeInfo type)
+        {
+            return type.GetProperty("Extension", typeof(ExtensionDescriptor));
         }
     }
 }

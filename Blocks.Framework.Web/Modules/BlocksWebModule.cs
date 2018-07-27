@@ -17,6 +17,7 @@ using Blocks.Framework.Web.Mvc.Controllers;
 using Blocks.Framework.Web.Route;
 using Blocks.Framework.Environment.Extensions.Models;
 using Blocks.Framework.Localization;
+using Blocks.Framework.Web.Api.Configuration.Startup;
 
 namespace Blocks.Framework.Web.Modules
 {

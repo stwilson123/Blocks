@@ -8,7 +8,6 @@ using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
 using Abp.Logging;
-using Abp.Web.Mvc.Resources;
 using Blocks.Framework.Collections;
 using Blocks.Framework.Json;
 using Blocks.Framework.Web.Mvc.UI.Resources;
@@ -224,9 +223,11 @@ namespace Blocks.Framework.Web.Mvc.Extensions
                 embeddedResourcePath = embeddedResourcePath.Substring(1);                
             }
 
-            var resource = WebResourceHelper.GetEmbeddedResource(embeddedResourcePath);
-            var fileVersion = new FileInfo(resource.Assembly.Location).LastWriteTime.Ticks;
-            return VirtualPathUtility.ToAbsolute(path) + "?v=" + fileVersion;
+//            var resource = WebResourceHelper.GetEmbeddedResource(embeddedResourcePath);
+//            var fileVersion = new FileInfo(resource.Assembly.Location).LastWriteTime.Ticks;
+//            return VirtualPathUtility.ToAbsolute(path) + "?v=" + fileVersion;
+            return VirtualPathUtility.ToAbsolute(path) + "?v=" + Guid.NewGuid().ToString("N");
+
         }
     }
 }

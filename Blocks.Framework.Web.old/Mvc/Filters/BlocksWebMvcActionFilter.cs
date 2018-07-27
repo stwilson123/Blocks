@@ -28,7 +28,7 @@ namespace Blocks.Framework.Web.Mvc.Filters
 
         public ExtensionManager extensionManager { set; get; }
         public void OnResultExecuted(ResultExecutedContext filterContext)
-        {
+            {
             //throw new System.NotImplementedException();
           
                 ;

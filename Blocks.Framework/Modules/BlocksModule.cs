@@ -5,6 +5,8 @@ using System.Reflection;
 using Abp.Application.Services;
 using Abp.Configuration;
 using Abp.Configuration.Startup;
+using Abp.Localization.Dictionaries;
+using Abp.Localization.Dictionaries.Xml;
 using Abp.Modules;
 using Abp.PlugIns;
 using Blocks.Framework.Configurations;
@@ -44,6 +46,7 @@ namespace Blocks.Framework.Modules
         }
         public override void PreInitialize()
         {
+         
             PreInitializeEvent();
         }
 
@@ -55,6 +58,15 @@ namespace Blocks.Framework.Modules
         /// </summary>
         public override void Initialize()
         {
+            Configuration.Localization.Sources.Add(
+                new DictionaryBasedLocalizationSource(
+                    extensionDescriptor.Name,
+                    new XmlEmbeddedFileLocalizationDictionaryProvider(
+                        currentAssmebly, "Localization.Source"
+                    )
+                )
+            );
+            
             // var currentAssmeblyName = currentAssmebly.GetName().Name;
             //var extensionName = extensionDescriptor.Name;
             IocManager.RegisterAssemblyByConvention(currentAssmebly);

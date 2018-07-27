@@ -11,7 +11,7 @@
     <PackageReference Include="AutoMapper" Version="6.2.1" />
     <PackageReference Include="Castle.Windsor" Version="4.1.0" />
     <PackageReference Include="Castle.Windsor.MsDependencyInjection" Version="3.3.0" />
-    <PackageReference Include="Microsoft.AspNetCore" Version="2.0.3" />
+    <PackageReference Include="Microsoft.AspNetCore" Version="2.1.1" />
     <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="2.0.1" />
   </ItemGroup>
   <ItemGroup>
@@ -27,5 +27,8 @@
     <Reference Include="xunit.core, Version=2.3.1.3858, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c">
       <HintPath>..\packages\xunit.extensibility.core.2.3.1\lib\netstandard1.1\xunit.core.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Reflection" />
   </ItemGroup>
 </Project>

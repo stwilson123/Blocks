@@ -1,35 +1,27 @@
-﻿using Abp.Application.Navigation;
-using Abp.Localization;
-using Blocks.Framework.Web.Application;
-using Blocks.Framework.Web.Application.Navigation;
+﻿using Blocks.Framework.Environment.Extensions.Models;
+using Blocks.Framework.Localization;
+using Blocks.Framework.Navigation;
+using Blocks.Framework.Navigation.Provider;
+using INavigationProviderContext = Blocks.Framework.Navigation.Provider.INavigationProviderContext;
 
 namespace Blocks.BussnessWebModule.Module_Start
 {
-    public class BussnesWebModuleNavigationProvider : BlocksNavigationProvider
+    public class BussnesWebModuleNavigationProvider : INavigationProvider
     {
-        public override void SetNavigation(INavigationProviderContext context)
+        public Localizer L { get; set; }
+        public ExtensionDescriptor Extension { get; set; }
+
+        public void SetNavigation(INavigationProviderContext context)
         {
-            context.Manager.MainMenu
-
-                .AddItem(
-                    new MenuItemDefinition(
-                        "Test",
-                        L("Tests"),
-
-                        icon: "people",
-                        requiredPermissionName: "Pages.Users"
-                    ).AddItem(new MenuItemDefinition("Test", L("Test"), icon: "people",
-                    requiredPermissionName: "Pages.Users", url: "BussnessWebModule/Tests/TranditionLayoutTestNew"))
-                    .AddItem(new MenuItemDefinition("MasterData", L("MasterData"), icon: "people",
-                    requiredPermissionName: "Pages.Users", url: "BussnessWebModule/MasterData/Index")
+           context.Manager.MainMenu
+                .AddBuilder((m) => 
+                    m.Name("Test").DisplayName(L("Tests"))
+                        .Action("TranditionLayoutTestNew", "Tests",Extension.Name)
                     )
-                );
+                .AddBuilder((m) => m.Name("MasterData").DisplayName(L("MasterData"))
+                    .Action("Index", "MasterData",Extension.Name));
 
-        }
-
-        private static ILocalizableString L(string name)
-        {
-            return new LocalizableString(name, "Blocks");
+             
         }
     }
 }

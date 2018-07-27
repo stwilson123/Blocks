@@ -27,17 +27,29 @@ define(['jquery', 'vueJS', 'blocks_utility', '../../Event/event'], function ($, 
         utility.validate.mustFunction(sourceController, 'The createController param');
         utility.obj.inherit(DefaultController, sourceController);
 
-        return new sourceController();
+        return new sourceController();;
     };
     module.prototype.createViewModel = function (data, view, controller) {
+        var currentController = controller
+        var watchFunction = {};
+        for(var name in data()){
+            watchFunction[name] = function () {
+              this.$nextTick(function () {
 
-        return new vueJS({
+                  eventBus.trigger("input.update", currentController._view);
+                     
+                });
+            };
+        };
+        var VM = new vueJS({
             el: view[0], data: data, methods: controller.actions, mounted: function () {
                 controller._view = $(this.$el);
                 var pageContext = {};
                 controller.events.init($.extend($(this.$el), {currentPage: view.currentPage}), this._data, pageContext);
-            }
+            },watch:watchFunction
+             
         });
+        return VM;
 
     };
 

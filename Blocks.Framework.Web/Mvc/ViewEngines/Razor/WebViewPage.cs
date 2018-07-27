@@ -6,6 +6,7 @@ using System.Web.WebPages;
 using Abp.Dependency;
 using Abp.Web.Security.AntiForgery;
 using Blocks.Framework.Environment.Configuration;
+using Blocks.Framework.Web.Mvc.Security.AntiForgery;
 using Blocks.Framework.Web.Mvc.Spooling;
 using Blocks.Framework.Web.Mvc.UI.Extensions;
 using Blocks.Framework.Web.Mvc.UI.Resources;

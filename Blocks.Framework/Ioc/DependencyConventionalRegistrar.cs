@@ -49,7 +49,7 @@ namespace Blocks.Framework.Ioc
                     .WithService.DefaultInterfaces()
                     .LifestyleTransient()
             );
-            
+              
             context.IocManager.IocContainer.Register(
                 Classes.FromAssembly(context.Assembly)
                     .BasedOn<IUnitOfWorkDependency>()
@@ -73,6 +73,7 @@ namespace Blocks.Framework.Ioc
                                 !typeof(Abp.Dependency.ITransientDependency).IsAssignableFrom(t)
                     )
                     .ConfigureSpecial(_iIocManager,context.Assembly.GetName().Name)
+                   
                     .If(type => !type.GetTypeInfo().IsGenericTypeDefinition)
                     .ConfigureIf(r => !r.Implementation.GetInterfaces().Contains(typeof(INullObject)),r=> r.IsDefault())
                     .WithService.Self()
@@ -88,14 +89,16 @@ namespace Blocks.Framework.Ioc
     {
         public static  BasedOnDescriptor ConfigureSpecial(this BasedOnDescriptor baseOnDescriptor,IIocManager _iIocManager,string ModuleID)
         {
-            return baseOnDescriptor.ConfigureIf(t => typeof(IFeature).IsAssignableFrom(t.Implementation), t =>
-            {
+            return baseOnDescriptor.Configure(t => t.Activator<DefaultBlocksComponentActivator>()).
+          ConfigureIf(t => typeof(IFeature).IsAssignableFrom(t.Implementation), t =>
+            { 
                 t.DependsOn(Castle.MicroKernel.Registration.Dependency.OnValue("Feature", new Lazy<FeatureDescriptor>(
                     () =>
                     {
                         return _iIocManager.Resolve<IExtensionManager>().AvailableFeatures()
                             .FirstOrDefault(f => f.Id == ModuleID);
                     })));
+                 
 
             });
         }

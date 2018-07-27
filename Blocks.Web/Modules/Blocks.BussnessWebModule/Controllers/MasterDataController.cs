@@ -1,4 +1,5 @@
-﻿using Blocks.Framework.Web.Mvc.Controllers;
+﻿using Blocks.Framework.ApplicationServices.Controller.Attributes;
+using Blocks.Framework.Web.Mvc.Controllers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,12 +10,14 @@ namespace Blocks.BussnessWebModule.Controllers
 {
     public class MasterDataController : BlocksWebMvcController
     {
-        // GET: MasterData
+        [BlocksActionName("Index")]
         public ActionResult Index()
         {
             return View();
         }
-        
+
+
+        [BlocksActionName("Add")]
         public ActionResult Add()
         {
             return PartialView();

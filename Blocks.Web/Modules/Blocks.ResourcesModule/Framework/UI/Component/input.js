@@ -16,7 +16,7 @@ define(['jquery', '../../Event/event'], function ($, eventBus) {
             }
         },
     };
-    eventBus.on("moduleInit", function (view) {
+    eventBus.on("moduleInit input.update", function (view) {
         view.find('.form-control:not(.date)').focus(function () {
             inputAnimation.focus.apply(this,arguments);
         });

@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Abp.Web;
 
 namespace Blocks.Framework.Web.Web.Security.AntiForgery
 {
@@ -7,12 +6,12 @@ namespace Blocks.Framework.Web.Web.Security.AntiForgery
     {
         public bool IsEnabled { get; set; }
 
-        public HashSet<HttpVerb> IgnoredHttpVerbs { get; }
+        public HashSet<Abp.Web.HttpVerb> IgnoredHttpVerbs { get; }
 
         public AbpAntiForgeryWebConfiguration()
         {
             IsEnabled = true;
-            IgnoredHttpVerbs = new HashSet<HttpVerb> { HttpVerb.Get, HttpVerb.Head, HttpVerb.Options, HttpVerb.Trace };
+            IgnoredHttpVerbs = new HashSet<Abp.Web.HttpVerb> { Abp.Web.HttpVerb.Get, Abp.Web.HttpVerb.Head, Abp.Web.HttpVerb.Options, Abp.Web.HttpVerb.Trace };
         }
     }
 }

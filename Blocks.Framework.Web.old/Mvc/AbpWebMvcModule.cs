@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Reflection;
 using System.Web.Hosting;
 using System.Web.Mvc;
@@ -10,6 +11,7 @@ using Blocks.Framework.Configurations;
 using Blocks.Framework.Environment.Extensions;
 using Blocks.Framework.Web.Mvc.Configuration;
 using Blocks.Framework.Web.Mvc.Controllers;
+using Blocks.Framework.Web.Mvc.Controllers.Factory;
 using Blocks.Framework.Web.Mvc.Filters;
 using Blocks.Framework.Web.Mvc.ModelBinding.Binders;
 using Blocks.Framework.Web.Mvc.Security.AntiForgery;
@@ -37,6 +39,11 @@ namespace Blocks.Framework.Web.Mvc
             IocManager.Register<IAbpMvcConfiguration, AbpMvcConfiguration>();
 
             Configuration.ReplaceService<IAbpAntiForgeryManager, AbpMvcAntiForgeryManager>();
+//            IocManager.AddConventionalRegistrar(
+//                new ControllerConventionalRegistrar(IocManager.Resolve<IExtensionManager>().AvailableExtensions()));
+
+            IocManager.Register<MvcControllerBuilderFactory>();
+
         }
 
         /// <inheritdoc/>
@@ -44,8 +51,9 @@ namespace Blocks.Framework.Web.Mvc
         {
             //Config init 
             IocManager.AddConventionalRegistrar(new ConfiguartionConventionalRegistrar(IocManager.Resolve<IExtensionManager>().AvailableExtensions()));
+            IocManager.AddConventionalRegistrar(
+                new ControllerConventionalRegistrar(IocManager.Resolve<IExtensionManager>().AvailableExtensions()));
 
-            
 
             //Config WebMvc
             ControllerBuilder.Current.SetControllerFactory(new BlocksWebMvcControllerFactory(IocManager));
@@ -75,6 +83,8 @@ namespace Blocks.Framework.Web.Mvc
 //            var abpMvcDateTimeBinder = new AbpMvcDateTimeBinder();
 //            ModelBinders.Binders.Add(typeof(DateTime), abpMvcDateTimeBinder);
 //            ModelBinders.Binders.Add(typeof(DateTime?), abpMvcDateTimeBinder);
+            
+          
         }
     }
 }

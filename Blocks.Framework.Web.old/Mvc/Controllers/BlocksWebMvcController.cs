@@ -31,8 +31,9 @@ using Castle.Core.Logging;
 
 namespace Blocks.Framework.Web.Mvc.Controllers
 {
-    public abstract class BlocksWebMvcController : Controller 
-    { 
+    public abstract class BlocksWebMvcController : System.Web.Mvc.Controller 
+    {
+        public static string[] Postfixes = new string[] { "Controller" };
         /// <summary>
         /// Gets current session information.
         /// </summary>

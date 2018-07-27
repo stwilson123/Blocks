@@ -70,6 +70,6 @@ namespace Blocks.Framework.Web.Mvc.Controllers
                 instance = _iocManager.Resolve<IController>(serviceKey);
             }
             return instance != null ? instance.GetType() : base.GetControllerType(requestContext, controllerName);
-        }
+        } 
     }
 }
