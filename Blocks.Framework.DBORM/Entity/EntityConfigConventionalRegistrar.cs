@@ -14,10 +14,10 @@ namespace Blocks.Framework.DBORM.Entity
     /// </summary>
     public class EntityConfigConventionalRegistrar : IConventionalDependencyRegistrar
     {
-        public static string GetControllerSerivceName(string area, string controllerName)
-        {
-            return $@"WebController\{area}\{controllerName}";
-        }
+//        public static string GetControllerSerivceName(string area, string controllerName)
+//        {
+//            return $@"WebController\{area}\{controllerName}";
+//        }
 
         private readonly IEnumerable<ExtensionDescriptor> _extensionDescriptors;
 

@@ -33,7 +33,8 @@ using Microsoft.Owin.Security;
 
 namespace Blocks.Web.Controllers
 {
-    public class AccountController : BlocksControllerBase
+    public class 
+         AccountController : BlocksControllerBase
     {
         private readonly TenantManager _tenantManager;
         private readonly UserManager _userManager;
@@ -71,8 +72,8 @@ namespace Blocks.Web.Controllers
         }
 
         #region Login / Logout
-
-        public ActionResult Login(string returnUrl = "")
+    
+        public ActionResult Login(string returnUrl = "/BussnessWebModule/MasterData/Index")
         {
             if (string.IsNullOrWhiteSpace(returnUrl))
             {
@@ -91,6 +92,24 @@ namespace Blocks.Web.Controllers
                 });
         }
 
+        public ActionResult MobileLogin(string returnUrl = "")
+        {
+            if (string.IsNullOrWhiteSpace(returnUrl))
+            {
+                returnUrl = Request.ApplicationPath;
+            }
+
+            ViewBag.IsMultiTenancyEnabled = _multiTenancyConfig.IsEnabled;
+
+            return View(
+                new LoginFormViewModel
+                {
+                    ReturnUrl = returnUrl,
+                    IsMultiTenancyEnabled = _multiTenancyConfig.IsEnabled,
+                    IsSelfRegistrationAllowed = IsSelfRegistrationEnabled(),
+                    MultiTenancySide = AbpSession.MultiTenancySide
+                });
+        }
         [HttpPost]
         [DisableAuditing]
         public async Task<JsonResult> Login(LoginViewModel loginModel, string returnUrl = "", string returnUrlHash = "")
@@ -118,6 +137,33 @@ namespace Blocks.Web.Controllers
             return Json(new AjaxResponse { TargetUrl = returnUrl });
         }
 
+        [HttpPost]
+        [DisableAuditing]
+        public async Task<JsonResult> MobileLogin(LoginViewModel loginModel, string returnUrl = "", string returnUrlHash = "")
+        {
+            CheckModelState();
+
+            var loginResult = await GetLoginResultAsync(
+                loginModel.UsernameOrEmailAddress,
+                loginModel.Password,
+                GetTenancyNameOrNull()
+            );
+
+            await SignInAsync(loginResult.User, loginResult.Identity, loginModel.RememberMe,"PDA");
+
+            if (string.IsNullOrWhiteSpace(returnUrl))
+            {
+                returnUrl = Request.ApplicationPath;
+            }
+
+            if (!string.IsNullOrWhiteSpace(returnUrlHash))
+            {
+                returnUrl = returnUrl + returnUrlHash;
+            }
+
+            return Json(new AjaxResponse { TargetUrl = returnUrl });
+        }
+        
         private async Task<AbpLoginResult<Tenant, User>> GetLoginResultAsync(string usernameOrEmailAddress, string password, string tenancyName)
         {
             var loginResult = await _logInManager.LoginAsync(usernameOrEmailAddress, password, tenancyName);
@@ -131,7 +177,7 @@ namespace Blocks.Web.Controllers
             }
         }
 
-        private async Task SignInAsync(User user, ClaimsIdentity identity = null, bool rememberMe = false)
+        private async Task SignInAsync(User user, ClaimsIdentity identity = null, bool rememberMe = false,string UserType = "Main")
         {
             if (identity == null)
             {
@@ -139,6 +185,8 @@ namespace Blocks.Web.Controllers
             }
 
             _authenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            
+            identity.AddClaim(new Claim("UserType",UserType));
             _authenticationManager.SignIn(new AuthenticationProperties { IsPersistent = rememberMe }, identity);
         }
 

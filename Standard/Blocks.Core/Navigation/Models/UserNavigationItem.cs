@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Abp.Localization;
 using Blocks.Framework.Localization;
 using Blocks.Framework.Navigation;
 using Blocks.Framework.Security.Authorization.Permission;
@@ -9,18 +10,18 @@ namespace Blocks.Core.Navigation.Models
 {
     public class UserNavigationItem : INavigationItemDefinition
     {
-        private readonly WebNavigationItemDefinition _navItem;
+        private WebNavigationItemDefinition _navItem;
+
         public string Icon { get; set; } 
         public long Order { get; set; }
 
-        public string Name
+        public string Name { get; private set; }
+     
+        public Framework.Localization.ILocalizableString DisplayName
         {
-            get { return _navItem.Name; }
+            get; private set; 
         }
-        public ILocalizableString DisplayName
-        {
-            get { return _navItem.DisplayName; }
-        }
+
         public IDictionary<string, object> RouteValues
         {
             get { return _navItem.RouteValues; }
@@ -51,14 +52,33 @@ namespace Blocks.Core.Navigation.Models
         public string Url { get { return _navItem.Url; }  }
 
         public Permission[] RequirePermissions { get { return _navItem.RequirePermissions; }  }
-        public UserNavigationItem(WebNavigationItemDefinition navItem)  
+
+        public UserNavigationItem()
+        {
+            
+        }
+        public UserNavigationItem(WebNavigationItemDefinition navItem)
+        {
+
+            Init(navItem);
+        }
+        public UserNavigationItem(string Name, Framework.Localization.ILocalizableString DisplayName)
+        {
+            Init(new WebNavigationItemDefinition(Name, DisplayName, ""));
+        }
+        private void Init(WebNavigationItemDefinition navItem)
         {
             _navItem = navItem;
-            HasPermissions = navItem.HasPermissions != null ? navItem.HasPermissions : new Permission[]{};
+            Name = _navItem.Name;
+            DisplayName = _navItem.DisplayName;
+            HasPermissions = navItem.HasPermissions != null ? navItem.HasPermissions : new Permission[] { };
             Items = new List<UserNavigationItem>();
             Order = 0;
         }
+
+      
         
-        public IList<UserNavigationItem> Items { get; }
+        public IList<UserNavigationItem> Items { get; set; }
+
     }
 }

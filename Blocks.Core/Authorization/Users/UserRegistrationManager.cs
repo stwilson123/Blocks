@@ -87,12 +87,12 @@ namespace Blocks.Authorization.Users
             var tenant = await _tenantManager.FindByIdAsync(tenantId);
             if (tenant == null)
             {
-                throw new UserFriendlyException(L("UnknownTenantId{0}", tenantId));
+                throw new UserFriendlyException(T("UnknownTenantId{0}", tenantId));
             }
 
             if (!tenant.IsActive)
             {
-                throw new UserFriendlyException(L("TenantIdIsNotActive{0}", tenantId));
+                throw new UserFriendlyException(T("TenantIdIsNotActive{0}", tenantId));
             }
 
             return tenant;

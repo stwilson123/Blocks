@@ -1,0 +1,757 @@
+DEBUG 2018-11-22 09:28:44,062 [10   ] nt.Extensions.Folders.ExtensionHarvester - Monitoring virtual path "Modules\Blocks.BussnessDomainModule\Module.txt"
+DEBUG 2018-11-22 09:28:44,098 [10   ] ms.VirtualPath.DefaultVirtualPathMonitor - Monitoring virtual path "D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Web\Modules\Blocks.BussnessDomainModule\Module.txt"
+INFO  2018-11-22 09:28:44,200 [10   ] ms.VirtualPath.DefaultVirtualPathMonitor - Error monitoring file changes on virtual path 'Modules\Blocks.BussnessDomainModule\Module.txt'
+System.ArgumentException: 目录名 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Web\Modules\Blocks.BussnessDomainModule\Module.txt 无效。
+   在 System.IO.FileSystemWatcher..ctor(String path, String filter)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.CreateFileSystemWatcher(String directoryName, FileSystemEventHandler fsy_Changed)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.<>c__DisplayClass16_0.<BindSignal>b__0(String k)
+   在 Blocks.Framework.Collections.LazyConcurrentDictionary`2.<>c__DisplayClass2_1.<GetOrAdd>b__1()
+   在 System.Lazy`1.CreateValue()
+   在 System.Lazy`1.LazyInitValue()
+   在 System.Lazy`1.get_Value()
+   在 Blocks.Framework.Collections.LazyConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.BindSignal(String virtualPath, Action`2 fileChangesCallback)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.BindSignal(String virtualPath)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.WhenPathChanges(String virtualPath)
+DEBUG 2018-11-22 09:28:44,210 [10   ] nt.Extensions.Folders.ExtensionHarvester - Monitoring virtual path "Modules\Blocks.BussnessDTOModule\Module.txt"
+DEBUG 2018-11-22 09:28:44,219 [10   ] ms.VirtualPath.DefaultVirtualPathMonitor - Monitoring virtual path "D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Web\Modules\Blocks.BussnessDTOModule\Module.txt"
+INFO  2018-11-22 09:28:44,284 [10   ] ms.VirtualPath.DefaultVirtualPathMonitor - Error monitoring file changes on virtual path 'Modules\Blocks.BussnessDTOModule\Module.txt'
+System.ArgumentException: 目录名 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Web\Modules\Blocks.BussnessDTOModule\Module.txt 无效。
+   在 System.IO.FileSystemWatcher..ctor(String path, String filter)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.CreateFileSystemWatcher(String directoryName, FileSystemEventHandler fsy_Changed)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.<>c__DisplayClass16_0.<BindSignal>b__0(String k)
+   在 Blocks.Framework.Collections.LazyConcurrentDictionary`2.<>c__DisplayClass2_1.<GetOrAdd>b__1()
+   在 System.Lazy`1.CreateValue()
+   在 System.Lazy`1.LazyInitValue()
+   在 System.Lazy`1.get_Value()
+   在 Blocks.Framework.Collections.LazyConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.BindSignal(String virtualPath, Action`2 fileChangesCallback)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.BindSignal(String virtualPath)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.WhenPathChanges(String virtualPath)
+DEBUG 2018-11-22 09:28:44,293 [10   ] nt.Extensions.Folders.ExtensionHarvester - Monitoring virtual path "Modules\Blocks.BussnessEntityModule\Module.txt"
+DEBUG 2018-11-22 09:28:44,311 [10   ] ms.VirtualPath.DefaultVirtualPathMonitor - Monitoring virtual path "D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Web\Modules\Blocks.BussnessEntityModule\Module.txt"
+INFO  2018-11-22 09:28:44,396 [10   ] ms.VirtualPath.DefaultVirtualPathMonitor - Error monitoring file changes on virtual path 'Modules\Blocks.BussnessEntityModule\Module.txt'
+System.ArgumentException: 目录名 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Web\Modules\Blocks.BussnessEntityModule\Module.txt 无效。
+   在 System.IO.FileSystemWatcher..ctor(String path, String filter)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.CreateFileSystemWatcher(String directoryName, FileSystemEventHandler fsy_Changed)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.<>c__DisplayClass16_0.<BindSignal>b__0(String k)
+   在 Blocks.Framework.Collections.LazyConcurrentDictionary`2.<>c__DisplayClass2_1.<GetOrAdd>b__1()
+   在 System.Lazy`1.CreateValue()
+   在 System.Lazy`1.LazyInitValue()
+   在 System.Lazy`1.get_Value()
+   在 Blocks.Framework.Collections.LazyConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.BindSignal(String virtualPath, Action`2 fileChangesCallback)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.BindSignal(String virtualPath)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.WhenPathChanges(String virtualPath)
+DEBUG 2018-11-22 09:28:44,405 [10   ] nt.Extensions.Folders.ExtensionHarvester - Monitoring virtual path "Modules\Blocks.BussnessRespositoryModule\Module.txt"
+DEBUG 2018-11-22 09:28:44,414 [10   ] ms.VirtualPath.DefaultVirtualPathMonitor - Monitoring virtual path "D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Web\Modules\Blocks.BussnessRespositoryModule\Module.txt"
+INFO  2018-11-22 09:28:44,492 [10   ] ms.VirtualPath.DefaultVirtualPathMonitor - Error monitoring file changes on virtual path 'Modules\Blocks.BussnessRespositoryModule\Module.txt'
+System.ArgumentException: 目录名 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Web\Modules\Blocks.BussnessRespositoryModule\Module.txt 无效。
+   在 System.IO.FileSystemWatcher..ctor(String path, String filter)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.CreateFileSystemWatcher(String directoryName, FileSystemEventHandler fsy_Changed)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.<>c__DisplayClass16_0.<BindSignal>b__0(String k)
+   在 Blocks.Framework.Collections.LazyConcurrentDictionary`2.<>c__DisplayClass2_1.<GetOrAdd>b__1()
+   在 System.Lazy`1.CreateValue()
+   在 System.Lazy`1.LazyInitValue()
+   在 System.Lazy`1.get_Value()
+   在 Blocks.Framework.Collections.LazyConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.BindSignal(String virtualPath, Action`2 fileChangesCallback)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.BindSignal(String virtualPath)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.WhenPathChanges(String virtualPath)
+DEBUG 2018-11-22 09:28:44,501 [10   ] nt.Extensions.Folders.ExtensionHarvester - Monitoring virtual path "Modules\Blocks.BussnessRespositoryModule.SqlserverModule\Module.txt"
+DEBUG 2018-11-22 09:28:44,510 [10   ] ms.VirtualPath.DefaultVirtualPathMonitor - Monitoring virtual path "D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Web\Modules\Blocks.BussnessRespositoryModule.SqlserverModule\Module.txt"
+INFO  2018-11-22 09:28:44,594 [10   ] ms.VirtualPath.DefaultVirtualPathMonitor - Error monitoring file changes on virtual path 'Modules\Blocks.BussnessRespositoryModule.SqlserverModule\Module.txt'
+System.ArgumentException: 目录名 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Web\Modules\Blocks.BussnessRespositoryModule.SqlserverModule\Module.txt 无效。
+   在 System.IO.FileSystemWatcher..ctor(String path, String filter)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.CreateFileSystemWatcher(String directoryName, FileSystemEventHandler fsy_Changed)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.<>c__DisplayClass16_0.<BindSignal>b__0(String k)
+   在 Blocks.Framework.Collections.LazyConcurrentDictionary`2.<>c__DisplayClass2_1.<GetOrAdd>b__1()
+   在 System.Lazy`1.CreateValue()
+   在 System.Lazy`1.LazyInitValue()
+   在 System.Lazy`1.get_Value()
+   在 Blocks.Framework.Collections.LazyConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.BindSignal(String virtualPath, Action`2 fileChangesCallback)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.BindSignal(String virtualPath)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.WhenPathChanges(String virtualPath)
+DEBUG 2018-11-22 09:28:44,602 [10   ] nt.Extensions.Folders.ExtensionHarvester - Monitoring virtual path "Modules\Blocks.BussnessWebModule\Module.txt"
+DEBUG 2018-11-22 09:28:44,617 [10   ] ms.VirtualPath.DefaultVirtualPathMonitor - Monitoring virtual path "D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Web\Modules\Blocks.BussnessWebModule\Module.txt"
+INFO  2018-11-22 09:28:44,688 [10   ] ms.VirtualPath.DefaultVirtualPathMonitor - Error monitoring file changes on virtual path 'Modules\Blocks.BussnessWebModule\Module.txt'
+System.ArgumentException: 目录名 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Web\Modules\Blocks.BussnessWebModule\Module.txt 无效。
+   在 System.IO.FileSystemWatcher..ctor(String path, String filter)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.CreateFileSystemWatcher(String directoryName, FileSystemEventHandler fsy_Changed)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.<>c__DisplayClass16_0.<BindSignal>b__0(String k)
+   在 Blocks.Framework.Collections.LazyConcurrentDictionary`2.<>c__DisplayClass2_1.<GetOrAdd>b__1()
+   在 System.Lazy`1.CreateValue()
+   在 System.Lazy`1.LazyInitValue()
+   在 System.Lazy`1.get_Value()
+   在 Blocks.Framework.Collections.LazyConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.BindSignal(String virtualPath, Action`2 fileChangesCallback)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.BindSignal(String virtualPath)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.WhenPathChanges(String virtualPath)
+DEBUG 2018-11-22 09:28:44,697 [10   ] nt.Extensions.Folders.ExtensionHarvester - Monitoring virtual path "Modules\Blocks.LayoutModule\Module.txt"
+DEBUG 2018-11-22 09:28:44,709 [10   ] ms.VirtualPath.DefaultVirtualPathMonitor - Monitoring virtual path "D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Web\Modules\Blocks.LayoutModule\Module.txt"
+INFO  2018-11-22 09:28:44,780 [10   ] ms.VirtualPath.DefaultVirtualPathMonitor - Error monitoring file changes on virtual path 'Modules\Blocks.LayoutModule\Module.txt'
+System.ArgumentException: 目录名 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Web\Modules\Blocks.LayoutModule\Module.txt 无效。
+   在 System.IO.FileSystemWatcher..ctor(String path, String filter)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.CreateFileSystemWatcher(String directoryName, FileSystemEventHandler fsy_Changed)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.<>c__DisplayClass16_0.<BindSignal>b__0(String k)
+   在 Blocks.Framework.Collections.LazyConcurrentDictionary`2.<>c__DisplayClass2_1.<GetOrAdd>b__1()
+   在 System.Lazy`1.CreateValue()
+   在 System.Lazy`1.LazyInitValue()
+   在 System.Lazy`1.get_Value()
+   在 Blocks.Framework.Collections.LazyConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.BindSignal(String virtualPath, Action`2 fileChangesCallback)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.BindSignal(String virtualPath)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.WhenPathChanges(String virtualPath)
+DEBUG 2018-11-22 09:28:44,796 [10   ] nt.Extensions.Folders.ExtensionHarvester - Monitoring virtual path "Modules\Blocks.LayoutModule.ExtensionsModule\Module.txt"
+DEBUG 2018-11-22 09:28:44,806 [10   ] ms.VirtualPath.DefaultVirtualPathMonitor - Monitoring virtual path "D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Web\Modules\Blocks.LayoutModule.ExtensionsModule\Module.txt"
+INFO  2018-11-22 09:28:44,935 [10   ] ms.VirtualPath.DefaultVirtualPathMonitor - Error monitoring file changes on virtual path 'Modules\Blocks.LayoutModule.ExtensionsModule\Module.txt'
+System.ArgumentException: 目录名 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Web\Modules\Blocks.LayoutModule.ExtensionsModule\Module.txt 无效。
+   在 System.IO.FileSystemWatcher..ctor(String path, String filter)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.CreateFileSystemWatcher(String directoryName, FileSystemEventHandler fsy_Changed)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.<>c__DisplayClass16_0.<BindSignal>b__0(String k)
+   在 Blocks.Framework.Collections.LazyConcurrentDictionary`2.<>c__DisplayClass2_1.<GetOrAdd>b__1()
+   在 System.Lazy`1.CreateValue()
+   在 System.Lazy`1.LazyInitValue()
+   在 System.Lazy`1.get_Value()
+   在 Blocks.Framework.Collections.LazyConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.BindSignal(String virtualPath, Action`2 fileChangesCallback)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.BindSignal(String virtualPath)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.WhenPathChanges(String virtualPath)
+DEBUG 2018-11-22 09:28:44,944 [10   ] nt.Extensions.Folders.ExtensionHarvester - Monitoring virtual path "Modules\Blocks.LocalizationModule\Module.txt"
+DEBUG 2018-11-22 09:28:44,960 [10   ] ms.VirtualPath.DefaultVirtualPathMonitor - Monitoring virtual path "D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Web\Modules\Blocks.LocalizationModule\Module.txt"
+INFO  2018-11-22 09:28:45,095 [10   ] ms.VirtualPath.DefaultVirtualPathMonitor - Error monitoring file changes on virtual path 'Modules\Blocks.LocalizationModule\Module.txt'
+System.ArgumentException: 目录名 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Web\Modules\Blocks.LocalizationModule\Module.txt 无效。
+   在 System.IO.FileSystemWatcher..ctor(String path, String filter)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.CreateFileSystemWatcher(String directoryName, FileSystemEventHandler fsy_Changed)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.<>c__DisplayClass16_0.<BindSignal>b__0(String k)
+   在 Blocks.Framework.Collections.LazyConcurrentDictionary`2.<>c__DisplayClass2_1.<GetOrAdd>b__1()
+   在 System.Lazy`1.CreateValue()
+   在 System.Lazy`1.LazyInitValue()
+   在 System.Lazy`1.get_Value()
+   在 Blocks.Framework.Collections.LazyConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.BindSignal(String virtualPath, Action`2 fileChangesCallback)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.BindSignal(String virtualPath)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.WhenPathChanges(String virtualPath)
+DEBUG 2018-11-22 09:28:45,105 [10   ] nt.Extensions.Folders.ExtensionHarvester - Monitoring virtual path "Modules\Blocks.ResourcesModule\Module.txt"
+DEBUG 2018-11-22 09:28:45,119 [10   ] ms.VirtualPath.DefaultVirtualPathMonitor - Monitoring virtual path "D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Web\Modules\Blocks.ResourcesModule\Module.txt"
+INFO  2018-11-22 09:28:45,193 [10   ] ms.VirtualPath.DefaultVirtualPathMonitor - Error monitoring file changes on virtual path 'Modules\Blocks.ResourcesModule\Module.txt'
+System.ArgumentException: 目录名 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Web\Modules\Blocks.ResourcesModule\Module.txt 无效。
+   在 System.IO.FileSystemWatcher..ctor(String path, String filter)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.CreateFileSystemWatcher(String directoryName, FileSystemEventHandler fsy_Changed)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.<>c__DisplayClass16_0.<BindSignal>b__0(String k)
+   在 Blocks.Framework.Collections.LazyConcurrentDictionary`2.<>c__DisplayClass2_1.<GetOrAdd>b__1()
+   在 System.Lazy`1.CreateValue()
+   在 System.Lazy`1.LazyInitValue()
+   在 System.Lazy`1.get_Value()
+   在 Blocks.Framework.Collections.LazyConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.BindSignal(String virtualPath, Action`2 fileChangesCallback)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.BindSignal(String virtualPath)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.WhenPathChanges(String virtualPath)
+INFO  2018-11-22 09:28:45,205 [10   ] nt.Extensions.Folders.ExtensionHarvester - Done looking for extensions in '~/Modules': Blocks.BussnessDomainExtendModule, Blocks.BussnessWebModule, Blocks.LayoutModule, Blocks.LocalizationModule, Blocks.ResourcesModule
+WARN  2018-11-22 09:28:45,296 [1    ] Abp.Logging.LogHelper                    - Blocks.Framework.Web can't found extension depond on it.so ignore to register BlocksConfiguration
+WARN  2018-11-22 09:28:45,306 [1    ] Abp.Logging.LogHelper                    - Blocks.Framework.Web can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-11-22 09:28:45,316 [1    ] Abp.Logging.LogHelper                    - Blocks.Framework.Web can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-11-22 09:28:45,331 [1    ] Abp.Logging.LogHelper                    - Blocks.Core can't found extension depond on it.so ignore to register BlocksConfiguration
+WARN  2018-11-22 09:28:45,342 [1    ] Abp.Logging.LogHelper                    - Blocks.Core can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-11-22 09:28:45,351 [1    ] Abp.Logging.LogHelper                    - Blocks.Core can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-11-22 09:28:45,369 [1    ] Abp.Logging.LogHelper                    - Blocks.Framework.DBORM can't found extension depond on it.so ignore to register BlocksConfiguration
+WARN  2018-11-22 09:28:45,379 [1    ] Abp.Logging.LogHelper                    - Blocks.Framework.DBORM can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-11-22 09:28:45,392 [1    ] Abp.Logging.LogHelper                    - Blocks.Framework.DBORM can't found extension depond on it.so ignore to register BlockWebController
+DEBUG 2018-11-22 09:28:45,498 [1    ] amework.DBORM.BlocksFrameworkDBORMModule - Registering DbContext: Blocks.Framework.DBORM.DBContext.BlocksDbContext`1, Blocks.Framework.DBORM, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+WARN  2018-11-22 09:28:45,624 [1    ] Abp.Logging.LogHelper                    - Blocks.BussnessApplicationModule can't found extension depond on it.so ignore to register BlocksConfiguration
+WARN  2018-11-22 09:28:45,633 [1    ] Abp.Logging.LogHelper                    - Blocks.BussnessApplicationModule can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-11-22 09:28:45,648 [1    ] Abp.Logging.LogHelper                    - Blocks.BussnessApplicationModule can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-11-22 09:28:45,758 [1    ] Abp.Logging.LogHelper                    - Blocks.BussnessDomainModule can't found extension depond on it.so ignore to register BlocksConfiguration
+WARN  2018-11-22 09:28:45,775 [1    ] Abp.Logging.LogHelper                    - Blocks.BussnessDomainModule can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-11-22 09:28:45,792 [1    ] Abp.Logging.LogHelper                    - Blocks.BussnessDomainModule can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-11-22 09:28:46,025 [1    ] Abp.Logging.LogHelper                    - Blocks.Web can't found extension depond on it.so ignore to register BlocksConfiguration
+WARN  2018-11-22 09:28:46,038 [1    ] Abp.Logging.LogHelper                    - Blocks.Web can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-11-22 09:28:46,050 [1    ] Abp.Logging.LogHelper                    - Blocks.Web can't found extension depond on it.so ignore to register BlockWebController
+DEBUG 2018-11-22 09:28:46,199 [1    ] Abp.Localization.LocalizationManager     - Initializing 10 localization sources.
+DEBUG 2018-11-22 09:28:46,259 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2018-11-22 09:28:46,288 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2018-11-22 09:28:46,305 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Blocks
+DEBUG 2018-11-22 09:28:46,322 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2018-11-22 09:28:46,332 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: BlocksFramework
+DEBUG 2018-11-22 09:28:46,374 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: BussnessDomainExtendModule
+DEBUG 2018-11-22 09:28:46,401 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: BussnessWebModule
+DEBUG 2018-11-22 09:28:46,443 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: LayoutModule
+DEBUG 2018-11-22 09:28:46,520 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Localization
+DEBUG 2018-11-22 09:28:46,541 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Resources
+DEBUG 2018-11-22 09:28:46,681 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 13 classes define auto mapping attributes
+DEBUG 2018-11-22 09:28:46,727 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2018-11-22 09:28:46,748 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.Sessions.Dto.UserLoginInfoDto
+DEBUG 2018-11-22 09:28:46,787 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.Users.Dto.CreateUserDto
+DEBUG 2018-11-22 09:28:46,799 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.Users.Dto.UpdateUserDto
+DEBUG 2018-11-22 09:28:46,856 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.Users.Dto.UserDto
+DEBUG 2018-11-22 09:28:46,886 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.Roles.Dto.CreateRoleDto
+DEBUG 2018-11-22 09:28:46,922 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.Roles.Dto.PermissionDto
+DEBUG 2018-11-22 09:28:46,952 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.Roles.Dto.RoleDto
+DEBUG 2018-11-22 09:28:46,977 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2018-11-22 09:28:47,003 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.MultiTenancy.Dto.EditTenantDto
+DEBUG 2018-11-22 09:28:47,026 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.MultiTenancy.Dto.TenantDto
+DEBUG 2018-11-22 09:28:47,050 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.Web.Models.Account.TenantChangeViewModel
+DEBUG 2018-11-22 09:28:47,076 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.Web.Models.Account.TenantSelectionViewModel+TenantInfo
+DEBUG 2018-11-22 09:28:52,137 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'Blocks.Sessions.ISessionAppService' with service name 'app/session'.
+DEBUG 2018-11-22 09:28:52,158 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'Blocks.Users.IUserAppService' with service name 'app/user'.
+DEBUG 2018-11-22 09:28:52,177 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'Blocks.Roles.IRoleAppService' with service name 'app/role'.
+DEBUG 2018-11-22 09:28:52,192 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'Blocks.MultiTenancy.ITenantAppService' with service name 'app/tenant'.
+DEBUG 2018-11-22 09:28:52,210 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'Blocks.Configuration.IConfigurationAppService' with service name 'app/configuration'.
+DEBUG 2018-11-22 09:28:52,224 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'Blocks.Authorization.Accounts.IAccountAppService' with service name 'app/account'.
+DEBUG 2018-11-22 09:28:52,520 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'Blocks.BussnessApplicationModule.TestAppService.ITestAppService' with service name 'BussnessWebModule/test'.
+DEBUG 2018-11-22 09:28:52,533 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'Blocks.BussnessApplicationModule.MasterData.IComboboxAppService' with service name 'BussnessWebModule/combobox'.
+DEBUG 2018-11-22 09:28:52,545 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'Blocks.BussnessApplicationModule.MasterData.IMasterDataAppService' with service name 'BussnessWebModule/masterData'.
+WARN  2018-11-22 09:28:52,955 [1    ] Abp.MultiTenancy.TenantResolver          - System.Web.HttpException (0x80004005): 请求在此上下文中不可用
+   在 System.Web.HttpContext.get_Request()
+   在 Abp.Web.MultiTenancy.HttpHeaderTenantResolveContributor.ResolveTenantId()
+   在 Abp.MultiTenancy.TenantResolver.GetTenantIdFromContributors()
+System.Web.HttpException (0x80004005): 请求在此上下文中不可用
+   在 System.Web.HttpContext.get_Request()
+   在 Abp.Web.MultiTenancy.HttpHeaderTenantResolveContributor.ResolveTenantId()
+   在 Abp.MultiTenancy.TenantResolver.GetTenantIdFromContributors()
+WARN  2018-11-22 09:28:53,002 [1    ] Abp.MultiTenancy.TenantResolver          - System.Web.HttpException (0x80004005): 请求在此上下文中不可用
+   在 System.Web.HttpContext.get_Request()
+   在 Abp.Web.MultiTenancy.HttpCookieTenantResolveContributor.ResolveTenantId()
+   在 Abp.MultiTenancy.TenantResolver.GetTenantIdFromContributors()
+System.Web.HttpException (0x80004005): 请求在此上下文中不可用
+   在 System.Web.HttpContext.get_Request()
+   在 Abp.Web.MultiTenancy.HttpCookieTenantResolveContributor.ResolveTenantId()
+   在 Abp.MultiTenancy.TenantResolver.GetTenantIdFromContributors()
+WARN  2018-11-22 09:29:00,394 [1    ] Abp.Logging.LogHelper                    - Blocks.BussnessRespositoryModule.SqlserverModule can't found extension depond on it.so ignore to register BlocksConfiguration
+WARN  2018-11-22 09:29:00,404 [1    ] Abp.Logging.LogHelper                    - Blocks.BussnessRespositoryModule.SqlserverModule can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-11-22 09:29:00,411 [1    ] Abp.Logging.LogHelper                    - Blocks.BussnessRespositoryModule.SqlserverModule can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-11-22 09:29:00,423 [1    ] Abp.Logging.LogHelper                    - Blocks.BussnessRespositoryModule can't found extension depond on it.so ignore to register BlocksConfiguration
+WARN  2018-11-22 09:29:00,433 [1    ] Abp.Logging.LogHelper                    - Blocks.BussnessRespositoryModule can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-11-22 09:29:00,441 [1    ] Abp.Logging.LogHelper                    - Blocks.BussnessRespositoryModule can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-11-22 09:29:12,467 [10   ] naries.DictionaryBasedLocalizationSource - Can not find 'Tests' in localization source 'BussnessWebModule'!
+ERROR 2018-11-22 09:29:12,575 [10   ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/Scripts/jquery-1.9.1! System.ArgumentException: 此处不允许使用相对虚拟路径“Blocks.ResourcesModule/Scripts/jquery-1.9.1”。
+   在 System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   在 System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   在 Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) 位置 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:行号 229
+   在 Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) 位置 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:行号 146
+ERROR 2018-11-22 09:29:12,619 [10   ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/lib/zTree_v3/js/jquery.ztree.all! System.ArgumentException: 此处不允许使用相对虚拟路径“Blocks.ResourcesModule/lib/zTree_v3/js/jquery.ztree.all”。
+   在 System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   在 System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   在 Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) 位置 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:行号 229
+   在 Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) 位置 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:行号 146
+ERROR 2018-11-22 09:29:12,667 [10   ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/Scripts/bootstrap! System.ArgumentException: 此处不允许使用相对虚拟路径“Blocks.ResourcesModule/Scripts/bootstrap”。
+   在 System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   在 System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   在 Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) 位置 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:行号 229
+   在 Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) 位置 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:行号 146
+ERROR 2018-11-22 09:29:12,709 [10   ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/lib/bootstrap-select/dist/js/bootstrap-select! System.ArgumentException: 此处不允许使用相对虚拟路径“Blocks.ResourcesModule/lib/bootstrap-select/dist/js/bootstrap-select”。
+   在 System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   在 System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   在 Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) 位置 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:行号 229
+   在 Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) 位置 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:行号 146
+ERROR 2018-11-22 09:29:12,747 [10   ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/lib/jqGrid/script/jquery.jqGrid.min! System.ArgumentException: 此处不允许使用相对虚拟路径“Blocks.ResourcesModule/lib/jqGrid/script/jquery.jqGrid.min”。
+   在 System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   在 System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   在 Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) 位置 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:行号 229
+   在 Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) 位置 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:行号 146
+ERROR 2018-11-22 09:29:12,789 [10   ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/lib/blockUI/jquery.blockUI! System.ArgumentException: 此处不允许使用相对虚拟路径“Blocks.ResourcesModule/lib/blockUI/jquery.blockUI”。
+   在 System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   在 System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   在 Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) 位置 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:行号 229
+   在 Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) 位置 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:行号 146
+ERROR 2018-11-22 09:29:12,838 [10   ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/lib/toastr/toastr! System.ArgumentException: 此处不允许使用相对虚拟路径“Blocks.ResourcesModule/lib/toastr/toastr”。
+   在 System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   在 System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   在 Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) 位置 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:行号 229
+   在 Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) 位置 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:行号 146
+ERROR 2018-11-22 09:29:12,881 [10   ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/lib/sweetalert/dist/sweetalert-dev! System.ArgumentException: 此处不允许使用相对虚拟路径“Blocks.ResourcesModule/lib/sweetalert/dist/sweetalert-dev”。
+   在 System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   在 System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   在 Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) 位置 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:行号 229
+   在 Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) 位置 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:行号 146
+ERROR 2018-11-22 09:29:12,921 [10   ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/lib/spin.js/spin! System.ArgumentException: 此处不允许使用相对虚拟路径“Blocks.ResourcesModule/lib/spin.js/spin”。
+   在 System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   在 System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   在 Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) 位置 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:行号 229
+   在 Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) 位置 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:行号 146
+ERROR 2018-11-22 09:29:12,961 [10   ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/lib/spin.js/jquery.spin! System.ArgumentException: 此处不允许使用相对虚拟路径“Blocks.ResourcesModule/lib/spin.js/jquery.spin”。
+   在 System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   在 System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   在 Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) 位置 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:行号 229
+   在 Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) 位置 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:行号 146
+ERROR 2018-11-22 09:29:13,000 [10   ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/lib/jquery-slimscroll/jquery.slimscroll! System.ArgumentException: 此处不允许使用相对虚拟路径“Blocks.ResourcesModule/lib/jquery-slimscroll/jquery.slimscroll”。
+   在 System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   在 System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   在 Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) 位置 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:行号 229
+   在 Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) 位置 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:行号 146
+ERROR 2018-11-22 09:29:13,042 [10   ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/lib/Waves/dist/waves! System.ArgumentException: 此处不允许使用相对虚拟路径“Blocks.ResourcesModule/lib/Waves/dist/waves”。
+   在 System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   在 System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   在 Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) 位置 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:行号 229
+   在 Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) 位置 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:行号 146
+ERROR 2018-11-22 09:29:13,086 [10   ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/lib/push.js/push! System.ArgumentException: 此处不允许使用相对虚拟路径“Blocks.ResourcesModule/lib/push.js/push”。
+   在 System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   在 System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   在 Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) 位置 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:行号 229
+   在 Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) 位置 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:行号 146
+ERROR 2018-11-22 09:29:13,129 [10   ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/lib/layer/layer! System.ArgumentException: 此处不允许使用相对虚拟路径“Blocks.ResourcesModule/lib/layer/layer”。
+   在 System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   在 System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   在 Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) 位置 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:行号 229
+   在 Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) 位置 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:行号 146
+ERROR 2018-11-22 09:29:13,169 [10   ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/Scripts/vue! System.ArgumentException: 此处不允许使用相对虚拟路径“Blocks.ResourcesModule/Scripts/vue”。
+   在 System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   在 System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   在 Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) 位置 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:行号 229
+   在 Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) 位置 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:行号 146
+ERROR 2018-11-22 09:29:13,210 [10   ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/lib/combobox/magicsuggest! System.ArgumentException: 此处不允许使用相对虚拟路径“Blocks.ResourcesModule/lib/combobox/magicsuggest”。
+   在 System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   在 System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   在 Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) 位置 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:行号 229
+   在 Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) 位置 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:行号 146
+ERROR 2018-11-22 09:29:13,250 [10   ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/lib/select2-develop/dist/js/select2.full! System.ArgumentException: 此处不允许使用相对虚拟路径“Blocks.ResourcesModule/lib/select2-develop/dist/js/select2.full”。
+   在 System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   在 System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   在 Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) 位置 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:行号 229
+   在 Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) 位置 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:行号 146
+ERROR 2018-11-22 09:29:13,287 [10   ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/lib/My97DatePicker/My97DatePicker/WdatePicker! System.ArgumentException: 此处不允许使用相对虚拟路径“Blocks.ResourcesModule/lib/My97DatePicker/My97DatePicker/WdatePicker”。
+   在 System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   在 System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   在 Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) 位置 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:行号 229
+   在 Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) 位置 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:行号 146
+ERROR 2018-11-22 09:29:13,323 [10   ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/lib/jquery-validation/dist/jquery.validate! System.ArgumentException: 此处不允许使用相对虚拟路径“Blocks.ResourcesModule/lib/jquery-validation/dist/jquery.validate”。
+   在 System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   在 System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   在 Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) 位置 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:行号 229
+   在 Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) 位置 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:行号 146
+ERROR 2018-11-22 09:29:13,420 [10   ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/Framework/UI/UI! System.ArgumentException: 此处不允许使用相对虚拟路径“Blocks.ResourcesModule/Framework/UI/UI”。
+   在 System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   在 System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   在 Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) 位置 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:行号 229
+   在 Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) 位置 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:行号 146
+ERROR 2018-11-22 09:29:13,491 [10   ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/lib/json2/json2! System.ArgumentException: 此处不允许使用相对虚拟路径“Blocks.ResourcesModule/lib/json2/json2”。
+   在 System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   在 System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   在 Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) 位置 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:行号 229
+   在 Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) 位置 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:行号 146
+ERROR 2018-11-22 09:29:13,541 [10   ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/Framework/Utility/utility! System.ArgumentException: 此处不允许使用相对虚拟路径“Blocks.ResourcesModule/Framework/Utility/utility”。
+   在 System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   在 System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   在 Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) 位置 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:行号 229
+   在 Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) 位置 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:行号 146
+ERROR 2018-11-22 09:29:13,848 [10   ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/Framework/Abp/AbpWrapper! System.ArgumentException: 此处不允许使用相对虚拟路径“Blocks.ResourcesModule/Framework/Abp/AbpWrapper”。
+   在 System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   在 System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   在 Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) 位置 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:行号 229
+   在 Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) 位置 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:行号 146
+ERROR 2018-11-22 09:29:13,900 [10   ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/lib/moment/min/moment-with-locales! System.ArgumentException: 此处不允许使用相对虚拟路径“Blocks.ResourcesModule/lib/moment/min/moment-with-locales”。
+   在 System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   在 System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   在 Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) 位置 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:行号 229
+   在 Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) 位置 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:行号 146
+ERROR 2018-11-22 09:29:13,948 [10   ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/Framework/Security/security! System.ArgumentException: 此处不允许使用相对虚拟路径“Blocks.ResourcesModule/Framework/Security/security”。
+   在 System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   在 System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   在 Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) 位置 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:行号 229
+   在 Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) 位置 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:行号 146
+ERROR 2018-11-22 09:29:14,005 [10   ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/build_home/blocks! System.ArgumentException: 此处不允许使用相对虚拟路径“Blocks.ResourcesModule/build_home/blocks”。
+   在 System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   在 System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   在 Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) 位置 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:行号 229
+   在 Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) 位置 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:行号 146
+ERROR 2018-11-22 09:29:14,048 [10   ] Abp.Logging.LogHelper                    - Can not find file for: nalr/jquery.signal! System.ArgumentException: 此处不允许使用相对虚拟路径“nalr/jquery.signal”。
+   在 System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   在 System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   在 Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) 位置 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:行号 229
+   在 Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) 位置 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:行号 146
+DEBUG 2018-11-22 14:18:01,555 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2018-11-22 14:18:27,546 [1    ] Abp.Modules.AbpModuleManager             - Found 33 ABP modules in total.
+DEBUG 2018-11-22 14:18:27,596 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.Web.BlocksWebModule, Blocks.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-22 14:18:27,609 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.BlocksDataModule, Blocks.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-22 14:18:27,621 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFramework.AbpZeroEntityFrameworkModule, Abp.Zero.EntityFramework, Version=3.2.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-22 14:18:27,632 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.Zero, Version=3.2.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-22 14:18:27,639 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=3.2.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-22 14:18:27,647 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=3.2.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-22 14:18:27,655 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=3.2.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-22 14:18:27,663 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=3.2.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-22 14:18:27,670 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.BlocksCoreModule, Block.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-22 14:18:27,677 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.BlocksApplicationModule, Blocks.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-22 14:18:27,685 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=3.2.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-22 14:18:27,694 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.Api.BlocksWebApiModule, Blocks.WebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-22 14:18:27,703 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.WebApi.AbpWebApiModule, Abp.Web.Api, Version=3.2.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-22 14:18:27,712 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebModule, Abp.Web, Version=3.2.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-22 14:18:27,724 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=3.2.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-22 14:18:27,738 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.SignalR.AbpWebSignalRModule, Abp.Web.SignalR, Version=3.2.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-22 14:18:27,754 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.Mvc.AbpWebMvcModule, Abp.Web.Mvc, Version=3.2.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-22 14:18:27,764 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.Framework.Web.Modules.BlocksFrameworkWebModule, Blocks.Framework.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-22 14:18:27,773 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.Framework.Modules.BlocksFrameworkModule, Blocks.Framework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-22 14:18:27,792 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.Framework.Caching.CacheModule, Blocks.Framework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-22 14:18:27,801 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.Framework.Environment.EnvironmentModule, Blocks.Framework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-22 14:18:27,810 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.Framework.Localization.LocalizationModule, Blocks.Framework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-22 14:18:27,849 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.Framework.Navigation.NavigationModule, Blocks.Framework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-22 14:18:27,860 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.Framework.Web.Mvc.AbpWebMvcModule, Blocks.Framework.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-22 14:18:27,871 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.Framework.Web.Web.AbpWebModule, Blocks.Framework.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-22 14:18:27,879 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.Framework.Web.Api.AbpWebApiModule, Blocks.Framework.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-22 14:18:27,886 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.Core.BlocksStartModule, Blocks.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-22 14:18:27,894 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.Framework.DBORM.BlocksFrameworkDBORMModule, Blocks.Framework.DBORM, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-22 14:18:27,900 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.BussnessDomainExtendModule.BlocksBussenssDomainExtendModule, Blocks.BussnessDomainExtendModule, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-22 14:18:27,910 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.BussnessWebModule.BlocksBussenssModule, Blocks.BussnessWebModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-22 14:18:27,918 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.LayoutModule.LayoutModule, Blocks.LayoutModule, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-22 14:18:27,928 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.LayoutModule.LocalizationModule, Blocks.LocalizationModule, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-22 14:18:27,936 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.ResourcesModule.ResourcesModule, Blocks.ResourcesModule, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-22 14:18:27,954 [1    ] Abp.Modules.AbpModuleManager             - 33 modules loaded.
+DEBUG 2018-11-22 14:18:31,283 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-11-22 14:18:31,290 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-11-22 14:18:31,297 [1    ] o.Configuration.LanguageManagementConfig - Converted Blocks (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-11-22 14:18:31,303 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-11-22 14:18:31,309 [1    ] o.Configuration.LanguageManagementConfig - Converted BlocksFramework (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-11-22 14:18:32,599 [1    ] EntityFramework.AbpEntityFrameworkModule - Registering DbContext: Blocks.EntityFramework.BlocksDbContext, Blocks.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-22 14:18:35,341 [10   ] nt.Extensions.Folders.ExtensionHarvester - Monitoring virtual path "~/Modules"
+DEBUG 2018-11-22 14:18:35,344 [12   ] nt.Extensions.Folders.ExtensionHarvester - Monitoring virtual path "~/Themes"
+DEBUG 2018-11-22 14:18:35,362 [12   ] ms.VirtualPath.DefaultVirtualPathMonitor - Monitoring virtual path "D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Web\Themes"
+DEBUG 2018-11-22 14:18:35,357 [10   ] ms.VirtualPath.DefaultVirtualPathMonitor - Monitoring virtual path "D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Web\Modules"
+INFO  2018-11-22 14:18:35,488 [12   ] ms.VirtualPath.DefaultVirtualPathMonitor - Error monitoring file changes on virtual path '~/Themes'
+System.ArgumentException: 目录名 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Web\Themes 无效。
+   在 System.IO.FileSystemWatcher..ctor(String path, String filter)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.CreateFileSystemWatcher(String directoryName, FileSystemEventHandler fsy_Changed)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.<>c__DisplayClass16_0.<BindSignal>b__0(String k)
+   在 Blocks.Framework.Collections.LazyConcurrentDictionary`2.<>c__DisplayClass2_1.<GetOrAdd>b__1()
+   在 System.Lazy`1.CreateValue()
+   在 System.Lazy`1.LazyInitValue()
+   在 System.Lazy`1.get_Value()
+   在 Blocks.Framework.Collections.LazyConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.BindSignal(String virtualPath, Action`2 fileChangesCallback)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.BindSignal(String virtualPath)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.WhenPathChanges(String virtualPath)
+INFO  2018-11-22 14:18:35,508 [12   ] nt.Extensions.Folders.ExtensionHarvester - Start looking for extensions in '~/Themes'...
+INFO  2018-11-22 14:18:35,491 [10   ] nt.Extensions.Folders.ExtensionHarvester - Start looking for extensions in '~/Modules'...
+INFO  2018-11-22 14:18:35,517 [12   ] nt.Extensions.Folders.ExtensionHarvester - Done looking for extensions in '~/Themes': 
+DEBUG 2018-11-22 14:18:35,529 [10   ] nt.Extensions.Folders.ExtensionHarvester - Monitoring virtual path "Modules\Blocks.BussnessApplicationModule\Module.txt"
+DEBUG 2018-11-22 14:18:35,541 [10   ] ms.VirtualPath.DefaultVirtualPathMonitor - Monitoring virtual path "D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Web\Modules\Blocks.BussnessApplicationModule\Module.txt"
+INFO  2018-11-22 14:18:35,595 [10   ] ms.VirtualPath.DefaultVirtualPathMonitor - Error monitoring file changes on virtual path 'Modules\Blocks.BussnessApplicationModule\Module.txt'
+System.ArgumentException: 目录名 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Web\Modules\Blocks.BussnessApplicationModule\Module.txt 无效。
+   在 System.IO.FileSystemWatcher..ctor(String path, String filter)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.CreateFileSystemWatcher(String directoryName, FileSystemEventHandler fsy_Changed)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.<>c__DisplayClass16_0.<BindSignal>b__0(String k)
+   在 Blocks.Framework.Collections.LazyConcurrentDictionary`2.<>c__DisplayClass2_1.<GetOrAdd>b__1()
+   在 System.Lazy`1.CreateValue()
+   在 System.Lazy`1.LazyInitValue()
+   在 System.Lazy`1.get_Value()
+   在 Blocks.Framework.Collections.LazyConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.BindSignal(String virtualPath, Action`2 fileChangesCallback)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.BindSignal(String virtualPath)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.WhenPathChanges(String virtualPath)
+DEBUG 2018-11-22 14:18:35,605 [10   ] nt.Extensions.Folders.ExtensionHarvester - Monitoring virtual path "Modules\Blocks.BussnessDomainExtendModule\Module.txt"
+DEBUG 2018-11-22 14:18:35,615 [10   ] ms.VirtualPath.DefaultVirtualPathMonitor - Monitoring virtual path "D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Web\Modules\Blocks.BussnessDomainExtendModule\Module.txt"
+INFO  2018-11-22 14:18:35,671 [10   ] ms.VirtualPath.DefaultVirtualPathMonitor - Error monitoring file changes on virtual path 'Modules\Blocks.BussnessDomainExtendModule\Module.txt'
+System.ArgumentException: 目录名 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Web\Modules\Blocks.BussnessDomainExtendModule\Module.txt 无效。
+   在 System.IO.FileSystemWatcher..ctor(String path, String filter)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.CreateFileSystemWatcher(String directoryName, FileSystemEventHandler fsy_Changed)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.<>c__DisplayClass16_0.<BindSignal>b__0(String k)
+   在 Blocks.Framework.Collections.LazyConcurrentDictionary`2.<>c__DisplayClass2_1.<GetOrAdd>b__1()
+   在 System.Lazy`1.CreateValue()
+   在 System.Lazy`1.LazyInitValue()
+   在 System.Lazy`1.get_Value()
+   在 Blocks.Framework.Collections.LazyConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.BindSignal(String virtualPath, Action`2 fileChangesCallback)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.BindSignal(String virtualPath)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.WhenPathChanges(String virtualPath)
+DEBUG 2018-11-22 14:18:35,907 [10   ] nt.Extensions.Folders.ExtensionHarvester - Monitoring virtual path "Modules\Blocks.BussnessDomainModule\Module.txt"
+DEBUG 2018-11-22 14:18:35,915 [10   ] ms.VirtualPath.DefaultVirtualPathMonitor - Monitoring virtual path "D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Web\Modules\Blocks.BussnessDomainModule\Module.txt"
+INFO  2018-11-22 14:18:35,966 [10   ] ms.VirtualPath.DefaultVirtualPathMonitor - Error monitoring file changes on virtual path 'Modules\Blocks.BussnessDomainModule\Module.txt'
+System.ArgumentException: 目录名 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Web\Modules\Blocks.BussnessDomainModule\Module.txt 无效。
+   在 System.IO.FileSystemWatcher..ctor(String path, String filter)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.CreateFileSystemWatcher(String directoryName, FileSystemEventHandler fsy_Changed)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.<>c__DisplayClass16_0.<BindSignal>b__0(String k)
+   在 Blocks.Framework.Collections.LazyConcurrentDictionary`2.<>c__DisplayClass2_1.<GetOrAdd>b__1()
+   在 System.Lazy`1.CreateValue()
+   在 System.Lazy`1.LazyInitValue()
+   在 System.Lazy`1.get_Value()
+   在 Blocks.Framework.Collections.LazyConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.BindSignal(String virtualPath, Action`2 fileChangesCallback)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.BindSignal(String virtualPath)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.WhenPathChanges(String virtualPath)
+DEBUG 2018-11-22 14:18:35,974 [10   ] nt.Extensions.Folders.ExtensionHarvester - Monitoring virtual path "Modules\Blocks.BussnessDTOModule\Module.txt"
+DEBUG 2018-11-22 14:18:35,981 [10   ] ms.VirtualPath.DefaultVirtualPathMonitor - Monitoring virtual path "D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Web\Modules\Blocks.BussnessDTOModule\Module.txt"
+INFO  2018-11-22 14:18:36,037 [10   ] ms.VirtualPath.DefaultVirtualPathMonitor - Error monitoring file changes on virtual path 'Modules\Blocks.BussnessDTOModule\Module.txt'
+System.ArgumentException: 目录名 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Web\Modules\Blocks.BussnessDTOModule\Module.txt 无效。
+   在 System.IO.FileSystemWatcher..ctor(String path, String filter)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.CreateFileSystemWatcher(String directoryName, FileSystemEventHandler fsy_Changed)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.<>c__DisplayClass16_0.<BindSignal>b__0(String k)
+   在 Blocks.Framework.Collections.LazyConcurrentDictionary`2.<>c__DisplayClass2_1.<GetOrAdd>b__1()
+   在 System.Lazy`1.CreateValue()
+   在 System.Lazy`1.LazyInitValue()
+   在 System.Lazy`1.get_Value()
+   在 Blocks.Framework.Collections.LazyConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.BindSignal(String virtualPath, Action`2 fileChangesCallback)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.BindSignal(String virtualPath)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.WhenPathChanges(String virtualPath)
+DEBUG 2018-11-22 14:18:36,044 [10   ] nt.Extensions.Folders.ExtensionHarvester - Monitoring virtual path "Modules\Blocks.BussnessEntityModule\Module.txt"
+DEBUG 2018-11-22 14:18:36,052 [10   ] ms.VirtualPath.DefaultVirtualPathMonitor - Monitoring virtual path "D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Web\Modules\Blocks.BussnessEntityModule\Module.txt"
+INFO  2018-11-22 14:18:36,103 [10   ] ms.VirtualPath.DefaultVirtualPathMonitor - Error monitoring file changes on virtual path 'Modules\Blocks.BussnessEntityModule\Module.txt'
+System.ArgumentException: 目录名 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Web\Modules\Blocks.BussnessEntityModule\Module.txt 无效。
+   在 System.IO.FileSystemWatcher..ctor(String path, String filter)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.CreateFileSystemWatcher(String directoryName, FileSystemEventHandler fsy_Changed)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.<>c__DisplayClass16_0.<BindSignal>b__0(String k)
+   在 Blocks.Framework.Collections.LazyConcurrentDictionary`2.<>c__DisplayClass2_1.<GetOrAdd>b__1()
+   在 System.Lazy`1.CreateValue()
+   在 System.Lazy`1.LazyInitValue()
+   在 System.Lazy`1.get_Value()
+   在 Blocks.Framework.Collections.LazyConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.BindSignal(String virtualPath, Action`2 fileChangesCallback)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.BindSignal(String virtualPath)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.WhenPathChanges(String virtualPath)
+DEBUG 2018-11-22 14:18:36,113 [10   ] nt.Extensions.Folders.ExtensionHarvester - Monitoring virtual path "Modules\Blocks.BussnessRespositoryModule\Module.txt"
+DEBUG 2018-11-22 14:18:36,123 [10   ] ms.VirtualPath.DefaultVirtualPathMonitor - Monitoring virtual path "D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Web\Modules\Blocks.BussnessRespositoryModule\Module.txt"
+INFO  2018-11-22 14:18:36,173 [10   ] ms.VirtualPath.DefaultVirtualPathMonitor - Error monitoring file changes on virtual path 'Modules\Blocks.BussnessRespositoryModule\Module.txt'
+System.ArgumentException: 目录名 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Web\Modules\Blocks.BussnessRespositoryModule\Module.txt 无效。
+   在 System.IO.FileSystemWatcher..ctor(String path, String filter)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.CreateFileSystemWatcher(String directoryName, FileSystemEventHandler fsy_Changed)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.<>c__DisplayClass16_0.<BindSignal>b__0(String k)
+   在 Blocks.Framework.Collections.LazyConcurrentDictionary`2.<>c__DisplayClass2_1.<GetOrAdd>b__1()
+   在 System.Lazy`1.CreateValue()
+   在 System.Lazy`1.LazyInitValue()
+   在 System.Lazy`1.get_Value()
+   在 Blocks.Framework.Collections.LazyConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.BindSignal(String virtualPath, Action`2 fileChangesCallback)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.BindSignal(String virtualPath)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.WhenPathChanges(String virtualPath)
+DEBUG 2018-11-22 14:18:36,181 [10   ] nt.Extensions.Folders.ExtensionHarvester - Monitoring virtual path "Modules\Blocks.BussnessRespositoryModule.SqlserverModule\Module.txt"
+DEBUG 2018-11-22 14:18:36,188 [10   ] ms.VirtualPath.DefaultVirtualPathMonitor - Monitoring virtual path "D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Web\Modules\Blocks.BussnessRespositoryModule.SqlserverModule\Module.txt"
+INFO  2018-11-22 14:18:36,252 [10   ] ms.VirtualPath.DefaultVirtualPathMonitor - Error monitoring file changes on virtual path 'Modules\Blocks.BussnessRespositoryModule.SqlserverModule\Module.txt'
+System.ArgumentException: 目录名 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Web\Modules\Blocks.BussnessRespositoryModule.SqlserverModule\Module.txt 无效。
+   在 System.IO.FileSystemWatcher..ctor(String path, String filter)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.CreateFileSystemWatcher(String directoryName, FileSystemEventHandler fsy_Changed)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.<>c__DisplayClass16_0.<BindSignal>b__0(String k)
+   在 Blocks.Framework.Collections.LazyConcurrentDictionary`2.<>c__DisplayClass2_1.<GetOrAdd>b__1()
+   在 System.Lazy`1.CreateValue()
+   在 System.Lazy`1.LazyInitValue()
+   在 System.Lazy`1.get_Value()
+   在 Blocks.Framework.Collections.LazyConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.BindSignal(String virtualPath, Action`2 fileChangesCallback)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.BindSignal(String virtualPath)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.WhenPathChanges(String virtualPath)
+DEBUG 2018-11-22 14:18:36,262 [10   ] nt.Extensions.Folders.ExtensionHarvester - Monitoring virtual path "Modules\Blocks.BussnessWebModule\Module.txt"
+DEBUG 2018-11-22 14:18:36,269 [10   ] ms.VirtualPath.DefaultVirtualPathMonitor - Monitoring virtual path "D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Web\Modules\Blocks.BussnessWebModule\Module.txt"
+INFO  2018-11-22 14:18:36,324 [10   ] ms.VirtualPath.DefaultVirtualPathMonitor - Error monitoring file changes on virtual path 'Modules\Blocks.BussnessWebModule\Module.txt'
+System.ArgumentException: 目录名 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Web\Modules\Blocks.BussnessWebModule\Module.txt 无效。
+   在 System.IO.FileSystemWatcher..ctor(String path, String filter)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.CreateFileSystemWatcher(String directoryName, FileSystemEventHandler fsy_Changed)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.<>c__DisplayClass16_0.<BindSignal>b__0(String k)
+   在 Blocks.Framework.Collections.LazyConcurrentDictionary`2.<>c__DisplayClass2_1.<GetOrAdd>b__1()
+   在 System.Lazy`1.CreateValue()
+   在 System.Lazy`1.LazyInitValue()
+   在 System.Lazy`1.get_Value()
+   在 Blocks.Framework.Collections.LazyConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.BindSignal(String virtualPath, Action`2 fileChangesCallback)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.BindSignal(String virtualPath)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.WhenPathChanges(String virtualPath)
+DEBUG 2018-11-22 14:18:36,338 [10   ] nt.Extensions.Folders.ExtensionHarvester - Monitoring virtual path "Modules\Blocks.LayoutModule\Module.txt"
+DEBUG 2018-11-22 14:18:36,345 [10   ] ms.VirtualPath.DefaultVirtualPathMonitor - Monitoring virtual path "D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Web\Modules\Blocks.LayoutModule\Module.txt"
+INFO  2018-11-22 14:18:36,397 [10   ] ms.VirtualPath.DefaultVirtualPathMonitor - Error monitoring file changes on virtual path 'Modules\Blocks.LayoutModule\Module.txt'
+System.ArgumentException: 目录名 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Web\Modules\Blocks.LayoutModule\Module.txt 无效。
+   在 System.IO.FileSystemWatcher..ctor(String path, String filter)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.CreateFileSystemWatcher(String directoryName, FileSystemEventHandler fsy_Changed)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.<>c__DisplayClass16_0.<BindSignal>b__0(String k)
+   在 Blocks.Framework.Collections.LazyConcurrentDictionary`2.<>c__DisplayClass2_1.<GetOrAdd>b__1()
+   在 System.Lazy`1.CreateValue()
+   在 System.Lazy`1.LazyInitValue()
+   在 System.Lazy`1.get_Value()
+   在 Blocks.Framework.Collections.LazyConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.BindSignal(String virtualPath, Action`2 fileChangesCallback)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.BindSignal(String virtualPath)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.WhenPathChanges(String virtualPath)
+DEBUG 2018-11-22 14:18:36,417 [10   ] nt.Extensions.Folders.ExtensionHarvester - Monitoring virtual path "Modules\Blocks.LayoutModule.ExtensionsModule\Module.txt"
+DEBUG 2018-11-22 14:18:36,425 [10   ] ms.VirtualPath.DefaultVirtualPathMonitor - Monitoring virtual path "D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Web\Modules\Blocks.LayoutModule.ExtensionsModule\Module.txt"
+INFO  2018-11-22 14:18:36,494 [10   ] ms.VirtualPath.DefaultVirtualPathMonitor - Error monitoring file changes on virtual path 'Modules\Blocks.LayoutModule.ExtensionsModule\Module.txt'
+System.ArgumentException: 目录名 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Web\Modules\Blocks.LayoutModule.ExtensionsModule\Module.txt 无效。
+   在 System.IO.FileSystemWatcher..ctor(String path, String filter)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.CreateFileSystemWatcher(String directoryName, FileSystemEventHandler fsy_Changed)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.<>c__DisplayClass16_0.<BindSignal>b__0(String k)
+   在 Blocks.Framework.Collections.LazyConcurrentDictionary`2.<>c__DisplayClass2_1.<GetOrAdd>b__1()
+   在 System.Lazy`1.CreateValue()
+   在 System.Lazy`1.LazyInitValue()
+   在 System.Lazy`1.get_Value()
+   在 Blocks.Framework.Collections.LazyConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.BindSignal(String virtualPath, Action`2 fileChangesCallback)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.BindSignal(String virtualPath)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.WhenPathChanges(String virtualPath)
+DEBUG 2018-11-22 14:18:36,501 [10   ] nt.Extensions.Folders.ExtensionHarvester - Monitoring virtual path "Modules\Blocks.LocalizationModule\Module.txt"
+DEBUG 2018-11-22 14:18:36,509 [10   ] ms.VirtualPath.DefaultVirtualPathMonitor - Monitoring virtual path "D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Web\Modules\Blocks.LocalizationModule\Module.txt"
+INFO  2018-11-22 14:18:36,560 [10   ] ms.VirtualPath.DefaultVirtualPathMonitor - Error monitoring file changes on virtual path 'Modules\Blocks.LocalizationModule\Module.txt'
+System.ArgumentException: 目录名 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Web\Modules\Blocks.LocalizationModule\Module.txt 无效。
+   在 System.IO.FileSystemWatcher..ctor(String path, String filter)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.CreateFileSystemWatcher(String directoryName, FileSystemEventHandler fsy_Changed)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.<>c__DisplayClass16_0.<BindSignal>b__0(String k)
+   在 Blocks.Framework.Collections.LazyConcurrentDictionary`2.<>c__DisplayClass2_1.<GetOrAdd>b__1()
+   在 System.Lazy`1.CreateValue()
+   在 System.Lazy`1.LazyInitValue()
+   在 System.Lazy`1.get_Value()
+   在 Blocks.Framework.Collections.LazyConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.BindSignal(String virtualPath, Action`2 fileChangesCallback)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.BindSignal(String virtualPath)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.WhenPathChanges(String virtualPath)
+DEBUG 2018-11-22 14:18:36,569 [10   ] nt.Extensions.Folders.ExtensionHarvester - Monitoring virtual path "Modules\Blocks.ResourcesModule\Module.txt"
+DEBUG 2018-11-22 14:18:36,576 [10   ] ms.VirtualPath.DefaultVirtualPathMonitor - Monitoring virtual path "D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Web\Modules\Blocks.ResourcesModule\Module.txt"
+INFO  2018-11-22 14:18:36,626 [10   ] ms.VirtualPath.DefaultVirtualPathMonitor - Error monitoring file changes on virtual path 'Modules\Blocks.ResourcesModule\Module.txt'
+System.ArgumentException: 目录名 D:\Myproject\比邻\R2E\R2E5.0\Framwork2.0\Blocks\Blocks\Blocks.Web\Modules\Blocks.ResourcesModule\Module.txt 无效。
+   在 System.IO.FileSystemWatcher..ctor(String path, String filter)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.CreateFileSystemWatcher(String directoryName, FileSystemEventHandler fsy_Changed)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.<>c__DisplayClass16_0.<BindSignal>b__0(String k)
+   在 Blocks.Framework.Collections.LazyConcurrentDictionary`2.<>c__DisplayClass2_1.<GetOrAdd>b__1()
+   在 System.Lazy`1.CreateValue()
+   在 System.Lazy`1.LazyInitValue()
+   在 System.Lazy`1.get_Value()
+   在 Blocks.Framework.Collections.LazyConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.BindSignal(String virtualPath, Action`2 fileChangesCallback)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.BindSignal(String virtualPath)
+   在 Blocks.Framework.FileSystems.VirtualPath.DefaultVirtualPathMonitor.WhenPathChanges(String virtualPath)
+INFO  2018-11-22 14:18:36,640 [10   ] nt.Extensions.Folders.ExtensionHarvester - Done looking for extensions in '~/Modules': Blocks.BussnessDomainExtendModule, Blocks.BussnessWebModule, Blocks.LayoutModule, Blocks.LocalizationModule, Blocks.ResourcesModule
+WARN  2018-11-22 14:18:38,211 [1    ] Abp.Logging.LogHelper                    - Blocks.Framework.Web can't found extension depond on it.so ignore to register BlocksConfiguration
+WARN  2018-11-22 14:18:38,219 [1    ] Abp.Logging.LogHelper                    - Blocks.Framework.Web can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-11-22 14:18:38,233 [1    ] Abp.Logging.LogHelper                    - Blocks.Framework.Web can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-11-22 14:18:38,244 [1    ] Abp.Logging.LogHelper                    - Blocks.Core can't found extension depond on it.so ignore to register BlocksConfiguration
+WARN  2018-11-22 14:18:38,262 [1    ] Abp.Logging.LogHelper                    - Blocks.Core can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-11-22 14:18:38,271 [1    ] Abp.Logging.LogHelper                    - Blocks.Core can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-11-22 14:18:38,292 [1    ] Abp.Logging.LogHelper                    - Blocks.Framework.DBORM can't found extension depond on it.so ignore to register BlocksConfiguration
+WARN  2018-11-22 14:18:38,309 [1    ] Abp.Logging.LogHelper                    - Blocks.Framework.DBORM can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-11-22 14:18:38,339 [1    ] Abp.Logging.LogHelper                    - Blocks.Framework.DBORM can't found extension depond on it.so ignore to register BlockWebController
+DEBUG 2018-11-22 14:18:38,958 [1    ] amework.DBORM.BlocksFrameworkDBORMModule - Registering DbContext: Blocks.Framework.DBORM.DBContext.BlocksDbContext`1, Blocks.Framework.DBORM, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+WARN  2018-11-22 14:18:39,039 [1    ] Abp.Logging.LogHelper                    - Blocks.BussnessApplicationModule can't found extension depond on it.so ignore to register BlocksConfiguration
+WARN  2018-11-22 14:18:39,048 [1    ] Abp.Logging.LogHelper                    - Blocks.BussnessApplicationModule can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-11-22 14:18:39,056 [1    ] Abp.Logging.LogHelper                    - Blocks.BussnessApplicationModule can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-11-22 14:18:39,104 [1    ] Abp.Logging.LogHelper                    - Blocks.BussnessDomainModule can't found extension depond on it.so ignore to register BlocksConfiguration
+WARN  2018-11-22 14:18:39,113 [1    ] Abp.Logging.LogHelper                    - Blocks.BussnessDomainModule can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-11-22 14:18:39,122 [1    ] Abp.Logging.LogHelper                    - Blocks.BussnessDomainModule can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-11-22 14:18:39,934 [1    ] Abp.Logging.LogHelper                    - Blocks.Web can't found extension depond on it.so ignore to register BlocksConfiguration
+WARN  2018-11-22 14:18:39,947 [1    ] Abp.Logging.LogHelper                    - Blocks.Web can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-11-22 14:18:39,957 [1    ] Abp.Logging.LogHelper                    - Blocks.Web can't found extension depond on it.so ignore to register BlockWebController
+DEBUG 2018-11-22 14:18:40,844 [1    ] Abp.Localization.LocalizationManager     - Initializing 10 localization sources.
+DEBUG 2018-11-22 14:18:40,907 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2018-11-22 14:18:40,927 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2018-11-22 14:18:40,943 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Blocks
+DEBUG 2018-11-22 14:18:40,958 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2018-11-22 14:18:40,966 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: BlocksFramework
+DEBUG 2018-11-22 14:18:40,979 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: BussnessDomainExtendModule
+DEBUG 2018-11-22 14:18:40,988 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: BussnessWebModule
+DEBUG 2018-11-22 14:18:40,997 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: LayoutModule
+DEBUG 2018-11-22 14:18:41,007 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Localization
+DEBUG 2018-11-22 14:18:41,018 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Resources
+DEBUG 2018-11-22 14:18:41,264 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 13 classes define auto mapping attributes
+DEBUG 2018-11-22 14:18:41,276 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2018-11-22 14:18:41,300 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.Sessions.Dto.UserLoginInfoDto
+DEBUG 2018-11-22 14:18:41,315 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.Users.Dto.CreateUserDto
+DEBUG 2018-11-22 14:18:41,326 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.Users.Dto.UpdateUserDto
+DEBUG 2018-11-22 14:18:41,336 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.Users.Dto.UserDto
+DEBUG 2018-11-22 14:18:41,348 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.Roles.Dto.CreateRoleDto
+DEBUG 2018-11-22 14:18:41,358 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.Roles.Dto.PermissionDto
+DEBUG 2018-11-22 14:18:41,369 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.Roles.Dto.RoleDto
+DEBUG 2018-11-22 14:18:41,378 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2018-11-22 14:18:41,389 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.MultiTenancy.Dto.EditTenantDto
+DEBUG 2018-11-22 14:18:41,399 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.MultiTenancy.Dto.TenantDto
+DEBUG 2018-11-22 14:18:41,410 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.Web.Models.Account.TenantChangeViewModel
+DEBUG 2018-11-22 14:18:41,419 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.Web.Models.Account.TenantSelectionViewModel+TenantInfo
+DEBUG 2018-11-22 14:18:45,241 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'Blocks.Sessions.ISessionAppService' with service name 'app/session'.
+DEBUG 2018-11-22 14:18:45,255 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'Blocks.Users.IUserAppService' with service name 'app/user'.
+DEBUG 2018-11-22 14:18:45,266 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'Blocks.Roles.IRoleAppService' with service name 'app/role'.
+DEBUG 2018-11-22 14:18:45,276 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'Blocks.MultiTenancy.ITenantAppService' with service name 'app/tenant'.
+DEBUG 2018-11-22 14:18:45,291 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'Blocks.Configuration.IConfigurationAppService' with service name 'app/configuration'.
+DEBUG 2018-11-22 14:18:45,303 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'Blocks.Authorization.Accounts.IAccountAppService' with service name 'app/account'.
+DEBUG 2018-11-22 14:18:45,680 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'Blocks.BussnessApplicationModule.TestAppService.ITestAppService' with service name 'BussnessWebModule/test'.
+DEBUG 2018-11-22 14:18:45,691 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'Blocks.BussnessApplicationModule.MasterData.IComboboxAppService' with service name 'BussnessWebModule/combobox'.
+DEBUG 2018-11-22 14:18:45,706 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'Blocks.BussnessApplicationModule.MasterData.IMasterDataAppService' with service name 'BussnessWebModule/masterData'.
+WARN  2018-11-22 14:18:46,263 [1    ] Abp.MultiTenancy.TenantResolver          - System.Web.HttpException (0x80004005): 请求在此上下文中不可用
+   在 System.Web.HttpContext.get_Request()
+   在 Abp.Web.MultiTenancy.HttpHeaderTenantResolveContributor.ResolveTenantId()
+   在 Abp.MultiTenancy.TenantResolver.GetTenantIdFromContributors()
+System.Web.HttpException (0x80004005): 请求在此上下文中不可用
+   在 System.Web.HttpContext.get_Request()
+   在 Abp.Web.MultiTenancy.HttpHeaderTenantResolveContributor.ResolveTenantId()
+   在 Abp.MultiTenancy.TenantResolver.GetTenantIdFromContributors()
+WARN  2018-11-22 14:18:46,304 [1    ] Abp.MultiTenancy.TenantResolver          - System.Web.HttpException (0x80004005): 请求在此上下文中不可用
+   在 System.Web.HttpContext.get_Request()
+   在 Abp.Web.MultiTenancy.HttpCookieTenantResolveContributor.ResolveTenantId()
+   在 Abp.MultiTenancy.TenantResolver.GetTenantIdFromContributors()
+System.Web.HttpException (0x80004005): 请求在此上下文中不可用
+   在 System.Web.HttpContext.get_Request()
+   在 Abp.Web.MultiTenancy.HttpCookieTenantResolveContributor.ResolveTenantId()
+   在 Abp.MultiTenancy.TenantResolver.GetTenantIdFromContributors()
+WARN  2018-11-22 14:18:56,316 [1    ] Abp.Logging.LogHelper                    - Blocks.BussnessRespositoryModule.SqlserverModule can't found extension depond on it.so ignore to register BlocksConfiguration
+WARN  2018-11-22 14:18:56,326 [1    ] Abp.Logging.LogHelper                    - Blocks.BussnessRespositoryModule.SqlserverModule can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-11-22 14:18:56,334 [1    ] Abp.Logging.LogHelper                    - Blocks.BussnessRespositoryModule.SqlserverModule can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-11-22 14:18:56,348 [1    ] Abp.Logging.LogHelper                    - Blocks.BussnessRespositoryModule can't found extension depond on it.so ignore to register BlocksConfiguration
+WARN  2018-11-22 14:18:56,356 [1    ] Abp.Logging.LogHelper                    - Blocks.BussnessRespositoryModule can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-11-22 14:18:56,363 [1    ] Abp.Logging.LogHelper                    - Blocks.BussnessRespositoryModule can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-11-22 14:19:17,846 [11   ] Abp.Logging.LogHelper                    - Abp.Authorization.AbpAuthorizationException: 当前用户没有登录到系统！
+   在 Abp.Authorization.AuthorizationHelper.<AuthorizeAsync>d__19.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   在 Abp.Authorization.AuthorizationHelper.<CheckPermissions>d__22.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   在 Abp.Authorization.AuthorizationHelper.<AuthorizeAsync>d__20.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 Nito.AsyncEx.Synchronous.TaskExtensions.WaitAndUnwrapException(Task task)
+   在 Nito.AsyncEx.AsyncContext.<>c__DisplayClass15_0.<Run>b__0(Task t)
+   在 System.Threading.Tasks.ContinuationTaskFromTask.InnerInvoke()
+   在 System.Threading.Tasks.Task.Execute()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 Nito.AsyncEx.Synchronous.TaskExtensions.WaitAndUnwrapException(Task task)
+   在 Nito.AsyncEx.AsyncContext.Run(Func`1 action)
+   在 Abp.Threading.AsyncHelper.RunSync(Func`1 action)
+   在 Abp.Authorization.AuthorizationHelperExtensions.Authorize(IAuthorizationHelper authorizationHelper, MethodInfo methodInfo, Type type)
+   在 Abp.Web.Mvc.Authorization.AbpMvcAuthorizeFilter.OnAuthorization(AuthorizationContext filterContext)
+Abp.Authorization.AbpAuthorizationException: 当前用户没有登录到系统！
+   在 Abp.Authorization.AuthorizationHelper.<AuthorizeAsync>d__19.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   在 Abp.Authorization.AuthorizationHelper.<CheckPermissions>d__22.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   在 Abp.Authorization.AuthorizationHelper.<AuthorizeAsync>d__20.MoveNext()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 Nito.AsyncEx.Synchronous.TaskExtensions.WaitAndUnwrapException(Task task)
+   在 Nito.AsyncEx.AsyncContext.<>c__DisplayClass15_0.<Run>b__0(Task t)
+   在 System.Threading.Tasks.ContinuationTaskFromTask.InnerInvoke()
+   在 System.Threading.Tasks.Task.Execute()
+--- 引发异常的上一位置中堆栈跟踪的末尾 ---
+   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   在 Nito.AsyncEx.Synchronous.TaskExtensions.WaitAndUnwrapException(Task task)
+   在 Nito.AsyncEx.AsyncContext.Run(Func`1 action)
+   在 Abp.Threading.AsyncHelper.RunSync(Func`1 action)
+   在 Abp.Authorization.AuthorizationHelperExtensions.Authorize(IAuthorizationHelper authorizationHelper, MethodInfo methodInfo, Type type)
+   在 Abp.Web.Mvc.Authorization.AbpMvcAuthorizeFilter.OnAuthorization(AuthorizationContext filterContext)
+WARN  2018-11-22 14:19:24,639 [13   ] naries.DictionaryBasedLocalizationSource - Can not find 'Tests' in localization source 'BussnessWebModule'!
+WARN  2018-11-22 14:22:07,100 [16   ] naries.DictionaryBasedLocalizationSource - Can not find 'Tests' in localization source 'BussnessWebModule'!
+WARN  2018-11-22 14:22:13,634 [16   ] naries.DictionaryBasedLocalizationSource - Can not find 'Tests' in localization source 'BussnessWebModule'!
+ERROR 2018-11-22 14:22:14,699 [16   ] Abp.Logging.LogHelper                    - Can not find file for: ~/Abp/Framework/scripts/libs/abp.signalr.js! System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 Abp.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path)
+   在 Abp.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path)
+WARN  2018-11-22 14:22:16,330 [16   ] naries.DictionaryBasedLocalizationSource - Can not find 'Tests' in localization source 'BussnessWebModule'!
+WARN  2018-11-22 14:24:16,075 [6    ] naries.DictionaryBasedLocalizationSource - Can not find 'Tests' in localization source 'BussnessWebModule'!
+WARN  2018-11-22 14:24:16,635 [3    ] naries.DictionaryBasedLocalizationSource - Can not find 'Tests' in localization source 'BussnessWebModule'!
+WARN  2018-11-22 14:24:21,560 [17   ] naries.DictionaryBasedLocalizationSource - Can not find 'Tests' in localization source 'BussnessWebModule'!
+WARN  2018-11-22 14:24:21,924 [6    ] naries.DictionaryBasedLocalizationSource - Can not find 'Tests' in localization source 'BussnessWebModule'!
+WARN  2018-11-22 14:27:50,385 [31   ] naries.DictionaryBasedLocalizationSource - Can not find 'Tests' in localization source 'BussnessWebModule'!
+WARN  2018-11-22 14:27:50,692 [30   ] naries.DictionaryBasedLocalizationSource - Can not find 'Tests' in localization source 'BussnessWebModule'!
+WARN  2018-11-22 14:29:58,804 [30   ] naries.DictionaryBasedLocalizationSource - Can not find 'Tests' in localization source 'BussnessWebModule'!
+WARN  2018-11-22 14:29:59,600 [31   ] naries.DictionaryBasedLocalizationSource - Can not find 'Tests' in localization source 'BussnessWebModule'!
+WARN  2018-11-22 14:32:16,246 [30   ] naries.DictionaryBasedLocalizationSource - Can not find 'Tests' in localization source 'BussnessWebModule'!
+WARN  2018-11-22 14:32:17,179 [30   ] naries.DictionaryBasedLocalizationSource - Can not find 'Tests' in localization source 'BussnessWebModule'!
+WARN  2018-11-22 14:57:44,982 [71   ] naries.DictionaryBasedLocalizationSource - Can not find 'Tests' in localization source 'BussnessWebModule'!
+WARN  2018-11-22 14:57:46,048 [64   ] naries.DictionaryBasedLocalizationSource - Can not find 'Tests' in localization source 'BussnessWebModule'!
+WARN  2018-11-22 15:20:14,867 [73   ] naries.DictionaryBasedLocalizationSource - Can not find 'Tests' in localization source 'BussnessWebModule'!
+WARN  2018-11-22 15:20:16,334 [67   ] naries.DictionaryBasedLocalizationSource - Can not find 'Tests' in localization source 'BussnessWebModule'!
+WARN  2018-11-22 15:28:27,074 [73   ] naries.DictionaryBasedLocalizationSource - Can not find 'Tests' in localization source 'BussnessWebModule'!
+WARN  2018-11-22 15:47:00,851 [73   ] naries.DictionaryBasedLocalizationSource - Can not find 'Tests' in localization source 'BussnessWebModule'!

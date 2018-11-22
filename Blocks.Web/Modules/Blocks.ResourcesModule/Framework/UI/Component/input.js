@@ -35,7 +35,11 @@ define(['jquery', '../../Event/event'], function ($, eventBus) {
         });
          
     });
-
+    eventBus.on("moduleInit",function (view) {
+        view.find('form').each(function (e) {
+            $(this).attr('onsubmit','return false;');
+        });
+    });
     eventBus.on("datepicker", function (view) {
         inputAnimation.focus.apply(view,arguments);
     });

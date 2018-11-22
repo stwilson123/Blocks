@@ -28,7 +28,8 @@ namespace Blocks.Framework.Modules
             {
                 var currentAssmeblyName = currentAssmebly.GetName().Name;
                 var Extension = IocManager.Resolve<IExtensionManager>().AvailableExtensions()
-             .FirstOrDefault(t => t.Id == currentAssmeblyName);
+             .FirstOrDefault(t => t.
+                                      Id == currentAssmeblyName);
                 if (Extension == null)
                     throw new ExtensionNotFoundException(StringLocal.Format($"{currentAssmeblyName} can't found extension depond on it."));
                 return Extension;
@@ -58,14 +59,14 @@ namespace Blocks.Framework.Modules
         /// </summary>
         public override void Initialize()
         {
-            Configuration.Localization.Sources.Add(
-                new DictionaryBasedLocalizationSource(
-                    extensionDescriptor.Name,
-                    new XmlEmbeddedFileLocalizationDictionaryProvider(
-                        currentAssmebly, "Localization.Source"
-                    )
-                )
-            );
+            //Configuration.Localization.Sources.Add(
+            //    new DictionaryBasedLocalizationSource(
+            //        extensionDescriptor.Name,
+            //        new XmlEmbeddedFileLocalizationDictionaryProvider(
+            //            currentAssmebly, "Localization.Source"
+            //        )
+            //    )
+            //);
             
             // var currentAssmeblyName = currentAssmebly.GetName().Name;
             //var extensionName = extensionDescriptor.Name;

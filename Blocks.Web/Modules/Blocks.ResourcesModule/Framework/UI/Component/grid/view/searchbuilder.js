@@ -2,18 +2,18 @@ define(['../gridbase', 'blocks_utility','../../../../Design/decorator'], functio
     var gridSearch = function (gridObj) {
         initoptions.call(this, gridObj);
     };
-    decoratorPattern.func.call(grid.prototype,'afterInit',function () {
+    decoratorPattern.func.call(grid.prototype, 'afterInit', function () {
         var options = this._options;
         var $gridObj = options.gridObj;
         $gridObj.jqGrid('navGrid', options.pager,
-            {edit: false, add: false, del: false},
+            { edit: false, add: false, del: false },
             {},
             {},
             {},
             options.dynamicConditionQuery
         );
         this.getTopObj().find('#search_' + $gridObj.attr('Id')).hide();
-    })
+    });
     function initoptions(gridObj) {
         var options = gridObj._options;
         if (options.dynamicConditionQuery && options.dynamicConditionQuery.active === true) {
@@ -21,7 +21,9 @@ define(['../gridbase', 'blocks_utility','../../../../Design/decorator'], functio
             var colModel = options.colModel;
             for (var i = 0; i < colModel.length; i++) {
                 var searchOpt = $.extend(true, {},searchOptions[colModel[i].displayType.type].default,
-                    searchOptions[colModel[i].displayType.type][colModel[i].formatType.type], colModel[i].searchOptions);
+                    searchOptions[colModel[i].displayType.type][colModel[i].formatType.type],
+                    {isRemote:colModel[i].isRemote,url:colModel[i].url },
+                    colModel[i].searchOptions);
                 colModel[i].searchoptions = colModel[i].searchOptions = searchOpt;
                 colModel[i].stype = colModel[i].stype ?  colModel[i].stype : gridObj.config.body.searchType[colModel[i].displayType.type];
             }

@@ -20,8 +20,6 @@ namespace Blocks.BussnessWebModule.Module_Start
                     )
                 .AddBuilder((m) => m.Name("MasterData").DisplayName(L("MasterData"))
                     .Action("Index", "MasterData",Extension.Name));
-
-             
         }
     }
 }

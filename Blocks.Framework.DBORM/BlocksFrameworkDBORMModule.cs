@@ -20,14 +20,14 @@ using Blocks.Framework.Modules;
 using Castle.MicroKernel.Registration;
 using AbpDbContext = Abp.EntityFramework.AbpDbContext;
 using System.Data.Entity.Infrastructure.Interception;
+using Abp.EntityFramework.Uow;
 using Blocks.Framework.DBORM.Intercepter;
-
+using Abp.Configuration.Startup;
 namespace Blocks.Framework.DBORM
 {
     [DependsOn(typeof(BlocksFrameworkModule))]
-    public class BlocksFrameworkDBORMModule: AbpModule
+    public class BlocksFrameworkDBORMModule : AbpModule
     {
-         
         private readonly ITypeFinder _typeFinder;
 
         public BlocksFrameworkDBORMModule(ITypeFinder typeFinder)
@@ -38,6 +38,8 @@ namespace Blocks.Framework.DBORM
         public override void PreInitialize()
         {
             Database.SetInitializer<BaseBlocksDbContext>(null);
+           // Configuration.ReplaceService<IEfTransactionStrategy, DefaultTransactionStrategy>(DependencyLifeStyle.Transient);
+             
 #if DEBUG
             DbInterception.Add(new EFIntercepterLogging());
 #endif
@@ -53,11 +55,11 @@ namespace Blocks.Framework.DBORM
                     .LifestyleTransient()
             );
             IocManager.IocContainer.Register(Component.For(typeof(BlocksDbContext<>)).LifestyleTransient());
-                
-             
+
+
             RegisterGenericRepositoriesAndMatchDbContexes();
         }
-        
+
         private void RegisterGenericRepositoriesAndMatchDbContexes()
         {
             var dbContextTypes =
@@ -82,12 +84,14 @@ namespace Blocks.Framework.DBORM
                 {
                     Logger.Debug("Registering DbContext: " + dbContextType.AssemblyQualifiedName);
 
-                    scope.Resolve<IEfGenericRepositoryRegistrar>().RegisterForDbContext(dbContextType, IocManager, Blocks.Framework.DBORM.Repository.EfAutoRepositoryTypes.Default);
+                    scope.Resolve<IEfGenericRepositoryRegistrar>().RegisterForDbContext(dbContextType, IocManager,
+                        Blocks.Framework.DBORM.Repository.EfAutoRepositoryTypes.Default);
 
                     IocManager.IocContainer.Register(
                         Component.For<ISecondaryOrmRegistrar>()
                             .Named(Guid.NewGuid().ToString("N"))
-                            .Instance(new EfCoreBasedSecondaryOrmRegistrar(dbContextType, scope.Resolve<IDbContextEntityFinder>()))
+                            .Instance(new EfCoreBasedSecondaryOrmRegistrar(dbContextType,
+                                scope.Resolve<IDbContextEntityFinder>()))
                             .LifestyleTransient()
                     );
                 }

@@ -4,18 +4,18 @@
 @model Blocks.Web.Models.Account.LoginFormViewModel
 @section Styles
 {
-    @Html.IncludeStyle("~/Views/Account/Login.css")
+    @Html.IncludeStyle("~/Views/Account/MobileLogin.css")
 }
 @section Scripts
 {
-    @Html.IncludeScript("~/Views/Account/Login.js")
+    @Html.IncludeScript("~/Views/Account/MobileLogin.js")
 }
 
  
 
 <div class="card">
     <div class="body">
-        <form id="LoginForm" method="POST" asp-action="Login">
+        <form id="LoginForm" method="POST" asp-action="MobileLogin">
             <input type="hidden" name="returnUrl" value="@Model.ReturnUrl" />
             <input type="hidden" name="returnUrlHash" />
             <h4 class="text-center">@L("LogIn")</h4>

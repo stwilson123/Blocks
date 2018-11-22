@@ -33,7 +33,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Abp, Version=3.2.4.0, Culture=neutral, PublicKeyToken=null">
+    <Reference Include="Abp, Version=3.2.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\lib\Abp.dll</HintPath>
     </Reference>
     <Reference Include="Blocks.Framework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">

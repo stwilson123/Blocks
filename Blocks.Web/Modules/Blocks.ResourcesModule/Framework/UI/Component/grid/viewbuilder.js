@@ -10,7 +10,7 @@ define(['./gridbase','./view/headbuilder','./view/bodybuilder','./view/pagebuild
         gridObj.body = body;
         gridObj.page = page;
         gridObj.search = search;
-        
+            
         {
             var $gridTop = gridObj.getTopObj();
             gridObj.on('resizeStop',function () {
@@ -19,9 +19,12 @@ define(['./gridbase','./view/headbuilder','./view/bodybuilder','./view/pagebuild
             });
             gridObj.on('loadComplete',function () {
                 $gridTop.find('.ui-jqgrid-btable').width('100%');
+                //setWidthAuto($gridTop,gridObj._options.gridObj);
             });
         }
     };
+
+  
 
     decoratorPattern.func.call(grid.prototype,'init',function () {
         if (this._options.datatype === "local" || (!this._options.url)) {
@@ -35,29 +38,40 @@ define(['./gridbase','./view/headbuilder','./view/bodybuilder','./view/pagebuild
         //TODO auto width 
         {
             var $gridTop = this.getTopObj();
-            $gridTop.find('.jqgrid-overlay').width('100%');
-            $gridTop.find('.ui-jqgrid-view').width('100%');
-            $gridTop.find('.ui-jqgrid-hdiv').width('100%');
-            $gridTop.find('.ui-jqgrid-htable').width('100%');
-            $gridTop.find('.ui-jqgrid-bdiv').width('100%').css('overflow-y', 'scroll');
-            $gridTop.find('.ui-jqgrid-btable').width('100%');
-            $gridTop.find('.ui-jqgrid-pager').width('100%');
-            //TODO want to set 100%,but always plus 2% 
-            $gridTop.width('98%');
-            $gridTop.find('#' + this._options.gridObj.attr('id') + '_cb').css('text-align', 'center');
+            var $gridObj  = this._options.gridObj;
+            setWidthAuto($gridTop,$gridObj);
+
+            decoratorPattern.func.call(this._options.gridObj.prototype,'setGridWidth',function () {
+                 setWidthAuto($gridTop,$gridObj);  
+            });
         }
     });
+    function setWidthAuto($gridTop,gridObj)
+    {
+       
+        $gridTop.find('.jqgrid-overlay').width('100%');
+        $gridTop.find('.ui-jqgrid-view').width('100%');
+        $gridTop.find('.ui-jqgrid-hdiv').width('100%');
+        $gridTop.find('.ui-jqgrid-htable').width('100%');
+        $gridTop.find('.ui-jqgrid-bdiv').width('100%').css('overflow-y', 'scroll');
+        $gridTop.find('.ui-jqgrid-btable').width('100%');
+        $gridTop.find('.ui-jqgrid-pager').width('100%');
+        $gridTop.find('.jqgrid-overlay').width('100%').height('100%');
+        //TODO want to set 100%,but always plus 2% 
+        $gridTop.width('98%');
+        $gridTop.find('#' + gridObj.attr('id') + '_cb').css('text-align', 'center');
+    }
     grid.prototype.getGridHeightWithoutBdiv = function () {
         var jqGridObj = this._options.gridObj;
         var jqGridTopObj = jqGridObj.parent().parent().parent().parent();
         var hdiv = jqGridTopObj.find(".ui-jqgrid-hdiv").filter(function (index, htmlObj) {
-            return $(htmlObj).css('display') != 'none'
+            return $(htmlObj).css('display') !== 'none';
         });
         var pagerDiv = jqGridTopObj.find(".ui-jqgrid-pager").filter(function (index, htmlObj) {
-            return $(htmlObj).css('display') != 'none'
+            return $(htmlObj).css('display') !== 'none';
         });
         var captionDiv = jqGridTopObj.find(".ui-jqgrid-caption").filter(function (index, htmlObj) {
-            return $(htmlObj).css('display') != 'none'
+            return $(htmlObj).css('display') !== 'none';
         });
 
         return hdiv.length * hdiv.outerHeight(true) + pagerDiv.length * pagerDiv.outerHeight(true) + captionDiv.length * captionDiv.outerHeight(true) + 2;//grid border is 2 //$(".ui-jqgrid-hdiv").length * $(".ui-jqgrid-hdiv").outerHeight() - $(".ui-jqgrid-pager").length * $(".ui-jqgrid-pager").outerHeight()
@@ -93,6 +107,20 @@ define(['./gridbase','./view/headbuilder','./view/bodybuilder','./view/pagebuild
         var jqObj = this._options.gridObj;
         return jqObj.attr('gridstate');
     };
+    grid.prototype.hideCol = function () {
+        //TODO 如果已非默认的方式打开grid，可能导致错误，
+        var jqObj = this._options.gridObj;
+        var result = jqObj.hideCol.apply(jqObj,arguments);
+        setWidthAuto(this.getTopObj(),this._options.gridObj);
+        return result;
+    };
 
+    grid.prototype.showCol = function () {
+        //TODO 如果已非默认的方式打开grid，可能导致错误，
+        var jqObj = this._options.gridObj;
+        var result = jqObj.showCol.apply(jqObj,arguments);
+        setWidthAuto(this.getTopObj(),this._options.gridObj);
+        return result;
+    };
     return viewDirector;
 });

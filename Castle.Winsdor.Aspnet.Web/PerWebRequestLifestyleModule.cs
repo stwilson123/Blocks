@@ -16,7 +16,6 @@ using System;
 using System.Collections;
 using Castle.MicroKernel;
 using Castle.MicroKernel.Lifestyle.Scoped;
-using Microsoft.AspNetCore.Http;
 
 namespace Castle.Winsdor.Aspnet.Web
 {

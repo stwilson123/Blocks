@@ -7,7 +7,7 @@ require.config({
         'bootstrap': "../Scripts/bootstrap",
         'bootstrap_select': "../lib/bootstrap-select/dist/js/bootstrap-select",
         'jqGrid': "../lib/jqGrid/script/jquery.jqGrid.min",
-        'jquery': "../Scripts/jquery-1.9.1",
+        //'jquery': "../Scripts/jquery-1.9.1",
         'jquery_blockUI': "../lib/blockUI/jquery.blockUI",
         'jquery_spin': "../lib/spin.js/jquery.spin",
         'jquery_validate': "../lib/jquery-validation/dist/jquery.validate",

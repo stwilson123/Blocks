@@ -1,5 +1,4 @@
-﻿using Abp.Domain.Services;
-using Blocks.BussnessDTOModule;
+﻿using Blocks.BussnessDTOModule;
 using Blocks.BussnessDTOModule.MasterData;
 using Blocks.BussnessEntityModule;
 using Blocks.BussnessRespositoryModule;
@@ -9,11 +8,11 @@ using Blocks.Framework.Utility.SafeConvert;
 
 namespace Blocks.BussnessDomainModule.MasterData
 {
-    public class ComboboxDomainEvent : IDomainService
+    public class ComboboxDomainEvent : Framework.Domain.Service.IDomainService
     {
         public ComboboxDomainEvent(ITest2Repository testRepository)
         {
-                  this.Test2Repository = testRepository;
+              this.Test2Repository = testRepository;
         }
 
         private ITest2Repository Test2Repository { get; set; }

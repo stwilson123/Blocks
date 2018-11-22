@@ -37,14 +37,13 @@ namespace Blocks.Framework.Environment
             {
                 parameters.Add("paths", extensionLocations.ThemeLocations);
             });
-            
 
         }
 
         public override void Initialize()
         {
-            
-          
+
+            IocManager.RegisterAssemblyByConvention(Assembly.GetExecutingAssembly());
 
         }
         

@@ -2,16 +2,37 @@
 using EntityFramework.Test.Model;
 using Xunit;
 using System;
+using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace EntityFramework.Test.FunctionTest
 {
+     
     public class RepositoryTest : BlocksTestBase
     {
         [Fact]
-        public void syncQueryMethod()
+        public void BatchAddPerformance()
         {
+            var rep = Resolve<TestRepository>();
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+            //var trans = rep.Context.Database.BeginTransaction();执行时间
+            var listTestEntity = new List<TESTENTITY>();
+            for (int i = 0; i < 10000; i++)
+            {
+                listTestEntity.Add(new TESTENTITY() { COLNUMINT = i, UPDATER = "1", CREATER = "1", TESTENTITY2ID = "11" });
+            }
+            rep.Insert(listTestEntity);
+            stopwatch.Stop();
+            Assert.True(false, "Total Milliseconds:" + stopwatch.ElapsedMilliseconds);
+            //trans.Commit();
+        }
+        [Fact]
+        public void syncQueryMethod()
+        { 
             var rep =  Resolve<TestRepository>();
             var firstData = rep.GetAllList().FirstOrDefault();
             if(firstData != null )
@@ -70,7 +91,6 @@ namespace EntityFramework.Test.FunctionTest
             var id = rep.Update(t => t.Id == keyId, t => new TESTENTITY()
             {
                 TESTENTITY2ID = t.TESTENTITY2ID + "123" + t.Id,
-                
             });
             var inputPlus = "inputPlus";
             var id1 = rep.Update(t => t.Id == keyId, t => new TESTENTITY() { TESTENTITY2ID = t.TESTENTITY2ID + inputPlus });

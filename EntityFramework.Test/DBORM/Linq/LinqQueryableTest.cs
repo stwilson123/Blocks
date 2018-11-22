@@ -219,6 +219,19 @@ namespace Blocks.Framework.Test.DBORM.Linq
             }
         }
 
+        [Fact]
+        public void joinWhere()
+        {
+            using (var context = new BlocksEntities())
+            {
+                var defaultLinqQuery = new DefaultLinqQueryable<TESTENTITY>(context.TestEntity.AsQueryable(), context);
+                var testEntity = defaultLinqQuery
+                    .InnerJoin((TESTENTITY t) => t.TESTENTITY2ID, (TESTENTITY2 b) => b.Id)
+                    .Where((TESTENTITY t) => t.TESTENTITY2ID == "123")
+                     .SelectToList((TESTENTITY b) => new TESTENTITY(){ Id = b.Id});
+ 
+            }
+        }
         class testDTO 
         {
             public string Id { get; set; }

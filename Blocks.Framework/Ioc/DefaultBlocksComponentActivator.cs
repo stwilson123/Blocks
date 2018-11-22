@@ -13,10 +13,10 @@ namespace Blocks.Framework.Ioc
         {
         }
 
+       
         protected override object InternalCreate(CreationContext context)
         {
             var instance = base.InternalCreate(context);
-
             Kernel.Resolve<IAbpModuleManager>().Modules.ForEach(m =>
             {
                 if (m.Instance is BlocksModule)

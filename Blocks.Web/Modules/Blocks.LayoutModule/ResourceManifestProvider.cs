@@ -15,6 +15,7 @@ namespace Blocks.LayoutModule {
             manifest.DefineResource("template","Tradition/_Layout").SetUrl("Tradition/_Layout.cshtml", "Tradition/_Layout.cshtml").SetVersion("0.1");
             manifest.DefineResource("template", "Tradition/_LayoutModule").SetUrl("Tradition/_LayoutModule.cshtml", "Tradition/_LayoutModule.cshtml").SetVersion("0.1");
             manifest.DefineResource("template", "Tradition/_LayoutPartialModule").SetUrl("Tradition/_LayoutPartialModule.cshtml", "Tradition/_LayoutPartialModule.cshtml").SetVersion("0.1");
+            manifest.DefineResource("template", "Tradition/_LayoutPDAModule").SetUrl("Tradition/_LayoutPDAModule.cshtml", "Tradition/_LayoutPDAModule.cshtml").SetVersion("0.1");
 
         }
 

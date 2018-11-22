@@ -73,6 +73,8 @@
         //     newOption.message = undefined;
         // }
         // newOption.title = newOption.message;
+        if (!newOption.content)
+            newOption.content = '';
         var opts = $.extend(
             {},
             dialogOption.config['default'],
@@ -177,7 +179,7 @@
             if (blocks.pageContext && blocks.pageContext.subPageJsVirtualPath) {
                 require([utility.url.pathToRelative(blocks.pageContext.subPageJsVirtualPath, blocks.pageContext.modulePrefix, '.js')], function (containerModules) {
                     currentModule = containerModules;
-                    containerModules.init($.extend($('#' + WrapperId),{ currentPage: new dialog({dialogIndex: layerIndex,passData:passData})}));
+                    containerModules.init($.extend($('#' + WrapperId), { currentPage: new dialog({dialogIndex: layerIndex,passData:passData})}));
                 });
 
                 //  require(['Blocks.BussnessWebModule/Views/MasterData/Index']);

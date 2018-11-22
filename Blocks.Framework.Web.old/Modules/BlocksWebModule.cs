@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
 using System.Web.Http;
@@ -20,6 +21,7 @@ using Blocks.Framework.Web.Route;
 using Blocks.Framework.Environment.Extensions.Models;
 using Blocks.Framework.Ioc;
 using Blocks.Framework.Localization;
+using Blocks.Framework.Utility.Extensions;
 using Blocks.Framework.Web.Api.Configuration.Startup;
 using Blocks.Framework.Web.Mvc.Controllers.Factory;
 
@@ -47,6 +49,19 @@ namespace Blocks.Framework.Web.Modules
             }
         }
 
+        private FeatureDescriptor featureDescriptor
+        {
+            get
+            {
+                var currentAssmeblyName = currentAssmebly.GetName().Name;
+                var Feature = IocManager.Resolve<IExtensionManager>().AvailableFeatures()
+                    .FirstOrDefault(t => t.Id == currentAssmeblyName);
+                if (Feature == null)
+                    throw new ExtensionNotFoundException(
+                        StringLocal.Format($"{currentAssmeblyName} can't found extension depond on it."));
+                return Feature;
+            }
+        }
         private IConfiguration moduleConfiguration
         {
             get
@@ -70,18 +85,18 @@ namespace Blocks.Framework.Web.Modules
         /// </summary>
         public override void Initialize()
         {
-            Configuration.Localization.Sources.Add(
-                new DictionaryBasedLocalizationSource(
-                    extensionDescriptor.Name,
-                    new XmlEmbeddedFileLocalizationDictionaryProvider(
-                        currentAssmebly, "Localization.Source"
-                    )
-                )
-            );
+            //Configuration.Localization.Sources.Add(
+            //    new DictionaryBasedLocalizationSource(
+            //        extensionDescriptor.Name,
+            //        new XmlEmbeddedFileLocalizationDictionaryProvider(
+            //            currentAssmebly, "Localization.Source"
+            //        )
+            //    )
+            //);
             // var currentAssmeblyName = currentAssmebly.GetName().Name;
             var extensionName = extensionDescriptor.Name;
             IocManager.RegisterAssemblyByConvention(currentAssmebly);
-
+             
 
             var serviceTypes = IocManager.IocContainer.Kernel.GetHandlers().SelectMany(t => t.Services);
             IocManager.Resolve<MvcControllerBuilderFactory>().ForAll<BlocksWebMvcController>(extensionName,
@@ -99,6 +114,9 @@ namespace Blocks.Framework.Web.Modules
                     Configuration.Modules.AbpWebApi().DynamicApiControllerBuilder
                         .ForAll<IApplicationService>(AppModule, extensionName)
                         .Build();
+
+                    featureDescriptor.SubAssembly.AddIfNotContains(AppModule.GetName().Name);
+
                 }
 
                 if (!string.IsNullOrEmpty(webModuleConfiguration.DomainModule))
@@ -107,6 +125,7 @@ namespace Blocks.Framework.Web.Modules
                         .FirstOrDefault(t => string.Equals(t.GetName().Name, webModuleConfiguration.DomainModule,
                             StringComparison.CurrentCultureIgnoreCase));
                     IocManager.RegisterAssemblyByConvention(DomainModule);
+                    featureDescriptor.SubAssembly.AddIfNotContains(DomainModule.GetName().Name);
                 }
             }
 
@@ -145,9 +164,15 @@ namespace Blocks.Framework.Web.Modules
                         .FirstOrDefault(t => t.GetName().Name == $"{RepModule.GetName().Name}.{databaseType}Module");
 
                     if (listAssemblies != null)
+                    {
                         IocManager.RegisterAssemblyByConvention(listAssemblies);
+                        featureDescriptor.SubAssembly.AddIfNotContains(listAssemblies.GetName().Name);
+                    }
 
                     IocManager.RegisterAssemblyByConvention(RepModule);
+                    
+                    featureDescriptor.SubAssembly.AddIfNotContains(RepModule.GetName().Name);
+
                 }
             }
         }

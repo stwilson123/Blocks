@@ -58,7 +58,7 @@
        // Script.Include("_Layout.js");
         Script.Include("/lib/signalr/jquery.signalR.js");
 
-        Script.Require("requireJS").SetAttribute("data-main", "/Modules/Blocks.LayoutModule/Template/Tradition/_LayoutModule").AtFoot();
+        Script.Require("requireJS").SetAttribute("data-main", "/Modules/Blocks.LayoutModule/Template/Tradition/_LayoutPDAModule").AtFoot();
 
     }
 }
@@ -117,13 +117,10 @@
         <!-- Top Bar -->
         <nav class="navbar">
             <div class="container-fluid">
-                <div class="navbar-header" >
-                    <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
+              
                 
-                    <a class="navbar-brand" asp-controller="Home" asp-action="Index"><i class="fa fa-cubes"></i> Blocks</a>
-                </div>
                 <div class="navbar-collapse" id="navbar-collapse" >
-                    <a href="javascript:void(0);" class="bars"></a>
+                   
                     <ul class="collapse nav navbar-nav navbar-right">
                         <!-- Call Search -->
                         <li>
@@ -145,22 +142,22 @@
         </nav>
         <!-- #Top Bar -->
         <section>
-            <aside id="leftsidebar" class="sidebar">
-
-@*                @Html.Action("SideBarUserArea", "Layout")*@
-                @Html.Action("SideBarNav", "Layout", new { area = "LayoutModule", activeMenu = "MainMenu"/*ViewBag.ActiveMenu*/ })
-
-                <!-- Footer -->
-                <div class="legal">
-                    <div class="copyright">
-                        &copy; @DateTime.Now.Year <a href="javascript:void(0);">Blocks</a>.
-                    </div>
-                    <div class="version">
-                        <b>Version </b> @AppVersionHelper.Version [@AppVersionHelper.ReleaseDate.ToString("yyyyMMdd")]
-                    </div>
-                </div>
-                <!-- #Footer -->
-            </aside>
+@*             <aside id="leftsidebar" class="sidebar"> *@
+@* *@
+@* $1$                @Html.Action("SideBarUserArea", "Layout")#1# *@
+@*                 @Html.Action("SideBarNav", "Layout", new { area = "LayoutModule", activeMenu = "MainMenu"/*ViewBag.ActiveMenu*/ }) *@
+@* *@
+@*                 <!-- Footer --> *@
+@*                 <div class="legal"> *@
+@*                     <div class="copyright"> *@
+@*                         &copy; @DateTime.Now.Year <a href="javascript:void(0);">Blocks</a>. *@
+@*                     </div> *@
+@*                     <div class="version"> *@
+@*                         <b>Version </b> @AppVersionHelper.Version [@AppVersionHelper.ReleaseDate.ToString("yyyyMMdd")] *@
+@*                     </div> *@
+@*                 </div> *@
+@*                 <!-- #Footer --> *@
+@*             </aside> *@
 
             @Html.Action("RightSideBar", "Layout", new { area = "LayoutModule" })
 

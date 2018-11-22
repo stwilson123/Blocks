@@ -1,4 +1,4 @@
-﻿;define(['blocks', 'zTree'], function (blocks) {
+﻿;define(['blocks', 'zTree'], function (blocks,zTree) {
 
     var currentModule = new blocks.ui.module.pageModel();
     currentModule.controllers = {'Main': main};
@@ -14,7 +14,7 @@
             'init': function (v, vm) {
                 view = v;
                 viewModel = vm;
-                var colNamesArray = ['ID', '城市', 'comboboxText', '注册时间', '激活', '备注']; //数据列名称（数组） 
+                var colNamesArray = ['ID', '城市','comboboxHideText', 'comboboxText', '注册时间', '激活', '备注']; //数据列名称（数组） 
                 mainGrid = new blocks.ui.grid({
                     // url: "/api/services/BussnessWebModule/MasterData/GetPageList",
                     gridObj: view.find("#gridInfo"),
@@ -23,10 +23,19 @@
                         {name: 'Id', hidden: true},
                         {
                             name: 'city',
-                            displayType: { type: 'select' }, formatType: { type: 'select' }, dataSource: [{ id: 'chinaId', text: 'china' }, { id: 'usId', text: 'us' }],editable:true
+                            displayType: { type: 'select' }, formatType: { type: 'select' }, dataSource: [{ id: 'chinaId', text: 'china' }, { id: 'usId', text: 'us' }],
+                            editable:true,
+                            editOptions:{ triggerEvent: [{type:'change',func:function () {
+                                        console.log('change');
+                                    }}]}
                         },
                         {
-                            name: 'comboboxText'
+                            name: 'comboboxId', displayType: {type: 'select'}, formatType: {type: 'select'},
+                            isRemote:true, url:"/api/services/BussnessWebModule/Combobox/GetComboboxList",
+                            editable: true, displayTextCol: 'comboboxText'
+                        },
+                        {
+                            name:"comboboxText", hidden:true
                         },
                         {
                             name: 'registerTime', formatType: {type: 'date'}, displayType: {type: 'datepicker'},editable:true
@@ -36,6 +45,7 @@
                             formatType: {type: 'checkbox'},
                             displayType:{type:'checkbox'},
                             editable:true
+                          
                             // formatter: 'select',
                             // editoptions: {value: {'1': 'OK', '0': 'NO'}}
                         },
@@ -78,7 +88,17 @@
                 // mainGrid.reloadGrid({url: "/api/services/BussnessWebModule/MasterData/GetPageList"});
                 mainGrid.dynamicConditionLoad({url: "/api/services/BussnessWebModule/MasterData/GetPageList"});
 
+            },
+            exceptionClick: function (event)
+            {
+                blocks.service.safePubAjax({
+                    url: '/api/services/BussnessWebModule/MasterData/TestException', data: {},
+                    onSuccessCallBack: function (result) {
+
+                    }
+                });
             }
+
         };
     }
 

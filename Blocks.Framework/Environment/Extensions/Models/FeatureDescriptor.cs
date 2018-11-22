@@ -6,6 +6,7 @@ namespace Blocks.Framework.Environment.Extensions.Models
     public class FeatureDescriptor {
         public FeatureDescriptor() {
             Dependencies = Enumerable.Empty<string>();
+            SubAssembly = new List<string>();
         }
 
         public ExtensionDescriptor Extension { get; set; }
@@ -15,6 +16,8 @@ namespace Blocks.Framework.Environment.Extensions.Models
         public string Description { get; set; }
         public string Category { get; set; }
         public int Priority { get; set; }
+
+        internal IList<string> SubAssembly{ get; set; }
         public IEnumerable<string> Dependencies { get; set; }
     }
 }

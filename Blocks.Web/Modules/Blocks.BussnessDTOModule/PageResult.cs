@@ -15,6 +15,8 @@ namespace Blocks.BussnessDTOModule
 
         public string comment { get; set; }
         
+        public string comboboxId { get; set; }
+
         public string comboboxText { get; set; }
         
         public DateTime registerTime { get; set; }

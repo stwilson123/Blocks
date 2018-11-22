@@ -17,10 +17,10 @@
     grid.prototype.config = gridConfig;
 
     grid.prototype.init = function () {
-    }
+    };
 
     grid.prototype.afterInit = function () {
-    }
+    };
     return grid;
 
 });

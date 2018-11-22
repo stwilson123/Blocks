@@ -1,4 +1,5 @@
 ﻿using System;
+using Abp.Events.Bus;
 using Blocks.BussnessDomainModule;
 using Blocks.BussnessDomainModule.MasterData;
 using Blocks.BussnessDTOModule;
@@ -15,6 +16,8 @@ namespace Blocks.BussnessApplicationModule.MasterData
     public class MasterDataAppService : AppService,IMasterDataAppService
     {
         private IUserContext _userContext;
+        public Localizer L { get; set; }
+
         public MasterDataAppService(MasterDataDomainEvent masterDataDomain, IUserContext userContext)
         {
             this.masterDataDomain = masterDataDomain;
@@ -31,10 +34,25 @@ namespace Blocks.BussnessApplicationModule.MasterData
             //return testDomain.GetValue(a);
         }
 
-        public string Add(MasterDataInfo masterDataInfo)
+        public void Add(MasterDataInfo masterDataInfo)
         {
-            throw new BlocksBussnessException("201", StringLocal.Format("Error"),"");
-            return masterDataDomain.Add(masterDataInfo.AutoMapTo<BussnessDomainModule.MasterData.MasterData>());
+            var result =  masterDataDomain.Add(masterDataInfo.AutoMapTo<BussnessDomainModule.MasterData.MasterData>());
+
+          
+           // return result;
+
+
+        }
+
+        public void TestException()
+        {
+             masterDataDomain.TestException();
+
+            throw new BlocksBussnessException("101", L("TestException"), null);
+
+            // return result;
+
+
         }
     }
 }

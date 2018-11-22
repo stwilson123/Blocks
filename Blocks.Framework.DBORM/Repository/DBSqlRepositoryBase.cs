@@ -12,10 +12,13 @@ using Abp.Collections.Extensions;
 using Abp.Data;
 using Abp.Domain.Entities;
 using Abp.Domain.Repositories;
+using Abp.Domain.Uow;
 using Abp.EntityFramework;
 using Blocks.Framework.DBORM.DBContext;
 using Blocks.Framework.DBORM.Entity;
 using Blocks.Framework.DBORM.Linq;
+using Blocks.Framework.Security;
+using Blocks.Framework.Services;
 using Z.EntityFramework.Plus;
 
 namespace Blocks.Framework.DBORM.Repository
@@ -25,6 +28,8 @@ namespace Blocks.Framework.DBORM.Repository
         where TEntity : Data.Entity.Entity
     {
         protected readonly DbSetContext<BlocksDbContext<TEntity>> Tables;
+        public IUserContext UserContext { set; get; }
+        public IClock Clock{ set; get; }
         /// <summary>
         /// Constructor
         /// </summary>
@@ -57,7 +62,62 @@ namespace Blocks.Framework.DBORM.Repository
             return new DefaultLinqQueryable<TEntity>(query, Context) { };
         }
 
-         
+
+        public override TEntity Insert(TEntity entity)
+        {
+            var EntityObj = (Data.Entity.Entity) entity;
+            EntityObj.CREATER = string.IsNullOrEmpty(EntityObj.CREATER) ? UserContext.GetCurrentUser().UserId :EntityObj.CREATER;
+            EntityObj.UPDATER =  string.IsNullOrEmpty(EntityObj.UPDATER) ? UserContext.GetCurrentUser().UserId :EntityObj.UPDATER;
+            EntityObj.CREATEDATE = Clock.Now;
+            EntityObj.UPDATEDATE = Clock.Now;
+            
+            return base.Insert(entity);
+        }
+
+
+        public override int Update(Expression<Func<TEntity, bool>> wherePredicate, Expression<Func<TEntity, TEntity>> updateFactory)
+        {
+            
+            var updateExpressionBody = updateFactory.Body;
+
+            while (updateExpressionBody.NodeType == ExpressionType.Convert || updateExpressionBody.NodeType == ExpressionType.ConvertChecked)
+            {
+                updateExpressionBody = ((UnaryExpression)updateExpressionBody).Operand;
+            }
+            var entityType = typeof(TEntity);
+
+            // ENSURE: new T() { MemberInitExpression }
+            var memberInitExpression = updateExpressionBody as MemberInitExpression;
+            if (memberInitExpression == null)
+            {
+                throw new Exception("Invalid Cast. The update expression must be of type MemberInitExpression.");
+            }
+
+            var MemberBindings = new List<MemberBinding>();
+            MemberBindings.AddRange(memberInitExpression.Bindings);
+            if (!MemberBindings.Any(t => t.Member.Name == "UPDATER"))
+            {
+                MemberBindings.Add(Expression.Bind(typeof(TEntity).GetMember("UPDATER")[0],Expression.Constant( UserContext.GetCurrentUser().UserId)));
+            }
+            if (!MemberBindings.Any(t => t.Member.Name == "UPDATEDATE"))
+            {
+                MemberBindings.Add(Expression.Bind(typeof(TEntity).GetMember("UPDATEDATE")[0],Expression.Constant(Clock.Now)));
+            }
+//            if (MemberBindings.Any(t => t.Member.Name == "DATAVERSION"))
+//            {
+//                MemberBindings.Add(Expression.Bind(typeof(TEntity).GetMember("DATAVERSION")[0],
+//                    Expression.Add()
+//                    
+//                    Expression.Constant(Clock.UtcNow)));
+//            }
+            var updateMemberInit =  memberInitExpression.Update(memberInitExpression.NewExpression, MemberBindings);
+
+            Expression<Func<TEntity, TEntity>> UpdateExpression = Expression.Lambda<Func<TEntity, TEntity>>(
+                updateMemberInit,updateFactory.Parameters
+                );
+            
+            return GetAllCode().Where(wherePredicate).Update(UpdateExpression);
+        }
     }
 
 
@@ -157,7 +217,7 @@ namespace Blocks.Framework.DBORM.Repository
         }
 
 
-        private  IQueryable<TEntity> GetAllCode()
+        protected internal IQueryable<TEntity> GetAllCode()
         {
             return GetAllIncludingCode();
         }
@@ -204,6 +264,7 @@ namespace Blocks.Framework.DBORM.Repository
         }
         public override TEntity Insert(TEntity entity)
         {
+            
             return Table.Add(entity);
         }
 
@@ -213,10 +274,8 @@ namespace Blocks.Framework.DBORM.Repository
         /// <param name="entitites">Inserted entitites</param>
         public virtual IList<TEntity> Insert(IList<TEntity> entitites)
         {
-            foreach (var entity in entitites)
-            {
-                Insert(entity);
-            }
+         
+            Table.AddRange(entitites);
             return entitites;
         }
 
@@ -286,6 +345,7 @@ namespace Blocks.Framework.DBORM.Repository
         {
             AttachIfNot(entity);
             var entryEntity = Context.Entry(entity);
+            
             entryEntity.State = EntityState.Modified;
             return entity;
         }

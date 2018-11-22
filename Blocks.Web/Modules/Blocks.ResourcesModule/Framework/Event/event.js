@@ -1,14 +1,14 @@
 ;define(function () {
     var _callbacks = {};
 
-    var on = function (eventName, callback) {
+    var on = function (eventName, callback,isOnce) {
         var events = eventName.split(" ");
         events.forEach(function (event) {
             if (!_callbacks[event]) {
                 _callbacks[event] = [];
             }
 
-            _callbacks[event].push(callback);
+            _callbacks[event].push({ callback:callback,isOnce:isOnce});
         })
          
     };
@@ -21,7 +21,7 @@
 
         var index = -1;
         for (var i = 0; i < callbacks.length; i++) {
-            if (callbacks[i] === callback) {
+            if (callbacks[i].callback === callback) {
                 index = i;
                 break;
             }
@@ -39,10 +39,16 @@
         if (!callbacks || !callbacks.length) {
             return;
         }
-
         var args = Array.prototype.slice.call(arguments, 1);
+        var OnceArray = [];
         for (var i = 0; i < callbacks.length; i++) {
-            callbacks[i].apply(this, args);
+            var eventCallback = callbacks[i];
+            if (eventCallback.isOnce)
+                OnceArray.push(i);
+            callbacks[i].callback.apply(this, args);
+      }
+        for (var OnceArrayIndex in OnceArray) {
+            callbacks.splice(OnceArray[OnceArrayIndex], 1);
         }
     };
 

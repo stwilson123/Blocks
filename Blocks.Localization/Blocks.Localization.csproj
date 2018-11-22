@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Adp\Abp\Abp.csproj" />
+    <ProjectReference Include="..\Blocks.Framework.Web.old\Blocks.Framework.Web.csproj" />
+    <ProjectReference Include="..\Blocks.Framework\Blocks.Framework.csproj" />
+  </ItemGroup>
+
+</Project>

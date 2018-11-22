@@ -157,10 +157,13 @@ namespace Blocks.Framework.Environment.Extensions.Folders
 
                 extensionDescriptor.Features = extensionDescriptor.Features.ConcatWhether(defaultFeature);
             }
-            extensionDescriptor.Features.ForEach(f => { f.Extension = extensionDescriptor;
+            extensionDescriptor.Features.ForEach(f =>
+            {
+                if (f.Name == extensionDescriptor.Name)
+                    f.Id = extensionDescriptor.Id;
+                f.Extension = extensionDescriptor;
+               
                 f.Dependencies = f.Dependencies == null ? new List<string>() : f.Dependencies;
-
-
             });
             return extensionDescriptor;
         }

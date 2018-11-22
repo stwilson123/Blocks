@@ -62,6 +62,11 @@ define(['../gridbase', 'blocks_utility','../extensions/checkboxPlugin'], functio
                     gridBodyThis.lastsel = rowid;
 
                 }
+                else if ($(gridObj.jqGrid("getInd",rowid,true)).attr("editable") !== "1")
+                {
+                    gridObj.jqGrid('editRow', rowid, true);
+                }
+                
             }
         };
         gridObj.on('onSelectRow', editSelectRow);

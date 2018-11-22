@@ -8,14 +8,18 @@ namespace Blocks.Framework.Exceptions
     {
         public string Code { protected set; get; }
         public StringLocal Message { protected set; get; }
+
+        public ILocalizableString LMessage { protected set; get; }
+
+
         public object Content { protected set; get; }
         public BlocksException(StringLocal message)
-            : base(message.ToString())
+            : base(message?.ToString())
         {
             Message = message;
         }
         public BlocksException(StringLocal message,Exception innerException)
-            : base(message.ToString(),innerException)
+            : base(message?.ToString(),innerException)
         {
             Message = message;
         }
@@ -28,6 +32,14 @@ namespace Blocks.Framework.Exceptions
         {
             Code = code;
             Content = content;
+        }
+
+
+        public BlocksBussnessException(string code, ILocalizableString message, object content):base(null)
+        {
+            Code = code;
+            Content = content;
+            LMessage = message;
         }
     }
 }

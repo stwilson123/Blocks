@@ -140,7 +140,7 @@ namespace Blocks.Framework.Web.Api.Controllers
         /// </summary>
         /// <param name="name">Key name</param>
         /// <returns>Localized string</returns>
-        protected virtual string L(string name)
+        protected virtual string T(string name)
         {
             return LocalizationSource.GetString(name);
         }
@@ -151,7 +151,7 @@ namespace Blocks.Framework.Web.Api.Controllers
         /// <param name="name">Key name</param>
         /// <param name="args">Format arguments</param>
         /// <returns>Localized string</returns>
-        protected string L(string name, params object[] args)
+        protected string T(string name, params object[] args)
         {
             return LocalizationSource.GetString(name, args);
         }
@@ -162,7 +162,7 @@ namespace Blocks.Framework.Web.Api.Controllers
         /// <param name="name">Key name</param>
         /// <param name="culture">culture information</param>
         /// <returns>Localized string</returns>
-        protected virtual string L(string name, CultureInfo culture)
+        protected virtual string T(string name, CultureInfo culture)
         {
             return LocalizationSource.GetString(name, culture);
         }
@@ -174,7 +174,7 @@ namespace Blocks.Framework.Web.Api.Controllers
         /// <param name="culture">culture information</param>
         /// <param name="args">Format arguments</param>
         /// <returns>Localized string</returns>
-        protected string L(string name, CultureInfo culture, params object[] args)
+        protected string T(string name, CultureInfo culture, params object[] args)
         {
             return LocalizationSource.GetString(name, culture, args);
         }

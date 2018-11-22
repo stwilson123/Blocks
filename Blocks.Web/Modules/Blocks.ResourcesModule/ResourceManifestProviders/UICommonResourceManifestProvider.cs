@@ -71,7 +71,8 @@ namespace Blocks.ResourcesModule.ResourceManifestProviders {
             
             manifest.DefineScript(ResourceName.zTree).SetUrl("lib/zTree_v3/js/jquery.ztree.all.js",
                 "lib/zTree_v3/js/jquery.ztree.all.js").SetVersion("3.5.35").SetDependencies(ResourceName.jquery);
-     
+    
+  
         }
 
         public Lazy<FeatureDescriptor> Feature { get; set; }

@@ -1,0 +1,215 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D5ACBCF7-A7A7-449E-9DCA-C1FCDE36B7B6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Blocks.Framework</RootNamespace>
+    <AssemblyName>Blocks.Framework</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\lib\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=6.2.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005">
+      <HintPath>..\packages\AutoMapper.6.2.1\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc">
+      <HintPath>..\packages\Castle.Core.4.2.1\lib\net45\Castle.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Castle.Windsor, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc">
+      <HintPath>..\packages\Castle.Windsor.4.1.0\lib\net45\Castle.Windsor.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.Owin, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Owin.5.2.3\lib\net45\System.Web.Http.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApplicationServices\AppService.cs" />
+    <Compile Include="ApplicationServices\IAppService.cs" />
+    <Compile Include="AutoMapper\AutoMapperExtensions.cs" />
+    <Compile Include="AutoMapper\FrameworkProfile.cs" />
+    <Compile Include="Caching\AcquireContext.cs" />
+    <Compile Include="Caching\Cache.cs" />
+    <Compile Include="Caching\CacheModule.cs" />
+    <Compile Include="Caching\DefaultAsyncTokenProvider.cs" />
+    <Compile Include="Caching\DefaultCacheContextAccessor.cs" />
+    <Compile Include="Caching\DefaultCacheHolder.cs" />
+    <Compile Include="Caching\DefaultCacheManager.cs" />
+    <Compile Include="Caching\DefaultParallelCacheContext.cs" />
+    <Compile Include="Caching\IAsyncTokenProvider.cs" />
+    <Compile Include="Caching\ICache.cs" />
+    <Compile Include="Caching\ICacheContextAccessor.cs" />
+    <Compile Include="Caching\ICacheHolder.cs" />
+    <Compile Include="Caching\ICacheManager.cs" />
+    <Compile Include="Caching\IParallelCacheContext.cs" />
+    <Compile Include="Caching\IVolatileProvider.cs" />
+    <Compile Include="Caching\IVolatileToken.cs" />
+    <Compile Include="Caching\Weak.cs" />
+    <Compile Include="Collections\CollectionLInqExtend.cs" />
+    <Compile Include="Collections\DependencyOrdering.cs" />
+    <Compile Include="Collections\LazyConcurrentDictionary.cs" />
+    <Compile Include="Collections\ReadOnlyCollectionExtensions.cs" />
+    <Compile Include="Configurations\ConfiguartionConventionalRegistrar.cs" />
+    <Compile Include="Configurations\AppConfigManager.cs" />
+    <Compile Include="Configurations\ConfigurationException.cs" />
+    <Compile Include="Configurations\DebugState.cs" />
+    <Compile Include="Configurations\IConfiguration.cs" />
+    <Compile Include="Configurations\Provider\SettingProvider.cs" />
+    <Compile Include="Data\Combobox\ComboboxData.cs" />
+    <Compile Include="Data\Entity\Entity.cs" />
+    <Compile Include="Data\Entity\IEntityConfiguration.cs" />
+    <Compile Include="Data\IRepository.cs" />
+    <Compile Include="Data\Paging\Group.cs" />
+    <Compile Include="Data\Paging\Page.cs" />
+    <Compile Include="Data\Paging\PageList.cs" />
+    <Compile Include="Environment\Configuration\ExtensionLocations.cs" />
+    <Compile Include="Environment\Configuration\IAppConfigurationAccessor.cs" />
+    <Compile Include="Environment\EnvironmentModule.cs" />
+    <Compile Include="Environment\Exception\ExtensionNotFoundException.cs" />
+    <Compile Include="Environment\Extensions\Attributes\BlocksFeatureAttribute.cs" />
+    <Compile Include="Environment\Extensions\DefaultCriticalErrorProvider.cs" />
+    <Compile Include="Environment\Extensions\ExtensionEntry.cs" />
+    <Compile Include="Environment\Extensions\ExtensionManager.cs" />
+    <Compile Include="Environment\Extensions\Folders\CoreModuleFolders.cs" />
+    <Compile Include="Environment\Extensions\Folders\ExtensionHarvester.cs" />
+    <Compile Include="Environment\Extensions\Folders\IExtensionFolders.cs" />
+    <Compile Include="Environment\Extensions\Folders\IExtensionHarvester.cs" />
+    <Compile Include="Environment\Extensions\Folders\ModuleFolders.cs" />
+    <Compile Include="Environment\Extensions\Folders\ThemeFolders.cs" />
+    <Compile Include="Environment\Extensions\ICriticalErrorProvider.cs" />
+    <Compile Include="Environment\Extensions\IExtensionManager.cs" />
+    <Compile Include="Environment\Extensions\IFeature.cs" />
+    <Compile Include="Environment\Extensions\Models\DefaultExtensionTypes.cs" />
+    <Compile Include="Environment\Extensions\Models\ExtensionDescriptor.cs" />
+    <Compile Include="Environment\Extensions\Models\FeatureDescriptor.cs" />
+    <Compile Include="Environment\Extensions\Models\LifecycleStatus.cs" />
+    <Compile Include="Event\DomainEventBus.cs" />
+    <Compile Include="Event\DomainEventData.cs" />
+    <Compile Include="Event\IDomainEventData.cs" />
+    <Compile Include="Event\IDomainEventHandler.cs" />
+    <Compile Include="Event\IDomainEventBus.cs" />
+    <Compile Include="Event\IEventHandlerFactory.cs" />
+    <Compile Include="Exceptions\BlocksException.cs" />
+    <Compile Include="Exceptions\ExceptionExtensions.cs" />
+    <Compile Include="Exceptions\Helper\ExceptionHelper.cs" />
+    <Compile Include="FileSystems\Dependencies\DependencyReferenceDescriptor.cs" />
+    <Compile Include="FileSystems\Extensions\ExtensionManagerExtensions.cs" />
+    <Compile Include="FileSystems\VirtualPath\DefaultVirtualPathMonitor.cs" />
+    <Compile Include="FileSystems\VirtualPath\IVirtualPathMonitor.cs" />
+    <Compile Include="FileSystems\VirtualPath\IVirtualPathProvider.cs" />
+    <Compile Include="FileSystems\WebSite\IWebSiteFolder.cs" />
+    <Compile Include="FileSystems\WebSite\WebSiteFolder.cs" />
+    <Compile Include="Ioc\DependencyConventionalRegistrar.cs" />
+    <Compile Include="Ioc\Dependency\ConventionalRegistrationContext.cs" />
+    <Compile Include="Ioc\Dependency\IDependency.cs" />
+    <Compile Include="Ioc\IocManagersExtensions.cs" />
+    <Compile Include="Json\Convert\IsoDateTimeConverter.cs" />
+    <Compile Include="Localization\StringFormat.cs" />
+    <Compile Include="NullObject\INullObject.cs" />
+    <Compile Include="Services\DataTransfer\DataTransferAttribute.cs" />
+    <Compile Include="Json\JsonHelper.cs" />
+    <Compile Include="Localization\BlocksFrameworkLocalizationSource.cs" />
+    <Compile Include="Modules\BlocksFrameworkModule.cs" />
+    <Compile Include="Modules\BlocksModule.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Clock.cs" />
+    <Compile Include="Services\DataTransfer\DataTransferJsonConverter.cs" />
+    <Compile Include="Services\IClock.cs" />
+    <Compile Include="Services\DataTransfer\IDataTransferObject.cs" />
+    <Compile Include="Tools\Json\JsonHelper.cs" />
+    <Compile Include="Utility\Extensions\IEnumableExtensions.cs" />
+    <Compile Include="Utility\Extensions\LinqExtensions.cs" />
+    <Compile Include="Utility\Extensions\StringExtensions.cs" />
+    <Compile Include="Utility\SafeConvert\DateTimeHelper.cs" />
+    <Compile Include="Utility\SafeConvert\SafeConvert.cs" />
+    <Compile Include="Utility\SafeConvert\TimeFormatEnum.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Adp\Abp.AutoMapper\Abp.AutoMapper.csproj">
+      <Project>{44ee7b2b-c3e5-42b9-95d9-79f8742d6129}</Project>
+      <Name>Abp.AutoMapper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Adp\Abp\Abp.csproj">
+      <Project>{0f98c63c-d019-4f38-9ac3-f5d7bcad9107}</Project>
+      <Name>Abp</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Ioc\Providers\" />
+    <Folder Include="Time" />
+    <Folder Include="Web\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Localization\Source\BlocksFramework-zh-CN.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Localization\Source\BlocksFramework.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

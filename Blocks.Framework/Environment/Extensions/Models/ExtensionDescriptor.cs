@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Reflection;
 
 namespace Blocks.Framework.Environment.Extensions.Models
 {
@@ -40,5 +41,7 @@ namespace Blocks.Framework.Environment.Extensions.Models
         public LifecycleStatus LifecycleStatus { get; set; }
 
         public IEnumerable<FeatureDescriptor> Features { get; set; }
+        
+     
     }
 }

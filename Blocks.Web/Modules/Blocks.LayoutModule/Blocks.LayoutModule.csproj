@@ -83,6 +83,7 @@
     <Compile Include="ResourceManifestProvider.cs" />
     <Compile Include="LayoutModule.cs" />
     <Compile Include="LayoutAppStartConfg.cs" />
+    <Compile Include="ViewModels\Menus.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
@@ -151,6 +152,8 @@
     <Content Include="Template\Tradition\_Layout.css" />
     <Content Include="Template\Tradition\_Layout.js" />
     <Content Include="Template\Tradition\_LayoutPartialModule.cshtml" />
+    <Content Include="Template\Tradition\_LayoutPDAModule.cshtml" />
+    <Content Include="Template\Tradition\_LayoutPDAModule.js" />
     <Content Include="Template\Web.config" />
     <Content Include="Template\_LayoutFirst.cshtml" />
     <Content Include="Template\_LayoutPartialViewFirst.cshtml" />
@@ -181,10 +184,6 @@
       <Project>{0adfb2db-e9f6-4345-a659-60cf03571453}</Project>
       <Name>Blocks.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Blocks.Web.csproj">
-      <Project>{404a6d3b-aa85-4e4c-aeee-1e5026d5f135}</Project>
-      <Name>Blocks.Web</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Blocks.LayoutModule.ExtensionsModule\Blocks.LayoutModule.ExtensionsModule.csproj">
       <Project>{a5ba890a-7ed1-4719-b635-486b9f3829a9}</Project>
       <Name>Blocks.LayoutModule.ExtensionsModule</Name>
@@ -197,7 +196,6 @@
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <Content Include="Views\Layout\RightSideBar.cshtml" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v15.0\WebApplications\Microsoft.WebApplication.targets" />
   <ProjectExtensions>

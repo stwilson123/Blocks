@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Abp.Localization;
 using Blocks.Core.Navigation.Models;
 using Blocks.Framework.Collections.Extensions;
 using Blocks.Framework.Exceptions;
@@ -22,11 +23,13 @@ namespace Blocks.Core.Navigation.Services
     {
         private readonly INavigationManager _navigationManager;
         private readonly IAuthorizationService _authorizationService;
+        private readonly ILocalizationContext _localizationContext;
 
-        public DefaultUserNavigationManager(INavigationManager navigationManager,IAuthorizationService authorizationService)
+        public DefaultUserNavigationManager(INavigationManager navigationManager,IAuthorizationService authorizationService, ILocalizationContext localizationContext)
         {
             _navigationManager = navigationManager;
             _authorizationService = authorizationService;
+            _localizationContext = localizationContext;
         }
 
         public async Task<UserNavigation> GetMenuAsync(string menuName, IUserIdentifier user)

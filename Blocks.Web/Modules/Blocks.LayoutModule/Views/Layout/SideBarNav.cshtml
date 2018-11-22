@@ -2,74 +2,84 @@
 @{
     Layout = null;
     //keleyi.com
+
+    var calUrl = new Func<dynamic, string>((dynamic menuItem) =>
+    {
+
+
+        return menuItem.Url + "?ActiveMenu=" + menuItem.Name;
+    });
 }
- 
+    
 <div class="menu">
     <ul class="list">
         @foreach (var menuItem in Model.Items)
         {
-@*             <li class="@(Model.ActiveMenuItemName == menuItem.Name ? "active" : "")"> *@
-            <li class="">
-                @if (menuItem.Items == null || menuItem.Items.Count < 1)
-                {
-                    <a href="@("/"+menuItem.Url)">
-                        @if (!string.IsNullOrWhiteSpace(menuItem.Icon))
-                        {
-                            <i class="material-icons">@menuItem.Icon</i>
-                        }
-                        <span>@menuItem.DisplayName</span>
-                    </a>
-                }
-                else
-                {
-                    <a href="javascript:void(0);" class="menu-toggle">
-                        @if (!string.IsNullOrWhiteSpace(menuItem.Icon))
-                        {
-                            <i class="material-icons">@menuItem.Icon</i>
-                        }
-                        <span>@menuItem.DisplayName</span>
-                    </a>
-                    <ul class="ml-menu">
-                        @foreach (var subMenuItem in menuItem.Items)
-                        {
-                            <li class="@(Model.ActiveMenuItemName == subMenuItem.Name ? "active" : "")">
-                                @if (subMenuItem.Items == null || subMenuItem.Items.Count < 1)
-                                {
-                                    <a href="@("/"+subMenuItem.Url)">
-                                        @if (!string.IsNullOrWhiteSpace(subMenuItem.Icon))
-                                        {
-                                            <i class="material-icons">@subMenuItem.Icon</i>
-                                        }
-                                        <span>@subMenuItem.DisplayName</span>
-                                    </a>
-                                }
-                                else
-                                {
-                                    <a href="javascript:void(0);" class="menu-toggle">
-                                        @if (!string.IsNullOrWhiteSpace(subMenuItem.Icon))
-                                        {
-                                            <i class="material-icons">@subMenuItem.Icon</i>
-                                        }
-                                        <span>@subMenuItem.DisplayName</span>
-                                    </a>
-                                    <ul class="ml-menu">
-                                        @foreach (var subSubMenuItem in subMenuItem.Items)
-                                        {
-                                            <li class="">
+ 
+        <li class="@(Model.ActiveMenuItemName == menuItem.Name ? "active" : "")">
+            @if (menuItem.Items == null || menuItem.Items.Count < 1)
+            {
+                // <a href="@("/"+menuItem.Url)">
+                <a href="@("/"+calUrl(menuItem))">
 
-@*                                             <li class="@(Model.ActiveMenuItemName == subSubMenuItem.Name ? "active" : "")"> *@
-                                                <a href="@(subSubMenuItem.Url)">
-                                                    @subSubMenuItem.DisplayName
-                                                </a>
-                                            </li>
-                                        }
-                                    </ul>
-                                }
-                            </li>
-                        }
-                    </ul>
-                }
-            </li>
+                    @if (!string.IsNullOrWhiteSpace(menuItem.Icon))
+                    {
+                        <i class="material-icons">@menuItem.Icon</i>
+                    }
+                    <span>@L(menuItem.DisplayName)</span>
+                </a>
+            }
+            else
+            {
+                <a href="javascript:void(0);" class="menu-toggle">
+                    @if (!string.IsNullOrWhiteSpace(menuItem.Icon))
+                    {
+                        <i class="material-icons">@menuItem.Icon</i>
+                    }
+                    <span>@L(menuItem.DisplayName)</span>
+                </a>
+                <ul class="ml-menu">
+                    @foreach (var subMenuItem in menuItem.Items)
+                    {
+                        <li class="@(Model.ActiveMenuItemName == subMenuItem.Name ? "active" : "")">
+                            @if (subMenuItem.Items == null || subMenuItem.Items.Count < 1)
+                            {
+                                // <a href="@("/"+subMenuItem.Url)">
+                                <a href="@("/"+calUrl(subMenuItem))">
+                                    @if (!string.IsNullOrWhiteSpace(subMenuItem.Icon))
+                                    {
+                                        <i class="material-icons">@subMenuItem.Icon</i>
+                                    }
+                                    <span>@L(subMenuItem.DisplayName)</span>
+                                </a>
+                            }
+                            else
+                            {
+                                <a href="javascript:void(0);" class="menu-toggle">
+                                    @if (!string.IsNullOrWhiteSpace(subMenuItem.Icon))
+                                    {
+                                        <i class="material-icons">@subMenuItem.Icon</i>
+                                    }
+                                    <span>@L(subMenuItem.DisplayName)</span>
+                                </a>
+                                <ul class="ml-menu">
+                                    @foreach (var subSubMenuItem in subMenuItem.Items)
+                                    {
+                                        <li class="">
+
+                                            @*                                             <li class="@(Model.ActiveMenuItemName == subSubMenuItem.Name ? "active" : "")"> *@
+                                            <a href="@(calUrl(subSubMenuItem))">
+                                                @L(subSubMenuItem.DisplayName)
+                                            </a>
+                                        </li>
+                                    }
+                                </ul>
+                            }
+                        </li>
+                    }
+                </ul>
+            }
+        </li>
         }
     </ul>
 </div>

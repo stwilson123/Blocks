@@ -11,7 +11,7 @@ namespace Blocks.Framework.Services
         /// <summary>
         /// Gets the current <see cref="DateTime"/> of the system, expressed in Utc
         /// </summary>
-        DateTime UtcNow { get; }
+        DateTime Now { get; }
 
         /// <summary>
         /// Provides a <see cref="IVolatileToken"/> instance which can be used to cache some information for a 

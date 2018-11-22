@@ -16,6 +16,13 @@ namespace Blocks.Framework.Utility.Extensions
             return source == null || source.Count <= 0;
         }
 
+
+        public static bool IsNullOrEmpty<TKey, TValue>(this IDictionary<TKey,TValue> source)
+        {
+            return source == null || source.Count <= 0;
+        }
+
+
         /// <summary>
         /// Adds an item to the collection if it's not already in the collection.
         /// </summary>

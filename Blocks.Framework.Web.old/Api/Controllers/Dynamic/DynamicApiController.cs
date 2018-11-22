@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using Abp.Application.Services;
+using Abp.Dependency;
+using Blocks.Framework.Localization;
 
 namespace Blocks.Framework.Web.Api.Controllers.Dynamic
 {
@@ -15,7 +17,10 @@ namespace Blocks.Framework.Web.Api.Controllers.Dynamic
     {
         public List<string> AppliedCrossCuttingConcerns { get; }
 
-        public DynamicApiController()
+
+        public Localizer localizer { set; get; }
+
+        public DynamicApiController(IocManager iocManager)
         {
             AppliedCrossCuttingConcerns = new List<string>();
         }

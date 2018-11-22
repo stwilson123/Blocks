@@ -2,6 +2,9 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+  </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\Adp\Abp.AutoMapper\Abp.AutoMapper.csproj" />
     <ProjectReference Include="..\Adp\Abp\Abp.csproj" />
@@ -29,6 +32,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Localization\Event\" />
     <Folder Include="Reflection" />
   </ItemGroup>
 </Project>

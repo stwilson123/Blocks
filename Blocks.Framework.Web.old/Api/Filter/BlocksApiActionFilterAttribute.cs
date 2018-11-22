@@ -14,8 +14,10 @@ namespace Blocks.Framework.Web.Api.Filter
         {
             var response = actionExecutedContext.Response;
             object resultObject;
-            if (response != null && response.TryGetContentValue(out resultObject))
+           
+            if (response != null && actionExecutedContext.Exception == null )
             {
+                response.TryGetContentValue(out resultObject);
                 actionExecutedContext.Response = actionExecutedContext.Request.CreateResponse(
                     HttpStatusCode.OK,
                     new DataResult()

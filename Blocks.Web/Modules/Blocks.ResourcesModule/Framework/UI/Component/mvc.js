@@ -27,10 +27,10 @@ define(['jquery', 'vueJS', 'blocks_utility', '../../Event/event'], function ($, 
         utility.validate.mustFunction(sourceController, 'The createController param');
         utility.obj.inherit(DefaultController, sourceController);
 
-        return new sourceController();;
+        return new sourceController();
     };
     module.prototype.createViewModel = function (data, view, controller) {
-        var currentController = controller
+        var currentController = controller;
         var watchFunction = {};
         for(var name in data()){
             watchFunction[name] = function () {
@@ -40,7 +40,7 @@ define(['jquery', 'vueJS', 'blocks_utility', '../../Event/event'], function ($, 
                      
                 });
             };
-        };
+        }
         var VM = new vueJS({
             el: view[0], data: data, methods: controller.actions, mounted: function () {
                 controller._view = $(this.$el);

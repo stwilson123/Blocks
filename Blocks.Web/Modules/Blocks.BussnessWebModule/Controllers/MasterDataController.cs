@@ -15,6 +15,11 @@ namespace Blocks.BussnessWebModule.Controllers
         {
             return View();
         }
+        [BlocksActionName("PDA")]
+        public ActionResult PDA()
+        {
+            return View();
+        }
 
 
         [BlocksActionName("Add")]

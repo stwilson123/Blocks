@@ -60,7 +60,7 @@ and open the template in the editor.
 }
 
 .ui-jqgrid tr.ui-jqgrid-labels > th {
-    padding: 8px;
+    padding: 4px 8px ;
 }
 
 .ui-jqgrid .ui-th-div .cbox{
@@ -70,7 +70,7 @@ and open the template in the editor.
     margin-top: 0px;
     margin-bottom: 0px;
     height: 20px;
-    font-size: 16px;
+    /*font-size: 16px;*/
 }
 
 .ui-jqgrid table.ui-pg-table.ui-pager-table > tbody > tr > td {
@@ -108,3 +108,7 @@ and open the template in the editor.
     /*width: 15px;*/
     /*height: 15px;*/
 /*}*/
+
+.ui-jqgrid .ui-paging-pager .ui-pg-selbox {
+    min-width: 50px;
+}

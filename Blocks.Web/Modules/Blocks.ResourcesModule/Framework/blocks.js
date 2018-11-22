@@ -6,9 +6,5 @@
         headers: ajaxHead
     });
 
-
-
-
-
     return { "ui": blocksUI, 'utility': blocksUtility,'security':security,'event':event,'exception':exception,'service':service }
 });

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Blocks.Framework.Data.Entity
 {
@@ -8,7 +9,11 @@ namespace Blocks.Framework.Data.Entity
     [Serializable]
     public abstract class Entity : Entity<string> 
     {
-        
+        public long DATAVERSION { set; get; }
+        public DateTime? CREATEDATE { set; get; }
+        public string CREATER { set; get; }
+        public DateTime? UPDATEDATE { set; get; }
+        public string UPDATER { set; get; }
     }
     
     

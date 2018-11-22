@@ -70,15 +70,18 @@ namespace Blocks.Framework.DBORM.DBContext
            
         }
 
-        
-//        /// <summary>
-//        /// Constructor.
-//        /// </summary>
-//        protected BlocksDbContext(ObjectContext objectContext, bool dbContextOwnsObjectContext)
-//            : base(objectContext, dbContextOwnsObjectContext)
-//        {
-//           
-//        }
+        protected override void Dispose(bool disposing)
+        {
+            base.Dispose(disposing);
+        }
+        //        /// <summary>
+        //        /// Constructor.
+        //        /// </summary>
+        //        protected BlocksDbContext(ObjectContext objectContext, bool dbContextOwnsObjectContext)
+        //            : base(objectContext, dbContextOwnsObjectContext)
+        //        {
+        //           
+        //        }
     }
     
     /// <summary>

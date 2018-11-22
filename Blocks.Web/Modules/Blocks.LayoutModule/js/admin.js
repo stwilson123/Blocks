@@ -74,11 +74,17 @@ define(['jquery','waves'], function ($, Waves) {
             });
 
             //When page load
-            $.each($('.menu .list li.active'), function (i, val) {
-                var $activeAnchors = $(val).find('a:eq(0)');
+            //$.each($('.menu .list li.active'), function (i, val) {
+            //    var $activeAnchors = $(val).find('a:eq(0)');
 
+            //    $activeAnchors.addClass('toggled');
+            //    $activeAnchors.next().show();
+            //});
+            $.each($('.menu .list li.active:eq(0)').parents("li"), function (i, val) {
+                var $activeAnchors = $(val).find('a:eq(0)');
                 $activeAnchors.addClass('toggled');
                 $activeAnchors.next().show();
+
             });
 
             //Collapse or Expand Menu

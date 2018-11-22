@@ -1,11 +1,13 @@
 ﻿using System.Web.Mvc;
 using Blocks.Core.Navigation.Services;
+using Blocks.Framework.AutoMapper;
 using Blocks.Framework.Event;
 using Blocks.Framework.Security;
+using Blocks.Framework.Web.Api.Controllers.Dynamic;
 using Blocks.Framework.Web.Mvc.Controllers;
 using Blocks.LayoutModule.ExtensionsModule.Event;
+using Blocks.LayoutModule.ViewModels;
 //using Blocks.LayoutModule.Extensions.Event;
-using Blocks.Web.Models.Layout;
 
 namespace Blocks.LayoutModule.Controllers
 {
@@ -24,9 +26,11 @@ namespace Blocks.LayoutModule.Controllers
         [ChildActionOnly]
         public ActionResult SideBarNav(string activeMenu)
         {
-            var model =  _userNavigationManager.GetMenuAsync(activeMenu, _userContext.GetCurrentUser()).Result;
+            var model =  _userNavigationManager.GetMenuAsync("MainMenu", _userContext.GetCurrentUser()).Result;
             EventBus.Trigger<MenusSortEventData>(new MenusSortEventData() {  userNavigation = model});
-            return PartialView(model);
+            var viewModel = new Menus(model.Name,model.Items);
+            viewModel.ActiveMenuItemName = activeMenu;
+            return PartialView(viewModel);
         }
 
 

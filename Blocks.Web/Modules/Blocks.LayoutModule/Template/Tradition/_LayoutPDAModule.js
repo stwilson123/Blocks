@@ -83,6 +83,8 @@
                         setSkinListHeightAndScroll();
                         setSettingListHeightAndScroll();
                     });
+                    
+                    $('body').addClass('ls-closed');
                 });
 
             })(jQuery);

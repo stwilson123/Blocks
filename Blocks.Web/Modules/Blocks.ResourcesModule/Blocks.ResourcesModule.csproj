@@ -179,6 +179,7 @@
     <None Include="Framework\UI\Component\grid\view\searchbuilder.js" />
     <None Include="Framework\Utility\Component\date.js" />
     <Content Include="Framework\UI\Component\grid\extensions\checkboxPlugin.js" />
+    <Content Include="Framework\UI\Component\validate_UI.js" />
     <Content Include="Framework\UI\Component\viewStruct\viewEvent.js" />
     <Content Include="lib\abp-web-resources\.bower.json" />
     <Content Include="lib\abp-web-resources\Abp\Framework\scripts\abp.js" />
@@ -2330,6 +2331,8 @@
     <Content Include="lib\push.js\README.md" />
     <Content Include="lib\push.js\serviceWorker.js" />
     <Content Include="lib\push.js\yarn.lock" />
+    <Content Include="lib\QrCode\qrcode.js" />
+    <Content Include="lib\QrCode\qrcode.min.js" />
     <Content Include="lib\raphael\.bower.json" />
     <Content Include="lib\raphael\bower.json" />
     <Content Include="lib\raphael\dev\banner.txt" />

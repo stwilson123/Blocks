@@ -11,6 +11,7 @@ using Abp.Logging;
 using Abp.Modules;
 using Abp.Web;
 using Blocks.Framework.Environment.Extensions;
+using Blocks.Framework.Ioc;
 using Blocks.Framework.Services.DataTransfer;
 using Blocks.Framework.Utility.SafeConvert;
 using Blocks.Framework.Web.Api.Configuration;
@@ -92,8 +93,10 @@ namespace Blocks.Framework.Web.Api
                     Component.For(controllerInfo.InterceptorType).LifestyleTransient(),
                     Component.For(controllerInfo.ApiControllerType)
                         .Proxy.AdditionalInterfaces(controllerInfo.ServiceInterfaceType)
+                        .Activator<DefaultBlocksComponentActivator>()
                         .Interceptors(controllerInfo.InterceptorType)
                         .LifestyleTransient()
+                        
                 );
 
                 LogHelper.Logger.DebugFormat(

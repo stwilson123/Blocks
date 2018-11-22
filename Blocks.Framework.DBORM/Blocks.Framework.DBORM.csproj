@@ -91,6 +91,7 @@
     <Reference Include="System.Linq.Dynamic.Core, Version=0.0.0.0, Culture=neutral, PublicKeyToken=0f07ec44de6ac832">
       <HintPath>..\packages\System.Linq.Dynamic.Core.1.0.8.2\lib\net46\System.Linq.Dynamic.Core.dll</HintPath>
     </Reference>
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml" />
     <Reference Include="Z.EntityFramework.Plus.EF6">
       <HintPath>..\..\Third\EntityFramework-Plus\src\Z.EntityFramework.Plus.EF6\bin\Debug\Z.EntityFramework.Plus.EF6.dll</HintPath>
@@ -117,6 +118,7 @@
     <Compile Include="Repository\EfAutoRepositoryTypes.cs" />
     <Compile Include="Repository\IRepositoryWithDbContext.cs" />
     <Compile Include="Repository\ISupportsExplicitLoading.cs" />
+    <Compile Include="TransactionStrategy\DefaultTransactionStrategy.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

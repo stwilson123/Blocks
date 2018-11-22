@@ -114,10 +114,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\Blocks.Application.dll</HintPath>
     </Reference>
-    <Reference Include="Blocks.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\Blocks.Core.dll</HintPath>
-    </Reference>
     <Reference Include="Blocks.EntityFramework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\Blocks.EntityFramework.dll</HintPath>
@@ -2800,6 +2796,12 @@
     <Content Include="lib\Waves\src\sass\waves.sass" />
     <Content Include="lib\Waves\src\scss\waves.scss" />
     <Content Include="lib\Waves\src\stylus\waves.styl" />
+    <Content Include="Views\Account\MobileLogin.js" />
+    <Content Include="Views\Account\MobileLogin.cshtml" />
+    <Content Include="Views\Account\MobileLogin.css">
+      <DependentUpon>MobileLogin.less</DependentUpon>
+    </Content>
+    <Content Include="Views\Account\MobileLogin.less" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -3057,6 +3059,10 @@
     <ProjectReference Include="..\Blocks.WebApi\Blocks.WebApi.csproj">
       <Project>{5eb52d3d-09fd-463a-b02a-8d9856bd3724}</Project>
       <Name>Blocks.WebApi</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Standard\Blocks.Core\Blocks.Core.csproj">
+      <Project>{0adfb2db-e9f6-4345-a659-60cf03571453}</Project>
+      <Name>Blocks.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\Standard\Blocks.Core\Blocks.Core.csproj">
       <Project>{0adfb2db-e9f6-4345-a659-60cf03571453}</Project>

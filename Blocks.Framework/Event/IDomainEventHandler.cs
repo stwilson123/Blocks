@@ -3,13 +3,13 @@ using Blocks.Framework.Ioc.Dependency;
 
 namespace Blocks.Framework.Event
 {
-    public interface IDomainEventHandler<in TEventData> : IEventHandler<TEventData>,IDomainEventHandler,ITransientDependency
+    public interface IDomainEventHandler<in TEventData> : IDomainEventHandler,IEventHandler<TEventData>
     {
       
     }
     
     
-    public interface IDomainEventHandler : IEventHandler
+    public interface IDomainEventHandler : IEventHandler,ITransientDependency
     {
         
     }

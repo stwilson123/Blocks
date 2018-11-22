@@ -1,6 +1,4 @@
 ﻿using System;
-using Abp.Domain.Services;
-using Abp.Events.Bus;
 using Blocks.BussnessDTOModule;
 using Blocks.BussnessDTOModule.MasterData;
 using Blocks.BussnessEntityModule;
@@ -11,7 +9,7 @@ using Blocks.Framework.Event;
 
 namespace Blocks.BussnessDomainModule
 {
-    public class TestDomain : IDomainService
+    public class TestDomain : Framework.Domain.Service.IDomainService
     {
         public IDomainEventBus EventBus { get; set; }
         public TestDomain(ITestRepository testRepository)

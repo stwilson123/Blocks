@@ -6,6 +6,7 @@ using System.Web.WebPages;
 using Abp.Dependency;
 using Abp.Web.Security.AntiForgery;
 using Blocks.Framework.Environment.Configuration;
+using Blocks.Framework.Localization;
 using Blocks.Framework.Web.Mvc.Security.AntiForgery;
 using Blocks.Framework.Web.Mvc.Spooling;
 using Blocks.Framework.Web.Mvc.UI.Extensions;
@@ -17,7 +18,7 @@ namespace Blocks.Framework.Web.Mvc.ViewEngines.Razor
     {
         private string[] _commonLocations;
 
-//        private Localizer _localizer = NullLocalizer.Instance;
+        //        private Localizer _localizer = NullLocalizer.Instance;
         private object _display;
 
         private object _layout;
@@ -26,39 +27,63 @@ namespace Blocks.Framework.Web.Mvc.ViewEngines.Razor
         private ScriptRegister _scriptRegister;
         private ResourceRegister _stylesheetRegister;
 
-//        public OrchardTagBuilder Tag(dynamic shape, string tagName) {
-//            return Html.GetWorkContext().Resolve<ITagBuilderFactory>().Create(shape, tagName);
-//        }
-//
-//        public IHtmlString DisplayChildren(dynamic shape) {
-//            var writer = new HtmlStringWriter();
-//            foreach (var item in shape) {
-//                writer.Write(Display(item));
-//            }
-//            return writer;
-//        }
+        //        public OrchardTagBuilder Tag(dynamic shape, string tagName) {
+        //            return Html.GetWorkContext().Resolve<ITagBuilderFactory>().Create(shape, tagName);
+        //        }
+        //
+        //        public IHtmlString DisplayChildren(dynamic shape) {
+        //            var writer = new HtmlStringWriter();
+        //            foreach (var item in shape) {
+        //                writer.Write(Display(item));
+        //            }
+        //            return writer;
+        //        }
 
         private string _tenantPrefix;
 
-//        public WorkContext WorkContext { get; set; }
+        //        public WorkContext WorkContext { get; set; }
         public IIocManager WorkContext { get; set; }
 
         public IResourceManager ResourceManager
         {
             get
-            { 
+            {
                 if (_resourceManager != null)
                     return _resourceManager;
 
                 _resourceManager = WorkContext.Resolve<IResourceManager>();
-                
+
                 //HtmlStringWriter w = new HtmlStringWriter();
                 //w.WriteLine("1111111111111");
                 //this.RenderBody().WriteTo(w);
-                ViewBagExtensions.SetResourceManager(Context,_resourceManager);
-                
+                ViewBagExtensions.SetResourceManager(Context, _resourceManager);
+
                 return _resourceManager;
             }
+        }
+
+
+        private Environment.Extensions.Models.FeatureDescriptor featureDescriptor {
+            get {
+                var AvailableExtensions = WorkContext.Resolve<Environment.Extensions.IExtensionManager>().AvailableFeatures();
+
+                return AvailableExtensions.FirstOrDefault(f => f.Id == ViewContext.Controller?.GetType().Assembly.GetName().Name);
+            }
+        }
+
+       
+
+        public string L(ILocalizableString localizableString)
+        {
+            if (featureDescriptor == null)
+                return null;
+            return localizableString.Localize(WorkContext.Resolve<Abp.Localization.ILocalizationContext>());
+        }
+        public string L(string text, params object[] args)
+        {
+            if (featureDescriptor == null)
+                return null;
+            return new Localization.LocalizableString(featureDescriptor.Name, text, args).Localize(WorkContext.Resolve<Abp.Localization.ILocalizationContext>());
         }
 
         public string[] CommonLocations => _commonLocations ??

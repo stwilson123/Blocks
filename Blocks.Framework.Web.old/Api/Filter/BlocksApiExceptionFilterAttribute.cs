@@ -8,6 +8,7 @@ using Abp.Dependency;
 using Abp.Domain.Entities;
 using Abp.Events.Bus;
 using Abp.Events.Bus.Exceptions;
+using Abp.Localization;
 using Abp.Logging;
 using Abp.Runtime.Session;
 using Abp.Runtime.Validation;
@@ -41,15 +42,18 @@ namespace Blocks.Framework.Web.Api.Filter
 
         protected IAbpWebApiConfiguration Configuration { get; }
 
+        protected ILocalizationContext _localizationContext { get; }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="AbpApiExceptionFilterAttribute"/> class.
         /// </summary>
-        public BlocksApiExceptionFilterAttribute(IAbpWebApiConfiguration configuration)
+        public BlocksApiExceptionFilterAttribute(IAbpWebApiConfiguration configuration, ILocalizationContext localizationContext)
         {
             Configuration = configuration;
             Logger = NullLogger.Instance;
           //  EventBus = NullEventBus.Instance;
             AbpSession = NullAbpSession.Instance;
+            _localizationContext = localizationContext;
         }
 
         /// <summary>
@@ -104,7 +108,7 @@ namespace Blocks.Framework.Web.Api.Filter
                     {
                         code = bEx?.Code ?? ResultCode.Fail,
                         content = bEx?.Content,
-                        msg = bEx?.Message.ToString() ?? context.Exception.Message,
+                        msg = bEx?.Message?.ToString() ?? bEx?.LMessage?.Localize(_localizationContext) ?? context.Exception.Message,
                         Error = SingletonDependency<IErrorInfoBuilder>.Instance.BuildForException(context.Exception),
                         UnAuthorizedRequest = context.Exception is Abp.Authorization.AbpAuthorizationException,
                         

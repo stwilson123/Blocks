@@ -59,7 +59,6 @@
         var options = $.extend({}, ajax.config.default, userOptions);
         options.url = options.url ? UrlHelper.GetRandURL(options.url) :options.url;
 
-
         var ajaxDeferred = $.Deferred(function ($dfd) {
             $.ajax(options)
                 .done(function (data, textStatus, jqXHR) {
@@ -75,6 +74,7 @@
                     userOptions.onCompleteCallBack && userOptions.onCompleteCallBack(obj, textStatus, jqXHR);
                     //$dfd.resolve(jqXHR);
                 });
+            return $dfd;
         });
         // try {
         //     eventBus.trigger("ajax.create", ajaxDeferred);

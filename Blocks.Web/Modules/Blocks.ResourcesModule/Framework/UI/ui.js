@@ -4,10 +4,9 @@ define(["jquery", "slimscroll", "waves", 'sweetalert', 'toastr',
     'bootstrap_select',
     './Component/dialog',
     'blocks_utility',
-    './Component/mvc', './Component/input', './Component/combobox', './Component/select','./Component/datepicker'], function ($, scroll, waves, sweetalert, toastr, grid, bootstrap_select, dialog, utility, mvc, input, combobox, select,datepicker) {
+    './Component/mvc', './Component/input', './Component/combobox', './Component/select','./Component/datepicker',
+    './Component/validate_UI'
+    ], function ($, scroll, waves, sweetalert, toastr, grid, bootstrap_select, dialog, utility, mvc, input, combobox, select,datepicker,validate) {
 
-    //  var a = require(['Blocks.ResourcesModule/Framework/UI/Component/dialog']);
-
-
-    return {'grid': grid, 'dialog': dialog, 'module': mvc, 'combobox': combobox, 'select': select,'datepicker':datepicker};
+    return {'grid': grid, 'dialog': dialog, 'module': mvc, 'combobox': combobox, 'select': select,'datepicker':datepicker,'validate':validate};
 });

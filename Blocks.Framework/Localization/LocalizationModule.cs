@@ -2,12 +2,18 @@
 using System.Collections;
 using System.Linq;
 using System.Reflection;
+using Abp.Localization.Dictionaries;
+using Abp.Localization.Dictionaries.Xml;
+using Blocks.Framework.Collections;
 using Blocks.Framework.Environment.Configuration;
 using Blocks.Framework.Environment.Extensions;
 using Blocks.Framework.Environment.Extensions.Folders;
 using Blocks.Framework.Environment.Extensions.Models;
 using Blocks.Framework.Ioc;
+using Blocks.Framework.Localization.Provider;
+using Blocks.Framework.Types;
 using Castle.Core;
+using Castle.DynamicProxy;
 using Castle.MicroKernel;
 
 namespace Blocks.Framework.Localization
@@ -20,20 +26,35 @@ namespace Blocks.Framework.Localization
         }
         public override void PreInitialize()
         {
-           
-            
 
+
+            Configuration.Localization.Sources.Add(
+               new DictionaryBasedLocalizationSource(
+                   BlocksFrameworkLocalizationSource.LocalizationSourceName,
+                   new XmlEmbeddedFileLocalizationDictionaryProvider(
+                       Assembly.GetExecutingAssembly(), "Blocks.Framework.Localization.Source"
+                   )
+               )
+           );
+
+           
         }
 
         public override void Initialize()
         {
-            
-          
+
+            IocManager.Resolve<IExtensionManager>().AvailableExtensions().ForEach(e =>
+               Configuration.Localization.Sources.Add(
+                  new DictionaryBasedLocalizationSource(e.Name, new DbLocalizationDictionaryProvider(IocManager))
+                )
+             );
 
         }
         
         public override void PostInitialize()
         {
+            
+
             //TODO Facecade validate avaliable features
             #region MyRegion
             //var availablFeatures = IocManager.Resolve<IExtensionManager>().AvailableFeatures().ToList();
@@ -48,10 +69,10 @@ namespace Blocks.Framework.Localization
             //    .GetAllAssemblies()
             //    .Where(t => allDependencies.Contains(t.GetName().Name)).Distinct();
 
-//            foreach (var assembly in listAssemblies)
-//            {
-//                IocManager.RegisterAssemblyByConvention(assembly);
-//            }
+            //            foreach (var assembly in listAssemblies)
+            //            {
+            //                IocManager.RegisterAssemblyByConvention(assembly);
+            //            }
             #endregion
 
         }
@@ -64,21 +85,33 @@ namespace Blocks.Framework.Localization
 
         public override void OnActivated(object instance)
         {
+
+
             TypeInfo instanceType = instance.GetType().GetTypeInfo();
- 
-            var moduleId = instance.GetType().Assembly.GetName().Name;
+            if (instance is IProxyTargetAccessor)
+            {
+                instanceType = instanceType.BaseType.GenericTypeArguments.LastOrDefault()?.GetTypeInfo();
+            }
+            if (instanceType == null)
+                return;
+            var moduleId = instanceType.Assembly.GetName().Name;
             var userProperty = FindFeatureProperty(instanceType);
             if (userProperty != null)
             {
                 Localizer LocalizerDelegate = (text, args) =>
                 {
-                    return new LocalizableString(IocManager.Resolve<IExtensionManager>().AvailableExtensions()
-                        .FirstOrDefault(f => f.Id == moduleId).Name,text);
+                    var AvailableExtensions = IocManager.Resolve<IExtensionManager>().AvailableFeatures();
+                    var ModuleName = AvailableExtensions.FirstOrDefault(f => f.Id == moduleId)?.Name;
+                    if (string.IsNullOrEmpty(ModuleName))
+                        ModuleName = AvailableExtensions.FirstOrDefault(t => t.SubAssembly.Contains(moduleId))?.Name;
+                    
+                    Check.NotNull(ModuleName, $"Can't find [{moduleId}] in AvailableFeatures");
+                    return new LocalizableString(ModuleName,text, args);
                    
                 };
                 userProperty.SetValue(instance, LocalizerDelegate);
             }
-         
+                
         }
         
         private static PropertyInfo FindFeatureProperty(TypeInfo type)
