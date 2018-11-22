@@ -1,0 +1,34 @@
+﻿@using System.Web.Optimization
+@using Blocks.Framework.Web.Mvc.Extensions
+@using Blocks.Framework.Web.Mvc.UI.Resources
+
+@{
+    Layout = ResourceManager.GetTemplateNotCache("Tradition/_LayoutModule", this.VirtualPath);
+    // Style.Include("IndexCss.css").AtHead();
+}
+@section body
+{
+
+}
+
+
+<div class="table-responsive" style="padding: 2px; height: 100%">
+    <div class="col-lg-12" id='query'>
+@*        <select id="city" name="city"  v-model='city' v-select2=''  >*@
+@*                   *@
+@*        </select>*@
+        <button id="add" type="button"   class="btn btn-default waves-effect waves-light"  v-action:edit v-on:click="addClick"><em class="fa fa-plus"></em>&nbsp;新增</button>
+        <button id="query"  type="button"  class="btn btn-primary waves-effect waves-light" v-action:query v-on:click="queryClick"><em class="fa fa-search"></em>查询</button>
+@*        <select id="cityTest" name="cityTest"  v-model='cityTest'   >*@
+@*            <option id="china">china</option>*@
+@*            <option id="us">us</option>*@
+@**@
+@*        </select>*@
+    </div>
+
+    @*    <div style="top: 0px;bottom: 0px;position: absolute">*@
+    <div class="col-lg-12">
+        <table  id="gridInfo"></table>
+    </div>
+
+</div>
