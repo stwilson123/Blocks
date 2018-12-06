@@ -9,6 +9,8 @@ namespace Blocks.Framework.Navigation.Builder
 {
     public class NavigationItemBuilder
     {
+       
+
         protected NavigationItemDefinition _item;
 
 
@@ -81,7 +83,10 @@ namespace Blocks.Framework.Navigation.Builder
 
         public NavigationItemBuilder HasPermissions(params string[] permissionName)
         {
-            _item.HasPermissions = permissionName?.Select(p => Permission.Create(p,_item.Name,new LocalizableString(_item.DisplayName.SourceName, p) )).ToArray();
+            var url = RouteHelper.GetUrl(_item.RouteValues);
+            _item.HasPermissions = permissionName?.Select(p => Permission.Create(p,
+                url, "Navigation", string.IsNullOrEmpty(url) ? null : url + "/" + p,
+               new LocalizableString(_item.DisplayName.SourceName, p) )).ToArray();
             return this;
         }
     }

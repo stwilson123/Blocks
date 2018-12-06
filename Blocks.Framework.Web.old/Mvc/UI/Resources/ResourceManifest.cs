@@ -18,6 +18,7 @@ namespace Blocks.Framework.Web.Mvc.UI.Resources {
                 return GetType().Name;
             }
         }
+ 
 
         public virtual ResourceDefinition DefineResource(string resourceType, string resourceName) {
             var definition = new ResourceDefinition(this, resourceType, resourceName);
@@ -25,6 +26,8 @@ namespace Blocks.Framework.Web.Mvc.UI.Resources {
             resources[resourceName] = definition;
             return definition;
         }
+
+      
 
         public ResourceDefinition DefineScript(string name) {
             return DefineResource("script", name);
@@ -52,6 +55,7 @@ namespace Blocks.Framework.Web.Mvc.UI.Resources {
                 return _basePath;
             }
         }
+
     }
 
 }

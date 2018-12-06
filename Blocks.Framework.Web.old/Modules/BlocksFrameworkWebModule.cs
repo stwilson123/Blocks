@@ -33,7 +33,7 @@ namespace Blocks.Framework.Web.Modules
 {
     [DependsOn(typeof(BlocksFrameworkModule))]
     [DependsOn(typeof(AbpWebMvcModule))]
-    [DependsOn(typeof(AbpWebApiModule))]
+    [DependsOn(typeof(WebApiModule))]
    public class BlocksFrameworkWebModule : AbpModule
     {
         public override void PreInitialize()

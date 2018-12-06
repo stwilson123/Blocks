@@ -25,7 +25,7 @@ namespace Blocks.Framework.Localization
 
         public override string ToString()
         {
-            return FormatArgs != null ? FormatStr : string.Format(FormatStr, FormatArgs);
+            return FormatArgs == null ? FormatStr : string.Format(FormatStr, FormatArgs);
         }
     }
 }

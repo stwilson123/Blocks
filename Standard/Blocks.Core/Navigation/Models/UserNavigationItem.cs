@@ -79,6 +79,6 @@ namespace Blocks.Core.Navigation.Models
       
         
         public IList<UserNavigationItem> Items { get; set; }
-
+        public string ExtensionName { get ; set; }
     }
 }

@@ -24,6 +24,9 @@ using Blocks.Framework.Localization;
 using Blocks.Framework.Utility.Extensions;
 using Blocks.Framework.Web.Api.Configuration.Startup;
 using Blocks.Framework.Web.Mvc.Controllers.Factory;
+using Blocks.Framework.RPCProxy.Manager;
+using Blocks.Framework.RPCProxy;
+using Blocks.Framework.ApplicationServices;
 
 namespace Blocks.Framework.Web.Modules
 {
@@ -112,8 +115,13 @@ namespace Blocks.Framework.Web.Modules
                     IocManager.RegisterAssemblyByConvention(AppModule);
 
                     Configuration.Modules.AbpWebApi().DynamicApiControllerBuilder
-                        .ForAll<IApplicationService>(AppModule, extensionName)
+                        .ForAll<IAppService>(AppModule, extensionName)
                         .Build();
+
+                    IocManager.Resolve<RPCApiManager>().Register(
+                        AppModule.GetTypes().Where(t => t.BaseType == typeof(IRPCProxy)).ToArray()
+                        );
+ 
 
                     featureDescriptor.SubAssembly.AddIfNotContains(AppModule.GetName().Name);
 
@@ -125,6 +133,11 @@ namespace Blocks.Framework.Web.Modules
                         .FirstOrDefault(t => string.Equals(t.GetName().Name, webModuleConfiguration.DomainModule,
                             StringComparison.CurrentCultureIgnoreCase));
                     IocManager.RegisterAssemblyByConvention(DomainModule);
+
+                    IocManager.Resolve<RPCApiManager>().Register(
+                        DomainModule.GetTypes().Where(t => t.BaseType == typeof(IRPCProxy)).ToArray()
+                        );
+
                     featureDescriptor.SubAssembly.AddIfNotContains(DomainModule.GetName().Name);
                 }
             }

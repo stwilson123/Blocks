@@ -66,11 +66,12 @@ namespace Blocks.Framework.Navigation
         /// Can be used to show/hide a menu item.
         /// </summary>
         public bool IsVisible { get; set; }
+        public string ExtensionName { get; set; }
 
-//        /// <summary>
-//        /// Sub items of this menu item. Optional.
-//        /// </summary>
-//        public virtual IList<INavigationItemDefinition> Items { get; }
+        //        /// <summary>
+        //        /// Sub items of this menu item. Optional.
+        //        /// </summary>
+        //        public virtual IList<INavigationItemDefinition> Items { get; }
 
         internal NavigationItemDefinition(bool isVisible = true)
         {

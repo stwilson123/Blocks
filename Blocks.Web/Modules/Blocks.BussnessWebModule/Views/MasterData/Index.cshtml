@@ -20,9 +20,10 @@
         @*        <select id="city" name="city"  v-model='city' v-select2=''  >*@
         @*                   *@
         @*        </select>*@
-        <button id="add" type="button" class="btn btn-default waves-effect waves-light" v-action:edit v-on:click="addClick"><em class="fa fa-plus"></em>&nbsp;新增</button>
-        <button id="query" type="button" class="btn btn-primary waves-effect waves-light" v-action:query v-on:click="queryClick"><em class="fa fa-search"></em>查询</button>
-        <button id="testException" type="button" class="btn btn-primary waves-effect waves-light" v-action:query v-on:click="exceptionClick"><em class="fa fa-search"></em>测试异常</button>
+        <button id="add" type="button" class="btn btn-default waves-effect waves-light" v-action:add v-on:click="addClick"><em class="fa fa-plus"></em>&nbsp;@L("add")</button>
+        <button id="query" type="button" class="btn btn-primary waves-effect waves-light" v-action:index v-on:click="queryClick"><em class="fa fa-search"></em>@L("query")</button>
+        <button id="testException" type="button" class="btn btn-primary waves-effect waves-light"   v-on:click="exceptionClick"><em class="fa fa-search"></em>@L("TestException")</button>
+        <button id="testProxy" type="button" class="btn btn-primary waves-effect waves-light"   v-on:click="proxyClick"><em class="fa fa-search"></em>testProxy</button>
 
         @*        <select id="cityTest" name="cityTest"  v-model='cityTest'   >*@
         @*            <option id="china">china</option>*@

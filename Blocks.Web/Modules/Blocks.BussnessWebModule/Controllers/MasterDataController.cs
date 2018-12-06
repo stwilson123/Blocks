@@ -1,4 +1,5 @@
 ﻿using Blocks.Framework.ApplicationServices.Controller.Attributes;
+using Blocks.Framework.Security.Authorization.Permission.Attributes;
 using Blocks.Framework.Web.Mvc.Controllers;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,7 @@ namespace Blocks.BussnessWebModule.Controllers
     public class MasterDataController : BlocksWebMvcController
     {
         [BlocksActionName("Index")]
+        [BlocksAuthorize("index")]
         public ActionResult Index()
         {
             return View();

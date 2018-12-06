@@ -1,4 +1,4 @@
-﻿; define(['jquery','json2','./Utility/Component/date'], function (jQuery,json2,dateConvert) {
+﻿; define(['jquery', 'json2', './Utility/Component/date','./Utility/Component/stringUtility'], function (jQuery,json2,dateConvert,stringUtility) {
 
 
     
@@ -568,5 +568,5 @@
     };
     //TODO JSON2 not work
     return { validate: ValidateHelper,ajax:ajax,url:UrlHelper,cookie:cookie,log:log,obj:obj,Json:JSON, nativeJs:nativeJs,
-        dateConvert:dateConvert,extend:extend,collectUtility:collectHelper}
+        dateConvert: dateConvert, extend: extend, collectUtility: collectHelper, string: stringUtility}
 });

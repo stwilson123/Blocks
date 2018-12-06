@@ -19,15 +19,19 @@ namespace Blocks.Framework.Web.Web
         {
             IocManager.Register<IAbpAntiForgeryWebConfiguration, AbpAntiForgeryWebConfiguration>();
             IocManager.Register<IAbpWebLocalizationConfiguration, AbpWebLocalizationConfiguration>();
-//            IocManager.Register<IAbpWebModuleConfiguration, AbpWebModuleConfiguration>();
-//            
-//            Configuration.ReplaceService<IPrincipalAccessor, HttpContextPrincipalAccessor>(DependencyLifeStyle.Transient);
-//            Configuration.ReplaceService<IClientInfoProvider, WebClientInfoProvider>(DependencyLifeStyle.Transient);
-//
-//            Configuration.MultiTenancy.Resolvers.Add<DomainTenantResolveContributor>();
-//            Configuration.MultiTenancy.Resolvers.Add<HttpHeaderTenantResolveContributor>();
-//            Configuration.MultiTenancy.Resolvers.Add<HttpCookieTenantResolveContributor>();
+            //            IocManager.Register<IAbpWebModuleConfiguration, AbpWebModuleConfiguration>();
+            //            
+            //            Configuration.ReplaceService<IPrincipalAccessor, HttpContextPrincipalAccessor>(DependencyLifeStyle.Transient);
+            //            Configuration.ReplaceService<IClientInfoProvider, WebClientInfoProvider>(DependencyLifeStyle.Transient);
+            //
+            //            Configuration.MultiTenancy.Resolvers.Add<DomainTenantResolveContributor>();
+            //            Configuration.MultiTenancy.Resolvers.Add<HttpHeaderTenantResolveContributor>();
+            //            Configuration.MultiTenancy.Resolvers.Add<HttpCookieTenantResolveContributor>();
 
+            IocManager.Register<HttpContextModel, HttpContextModel>((kernel, componentModel, creationContext) => {
+                var ru = HttpContext.Current.Request;
+                return new HttpContextModel() { RequestUrl = ru.Url  };
+            },Abp.Dependency.DependencyLifeStyle.Transient);
             AddIgnoredTypes();
         }
 

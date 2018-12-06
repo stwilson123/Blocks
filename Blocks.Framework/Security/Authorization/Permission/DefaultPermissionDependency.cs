@@ -8,7 +8,7 @@ namespace Blocks.Framework.Security.Authorization.Permission
         /// <summary>
         /// A list of permissions to be checked if they are granted.
         /// </summary>
-        public string[] Permissions { get; set; }
+        public Permission[] Permissions { get; set; }
 
 
         /// <summary>
@@ -22,7 +22,7 @@ namespace Blocks.Framework.Security.Authorization.Permission
         /// Initializes a new instance of the <see cref="DefaultPermissionDependency"/> class.
         /// </summary>
         /// <param name="permissions">The permissions.</param>
-        public DefaultPermissionDependency(params string[] permissions)
+        public DefaultPermissionDependency(params Permission[] permissions)
         {
             Permissions = permissions;
         }
@@ -35,11 +35,11 @@ namespace Blocks.Framework.Security.Authorization.Permission
         /// If it's false, at least one of the <see cref="Permissions"/> must be granted.
         /// </param>
         /// <param name="permissions">The permissions.</param>
-        public DefaultPermissionDependency(bool requiresAll, params string[] permissions)
+        public DefaultPermissionDependency(bool requiresAll, params Permission[] permissions)
             : this(permissions)
         {
             RequiresAll = requiresAll;
-            Permissions = permissions == null ? new string[0] : permissions;
+            Permissions = permissions == null ? new Permission[0] : permissions;
 
         }
 
@@ -48,15 +48,19 @@ namespace Blocks.Framework.Security.Authorization.Permission
         {
             if (RequiresAll)
             {
-                foreach (var permission in Permissions?.ToArray())
-                {
-                    context.UserManager.IsGrantedAsync(context.User, permission);
-                }
-            } 
+               
+                var permissionTask = Permissions?.Select(p =>
+                context.UserManager.IsGrantedAsync(context.User, p)).ToArray();
+                Task.WaitAll(permissionTask);
+                return permissionTask.Any(p => p.Result == false) ? Task.FromResult(false)  : Task.FromResult(true);
+            }
+
+            foreach (var permission in Permissions?.ToArray())
+            {
+                return context.UserManager.IsGrantedAsync(context.User, permission);
+            }
             return  Task.FromResult(true);
-//            return context.User != null
-//                ? context.PermissionChecker.IsGrantedAsync(context.User, RequiresAll, Permissions)
-//                : context.PermissionChecker.IsGrantedAsync(RequiresAll, Permissions);
+ 
         }
        
     }

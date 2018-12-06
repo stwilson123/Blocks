@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using Blocks.BussnessDTOModule.MasterData;
 using Blocks.Framework.ApplicationServices;
 
 namespace Blocks.BussnessApplicationModule.TestAppService
@@ -8,5 +10,7 @@ namespace Blocks.BussnessApplicationModule.TestAppService
         string GetValue(string a);
 
         string Add(string id);
+
+        List<string> ProxFunction(ProxModel input);
     }
 }

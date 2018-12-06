@@ -59,16 +59,17 @@ namespace Blocks.Framework.Web.Navigation.Filters
             if (navDefinitionItem == null)
                 return null;
             var navItem = navDefinitionItem;
-            var controllerPath = RouteHelper.GetControllerPath(navItem.RouteValues);
+            var controllerPath = Mvc.Route.RouteHelper.GetControllerPath(navItem.RouteValues);
             var controllerActionKv = _defaultControllerManager.FindOrNull(controllerPath)?.Actions.FirstOrDefault(a => a.Key == navItem.RouteValues["action"]?.ToString());
             if (controllerActionKv?.Key == null)
             {
                 throw new BlocksException(StringLocal.Format("Navigation or action {0} can't found",controllerPath));
             }
             var controllerAction = controllerActionKv.Value.Value;
-            var requirePermission = controllerAction.GetAuthorize()?.Select(p => Permission.Create(p,navItem.Name,new LocalizableString(navItem.DisplayName.SourceName,p))).ToArray();
+            var url = Mvc.Route.RouteHelper.GetUrl(navItem.RouteValues);
+            var requirePermission = controllerAction.GetAuthorize()?.Select(p => Permission.Create(p, url, "navigation", url+"/" + p, new LocalizableString(navItem.DisplayName.SourceName,p))).ToArray();
             return new WebNavigationItemDefinition(navItem.Name,
-                navItem.DisplayName, RouteHelper.GetUrl(navItem.RouteValues), navItem.RequiresAuthentication, requirePermission
+                navItem.DisplayName, Mvc.Route.RouteHelper.GetUrl(navItem.RouteValues), navItem.RequiresAuthentication, requirePermission
                 , navItem.CustomData, navItem.IsVisible, navItem.HasPermissions,navItem.RouteValues
             );
         }

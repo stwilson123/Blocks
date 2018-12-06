@@ -24,7 +24,7 @@ namespace Blocks.Core.Test.Navigation.Services
         {
             LocalIocManager.Register<IUserNavigationManager,DefaultUserNavigationManager>();
             LocalIocManager.Register<IAuthorizationService,RoleAuthorizationService>();
-            LocalIocManager.Register<IUserManager,NullUserMananger>();
+            LocalIocManager.Register<IUserManager, DefaultUserManager>();
             
             IDefaultControllerBuilderFactory factory = new MvcControllerBuilderFactory(LocalIocManager);
             var servicePrefix = TestModule.ModuleName.ToCamelCase();

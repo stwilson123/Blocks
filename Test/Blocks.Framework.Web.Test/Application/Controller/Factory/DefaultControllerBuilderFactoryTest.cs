@@ -72,7 +72,7 @@ namespace Blocks.Framework.Web.Test.Application.Controller.Factory
         public void GetAllAppServiceForAll()
         {
             var servicePrefix = TestModule.ModuleName.ToCamelCase();
-            var serviceName = servicePrefix + "/"+ typeof(TestAppService).Name.ToCamelCase().RemovePostFix(AppService.CommonPostfixes);
+            var serviceName = servicePrefix + "/"+ typeof(TestAppService).Name.ToCamelCase().RemovePostFix(AppService.Postfixes);
             IDefaultControllerBuilderFactory factory = new DefaultControllerBuilderFactory(LocalIocManager);
             factory.ForAll<ITestAppService>(servicePrefix,servicesType).Build();
 

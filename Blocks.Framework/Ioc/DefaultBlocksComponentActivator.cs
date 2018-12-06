@@ -14,18 +14,22 @@ namespace Blocks.Framework.Ioc
         }
 
        
-        protected override object InternalCreate(CreationContext context)
+        
+
+        protected override void SetUpProperties(object instance, CreationContext context)
         {
-            var instance = base.InternalCreate(context);
+            base.SetUpProperties(instance, context);
+
+        
             Kernel.Resolve<IAbpModuleManager>().Modules.ForEach(m =>
             {
                 if (m.Instance is BlocksModule)
-                    ((BlocksModule) m.Instance).OnActivated(instance);
+                    ((BlocksModule)m.Instance).OnActivated(instance);
             });
+
           
 
-           
-            return instance;
         }
+
     }
 }

@@ -15,13 +15,13 @@ namespace Blocks.BussnessApplicationModule.MasterData
 {
     public class MasterDataAppService : AppService,IMasterDataAppService
     {
-        private IUserContext _userContext;
+        public IUserContext UserContext { get; set; }
         public Localizer L { get; set; }
 
-        public MasterDataAppService(MasterDataDomainEvent masterDataDomain, IUserContext userContext)
+        public MasterDataAppService(MasterDataDomainEvent masterDataDomain)
         {
             this.masterDataDomain = masterDataDomain;
-            _userContext = userContext;
+            //_userContext = userContext;
         }
 
         private MasterDataDomainEvent masterDataDomain { get; set; }
@@ -54,5 +54,11 @@ namespace Blocks.BussnessApplicationModule.MasterData
 
 
         }
+
+        public string ProxTest()
+        {
+            return masterDataDomain.ProxTest("abc");
+        }
+ 
     }
 }

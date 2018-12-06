@@ -7,3 +7,4 @@ PublishProfiles/*
 *.rar
 /adp
 build_home/
+lib/

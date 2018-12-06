@@ -575,5 +575,23 @@ namespace Blocks.Framework.Utility.Extensions
 
             return true;
         }
+
+        public static string SafeFormat(this string subject, params object[] args)
+        {
+            string result = string.Empty;
+            if (string.IsNullOrEmpty(subject))
+                return subject;
+            try
+            {
+                result = string.Format(subject, args);
+            }
+            catch (Exception)
+            {
+
+                result = subject;
+            }
+
+            return result;
+        }
     }
 }

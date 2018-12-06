@@ -104,6 +104,8 @@ namespace Blocks.Framework.FileSystems.VirtualPath
             _caches.GetOrAdd(key, (k) =>
                 {
                     Logger.DebugFormat("Monitoring virtual path \"{0}\"", virtualPath);
+
+                    if(File.Exists(virtualPath))
                     CreateFileSystemWatcher(virtualPath, (fileObject,args) => fileChangesCallback(key,virtualPath));
                     return virtualPath;
                 });

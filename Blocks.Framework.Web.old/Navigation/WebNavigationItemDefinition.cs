@@ -27,6 +27,7 @@ namespace Blocks.Framework.Web.Navigation
         public string Url { get;  }
 
         public Permission[] RequirePermissions { get; }
+        public string ExtensionName { get ; set; }
 
         internal WebNavigationItemDefinition() : base()
         {

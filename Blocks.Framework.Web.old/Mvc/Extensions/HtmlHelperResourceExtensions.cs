@@ -115,8 +115,11 @@ namespace Blocks.Framework.Web.Mvc.Extensions
         {
             return html.Raw(JsonConvert.SerializeObject(urls?.Select(t => new { t.Name,Src= GetPathWithVersioning(t.Src), t.Dependencies, t.IsAMD })));
         }
+        public static IHtmlString ConvertToJsonObject(this HtmlHelper html, object obj)
+        {
+            return html.Raw(JsonConvert.SerializeObject(obj));
+        }
 
-       
         private static string GetPathWithVersioning(string path)
         {
             if (Cache.ContainsKey(path))

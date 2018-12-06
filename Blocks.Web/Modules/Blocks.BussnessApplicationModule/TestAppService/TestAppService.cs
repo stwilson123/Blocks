@@ -1,5 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Blocks.BussnessDomainModule;
+using Blocks.BussnessDomainModule.RPC;
+using Blocks.BussnessDTOModule.MasterData;
 using Blocks.Framework.ApplicationServices;
 
 namespace Blocks.BussnessApplicationModule.TestAppService
@@ -22,6 +26,15 @@ namespace Blocks.BussnessApplicationModule.TestAppService
         {
             return "";
             //  return testDomain.AddValue(Guid.NewGuid().ToString());
+        }
+
+       
+
+      
+
+        public List<string> ProxFunction(BussnessDTOModule.MasterData.ProxModel input)
+        {
+            return input.dic.Select(t => t.Key).ToList();
         }
     }
 }

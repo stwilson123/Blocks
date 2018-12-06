@@ -42,7 +42,7 @@ namespace Blocks.Framework.Localization
 
         public override void Initialize()
         {
-
+         
             IocManager.Resolve<IExtensionManager>().AvailableExtensions().ForEach(e =>
                Configuration.Localization.Sources.Add(
                   new DictionaryBasedLocalizationSource(e.Name, new DbLocalizationDictionaryProvider(IocManager))
@@ -90,7 +90,7 @@ namespace Blocks.Framework.Localization
             TypeInfo instanceType = instance.GetType().GetTypeInfo();
             if (instance is IProxyTargetAccessor)
             {
-                instanceType = instanceType.BaseType.GenericTypeArguments.LastOrDefault()?.GetTypeInfo();
+                instanceType = instanceType;
             }
             if (instanceType == null)
                 return;

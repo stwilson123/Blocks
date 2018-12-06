@@ -7,5 +7,7 @@ namespace Blocks.Framework.Web.Mvc.UI.Resources {
         string Name { get; }
         string BasePath { get; }
         IDictionary<string, ResourceDefinition> GetResources(string resourceType);
+
+
     }
 }

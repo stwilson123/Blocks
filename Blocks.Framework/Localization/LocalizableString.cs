@@ -1,4 +1,5 @@
 ﻿using Abp.Localization;
+using Blocks.Framework.Utility.Extensions;
 using System;
 using System.Globalization;
 
@@ -55,7 +56,9 @@ namespace Blocks.Framework.Localization
 
         public string Localize(ILocalizationContext context)
         {
-            return context.LocalizationManager.GetString(SourceName, Name);
+            //return context.LocalizationManager.GetString(SourceName, Name);
+            return context.LocalizationManager.GetString(SourceName, Name).SafeFormat(this.args);
+
         }
         //
         //        public string Localize(ILocalizationContext context, CultureInfo culture)

@@ -18,6 +18,8 @@ namespace Blocks.Framework.Web.Mvc.UI.Resources {
 
         public bool IsAMD { get; set; } = false;
 
+        public bool IsMultLanguage { get; set; } = false;
+
         public IEnumerable<string> Dependencies { get; set; } = new List<string>();
         public Dictionary<string, string> Attributes {
             get { return _attributes ?? (_attributes = new Dictionary<string, string>()); }

@@ -46,12 +46,14 @@ namespace Blocks.Framework.Environment.Extensions.Folders
             _webSiteFolder = webSiteFolder;
             _criticalErrorProvider = criticalErrorProvider;
             Logger = NullLogger.Instance;
-            
+
+
+            DisableMonitoring = true;
         }
 
         public BlocksFrameworkLocalizationSource T { get; set; }
         public ILogger Logger { get; set; }
-        public bool DisableMonitoring { get; set; }
+        public bool DisableMonitoring { get; set; } 
 
         public IEnumerable<ExtensionDescriptor> HarvestExtensions(IEnumerable<string> paths, string extensionType, string manifestName, bool manifestIsOptional) {
             return paths

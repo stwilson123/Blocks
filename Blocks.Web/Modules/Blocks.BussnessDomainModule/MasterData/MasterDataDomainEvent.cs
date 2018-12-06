@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Blocks.BussnessDomainModule.RPC;
 using Blocks.BussnessDTOModule;
 using Blocks.BussnessDTOModule.MasterData;
 using Blocks.BussnessEntityModule;
@@ -16,6 +19,8 @@ namespace Blocks.BussnessDomainModule.MasterData
         public IDomainEventBus EventBus { get; set; }
 
         public Localizer L { get; set; }
+
+        public TestRPC testRPC { get; set; }
 
         public MasterDataDomainEvent(ITestRepository testRepository, ITest2Repository test2Repository)
         {
@@ -71,6 +76,14 @@ namespace Blocks.BussnessDomainModule.MasterData
         {
             throw new BlocksBussnessException("101", L("TestException"), null);
 
+        }
+
+        public virtual string ProxTest(string input)
+        {
+            return testRPC.ProxFunction(new RPC.ProxModel() { dic = new Dictionary<string, string>() {
+
+                { input,input}
+            } }).FirstOrDefault();
         }
     }
 }

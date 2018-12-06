@@ -2,13 +2,26 @@
 
 namespace Blocks.Framework.Web.Mvc.Route
 {
-    public class RouteHelper
+    public static class RouteHelper
     {
         public static string GetUrl(IDictionary<string,object> routeValue)
         {
-            var controllerServiceName =routeValue["area"]?.ToString() + "/" +routeValue["controller"]?.ToString() 
+            var controllerServiceName = routeValue["area"]?.ToString() + "/" +routeValue["controller"]?.ToString() 
                                        + "/" + routeValue["action"]?.ToString();
             return controllerServiceName;
+        }
+
+
+        public static bool RouteEquals(this IDictionary<string, object> routeValue,IDictionary<string,object> referRouteValue)
+        {
+
+            if (routeValue["area"]?.ToString() != referRouteValue["area"]?.ToString())
+                return false;
+            if (routeValue["controller"]?.ToString() != referRouteValue["controller"]?.ToString())
+                return false;
+            if (routeValue["action"]?.ToString() != referRouteValue["action"]?.ToString())
+                return false;
+            return true;
         }
         public static string GetControllerPath(IDictionary<string,object> routeValue)
         {

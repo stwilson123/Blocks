@@ -52,11 +52,17 @@ namespace Blocks.ResourcesModule.ResourceManifestProviders {
             
             manifest.DefineScript(ResourceName.push).SetUrl("lib/push.js/push.min.js",
                 "lib/push.js/push.js").SetVersion("0.1");
-            
-            
+
+
             manifest.DefineScript(ResourceName.jqGrid).SetUrl("lib/jqGrid/script/jquery.jqGrid.min.js",
-                "lib/jqGrid/script/jquery.jqGrid.min.js").SetVersion("5.2.0");
-            
+                "lib/jqGrid/script/jquery.jqGrid.min.js").SetVersion("5.2.0").SetCultures();
+
+            manifest.DefineScript(ResourceName.jqGrid + "-zh-CN").SetUrl("lib/jqGrid/script/grid.locale-cn.js",
+                          "lib/jqGrid/script/i18n/grid.locale-cn.js").SetVersion("5.2.0");
+
+            manifest.DefineScript(ResourceName.jqGrid + "-en").SetUrl("lib/jqGrid/script/grid.locale-en.js",
+                      "lib/jqGrid/script/i18n/grid.locale-en.js").SetVersion("5.2.0");
+
             manifest.DefineScript(ResourceName.layer).SetUrl("lib/layer/layer.js",
                 "lib/layer/layer.js").SetVersion("3.1.1").SetAMD();
             

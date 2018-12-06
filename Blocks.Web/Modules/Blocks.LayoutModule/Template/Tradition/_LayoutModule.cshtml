@@ -34,29 +34,30 @@
     }
 
     @{
-//        Script.Require("json2");
-//        Script.Require("bootstrap_select");
-//        Script.Require("moment");
-//        Script.Require("jquery_validate");
-//        Script.Require("jquery_blockUI");
-//        Script.Require("toastr");
-//        Script.Require("sweetalert");
-//        Script.Require("jquery_spin");
-//        Script.Require("slimscroll");
-//        Script.Require("waves");
-//        Script.Require("push");
-//        Script.Require("vueJS");
-          Script.Require("blocks");
-       //   Script.Require("zTree");
-//        Script.Include("/lib/abp-web-resources/Abp/Framework/scripts/abp.js");
-//        Script.Include("/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js");
-//        Script.Include("/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js");
-//        Script.Include("/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js");
-//        Script.Include("/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js");
-//        Script.Include("/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js");
+        //        Script.Require("json2");
+        //        Script.Require("bootstrap_select");
+        //        Script.Require("moment");
+        //        Script.Require("jquery_validate");
+        //        Script.Require("jquery_blockUI");
+        //        Script.Require("toastr");
+        //        Script.Require("sweetalert");
+        //        Script.Require("jquery_spin");
+        //        Script.Require("slimscroll");
+        //        Script.Require("waves");
+        //        Script.Require("push");
+        //        Script.Require("vueJS");
+        Script.Require("blocks");
+        
+        //   Script.Require("zTree");
+        //        Script.Include("/lib/abp-web-resources/Abp/Framework/scripts/abp.js");
+        //        Script.Include("/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js");
+        //        Script.Include("/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js");
+        //        Script.Include("/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js");
+        //        Script.Include("/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js");
+        //        Script.Include("/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js");
         //Script.Include("../../js/admin.js");
         //Script.Include("../../js/main.js");
-       // Script.Include("_Layout.js");
+        // Script.Include("_Layout.js");
         Script.Include("/lib/signalr/jquery.signalR.js");
 
         Script.Require("requireJS").SetAttribute("data-main", "/Modules/Blocks.LayoutModule/Template/Tradition/_LayoutModule").AtFoot();
@@ -125,7 +126,7 @@
                 </div>
                 <div class="navbar-collapse" id="navbar-collapse" >
                     <a href="javascript:void(0);" class="bars"></a>
-                    <ul class="collapse nav navbar-nav navbar-right">
+                    <ul class="collapse in nav navbar-nav navbar-right">
                         <!-- Call Search -->
                         <li>
                             <a href="javascript:void(0);" class="js-search" data-close="true">
@@ -133,13 +134,12 @@
                             </a>
                         </li>
                         <!-- #END# Call Search -->
-                        @*                        @Html.Action("LanguageSelection", "Layout")*@
-                        @**@
-                        @*                        <li class="pull-right">*@
-                        @*                            <a href="javascript:void(0);" class="js-right-sidebar" data-close="true">*@
-                        @*                                <i class="material-icons">more_vert</i>*@
-                        @*                            </a>*@
-                        @*                        </li>*@
+                         @Html.Action("LanguageSelection", "Layout", new { area = "LayoutModule" })
+                         <li class="pull-right">
+                             <a href="javascript:void(0);" class="js-right-sidebar" data-close="true">
+                                 <i class="material-icons">more_vert</i>
+                             </a>
+                         </li>
                     </ul>
                 </div>
             </div>
@@ -193,8 +193,12 @@
                 subPageCssVirtualPath: "@this.ViewBag.subPageCssVirtualPath",
                 moduleName: "@this.ViewBag.extensionName",
                 modulePrefix: 'Modules',
-                language: '@Thread.CurrentThread.CurrentUICulture.Name'
-                    };
+                language: '@Thread.CurrentThread.CurrentUICulture.Name',
+                permissions:@Html.ConvertToJsonObject((this.ViewBag.permissions as object)),
+               
+
+            };
+            blocks.localization = @Html.ConvertToJsonObject((this.ViewBag.localization as object));
         })(blocks);
 
         

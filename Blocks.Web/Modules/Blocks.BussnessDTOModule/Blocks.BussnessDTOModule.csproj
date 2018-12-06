@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Combobox\ComboboxResult.cs" />
     <Compile Include="MasterData\MasterDataInfo.cs" />
+    <Compile Include="MasterData\ProxModel.cs" />
     <Compile Include="MasterData\SearchModel.cs" />
     <Compile Include="PageResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

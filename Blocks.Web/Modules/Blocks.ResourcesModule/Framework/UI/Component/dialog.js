@@ -179,7 +179,12 @@
             if (blocks.pageContext && blocks.pageContext.subPageJsVirtualPath) {
                 require([utility.url.pathToRelative(blocks.pageContext.subPageJsVirtualPath, blocks.pageContext.modulePrefix, '.js')], function (containerModules) {
                     currentModule = containerModules;
-                    containerModules.init($.extend($('#' + WrapperId), { currentPage: new dialog({dialogIndex: layerIndex,passData:passData})}));
+                    containerModules.init(
+                        {
+                            view: $.extend($('#' + WrapperId), { currentPage: new dialog({ dialogIndex: layerIndex, passData: passData }) }),
+                            pageContext: $.extend(true, {}, blocks.pageContext)
+
+                        });
                 });
 
                 //  require(['Blocks.BussnessWebModule/Views/MasterData/Index']);

@@ -44,6 +44,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
@@ -178,9 +181,11 @@
     <None Include="Framework\UI\Component\grid\view\pagebuilder.js" />
     <None Include="Framework\UI\Component\grid\view\searchbuilder.js" />
     <None Include="Framework\Utility\Component\date.js" />
+    <Content Include="Framework\Localization\localization.js" />
     <Content Include="Framework\UI\Component\grid\extensions\checkboxPlugin.js" />
     <Content Include="Framework\UI\Component\validate_UI.js" />
     <Content Include="Framework\UI\Component\viewStruct\viewEvent.js" />
+    <Content Include="Framework\Utility\Component\stringUtility.js" />
     <Content Include="lib\abp-web-resources\.bower.json" />
     <Content Include="lib\abp-web-resources\Abp\Framework\scripts\abp.js" />
     <Content Include="lib\abp-web-resources\Abp\Framework\scripts\libs\abp.blockUI.js" />
@@ -1532,6 +1537,7 @@
     <Content Include="lib\jqGrid\script\i18n\grid.locale-ar.js" />
     <Content Include="lib\jqGrid\script\i18n\grid.locale-bg.js" />
     <Content Include="lib\jqGrid\script\i18n\grid.locale-ca.js" />
+    <Content Include="lib\jqGrid\script\i18n\grid.locale-ZH-cn.js" />
     <Content Include="lib\jqGrid\script\i18n\grid.locale-cn.js" />
     <Content Include="lib\jqGrid\script\i18n\grid.locale-cs.js" />
     <Content Include="lib\jqGrid\script\i18n\grid.locale-de.js" />

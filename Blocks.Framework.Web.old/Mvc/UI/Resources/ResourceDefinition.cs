@@ -48,6 +48,7 @@ namespace Blocks.Framework.Web.Mvc.UI.Resources {
                 }
             }
             FilePathAttributeName = _filePathAttributes.ContainsKey(TagBuilder.TagName) ? _filePathAttributes[TagBuilder.TagName] : null;
+            IsMultLanguage = false;
         }
 
         internal static string GetBasePathFromViewPath(string resourceType, string viewPath) {
@@ -104,9 +105,14 @@ namespace Blocks.Framework.Web.Mvc.UI.Resources {
         public string UrlCdn { get; private set; }
         public string UrlCdnDebug { get; private set; }
         public string[] Cultures { get; private set; }
+
+        public bool IsMultLanguage { get; private set; }
+
         public bool CdnSupportsSsl { get; private set; }
-        public IEnumerable<string> Dependencies { get; private set; }
+        public IEnumerable<string> Dependencies { get; internal set; }
         public string FilePathAttributeName { get; private set; }
+
+
         public TagBuilder TagBuilder { get; private set; }
 
         public ResourceDefinition AddAttribute(string name, string value) {
@@ -182,6 +188,7 @@ namespace Blocks.Framework.Web.Mvc.UI.Resources {
 
         public ResourceDefinition SetCultures(params string[] cultures) {
             Cultures = cultures;
+            IsMultLanguage = true;
             return this;
         }
 

@@ -1,4 +1,5 @@
 using System;
+using System.Reflection;
 using System.Web.Http.Filters;
 using Abp.Web;
 
@@ -39,6 +40,10 @@ namespace Blocks.Framework.Web.Api.Controllers.Dynamic.Builders
     /// <typeparam name="T">Type of the proxied object</typeparam>
     public interface IApiControllerBuilder<T> : IApiControllerBuilder
     {
+
+        //IApiControllerBuilder<T> WithDefaultType(TypeInfo typeInfo);
+
+
         /// <summary>
         /// To add Action filters for the Dynamic Controller.
         /// </summary>

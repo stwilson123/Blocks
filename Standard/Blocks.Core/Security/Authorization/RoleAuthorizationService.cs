@@ -15,7 +15,7 @@ namespace Blocks.Core.Security.Authorization
             _UserManager = userManager;
         }
 
-        public Task<bool> TryCheckAccess(Permission permission, IUserIdentifier user)
+        public Task<bool> TryCheckAccess(Blocks.Framework.Security.Authorization.Permission.Permission permission, IUserIdentifier user)
         {
              
             return  permission.PermissionDependency.IsSatisfiedAsync(new PermissionDependencyContext(user,_UserManager));

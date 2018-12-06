@@ -74,9 +74,11 @@ namespace Blocks.Framework.Web.Mvc
         {
 //            GlobalFilters.Filters.Add(IocManager.Resolve<AbpMvcAuthorizeFilter>());
             GlobalFilters.Filters.Add(IocManager.Resolve<AbpAntiForgeryMvcFilter>());
-//            GlobalFilters.Filters.Add(IocManager.Resolve<AbpMvcAuditFilter>());
-//            GlobalFilters.Filters.Add(IocManager.Resolve<AbpMvcValidationFilter>());
-//            GlobalFilters.Filters.Add(IocManager.Resolve<AbpMvcUowFilter>());
+            //            GlobalFilters.Filters.Add(IocManager.Resolve<AbpMvcAuditFilter>());
+            //            GlobalFilters.Filters.Add(IocManager.Resolve<AbpMvcValidationFilter>());
+            //            GlobalFilters.Filters.Add(IocManager.Resolve<AbpMvcUowFilter>());
+            
+            GlobalFilters.Filters.Add(IocManager.Resolve<BlocksWebMvcAuthorizeFilter>());
             GlobalFilters.Filters.Add(IocManager.Resolve<BlocksWebMvcActionFilter>());
             GlobalFilters.Filters.Add(IocManager.Resolve<BlocksWebMvcResultFilter>());
             

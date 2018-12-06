@@ -19,7 +19,7 @@ namespace Blocks.BussnessWebModule.Module_Start
                         .Action("TranditionLayoutTestNew", "Tests",Extension.Name)
                     )
                 .AddBuilder((m) => m.Name("MasterData").DisplayName(L("MasterData"))
-                    .Action("Index", "MasterData",Extension.Name));
+                    .Action("Index", "MasterData",Extension.Name).HasPermissions("index","add"));
         }
     }
 }

@@ -1,6 +1,5 @@
 'use strict';
-;define(['jquery', 'blocks_utility', 'jqGrid', '../dialog', './config/config', '../viewStruct/viewEvent', '../../../../lib/jqGrid/script/i18n/grid.locale-cn'], function ($, utility, jqGrid, dialog, gridConfig, viewEvent) {
-
+;define(['jquery', 'blocks_utility', 'jqGrid', '../dialog', './config/config', '../viewStruct/viewEvent'], function ($, utility, jqGrid, dialog, gridConfig, viewEvent) {
 
     var validate = utility.validate;
     var grid = function (option) {

@@ -2,6 +2,7 @@
     baseUrl: './Framework/',
     mainConfigFile: './config.js',
     dir: './build_home/',
+    optimize:'none',
     // removeCombined: true,
     modules: [
         {

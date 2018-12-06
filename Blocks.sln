@@ -116,6 +116,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blocks.LayoutModule.Extensi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blocks.LocalizationModule", "Blocks.Web\Modules\Blocks.LocalizationModule\Blocks.LocalizationModule.csproj", "{F70692C4-B062-49DB-A8C1-635B39E1AA94}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blocks.PermissonModule", "Blocks.Web\Modules\Blocks.PermissonModule\Blocks.PermissonModule.csproj", "{67291644-A346-4EB2-96E9-467497CCF9FE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -314,6 +316,10 @@ Global
 		{F70692C4-B062-49DB-A8C1-635B39E1AA94}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F70692C4-B062-49DB-A8C1-635B39E1AA94}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F70692C4-B062-49DB-A8C1-635B39E1AA94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67291644-A346-4EB2-96E9-467497CCF9FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67291644-A346-4EB2-96E9-467497CCF9FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67291644-A346-4EB2-96E9-467497CCF9FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67291644-A346-4EB2-96E9-467497CCF9FE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -357,6 +363,7 @@ Global
 		{FBD6250D-DC02-4917-9D35-C9864D102F21} = {7E85C7E5-70BD-4C9D-B052-D95955F46609}
 		{A5BA890A-7ED1-4719-B635-486B9F3829A9} = {F7810593-3007-4876-A81C-1C6EDB41FEFB}
 		{F70692C4-B062-49DB-A8C1-635B39E1AA94} = {F7810593-3007-4876-A81C-1C6EDB41FEFB}
+		{67291644-A346-4EB2-96E9-467497CCF9FE} = {F7810593-3007-4876-A81C-1C6EDB41FEFB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DDBAC820-4861-4751-880D-917BF12E2C5D}

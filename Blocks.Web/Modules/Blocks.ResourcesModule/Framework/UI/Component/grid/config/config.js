@@ -359,8 +359,8 @@ define(['jquery', '../../datepicker', 'blocks_utility', '../../dialog', '../../s
                                     setTimeout(function (args) {
                                         var $curCellEl = $table.find("#" + tmpOptions.rowId + " td:eq(" + tmpOptions.pos + ")");
                                         if (!$curCellEl.data('id')) {
-                                            $curCellEl.data('id', cellvalue);
-                                            $curCellEl.data('text', cellText);
+                                            $curCellEl.data('id', cellvalue ? cellvalue : "");
+                                            $curCellEl.data('text', cellText ? cellText : "");
                                         }
                                     }, 1);
                                 }

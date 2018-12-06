@@ -4,17 +4,23 @@
     currentModule.controllers = {'Main': main};
     currentModule.viewModels = {'Main': mainViewModel};
 
+
     function main() {
         var viewModel;
         var view;
         var mainGrid;
 
         var combobox;
+        var moduleInstance = this;
+     
+
         this.events = {
             'init': function (v, vm) {
                 view = v;
                 viewModel = vm;
-                var colNamesArray = ['ID', '城市','comboboxHideText', 'comboboxText', '注册时间', '激活', '备注']; //数据列名称（数组） 
+                 
+                var colNamesArray = ['ID', moduleInstance.L('city'),'comboboxHideText', 'comboboxText', 
+                        moduleInstance.L('registerTime'), moduleInstance.L('activation'), moduleInstance.L('comment')]; //数据列名称（数组） 
                 mainGrid = new blocks.ui.grid({
                     // url: "/api/services/BussnessWebModule/MasterData/GetPageList",
                     gridObj: view.find("#gridInfo"),
@@ -58,7 +64,6 @@
                     showPager: true
 
                 });
-                colNamesArray = ['ID', '城市', 'comboboxText', '注册时间', '激活', '备注']; //数据列名称（数组） 
                 window.mainGrid = mainGrid;
                 mainGrid.reloadGrid({url: "/api/services/BussnessWebModule/MasterData/GetPageList"});
 
@@ -93,6 +98,15 @@
             {
                 blocks.service.safePubAjax({
                     url: '/api/services/BussnessWebModule/MasterData/TestException', data: {},
+                    onSuccessCallBack: function (result) {
+
+                    }
+                });
+            },
+
+            proxyClick: function (event) {
+                blocks.service.safePubAjax({
+                    url: '/api/services/BussnessWebModule/MasterData/ProxTest', data: {},
                     onSuccessCallBack: function (result) {
 
                     }

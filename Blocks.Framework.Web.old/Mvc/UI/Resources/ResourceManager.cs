@@ -11,8 +11,11 @@ using System.Web.Mvc;
 using System.Web.UI.WebControls.WebParts;
 using Abp.Configuration;
 using Abp.Dependency;
+using Abp.Localization;
+using Blocks.Framework.AutoMapper;
 using Blocks.Framework.Configurations;
 using Blocks.Framework.Ioc.Dependency;
+using Blocks.Framework.Localization;
 using Blocks.Framework.Utility.Extensions;
 using Castle.Components.DictionaryAdapter;
 
@@ -28,6 +31,8 @@ namespace Blocks.Framework.Web.Mvc.UI.Resources {
         private readonly IEnumerable<IResourceManifestProvider> _providers;
         private readonly ISettingManager _setttingManager;
 
+
+        private readonly ILanguageManager _languageManager;
         private ResourceManifest _dynamicManifest;
         private List<ScriptEntry> _headScripts= new List<ScriptEntry>();
         private List<ScriptEntry> _footScripts = new List<ScriptEntry>();
@@ -99,9 +104,11 @@ namespace Blocks.Framework.Web.Mvc.UI.Resources {
         }
 
         public Guid guid;
-        public ResourceManager(IEnumerable<IResourceManifestProvider> resourceProviders, ISettingManager setttingManager) {
+        public ResourceManager(IEnumerable<IResourceManifestProvider> resourceProviders, ISettingManager setttingManager,
+            ILanguageManager languageManager) {
             _providers = resourceProviders;
             _setttingManager = setttingManager;
+            _languageManager = languageManager;
             guid = Guid.NewGuid();
         }
 
@@ -311,7 +318,11 @@ namespace Blocks.Framework.Web.Mvc.UI.Resources {
             // (2) If no require already exists, form a new settings object based on the given one but with its own type/name.
             settings = allResources.Contains(resource)
                 ? ((RequireSettings)allResources[resource]).Combine(settings)
-                : new RequireSettings { Type = resource.Type, Name = resource.Name, Dependencies = resource.Dependencies, IsAMD = resource.IsAMD }.Combine(settings);
+                : new RequireSettings { Type = resource.Type, Name = resource.Name, Dependencies = resource.Dependencies, IsAMD = resource.IsAMD,
+                IsMultLanguage = resource.IsMultLanguage
+                 
+
+                }.Combine(settings);
             if (resource.Dependencies != null) {
               
                 var dependencies = from d in resource.Dependencies
@@ -408,6 +419,7 @@ namespace Blocks.Framework.Web.Mvc.UI.Resources {
             return listTemplateTmp.FirstOrDefault();
         }
 
+
         public void WriteResources()
         {
             var defaultSettings = new RequireSettings {
@@ -430,16 +442,32 @@ namespace Blocks.Framework.Web.Mvc.UI.Resources {
                 var path = context.GetResourceUrl(defaultSettings, appPath);
                 var condition = context.Settings.Condition;
                 var attributes = context.Settings.HasAttributes ? context.Settings.Attributes : null;
-
+                 
                 if (context.Resource.Type == "script")
                 {
-                    switch (context.Settings.Location)
+
+                    var multLanguageResource = _manifests.SelectMany(m => m.GetResources("script").Values)
+                        .Where(rName => rName.Name == LocalizeNamed.GetName(context.Resource.Name, _languageManager.CurrentLanguage.Name))
+                    .ToList();
+
+                    if(multLanguageResource.Count  > 0 )
                     {
-                        case ResourceLocation.Foot: this.RegisterFootScript(new ScriptEntry() { Src = path, Type = "text/javascript", Name = context.Resource.Name,
-                            Dependencies = context.Resource.Dependencies?.ToList(), IsAMD = context.Resource.IsAMD }.SetAttributes(attributes)); break;
-                        case ResourceLocation.Head: this.RegisterHeadScript(new ScriptEntry() { Src = path, Type = "text/javascript", Name = context.Resource.Name, Dependencies = context.Resource.Dependencies?.ToList(), IsAMD = context.Resource.IsAMD }.SetAttributes(attributes)); break;
-                        default: this.RegisterDisplayNonoScript(new ScriptEntry() { Src = path, Type = "text/javascript", Name = context.Resource.Name, Dependencies = context.Resource.Dependencies?.ToList(), IsAMD = context.Resource.IsAMD }.SetAttributes(attributes)); break;
+                        foreach (var languageResource in multLanguageResource)
+                        {
+                            var languageContext = new ResourceRequiredContext()
+                            {
+                                Resource = languageResource,
+                                Settings = context.Settings.AutoMapTo<RequireSettings>()
+                            };
+                            RegisterJavascript(languageContext, languageContext.GetResourceUrl(defaultSettings, appPath), attributes);
+                        }
+                        var resources = multLanguageResource.Select(r => r.Name);
+                        context.Resource.Dependencies = context.Resource.Dependencies != null ? 
+                            context.Resource.Dependencies.Concat(resources) : resources;
                     }
+
+                    RegisterJavascript(context, path, attributes);
+
                 }
                 else if (context.Resource.Type == "stylesheet")
                 {
@@ -461,6 +489,24 @@ namespace Blocks.Framework.Web.Mvc.UI.Resources {
 //                    result = Display.Resource(Url: path, Condition: condition, Resource: context.Resource, TagAttributes: attributes);
 //                }
 //                Output.Write(result);
+            }
+        }
+
+        private void RegisterJavascript(ResourceRequiredContext context, string path, Dictionary<string, string> attributes)
+        {
+            switch (context.Settings.Location)
+            {
+                case ResourceLocation.Foot:
+                    this.RegisterFootScript(new ScriptEntry()
+                    {
+                        Src = path,
+                        Type = "text/javascript",
+                        Name = context.Resource.Name,
+                        Dependencies = context.Resource.Dependencies?.ToList(),
+                        IsAMD = context.Resource.IsAMD
+                    }.SetAttributes(attributes)); break;
+                case ResourceLocation.Head: this.RegisterHeadScript(new ScriptEntry() { Src = path, Type = "text/javascript", Name = context.Resource.Name, Dependencies = context.Resource.Dependencies?.ToList(), IsAMD = context.Resource.IsAMD }.SetAttributes(attributes)); break;
+                default: this.RegisterDisplayNonoScript(new ScriptEntry() { Src = path, Type = "text/javascript", Name = context.Resource.Name, Dependencies = context.Resource.Dependencies?.ToList(), IsAMD = context.Resource.IsAMD }.SetAttributes(attributes)); break;
             }
         }
     }

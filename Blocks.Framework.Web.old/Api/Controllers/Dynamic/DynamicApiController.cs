@@ -13,7 +13,7 @@ namespace Blocks.Framework.Web.Api.Controllers.Dynamic
     /// A dynamic ApiController is used to transparently expose an object (Generally an Application Service class)
     /// to remote clients.
     /// </remarks>
-    public class DynamicApiController<T> : AbpApiController, IDynamicApiController, IAvoidDuplicateCrossCuttingConcerns
+    public class DynamicApiController<T> : DynamicApiController, IDynamicApiController, IAvoidDuplicateCrossCuttingConcerns
     {
         public List<string> AppliedCrossCuttingConcerns { get; }
 

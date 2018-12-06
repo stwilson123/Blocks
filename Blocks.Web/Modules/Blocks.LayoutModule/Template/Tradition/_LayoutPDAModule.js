@@ -92,8 +92,15 @@
          
             if (blocks.pageContext.subPageJsVirtualPath)
             {
-                require([blockFramework.utility.url.pathToRelative(blocks.pageContext.subPageJsVirtualPath,blocks.pageContext.modulePrefix,'.js')],function (containerModules) {
-                    containerModules.init($("#container"));
+             
+                require([blockFramework.utility.url.pathToRelative(blocks.pageContext.subPageJsVirtualPath, blocks.pageContext.modulePrefix, '.js'), 'blocks'], function (containerModules, blocksJS) {
+                    var localization = new blocksJS.localization();
+                    localization.dictionary = blocks.localization;
+                    containerModules.init({
+                        view: $("#container"),
+                        pageContext: $.extend(true, {}, blocks.pageContext),
+                        localization: localization
+                    });
                 });
 
                 //  require(['Blocks.BussnessWebModule/Views/MasterData/Index']);

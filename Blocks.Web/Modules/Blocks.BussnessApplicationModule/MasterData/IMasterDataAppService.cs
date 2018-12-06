@@ -10,7 +10,6 @@ namespace Blocks.BussnessApplicationModule.MasterData
 {
     public interface IMasterDataAppService : IAppService
     {
-        Localizer L { get; set; }
 
         [HttpMethod(HttpVerb.Delete)]
         PageList<PageResult>  GetPageList(SearchModel a);
@@ -18,5 +17,7 @@ namespace Blocks.BussnessApplicationModule.MasterData
         void Add(MasterDataInfo masterDataInfo);
 
         void TestException();
+
+        string ProxTest();
     }
 }

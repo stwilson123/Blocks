@@ -53,24 +53,24 @@ namespace Blocks.Core.Navigation.Services
                     throw new BlocksCoreException(StringLocal.Format("WebNavItem not found"));
                 if( !await _authorizationService.TryCheckAccess(webNavItem.RequirePermissions,webNavItem.RequiresAuthentication,user))
                     continue;
-                userMenuItems.Add( await CreateUserNavItem(user, webNavItem));
+                userMenuItems.Add( CreateUserNavItem(user, webNavItem));
                
             }
 
         }
 
-        private async Task<UserNavigationItem> CreateUserNavItem(IUserIdentifier user, WebNavigationItemDefinition webNavItem)
+        private  UserNavigationItem CreateUserNavItem(IUserIdentifier user, WebNavigationItemDefinition webNavItem)
         {
             var userNavItem = new UserNavigationItem(webNavItem);
-            var hasPermissions = new List<Permission>();
-            foreach (var hasPermission in userNavItem.HasPermissions)
-            {
-                if (await _authorizationService.TryCheckAccess(webNavItem.RequirePermissions,
-                    userNavItem.RequiresAuthentication, user))
-                    hasPermissions.Add(hasPermission);
-            }
+            //var hasPermissions = new List<Permission>();
+            //foreach (var hasPermission in userNavItem.HasPermissions)
+            //{
+            //    if (await _authorizationService.TryCheckAccess(webNavItem.HasPermissions,
+            //        userNavItem.RequiresAuthentication, user))
+            //        hasPermissions.Add(hasPermission);
+            //}
 
-            userNavItem.HasPermissions = hasPermissions.ToArray();
+            //userNavItem.HasPermissions = hasPermissions.ToArray();
             return userNavItem;
         }
 
