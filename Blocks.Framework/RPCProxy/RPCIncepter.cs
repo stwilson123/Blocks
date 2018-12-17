@@ -39,7 +39,8 @@ namespace Blocks.Framework.RPCProxy
             var prePath = $"{url.Scheme}://{url.Host}:{url.Port}";
             var path = prePath + "/api/services" + requestAttribute.Path;
 
-            var dataResult = HttpWebClient.GetResponse<DataResult>(path, invocation.Arguments.FirstOrDefault());
+            var dataResult = HttpWebClient.GetResponse<DataResult>(path, _httpContextModel.CookieCollection, _httpContextModel.webHeaderCollection,
+                invocation.Arguments.FirstOrDefault());
 
             invocation.ReturnValue = JsonConvert.DeserializeObject(JsonConvert.SerializeObject(dataResult.content),invocation.Method.ReturnType);
             ;

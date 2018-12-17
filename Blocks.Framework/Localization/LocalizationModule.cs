@@ -2,8 +2,11 @@
 using System.Collections;
 using System.Linq;
 using System.Reflection;
+using Abp.AutoMapper;
+using Abp.Localization;
 using Abp.Localization.Dictionaries;
 using Abp.Localization.Dictionaries.Xml;
+using AutoMapper;
 using Blocks.Framework.Collections;
 using Blocks.Framework.Environment.Configuration;
 using Blocks.Framework.Environment.Extensions;
@@ -37,7 +40,17 @@ namespace Blocks.Framework.Localization
                )
            );
 
-           
+            Configuration.Modules.AbpAutoMapper().Configurators.Add((IMapperConfigurationExpression configuration) =>
+            {
+                var localizationContext = IocManager.Resolve<ILocalizationContext>();
+
+                configuration.CreateMap<ILocalizableString, string>().ConvertUsing(ls => ls?.Localize(localizationContext));
+                configuration.CreateMap<LocalizableString, string>().ConvertUsing(ls => ls?.Localize(localizationContext));
+            });
+
+
+
+            IocManager.Register<ILanguageManager, LanguageManager>(Abp.Dependency.DependencyLifeStyle.Transient);
         }
 
         public override void Initialize()

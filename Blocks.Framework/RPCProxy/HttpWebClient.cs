@@ -9,11 +9,13 @@ namespace Blocks.Framework.RPCProxy
 {
     public class HttpWebClient
     {
-        public static TResponse GetResponse<TResponse>(string url, object data)
+        public static TResponse GetResponse<TResponse>(string url,CookieContainer cookieContainer,WebHeaderCollection webHeaderCollection, object data)
         {
            
             HttpWebRequest webrequest = (HttpWebRequest)HttpWebRequest.Create(url);
             webrequest.Method = "post";
+            webrequest.CookieContainer = cookieContainer;
+            webrequest.Headers = webHeaderCollection;
             webrequest.ContentType = "application/json;charset=UTF-8";
             byte[] postByte = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(data));
             webrequest.ContentLength = postByte.Length;

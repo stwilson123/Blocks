@@ -16,6 +16,8 @@ namespace Blocks.BussnessApplicationModule.TestAppService
         }
 
         private TestDomain testDomain { get; set; }
+
+
         
         public string GetValue(string a)
         {
@@ -34,6 +36,7 @@ namespace Blocks.BussnessApplicationModule.TestAppService
 
         public List<string> ProxFunction(BussnessDTOModule.MasterData.ProxModel input)
         {
+            testDomain.Update(null);
             return input.dic.Select(t => t.Key).ToList();
         }
     }

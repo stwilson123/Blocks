@@ -33,7 +33,14 @@ namespace Blocks.BussnessDomainModule
             var newMasterData =  data.AutoMapTo<TESTENTITY>();
             return testRepository.Insert(newMasterData).Id;
         }
-        
+
+        public virtual string Update(MasterData.MasterData data)
+        {
+
+            
+            return testRepository.Update(t => t.Id == "123123",t => new TESTENTITY { STRING = "123" }).ToString();
+        }
+
         public virtual string GetList(string value)
         {
             EventBus.Trigger(new TaskEventData {id = "123123"});

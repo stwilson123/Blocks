@@ -46,7 +46,8 @@ namespace Blocks.BussnessApplicationModule.MasterData
 
         public void TestException()
         {
-             masterDataDomain.TestException();
+            var lException = L("TestException").AutoMapTo<string>();
+            masterDataDomain.TestException();
 
             throw new BlocksBussnessException("101", L("TestException"), null);
 

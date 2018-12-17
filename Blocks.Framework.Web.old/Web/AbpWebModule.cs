@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Net;
 using System.Web;
 using Abp.Collections.Extensions;
 using Abp.Modules;
@@ -30,7 +31,23 @@ namespace Blocks.Framework.Web.Web
 
             IocManager.Register<HttpContextModel, HttpContextModel>((kernel, componentModel, creationContext) => {
                 var ru = HttpContext.Current.Request;
-                return new HttpContextModel() { RequestUrl = ru.Url  };
+                var cookies = new System.Net.CookieContainer() { };
+
+                for (int i = 0; i < ru.Cookies.Count; i++)
+                {
+                    var cook = ru.Cookies[i];
+                    cookies.Add(new System.Net.Cookie(cook.Name,cook.Value,cook.Path, ru.ServerVariables["Server_Name"]));
+                }
+
+                var heads = new WebHeaderCollection();
+                heads.Add("X-XSRF-TOKEN", ru.Headers.Get("X-XSRF-TOKEN"));
+                //for (int i = 0; i < ru.Cookies.Count; i++)
+                //{
+                //    var head = ru.Headers[i];
+                //    heads.Add(head, ru.Headers.Get(head));
+                //}
+
+                return new HttpContextModel() { RequestUrl = ru.Url , CookieCollection = cookies, webHeaderCollection = heads };
             },Abp.Dependency.DependencyLifeStyle.Transient);
             AddIgnoredTypes();
         }

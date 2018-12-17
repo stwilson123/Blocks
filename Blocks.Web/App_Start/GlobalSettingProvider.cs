@@ -19,7 +19,7 @@ namespace Blocks.Web
                 ),
                 new SettingDefinition(
                     typeof(DebugState).Name,
-                     DebugState.Debug.ToString()
+                     DebugState.Release.ToString()
                 ),
                 new SettingDefinition(
                     Framework.DBORM.Configurations.ConfigKey.Schema,

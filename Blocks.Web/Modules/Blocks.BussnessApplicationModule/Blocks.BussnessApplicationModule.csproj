@@ -39,6 +39,10 @@
     <Reference Include="Blocks.Framework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>..\..\..\lib\Blocks.Framework.dll</HintPath>
     </Reference>
+    <Reference Include="Blocks.Framework.Web, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\lib\Blocks.Framework.Web.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
@@ -57,10 +61,6 @@
     <Compile Include="TestAppService\ITestAppService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Blocks.Framework.Web.old\Blocks.Framework.Web.csproj">
-      <Project>{4a40a2ee-57bc-48a4-abd5-36c7d3cbdd34}</Project>
-      <Name>Blocks.Framework.Web</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Blocks.BussnessDomainModule\Blocks.BussnessDomainModule.csproj">
       <Project>{515b2afd-abe4-4d33-8332-8d900ed947f1}</Project>
       <Name>Blocks.BussnessDomainModule</Name>

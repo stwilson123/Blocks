@@ -24,6 +24,87 @@ namespace Blocks.BussnessEntityModule
 	
 
     
+    public partial class SYS_MENUS   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string NAME { set; get; }
+	    	    public long SORT { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string DESC { set; get; }
+		}
+    
+    public partial class WAREHOUSE_STOCK_COUNT_STOCK   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string LOTNO { set; get; }
+	    	    public string SITE_ID { set; get; }
+	    	    public string MATERIAL_ID { set; get; }
+	    	    public string WAREHOUSE_STOCK_COUNT_ID { set; get; }
+	    	    public string WAREHOUSE_STOCK_COUNT_CODE { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public decimal? QTY { set; get; }
+	    	    public string SUPPLIER_ID { set; get; }
+	    	    public string STOREROM_ID { set; get; }
+	    	    public string MATERIAL_CODE { set; get; }
+	    	    public string MATERIAL_NAME { set; get; }
+	    	    public string SITE_CODE { set; get; }
+	    	    public string STOREROM_CODE { set; get; }
+	    	    public string SUPPLIER_CODE { set; get; }
+	    	    public string SOURCE_CODE { set; get; }
+	    	    public decimal? SCANQTY { set; get; }
+	    	    public decimal? SUBQTY { set; get; }
+		}
+    
+    public partial class PRINT_SERVICE   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string PRINTTEMPLATE_PATH { set; get; }
+	    	    public long? PRINT_FLAG { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public string PRINT_TYPE { set; get; }
+	    	    public string PRINT_NAME { set; get; }
+	    	    public string PRINT_CONTENT_JSONTXT { set; get; }
+		}
+    
+    public partial class SYS_PROGRAMOPERATION   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string OPERATION_NAME { set; get; }
+	    	    public string SYS_POPEDOMPROGRAM_ID { set; get; }
+	    	    public string OPERATION_URL { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+		}
+    
     public partial class BDTA_MATERIAL_WORKING   : Entity   
     {
  
@@ -151,6 +232,8 @@ namespace Blocks.BussnessEntityModule
 	    	    public string EXTENDFIELD { set; get; }
 	    	    public string ORGRELATIONNAME { set; get; }
 	    	    public long? ACTIVITY { set; get; }
+	    	    [Column("ID")]
+		public override string Id { set ; get ; }
 		}
     
     public partial class BDTA_ORG_STOREROOM   : Entity   
@@ -253,7 +336,7 @@ namespace Blocks.BussnessEntityModule
 	    	    public string CATA2 { set; get; }
 	    	    public string CATA1 { set; get; }
 	    	    public long SNO { set; get; }
-	    	    public long? DATAVERSION { set; get; }
+	    	    public long DATAVERSION { set; get; }
 	    	    public DateTime? CREATEDATE { set; get; }
 	    	    public string CREATER { set; get; }
 	    	    public DateTime? UPDATEDATE { set; get; }
@@ -327,6 +410,14 @@ namespace Blocks.BussnessEntityModule
 	    	    public string EXTENDFIELD { set; get; }
 	    	    public long? ISUSED { set; get; }
 	    	    public long? ACTIVITY { set; get; }
+		}
+    
+    public partial class SHEET1   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public DateTime? CREATETIME { set; get; }
 		}
     
     public partial class BDTA_CALDETAIL   : Entity   
@@ -807,34 +898,12 @@ namespace Blocks.BussnessEntityModule
 		public override string Id { set ; get ; }
 	    	    public string MATERIAL_TYPE_ID { set; get; }
 	    	    public string MATERIAL_CODE { set; get; }
-	    	    public string MATERIAL_DRAWING_NO { set; get; }
-	    	    public string MATERIAL_INNER_CODE { set; get; }
-	    	    public string MATERIAL_CUSTOM_CODE { set; get; }
-	    	    public string MATERIAL_UPC { set; get; }
 	    	    public string MATERIAL_NAME { set; get; }
 	    	    public string MATERIAL_MODEL { set; get; }
 	    	    public string MATERIAL_UNIT { set; get; }
-	    	    public long? MATERIAL_DATA_STATE { set; get; }
-	    	    public decimal? MATERIAL_WEI_SINGLE { set; get; }
-	    	    public decimal? MATERIAL_WEI_METER { set; get; }
-	    	    public string MATERIAL_DETAIL_CONFIG { set; get; }
-	    	    public long? MATERIAL_SORT { set; get; }
-	    	    public string MATERIAL_TYPE { set; get; }
-	    	    public long? MATERIAL_CONTROL { set; get; }
-	    	    public long? MATERIAL_PACKET_QTY { set; get; }
-	    	    public long? MATERIAL_BOX_QTY { set; get; }
-	    	    public decimal? MATERIAL_LOT_QTY { set; get; }
-	    	    public long? MATERIAL_MIN_ROAS_TTIME { set; get; }
-	    	    public long? MATERIAL_MAX_ROAS_TTIME { set; get; }
-	    	    public long? MATERIAL_MAX_REPAR { set; get; }
+	    	    public long? MATERIAL_STATE { set; get; }
 	    	    public string MATERIAL_DESC { set; get; }
-	    	    public string MATERIAL_PACK_REQ { set; get; }
-	    	    public string MATERIAL_REQ1 { set; get; }
-	    	    public string MATERIAL_REQ2 { set; get; }
-	    	    public string MATERIAL_OQC_STANDARD { set; get; }
-	    	    public decimal? MATERIAL_PRICE { set; get; }
-	    	    public string PROCESSPATH_ID { set; get; }
-	    	    public long? DATAVERSION { set; get; }
+	    	    public long DATAVERSION { set; get; }
 	    	    public DateTime? CREATEDATE { set; get; }
 	    	    public string CREATER { set; get; }
 	    	    public DateTime? UPDATEDATE { set; get; }
@@ -842,19 +911,11 @@ namespace Blocks.BussnessEntityModule
 	    	    public string EXTENDFIELD { set; get; }
 	    	    public long? ACTIVITY { set; get; }
 	    	    public long? ISUSED { set; get; }
-	    	    public long? PACKAGE_COUNT { set; get; }
-	    	    public string CATALOG_CODE { set; get; }
-	    	    public string MATERIAL_GROUP { set; get; }
-	    	    public string FACTORY { set; get; }
-	    	    public string MATERIAL_CLASS { set; get; }
-	    	    public string PICK_TYPE { set; get; }
-	    	    public string MATERIAL_STATE { set; get; }
-	    	    public string MATERIAL_CODE_SAP { set; get; }
-	    	    public long? FBOX_COUNT { set; get; }
-	    	    public string MATERIAL_CATEGORY { set; get; }
-	    	    public string PURCHASE_ADJUST_VALUE { set; get; }
-	    	    public string INSTORAGE_AREA { set; get; }
-	    	    public string OPERATER_IN_CHANGE { set; get; }
+	    	    public string MATERIAL_QUALITY { set; get; }
+	    	    public long? MIN_QTY { set; get; }
+	    	    public string QA_CHECKMODEL_ID { set; get; }
+	    	    public string PRODUCTFORMAT_ID { set; get; }
+	    	    public string QA_CHECKMODEL_ORIGINAL { set; get; }
 		}
     
     public partial class BDTA_MATERIAL_BOM   : Entity   
@@ -920,15 +981,10 @@ namespace Blocks.BussnessEntityModule
  
     	    [Column("ID")]
 		public override string Id { set ; get ; }
-	    	    public string MATERIAL_NO { set; get; }
-	    	    public string MATERIAL_NAME { set; get; }
-	    	    public string MATERIAL_UPC { set; get; }
-	    	    public string MATERIAL_PARENT_ID { set; get; }
-	    	    public long? MATERIAL_CLASS { set; get; }
-	    	    public long? MATERIAL_STATE { set; get; }
-	    	    public string MATERIAL_FORMAT { set; get; }
-	    	    public decimal? MATERIAL_LOT_QTY { set; get; }
-	    	    public string MATERIAL_DESC { set; get; }
+	    	    public string TYPE_NO { set; get; }
+	    	    public string TYPE_NAME { set; get; }
+	    	    public string PARENT_ID { set; get; }
+	    	    public string TYPE_DESC { set; get; }
 	    	    public long DATAVERSION { set; get; }
 	    	    public DateTime? CREATEDATE { set; get; }
 	    	    public string CREATER { set; get; }
@@ -936,7 +992,6 @@ namespace Blocks.BussnessEntityModule
 	    	    public string UPDATER { set; get; }
 	    	    public string EXTENDFIELD { set; get; }
 	    	    public long? ACTIVITY { set; get; }
-	    	    public long? ISUSED { set; get; }
 		}
     
     public partial class BDTA_MATERIAL_WORKCENTER   : Entity   
@@ -976,7 +1031,8 @@ namespace Blocks.BussnessEntityModule
 	    	    public string SUPPLIER_PROVINCE { set; get; }
 	    	    public string SUPPLIER_POSTCODE { set; get; }
 	    	    public string SUPPLIER_DESC { set; get; }
-	    	    public long DATAVERSION { set; get; }
+	    	    public string SUPPLIER_ABBREVIATION { set; get; }
+	    	    public long? DATAVERSION { set; get; }
 	    	    public DateTime? CREATEDATE { set; get; }
 	    	    public string CREATER { set; get; }
 	    	    public DateTime? UPDATEDATE { set; get; }
@@ -984,7 +1040,6 @@ namespace Blocks.BussnessEntityModule
 	    	    public string EXTENDFIELD { set; get; }
 	    	    public long? ISUSED { set; get; }
 	    	    public long? ACTIVITY { set; get; }
-	    	    public string SUPPLIER_ABBREVIATION { set; get; }
 		}
     
     public partial class BDTA_WORKING   : Entity   
@@ -1178,7 +1233,8 @@ namespace Blocks.BussnessEntityModule
     public partial class SYS_PROGRAM   : Entity   
     {
  
-    	    public string SYS_PROGRAMID { set; get; }
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
 	    	    public string PROGRAMCODE { set; get; }
 	    	    public string PROGRAMNAME { set; get; }
 	    	    public string PROGRAMPARENT { set; get; }
@@ -1249,8 +1305,7 @@ namespace Blocks.BussnessEntityModule
     public partial class SYS_ROLEAUTHORIZE   : Entity   
     {
  
-    	    public string SYS_ROLEAUTHORIZEID { set; get; }
-	    	    public string SYS_POPEDOMPROGRAMID { set; get; }
+    	    public string SYS_POPEDOMPROGRAMID { set; get; }
 	    	    public string SYS_PROGRAMOPERATION_ID { set; get; }
 	    	    public string SYS_ROLEORUSERID { set; get; }
 	    	    public long? POPEDOM { set; get; }
@@ -1260,7 +1315,9 @@ namespace Blocks.BussnessEntityModule
 	    	    public DateTime? UPDATEDATE { set; get; }
 	    	    public string UPDATER { set; get; }
 	    	    public string EXTENDFIELD { set; get; }
-	    	    public string OPERATION_PAGE_NAME { set; get; }
+	    	    public string TYPE { set; get; }
+	    	    [Column("ID")]
+		public override string Id { set ; get ; }
 		}
     
     public partial class SYS_ROLEINFO   : Entity   
@@ -1283,7 +1340,8 @@ namespace Blocks.BussnessEntityModule
     public partial class SYS_ROLEUSER   : Entity   
     {
  
-    	    public string SYS_ROLEUSERID { set; get; }
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
 	    	    public string SYS_ROLEINFOID { set; get; }
 	    	    public string SYS_USERINFOID { set; get; }
 	    	    public string MEMO { set; get; }
@@ -1342,6 +1400,11 @@ namespace Blocks.BussnessEntityModule
 	    	    public long ISACTIVE { set; get; }
 	    	    public string COMMENT { set; get; }
 	    	    public DateTime REGISTERTIME { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public long? DATAVERSION { set; get; }
 	    	    public TESTENTITY2 TESTENTITY2 { set; get; }
 	    	    public ICollection<TESTENTITY3> TESTENTITY3s { set; get; }
 		}
@@ -1352,6 +1415,11 @@ namespace Blocks.BussnessEntityModule
     	    [Column("ID")]
 		public override string Id { set ; get ; }
 	    	    public string Text { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public decimal? DATAVERSION { set; get; }
 		}
     
     public partial class TESTENTITY3   : Entity   
@@ -1804,8 +1872,758 @@ namespace Blocks.BussnessEntityModule
 	    	    public string UPDATER { set; get; }
 	    	    public long? ACTIVITY { set; get; }
 		}
+    
+    public partial class BDTA_CUSTOMER   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string CUSTOMER_NO { set; get; }
+	    	    public string CUSTOMER_NAME { set; get; }
+	    	    public string CUSTOMER_CHARGER { set; get; }
+	    	    public string CUSTOMER_TELEPHONE { set; get; }
+	    	    public string CUSTOMER_TAX { set; get; }
+	    	    public string CUSTOMER_MAIL { set; get; }
+	    	    public string CUSTOMER_ADDRESS { set; get; }
+	    	    public string CUSTOMER_PROVINCE { set; get; }
+	    	    public string CUSTOMER_POSTCODE { set; get; }
+	    	    public string CUSTOMER_DESC { set; get; }
+	    	    public string CUSTOMER_ABBREVIATION { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+		}
+    
+    public partial class BDTA_OUT_IN_TYPE   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string OUT_IN_NO { set; get; }
+	    	    public string OUT_IN_NAME { set; get; }
+	    	    public string OUT_IN_DESC { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+		}
+    
+    public partial class BDTA_QA_CHECKMODE   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string MATERIALID { set; get; }
+	    	    public string MATERIAL_CODE { set; get; }
+	    	    public string MATERIAL_NAME { set; get; }
+	    	    public string SUPPLIERID { set; get; }
+	    	    public string SUPPLIER_NO { set; get; }
+	    	    public string SUPPLIER_NAME { set; get; }
+	    	    public string CHECKMODE { set; get; }
+	    	    public string REMARK { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string INSPECTION_STANDARD { set; get; }
+	    	    public string QA_CHECKITEMMANAGE_ID { set; get; }
+		}
+    
+    public partial class BDTA_QA_CHECKITEM   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string CHECKITEMCODE { set; get; }
+	    	    public string CHECKITEMNAME { set; get; }
+	    	    public string CHECKITEMCONTENT { set; get; }
+	    	    public string CHECKTYPE { set; get; }
+	    	    public string CHECKCLASS { set; get; }
+	    	    public string CHECKMETHOD { set; get; }
+	    	    public decimal? CHECKSTANDARD { set; get; }
+	    	    public decimal? CHECK_UPPERLIMIT { set; get; }
+	    	    public decimal? CHECK_LOWERLIMIT { set; get; }
+	    	    public string REMARK { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public string CHECKITEMPARENT { set; get; }
+		}
+    
+    public partial class BDTA_MAKER   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string MAKER_NO { set; get; }
+	    	    public string MAKER_NAME { set; get; }
+	    	    public string MAKER_CHARGER { set; get; }
+	    	    public string MAKER_TELEPHONE { set; get; }
+	    	    public string MAKER_TAX { set; get; }
+	    	    public string MAKER_MAIL { set; get; }
+	    	    public string MAKER_ADDRESS { set; get; }
+	    	    public string MAKER_PROVINCE { set; get; }
+	    	    public string MAKER_POSTCODE { set; get; }
+	    	    public string MAKER_DESC { set; get; }
+	    	    public string MAKER_ABBREVIATION { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+		}
+    
+    public partial class BDTA_UNIT   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string UNIT_NO { set; get; }
+	    	    public string UNIT_NAME { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+		}
+    
+    public partial class BDTA_QA_CHECKITEMMANAGE   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string CHECKCODE { set; get; }
+	    	    public string CHECKNAME { set; get; }
+	    	    public string REMARK { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+		}
+    
+    public partial class BDTA_QA_CHECKITEMMANAGE_DETAIL   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string CHECKITEMMANAGEID { set; get; }
+	    	    public string CHECKCODE { set; get; }
+	    	    public string CHECKITEMCODE { set; get; }
+	    	    public string CHECKITEMNAME { set; get; }
+	    	    public string CHECKITEMCONTENT { set; get; }
+	    	    public string CHECKTYPE { set; get; }
+	    	    public string CHECKMETHOD { set; get; }
+	    	    public decimal? CHECKSTANDARD { set; get; }
+	    	    public decimal? CHECK_UPPERLIMIT { set; get; }
+	    	    public decimal? CHECK_LOWERLIMIT { set; get; }
+	    	    public string REMARK { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public string CHECKITEMPARENTCODE { set; get; }
+	    	    public string CHECKITEMPARENTNAME { set; get; }
+		}
+    
+    public partial class WAREHOUSE_STOCK_LOCK   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string LOCK_GUID { set; get; }
+	    	    public string LOTNO { set; get; }
+	    	    public string SITE_CODE { set; get; }
+	    	    public string OPERATE_TPYE { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string MATERIAL_ID { set; get; }
+	    	    public string OUT_STORAGE_NO { set; get; }
+	    	    public decimal? OUT_QTY { set; get; }
+		}
+    
+    public partial class WAREHOUSE_STOCK_LOG   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string MATERIAL_ID { set; get; }
+	    	    public string MATERIAL_CODE { set; get; }
+	    	    public string LOTNO { set; get; }
+	    	    public decimal? QTY { set; get; }
+	    	    public string OPERATE_TPYE { set; get; }
+	    	    public string SITE_ID { set; get; }
+	    	    public string SITE_CODE { set; get; }
+	    	    public string SOURCE_ID { set; get; }
+	    	    public string SOURCE_CODE { set; get; }
+	    	    public string SOURCE_TYPE { set; get; }
+	    	    public string SUPPLIER_ID { set; get; }
+	    	    public string SUPPLIER_CODE { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string STOREROM_ID { set; get; }
+	    	    public string STOREROM_CODE { set; get; }
+	    	    public string LINE_NUMBER { set; get; }
+		}
+    
+    public partial class WAREHOUSE_STOCK   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string MATERIAL_ID { set; get; }
+	    	    public string MATERIAL_CODE { set; get; }
+	    	    public decimal? QTY { set; get; }
+	    	    public decimal? OUT_LOCK_QTY { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+		}
+    
+    public partial class WAREHOUSE_STOCK_DETAIL   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string MATERIAL_ID { set; get; }
+	    	    public string MATERIAL_CODE { set; get; }
+	    	    public string LOTNO { set; get; }
+	    	    public decimal? QTY { set; get; }
+	    	    public decimal? OUT_LOCK_QTY { set; get; }
+	    	    public string SITE_ID { set; get; }
+	    	    public string SITE_CODE { set; get; }
+	    	    public string SUPPLIER_ID { set; get; }
+	    	    public string SUPPLIER_CODE { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string STOREROM_ID { set; get; }
+	    	    public string STOREROM_CODE { set; get; }
+	    	    public string SOURCE_CODE { set; get; }
+	    	    public string SOURCE_TYPE { set; get; }
+	    	    public string LOCK_STOCK { set; get; }
+	    	    public string LINE_NUMBER { set; get; }
+		}
+    
+    public partial class BDTA_QA_SAMPLING_STANDARD   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string INSPECTION_STANDARD { set; get; }
+	    	    public long STARTQTY { set; get; }
+	    	    public long ENDQTY { set; get; }
+	    	    public long SAMPLINGQTY { set; get; }
+	    	    public long QUALIFIEDQTY { set; get; }
+	    	    public string REMARK { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+		}
+    
+    public partial class WAREHOUSE_RECEIVE   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string RECEIVE_NO { set; get; }
+	    	    public string SUPPLIERID { set; get; }
+	    	    public DateTime? RECEIVE_DATE { set; get; }
+	    	    public string RECEIVER { set; get; }
+	    	    public DateTime? DELIVERY_DATE { set; get; }
+	    	    public string PO { set; get; }
+	    	    public string DELIVERY_ORDER { set; get; }
+	    	    public string RECEIVE_STOREROOMID { set; get; }
+	    	    public string STATE { set; get; }
+	    	    public string REMARK { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+		}
+    
+    public partial class WAREHOUSE_RECEIVE_DETAIL   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string RECEIVE_ID { set; get; }
+	    	    public string RECEIVE_NO { set; get; }
+	    	    public string MATERIAL_ID { set; get; }
+	    	    public string MATERIAL_CODE { set; get; }
+	    	    public string LOTNO { set; get; }
+	    	    public decimal? PLAN_RECEIVE_QTY { set; get; }
+	    	    public decimal? ACTUAL_RECEIVE_QTY { set; get; }
+	    	    public decimal? IN_STORAGE_QTY { set; get; }
+	    	    public string MAKER_ID { set; get; }
+	    	    public string UNIT_ID { set; get; }
+	    	    public string REMARK { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public string PO { set; get; }
+		}
+    
+    public partial class WAREHOUSE_IQC   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string RECEIVE_ID { set; get; }
+	    	    public string RECEIVE_NO { set; get; }
+	    	    public string MATERIAL_ID { set; get; }
+	    	    public string MATERIAL_CODE { set; get; }
+	    	    public string LOTNO { set; get; }
+	    	    public decimal? QUALIFIED_QTY { set; get; }
+	    	    public decimal? UNQUALIFIED_QTY { set; get; }
+	    	    public decimal? IN_STORAGE_QTY { set; get; }
+	    	    public string STATE { set; get; }
+	    	    public string SUPPLIER_ID { set; get; }
+	    	    public string INSPECT_NO { set; get; }
+	    	    public string INSPECT_MODE { set; get; }
+	    	    public decimal? MI_QTY { set; get; }
+	    	    public decimal? MA_QTY { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string REMAEK { set; get; }
+	    	    public string STOREROOM_ID { set; get; }
+	    	    public decimal? SUM_QTY { set; get; }
+	    	    public string PO { set; get; }
+	    	    public decimal? SAMPQTY { set; get; }
+		}
+    
+    public partial class WAREHOUSE_IQC_DETAIL   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string WAREHOUSE_IQC_ID { set; get; }
+	    	    public string CHECKCODE { set; get; }
+	    	    public string CHECKITEMCODE { set; get; }
+	    	    public string CHECKITEMNAME { set; get; }
+	    	    public string CHECKITEMCONTENT { set; get; }
+	    	    public string CHECKTYPE { set; get; }
+	    	    public string CHECKMETHOD { set; get; }
+	    	    public decimal? CHECKSTANDARD { set; get; }
+	    	    public decimal? CHECK_UPPERLIMIT { set; get; }
+	    	    public decimal? CHECK_LOWERLIMIT { set; get; }
+	    	    public string REMARK { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public string CHECKITEMPARENTCODE { set; get; }
+	    	    public string CHECKITEMPARENTNAME { set; get; }
+	    	    public string RESULT { set; get; }
+	    	    public string MEASUREDVALUE { set; get; }
+		}
+    
+    public partial class WAREHOUSE_IN_STORAGE   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string IN_STORAGE_NO { set; get; }
+	    	    public string IN_STORAGE_TYPE { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+		}
+    
+    public partial class WAREHOUSE_IN_STORAGE_DETAIL   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string IN_STORAGE_ID { set; get; }
+	    	    public string IN_STORAGE_CODE { set; get; }
+	    	    public string MATERIAL_ID { set; get; }
+	    	    public string MATERIAL_CODE { set; get; }
+	    	    public string LOTNO { set; get; }
+	    	    public decimal? QTY { set; get; }
+	    	    public string SITE_ID { set; get; }
+	    	    public string SITE_CODE { set; get; }
+	    	    public string RECEIVE_ID { set; get; }
+	    	    public string RECEIVE_CODE { set; get; }
+	    	    public string SUPPLIER_ID { set; get; }
+	    	    public string SUPPLIER_CODE { set; get; }
+	    	    public string STOREROM_ID { set; get; }
+	    	    public string STOREROM_CODE { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string PO { set; get; }
+		}
+    
+    public partial class WAREHOUSE_MOVESITE   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string MOVESITE_NO { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+		}
+    
+    public partial class WAREHOUSE_MOVESITE_DETAIL   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string MATERIAL_ID { set; get; }
+	    	    public string MATERIAL_CODE { set; get; }
+	    	    public string LOTNO { set; get; }
+	    	    public decimal? QTY { set; get; }
+	    	    public string OLDSITE_ID { set; get; }
+	    	    public string OLDSITE_CODE { set; get; }
+	    	    public string NEWSITE_ID { set; get; }
+	    	    public string NEWSITE_CODE { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string MOVESITE_ID { set; get; }
+	    	    public string MOVESITE_NO { set; get; }
+		}
+    
+    public partial class WAREHOUSE_STOCK_COUNT   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string STOCK_COUNT_CODE { set; get; }
+	    	    public string STOREROOM_ID { set; get; }
+	    	    public string STOREROOM_CODE { set; get; }
+	    	    public string STOCK_COUNT_TYPE { set; get; }
+	    	    public DateTime? PLANDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public string STATE { set; get; }
+	    	    public string REMARK { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string ISUSED { set; get; }
+	    	    public string ISCREATED { set; get; }
+		}
+    
+    public partial class WAREHOUSE_STOCK_COUNT_DETAIL   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string STOCK_COUNT_ID { set; get; }
+	    	    public string STOCK_COUNT_CODE { set; get; }
+	    	    public string STOCK_COUNT_TYPE { set; get; }
+	    	    public string DETAIL_ID { set; get; }
+	    	    public string DETAIL_CODE { set; get; }
+	    	    public string DETAIL_NAME { set; get; }
+	    	    public string STOREROOM_ID { set; get; }
+	    	    public string STOREROOM_CODE { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string ISUSED { set; get; }
+		}
+    
+    public partial class WAREHOUSE_STOCK_COUNT_SCAN   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string STOCK_COUNT_ID { set; get; }
+	    	    public string STOCK_COUNT_CODE { set; get; }
+	    	    public string STOCK_COUNT_DETAIL_ID { set; get; }
+	    	    public string MATERIAL_ID { set; get; }
+	    	    public string MATERIAL_CODE { set; get; }
+	    	    public string MATERIAL_NAME { set; get; }
+	    	    public string LOTNO { set; get; }
+	    	    public string SITE_ID { set; get; }
+	    	    public string SITE_CODE { set; get; }
+	    	    public string STOREROOM_ID { set; get; }
+	    	    public string STOREROOM_CODE { set; get; }
+	    	    public decimal? QTY { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string ISUSED { set; get; }
+		}
+    
+    public partial class WAREHOUSE_OUT_STORAGE   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string OUT_STORAGE_NO { set; get; }
+	    	    public string OUT_STORAGE_TYPE { set; get; }
+	    	    public string OUT_STORAGE_STATE { set; get; }
+	    	    public string STOREROM_ID { set; get; }
+	    	    public string STOREROM_CODE { set; get; }
+	    	    public string WHEREABOUTS { set; get; }
+	    	    public string LEADER { set; get; }
+	    	    public DateTime? PLAN_OUT_TIME { set; get; }
+	    	    public string OUT_DESC { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+		}
+    
+    public partial class WAREHOUSE_OUT_STORAGE_DETAIL   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string OUT_STORAGE_ID { set; get; }
+	    	    public string OUT_STORAGE_NO { set; get; }
+	    	    public string MATERIAL_ID { set; get; }
+	    	    public string MATERIAL_CODE { set; get; }
+	    	    public decimal? PLAN_QTY { set; get; }
+	    	    public decimal? COLLECT_QTY { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public string OUT_STORAGE_STATE { set; get; }
+		}
+    
+    public partial class WAREHOUSE_STOCK_BALANCE_DETAIL   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string STOCK_BALANCE_ID { set; get; }
+	    	    public string STOCK_BALANCE_CODE { set; get; }
+	    	    public string MATERIAL_ID { set; get; }
+	    	    public string MATERIAL_CODE { set; get; }
+	    	    public string MATERIAL_NAME { set; get; }
+	    	    public string LOTNO { set; get; }
+	    	    public string SITE_ID { set; get; }
+	    	    public string SITE_CODE { set; get; }
+	    	    public string BALANCE_TYPE { set; get; }
+	    	    public decimal? ADJUST_NUM { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string ISUSED { set; get; }
+	    	    public string STATE { set; get; }
+		}
+    
+    public partial class WAREHOUSE_OUT_STORAGE_ORDER   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string OUT_STORAGE_ID { set; get; }
+	    	    public string OUT_STORAGE_NO { set; get; }
+	    	    public string MATERIAL_ID { set; get; }
+	    	    public string MATERIAL_CODE { set; get; }
+	    	    public string LOTNO { set; get; }
+	    	    public decimal? OUT_QTY { set; get; }
+	    	    public string SITE_ID { set; get; }
+	    	    public string SITE_CODE { set; get; }
+	    	    public string STATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public decimal? DATAVERSION { set; get; }
+		}
+    
+    public partial class WAREHOUSE_STOCK_BALANCE   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string STOCK_BALANCE_CODE { set; get; }
+	    	    public string STOREROOM_ID { set; get; }
+	    	    public string STOREROOM_CODE { set; get; }
+	    	    public string STOCK_COUNT_CODE { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? SUBBMITDATE { set; get; }
+	    	    public string SUBBMITER { set; get; }
+	    	    public DateTime? REVIEWDATE { set; get; }
+	    	    public string REVIEWER { set; get; }
+	    	    public string STATE { set; get; }
+	    	    public string REMARK { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public long? DATAVERSION { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string ISUSED { set; get; }
+	    	    public string SOURCE_TYPE { set; get; }
+	    	    public string REASON { set; get; }
+		}
+    
+    public partial class SYS_USER_STOREROOM   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string USER_ID { set; get; }
+	    	    public string STOREROOM_ID { set; get; }
+	    	    public long DATAVERSION { set; get; }
+	    	    public DateTime? CREATEDATE { set; get; }
+	    	    public string CREATER { set; get; }
+	    	    public DateTime? UPDATEDATE { set; get; }
+	    	    public string UPDATER { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ISUSED { set; get; }
+		}
 
 
+    
+ 
+ 
+    public partial class SYS_MENUSConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<SYS_MENUS> 
+    {
+		public SYS_MENUSConfiguration()
+        {
+			ToTable("SYS_MENUS");
+			            HasKey(x => x.Id);
+		 
+		 
+			 																																																																																 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class WAREHOUSE_STOCK_COUNT_STOCKConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_STOCK_COUNT_STOCK> 
+    {
+		public WAREHOUSE_STOCK_COUNT_STOCKConfiguration()
+        {
+			ToTable("WAREHOUSE_STOCK_COUNT_STOCK");
+			            HasKey(x => x.Id);
+		 
+		 
+			 																																																																																																																																																																											 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class PRINT_SERVICEConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<PRINT_SERVICE> 
+    {
+		public PRINT_SERVICEConfiguration()
+        {
+			ToTable("PRINT_SERVICE");
+			            HasKey(x => x.Id);
+		 
+		 
+			 																																																																																							 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class SYS_PROGRAMOPERATIONConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<SYS_PROGRAMOPERATION> 
+    {
+		public SYS_PROGRAMOPERATIONConfiguration()
+        {
+			ToTable("SYS_PROGRAMOPERATION");
+			            HasKey(x => x.Id);
+		 
+		 
+			 																																																																									 
+        }
+		 
+	}
     
  
  
@@ -1892,7 +2710,7 @@ namespace Blocks.BussnessEntityModule
 			            HasKey(x => x.Id);
 		 
 		 
-			 																																																																																							 
+			 																																																																																														 
         }
 		 
 	}
@@ -1998,6 +2816,21 @@ namespace Blocks.BussnessEntityModule
 		 
 		 
 			 																																																																																																																										 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class SHEET1Configuration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<SHEET1> 
+    {
+		public SHEET1Configuration()
+        {
+			ToTable("SHEET1");
+			            HasKey(x => x.Id);
+		 
+		 
+			 																	 
         }
 		 
 	}
@@ -2312,7 +3145,7 @@ namespace Blocks.BussnessEntityModule
 			            HasKey(x => x.Id);
 		 
 		 
-			 																																																																																																																																																																																																																																																																																																																																																																								 
+			 																																																																																																																																																						 
         }
 		 
 	}
@@ -2372,7 +3205,7 @@ namespace Blocks.BussnessEntityModule
 			            HasKey(x => x.Id);
 		 
 		 
-			 																																																																																																																																	 
+			 																																																																																							 
         }
 		 
 	}
@@ -2669,8 +3502,11 @@ namespace Blocks.BussnessEntityModule
 		public TESTENTITYConfiguration()
         {
 			ToTable("TESTENTITY");
-			            HasKey(x => x.Id);																																																																						 HasOptional(t => t.TESTENTITY2).WithMany().HasForeignKey(t => t.TESTENTITY2ID);	
-			 HasMany(t => t.TESTENTITY3s).WithOptional().HasForeignKey(t => t.TESTENTITYID);
+			            HasKey(x => x.Id);
+		 
+		 
+			 																																																																																																											 HasOptional(t => t.TESTENTITY2).WithMany().HasForeignKey(t => t.TESTENTITY2ID);	
+															     HasMany(t => t.TESTENTITY3s).WithOptional().HasForeignKey(t => t.TESTENTITYID);
 										 
         }
 		 
@@ -2686,7 +3522,7 @@ namespace Blocks.BussnessEntityModule
 			            HasKey(x => x.Id);
 		 
 		 
-			 																	 
+			 																																																				 
         }
 		 
 	}
@@ -3137,6 +3973,456 @@ namespace Blocks.BussnessEntityModule
 		 
 		 
 			 																																																																		 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class BDTA_CUSTOMERConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_CUSTOMER> 
+    {
+		public BDTA_CUSTOMERConfiguration()
+        {
+			ToTable("BDTA_CUSTOMER");
+			            HasKey(x => x.Id);
+		 
+		 
+			 																																																																																																																																															 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class BDTA_OUT_IN_TYPEConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_OUT_IN_TYPE> 
+    {
+		public BDTA_OUT_IN_TYPEConfiguration()
+        {
+			ToTable("BDTA_OUT_IN_TYPE");
+			            HasKey(x => x.Id);
+		 
+		 
+			 																																																																																							 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class BDTA_QA_CHECKMODEConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_QA_CHECKMODE> 
+    {
+		public BDTA_QA_CHECKMODEConfiguration()
+        {
+			ToTable("BDTA_QA_CHECKMODE");
+			            HasKey(x => x.Id);
+		 
+		 
+			 																																																																																																																																								 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class BDTA_QA_CHECKITEMConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_QA_CHECKITEM> 
+    {
+		public BDTA_QA_CHECKITEMConfiguration()
+        {
+			ToTable("BDTA_QA_CHECKITEM");
+			            HasKey(x => x.Id);
+		 
+		 
+			 																																																																																																																																	 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class BDTA_MAKERConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_MAKER> 
+    {
+		public BDTA_MAKERConfiguration()
+        {
+			ToTable("BDTA_MAKER");
+			            HasKey(x => x.Id);
+		 
+		 
+			 																																																																																																																																															 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class BDTA_UNITConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_UNIT> 
+    {
+		public BDTA_UNITConfiguration()
+        {
+			ToTable("BDTA_UNIT");
+			            HasKey(x => x.Id);
+		 
+		 
+			 																																																																																 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class BDTA_QA_CHECKITEMMANAGEConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_QA_CHECKITEMMANAGE> 
+    {
+		public BDTA_QA_CHECKITEMMANAGEConfiguration()
+        {
+			ToTable("BDTA_QA_CHECKITEMMANAGE");
+			            HasKey(x => x.Id);
+		 
+		 
+			 																																																																									 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class BDTA_QA_CHECKITEMMANAGE_DETAILConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_QA_CHECKITEMMANAGE_DETAIL> 
+    {
+		public BDTA_QA_CHECKITEMMANAGE_DETAILConfiguration()
+        {
+			ToTable("BDTA_QA_CHECKITEMMANAGE_DETAIL");
+			            HasKey(x => x.Id);
+		 
+		 
+			 																																																																																																																																															 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class WAREHOUSE_STOCK_LOCKConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_STOCK_LOCK> 
+    {
+		public WAREHOUSE_STOCK_LOCKConfiguration()
+        {
+			ToTable("WAREHOUSE_STOCK_LOCK");
+			            HasKey(x => x.Id);
+		 
+		 
+			 																																																																																																												 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class WAREHOUSE_STOCK_LOGConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_STOCK_LOG> 
+    {
+		public WAREHOUSE_STOCK_LOGConfiguration()
+        {
+			ToTable("WAREHOUSE_STOCK_LOG");
+			            HasKey(x => x.Id);
+		 
+		 
+			 																																																																																																																																																																				 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class WAREHOUSE_STOCKConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_STOCK> 
+    {
+		public WAREHOUSE_STOCKConfiguration()
+        {
+			ToTable("WAREHOUSE_STOCK");
+			            HasKey(x => x.Id);
+		 
+		 
+			 																																																																																							 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class WAREHOUSE_STOCK_DETAILConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_STOCK_DETAIL> 
+    {
+		public WAREHOUSE_STOCK_DETAILConfiguration()
+        {
+			ToTable("WAREHOUSE_STOCK_DETAIL");
+			            HasKey(x => x.Id);
+		 
+		 
+			 																																																																																																																																																																				 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class BDTA_QA_SAMPLING_STANDARDConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_QA_SAMPLING_STANDARD> 
+    {
+		public BDTA_QA_SAMPLING_STANDARDConfiguration()
+        {
+			ToTable("BDTA_QA_SAMPLING_STANDARD");
+			            HasKey(x => x.Id);
+		 
+		 
+			 																																																																																														 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class WAREHOUSE_RECEIVEConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_RECEIVE> 
+    {
+		public WAREHOUSE_RECEIVEConfiguration()
+        {
+			ToTable("WAREHOUSE_RECEIVE");
+			            HasKey(x => x.Id);
+		 
+		 
+			 																																																																																																																										 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class WAREHOUSE_RECEIVE_DETAILConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_RECEIVE_DETAIL> 
+    {
+		public WAREHOUSE_RECEIVE_DETAILConfiguration()
+        {
+			ToTable("WAREHOUSE_RECEIVE_DETAIL");
+			            HasKey(x => x.Id);
+		 
+		 
+			 																																																																																																																																								 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class WAREHOUSE_IQCConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_IQC> 
+    {
+		public WAREHOUSE_IQCConfiguration()
+        {
+			ToTable("WAREHOUSE_IQC");
+			            HasKey(x => x.Id);
+		 
+		 
+			 																																																																																																																																																																																																 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class WAREHOUSE_IQC_DETAILConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_IQC_DETAIL> 
+    {
+		public WAREHOUSE_IQC_DETAILConfiguration()
+        {
+			ToTable("WAREHOUSE_IQC_DETAIL");
+			            HasKey(x => x.Id);
+		 
+		 
+			 																																																																																																																																																													 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class WAREHOUSE_IN_STORAGEConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_IN_STORAGE> 
+    {
+		public WAREHOUSE_IN_STORAGEConfiguration()
+        {
+			ToTable("WAREHOUSE_IN_STORAGE");
+			            HasKey(x => x.Id);
+		 
+		 
+			 																																																																									 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class WAREHOUSE_IN_STORAGE_DETAILConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_IN_STORAGE_DETAIL> 
+    {
+		public WAREHOUSE_IN_STORAGE_DETAILConfiguration()
+        {
+			ToTable("WAREHOUSE_IN_STORAGE_DETAIL");
+			            HasKey(x => x.Id);
+		 
+		 
+			 																																																																																																																																																																				 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class WAREHOUSE_MOVESITEConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_MOVESITE> 
+    {
+		public WAREHOUSE_MOVESITEConfiguration()
+        {
+			ToTable("WAREHOUSE_MOVESITE");
+			            HasKey(x => x.Id);
+		 
+		 
+			 																																																																		 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class WAREHOUSE_MOVESITE_DETAILConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_MOVESITE_DETAIL> 
+    {
+		public WAREHOUSE_MOVESITE_DETAILConfiguration()
+        {
+			ToTable("WAREHOUSE_MOVESITE_DETAIL");
+			            HasKey(x => x.Id);
+		 
+		 
+			 																																																																																																																																	 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class WAREHOUSE_STOCK_COUNTConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_STOCK_COUNT> 
+    {
+		public WAREHOUSE_STOCK_COUNTConfiguration()
+        {
+			ToTable("WAREHOUSE_STOCK_COUNT");
+			            HasKey(x => x.Id);
+		 
+		 
+			 																																																																																																																										 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class WAREHOUSE_STOCK_COUNT_DETAILConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_STOCK_COUNT_DETAIL> 
+    {
+		public WAREHOUSE_STOCK_COUNT_DETAILConfiguration()
+        {
+			ToTable("WAREHOUSE_STOCK_COUNT_DETAIL");
+			            HasKey(x => x.Id);
+		 
+		 
+			 																																																																																																																										 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class WAREHOUSE_STOCK_COUNT_SCANConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_STOCK_COUNT_SCAN> 
+    {
+		public WAREHOUSE_STOCK_COUNT_SCANConfiguration()
+        {
+			ToTable("WAREHOUSE_STOCK_COUNT_SCAN");
+			            HasKey(x => x.Id);
+		 
+		 
+			 																																																																																																																																																						 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class WAREHOUSE_OUT_STORAGEConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_OUT_STORAGE> 
+    {
+		public WAREHOUSE_OUT_STORAGEConfiguration()
+        {
+			ToTable("WAREHOUSE_OUT_STORAGE");
+			            HasKey(x => x.Id);
+		 
+		 
+			 																																																																																																												 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class WAREHOUSE_OUT_STORAGE_DETAILConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_OUT_STORAGE_DETAIL> 
+    {
+		public WAREHOUSE_OUT_STORAGE_DETAILConfiguration()
+        {
+			ToTable("WAREHOUSE_OUT_STORAGE_DETAIL");
+			            HasKey(x => x.Id);
+		 
+		 
+			 																																																																																														 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class WAREHOUSE_STOCK_BALANCE_DETAILConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_STOCK_BALANCE_DETAIL> 
+    {
+		public WAREHOUSE_STOCK_BALANCE_DETAILConfiguration()
+        {
+			ToTable("WAREHOUSE_STOCK_BALANCE_DETAIL");
+			            HasKey(x => x.Id);
+		 
+		 
+			 																																																																																																																																															 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class WAREHOUSE_OUT_STORAGE_ORDERConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_OUT_STORAGE_ORDER> 
+    {
+		public WAREHOUSE_OUT_STORAGE_ORDERConfiguration()
+        {
+			ToTable("WAREHOUSE_OUT_STORAGE_ORDER");
+			            HasKey(x => x.Id);
+		 
+		 
+			 																																																																																																												 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class WAREHOUSE_STOCK_BALANCEConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_STOCK_BALANCE> 
+    {
+		public WAREHOUSE_STOCK_BALANCEConfiguration()
+        {
+			ToTable("WAREHOUSE_STOCK_BALANCE");
+			            HasKey(x => x.Id);
+		 
+		 
+			 																																																																																																																																																						 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class SYS_USER_STOREROOMConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<SYS_USER_STOREROOM> 
+    {
+		public SYS_USER_STOREROOMConfiguration()
+        {
+			ToTable("SYS_USER_STOREROOM");
+			            HasKey(x => x.Id);
+		 
+		 
+			 																																																																									 
         }
 		 
 	}

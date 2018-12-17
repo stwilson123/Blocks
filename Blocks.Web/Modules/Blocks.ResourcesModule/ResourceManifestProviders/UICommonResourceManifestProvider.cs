@@ -23,7 +23,7 @@ namespace Blocks.ResourcesModule.ResourceManifestProviders {
                 "lib/jqGrid/css/ui.jqgrid-bootstrap-ui.css").SetVersion("5.2.0").SetDependencies(ResourceName.jqGrid);
             manifest.DefineStyle(ResourceName.layer).SetUrl("lib/layer/theme/default/layer.css",
                 "lib/layer/theme/default/layer.css").SetVersion("3.3.1");
-            manifest.DefineStyle(ResourceName.magicsuggest).SetUrl("lib/combobox/magicsuggest.min.css",
+            manifest.DefineStyle(ResourceName.magicsuggest).SetUrl("lib/combobox/magicsuggest-min.css",
                 "lib/combobox/magicsuggest.css").SetVersion("3.3.1");
             manifest.DefineStyle(ResourceName.select2).SetUrl("lib/select2-develop/dist/css/select2.min.css",
                 "lib/select2-develop/dist/css/select2.css").SetVersion("4.0.6");
@@ -57,16 +57,16 @@ namespace Blocks.ResourcesModule.ResourceManifestProviders {
             manifest.DefineScript(ResourceName.jqGrid).SetUrl("lib/jqGrid/script/jquery.jqGrid.min.js",
                 "lib/jqGrid/script/jquery.jqGrid.min.js").SetVersion("5.2.0").SetCultures();
 
-            manifest.DefineScript(ResourceName.jqGrid + "-zh-CN").SetUrl("lib/jqGrid/script/grid.locale-cn.js",
+            manifest.DefineScript(ResourceName.jqGrid + "-zh-CN").SetUrl("lib/jqGrid/script/i18n/grid.locale-cn.js",
                           "lib/jqGrid/script/i18n/grid.locale-cn.js").SetVersion("5.2.0");
 
-            manifest.DefineScript(ResourceName.jqGrid + "-en").SetUrl("lib/jqGrid/script/grid.locale-en.js",
+            manifest.DefineScript(ResourceName.jqGrid + "-en").SetUrl("lib/jqGrid/script/i18n/grid.locale-en.js",
                       "lib/jqGrid/script/i18n/grid.locale-en.js").SetVersion("5.2.0");
 
             manifest.DefineScript(ResourceName.layer).SetUrl("lib/layer/layer.js",
                 "lib/layer/layer.js").SetVersion("3.1.1").SetAMD();
             
-            manifest.DefineScript(ResourceName.magicsuggest).SetUrl("lib/combobox/dist/js/magicsuggest.min.js",
+            manifest.DefineScript(ResourceName.magicsuggest).SetUrl("lib/combobox/magicsuggest-min.js",
                 "lib/combobox/magicsuggest.js").SetVersion("2.1.4");
             
             manifest.DefineScript(ResourceName.select2).SetUrl("lib/select2-develop/dist/js/select2.full.min.js",
