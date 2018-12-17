@@ -7,6 +7,7 @@ using Abp.Runtime.Session;
 using Blocks.Core.Navigation.Services;
 using Blocks.Framework.AutoMapper;
 using Blocks.Framework.Event;
+using Blocks.Framework.Localization;
 using Blocks.Framework.Security;
 using Blocks.Framework.Services;
 using Blocks.Framework.Web.Api.Controllers.Dynamic;
@@ -22,12 +23,12 @@ namespace Blocks.LayoutModule.Controllers
     {
         private readonly IUserNavigationManager _userNavigationManager;
         private IUserContext _userContext;
-        private ILanguageManager _languageManager;
+        private ILanguagesManager _languageManager;
         public IDomainEventBus EventBus { get; set; }
         private readonly IAbpWebLocalizationConfiguration _webLocalizationConfiguration;
         public IClock Clock { get; set; }
 
-        public LayoutController(IUserNavigationManager userNavigationManager, IUserContext userContext, ILanguageManager languageManager,
+        public LayoutController(IUserNavigationManager userNavigationManager, IUserContext userContext, ILanguagesManager languageManager,
             IAbpWebLocalizationConfiguration webLocalizationConfiguration)
         {
             _userNavigationManager = userNavigationManager;

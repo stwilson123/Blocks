@@ -50,7 +50,7 @@ namespace Blocks.Framework.Localization
 
 
 
-            IocManager.Register<ILanguageManager, LanguageManager>(Abp.Dependency.DependencyLifeStyle.Transient);
+            IocManager.Register<ILanguagesManager, LanguageManager>(Abp.Dependency.DependencyLifeStyle.Transient);
         }
 
         public override void Initialize()

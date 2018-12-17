@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Blocks.Framework.Localization
 {
-    public interface ILanguageManager
+    public interface ILanguagesManager
     {
         LanguageInfo CurrentLanguage { get; }
 

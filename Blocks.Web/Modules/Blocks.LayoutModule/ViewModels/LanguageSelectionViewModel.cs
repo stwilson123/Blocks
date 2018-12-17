@@ -16,7 +16,7 @@ namespace Blocks.LayoutModule.ViewModels
 
     public class LanguageInfo
     {
-        public LanguageInfo(Abp.Localization.LanguageInfo languageInfo)
+        public LanguageInfo(Blocks.Framework.Localization.LanguageInfo languageInfo)
         {
             this.Name = languageInfo.Name;
             this.DisplayName = languageInfo.DisplayName;

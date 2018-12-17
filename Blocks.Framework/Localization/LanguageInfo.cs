@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 
 namespace Blocks.Framework.Localization
@@ -39,17 +40,19 @@ namespace Blocks.Framework.Localization
         /// </summary>
         public bool IsRightToLeft
         {
-            get
-            {
-                try
-                {
-                    return CultureInfo.GetCultureInfo(Name).TextInfo?.IsRightToLeft ?? false;
-                }
-                catch
-                {
-                    return false;
-                }
-            }
+            get;
+            //{
+            //try
+            //{
+            //    return CultureInfo.GetCultureInfo(Name).TextInfo?.IsRightToLeft ?? false;
+            //}
+            //catch
+            //{
+            //    return false;
+            //}
+            //}
+            set;//{ }
+
         }
 
         /// <summary>

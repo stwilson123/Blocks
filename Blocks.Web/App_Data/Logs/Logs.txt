@@ -1,0 +1,997 @@
+DEBUG 2018-12-16 23:06:01,274 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2018-12-16 23:06:02,226 [1    ] Abp.Modules.AbpModuleManager             - Found 35 ABP modules in total.
+DEBUG 2018-12-16 23:06:02,244 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.Web.BlocksWebModule, Blocks.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:06:02,251 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.BlocksDataModule, Blocks.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:06:02,257 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFramework.AbpZeroEntityFrameworkModule, Abp.Zero.EntityFramework, Version=3.2.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:06:02,266 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.Zero, Version=3.2.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:06:02,271 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=3.2.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:06:02,277 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=3.2.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:06:02,282 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=3.2.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:06:02,287 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=3.2.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:06:02,293 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.BlocksCoreModule, Block.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:06:02,300 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.BlocksApplicationModule, Blocks.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:06:02,307 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=3.2.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:06:02,313 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.Api.BlocksWebApiModule, Blocks.WebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:06:02,319 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.WebApi.AbpWebApiModule, Abp.Web.Api, Version=3.2.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:06:02,326 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebModule, Abp.Web, Version=3.2.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:06:02,334 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=3.2.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:06:02,356 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.SignalR.AbpWebSignalRModule, Abp.Web.SignalR, Version=3.2.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:06:02,375 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.Mvc.AbpWebMvcModule, Abp.Web.Mvc, Version=3.2.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:06:02,412 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.Framework.Web.Modules.BlocksFrameworkWebModule, Blocks.Framework.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:06:02,427 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.Framework.Modules.BlocksFrameworkModule, Blocks.Framework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:06:02,435 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.Framework.Caching.CacheModule, Blocks.Framework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:06:02,443 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.Framework.Environment.EnvironmentModule, Blocks.Framework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:06:02,451 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.Framework.Localization.LocalizationModule, Blocks.Framework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:06:02,457 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.Framework.Navigation.NavigationModule, Blocks.Framework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:06:02,463 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.Framework.RPCProxy.RPCProxyModule, Blocks.Framework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:06:02,470 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.Framework.Web.Mvc.AbpWebMvcModule, Blocks.Framework.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:06:02,476 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.Framework.Web.Web.AbpWebModule, Blocks.Framework.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:06:02,483 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.Framework.Web.Api.WebApiModule, Blocks.Framework.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:06:02,489 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.Core.BlocksStartModule, Blocks.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:06:02,494 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.Framework.DBORM.BlocksFrameworkDBORMModule, Blocks.Framework.DBORM, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:06:02,500 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.BussnessDomainExtendModule.BlocksBussenssDomainExtendModule, Blocks.BussnessDomainExtendModule, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:06:02,508 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.BussnessWebModule.BlocksBussenssModule, Blocks.BussnessWebModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:06:02,515 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.LayoutModule.LayoutModule, Blocks.LayoutModule, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:06:02,521 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.LayoutModule.LocalizationModule, Blocks.LocalizationModule, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:06:02,526 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.PermissonModule.PermissionModule, Blocks.PermissonModule, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:06:02,532 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.ResourcesModule.ResourcesModule, Blocks.ResourcesModule, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:06:02,541 [1    ] Abp.Modules.AbpModuleManager             - 35 modules loaded.
+DEBUG 2018-12-16 23:06:02,937 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-12-16 23:06:02,944 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-12-16 23:06:02,951 [1    ] o.Configuration.LanguageManagementConfig - Converted Blocks (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-12-16 23:06:02,957 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-12-16 23:06:02,963 [1    ] o.Configuration.LanguageManagementConfig - Converted BlocksFramework (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-12-16 23:06:03,402 [1    ] EntityFramework.AbpEntityFrameworkModule - Registering DbContext: Blocks.EntityFramework.BlocksDbContext, Blocks.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+INFO  2018-12-16 23:06:04,335 [6    ] nt.Extensions.Folders.ExtensionHarvester - Start looking for extensions in '~/Themes'...
+INFO  2018-12-16 23:06:04,335 [5    ] nt.Extensions.Folders.ExtensionHarvester - Start looking for extensions in '~/Modules'...
+INFO  2018-12-16 23:06:04,341 [6    ] nt.Extensions.Folders.ExtensionHarvester - Done looking for extensions in '~/Themes': 
+INFO  2018-12-16 23:06:04,547 [5    ] nt.Extensions.Folders.ExtensionHarvester - Done looking for extensions in '~/Modules': Blocks.BussnessDomainExtendModule, Blocks.BussnessWebModule, Blocks.LayoutModule, Blocks.LocalizationModule, Blocks.PermissonModule, Blocks.ResourcesModule
+WARN  2018-12-16 23:06:04,598 [1    ] Abp.Logging.LogHelper                    - Blocks.Framework.Web can't found extension depond on it.so ignore to register BlocksConfiguration
+WARN  2018-12-16 23:06:04,606 [1    ] Abp.Logging.LogHelper                    - Blocks.Framework.Web can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-12-16 23:06:04,615 [1    ] Abp.Logging.LogHelper                    - Blocks.Framework.Web can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-12-16 23:06:04,624 [1    ] Abp.Logging.LogHelper                    - Blocks.Core can't found extension depond on it.so ignore to register BlocksConfiguration
+WARN  2018-12-16 23:06:04,631 [1    ] Abp.Logging.LogHelper                    - Blocks.Core can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-12-16 23:06:04,637 [1    ] Abp.Logging.LogHelper                    - Blocks.Core can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-12-16 23:06:04,644 [1    ] Abp.Logging.LogHelper                    - Blocks.Framework.DBORM can't found extension depond on it.so ignore to register BlocksConfiguration
+WARN  2018-12-16 23:06:04,649 [1    ] Abp.Logging.LogHelper                    - Blocks.Framework.DBORM can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-12-16 23:06:04,654 [1    ] Abp.Logging.LogHelper                    - Blocks.Framework.DBORM can't found extension depond on it.so ignore to register BlockWebController
+DEBUG 2018-12-16 23:06:04,662 [1    ] amework.DBORM.BlocksFrameworkDBORMModule - Registering DbContext: Blocks.Framework.DBORM.DBContext.BlocksDbContext`1, Blocks.Framework.DBORM, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+WARN  2018-12-16 23:06:04,732 [1    ] Abp.Logging.LogHelper                    - Blocks.BussnessApplicationModule can't found extension depond on it.so ignore to register BlocksConfiguration
+WARN  2018-12-16 23:06:04,738 [1    ] Abp.Logging.LogHelper                    - Blocks.BussnessApplicationModule can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-12-16 23:06:04,743 [1    ] Abp.Logging.LogHelper                    - Blocks.BussnessApplicationModule can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-12-16 23:06:04,785 [1    ] Abp.Logging.LogHelper                    - Blocks.BussnessDomainModule can't found extension depond on it.so ignore to register BlocksConfiguration
+WARN  2018-12-16 23:06:04,790 [1    ] Abp.Logging.LogHelper                    - Blocks.BussnessDomainModule can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-12-16 23:06:04,795 [1    ] Abp.Logging.LogHelper                    - Blocks.BussnessDomainModule can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-12-16 23:06:04,865 [1    ] Abp.Logging.LogHelper                    - Blocks.Web can't found extension depond on it.so ignore to register BlocksConfiguration
+WARN  2018-12-16 23:06:04,872 [1    ] Abp.Logging.LogHelper                    - Blocks.Web can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-12-16 23:06:04,877 [1    ] Abp.Logging.LogHelper                    - Blocks.Web can't found extension depond on it.so ignore to register BlockWebController
+DEBUG 2018-12-16 23:06:07,751 [1    ] Abp.Localization.LocalizationManager     - Initializing 11 localization sources.
+DEBUG 2018-12-16 23:06:07,790 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2018-12-16 23:06:07,803 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2018-12-16 23:06:07,811 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Blocks
+DEBUG 2018-12-16 23:06:07,819 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2018-12-16 23:06:07,887 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: BlocksFramework
+DEBUG 2018-12-16 23:06:07,911 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: BussnessDomainExtendModule
+DEBUG 2018-12-16 23:06:07,919 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: BussnessWebModule
+DEBUG 2018-12-16 23:06:07,926 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: LayoutModule
+DEBUG 2018-12-16 23:06:07,933 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Localization
+DEBUG 2018-12-16 23:06:07,940 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Permisson
+DEBUG 2018-12-16 23:06:07,947 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Resources
+DEBUG 2018-12-16 23:06:08,050 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 13 classes define auto mapping attributes
+DEBUG 2018-12-16 23:06:08,056 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2018-12-16 23:06:08,065 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.Sessions.Dto.UserLoginInfoDto
+DEBUG 2018-12-16 23:06:08,072 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.Users.Dto.CreateUserDto
+DEBUG 2018-12-16 23:06:08,078 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.Users.Dto.UpdateUserDto
+DEBUG 2018-12-16 23:06:08,082 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.Users.Dto.UserDto
+DEBUG 2018-12-16 23:06:08,087 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.Roles.Dto.CreateRoleDto
+DEBUG 2018-12-16 23:06:08,092 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.Roles.Dto.PermissionDto
+DEBUG 2018-12-16 23:06:08,099 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.Roles.Dto.RoleDto
+DEBUG 2018-12-16 23:06:08,104 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2018-12-16 23:06:08,109 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.MultiTenancy.Dto.EditTenantDto
+DEBUG 2018-12-16 23:06:08,115 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.MultiTenancy.Dto.TenantDto
+DEBUG 2018-12-16 23:06:08,121 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.Web.Models.Account.TenantChangeViewModel
+DEBUG 2018-12-16 23:06:08,126 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.Web.Models.Account.TenantSelectionViewModel+TenantInfo
+DEBUG 2018-12-16 23:06:10,461 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'Blocks.Sessions.ISessionAppService' with service name 'app/session'.
+DEBUG 2018-12-16 23:06:10,469 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'Blocks.Users.IUserAppService' with service name 'app/user'.
+DEBUG 2018-12-16 23:06:10,480 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'Blocks.Roles.IRoleAppService' with service name 'app/role'.
+DEBUG 2018-12-16 23:06:10,487 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'Blocks.MultiTenancy.ITenantAppService' with service name 'app/tenant'.
+DEBUG 2018-12-16 23:06:10,495 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'Blocks.Configuration.IConfigurationAppService' with service name 'app/configuration'.
+DEBUG 2018-12-16 23:06:10,502 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'Blocks.Authorization.Accounts.IAccountAppService' with service name 'app/account'.
+DEBUG 2018-12-16 23:06:10,733 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'Blocks.BussnessApplicationModule.TestAppService.ITestAppService' with service name 'BussnessWebModule/test'.
+DEBUG 2018-12-16 23:06:10,742 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'Blocks.BussnessApplicationModule.MasterData.IComboboxAppService' with service name 'BussnessWebModule/combobox'.
+DEBUG 2018-12-16 23:06:10,753 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'Blocks.BussnessApplicationModule.MasterData.IMasterDataAppService' with service name 'BussnessWebModule/masterData'.
+WARN  2018-12-16 23:07:52,442 [1    ] Abp.MultiTenancy.TenantResolver          - System.Web.HttpException (0x80004005): Request is not available in this context
+   at System.Web.HttpContext.get_Request()
+   at Abp.Web.MultiTenancy.HttpHeaderTenantResolveContributor.ResolveTenantId()
+   at Abp.MultiTenancy.TenantResolver.GetTenantIdFromContributors()
+System.Web.HttpException (0x80004005): Request is not available in this context
+   at System.Web.HttpContext.get_Request()
+   at Abp.Web.MultiTenancy.HttpHeaderTenantResolveContributor.ResolveTenantId()
+   at Abp.MultiTenancy.TenantResolver.GetTenantIdFromContributors()
+WARN  2018-12-16 23:07:52,478 [1    ] Abp.MultiTenancy.TenantResolver          - System.Web.HttpException (0x80004005): Request is not available in this context
+   at System.Web.HttpContext.get_Request()
+   at Abp.Web.MultiTenancy.HttpCookieTenantResolveContributor.ResolveTenantId()
+   at Abp.MultiTenancy.TenantResolver.GetTenantIdFromContributors()
+System.Web.HttpException (0x80004005): Request is not available in this context
+   at System.Web.HttpContext.get_Request()
+   at Abp.Web.MultiTenancy.HttpCookieTenantResolveContributor.ResolveTenantId()
+   at Abp.MultiTenancy.TenantResolver.GetTenantIdFromContributors()
+WARN  2018-12-16 23:08:01,185 [1    ] Abp.Logging.LogHelper                    - Blocks.BussnessRespositoryModule.SqlserverModule can't found extension depond on it.so ignore to register BlocksConfiguration
+WARN  2018-12-16 23:08:01,191 [1    ] Abp.Logging.LogHelper                    - Blocks.BussnessRespositoryModule.SqlserverModule can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-12-16 23:08:01,197 [1    ] Abp.Logging.LogHelper                    - Blocks.BussnessRespositoryModule.SqlserverModule can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-12-16 23:08:01,204 [1    ] Abp.Logging.LogHelper                    - Blocks.BussnessRespositoryModule can't found extension depond on it.so ignore to register BlocksConfiguration
+WARN  2018-12-16 23:08:01,210 [1    ] Abp.Logging.LogHelper                    - Blocks.BussnessRespositoryModule can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-12-16 23:08:01,216 [1    ] Abp.Logging.LogHelper                    - Blocks.BussnessRespositoryModule can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-12-16 23:08:02,705 [5    ] Abp.Logging.LogHelper                    - Abp.Authorization.AbpAuthorizationException: Current user did not login to the application!
+   at Abp.Authorization.AuthorizationHelper.<AuthorizeAsync>d__19.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at Abp.Authorization.AuthorizationHelper.<CheckPermissions>d__22.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at Abp.Authorization.AuthorizationHelper.<AuthorizeAsync>d__20.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Nito.AsyncEx.Synchronous.TaskExtensions.WaitAndUnwrapException(Task task)
+   at Nito.AsyncEx.AsyncContext.<>c__DisplayClass15_0.<Run>b__0(Task t)
+   at System.Threading.Tasks.ContinuationTaskFromTask.InnerInvoke()
+   at System.Threading.Tasks.Task.Execute()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Nito.AsyncEx.Synchronous.TaskExtensions.WaitAndUnwrapException(Task task)
+   at Nito.AsyncEx.AsyncContext.Run(Func`1 action)
+   at Abp.Threading.AsyncHelper.RunSync(Func`1 action)
+   at Abp.Authorization.AuthorizationHelperExtensions.Authorize(IAuthorizationHelper authorizationHelper, MethodInfo methodInfo, Type type)
+   at Abp.Web.Mvc.Authorization.AbpMvcAuthorizeFilter.OnAuthorization(AuthorizationContext filterContext)
+Abp.Authorization.AbpAuthorizationException: Current user did not login to the application!
+   at Abp.Authorization.AuthorizationHelper.<AuthorizeAsync>d__19.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at Abp.Authorization.AuthorizationHelper.<CheckPermissions>d__22.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at Abp.Authorization.AuthorizationHelper.<AuthorizeAsync>d__20.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Nito.AsyncEx.Synchronous.TaskExtensions.WaitAndUnwrapException(Task task)
+   at Nito.AsyncEx.AsyncContext.<>c__DisplayClass15_0.<Run>b__0(Task t)
+   at System.Threading.Tasks.ContinuationTaskFromTask.InnerInvoke()
+   at System.Threading.Tasks.Task.Execute()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Nito.AsyncEx.Synchronous.TaskExtensions.WaitAndUnwrapException(Task task)
+   at Nito.AsyncEx.AsyncContext.Run(Func`1 action)
+   at Abp.Threading.AsyncHelper.RunSync(Func`1 action)
+   at Abp.Authorization.AuthorizationHelperExtensions.Authorize(IAuthorizationHelper authorizationHelper, MethodInfo methodInfo, Type type)
+   at Abp.Web.Mvc.Authorization.AbpMvcAuthorizeFilter.OnAuthorization(AuthorizationContext filterContext)
+DEBUG 2018-12-16 23:11:20,737 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2018-12-16 23:11:21,912 [1    ] Abp.Modules.AbpModuleManager             - Found 35 ABP modules in total.
+DEBUG 2018-12-16 23:11:21,931 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.Web.BlocksWebModule, Blocks.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:11:21,941 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.BlocksDataModule, Blocks.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:11:21,950 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFramework.AbpZeroEntityFrameworkModule, Abp.Zero.EntityFramework, Version=3.2.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:11:21,956 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.Zero, Version=3.2.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:11:21,961 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=3.2.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:11:21,966 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=3.2.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:11:21,974 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=3.2.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:11:21,981 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=3.2.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:11:21,988 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.BlocksCoreModule, Block.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:11:21,993 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.BlocksApplicationModule, Blocks.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:11:21,999 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=3.2.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:11:22,005 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.Api.BlocksWebApiModule, Blocks.WebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:11:22,011 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.WebApi.AbpWebApiModule, Abp.Web.Api, Version=3.2.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:11:22,017 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebModule, Abp.Web, Version=3.2.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:11:22,023 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=3.2.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:11:22,029 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.SignalR.AbpWebSignalRModule, Abp.Web.SignalR, Version=3.2.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:11:22,036 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.Mvc.AbpWebMvcModule, Abp.Web.Mvc, Version=3.2.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:11:22,045 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.Framework.Web.Modules.BlocksFrameworkWebModule, Blocks.Framework.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:11:22,051 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.Framework.Modules.BlocksFrameworkModule, Blocks.Framework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:11:22,056 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.Framework.Caching.CacheModule, Blocks.Framework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:11:22,061 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.Framework.Environment.EnvironmentModule, Blocks.Framework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:11:22,065 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.Framework.Localization.LocalizationModule, Blocks.Framework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:11:22,072 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.Framework.Navigation.NavigationModule, Blocks.Framework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:11:22,079 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.Framework.RPCProxy.RPCProxyModule, Blocks.Framework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:11:22,088 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.Framework.Web.Mvc.AbpWebMvcModule, Blocks.Framework.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:11:22,096 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.Framework.Web.Web.AbpWebModule, Blocks.Framework.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:11:22,107 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.Framework.Web.Api.WebApiModule, Blocks.Framework.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:11:22,112 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.Core.BlocksStartModule, Blocks.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:11:22,120 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.Framework.DBORM.BlocksFrameworkDBORMModule, Blocks.Framework.DBORM, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:11:22,129 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.BussnessDomainExtendModule.BlocksBussenssDomainExtendModule, Blocks.BussnessDomainExtendModule, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:11:22,137 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.BussnessWebModule.BlocksBussenssModule, Blocks.BussnessWebModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:11:22,142 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.LayoutModule.LayoutModule, Blocks.LayoutModule, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:11:22,170 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.LayoutModule.LocalizationModule, Blocks.LocalizationModule, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:11:22,187 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.PermissonModule.PermissionModule, Blocks.PermissonModule, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:11:22,203 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.ResourcesModule.ResourcesModule, Blocks.ResourcesModule, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:11:22,218 [1    ] Abp.Modules.AbpModuleManager             - 35 modules loaded.
+DEBUG 2018-12-16 23:11:22,651 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-12-16 23:11:22,658 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-12-16 23:11:22,663 [1    ] o.Configuration.LanguageManagementConfig - Converted Blocks (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-12-16 23:11:22,670 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-12-16 23:11:22,675 [1    ] o.Configuration.LanguageManagementConfig - Converted BlocksFramework (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-12-16 23:11:23,105 [1    ] EntityFramework.AbpEntityFrameworkModule - Registering DbContext: Blocks.EntityFramework.BlocksDbContext, Blocks.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+INFO  2018-12-16 23:11:24,070 [6    ] nt.Extensions.Folders.ExtensionHarvester - Start looking for extensions in '~/Themes'...
+INFO  2018-12-16 23:11:24,070 [5    ] nt.Extensions.Folders.ExtensionHarvester - Start looking for extensions in '~/Modules'...
+INFO  2018-12-16 23:11:24,077 [6    ] nt.Extensions.Folders.ExtensionHarvester - Done looking for extensions in '~/Themes': 
+INFO  2018-12-16 23:11:24,316 [5    ] nt.Extensions.Folders.ExtensionHarvester - Done looking for extensions in '~/Modules': Blocks.BussnessDomainExtendModule, Blocks.BussnessWebModule, Blocks.LayoutModule, Blocks.LocalizationModule, Blocks.PermissonModule, Blocks.ResourcesModule
+WARN  2018-12-16 23:11:24,368 [1    ] Abp.Logging.LogHelper                    - Blocks.Framework.Web can't found extension depond on it.so ignore to register BlocksConfiguration
+WARN  2018-12-16 23:11:24,374 [1    ] Abp.Logging.LogHelper                    - Blocks.Framework.Web can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-12-16 23:11:24,381 [1    ] Abp.Logging.LogHelper                    - Blocks.Framework.Web can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-12-16 23:11:24,389 [1    ] Abp.Logging.LogHelper                    - Blocks.Core can't found extension depond on it.so ignore to register BlocksConfiguration
+WARN  2018-12-16 23:11:24,394 [1    ] Abp.Logging.LogHelper                    - Blocks.Core can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-12-16 23:11:24,400 [1    ] Abp.Logging.LogHelper                    - Blocks.Core can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-12-16 23:11:24,409 [1    ] Abp.Logging.LogHelper                    - Blocks.Framework.DBORM can't found extension depond on it.so ignore to register BlocksConfiguration
+WARN  2018-12-16 23:11:24,415 [1    ] Abp.Logging.LogHelper                    - Blocks.Framework.DBORM can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-12-16 23:11:24,419 [1    ] Abp.Logging.LogHelper                    - Blocks.Framework.DBORM can't found extension depond on it.so ignore to register BlockWebController
+DEBUG 2018-12-16 23:11:24,429 [1    ] amework.DBORM.BlocksFrameworkDBORMModule - Registering DbContext: Blocks.Framework.DBORM.DBContext.BlocksDbContext`1, Blocks.Framework.DBORM, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+WARN  2018-12-16 23:11:24,485 [1    ] Abp.Logging.LogHelper                    - Blocks.BussnessApplicationModule can't found extension depond on it.so ignore to register BlocksConfiguration
+WARN  2018-12-16 23:11:24,492 [1    ] Abp.Logging.LogHelper                    - Blocks.BussnessApplicationModule can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-12-16 23:11:24,500 [1    ] Abp.Logging.LogHelper                    - Blocks.BussnessApplicationModule can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-12-16 23:11:24,541 [1    ] Abp.Logging.LogHelper                    - Blocks.BussnessDomainModule can't found extension depond on it.so ignore to register BlocksConfiguration
+WARN  2018-12-16 23:11:24,546 [1    ] Abp.Logging.LogHelper                    - Blocks.BussnessDomainModule can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-12-16 23:11:24,553 [1    ] Abp.Logging.LogHelper                    - Blocks.BussnessDomainModule can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-12-16 23:11:24,638 [1    ] Abp.Logging.LogHelper                    - Blocks.Web can't found extension depond on it.so ignore to register BlocksConfiguration
+WARN  2018-12-16 23:11:24,644 [1    ] Abp.Logging.LogHelper                    - Blocks.Web can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-12-16 23:11:24,649 [1    ] Abp.Logging.LogHelper                    - Blocks.Web can't found extension depond on it.so ignore to register BlockWebController
+DEBUG 2018-12-16 23:11:27,519 [1    ] Abp.Localization.LocalizationManager     - Initializing 11 localization sources.
+DEBUG 2018-12-16 23:11:27,554 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2018-12-16 23:11:27,571 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2018-12-16 23:11:27,579 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Blocks
+DEBUG 2018-12-16 23:11:27,586 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2018-12-16 23:11:27,591 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: BlocksFramework
+DEBUG 2018-12-16 23:11:27,603 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: BussnessDomainExtendModule
+DEBUG 2018-12-16 23:11:27,610 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: BussnessWebModule
+DEBUG 2018-12-16 23:11:27,640 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: LayoutModule
+DEBUG 2018-12-16 23:11:27,685 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Localization
+DEBUG 2018-12-16 23:11:27,702 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Permisson
+DEBUG 2018-12-16 23:11:27,727 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Resources
+DEBUG 2018-12-16 23:11:27,835 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 13 classes define auto mapping attributes
+DEBUG 2018-12-16 23:11:27,840 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2018-12-16 23:11:27,851 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.Sessions.Dto.UserLoginInfoDto
+DEBUG 2018-12-16 23:11:27,857 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.Users.Dto.CreateUserDto
+DEBUG 2018-12-16 23:11:27,863 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.Users.Dto.UpdateUserDto
+DEBUG 2018-12-16 23:11:27,868 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.Users.Dto.UserDto
+DEBUG 2018-12-16 23:11:27,874 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.Roles.Dto.CreateRoleDto
+DEBUG 2018-12-16 23:11:27,883 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.Roles.Dto.PermissionDto
+DEBUG 2018-12-16 23:11:27,890 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.Roles.Dto.RoleDto
+DEBUG 2018-12-16 23:11:27,895 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2018-12-16 23:11:27,899 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.MultiTenancy.Dto.EditTenantDto
+DEBUG 2018-12-16 23:11:27,904 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.MultiTenancy.Dto.TenantDto
+DEBUG 2018-12-16 23:11:27,909 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.Web.Models.Account.TenantChangeViewModel
+DEBUG 2018-12-16 23:11:27,914 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.Web.Models.Account.TenantSelectionViewModel+TenantInfo
+DEBUG 2018-12-16 23:11:30,507 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'Blocks.Sessions.ISessionAppService' with service name 'app/session'.
+DEBUG 2018-12-16 23:11:30,514 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'Blocks.Users.IUserAppService' with service name 'app/user'.
+DEBUG 2018-12-16 23:11:30,524 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'Blocks.Roles.IRoleAppService' with service name 'app/role'.
+DEBUG 2018-12-16 23:11:30,533 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'Blocks.MultiTenancy.ITenantAppService' with service name 'app/tenant'.
+DEBUG 2018-12-16 23:11:30,543 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'Blocks.Configuration.IConfigurationAppService' with service name 'app/configuration'.
+DEBUG 2018-12-16 23:11:30,552 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'Blocks.Authorization.Accounts.IAccountAppService' with service name 'app/account'.
+DEBUG 2018-12-16 23:11:30,786 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'Blocks.BussnessApplicationModule.TestAppService.ITestAppService' with service name 'BussnessWebModule/test'.
+DEBUG 2018-12-16 23:11:30,797 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'Blocks.BussnessApplicationModule.MasterData.IComboboxAppService' with service name 'BussnessWebModule/combobox'.
+DEBUG 2018-12-16 23:11:30,804 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'Blocks.BussnessApplicationModule.MasterData.IMasterDataAppService' with service name 'BussnessWebModule/masterData'.
+WARN  2018-12-16 23:11:30,968 [1    ] Abp.MultiTenancy.TenantResolver          - System.Web.HttpException (0x80004005): Request is not available in this context
+   at System.Web.HttpContext.get_Request()
+   at Abp.Web.MultiTenancy.HttpHeaderTenantResolveContributor.ResolveTenantId()
+   at Abp.MultiTenancy.TenantResolver.GetTenantIdFromContributors()
+System.Web.HttpException (0x80004005): Request is not available in this context
+   at System.Web.HttpContext.get_Request()
+   at Abp.Web.MultiTenancy.HttpHeaderTenantResolveContributor.ResolveTenantId()
+   at Abp.MultiTenancy.TenantResolver.GetTenantIdFromContributors()
+WARN  2018-12-16 23:11:31,010 [1    ] Abp.MultiTenancy.TenantResolver          - System.Web.HttpException (0x80004005): Request is not available in this context
+   at System.Web.HttpContext.get_Request()
+   at Abp.Web.MultiTenancy.HttpCookieTenantResolveContributor.ResolveTenantId()
+   at Abp.MultiTenancy.TenantResolver.GetTenantIdFromContributors()
+System.Web.HttpException (0x80004005): Request is not available in this context
+   at System.Web.HttpContext.get_Request()
+   at Abp.Web.MultiTenancy.HttpCookieTenantResolveContributor.ResolveTenantId()
+   at Abp.MultiTenancy.TenantResolver.GetTenantIdFromContributors()
+WARN  2018-12-16 23:11:35,470 [1    ] Abp.Logging.LogHelper                    - Blocks.BussnessRespositoryModule.SqlserverModule can't found extension depond on it.so ignore to register BlocksConfiguration
+WARN  2018-12-16 23:11:35,475 [1    ] Abp.Logging.LogHelper                    - Blocks.BussnessRespositoryModule.SqlserverModule can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-12-16 23:11:35,480 [1    ] Abp.Logging.LogHelper                    - Blocks.BussnessRespositoryModule.SqlserverModule can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-12-16 23:11:35,487 [1    ] Abp.Logging.LogHelper                    - Blocks.BussnessRespositoryModule can't found extension depond on it.so ignore to register BlocksConfiguration
+WARN  2018-12-16 23:11:35,492 [1    ] Abp.Logging.LogHelper                    - Blocks.BussnessRespositoryModule can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-12-16 23:11:35,497 [1    ] Abp.Logging.LogHelper                    - Blocks.BussnessRespositoryModule can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-12-16 23:11:36,906 [5    ] Abp.Logging.LogHelper                    - Abp.Authorization.AbpAuthorizationException: Current user did not login to the application!
+   at Abp.Authorization.AuthorizationHelper.<AuthorizeAsync>d__19.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at Abp.Authorization.AuthorizationHelper.<CheckPermissions>d__22.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at Abp.Authorization.AuthorizationHelper.<AuthorizeAsync>d__20.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Nito.AsyncEx.Synchronous.TaskExtensions.WaitAndUnwrapException(Task task)
+   at Nito.AsyncEx.AsyncContext.<>c__DisplayClass15_0.<Run>b__0(Task t)
+   at System.Threading.Tasks.ContinuationTaskFromTask.InnerInvoke()
+   at System.Threading.Tasks.Task.Execute()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Nito.AsyncEx.Synchronous.TaskExtensions.WaitAndUnwrapException(Task task)
+   at Nito.AsyncEx.AsyncContext.Run(Func`1 action)
+   at Abp.Threading.AsyncHelper.RunSync(Func`1 action)
+   at Abp.Authorization.AuthorizationHelperExtensions.Authorize(IAuthorizationHelper authorizationHelper, MethodInfo methodInfo, Type type)
+   at Abp.Web.Mvc.Authorization.AbpMvcAuthorizeFilter.OnAuthorization(AuthorizationContext filterContext)
+Abp.Authorization.AbpAuthorizationException: Current user did not login to the application!
+   at Abp.Authorization.AuthorizationHelper.<AuthorizeAsync>d__19.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at Abp.Authorization.AuthorizationHelper.<CheckPermissions>d__22.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at Abp.Authorization.AuthorizationHelper.<AuthorizeAsync>d__20.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Nito.AsyncEx.Synchronous.TaskExtensions.WaitAndUnwrapException(Task task)
+   at Nito.AsyncEx.AsyncContext.<>c__DisplayClass15_0.<Run>b__0(Task t)
+   at System.Threading.Tasks.ContinuationTaskFromTask.InnerInvoke()
+   at System.Threading.Tasks.Task.Execute()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Nito.AsyncEx.Synchronous.TaskExtensions.WaitAndUnwrapException(Task task)
+   at Nito.AsyncEx.AsyncContext.Run(Func`1 action)
+   at Abp.Threading.AsyncHelper.RunSync(Func`1 action)
+   at Abp.Authorization.AuthorizationHelperExtensions.Authorize(IAuthorizationHelper authorizationHelper, MethodInfo methodInfo, Type type)
+   at Abp.Web.Mvc.Authorization.AbpMvcAuthorizeFilter.OnAuthorization(AuthorizationContext filterContext)
+DEBUG 2018-12-16 23:15:57,509 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2018-12-16 23:15:58,636 [1    ] Abp.Modules.AbpModuleManager             - Found 35 ABP modules in total.
+DEBUG 2018-12-16 23:15:58,654 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.Web.BlocksWebModule, Blocks.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:15:58,665 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.BlocksDataModule, Blocks.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:15:58,672 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFramework.AbpZeroEntityFrameworkModule, Abp.Zero.EntityFramework, Version=3.2.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:15:58,680 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.Zero, Version=3.2.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:15:58,686 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=3.2.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:15:58,691 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=3.2.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:15:58,697 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=3.2.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:15:58,705 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=3.2.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:15:58,711 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.BlocksCoreModule, Block.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:15:58,719 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.BlocksApplicationModule, Blocks.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:15:58,727 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=3.2.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:15:58,734 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.Api.BlocksWebApiModule, Blocks.WebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:15:58,740 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.WebApi.AbpWebApiModule, Abp.Web.Api, Version=3.2.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:15:58,746 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebModule, Abp.Web, Version=3.2.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:15:58,752 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=3.2.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:15:58,759 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.SignalR.AbpWebSignalRModule, Abp.Web.SignalR, Version=3.2.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:15:58,766 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.Mvc.AbpWebMvcModule, Abp.Web.Mvc, Version=3.2.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:15:58,772 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.Framework.Web.Modules.BlocksFrameworkWebModule, Blocks.Framework.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:15:58,780 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.Framework.Modules.BlocksFrameworkModule, Blocks.Framework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:15:58,786 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.Framework.Caching.CacheModule, Blocks.Framework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:15:58,790 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.Framework.Environment.EnvironmentModule, Blocks.Framework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:15:58,796 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.Framework.Localization.LocalizationModule, Blocks.Framework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:15:58,803 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.Framework.Navigation.NavigationModule, Blocks.Framework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:15:58,809 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.Framework.RPCProxy.RPCProxyModule, Blocks.Framework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:15:58,815 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.Framework.Web.Mvc.AbpWebMvcModule, Blocks.Framework.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:15:58,822 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.Framework.Web.Web.AbpWebModule, Blocks.Framework.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:15:58,829 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.Framework.Web.Api.WebApiModule, Blocks.Framework.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:15:58,836 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.Core.BlocksStartModule, Blocks.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:15:58,842 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.Framework.DBORM.BlocksFrameworkDBORMModule, Blocks.Framework.DBORM, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:15:58,849 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.BussnessDomainExtendModule.BlocksBussenssDomainExtendModule, Blocks.BussnessDomainExtendModule, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:15:58,855 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.BussnessWebModule.BlocksBussenssModule, Blocks.BussnessWebModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:15:58,861 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.LayoutModule.LayoutModule, Blocks.LayoutModule, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:15:58,867 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.LayoutModule.LocalizationModule, Blocks.LocalizationModule, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:15:58,873 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.PermissonModule.PermissionModule, Blocks.PermissonModule, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:15:58,880 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.ResourcesModule.ResourcesModule, Blocks.ResourcesModule, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:15:58,912 [1    ] Abp.Modules.AbpModuleManager             - 35 modules loaded.
+DEBUG 2018-12-16 23:15:59,386 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-12-16 23:15:59,391 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-12-16 23:15:59,397 [1    ] o.Configuration.LanguageManagementConfig - Converted Blocks (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-12-16 23:15:59,402 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-12-16 23:15:59,407 [1    ] o.Configuration.LanguageManagementConfig - Converted BlocksFramework (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-12-16 23:15:59,840 [1    ] EntityFramework.AbpEntityFrameworkModule - Registering DbContext: Blocks.EntityFramework.BlocksDbContext, Blocks.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+INFO  2018-12-16 23:16:01,003 [7    ] nt.Extensions.Folders.ExtensionHarvester - Start looking for extensions in '~/Themes'...
+INFO  2018-12-16 23:16:01,003 [5    ] nt.Extensions.Folders.ExtensionHarvester - Start looking for extensions in '~/Modules'...
+INFO  2018-12-16 23:16:01,010 [7    ] nt.Extensions.Folders.ExtensionHarvester - Done looking for extensions in '~/Themes': 
+INFO  2018-12-16 23:16:01,226 [5    ] nt.Extensions.Folders.ExtensionHarvester - Done looking for extensions in '~/Modules': Blocks.BussnessDomainExtendModule, Blocks.BussnessWebModule, Blocks.LayoutModule, Blocks.LocalizationModule, Blocks.PermissonModule, Blocks.ResourcesModule
+WARN  2018-12-16 23:16:01,281 [1    ] Abp.Logging.LogHelper                    - Blocks.Framework.Web can't found extension depond on it.so ignore to register BlocksConfiguration
+WARN  2018-12-16 23:16:01,287 [1    ] Abp.Logging.LogHelper                    - Blocks.Framework.Web can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-12-16 23:16:01,294 [1    ] Abp.Logging.LogHelper                    - Blocks.Framework.Web can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-12-16 23:16:01,301 [1    ] Abp.Logging.LogHelper                    - Blocks.Core can't found extension depond on it.so ignore to register BlocksConfiguration
+WARN  2018-12-16 23:16:01,307 [1    ] Abp.Logging.LogHelper                    - Blocks.Core can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-12-16 23:16:01,312 [1    ] Abp.Logging.LogHelper                    - Blocks.Core can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-12-16 23:16:01,319 [1    ] Abp.Logging.LogHelper                    - Blocks.Framework.DBORM can't found extension depond on it.so ignore to register BlocksConfiguration
+WARN  2018-12-16 23:16:01,326 [1    ] Abp.Logging.LogHelper                    - Blocks.Framework.DBORM can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-12-16 23:16:01,332 [1    ] Abp.Logging.LogHelper                    - Blocks.Framework.DBORM can't found extension depond on it.so ignore to register BlockWebController
+DEBUG 2018-12-16 23:16:01,341 [1    ] amework.DBORM.BlocksFrameworkDBORMModule - Registering DbContext: Blocks.Framework.DBORM.DBContext.BlocksDbContext`1, Blocks.Framework.DBORM, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+WARN  2018-12-16 23:16:01,400 [1    ] Abp.Logging.LogHelper                    - Blocks.BussnessApplicationModule can't found extension depond on it.so ignore to register BlocksConfiguration
+WARN  2018-12-16 23:16:01,406 [1    ] Abp.Logging.LogHelper                    - Blocks.BussnessApplicationModule can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-12-16 23:16:01,414 [1    ] Abp.Logging.LogHelper                    - Blocks.BussnessApplicationModule can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-12-16 23:16:01,465 [1    ] Abp.Logging.LogHelper                    - Blocks.BussnessDomainModule can't found extension depond on it.so ignore to register BlocksConfiguration
+WARN  2018-12-16 23:16:01,474 [1    ] Abp.Logging.LogHelper                    - Blocks.BussnessDomainModule can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-12-16 23:16:01,482 [1    ] Abp.Logging.LogHelper                    - Blocks.BussnessDomainModule can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-12-16 23:16:01,661 [1    ] Abp.Logging.LogHelper                    - Blocks.Web can't found extension depond on it.so ignore to register BlocksConfiguration
+WARN  2018-12-16 23:16:01,670 [1    ] Abp.Logging.LogHelper                    - Blocks.Web can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-12-16 23:16:01,675 [1    ] Abp.Logging.LogHelper                    - Blocks.Web can't found extension depond on it.so ignore to register BlockWebController
+DEBUG 2018-12-16 23:16:04,636 [1    ] Abp.Localization.LocalizationManager     - Initializing 11 localization sources.
+DEBUG 2018-12-16 23:16:04,674 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2018-12-16 23:16:04,690 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2018-12-16 23:16:04,701 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Blocks
+DEBUG 2018-12-16 23:16:04,710 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2018-12-16 23:16:04,717 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: BlocksFramework
+DEBUG 2018-12-16 23:16:04,727 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: BussnessDomainExtendModule
+DEBUG 2018-12-16 23:16:04,734 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: BussnessWebModule
+DEBUG 2018-12-16 23:16:04,752 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: LayoutModule
+DEBUG 2018-12-16 23:16:04,768 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Localization
+DEBUG 2018-12-16 23:16:04,793 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Permisson
+DEBUG 2018-12-16 23:16:04,820 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Resources
+DEBUG 2018-12-16 23:16:04,957 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 13 classes define auto mapping attributes
+DEBUG 2018-12-16 23:16:04,963 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2018-12-16 23:16:04,975 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.Sessions.Dto.UserLoginInfoDto
+DEBUG 2018-12-16 23:16:04,980 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.Users.Dto.CreateUserDto
+DEBUG 2018-12-16 23:16:04,985 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.Users.Dto.UpdateUserDto
+DEBUG 2018-12-16 23:16:04,990 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.Users.Dto.UserDto
+DEBUG 2018-12-16 23:16:04,997 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.Roles.Dto.CreateRoleDto
+DEBUG 2018-12-16 23:16:05,004 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.Roles.Dto.PermissionDto
+DEBUG 2018-12-16 23:16:05,010 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.Roles.Dto.RoleDto
+DEBUG 2018-12-16 23:16:05,015 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2018-12-16 23:16:05,020 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.MultiTenancy.Dto.EditTenantDto
+DEBUG 2018-12-16 23:16:05,025 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.MultiTenancy.Dto.TenantDto
+DEBUG 2018-12-16 23:16:05,031 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.Web.Models.Account.TenantChangeViewModel
+DEBUG 2018-12-16 23:16:05,036 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.Web.Models.Account.TenantSelectionViewModel+TenantInfo
+DEBUG 2018-12-16 23:16:07,389 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'Blocks.Sessions.ISessionAppService' with service name 'app/session'.
+DEBUG 2018-12-16 23:16:07,396 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'Blocks.Users.IUserAppService' with service name 'app/user'.
+DEBUG 2018-12-16 23:16:07,402 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'Blocks.Roles.IRoleAppService' with service name 'app/role'.
+DEBUG 2018-12-16 23:16:07,409 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'Blocks.MultiTenancy.ITenantAppService' with service name 'app/tenant'.
+DEBUG 2018-12-16 23:16:07,416 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'Blocks.Configuration.IConfigurationAppService' with service name 'app/configuration'.
+DEBUG 2018-12-16 23:16:07,423 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'Blocks.Authorization.Accounts.IAccountAppService' with service name 'app/account'.
+DEBUG 2018-12-16 23:16:07,656 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'Blocks.BussnessApplicationModule.TestAppService.ITestAppService' with service name 'BussnessWebModule/test'.
+DEBUG 2018-12-16 23:16:07,663 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'Blocks.BussnessApplicationModule.MasterData.IComboboxAppService' with service name 'BussnessWebModule/combobox'.
+DEBUG 2018-12-16 23:16:07,674 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'Blocks.BussnessApplicationModule.MasterData.IMasterDataAppService' with service name 'BussnessWebModule/masterData'.
+WARN  2018-12-16 23:16:07,814 [1    ] Abp.MultiTenancy.TenantResolver          - System.Web.HttpException (0x80004005): Request is not available in this context
+   at System.Web.HttpContext.get_Request()
+   at Abp.Web.MultiTenancy.HttpHeaderTenantResolveContributor.ResolveTenantId()
+   at Abp.MultiTenancy.TenantResolver.GetTenantIdFromContributors()
+System.Web.HttpException (0x80004005): Request is not available in this context
+   at System.Web.HttpContext.get_Request()
+   at Abp.Web.MultiTenancy.HttpHeaderTenantResolveContributor.ResolveTenantId()
+   at Abp.MultiTenancy.TenantResolver.GetTenantIdFromContributors()
+WARN  2018-12-16 23:16:07,849 [1    ] Abp.MultiTenancy.TenantResolver          - System.Web.HttpException (0x80004005): Request is not available in this context
+   at System.Web.HttpContext.get_Request()
+   at Abp.Web.MultiTenancy.HttpCookieTenantResolveContributor.ResolveTenantId()
+   at Abp.MultiTenancy.TenantResolver.GetTenantIdFromContributors()
+System.Web.HttpException (0x80004005): Request is not available in this context
+   at System.Web.HttpContext.get_Request()
+   at Abp.Web.MultiTenancy.HttpCookieTenantResolveContributor.ResolveTenantId()
+   at Abp.MultiTenancy.TenantResolver.GetTenantIdFromContributors()
+WARN  2018-12-16 23:16:12,265 [1    ] Abp.Logging.LogHelper                    - Blocks.BussnessRespositoryModule.SqlserverModule can't found extension depond on it.so ignore to register BlocksConfiguration
+WARN  2018-12-16 23:16:12,270 [1    ] Abp.Logging.LogHelper                    - Blocks.BussnessRespositoryModule.SqlserverModule can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-12-16 23:16:12,277 [1    ] Abp.Logging.LogHelper                    - Blocks.BussnessRespositoryModule.SqlserverModule can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-12-16 23:16:12,284 [1    ] Abp.Logging.LogHelper                    - Blocks.BussnessRespositoryModule can't found extension depond on it.so ignore to register BlocksConfiguration
+WARN  2018-12-16 23:16:12,289 [1    ] Abp.Logging.LogHelper                    - Blocks.BussnessRespositoryModule can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-12-16 23:16:12,295 [1    ] Abp.Logging.LogHelper                    - Blocks.BussnessRespositoryModule can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-12-16 23:16:13,774 [5    ] Abp.Logging.LogHelper                    - Abp.Authorization.AbpAuthorizationException: Current user did not login to the application!
+   at Abp.Authorization.AuthorizationHelper.<AuthorizeAsync>d__19.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at Abp.Authorization.AuthorizationHelper.<CheckPermissions>d__22.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at Abp.Authorization.AuthorizationHelper.<AuthorizeAsync>d__20.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Nito.AsyncEx.Synchronous.TaskExtensions.WaitAndUnwrapException(Task task)
+   at Nito.AsyncEx.AsyncContext.<>c__DisplayClass15_0.<Run>b__0(Task t)
+   at System.Threading.Tasks.ContinuationTaskFromTask.InnerInvoke()
+   at System.Threading.Tasks.Task.Execute()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Nito.AsyncEx.Synchronous.TaskExtensions.WaitAndUnwrapException(Task task)
+   at Nito.AsyncEx.AsyncContext.Run(Func`1 action)
+   at Abp.Threading.AsyncHelper.RunSync(Func`1 action)
+   at Abp.Authorization.AuthorizationHelperExtensions.Authorize(IAuthorizationHelper authorizationHelper, MethodInfo methodInfo, Type type)
+   at Abp.Web.Mvc.Authorization.AbpMvcAuthorizeFilter.OnAuthorization(AuthorizationContext filterContext)
+Abp.Authorization.AbpAuthorizationException: Current user did not login to the application!
+   at Abp.Authorization.AuthorizationHelper.<AuthorizeAsync>d__19.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at Abp.Authorization.AuthorizationHelper.<CheckPermissions>d__22.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at Abp.Authorization.AuthorizationHelper.<AuthorizeAsync>d__20.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Nito.AsyncEx.Synchronous.TaskExtensions.WaitAndUnwrapException(Task task)
+   at Nito.AsyncEx.AsyncContext.<>c__DisplayClass15_0.<Run>b__0(Task t)
+   at System.Threading.Tasks.ContinuationTaskFromTask.InnerInvoke()
+   at System.Threading.Tasks.Task.Execute()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Nito.AsyncEx.Synchronous.TaskExtensions.WaitAndUnwrapException(Task task)
+   at Nito.AsyncEx.AsyncContext.Run(Func`1 action)
+   at Abp.Threading.AsyncHelper.RunSync(Func`1 action)
+   at Abp.Authorization.AuthorizationHelperExtensions.Authorize(IAuthorizationHelper authorizationHelper, MethodInfo methodInfo, Type type)
+   at Abp.Web.Mvc.Authorization.AbpMvcAuthorizeFilter.OnAuthorization(AuthorizationContext filterContext)
+ERROR 2018-12-16 23:16:26,792 [7    ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/Scripts/jquery-1.9.1.min! System.ArgumentException: The relative virtual path 'Blocks.ResourcesModule/Scripts/jquery-1.9.1.min' is not allowed here.
+   at System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   at System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 232
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 149
+ERROR 2018-12-16 23:16:26,828 [7    ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/lib/zTree_v3/js/jquery.ztree.all! System.ArgumentException: The relative virtual path 'Blocks.ResourcesModule/lib/zTree_v3/js/jquery.ztree.all' is not allowed here.
+   at System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   at System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 232
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 149
+ERROR 2018-12-16 23:16:26,866 [7    ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/Scripts/bootstrap.min! System.ArgumentException: The relative virtual path 'Blocks.ResourcesModule/Scripts/bootstrap.min' is not allowed here.
+   at System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   at System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 232
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 149
+ERROR 2018-12-16 23:16:26,935 [7    ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/lib/bootstrap-select/dist/js/bootstrap-select.min! System.ArgumentException: The relative virtual path 'Blocks.ResourcesModule/lib/bootstrap-select/dist/js/bootstrap-select.min' is not allowed here.
+   at System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   at System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 232
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 149
+ERROR 2018-12-16 23:16:26,965 [7    ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/lib/jqGrid/script/i18n/grid.locale-cn! System.ArgumentException: The relative virtual path 'Blocks.ResourcesModule/lib/jqGrid/script/i18n/grid.locale-cn' is not allowed here.
+   at System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   at System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 232
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 149
+ERROR 2018-12-16 23:16:26,994 [7    ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/lib/jqGrid/script/jquery.jqGrid.min! System.ArgumentException: The relative virtual path 'Blocks.ResourcesModule/lib/jqGrid/script/jquery.jqGrid.min' is not allowed here.
+   at System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   at System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 232
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 149
+ERROR 2018-12-16 23:16:27,026 [7    ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/lib/blockUI/jquery.blockUI! System.ArgumentException: The relative virtual path 'Blocks.ResourcesModule/lib/blockUI/jquery.blockUI' is not allowed here.
+   at System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   at System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 232
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 149
+ERROR 2018-12-16 23:16:27,056 [7    ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/lib/toastr/toastr.min! System.ArgumentException: The relative virtual path 'Blocks.ResourcesModule/lib/toastr/toastr.min' is not allowed here.
+   at System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   at System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 232
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 149
+ERROR 2018-12-16 23:16:27,083 [7    ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/lib/sweetalert/dist/sweetalert.min! System.ArgumentException: The relative virtual path 'Blocks.ResourcesModule/lib/sweetalert/dist/sweetalert.min' is not allowed here.
+   at System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   at System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 232
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 149
+ERROR 2018-12-16 23:16:27,112 [7    ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/lib/spin.js/spin.min! System.ArgumentException: The relative virtual path 'Blocks.ResourcesModule/lib/spin.js/spin.min' is not allowed here.
+   at System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   at System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 232
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 149
+ERROR 2018-12-16 23:16:27,141 [7    ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/lib/spin.js/jquery.spin! System.ArgumentException: The relative virtual path 'Blocks.ResourcesModule/lib/spin.js/jquery.spin' is not allowed here.
+   at System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   at System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 232
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 149
+ERROR 2018-12-16 23:16:27,172 [7    ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/lib/jquery-slimscroll/jquery.slimscroll.min! System.ArgumentException: The relative virtual path 'Blocks.ResourcesModule/lib/jquery-slimscroll/jquery.slimscroll.min' is not allowed here.
+   at System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   at System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 232
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 149
+ERROR 2018-12-16 23:16:27,202 [7    ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/lib/Waves/dist/waves.min! System.ArgumentException: The relative virtual path 'Blocks.ResourcesModule/lib/Waves/dist/waves.min' is not allowed here.
+   at System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   at System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 232
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 149
+ERROR 2018-12-16 23:16:27,238 [7    ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/lib/push.js/push.min! System.ArgumentException: The relative virtual path 'Blocks.ResourcesModule/lib/push.js/push.min' is not allowed here.
+   at System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   at System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 232
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 149
+ERROR 2018-12-16 23:16:27,269 [7    ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/lib/layer/layer! System.ArgumentException: The relative virtual path 'Blocks.ResourcesModule/lib/layer/layer' is not allowed here.
+   at System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   at System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 232
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 149
+ERROR 2018-12-16 23:16:27,300 [7    ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/Scripts/vue.min! System.ArgumentException: The relative virtual path 'Blocks.ResourcesModule/Scripts/vue.min' is not allowed here.
+   at System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   at System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 232
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 149
+ERROR 2018-12-16 23:16:27,330 [7    ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/lib/combobox/magicsuggest-min! System.ArgumentException: The relative virtual path 'Blocks.ResourcesModule/lib/combobox/magicsuggest-min' is not allowed here.
+   at System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   at System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 232
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 149
+ERROR 2018-12-16 23:16:27,362 [7    ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/lib/select2-develop/dist/js/select2.full.min! System.ArgumentException: The relative virtual path 'Blocks.ResourcesModule/lib/select2-develop/dist/js/select2.full.min' is not allowed here.
+   at System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   at System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 232
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 149
+ERROR 2018-12-16 23:16:27,395 [7    ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/lib/My97DatePicker/My97DatePicker/WdatePicker! System.ArgumentException: The relative virtual path 'Blocks.ResourcesModule/lib/My97DatePicker/My97DatePicker/WdatePicker' is not allowed here.
+   at System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   at System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 232
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 149
+ERROR 2018-12-16 23:16:27,425 [7    ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/lib/jquery-validation/dist/jquery.validate! System.ArgumentException: The relative virtual path 'Blocks.ResourcesModule/lib/jquery-validation/dist/jquery.validate' is not allowed here.
+   at System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   at System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 232
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 149
+ERROR 2018-12-16 23:16:27,457 [7    ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/Framework/UI/UI! System.ArgumentException: The relative virtual path 'Blocks.ResourcesModule/Framework/UI/UI' is not allowed here.
+   at System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   at System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 232
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 149
+ERROR 2018-12-16 23:16:27,486 [7    ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/lib/json2/json2! System.ArgumentException: The relative virtual path 'Blocks.ResourcesModule/lib/json2/json2' is not allowed here.
+   at System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   at System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 232
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 149
+ERROR 2018-12-16 23:16:27,519 [7    ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/Framework/Utility/utlity! System.ArgumentException: The relative virtual path 'Blocks.ResourcesModule/Framework/Utility/utlity' is not allowed here.
+   at System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   at System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 232
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 149
+ERROR 2018-12-16 23:16:27,550 [7    ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/Framework/Abp/AbpWrapper! System.ArgumentException: The relative virtual path 'Blocks.ResourcesModule/Framework/Abp/AbpWrapper' is not allowed here.
+   at System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   at System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 232
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 149
+ERROR 2018-12-16 23:16:27,581 [7    ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/lib/moment/min/moment-with-locales.min! System.ArgumentException: The relative virtual path 'Blocks.ResourcesModule/lib/moment/min/moment-with-locales.min' is not allowed here.
+   at System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   at System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 232
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 149
+ERROR 2018-12-16 23:16:27,610 [7    ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/Framework/Security/security! System.ArgumentException: The relative virtual path 'Blocks.ResourcesModule/Framework/Security/security' is not allowed here.
+   at System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   at System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 232
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 149
+ERROR 2018-12-16 23:16:27,639 [7    ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/build_home/Blocks! System.ArgumentException: The relative virtual path 'Blocks.ResourcesModule/build_home/Blocks' is not allowed here.
+   at System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   at System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 232
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 149
+ERROR 2018-12-16 23:16:27,671 [7    ] Abp.Logging.LogHelper                    - Can not find file for: nalr/jquery.signal! System.ArgumentException: The relative virtual path 'nalr/jquery.signal' is not allowed here.
+   at System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   at System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 232
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 149
+DEBUG 2018-12-16 23:18:33,187 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2018-12-16 23:18:34,202 [1    ] Abp.Modules.AbpModuleManager             - Found 35 ABP modules in total.
+DEBUG 2018-12-16 23:18:34,220 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.Web.BlocksWebModule, Blocks.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:18:34,228 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.BlocksDataModule, Blocks.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:18:34,233 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFramework.AbpZeroEntityFrameworkModule, Abp.Zero.EntityFramework, Version=3.2.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:18:34,240 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.Zero, Version=3.2.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:18:34,245 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=3.2.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:18:34,252 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=3.2.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:18:34,258 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=3.2.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:18:34,263 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=3.2.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:18:34,268 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.BlocksCoreModule, Block.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:18:34,273 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.BlocksApplicationModule, Blocks.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:18:34,279 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=3.2.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:18:34,285 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.Api.BlocksWebApiModule, Blocks.WebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:18:34,290 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.WebApi.AbpWebApiModule, Abp.Web.Api, Version=3.2.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:18:34,296 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebModule, Abp.Web, Version=3.2.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:18:34,301 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=3.2.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:18:34,308 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.SignalR.AbpWebSignalRModule, Abp.Web.SignalR, Version=3.2.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:18:34,315 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.Mvc.AbpWebMvcModule, Abp.Web.Mvc, Version=3.2.4.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:18:34,322 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.Framework.Web.Modules.BlocksFrameworkWebModule, Blocks.Framework.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:18:34,329 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.Framework.Modules.BlocksFrameworkModule, Blocks.Framework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:18:34,336 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.Framework.Caching.CacheModule, Blocks.Framework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:18:34,343 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.Framework.Environment.EnvironmentModule, Blocks.Framework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:18:34,349 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.Framework.Localization.LocalizationModule, Blocks.Framework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:18:34,355 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.Framework.Navigation.NavigationModule, Blocks.Framework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:18:34,361 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.Framework.RPCProxy.RPCProxyModule, Blocks.Framework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:18:34,367 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.Framework.Web.Mvc.AbpWebMvcModule, Blocks.Framework.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:18:34,372 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.Framework.Web.Web.AbpWebModule, Blocks.Framework.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:18:34,378 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.Framework.Web.Api.WebApiModule, Blocks.Framework.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:18:34,385 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.Core.BlocksStartModule, Blocks.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:18:34,391 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.Framework.DBORM.BlocksFrameworkDBORMModule, Blocks.Framework.DBORM, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:18:34,396 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.BussnessDomainExtendModule.BlocksBussenssDomainExtendModule, Blocks.BussnessDomainExtendModule, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:18:34,402 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.BussnessWebModule.BlocksBussenssModule, Blocks.BussnessWebModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:18:34,407 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.LayoutModule.LayoutModule, Blocks.LayoutModule, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:18:34,412 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.LayoutModule.LocalizationModule, Blocks.LocalizationModule, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:18:34,417 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.PermissonModule.PermissionModule, Blocks.PermissonModule, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:18:34,424 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Blocks.ResourcesModule.ResourcesModule, Blocks.ResourcesModule, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-12-16 23:18:34,432 [1    ] Abp.Modules.AbpModuleManager             - 35 modules loaded.
+DEBUG 2018-12-16 23:18:34,931 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-12-16 23:18:34,936 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-12-16 23:18:34,940 [1    ] o.Configuration.LanguageManagementConfig - Converted Blocks (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-12-16 23:18:34,945 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-12-16 23:18:34,950 [1    ] o.Configuration.LanguageManagementConfig - Converted BlocksFramework (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-12-16 23:18:35,406 [1    ] EntityFramework.AbpEntityFrameworkModule - Registering DbContext: Blocks.EntityFramework.BlocksDbContext, Blocks.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+INFO  2018-12-16 23:18:36,378 [10   ] nt.Extensions.Folders.ExtensionHarvester - Start looking for extensions in '~/Themes'...
+INFO  2018-12-16 23:18:36,378 [5    ] nt.Extensions.Folders.ExtensionHarvester - Start looking for extensions in '~/Modules'...
+INFO  2018-12-16 23:18:36,385 [10   ] nt.Extensions.Folders.ExtensionHarvester - Done looking for extensions in '~/Themes': 
+INFO  2018-12-16 23:18:36,589 [5    ] nt.Extensions.Folders.ExtensionHarvester - Done looking for extensions in '~/Modules': Blocks.BussnessDomainExtendModule, Blocks.BussnessWebModule, Blocks.LayoutModule, Blocks.LocalizationModule, Blocks.PermissonModule, Blocks.ResourcesModule
+WARN  2018-12-16 23:18:36,632 [1    ] Abp.Logging.LogHelper                    - Blocks.Framework.Web can't found extension depond on it.so ignore to register BlocksConfiguration
+WARN  2018-12-16 23:18:36,638 [1    ] Abp.Logging.LogHelper                    - Blocks.Framework.Web can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-12-16 23:18:36,644 [1    ] Abp.Logging.LogHelper                    - Blocks.Framework.Web can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-12-16 23:18:36,651 [1    ] Abp.Logging.LogHelper                    - Blocks.Core can't found extension depond on it.so ignore to register BlocksConfiguration
+WARN  2018-12-16 23:18:36,656 [1    ] Abp.Logging.LogHelper                    - Blocks.Core can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-12-16 23:18:36,661 [1    ] Abp.Logging.LogHelper                    - Blocks.Core can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-12-16 23:18:36,669 [1    ] Abp.Logging.LogHelper                    - Blocks.Framework.DBORM can't found extension depond on it.so ignore to register BlocksConfiguration
+WARN  2018-12-16 23:18:36,676 [1    ] Abp.Logging.LogHelper                    - Blocks.Framework.DBORM can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-12-16 23:18:36,681 [1    ] Abp.Logging.LogHelper                    - Blocks.Framework.DBORM can't found extension depond on it.so ignore to register BlockWebController
+DEBUG 2018-12-16 23:18:36,689 [1    ] amework.DBORM.BlocksFrameworkDBORMModule - Registering DbContext: Blocks.Framework.DBORM.DBContext.BlocksDbContext`1, Blocks.Framework.DBORM, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+WARN  2018-12-16 23:18:36,746 [1    ] Abp.Logging.LogHelper                    - Blocks.BussnessApplicationModule can't found extension depond on it.so ignore to register BlocksConfiguration
+WARN  2018-12-16 23:18:36,751 [1    ] Abp.Logging.LogHelper                    - Blocks.BussnessApplicationModule can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-12-16 23:18:36,756 [1    ] Abp.Logging.LogHelper                    - Blocks.BussnessApplicationModule can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-12-16 23:18:36,807 [1    ] Abp.Logging.LogHelper                    - Blocks.BussnessDomainModule can't found extension depond on it.so ignore to register BlocksConfiguration
+WARN  2018-12-16 23:18:36,813 [1    ] Abp.Logging.LogHelper                    - Blocks.BussnessDomainModule can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-12-16 23:18:36,818 [1    ] Abp.Logging.LogHelper                    - Blocks.BussnessDomainModule can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-12-16 23:18:36,884 [1    ] Abp.Logging.LogHelper                    - Blocks.Web can't found extension depond on it.so ignore to register BlocksConfiguration
+WARN  2018-12-16 23:18:36,890 [1    ] Abp.Logging.LogHelper                    - Blocks.Web can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-12-16 23:18:36,895 [1    ] Abp.Logging.LogHelper                    - Blocks.Web can't found extension depond on it.so ignore to register BlockWebController
+DEBUG 2018-12-16 23:18:39,659 [1    ] Abp.Localization.LocalizationManager     - Initializing 11 localization sources.
+DEBUG 2018-12-16 23:18:39,690 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2018-12-16 23:18:39,705 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2018-12-16 23:18:39,715 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Blocks
+DEBUG 2018-12-16 23:18:39,724 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2018-12-16 23:18:39,731 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: BlocksFramework
+DEBUG 2018-12-16 23:18:39,741 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: BussnessDomainExtendModule
+DEBUG 2018-12-16 23:18:39,748 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: BussnessWebModule
+DEBUG 2018-12-16 23:18:39,787 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: LayoutModule
+DEBUG 2018-12-16 23:18:39,823 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Localization
+DEBUG 2018-12-16 23:18:39,849 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Permisson
+DEBUG 2018-12-16 23:18:39,858 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Resources
+DEBUG 2018-12-16 23:18:39,958 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 13 classes define auto mapping attributes
+DEBUG 2018-12-16 23:18:39,963 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2018-12-16 23:18:39,973 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.Sessions.Dto.UserLoginInfoDto
+DEBUG 2018-12-16 23:18:39,978 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.Users.Dto.CreateUserDto
+DEBUG 2018-12-16 23:18:39,985 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.Users.Dto.UpdateUserDto
+DEBUG 2018-12-16 23:18:39,992 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.Users.Dto.UserDto
+DEBUG 2018-12-16 23:18:39,998 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.Roles.Dto.CreateRoleDto
+DEBUG 2018-12-16 23:18:40,003 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.Roles.Dto.PermissionDto
+DEBUG 2018-12-16 23:18:40,008 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.Roles.Dto.RoleDto
+DEBUG 2018-12-16 23:18:40,014 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2018-12-16 23:18:40,019 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.MultiTenancy.Dto.EditTenantDto
+DEBUG 2018-12-16 23:18:40,025 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.MultiTenancy.Dto.TenantDto
+DEBUG 2018-12-16 23:18:40,031 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.Web.Models.Account.TenantChangeViewModel
+DEBUG 2018-12-16 23:18:40,036 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Blocks.Web.Models.Account.TenantSelectionViewModel+TenantInfo
+DEBUG 2018-12-16 23:18:42,313 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'Blocks.Sessions.ISessionAppService' with service name 'app/session'.
+DEBUG 2018-12-16 23:18:42,322 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'Blocks.Users.IUserAppService' with service name 'app/user'.
+DEBUG 2018-12-16 23:18:42,332 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'Blocks.Roles.IRoleAppService' with service name 'app/role'.
+DEBUG 2018-12-16 23:18:42,341 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'Blocks.MultiTenancy.ITenantAppService' with service name 'app/tenant'.
+DEBUG 2018-12-16 23:18:42,351 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'Blocks.Configuration.IConfigurationAppService' with service name 'app/configuration'.
+DEBUG 2018-12-16 23:18:42,361 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'Blocks.Authorization.Accounts.IAccountAppService' with service name 'app/account'.
+DEBUG 2018-12-16 23:18:42,544 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'Blocks.BussnessApplicationModule.TestAppService.ITestAppService' with service name 'BussnessWebModule/test'.
+DEBUG 2018-12-16 23:18:42,552 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'Blocks.BussnessApplicationModule.MasterData.IComboboxAppService' with service name 'BussnessWebModule/combobox'.
+DEBUG 2018-12-16 23:18:42,561 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'Blocks.BussnessApplicationModule.MasterData.IMasterDataAppService' with service name 'BussnessWebModule/masterData'.
+WARN  2018-12-16 23:18:42,712 [1    ] Abp.MultiTenancy.TenantResolver          - System.Web.HttpException (0x80004005): Request is not available in this context
+   at System.Web.HttpContext.get_Request()
+   at Abp.Web.MultiTenancy.HttpHeaderTenantResolveContributor.ResolveTenantId()
+   at Abp.MultiTenancy.TenantResolver.GetTenantIdFromContributors()
+System.Web.HttpException (0x80004005): Request is not available in this context
+   at System.Web.HttpContext.get_Request()
+   at Abp.Web.MultiTenancy.HttpHeaderTenantResolveContributor.ResolveTenantId()
+   at Abp.MultiTenancy.TenantResolver.GetTenantIdFromContributors()
+WARN  2018-12-16 23:18:42,751 [1    ] Abp.MultiTenancy.TenantResolver          - System.Web.HttpException (0x80004005): Request is not available in this context
+   at System.Web.HttpContext.get_Request()
+   at Abp.Web.MultiTenancy.HttpCookieTenantResolveContributor.ResolveTenantId()
+   at Abp.MultiTenancy.TenantResolver.GetTenantIdFromContributors()
+System.Web.HttpException (0x80004005): Request is not available in this context
+   at System.Web.HttpContext.get_Request()
+   at Abp.Web.MultiTenancy.HttpCookieTenantResolveContributor.ResolveTenantId()
+   at Abp.MultiTenancy.TenantResolver.GetTenantIdFromContributors()
+WARN  2018-12-16 23:18:47,408 [1    ] Abp.Logging.LogHelper                    - Blocks.BussnessRespositoryModule.SqlserverModule can't found extension depond on it.so ignore to register BlocksConfiguration
+WARN  2018-12-16 23:18:47,414 [1    ] Abp.Logging.LogHelper                    - Blocks.BussnessRespositoryModule.SqlserverModule can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-12-16 23:18:47,422 [1    ] Abp.Logging.LogHelper                    - Blocks.BussnessRespositoryModule.SqlserverModule can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-12-16 23:18:47,430 [1    ] Abp.Logging.LogHelper                    - Blocks.BussnessRespositoryModule can't found extension depond on it.so ignore to register BlocksConfiguration
+WARN  2018-12-16 23:18:47,435 [1    ] Abp.Logging.LogHelper                    - Blocks.BussnessRespositoryModule can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-12-16 23:18:47,442 [1    ] Abp.Logging.LogHelper                    - Blocks.BussnessRespositoryModule can't found extension depond on it.so ignore to register BlockWebController
+WARN  2018-12-16 23:18:49,248 [5    ] Abp.Logging.LogHelper                    - Abp.Authorization.AbpAuthorizationException: Current user did not login to the application!
+   at Abp.Authorization.AuthorizationHelper.<AuthorizeAsync>d__19.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at Abp.Authorization.AuthorizationHelper.<CheckPermissions>d__22.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at Abp.Authorization.AuthorizationHelper.<AuthorizeAsync>d__20.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Nito.AsyncEx.Synchronous.TaskExtensions.WaitAndUnwrapException(Task task)
+   at Nito.AsyncEx.AsyncContext.<>c__DisplayClass15_0.<Run>b__0(Task t)
+   at System.Threading.Tasks.ContinuationTaskFromTask.InnerInvoke()
+   at System.Threading.Tasks.Task.Execute()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Nito.AsyncEx.Synchronous.TaskExtensions.WaitAndUnwrapException(Task task)
+   at Nito.AsyncEx.AsyncContext.Run(Func`1 action)
+   at Abp.Threading.AsyncHelper.RunSync(Func`1 action)
+   at Abp.Authorization.AuthorizationHelperExtensions.Authorize(IAuthorizationHelper authorizationHelper, MethodInfo methodInfo, Type type)
+   at Abp.Web.Mvc.Authorization.AbpMvcAuthorizeFilter.OnAuthorization(AuthorizationContext filterContext)
+Abp.Authorization.AbpAuthorizationException: Current user did not login to the application!
+   at Abp.Authorization.AuthorizationHelper.<AuthorizeAsync>d__19.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at Abp.Authorization.AuthorizationHelper.<CheckPermissions>d__22.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at Abp.Authorization.AuthorizationHelper.<AuthorizeAsync>d__20.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Nito.AsyncEx.Synchronous.TaskExtensions.WaitAndUnwrapException(Task task)
+   at Nito.AsyncEx.AsyncContext.<>c__DisplayClass15_0.<Run>b__0(Task t)
+   at System.Threading.Tasks.ContinuationTaskFromTask.InnerInvoke()
+   at System.Threading.Tasks.Task.Execute()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at Nito.AsyncEx.Synchronous.TaskExtensions.WaitAndUnwrapException(Task task)
+   at Nito.AsyncEx.AsyncContext.Run(Func`1 action)
+   at Abp.Threading.AsyncHelper.RunSync(Func`1 action)
+   at Abp.Authorization.AuthorizationHelperExtensions.Authorize(IAuthorizationHelper authorizationHelper, MethodInfo methodInfo, Type type)
+   at Abp.Web.Mvc.Authorization.AbpMvcAuthorizeFilter.OnAuthorization(AuthorizationContext filterContext)
+ERROR 2018-12-16 23:19:02,757 [8    ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/Scripts/jquery-1.9.1.min! System.ArgumentException: The relative virtual path 'Blocks.ResourcesModule/Scripts/jquery-1.9.1.min' is not allowed here.
+   at System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   at System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 232
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 149
+ERROR 2018-12-16 23:19:02,793 [8    ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/lib/zTree_v3/js/jquery.ztree.all! System.ArgumentException: The relative virtual path 'Blocks.ResourcesModule/lib/zTree_v3/js/jquery.ztree.all' is not allowed here.
+   at System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   at System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 232
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 149
+ERROR 2018-12-16 23:19:02,826 [8    ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/Scripts/bootstrap.min! System.ArgumentException: The relative virtual path 'Blocks.ResourcesModule/Scripts/bootstrap.min' is not allowed here.
+   at System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   at System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 232
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 149
+ERROR 2018-12-16 23:19:02,883 [8    ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/lib/bootstrap-select/dist/js/bootstrap-select.min! System.ArgumentException: The relative virtual path 'Blocks.ResourcesModule/lib/bootstrap-select/dist/js/bootstrap-select.min' is not allowed here.
+   at System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   at System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 232
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 149
+ERROR 2018-12-16 23:19:02,947 [8    ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/lib/jqGrid/script/i18n/grid.locale-cn! System.ArgumentException: The relative virtual path 'Blocks.ResourcesModule/lib/jqGrid/script/i18n/grid.locale-cn' is not allowed here.
+   at System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   at System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 232
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 149
+ERROR 2018-12-16 23:19:02,981 [8    ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/lib/jqGrid/script/jquery.jqGrid.min! System.ArgumentException: The relative virtual path 'Blocks.ResourcesModule/lib/jqGrid/script/jquery.jqGrid.min' is not allowed here.
+   at System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   at System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 232
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 149
+ERROR 2018-12-16 23:19:03,017 [8    ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/lib/blockUI/jquery.blockUI! System.ArgumentException: The relative virtual path 'Blocks.ResourcesModule/lib/blockUI/jquery.blockUI' is not allowed here.
+   at System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   at System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 232
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 149
+ERROR 2018-12-16 23:19:03,049 [8    ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/lib/toastr/toastr.min! System.ArgumentException: The relative virtual path 'Blocks.ResourcesModule/lib/toastr/toastr.min' is not allowed here.
+   at System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   at System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 232
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 149
+ERROR 2018-12-16 23:19:03,078 [8    ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/lib/sweetalert/dist/sweetalert.min! System.ArgumentException: The relative virtual path 'Blocks.ResourcesModule/lib/sweetalert/dist/sweetalert.min' is not allowed here.
+   at System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   at System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 232
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 149
+ERROR 2018-12-16 23:19:03,108 [8    ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/lib/spin.js/spin.min! System.ArgumentException: The relative virtual path 'Blocks.ResourcesModule/lib/spin.js/spin.min' is not allowed here.
+   at System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   at System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 232
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 149
+ERROR 2018-12-16 23:19:03,137 [8    ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/lib/spin.js/jquery.spin! System.ArgumentException: The relative virtual path 'Blocks.ResourcesModule/lib/spin.js/jquery.spin' is not allowed here.
+   at System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   at System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 232
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 149
+ERROR 2018-12-16 23:19:03,167 [8    ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/lib/jquery-slimscroll/jquery.slimscroll.min! System.ArgumentException: The relative virtual path 'Blocks.ResourcesModule/lib/jquery-slimscroll/jquery.slimscroll.min' is not allowed here.
+   at System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   at System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 232
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 149
+ERROR 2018-12-16 23:19:03,195 [8    ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/lib/Waves/dist/waves.min! System.ArgumentException: The relative virtual path 'Blocks.ResourcesModule/lib/Waves/dist/waves.min' is not allowed here.
+   at System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   at System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 232
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 149
+ERROR 2018-12-16 23:19:03,226 [8    ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/lib/push.js/push.min! System.ArgumentException: The relative virtual path 'Blocks.ResourcesModule/lib/push.js/push.min' is not allowed here.
+   at System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   at System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 232
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 149
+ERROR 2018-12-16 23:19:03,257 [8    ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/lib/layer/layer! System.ArgumentException: The relative virtual path 'Blocks.ResourcesModule/lib/layer/layer' is not allowed here.
+   at System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   at System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 232
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 149
+ERROR 2018-12-16 23:19:03,301 [8    ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/Scripts/vue.min! System.ArgumentException: The relative virtual path 'Blocks.ResourcesModule/Scripts/vue.min' is not allowed here.
+   at System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   at System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 232
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 149
+ERROR 2018-12-16 23:19:03,333 [8    ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/lib/combobox/magicsuggest-min! System.ArgumentException: The relative virtual path 'Blocks.ResourcesModule/lib/combobox/magicsuggest-min' is not allowed here.
+   at System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   at System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 232
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 149
+ERROR 2018-12-16 23:19:03,362 [8    ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/lib/select2-develop/dist/js/select2.full.min! System.ArgumentException: The relative virtual path 'Blocks.ResourcesModule/lib/select2-develop/dist/js/select2.full.min' is not allowed here.
+   at System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   at System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 232
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 149
+ERROR 2018-12-16 23:19:03,392 [8    ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/lib/My97DatePicker/My97DatePicker/WdatePicker! System.ArgumentException: The relative virtual path 'Blocks.ResourcesModule/lib/My97DatePicker/My97DatePicker/WdatePicker' is not allowed here.
+   at System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   at System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 232
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 149
+ERROR 2018-12-16 23:19:03,421 [8    ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/lib/jquery-validation/dist/jquery.validate! System.ArgumentException: The relative virtual path 'Blocks.ResourcesModule/lib/jquery-validation/dist/jquery.validate' is not allowed here.
+   at System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   at System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 232
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 149
+ERROR 2018-12-16 23:19:03,451 [8    ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/Framework/UI/UI! System.ArgumentException: The relative virtual path 'Blocks.ResourcesModule/Framework/UI/UI' is not allowed here.
+   at System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   at System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 232
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 149
+ERROR 2018-12-16 23:19:03,482 [8    ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/lib/json2/json2! System.ArgumentException: The relative virtual path 'Blocks.ResourcesModule/lib/json2/json2' is not allowed here.
+   at System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   at System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 232
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 149
+ERROR 2018-12-16 23:19:03,511 [8    ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/Framework/Utility/utlity! System.ArgumentException: The relative virtual path 'Blocks.ResourcesModule/Framework/Utility/utlity' is not allowed here.
+   at System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   at System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 232
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 149
+ERROR 2018-12-16 23:19:03,539 [8    ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/Framework/Abp/AbpWrapper! System.ArgumentException: The relative virtual path 'Blocks.ResourcesModule/Framework/Abp/AbpWrapper' is not allowed here.
+   at System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   at System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 232
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 149
+ERROR 2018-12-16 23:19:03,570 [8    ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/lib/moment/min/moment-with-locales.min! System.ArgumentException: The relative virtual path 'Blocks.ResourcesModule/lib/moment/min/moment-with-locales.min' is not allowed here.
+   at System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   at System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 232
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 149
+ERROR 2018-12-16 23:19:03,600 [8    ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/Framework/Security/security! System.ArgumentException: The relative virtual path 'Blocks.ResourcesModule/Framework/Security/security' is not allowed here.
+   at System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   at System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 232
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 149
+ERROR 2018-12-16 23:19:03,630 [8    ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/build_home/Blocks! System.ArgumentException: The relative virtual path 'Blocks.ResourcesModule/build_home/Blocks' is not allowed here.
+   at System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   at System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 232
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 149
+ERROR 2018-12-16 23:19:03,661 [8    ] Abp.Logging.LogHelper                    - Can not find file for: nalr/jquery.signal! System.ArgumentException: The relative virtual path 'nalr/jquery.signal' is not allowed here.
+   at System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   at System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 232
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 149
+ERROR 2018-12-16 23:21:04,742 [5    ] Abp.Logging.LogHelper                    - Can not find file for: Blocks.ResourcesModule/lib/jqGrid/script/i18n/grid.locale-en! System.ArgumentException: The relative virtual path 'Blocks.ResourcesModule/lib/jqGrid/script/i18n/grid.locale-en' is not allowed here.
+   at System.Web.VirtualPath.Create(String virtualPath, VirtualPathOptions options)
+   at System.Web.VirtualPathUtility.ToAbsolute(String virtualPath)
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioningForEmbeddedFile(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 232
+   at Blocks.Framework.Web.Mvc.Extensions.HtmlHelperResourceExtensions.GetPathWithVersioning(String path) in C:\Repository\Blocks\Blocks.Framework.Web.old\Mvc\Extensions\HtmlHelperResourceExtensions.cs:line 149

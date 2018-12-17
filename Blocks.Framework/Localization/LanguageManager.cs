@@ -9,7 +9,7 @@ using System.Text;
 
 namespace Blocks.Framework.Localization
 {
-    internal class LanguageManager : ILanguageManager
+    internal class LanguageManager : ILanguagesManager
     {
         public LanguageInfo CurrentLanguage { get { return GetCurrentLanguage(); } }
 
