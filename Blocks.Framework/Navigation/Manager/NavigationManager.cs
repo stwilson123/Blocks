@@ -55,17 +55,17 @@ namespace Blocks.Framework.Navigation.Manager
             foreach (var provider in _iocResolver.ResolveAll<INavigationProvider>())
             {
                 provider.SetNavigation(context);
-                foreach (var menu in context.Manager.Menus)
-                {
-                    menu.Value.Items.ForEach((navItemDefinition) =>
-                    {
-                        if (string.IsNullOrEmpty(navItemDefinition.ExtensionName))
-                        {
-                            navItemDefinition.ExtensionName = provider.Extension.Name;
+                //foreach (var menu in context.Manager.Menus)
+                //{
+                //    menu.Value.Items.ForEach((navItemDefinition) =>
+                //    {
+                //        if (string.IsNullOrEmpty(navItemDefinition.ExtensionName))
+                //        {
+                //            navItemDefinition.ExtensionName = provider.Extension.Name;
                              
-                        }
-                    });
-                }
+                //        }
+                //    });
+                //}
                 
             }
 

@@ -1,7 +1,6 @@
 ﻿using System.Data.Entity;
-using Abp.Domain.Uow;
-using Abp.EntityFramework.Uow;
 using Abp.MultiTenancy;
+using Blocks.Framework.Domain.Uow;
 
 namespace Blocks.Framework.DBORM.DBContext
 {

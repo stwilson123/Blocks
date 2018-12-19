@@ -11,15 +11,16 @@ using System.Threading.Tasks;
 using Abp.Collections.Extensions;
 using Abp.Data;
 using Abp.Domain.Entities;
-using Abp.Domain.Repositories;
 using Abp.Domain.Uow;
-using Abp.EntityFramework;
+using Abp.MultiTenancy;
 using Blocks.Framework.DBORM.DBContext;
 using Blocks.Framework.DBORM.Entity;
 using Blocks.Framework.DBORM.Linq;
 using Blocks.Framework.Security;
 using Blocks.Framework.Services;
 using Z.EntityFramework.Plus;
+using Blocks.Framework.Reflection.Extensions;
+using Blocks.Framework.Data;
 
 namespace Blocks.Framework.DBORM.Repository
 {
@@ -63,7 +64,7 @@ namespace Blocks.Framework.DBORM.Repository
         }
 
 
-        public override TEntity Insert(TEntity entity)
+        public override  TEntity Insert(TEntity entity)
         {
             var EntityObj = (Data.Entity.Entity) entity;
             EntityObj.CREATER = string.IsNullOrEmpty(EntityObj.CREATER) ? UserContext.GetCurrentUser().UserId :EntityObj.CREATER;
@@ -146,11 +147,11 @@ namespace Blocks.Framework.DBORM.Repository
     /// <typeparam name="TDbContext">DbContext which contains <typeparamref name="TEntity"/>.</typeparam>
     /// <typeparam name="TEntity">Type of the Entity for this repository</typeparam>
     /// <typeparam name="TPrimaryKey">Primary key of the entity</typeparam>
-    public class DBSqlRepositoryBase<TDbContext, TEntity, TPrimaryKey> : 
-        AbpRepositoryBase<TEntity, TPrimaryKey>,
+    public class DBSqlRepositoryBase<TDbContext, TEntity, TPrimaryKey> :
+       //  AbpRepositoryBase<TEntity, TPrimaryKey>,
+       IRepository<TEntity,TPrimaryKey>,
         ISupportsExplicitLoading<TEntity, TPrimaryKey>,
         IRepositoryWithDbContext 
-
         where TEntity : Data.Entity.Entity<TPrimaryKey> 
         where TDbContext : DbContext
     {
@@ -158,7 +159,7 @@ namespace Blocks.Framework.DBORM.Repository
         /// Gets EF DbContext object.
         /// </summary>
         public virtual TDbContext Context => _dbContextProvider.GetDbContext<TDbContext>(MultiTenancySide);
-
+        public static MultiTenancySides? MultiTenancySide { get; private set; }
         /// <summary>
         /// Gets DbSet for given entity.
         /// </summary>
@@ -202,15 +203,21 @@ namespace Blocks.Framework.DBORM.Repository
         public DBSqlRepositoryBase(DBContext.IDbContextProvider dbContextProvider)
         {
             _dbContextProvider = dbContextProvider;
+            Type type = typeof(TEntity);
+            var attr = type.GetSingleAttributeOfTypeOrBaseTypesOrNull<MultiTenancySideAttribute>();
+            if (attr != null)
+            {
+                MultiTenancySide = attr.Side;
+            }
         }
 
-        public override IQueryable<TEntity> GetAll()
+        public  IQueryable<TEntity> GetAll()
         {
             throw new NotSupportedException("This Method is not supported");
         }
 
-      
-        public override IQueryable<TEntity> GetAllIncluding(params Expression<Func<TEntity, object>>[] propertySelectors)
+
+        public  IQueryable<TEntity> GetAllIncluding(params Expression<Func<TEntity, object>>[] propertySelectors)
         {
             throw new NotSupportedException("This Method is not supported");
 
@@ -236,33 +243,85 @@ namespace Blocks.Framework.DBORM.Repository
 
             return query.AsNoTracking();
         }
-        public override List<TEntity> GetAllList()
+
+        public virtual TEntity Get(TPrimaryKey id)
+        {
+            var entity = FirstOrDefault(id);
+            if (entity == null)
+            {
+                throw new EntityNotFoundException(typeof(TEntity), id);
+            }
+
+            return entity;
+        }
+
+        public virtual async Task<TEntity> GetAsync(TPrimaryKey id)
+        {
+            var entity = await FirstOrDefaultAsync(id);
+            if (entity == null)
+            {
+                throw new EntityNotFoundException(typeof(TEntity), id);
+            }
+
+            return entity;
+        }
+
+        public  List<TEntity> GetAllList()
         {
             return GetAllCode().ToList();
         }
 
-      
+        public virtual Task<List<TEntity>> GetAllListAsync()
+        {
+            return Task.FromResult(GetAllList());
+        }
 
-        public override List<TEntity> GetAllList(Expression<Func<TEntity, bool>> predicate)
+        public  List<TEntity> GetAllList(Expression<Func<TEntity, bool>> predicate)
         {
             return GetAllCode().Where(predicate).ToList();
         }
 
-      
-        public override TEntity FirstOrDefault(TPrimaryKey id)
+        public virtual Task<List<TEntity>> GetAllListAsync(Expression<Func<TEntity, bool>> predicate)
+        {
+            return Task.FromResult(GetAllList(predicate));
+        }
+        public  TEntity FirstOrDefault(TPrimaryKey id)
         {
             return GetAllCode().FirstOrDefault(CreateEqualityExpressionForId(id));
         }
-        public override TEntity FirstOrDefault(Expression<Func<TEntity, bool>> predicate)
+        public  TEntity FirstOrDefault(Expression<Func<TEntity, bool>> predicate)
         {
             return GetAllCode().FirstOrDefault(predicate);
 
         }
-        public override TEntity Single(Expression<Func<TEntity, bool>> predicate)
+
+        public virtual Task<TEntity> FirstOrDefaultAsync(TPrimaryKey id)
+        {
+            return Task.FromResult(FirstOrDefault(id));
+        }
+
+        public virtual Task<TEntity> FirstOrDefaultAsync(Expression<Func<TEntity, bool>> predicate)
+        {
+            return Task.FromResult(FirstOrDefault(predicate));
+        }
+
+
+        public virtual TEntity Load(TPrimaryKey id)
+        {
+            return Get(id);
+        }
+
+
+        public TEntity Single(Expression<Func<TEntity, bool>> predicate)
         {
             return GetAllCode().Single(predicate);
         }
-        public override TEntity Insert(TEntity entity)
+
+        public Task<TEntity> SingleAsync(Expression<Func<TEntity, bool>> predicate)
+        {
+            return Task.FromResult(Single(predicate));
+        }
+        public virtual TEntity Insert(TEntity entity)
         {
             
             return Table.Add(entity);
@@ -288,12 +347,14 @@ namespace Blocks.Framework.DBORM.Repository
             return Task.FromResult(Insert(entity));
         }
 
-        public override Task<TEntity> InsertAsync(TEntity entity)
+
+
+        public  Task<TEntity> InsertAsync(TEntity entity)
         {
             return Task.FromResult(Insert(entity));
         }
 
-        public override TPrimaryKey InsertAndGetId(TEntity entity)
+        public  TPrimaryKey InsertAndGetId(TEntity entity)
         {
             entity = Insert(entity);
 
@@ -305,7 +366,20 @@ namespace Blocks.Framework.DBORM.Repository
             return entity.Id;
         }
 
-        public override async Task<TPrimaryKey> InsertAndGetIdAsync(TEntity entity)
+        public virtual TEntity InsertOrUpdate(TEntity entity)
+        {
+            return entity.IsTransient()
+                ? Insert(entity)
+                : Update(entity);
+        }
+
+        public virtual async Task<TEntity> InsertOrUpdateAsync(TEntity entity)
+        {
+            return entity.IsTransient()
+                ? await InsertAsync(entity)
+                : await UpdateAsync(entity);
+        }
+        public  async Task<TPrimaryKey> InsertAndGetIdAsync(TEntity entity)
         {
             entity = await InsertAsync(entity);
 
@@ -317,7 +391,8 @@ namespace Blocks.Framework.DBORM.Repository
             return entity.Id;
         }
 
-        public override TPrimaryKey InsertOrUpdateAndGetId(TEntity entity)
+
+        public  TPrimaryKey InsertOrUpdateAndGetId(TEntity entity)
         {
             entity = InsertOrUpdate(entity);
 
@@ -329,7 +404,7 @@ namespace Blocks.Framework.DBORM.Repository
             return entity.Id;
         }
 
-        public override async Task<TPrimaryKey> InsertOrUpdateAndGetIdAsync(TEntity entity)
+        public  async Task<TPrimaryKey> InsertOrUpdateAndGetIdAsync(TEntity entity)
         {
             entity = await InsertOrUpdateAsync(entity);
 
@@ -341,7 +416,7 @@ namespace Blocks.Framework.DBORM.Repository
             return entity.Id;
         }
 
-        public override TEntity Update(TEntity entity)
+        public virtual  TEntity Update(TEntity entity)
         {
             AttachIfNot(entity);
             var entryEntity = Context.Entry(entity);
@@ -350,7 +425,7 @@ namespace Blocks.Framework.DBORM.Repository
             return entity;
         }
 
-        public override Task<TEntity> UpdateAsync(TEntity entity)
+        public  Task<TEntity> UpdateAsync(TEntity entity)
         {
             AttachIfNot(entity);
             Context.Entry(entity).State = EntityState.Modified;
@@ -366,13 +441,31 @@ namespace Blocks.Framework.DBORM.Repository
             return GetAllCode().Where(wherePredicate).UpdateAsync(updateFactory);
         }
 
-        public override void Delete(TEntity entity)
+        public virtual TEntity Update(TPrimaryKey id, Action<TEntity> updateAction)
+        {
+            var entity = Get(id);
+            updateAction(entity);
+            return entity;
+        }
+
+        public virtual async Task<TEntity> UpdateAsync(TPrimaryKey id, Func<TEntity, Task> updateAction)
+        {
+            var entity = await GetAsync(id);
+            await updateAction(entity);
+            return entity;
+        }
+
+        public  void Delete(TEntity entity)
         {
             AttachIfNot(entity);
             Table.Remove(entity);
         }
-
-        public override void Delete(TPrimaryKey id)
+        public virtual Task DeleteAsync(TEntity entity)
+        {
+            Delete(entity);
+            return Task.FromResult(0);
+        }
+        public  void Delete(TPrimaryKey id)
         {
             var entity = GetFromChangeTrackerOrNull(id);
             if (entity != null)
@@ -390,20 +483,30 @@ namespace Blocks.Framework.DBORM.Repository
 
             //Could not found the entity, do nothing.
         }
-
-        public override long Delete(Expression<Func<TEntity, bool>> predicate)
+        public virtual Task DeleteAsync(TPrimaryKey id)
+        {
+            Delete(id);
+            return Task.FromResult(0);
+        }
+        public  long Delete(Expression<Func<TEntity, bool>> predicate)
         {
             return GetAllCode().Where(predicate).Delete();
         }
 
-        public override int Count(Expression<Func<TEntity, bool>> predicate)
+
+        public Task DeleteAsync(Expression<Func<TEntity, bool>> predicate)
+        {
+           return Task.FromResult(Delete(predicate));
+        }
+
+        public  int Count(Expression<Func<TEntity, bool>> predicate)
         {
             return GetAllCode().Where(predicate).Count();
         }
 
 
 
-        public override long LongCount(Expression<Func<TEntity, bool>> predicate)
+        public  long LongCount(Expression<Func<TEntity, bool>> predicate)
         {
             return GetAllCode().Where(predicate).LongCount();
         }
@@ -424,12 +527,46 @@ namespace Blocks.Framework.DBORM.Repository
         }
 
 
-        public override T Query<T>(Func<IQueryable<TEntity>, T> queryMethod)
+        public  T Query<T>(Func<IQueryable<TEntity>, T> queryMethod)
         {
             throw new NotSupportedException("This Method is not supported");
 
         }
 
+
+        public virtual int Count()
+        {
+            return GetAllCode().Count();
+        }
+
+        public virtual Task<int> CountAsync()
+        {
+            return Task.FromResult(Count());
+        }
+
+        
+
+        public virtual Task<int> CountAsync(Expression<Func<TEntity, bool>> predicate)
+        {
+            return Task.FromResult(Count(predicate));
+        }
+
+        public virtual long LongCount()
+        {
+            return GetAllCode().LongCount();
+        }
+
+        public virtual Task<long> LongCountAsync()
+        {
+            return Task.FromResult(LongCount());
+        }
+
+        
+
+        public virtual Task<long> LongCountAsync(Expression<Func<TEntity, bool>> predicate)
+        {
+            return Task.FromResult(LongCount(predicate));
+        }
         public DbContext GetDbContext()
         {
             return Context;
@@ -464,5 +601,20 @@ namespace Blocks.Framework.DBORM.Repository
 
             return entry?.Entity as TEntity;
         }
+
+        protected static Expression<Func<TEntity, bool>> CreateEqualityExpressionForId(TPrimaryKey id)
+        {
+            var lambdaParam = Expression.Parameter(typeof(TEntity));
+
+            var lambdaBody = Expression.Equal(
+                Expression.PropertyOrField(lambdaParam, "Id"),
+                Expression.Constant(id, typeof(TPrimaryKey))
+                );
+
+            return Expression.Lambda<Func<TEntity, bool>>(lambdaBody, lambdaParam);
+        }
+
+        
     }
+ 
 }

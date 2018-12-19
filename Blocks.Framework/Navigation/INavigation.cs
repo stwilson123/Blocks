@@ -12,7 +12,7 @@ namespace Blocks.Framework.Navigation
         /// </summary>
         string Name { get; }
 
-        string ExtensionName { get; set; }
+        //string ExtensionName { get; set; }
 
 
         IDictionary<string, object> RouteValues { get; }

@@ -6,7 +6,7 @@ using Blocks.Framework.ApplicationServices.Controller;
 using Blocks.Framework.ApplicationServices.Manager;
 using Blocks.Framework.Collections.Extensions;
 using Blocks.Framework.Ioc.Dependency;
-
+using Blocks.Framework.Utility.Extensions;
 namespace Blocks.Framework.Web.Mvc.Controllers.Manager
 {
     public class MvcControllerManager : ControllerManger<DefaultControllerInfo<MvcControllerActionInfo>,MvcControllerActionInfo>, ISingletonDependency

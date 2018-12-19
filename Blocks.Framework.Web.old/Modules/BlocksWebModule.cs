@@ -43,6 +43,7 @@ namespace Blocks.Framework.Web.Modules
             get
             {
                 var currentAssmeblyName = currentAssmebly.GetName().Name;
+                var aa = IocManager.Resolve<IExtensionManager>().AvailableExtensions();
                 var Extension = IocManager.Resolve<IExtensionManager>().AvailableExtensions()
                     .FirstOrDefault(t => t.Id == currentAssmeblyName);
                 if (Extension == null)

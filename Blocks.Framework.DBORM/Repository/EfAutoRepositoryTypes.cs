@@ -1,4 +1,4 @@
-﻿using Abp.Domain.Repositories;
+﻿using Blocks.Framework.Data;
 
 namespace Blocks.Framework.DBORM.Repository
 {

@@ -20,6 +20,7 @@ using Blocks.Framework.Ioc;
 using Blocks.Framework.Navigation;
 using Blocks.Framework.Localization.Provider;
 using Blocks.Framework.RPCProxy;
+using Blocks.Framework.Domain;
 
 namespace Blocks.Framework.Modules
 {
@@ -29,6 +30,8 @@ namespace Blocks.Framework.Modules
     [DependsOn(typeof(LocalizationModule))]
     [DependsOn(typeof(NavigationModule))]
     [DependsOn(typeof(RPCProxyModule))]
+
+    [DependsOn(typeof(DomianModule))]
     public class BlocksFrameworkModule: AbpModule
     {
          

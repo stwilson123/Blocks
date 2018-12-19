@@ -27,9 +27,7 @@ namespace Blocks.Framework.Modules
             get
             {
                 var currentAssmeblyName = currentAssmebly.GetName().Name;
-                var Extension = IocManager.Resolve<IExtensionManager>().AvailableExtensions()
-             .FirstOrDefault(t => t.
-                                      Id == currentAssmeblyName);
+                var Extension = IocManager.Resolve<IExtensionManager>().AvailableExtensions().FirstOrDefault(t => t.Id == currentAssmeblyName);
                 if (Extension == null)
                     throw new ExtensionNotFoundException(StringLocal.Format($"{currentAssmeblyName} can't found extension depond on it."));
                 return Extension;

@@ -16,7 +16,7 @@ using Blocks.Framework.Web.Navigation;
 using Castle.DynamicProxy.Generators.Emitters.SimpleAST;
 using INavigationManager = Blocks.Framework.Navigation.Manager.INavigationManager;
 using ITransientDependency = Blocks.Framework.Ioc.Dependency.ITransientDependency;
-
+using Blocks.Framework.Utility.Extensions;
 namespace Blocks.Core.Navigation.Services
 {
     public class DefaultUserNavigationManager: IUserNavigationManager, ITransientDependency

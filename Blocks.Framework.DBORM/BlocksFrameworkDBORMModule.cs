@@ -3,10 +3,6 @@ using System.Data.Entity;
 using System.Reflection;
 using Abp.Collections.Extensions;
 using Abp.Dependency;
-using Abp.EntityFramework;
-using Abp.EntityFramework.Repositories;
-using Abp.EntityFrameworkCore;
-using Abp.EntityFrameworkCore.Repositories;
 using Abp.Localization.Dictionaries;
 using Abp.Localization.Dictionaries.Xml;
 using Abp.Modules;
@@ -18,11 +14,11 @@ using Blocks.Framework.Environment;
 using Blocks.Framework.Localization;
 using Blocks.Framework.Modules;
 using Castle.MicroKernel.Registration;
-using AbpDbContext = Abp.EntityFramework.AbpDbContext;
 using System.Data.Entity.Infrastructure.Interception;
-using Abp.EntityFramework.Uow;
 using Blocks.Framework.DBORM.Intercepter;
 using Abp.Configuration.Startup;
+using Blocks.Framework.DBORM.Repository;
+
 namespace Blocks.Framework.DBORM
 {
     [DependsOn(typeof(BlocksFrameworkModule))]
@@ -87,16 +83,16 @@ namespace Blocks.Framework.DBORM
                     scope.Resolve<IEfGenericRepositoryRegistrar>().RegisterForDbContext(dbContextType, IocManager,
                         Blocks.Framework.DBORM.Repository.EfAutoRepositoryTypes.Default);
 
-                    IocManager.IocContainer.Register(
-                        Component.For<ISecondaryOrmRegistrar>()
-                            .Named(Guid.NewGuid().ToString("N"))
-                            .Instance(new EfCoreBasedSecondaryOrmRegistrar(dbContextType,
-                                scope.Resolve<IDbContextEntityFinder>()))
-                            .LifestyleTransient()
-                    );
+                    //IocManager.IocContainer.Register(
+                    //    Component.For<ISecondaryOrmRegistrar>()
+                    //        .Named(Guid.NewGuid().ToString("N"))
+                    //        .Instance(new EfCoreBasedSecondaryOrmRegistrar(dbContextType,
+                    //            scope.Resolve<IDbContextEntityFinder>()))
+                    //        .LifestyleTransient()
+                    //);
                 }
 
-                scope.Resolve<IDbContextTypeMatcher>().Populate(dbContextTypes);
+                scope.Resolve<DBContext.IDbContextTypeMatcher>().Populate(dbContextTypes);
             }
         }
     }
