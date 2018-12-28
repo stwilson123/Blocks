@@ -1,19 +1,22 @@
 ﻿@*@model Blocks.LayoutModule.ViewModels.LanguageSelectionViewModel*@
-<li class="dropdown">
+<li class="dropdown-submenu custompull-left">
     <a href="javascript:void(0);" class="dropdown-toggle" style="line-height: 24px;" data-toggle="dropdown" role="button">
         <i class="@Model.CurrentLanguage.Icon" title="@Model.CurrentLanguage.DisplayName"></i>
         <span>@Model.CurrentLanguage.DisplayName</span>
-        <b class="caret"></b>
+       
     </a>
-    <ul class="dropdown-menu pull-right">
+    <ul class="dropdown-menu">
         @foreach (var language in Model.Languages)
         {
             if (language.Name != Model.CurrentLanguage.Name)
             {
-              
+
                 <li><a href="/LayoutModule/Layout/ChangeCulture?cultureName=@language.Name&returnUrl=@Context.Request.Path"><i class="@language.Icon"></i> @language.DisplayName</a></li>
 
             }
         }
+
+        
+      
     </ul>
 </li>

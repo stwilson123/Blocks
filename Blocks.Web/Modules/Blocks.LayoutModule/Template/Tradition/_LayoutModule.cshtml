@@ -1,4 +1,4 @@
-@using System.Linq;
+﻿@using System.Linq;
 @using System.Threading
 @using Blocks
 @using Blocks.Framework.Collections
@@ -29,7 +29,7 @@
         Style.Include("css/themes/all-themes.css").AtHead();
         Style.Include("_Layout.css").AtHead();
 
-        
+         
 
     }
 
@@ -134,8 +134,10 @@
                             </a>
                         </li>*@
                         <!-- #END# Call Search -->
-                         @Html.Action("LanguageSelection", "Layout", new { area = "LayoutModule" })
-                         @*<li class="pull-right">
+                        @* @Html.Action("LanguageSelection", "Layout", new { area = "LayoutModule" })*@
+                        @Html.Action("PrivateSetting", "Layout", new { area = "LayoutModule" })
+
+                        @*<li class="pull-right">
                              <a href="javascript:void(0);" class="js-right-sidebar" data-close="true">
                                  <i class="material-icons">more_vert</i>
                              </a>

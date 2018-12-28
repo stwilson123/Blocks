@@ -6,6 +6,7 @@ using Abp.Localization;
 using Abp.Runtime.Session;
 using Blocks.Core.Navigation.Services;
 using Blocks.Framework.AutoMapper;
+using Blocks.Framework.Environment.Extensions;
 using Blocks.Framework.Event;
 using Blocks.Framework.Localization;
 using Blocks.Framework.Security;
@@ -27,7 +28,7 @@ namespace Blocks.LayoutModule.Controllers
         public IDomainEventBus EventBus { get; set; }
         private readonly IAbpWebLocalizationConfiguration _webLocalizationConfiguration;
         public IClock Clock { get; set; }
-
+        public IExtensionsWrapper extensionsWrapper { get; set; }
         public LayoutController(IUserNavigationManager userNavigationManager, IUserContext userContext, ILanguagesManager languageManager,
             IAbpWebLocalizationConfiguration webLocalizationConfiguration)
         {
@@ -53,6 +54,16 @@ namespace Blocks.LayoutModule.Controllers
         {
             return PartialView();
         }
+
+
+        [ChildActionOnly]
+        public PartialViewResult PrivateSetting()
+        {
+             
+            return PartialView(new UserInfo { UserAccount = _userContext.GetCurrentUser().UserAccount });
+        }
+
+
 
         [ChildActionOnly]
         public PartialViewResult LanguageSelection()

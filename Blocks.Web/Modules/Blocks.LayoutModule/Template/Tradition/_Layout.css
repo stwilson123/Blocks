@@ -2,33 +2,25 @@
     display: inline-block;
 }
 
-.select2-container--open{
-    z-index:99999999
+.select2-container--open {
+    z-index: 99999999
 }
 
 .modal-dialog .modal-body {
     color: #777;
-    padding: 15px 25px; }
-.modal-dialog .modal-footer {
-    border: none; 
+    padding: 15px 25px;
 }
-.layui-layer-content .modal-dialog{
-    width:auto;
+
+.modal-dialog .modal-footer {
+    border: none;
+}
+
+.layui-layer-content .modal-dialog {
+    width: auto;
     margin: auto;
 }
+
 .layui-layer-title {
-    padding: 25px 25px 5px 25px;
-    height: 65px;
-    line-height: 42px;
-     border-bottom: 0px solid #eee; 
-    font-size: 16px;
-    color: #333;
-    overflow: hidden;
-    background-color: inherit;
-    border-radius: 2px 2px 0 0;
-    font-weight: bold;
-}
-.ui-jqdialog-titlebar.modal-header{
     padding: 25px 25px 5px 25px;
     height: 65px;
     line-height: 42px;
@@ -40,29 +32,96 @@
     border-radius: 2px 2px 0 0;
     font-weight: bold;
 }
-.ui-jqdialog-content.modal-body{
+
+.ui-jqdialog-titlebar.modal-header {
+    padding: 25px 25px 5px 25px;
+    height: 65px;
+    line-height: 42px;
+    border-bottom: 0px solid #eee;
+    font-size: 16px;
+    color: #333;
+    overflow: hidden;
+    background-color: inherit;
+    border-radius: 2px 2px 0 0;
+    font-weight: bold;
+}
+
+.ui-jqdialog-content.modal-body {
     color: #777;
     padding: 15px 25px;
 }
- 
-.jqgrow .form-control{
+
+.jqgrow .form-control {
     height: 28px;
     box-shadow: inset 0 0px 0px
 }
-.ui-search-table .form-control{
-    padding:4px;
-    height: 28px;
-}
-.ui-search-table .input-elm.form-control:not(input){
-    box-shadow: inset 0 0px 0px;
-    padding:0px;
-    border: 0px ;
-   
-}
-.ui-search-table  .select2-container{
+
+.ui-search-table .form-control {
+    padding: 4px;
     height: 28px;
 }
 
-.ui-search-table .btn-default{
-    padding:4px;
+.ui-search-table .input-elm.form-control:not(input) {
+    box-shadow: inset 0 0px 0px;
+    padding: 0px;
+    border: 0px;
+}
+
+.ui-search-table .select2-container {
+    height: 28px;
+}
+
+.ui-search-table .btn-default {
+    padding: 4px;
+}
+
+
+.dropdown-submenu {
+    position: relative;
+}
+
+.dropdown-submenu > .dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -6px;
+    margin-left: -1px;
+    -webkit-border-radius: 0 6px 6px 6px;
+    -moz-border-radius: 0 6px 6px;
+    border-radius: 0 6px 6px 6px;
+}
+
+.dropdown-submenu:hover > .dropdown-menu {
+    display: block;
+    right:auto;
+    top:auto
+}
+
+.dropdown-submenu > a:after {
+    display: block;
+    content: " ";
+    float: right;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 5px 0 5px 5px;
+    border-left-color: #ccc;
+    margin-top: 5px;
+    margin-right: -10px;
+}
+
+.dropdown-submenu:hover > a:after {
+    border-left-color: #fff;
+}
+
+.dropdown-submenu.custompull-left {
+    float: none;
+}
+
+.dropdown-submenu.custompull-left > .dropdown-menu {
+    left: -100%;
+    margin-left: 10px;
+    -webkit-border-radius: 6px 0 6px 6px;
+    -moz-border-radius: 6px 0 6px 6px;
+    border-radius: 6px 0 6px 6px;
 }

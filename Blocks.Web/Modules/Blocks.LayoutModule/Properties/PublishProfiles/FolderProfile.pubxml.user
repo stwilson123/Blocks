@@ -10,19 +10,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/Abp.AutoMapper.dll">
-      <publishTime>12/04/2018 19:01:13</publishTime>
+      <publishTime>12/19/2018 22:06:15</publishTime>
     </File>
     <File Include="bin/Abp.AutoMapper.pdb">
-      <publishTime>12/04/2018 19:01:13</publishTime>
+      <publishTime>12/19/2018 22:06:15</publishTime>
     </File>
     <File Include="bin/Abp.Castle.Log4Net.dll">
-      <publishTime>12/04/2018 19:01:13</publishTime>
+      <publishTime>12/19/2018 22:06:15</publishTime>
     </File>
     <File Include="bin/Abp.Castle.Log4Net.pdb">
-      <publishTime>12/04/2018 19:01:13</publishTime>
+      <publishTime>12/19/2018 22:06:15</publishTime>
     </File>
     <File Include="bin/Abp.dll">
-      <publishTime>12/04/2018 18:55:22</publishTime>
+      <publishTime>12/19/2018 22:06:14</publishTime>
     </File>
     <File Include="bin/Abp.EntityFramework.Common.dll">
       <publishTime>07/24/2018 14:52:20</publishTime>
@@ -46,7 +46,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/19/2018 11:31:22</publishTime>
     </File>
     <File Include="bin/Abp.pdb">
-      <publishTime>12/04/2018 18:55:22</publishTime>
+      <publishTime>12/19/2018 22:06:14</publishTime>
     </File>
     <File Include="bin/Abp.Web.Api.dll">
       <publishTime>05/08/2018 16:00:03</publishTime>
@@ -55,10 +55,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/08/2018 16:00:03</publishTime>
     </File>
     <File Include="bin/Abp.Web.Common.dll">
-      <publishTime>12/04/2018 19:01:13</publishTime>
+      <publishTime>12/19/2018 22:06:15</publishTime>
     </File>
     <File Include="bin/Abp.Web.Common.pdb">
-      <publishTime>12/04/2018 19:01:13</publishTime>
+      <publishTime>12/19/2018 22:06:15</publishTime>
     </File>
     <File Include="bin/Abp.Web.dll">
       <publishTime>05/09/2018 11:22:41</publishTime>
@@ -109,10 +109,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/18/2018 18:15:06</publishTime>
     </File>
     <File Include="bin/Blocks.Core.dll">
-      <publishTime>12/04/2018 19:01:18</publishTime>
+      <publishTime>12/19/2018 22:06:18</publishTime>
     </File>
     <File Include="bin/Blocks.Core.pdb">
-      <publishTime>12/04/2018 19:01:18</publishTime>
+      <publishTime>12/19/2018 22:06:18</publishTime>
     </File>
     <File Include="bin/Blocks.EntityFramework.dll">
       <publishTime>07/18/2018 18:15:07</publishTime>
@@ -127,19 +127,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/27/2018 11:13:30</publishTime>
     </File>
     <File Include="bin/Blocks.Framework.dll">
-      <publishTime>12/04/2018 19:01:15</publishTime>
+      <publishTime>12/19/2018 22:06:16</publishTime>
     </File>
     <File Include="bin/Blocks.Framework.pdb">
-      <publishTime>12/04/2018 19:01:15</publishTime>
+      <publishTime>12/19/2018 22:06:16</publishTime>
     </File>
     <File Include="bin/Blocks.Framework.Web.dll">
-      <publishTime>12/04/2018 19:01:18</publishTime>
+      <publishTime>12/19/2018 22:06:17</publishTime>
     </File>
     <File Include="bin/Blocks.Framework.Web.pdb">
-      <publishTime>12/04/2018 19:01:18</publishTime>
+      <publishTime>12/19/2018 22:06:17</publishTime>
     </File>
     <File Include="bin/Blocks.LayoutModule.dll">
-      <publishTime>12/04/2018 19:01:23</publishTime>
+      <publishTime>12/19/2018 22:06:20</publishTime>
     </File>
     <File Include="bin/Blocks.LayoutModule.Extensions.dll">
       <publishTime>07/19/2018 18:01:58</publishTime>
@@ -148,13 +148,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/19/2018 18:01:58</publishTime>
     </File>
     <File Include="bin/Blocks.LayoutModule.ExtensionsModule.dll">
-      <publishTime>12/04/2018 19:01:20</publishTime>
+      <publishTime>12/19/2018 22:06:19</publishTime>
     </File>
     <File Include="bin/Blocks.LayoutModule.ExtensionsModule.pdb">
-      <publishTime>12/04/2018 19:01:20</publishTime>
+      <publishTime>12/19/2018 22:06:19</publishTime>
     </File>
     <File Include="bin/Blocks.LayoutModule.pdb">
-      <publishTime>12/04/2018 19:01:23</publishTime>
+      <publishTime>12/19/2018 22:06:20</publishTime>
     </File>
     <File Include="bin/Blocks.Web.dll">
       <publishTime>07/31/2018 09:19:12</publishTime>
@@ -184,10 +184,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/27/2017 15:15:10</publishTime>
     </File>
     <File Include="bin/Castle.Winsdor.Aspnet.Web.dll">
-      <publishTime>12/04/2018 18:55:22</publishTime>
+      <publishTime>12/19/2018 22:06:14</publishTime>
     </File>
     <File Include="bin/Castle.Winsdor.Aspnet.Web.pdb">
-      <publishTime>12/04/2018 18:55:22</publishTime>
+      <publishTime>12/19/2018 22:06:14</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>10/23/2017 13:15:18</publishTime>
@@ -844,19 +844,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/17/2018 00:27:22</publishTime>
     </File>
     <File Include="Template/Tradition/_LayoutModule.cshtml">
-      <publishTime>12/03/2018 22:35:30</publishTime>
+      <publishTime>12/06/2018 17:45:49</publishTime>
     </File>
     <File Include="Template/Tradition/_LayoutModule.js">
-      <publishTime>11/30/2018 08:11:55</publishTime>
+      <publishTime>12/04/2018 23:56:57</publishTime>
     </File>
     <File Include="Template/Tradition/_LayoutPartialModule.cshtml">
-      <publishTime>11/26/2018 09:41:08</publishTime>
+      <publishTime>12/04/2018 19:57:34</publishTime>
     </File>
     <File Include="Template/Tradition/_LayoutPDAModule.cshtml">
       <publishTime>07/27/2018 00:23:10</publishTime>
     </File>
     <File Include="Template/Tradition/_LayoutPDAModule.js">
-      <publishTime>07/27/2018 00:41:44</publishTime>
+      <publishTime>12/05/2018 23:04:43</publishTime>
     </File>
     <File Include="Template/Web.config">
       <publishTime>02/06/2018 18:00:18</publishTime>
