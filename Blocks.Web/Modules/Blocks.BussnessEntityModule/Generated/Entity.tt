@@ -12,6 +12,8 @@
 	TrackModifiedColumns = true;
 	ExplicitColumns = false;
 	ExcludePrefix = new string[] {}; // Exclude tables by prefix.
+	var IgnoreCommonColumns = new string[]{ "DATAVERSION","CREATEDATE","CREATER","UPDATEDATE","UPDATER" };
+
     MappingFile = @"..\Configuration\PocoMapping.xml";
     // Read schema
 	var tables = LoadTables();
@@ -27,7 +29,13 @@
 	
 	 
 */
-
+    foreach(var t in tables)
+	{
+        foreach(var c in t.Columns.Where(c => IgnoreCommonColumns.Contains(c.Name)))
+        {
+		    c.Ignore = true;
+        }
+    }
 	// Generate output
 	if (tables.Count>0)
 	{

@@ -3,6 +3,7 @@ using Blocks.BussnessDTOModule.MasterData;
 using Blocks.BussnessEntityModule;
 using Blocks.Framework.Data;
 using Blocks.Framework.Data.Paging;
+using System.Collections.Generic;
 
 namespace Blocks.BussnessRespositoryModule
 {
@@ -13,5 +14,7 @@ namespace Blocks.BussnessRespositoryModule
         string GetValueOverride(string value);
 
         PageList<PageResult> GetPageList(SearchModel search);
+
+        List<PageResult> GetList();
     }
 }

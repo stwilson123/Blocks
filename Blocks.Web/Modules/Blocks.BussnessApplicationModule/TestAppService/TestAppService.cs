@@ -24,6 +24,11 @@ namespace Blocks.BussnessApplicationModule.TestAppService
             return testDomain.GetValue(a);
         }
 
+
+        public string GetValueOverride()
+        {
+            return testDomain.GetValueOverride();
+        }
         public string Add(string id)
         {
             return "";

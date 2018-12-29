@@ -44,7 +44,8 @@
 
                 formValidate = view.find("form[name='tenantCreateForm']").validate({
                     rules: {
-                        TenancyName: { required: true, number:true }
+                        TenancyName: { required: true, number:true },
+                        city:{required:true}
                     },
                     messages:{
                         TenancyName: "必须填入数字！"

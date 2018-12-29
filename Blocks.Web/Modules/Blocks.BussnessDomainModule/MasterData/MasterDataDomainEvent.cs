@@ -36,24 +36,25 @@ namespace Blocks.BussnessDomainModule.MasterData
 
         public virtual string Add(MasterData data)
         {
-//            var newMasterData = new TESTENTITY()
-//            {
-//                STRING = data.city,
-//                ISACTIVE = SafeConvert.ToInt64(data.isActive),
-//                COMMENT = data.comment,
-//                TESTENTITY2ID = data.combobox,
-//                REGISTERTIME =data.registerTime
-//            };
-//            var Id = testRepository.Insert(newMasterData).Id;
-//            return Id;
-            testRepository.Update(t => t.Id == "8c60362e-8956-429a-b6f4-23b3524d926b", t => 
-                new TESTENTITY()
-                {
-                    
-                    COMMENT = DateTime.Now.ToString("HH:mm:ss tt zz")
-                }
-            );
-
+            var newMasterData = new TESTENTITY()
+            {
+                STRING = data.city,
+                ISACTIVE = SafeConvert.ToInt64(data.isActive),
+                COMMENT = data.comment,
+                TESTENTITY2ID = data.combobox,
+                REGISTERTIME =data.registerTime,
+                
+            };
+            var Id = testRepository.Insert(newMasterData).Id;
+            return Id;
+//            testRepository.Update(t => t.Id == "57627fde-0332-4db0-9036-ce3ec5e48496", t => 
+//                new TESTENTITY()
+//                {
+//                    
+//                    COMMENT = DateTime.Now.ToString("HH:mm:ss")
+//                }
+//            );
+            //throw new Exception();
             //test2Repository.Update(t => t.Id == "123",t => new TESTENTITY2() {
             //     Text = DateTime.Now.ToString("HH:mm:ss tt zz")
 

@@ -26,7 +26,13 @@ namespace Blocks.BussnessDomainModule
             return testRepository.GetValue(value);
         }
         
-        
+
+        public virtual string GetValueOverride()
+        {
+            return testRepository.GetValueOverride("");
+        }
+
+
         public virtual string Add(MasterData.MasterData data)
         {
 

@@ -206,13 +206,13 @@ foreach(Table tbl in from t in tables where !t.Ignore select t)
     
  
  
-    public partial class <#=tbl.ClassName#>Configuration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<<#=tbl.ClassName#>> 
+    public partial class <#=tbl.ClassName#>Configuration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<<#=tbl.ClassName#>> 
     {
-		public <#=tbl.ClassName#>Configuration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<<#=tbl.ClassName#>> builder)
         {
-			ToTable("<#=tbl.ClassName#>");
+			 
 			<# if(tbl.PK == null){ WriteLine("\""+tbl.ClassName + " can't find primary key.\"");break;}#>
-            HasKey(x => x.Id);
+            builder.HasKey(x => x.Id);
 		 
 		 
 			 <# foreach(Column col in from c in tbl.Columns where !c.Ignore select c)
@@ -220,9 +220,9 @@ foreach(Table tbl in from t in tables where !t.Ignore select t)
 						// Column bindings
 				#>
 				<# if (col.relationship != null && col.relationship.isHasMany.HasValue && !col.relationship.isHasMany.Value) { #>
-					 HasOptional(t => t.<#=col.PropertyName #>).WithMany().HasForeignKey(t => t.<#=col.relationship.foreign_key #>);	
+					 builder.HasOne(t => t.<#=col.PropertyName #>).WithMany().HasForeignKey(t => t.<#=col.relationship.foreign_key #>);	
 				<# } else if(col.relationship != null && col.relationship.isHasMany.HasValue && col.relationship.isHasMany.Value) { #>
-				     HasMany(t => t.<#=col.PropertyName #>).WithOptional().HasForeignKey(t => t.<#=col.relationship.target_Entity_foreign_key #>);
+				     builder.HasMany(t => t.<#=col.PropertyName #>).WithOne().HasForeignKey(t => t.<#=col.relationship.target_Entity_foreign_key #>);
 				<# } #>
 			<# } #>
 			 

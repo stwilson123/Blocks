@@ -12,5 +12,7 @@ namespace Blocks.BussnessApplicationModule.TestAppService
         string Add(string id);
 
         List<string> ProxFunction(ProxModel input);
+
+        string GetValueOverride();
     }
 }

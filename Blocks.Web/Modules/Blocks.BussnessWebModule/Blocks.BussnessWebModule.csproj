@@ -104,6 +104,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\丹顶鹤.png" />
     <Content Include="Styles\IndexCss.css" />
     <Content Include="Module.txt" />
     <Content Include="packages.config">
@@ -160,7 +161,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Content\" />
     <Folder Include="Styles\Index\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
