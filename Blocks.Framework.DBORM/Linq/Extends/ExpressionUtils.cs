@@ -81,6 +81,51 @@ namespace Blocks.Framework.DBORM.Linq.Extends
             var callExpression = Expression.Call(typeof(Queryable), nameof(Queryable.OrderBy), new[] { source.ElementType, lambda.ReturnType }, source.Expression, Expression.Quote(lambda));
             return (IOrderedQueryable)source.Provider.CreateQuery(callExpression);
         }
+        public static IOrderedQueryable OrderByDescending<T>(this IQueryable<T> source, LambdaExpression lambda)
+        {
+
+            return ((IQueryable)source).OrderByDescending(lambda);
+        }
+
+        public static IOrderedQueryable OrderByDescending(this IQueryable source, LambdaExpression lambda)
+        {
+            Check.NotNull(source, nameof(source));
+            Check.NotNull(lambda, nameof(lambda));
+
+            var callExpression = Expression.Call(typeof(Queryable), nameof(Queryable.OrderByDescending), new[] { source.ElementType, lambda.ReturnType }, source.Expression, Expression.Quote(lambda));
+            return (IOrderedQueryable)source.Provider.CreateQuery(callExpression);
+        }
+
+
+        public static IOrderedQueryable ThenBy<T>(this IQueryable<T> source, LambdaExpression lambda)
+        {
+
+            return ((IQueryable)source).ThenBy(lambda);
+        }
+
+        public static IOrderedQueryable ThenBy(this IQueryable source, LambdaExpression lambda)
+        {
+            Check.NotNull(source, nameof(source));
+            Check.NotNull(lambda, nameof(lambda));
+
+            var callExpression = Expression.Call(typeof(Queryable), nameof(Queryable.ThenBy), new[] { source.ElementType, lambda.ReturnType }, source.Expression, Expression.Quote(lambda));
+            return (IOrderedQueryable)source.Provider.CreateQuery(callExpression);
+        }
+
+        public static IOrderedQueryable ThenByDescending<T>(this IQueryable<T> source, LambdaExpression lambda)
+        {
+
+            return ((IQueryable)source).ThenByDescending(lambda);
+        }
+
+        public static IOrderedQueryable ThenByDescending(this IQueryable source, LambdaExpression lambda)
+        {
+            Check.NotNull(source, nameof(source));
+            Check.NotNull(lambda, nameof(lambda));
+
+            var callExpression = Expression.Call(typeof(Queryable), nameof(Queryable.ThenByDescending), new[] { source.ElementType, lambda.ReturnType }, source.Expression, Expression.Quote(lambda));
+            return (IOrderedQueryable)source.Provider.CreateQuery(callExpression);
+        }
 
     }
 }

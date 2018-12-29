@@ -206,7 +206,8 @@ namespace Blocks.Framework.DBORM.Linq
         public IDbLinqQueryable<TEntity> Take(int count)
         {
             iQuerable = DynamicQueryableExtensions.Take(iQuerable, count);
-           
+            
+            
             return this;
         }
 
@@ -233,12 +234,78 @@ namespace Blocks.Framework.DBORM.Linq
 
             return this;
         }
-
         public IDbLinqQueryable<TEntity> OrderBy<TKey>(Expression<Func<TEntity, TKey>> keySelector)
         {
             return OrderBy<TEntity, TKey>(keySelector);
         }
+        public IDbLinqQueryable<TEntity> OrderByDescending<TSource, TKey>(Expression<Func<TSource, TKey>> keySelector)
+        {
+            var querable = transferQuaryable();
 
+            if (querable != null)
+            {
+                iQuerable = querable.OrderByDescending(keySelector);
+            }
+            else
+            {
+                var a = ExpressionUtils.Convert(keySelector, iQuerable.ElementType);
+                iQuerable = iQuerable.OrderByDescending(a);
+            }
+           
+            return this;
+        }
+
+        public IDbLinqQueryable<TEntity> OrderByDescending<TKey>(Expression<Func<TEntity, TKey>> keySelector)
+        {
+            return OrderByDescending<TEntity, TKey>(keySelector);
+        }
+
+
+        public IDbLinqQueryable<TEntity> ThenBy<TSource,TKey>(Expression<Func<TSource, TKey>> keySelector)
+        {
+            var querable = transferQuaryable();
+            
+            if (querable != null)
+            {
+                iQuerable = querable.ThenBy(keySelector);
+            }
+            else
+            {
+                var a = ExpressionUtils.Convert(keySelector, iQuerable.ElementType);
+                iQuerable = iQuerable.ThenBy(a);
+            }
+
+            return this;
+        }
+
+        public IDbLinqQueryable<TEntity> ThenBy<TKey>(Expression<Func<TEntity, TKey>> keySelector)
+        {
+            return ThenBy<TEntity, TKey>(keySelector);
+
+        }
+
+        public IDbLinqQueryable<TEntity> ThenByDescending<TSource, TKey>(Expression<Func<TSource, TKey>> keySelector)
+        {
+            var querable = transferQuaryable();
+
+            if (querable != null)
+            {
+                iQuerable = querable.ThenByDescending(keySelector);
+            }
+            else
+            {
+                var a = ExpressionUtils.Convert(keySelector, iQuerable.ElementType);
+                iQuerable = iQuerable.ThenByDescending(a);
+            }
+
+            return this;
+        }
+
+        public IDbLinqQueryable<TEntity> ThenByDescending<TKey>(Expression<Func<TEntity, TKey>> keySelector)
+        {
+            return ThenByDescending<TEntity, TKey>(keySelector);
+
+        }
         private IQueryable<TEntity> transferQuaryable()
         {
             return iQuerable is IQueryable<TEntity> ? (IQueryable<TEntity>)iQuerable : null;
@@ -296,7 +363,7 @@ namespace Blocks.Framework.DBORM.Linq
             if (page.pageSize == -1)
             {
                 var pageResult =  DynamicQueryableExtensions.OrderBy(iQuerable, page.OrderBy);
-                var rows = pageResult.ToDynamicList();
+                var rows = iQuerable.ToDynamicList();
                 var pagelist = new PageList<dynamic>()
                 {
                     Rows = rows,

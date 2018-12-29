@@ -127,7 +127,7 @@ namespace Blocks.Framework.DBORM
                 {
                     dbContext.Database.CommandTimeout =SafeConvert.ToInt32(Options.Timeout.Value.TotalSeconds);
                 }
-
+             
                 ((IObjectContextAdapter)dbContext).ObjectContext.ObjectMaterialized += (sender, args) =>
                 {
                     ObjectContext_ObjectMaterialized(dbContext, args);

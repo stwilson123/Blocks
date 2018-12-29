@@ -21,6 +21,8 @@ using Blocks.Framework.Services;
 using Z.EntityFramework.Plus;
 using Blocks.Framework.Reflection.Extensions;
 using Blocks.Framework.Data;
+using Blocks.Framework.Data.Pager;
+using Blocks.Framework.Data.Paging;
 
 namespace Blocks.Framework.DBORM.Repository
 {
@@ -76,6 +78,24 @@ namespace Blocks.Framework.DBORM.Repository
         }
 
 
+        public override IList<TEntity> Insert(IList<TEntity> entities)
+        {
+            if (entities == null)
+                return entities;
+            foreach (var entity in entities)
+            {
+                var EntityObj = (Data.Entity.Entity)entity;
+                EntityObj.CREATER = string.IsNullOrEmpty(EntityObj.CREATER) ? UserContext.GetCurrentUser().UserId : EntityObj.CREATER;
+                EntityObj.UPDATER = string.IsNullOrEmpty(EntityObj.UPDATER) ? UserContext.GetCurrentUser().UserId : EntityObj.UPDATER;
+                EntityObj.CREATEDATE = Clock.Now;
+                EntityObj.UPDATEDATE = Clock.Now;
+            }
+           
+
+            return base.Insert(entities);
+
+
+        }
         public override int Update(Expression<Func<TEntity, bool>> wherePredicate, Expression<Func<TEntity, TEntity>> updateFactory)
         {
             
@@ -278,6 +298,7 @@ namespace Blocks.Framework.DBORM.Repository
 
         public  List<TEntity> GetAllList(Expression<Func<TEntity, bool>> predicate)
         {
+          
             return GetAllCode().Where(predicate).ToList();
         }
 
@@ -529,6 +550,7 @@ namespace Blocks.Framework.DBORM.Repository
 
         public  T Query<T>(Func<IQueryable<TEntity>, T> queryMethod)
         {
+
             throw new NotSupportedException("This Method is not supported");
 
         }
@@ -561,8 +583,42 @@ namespace Blocks.Framework.DBORM.Repository
             return Task.FromResult(LongCount());
         }
 
-        
 
+        public List<TElement> SqlQuery<TElement>(string sql,params object[] paramters)
+        {
+           return this.Context.Database.SqlQuery<TElement>(sql, paramters).ToList();
+        }
+
+        public PageList<TElement> SqlQueryPaging<TElement>(Page page , string sql, params object[] paramters)
+        {
+            //var cmd= this.Context.Database.Connection.CreateCommand();
+
+            //var parametersnew = paramters?.Select(t =>
+            //{
+            //    var param = cmd.CreateParameter();
+            //    param.ParameterName = nameof(t);
+            //    param.Value = t;
+            //    param.Size = Math.Max((t as string).Length + 1, 4000);
+            //    return param;
+            //}).ToList();
+
+
+            var sqlQuery = this.Context.Database.SqlQuery<TElement>(sql, paramters);
+            var sqlQueryResult = sqlQuery.PageResult(page.page, page.pageSize);
+             
+            return new PageList<TElement>()
+            {
+                Rows = sqlQueryResult.Queryable.ToList(),
+                PagerInfo = new Page()
+                {
+                    page = sqlQueryResult.CurrentPage,
+                    pageSize = sqlQueryResult.PageSize,
+                    records = sqlQueryResult.RowCount,
+                    sortColumn = page.sortColumn,
+                    sortOrder = page.sortOrder
+                }
+            };  
+        }
         public virtual Task<long> LongCountAsync(Expression<Func<TEntity, bool>> predicate)
         {
             return Task.FromResult(LongCount(predicate));
