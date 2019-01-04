@@ -35,7 +35,7 @@ using IdentityResult = Microsoft.AspNetCore.Identity.IdentityResult;
 
 namespace Blocks.Web.Controllers
 {
-    public class 
+    public class
          AccountController : BlocksControllerBase
     {
         private readonly TenantManager _tenantManager;
@@ -60,8 +60,8 @@ namespace Blocks.Web.Controllers
             LogInManager logInManager,
             Framework.Web.Security.IdentityLogInManager identityLogInManager,
             ISessionAppService sessionAppService,
-            ILanguageManager languageManager, 
-            ITenantCache tenantCache, 
+            ILanguageManager languageManager,
+            ITenantCache tenantCache,
             IAuthenticationManager authenticationManager)
         {
             _tenantManager = tenantManager;
@@ -79,7 +79,7 @@ namespace Blocks.Web.Controllers
         }
 
         #region Login / Logout
-    
+
         public ActionResult Login(string returnUrl = "/BussnessWebModule/MasterData/Index")
         {
             if (string.IsNullOrWhiteSpace(returnUrl))
@@ -161,7 +161,7 @@ namespace Blocks.Web.Controllers
                 GetTenancyNameOrNull()
             );
 
-            await SignInAsync(loginResult.User, loginResult.Identity, loginModel.RememberMe,"PDA");
+            await SignInAsync(loginResult.User, loginResult.Identity, loginModel.RememberMe, "PDA");
 
             if (string.IsNullOrWhiteSpace(returnUrl))
             {
@@ -175,7 +175,7 @@ namespace Blocks.Web.Controllers
 
             return Json(new AjaxResponse { TargetUrl = returnUrl });
         }
-        
+
         private async Task<AbpLoginResult<Tenant, User>> GetLoginResultAsync(string usernameOrEmailAddress, string password, string tenancyName)
         {
             var loginResult = await _logInManager.LoginAsync(usernameOrEmailAddress, password, tenancyName);
@@ -203,19 +203,19 @@ namespace Blocks.Web.Controllers
             }
         }
 
-        private async Task SignInAsync(Framework.Web.Security.IdentityUser user, ClaimsIdentity identity = null, bool rememberMe = false,string UserType = "Main")
+        private async Task SignInAsync(Framework.Web.Security.IdentityUser user, ClaimsIdentity identity = null, bool rememberMe = false, string UserType = "Main")
         {
 
-          
-            
+
+
             if (identity == null)
             {
                 identity = await _identityUserManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
             }
 
             _authenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            
-            identity.AddClaim(new Claim("UserType",UserType));
+
+            identity.AddClaim(new Claim("UserType", UserType));
             _authenticationManager.SignIn(new AuthenticationProperties { IsPersistent = rememberMe }, identity);
         }
 
@@ -264,13 +264,13 @@ namespace Blocks.Web.Controllers
             {
                 case Framework.Web.Security.LoginResultType.Success:
                     return new ApplicationException("Don't call this method with a success result!");
-                 
+
                 case Framework.Web.Security.LoginResultType.InvalidPassword:
-                 
+
                 case Framework.Web.Security.LoginResultType.InvalidUserNameOrEmailAddress:
 
                     return new UserFriendlyException(L("LoginFailed"), L("InvalidUserNameOrPassword"));
-            
+
                 default: //Can not fall to default actually. But other result types can be added in the future and we may forget to handle it
                     Logger.Warn("Unhandled login fail reason: " + result);
                     return new UserFriendlyException(L("LoginFailed"));
@@ -457,8 +457,8 @@ namespace Blocks.Web.Controllers
                 return RedirectToAction("Login");
             }
 
-       
-         //   var identity =   base.CreateIdentityAsync(user, authenticationType);
+
+            //   var identity =   base.CreateIdentityAsync(user, authenticationType);
             var loginResult = await _logInManager.LoginAsync(loginInfo.Login, tenancyName);
 
             switch (loginResult.Result)
@@ -641,6 +641,6 @@ namespace Blocks.Web.Controllers
 
         #endregion
     }
-    
- 
+
+
 }
