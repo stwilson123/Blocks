@@ -90,6 +90,14 @@ namespace Blocks.Framework.Web.Mvc.ViewEngines.Razor
                                            (_commonLocations =
                                                WorkContext.Resolve<ExtensionLocations>().CommonLocations);
 
+        public string StaticFile(string path)
+        {
+           var viewPath =  this.ViewData.FirstOrDefault(t => string.Equals(t.Key, "absolutePath", StringComparison.CurrentCultureIgnoreCase));
+            if (viewPath.Key != null)
+                return VirtualPathUtility.Combine(viewPath.Value as string, path);
+            else
+                return path;
+        }
 //        public Localizer T { 
 //            get {
 //                // first time used, create it
