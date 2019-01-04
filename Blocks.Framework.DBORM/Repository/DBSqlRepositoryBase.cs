@@ -608,14 +608,14 @@ namespace Blocks.Framework.DBORM.Repository
              
             return new PageList<TElement>()
             {
-                Rows = sqlQueryResult.Queryable.ToList(),
+                Rows = sqlQuery.ToList(),
                 PagerInfo = new Page()
                 {
                     page = sqlQueryResult.CurrentPage,
                     pageSize = sqlQueryResult.PageSize,
                     records = sqlQueryResult.RowCount,
                     sortColumn = page.sortColumn,
-                    sortOrder = page.sortOrder
+                    sortOrder = page.sortOrder,
                 }
             };  
         }

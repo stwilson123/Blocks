@@ -8,7 +8,7 @@
     public enum DatabaseType
     {
         Sqlserver,
-        Oralce,
+        Oracle,
         MySql
     }
 }

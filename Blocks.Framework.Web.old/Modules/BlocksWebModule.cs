@@ -27,6 +27,7 @@ using Blocks.Framework.Web.Mvc.Controllers.Factory;
 using Blocks.Framework.RPCProxy.Manager;
 using Blocks.Framework.RPCProxy;
 using Blocks.Framework.ApplicationServices;
+using System.Configuration;
 
 namespace Blocks.Framework.Web.Modules
 {
@@ -141,33 +142,20 @@ namespace Blocks.Framework.Web.Modules
 
                     featureDescriptor.SubAssembly.AddIfNotContains(DomainModule.GetName().Name);
                 }
-            }
 
-            RouteHandle(extensionDescriptor.Name);
-            InitializeEvent();
-        }
-
-
-        public override void PostInitialize()
-        {
-            var currentAssmeblyName = currentAssmebly.GetName().Name;
-            var extensionName = extensionDescriptor.Name;
-
-            var databaseType = IocManager.Resolve<ISettingManager>()
-                .GetSettingValueForApplication(typeof(DatabaseType).Name);
-            if (databaseType == null)
-                throw new BlocksException(
-                    StringLocal.Format($"{typeof(DatabaseType).Name} global configuartion can't found."));
-            if (!Enum.GetNames(typeof(DatabaseType)).Contains(databaseType))
-                throw new BlocksException(
-                    StringLocal.Format(
-                        $"{databaseType} isn't belong to global configuartion {typeof(DatabaseType).Name}."));
-
-            if (moduleConfiguration != null && moduleConfiguration is IWebFrameworkConfiguration)
-            {
-                var webModuleConfiguration = moduleConfiguration as IWebFrameworkConfiguration;
-                if (!string.IsNullOrEmpty(webModuleConfiguration.RespositoryModule))
+                if(!string.IsNullOrEmpty(webModuleConfiguration.RespositoryModule))
                 {
+                    //TODO need to support mult sqldb
+
+
+                    var databaseType = ConfigurationManager.AppSettings["DbType"];
+                    if (databaseType == null)
+                        throw new BlocksException(
+                            StringLocal.Format($"{typeof(DatabaseType).Name} global configuartion can't found."));
+                    if (!Enum.GetNames(typeof(DatabaseType)).Contains(databaseType))
+                        throw new BlocksException(
+                            StringLocal.Format(
+                                $"{databaseType} isn't belong to global configuartion {typeof(DatabaseType).Name}."));
                     var RepModule = System.AppDomain.CurrentDomain.GetAssemblies()
                         .FirstOrDefault(t => string.Equals(t.GetName().Name, webModuleConfiguration.RespositoryModule,
                             StringComparison.CurrentCultureIgnoreCase));
@@ -177,18 +165,67 @@ namespace Blocks.Framework.Web.Modules
                         .GetAllAssemblies()
                         .FirstOrDefault(t => t.GetName().Name == $"{RepModule.GetName().Name}.{databaseType}Module");
 
+                    IocManager.RegisterAssemblyByConvention(RepModule);
+
+                    featureDescriptor.SubAssembly.AddIfNotContains(RepModule.GetName().Name);
+
                     if (listAssemblies != null)
                     {
                         IocManager.RegisterAssemblyByConvention(listAssemblies);
                         featureDescriptor.SubAssembly.AddIfNotContains(listAssemblies.GetName().Name);
                     }
 
-                    IocManager.RegisterAssemblyByConvention(RepModule);
-                    
-                    featureDescriptor.SubAssembly.AddIfNotContains(RepModule.GetName().Name);
-
+                 
                 }
             }
+
+            RouteHandle(extensionDescriptor.Name);
+            InitializeEvent();
+        }
+
+
+        public override void PostInitialize()
+        {
+
+
+            //var currentAssmeblyName = currentAssmebly.GetName().Name;
+            //var extensionName = extensionDescriptor.Name;
+
+            //var databaseType = IocManager.Resolve<ISettingManager>()
+            //    .GetSettingValueForApplication(typeof(DatabaseType).Name);
+            //if (databaseType == null)
+            //    throw new BlocksException(
+            //        StringLocal.Format($"{typeof(DatabaseType).Name} global configuartion can't found."));
+            //if (!Enum.GetNames(typeof(DatabaseType)).Contains(databaseType))
+            //    throw new BlocksException(
+            //        StringLocal.Format(
+            //            $"{databaseType} isn't belong to global configuartion {typeof(DatabaseType).Name}."));
+            //if (moduleConfiguration != null && moduleConfiguration is IWebFrameworkConfiguration)
+            //{
+            //    var webModuleConfiguration = moduleConfiguration as IWebFrameworkConfiguration;
+            //    if (!string.IsNullOrEmpty(webModuleConfiguration.RespositoryModule))
+            //    {
+            //        var RepModule = System.AppDomain.CurrentDomain.GetAssemblies()
+            //            .FirstOrDefault(t => string.Equals(t.GetName().Name, webModuleConfiguration.RespositoryModule,
+            //                StringComparison.CurrentCultureIgnoreCase));
+
+            //        var listAssemblies = IocManager.Resolve<AbpPlugInManager>()
+            //            .PlugInSources
+            //            .GetAllAssemblies()
+            //            .FirstOrDefault(t => t.GetName().Name == $"{RepModule.GetName().Name}.{databaseType}Module");
+
+            //        if (listAssemblies != null)
+            //        {
+            //            IocManager.RegisterAssemblyByConvention(listAssemblies);
+            //            featureDescriptor.SubAssembly.AddIfNotContains(listAssemblies.GetName().Name);
+            //        }
+
+            //        IocManager.RegisterAssemblyByConvention(RepModule);
+                    
+            //        featureDescriptor.SubAssembly.AddIfNotContains(RepModule.GetName().Name);
+
+            //    }
+            //}
         }
 
         /// <summary>
