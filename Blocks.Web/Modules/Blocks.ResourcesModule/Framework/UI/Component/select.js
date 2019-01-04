@@ -169,7 +169,7 @@ define(['jquery', 'blocks_utility', 'vueJS', 'select2', './dialog','./viewStruct
         },
         eventsStore :{'select2:opening select2:closing': [],'change':[]  },
         'SelectLocal': {
-           // data: [{id: '', text: ''}],
+            data: [{id: '', text: '请选择'}],
             page: {pageSize: -1, page: 1}
         },
         'SelectRemote': {
@@ -247,12 +247,14 @@ define(['jquery', 'blocks_utility', 'vueJS', 'select2', './dialog','./viewStruct
         else {
             dataInsertPlaceholder.call(selectThis, options.data);
         }
+        
         function dataInsertPlaceholder(data) {
-            utility.validate.mustArray(data, "options.data")
-            // if (data[0].id !== '')
-            //     data.unshift(this.config.SelectLocal.data[0]);
+            utility.validate.mustArray(data, "options.data");
+            if (data[0].id !== '')
+               data.unshift(this.config.SelectLocal.data[0]);
+            
         }
-    }
+    };
     localSelect.prototype.buildSearchbox = function (options) {
         if (!options.isCombobox)
             options.minimumResultsForSearch = Infinity;
@@ -275,13 +277,13 @@ define(['jquery', 'blocks_utility', 'vueJS', 'select2', './dialog','./viewStruct
             //     $searchfield.css('display', 'none');
             // });
         }
-    }
+    };
     
    var selectFactory =function create(setting) {
        if (setting && setting.isRemote === true)
            return new remoteSelect(setting);
        else
            return new localSelect(setting);
-   }
+   };
     return selectFactory;
 });

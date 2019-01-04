@@ -142,10 +142,11 @@ define(['jquery', '../../datepicker', 'blocks_utility', '../../dialog', '../../s
                 },
                 'text': {
                     'default': {
-                        sopt: ['eq', 'ne']
+                        sopt: ['eq', 'ne', 'cn']
                     },
                     'number': {sopt: ['ge', 'le']}
                 },
+                
                 'select': {
                     'default': {
                         dataInit: function (elem, cellModel) {
