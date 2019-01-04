@@ -2,6 +2,7 @@
 using System.Reflection;
 using Abp.AutoMapper;
 using Abp.Modules;
+using Abp.PlugIns;
 using Abp.TestBase;
 using Blocks.Framework.Configurations;
 using Blocks.Framework.Ioc;
@@ -19,8 +20,11 @@ namespace Blocks.Framework.Test
         
         public override void PreInitialize()
         {
-            IocManager.AddConventionalRegistrar(new DependencyConventionalRegistrar(IocManager)); 
-//            Configuration.Settings.Providers.Add<GlobalSettingProvider>();
+            IocManager.AddConventionalRegistrar(new DependencyConventionalRegistrar(IocManager));
+
+            //IocManager.Register<IAbpPlugInManager, AbpPlugInManager>();
+            //IocManager.Register<IAbpModuleManager, AbpModuleManager>();
+            //            Configuration.Settings.Providers.Add<GlobalSettingProvider>();
 
         }
 

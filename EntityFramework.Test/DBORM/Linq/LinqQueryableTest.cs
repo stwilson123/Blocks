@@ -132,7 +132,37 @@ namespace Blocks.Framework.Test.DBORM.Linq
                     .OrderBy(t =>new { t.Id,t.TESTENTITY2ID });
                 var default3Sql = defaultLinqQuery3.ToString();
                 //Assert.NotEqual(testEntity.TESTENTITY2ID, newGuid);
+
+
+                var defaultLinqQuery4 = new DefaultLinqQueryable<TESTENTITY>(context.TestEntity.AsQueryable(), context);
+                var testLeftJoinEntity4 = defaultLinqQuery4
+                    .InnerJoin((TESTENTITY t) => t.TESTENTITY2ID_NULLABLE, (TESTENTITY2 b) => b.Id)
+                    .Where((TESTENTITY t) => t.Id == constKeyId)
+                    .OrderByDescending(t => new { t.Id, t.TESTENTITY2ID });
+                var default4Sql = defaultLinqQuery4.ToString();
+
+
+                var defaultLinqQuery5 = new DefaultLinqQueryable<TESTENTITY>(context.TestEntity.AsQueryable(), context);
+                var testLeftJoinEntity5 = defaultLinqQuery5
+                    .InnerJoin((TESTENTITY t) => t.TESTENTITY2ID_NULLABLE, (TESTENTITY2 b) => b.Id)
+                    .Where((TESTENTITY t) => t.Id == constKeyId)
+                    .OrderBy(t => new { t.Id, t.TESTENTITY2ID })
+                    .ThenBy(t => new { t.CREATER });
+                var default5Sql = defaultLinqQuery5.ToString();
+
+
+
+                var defaultLinqQuery6 = new DefaultLinqQueryable<TESTENTITY>(context.TestEntity.AsQueryable(), context);
+                var testLeftJoinEntity6 = defaultLinqQuery6
+                    .InnerJoin((TESTENTITY t) => t.TESTENTITY2ID_NULLABLE, (TESTENTITY2 b) => b.Id)
+                    .Where((TESTENTITY t) => t.Id == constKeyId)
+                    .OrderBy(t => new { t.Id, t.TESTENTITY2ID })
+                    .ThenByDescending(t => new { t.CREATER });
+                var default6Sql = defaultLinqQuery6.ToString();
             }
+
+
+
         }
 
 

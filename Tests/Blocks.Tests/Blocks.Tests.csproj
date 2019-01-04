@@ -261,7 +261,7 @@
       <Project>{3979F157-DEB0-4878-AB1D-4CEF6B5A1300}</Project>
       <Name>Blocks.EntityFramework</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Blocks.Framework.DBORM\Blocks.Framework.DBORM.csproj">
+    <ProjectReference Include="..\..\Blocks.Framework.DBORM\Blocks.Framework.DBORM.old.csproj">
       <Project>{9CA5B764-D047-4662-BA93-DB578ED89E4E}</Project>
       <Name>Blocks.Framework.DBORM</Name>
     </ProjectReference>

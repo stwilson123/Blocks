@@ -15,5 +15,7 @@
     <ProjectReference Include="..\..\Adp\Abp.AutoMapper\Abp.AutoMapper.csproj" />
     <ProjectReference Include="..\..\Adp\Abp.TestBase\Abp.TestBase.csproj" />
     <ProjectReference Include="..\..\Blocks.Framework\Blocks.Framework.csproj" />
+    <ProjectReference Include="..\Blocks.Framework.TestAssembly1\Blocks.Framework.TestAssembly1.csproj" />
+    <ProjectReference Include="..\Blocks.Framework.TestAssembly2\Blocks.Framework.TestAssembly2.csproj" />
   </ItemGroup>
 </Project>

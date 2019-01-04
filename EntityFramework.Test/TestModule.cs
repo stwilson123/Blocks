@@ -7,6 +7,9 @@ using Blocks.Framework.DBORM;
 using Castle.MicroKernel.Registration;
 using Blocks.Framework.Configurations;
 using System.Linq;
+using Blocks.Framework.FileSystems;
+using Microsoft.AspNetCore.Hosting;
+using System;
 
 namespace EntityFramework.Test
 {
@@ -21,7 +24,11 @@ namespace EntityFramework.Test
         public override void PreInitialize()
         {
             Configuration.Settings.Providers.Add<GlobalSettingProvider>();
-
+            var a = WebHostingEnvironment.CreateHostingEnvironment(new WebHostingEnvironment()
+            {
+                ContentRootPath = AppDomain.CurrentDomain.BaseDirectory //HostingEnvironment.ApplicationPhysicalPath
+            });
+            IocManager.Register<IHostingEnvironment>(a);
         }
 
 

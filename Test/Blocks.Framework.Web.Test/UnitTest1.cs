@@ -9,7 +9,7 @@ namespace Blocks.Framework.Web.Test
         [Fact]
         public void Test1()
         {
-            (new NavigationDefinition(null)).Items[0].GetUniqueId();
+            //(new NavigationDefinition(null)).Items[0].GetUniqueId();
         }
     }
 }

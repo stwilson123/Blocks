@@ -425,9 +425,9 @@
       <Project>{3979f157-deb0-4878-ab1d-4cef6b5a1300}</Project>
       <Name>Blocks.EntityFramework</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Blocks.Framework.DBORM\Blocks.Framework.DBORM.csproj">
-      <Project>{9CA5B764-D047-4662-BA93-DB578ED89E4E}</Project>
-      <Name>Blocks.Framework.DBORM</Name>
+    <ProjectReference Include="..\Blocks.Framework.DBORM\Blocks.Framework.DBORM.old.csproj">
+      <Project>{9ca5b764-d047-4662-ba93-db578ed89e4e}</Project>
+      <Name>Blocks.Framework.DBORM.old</Name>
     </ProjectReference>
     <ProjectReference Include="..\Blocks.Framework\Blocks.Framework.csproj">
       <Project>{4202b741-6554-49a1-88bf-a93dc792b525}</Project>
