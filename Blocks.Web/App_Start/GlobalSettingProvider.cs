@@ -15,7 +15,7 @@ namespace Blocks.Web
             {
                 new SettingDefinition(
                     typeof(DatabaseType).Name,
-                    DatabaseType.Sqlserver.ToString()
+                    DatabaseType.Oracle.ToString()
                 ),
                 new SettingDefinition(
                     typeof(DebugState).Name,

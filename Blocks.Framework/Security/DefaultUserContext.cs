@@ -22,7 +22,12 @@ namespace Blocks.Framework.Security
                 return null;
             }
           
-            return new UserIdentifier(userIdClaim.Value,null);
+
+
+
+
+           var userNameClaim = _principalAccessor.Principal?.Claims.FirstOrDefault(c => c.Type == AbpClaimTypes.UserName);
+            return new UserIdentifier(userIdClaim.Value,null, userNameClaim.Value);
               
         }
     }

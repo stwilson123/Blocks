@@ -10,13 +10,20 @@ namespace Blocks.Framework.Security
     {
         public string TenantId { get; }
         public string UserId { get; }
-        
-        public UserIdentifier(string userId, string tenantId)
+
+        public string UserAccount { get; }
+
+        public UserIdentifier(string userId, string tenantId,string userAccount)
         {
             UserId = userId;
             TenantId = tenantId;
+            UserAccount = userAccount;
         }
 
   
+        public static UserIdentifier CreateNull()
+        {
+            return new UserIdentifier("", "", "");
+        }
     }
 }

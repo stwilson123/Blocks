@@ -11,5 +11,8 @@
         /// Id of the user.
         /// </summary>
         string UserId { get; }
+
+
+        string UserAccount { get; }
     }
 }

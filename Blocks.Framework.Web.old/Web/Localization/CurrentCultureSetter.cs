@@ -60,7 +60,7 @@ namespace Blocks.Framework.Web.Web.Localization
             {
                 if (_abpSession.UserId.HasValue)
                 {
-                    SetCultureToUserSetting(_abpSession.ToUserIdentifier(), culture);
+                  //  SetCultureToUserSetting(_abpSession.ToUserIdentifier(), culture);
                 }
 
                 SetCurrentCulture(culture);

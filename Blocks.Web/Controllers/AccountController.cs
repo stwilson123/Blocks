@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Security.Claims;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using Abp.Auditing;
@@ -30,6 +31,7 @@ using Blocks.Web.Models.Account;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using IdentityResult = Microsoft.AspNetCore.Identity.IdentityResult;
 
 namespace Blocks.Web.Controllers
 {
@@ -42,18 +44,21 @@ namespace Blocks.Web.Controllers
         private readonly IUnitOfWorkManager _unitOfWorkManager;
         private readonly IMultiTenancyConfig _multiTenancyConfig;
         private readonly LogInManager _logInManager;
+        private readonly Framework.Web.Security.IdentityLogInManager _identityLogInManager;
         private readonly ISessionAppService _sessionAppService;
         private readonly ILanguageManager _languageManager;
         private readonly ITenantCache _tenantCache;
         private readonly IAuthenticationManager _authenticationManager;
-
+        private readonly Framework.Web.Security.IdentityUserManager _identityUserManager;
         public AccountController(
             TenantManager tenantManager,
             UserManager userManager,
+            Framework.Web.Security.IdentityUserManager identityUserManager,
             RoleManager roleManager,
             IUnitOfWorkManager unitOfWorkManager,
             IMultiTenancyConfig multiTenancyConfig,
             LogInManager logInManager,
+            Framework.Web.Security.IdentityLogInManager identityLogInManager,
             ISessionAppService sessionAppService,
             ILanguageManager languageManager, 
             ITenantCache tenantCache, 
@@ -65,10 +70,12 @@ namespace Blocks.Web.Controllers
             _unitOfWorkManager = unitOfWorkManager;
             _multiTenancyConfig = multiTenancyConfig;
             _logInManager = logInManager;
+            this._identityLogInManager = identityLogInManager;
             _sessionAppService = sessionAppService;
             _languageManager = languageManager;
             _tenantCache = tenantCache;
             _authenticationManager = authenticationManager;
+            _identityUserManager = identityUserManager;
         }
 
         #region Login / Logout
@@ -115,12 +122,17 @@ namespace Blocks.Web.Controllers
         public async Task<JsonResult> Login(LoginViewModel loginModel, string returnUrl = "", string returnUrlHash = "")
         {
             CheckModelState();
-
-            var loginResult = await GetLoginResultAsync(
+            var loginResult = await GetBlocksLoginResultAsync(
                 loginModel.UsernameOrEmailAddress,
                 loginModel.Password,
                 GetTenancyNameOrNull()
-                );
+            );
+            //var loginResult = await GetLoginResultAsync(
+            //    loginModel.UsernameOrEmailAddress,
+            //    loginModel.Password,
+            //    GetTenancyNameOrNull()
+            //    );
+            //await SignInAsync(loginResult.User, loginResult.Identity, loginModel.RememberMe);
 
             await SignInAsync(loginResult.User, loginResult.Identity, loginModel.RememberMe);
 
@@ -143,7 +155,7 @@ namespace Blocks.Web.Controllers
         {
             CheckModelState();
 
-            var loginResult = await GetLoginResultAsync(
+            var loginResult = await GetBlocksLoginResultAsync(
                 loginModel.UsernameOrEmailAddress,
                 loginModel.Password,
                 GetTenancyNameOrNull()
@@ -176,17 +188,48 @@ namespace Blocks.Web.Controllers
                     throw CreateExceptionForFailedLoginAttempt(loginResult.Result, usernameOrEmailAddress, tenancyName);
             }
         }
-
-        private async Task SignInAsync(User user, ClaimsIdentity identity = null, bool rememberMe = false,string UserType = "Main")
+        private async Task<Framework.Web.Security.LogInResult> GetBlocksLoginResultAsync(string usernameOrEmailAddress, string password, string tenancyName)
         {
+
+
+            var loginResult = await _identityLogInManager.LoginAsync(usernameOrEmailAddress, password, tenancyName);
+
+            switch (loginResult.Result)
+            {
+                case Framework.Web.Security.LoginResultType.Success:
+                    return loginResult;
+                default:
+                    throw CreateExceptionForFailedLoginAttempt(loginResult.Result, usernameOrEmailAddress, tenancyName);
+            }
+        }
+
+        private async Task SignInAsync(Framework.Web.Security.IdentityUser user, ClaimsIdentity identity = null, bool rememberMe = false,string UserType = "Main")
+        {
+
+          
+            
+            if (identity == null)
+            {
+                identity = await _identityUserManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
+            }
+
+            _authenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            
+            identity.AddClaim(new Claim("UserType",UserType));
+            _authenticationManager.SignIn(new AuthenticationProperties { IsPersistent = rememberMe }, identity);
+        }
+
+        private async Task SignInAsync(User user, ClaimsIdentity identity = null, bool rememberMe = false, string UserType = "Main")
+        {
+
             if (identity == null)
             {
                 identity = await _userManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
             }
 
             _authenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            
-            identity.AddClaim(new Claim("UserType",UserType));
+
+            identity.AddClaim(new Claim("UserType", UserType));
             _authenticationManager.SignIn(new AuthenticationProperties { IsPersistent = rememberMe }, identity);
         }
 
@@ -214,6 +257,27 @@ namespace Blocks.Web.Controllers
                     return new UserFriendlyException(L("LoginFailed"));
             }
         }
+
+        private Exception CreateExceptionForFailedLoginAttempt(Framework.Web.Security.LoginResultType result, string usernameOrEmailAddress, string tenancyName)
+        {
+            switch (result)
+            {
+                case Framework.Web.Security.LoginResultType.Success:
+                    return new ApplicationException("Don't call this method with a success result!");
+                 
+                case Framework.Web.Security.LoginResultType.InvalidPassword:
+                 
+                case Framework.Web.Security.LoginResultType.InvalidUserNameOrEmailAddress:
+
+                    return new UserFriendlyException(L("LoginFailed"), L("InvalidUserNameOrPassword"));
+            
+                default: //Can not fall to default actually. But other result types can be added in the future and we may forget to handle it
+                    Logger.Warn("Unhandled login fail reason: " + result);
+                    return new UserFriendlyException(L("LoginFailed"));
+            }
+        }
+
+
 
         public ActionResult Logout()
         {
@@ -393,26 +457,8 @@ namespace Blocks.Web.Controllers
                 return RedirectToAction("Login");
             }
 
-            //Try to find tenancy name
-            if (tenancyName.IsNullOrEmpty())
-            {
-                var tenants = await FindPossibleTenantsOfUserAsync(loginInfo.Login);
-                switch (tenants.Count)
-                {
-                    case 0:
-                        return await RegisterView(loginInfo);
-                    case 1:
-                        tenancyName = tenants[0].TenancyName;
-                        break;
-                    default:
-                        return View("TenantSelection", new TenantSelectionViewModel
-                        {
-                            Action = Url.Action("ExternalLoginCallback", "Account", new { returnUrl }),
-                            Tenants = tenants.MapTo<List<TenantSelectionViewModel.TenantInfo>>()
-                        });
-                }
-            }
-
+       
+         //   var identity =   base.CreateIdentityAsync(user, authenticationType);
             var loginResult = await _logInManager.LoginAsync(loginInfo.Login, tenancyName);
 
             switch (loginResult.Result)
@@ -595,4 +641,6 @@ namespace Blocks.Web.Controllers
 
         #endregion
     }
+    
+ 
 }
