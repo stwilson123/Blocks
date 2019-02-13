@@ -230,6 +230,8 @@ namespace Blocks.Framework.DBORM.Linq
             {
                 var a = ExpressionUtils.Convert(keySelector, iQuerable.ElementType);
                 iQuerable = iQuerable.OrderBy(a);
+
+               
             }
 
             return this;
@@ -402,7 +404,7 @@ namespace Blocks.Framework.DBORM.Linq
            
         }
         
-        string getStringForGroup(Group group,List<DbParam> listDbParam)
+        internal static string getStringForGroup(Group group,List<DbParam> listDbParam)
         {
          //   var alias = group.rules.Select(t =>  t.field.Contains('.') ?  t.field.Substring(0,t.field.IndexOf('.')) : "").Where(t => !string.IsNullOrEmpty(t));
             var s = "(";
@@ -412,7 +414,7 @@ namespace Blocks.Framework.DBORM.Linq
                         s += " " + group.groupOp + " ";
                     }
                     try {
-                        s += this.getStringForGroup(group.groups[index],null);
+                        s += getStringForGroup(group.groups[index],null);
                     } catch (Exception ex) {throw;}
                 }
             }
@@ -423,7 +425,7 @@ namespace Blocks.Framework.DBORM.Linq
                         if (s.Length > 1) {
                             s += " " + group.groupOp + " ";
                         }
-                        s += this.getStringForRule(group.rules[index]);
+                        s += getStringForRule(group.rules[index]);
                     }
                 } catch (Exception ex) { throw;}
             }
@@ -437,7 +439,7 @@ namespace Blocks.Framework.DBORM.Linq
             return s;
         }
         
-       string getStringForRule (Rule rule)
+        internal static string getStringForRule (Rule rule)
         {
             var opUF = "";
             var opC = "";
