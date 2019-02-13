@@ -1,4 +1,4 @@
-define(['../gridbase', 'blocks_utility','../extensions/checkboxPlugin'], function (grid, utility,checkboxHanlder) {
+define(['../gridbase', 'blocks_utility','../extensions/checkboxPlugin','../../../../Design/decorator'], function (grid, utility,checkboxHanlder,decoratorPattern) {
     var validate = utility.validate;
     var gridBody = function (gridObj) {
         this.lastsel;
@@ -24,6 +24,13 @@ define(['../gridbase', 'blocks_utility','../extensions/checkboxPlugin'], functio
         }
         return result
     };
+
+    decoratorPattern.func.call(grid.prototype, 'afterInit', function () {
+        var options = this._options;
+        var $gridObj = options.gridObj;
+        $gridObj.jqGrid('bindKeys', {  });
+    });
+    
     
     function initColumn(gridObj) {
         var options= gridObj._options;
@@ -48,6 +55,9 @@ define(['../gridbase', 'blocks_utility','../extensions/checkboxPlugin'], functio
         var gridOptions = gridObj._options;
         var gridBodyThis = this;
         var editSelectRow = function (rowid, status) {
+            if(!rowid)
+                return;
+            
             var gridObj = gridOptions.gridObj;
             if (!validate.isNullOrEmpty(gridOptions.onSelectRow && gridOptions.multiselectEdit === false)) {
                 var lastsel = gridBodyThis.lastsel;
@@ -84,5 +94,8 @@ define(['../gridbase', 'blocks_utility','../extensions/checkboxPlugin'], functio
             });
         }
     }
+    
+    
+    
     return gridBody;
 });

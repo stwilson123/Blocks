@@ -61,9 +61,11 @@ define(['jquery', '../../datepicker', 'blocks_utility', '../../dialog', '../../s
             // },
             onHeaderClick: function (status) {
                 //visible or hidden
-                jqObj.attr("gridstate", status);
-                if (!validate.isNullOrEmpty(option.onHeaderClick)) option.onHeaderClick(status);
-                $(window).resize();
+                // var jqObj = $(this);
+                // jqObj.attr("gridstate", status);
+                // var option = jqObj.
+                // if (!validate.isNullOrEmpty(option.onHeaderClick)) option.onHeaderClick(status);
+              //  $(window).resize();
             },
 
             colRDModel: {FormID: "", RDModel: []},

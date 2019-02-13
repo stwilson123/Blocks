@@ -1,6 +1,5 @@
-;define(function (req, exports, module) {
-    var $ = require('jquery'), layer = require('layer'), utility = require('blocks_utility');
-
+;define(['jquery','layer', 'blocks_utility','../../Localization/localization'],function ($, layer, utility,localizationJS) {
+   
 
     var dialogOption = {
         config: {
@@ -177,16 +176,20 @@
 
 
             if (blocks.pageContext && blocks.pageContext.subPageJsVirtualPath) {
-                require([utility.url.pathToRelative(blocks.pageContext.subPageJsVirtualPath, blocks.pageContext.modulePrefix, '.js')], function (containerModules) {
+                // require([utility.url.pathToRelative(blocks.pageContext.subPageJsVirtualPath, blocks.pageContext.modulePrefix, '.js')], function (containerModules) {
+                require([blocks.pageContext.subPageJsVirtualPath], function (containerModules) {
+                    var localization = new localizationJS();
+                    localization.dictionary = blocks.localization;
                     currentModule = containerModules;
                     containerModules.init(
                         {
                             view: $.extend($('#' + WrapperId), { currentPage: new dialog({ dialogIndex: layerIndex, passData: passData }) }),
-                            pageContext: $.extend(true, {}, blocks.pageContext)
-
+                            pageContext: $.extend(true, {}, blocks.pageContext),
+                            localization: localization
+                            
+                            
                         });
                 });
-
                 //  require(['Blocks.BussnessWebModule/Views/MasterData/Index']);
             }
             return layerIndex;

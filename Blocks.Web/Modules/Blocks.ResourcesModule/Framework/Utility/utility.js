@@ -401,8 +401,10 @@
             var moduleFrefix=modulePrefix;
             var startIndex = path.indexOf(moduleFrefix);
             var endIndex = path.lastIndexOf(fileExtensionName);
-
-            return path.slice(startIndex > -1 ? startIndex + moduleFrefix.length + '\\'.length : 0,endIndex > -1 ? endIndex : undefined);
+            var paramIndex =  path.lastIndexOf("?");
+            var substring = paramIndex > -1 ? path.slice(paramIndex) : "";
+            return path.slice(startIndex > -1 ? startIndex + moduleFrefix.length + '\\'.length : 0,
+                endIndex > -1 ? endIndex : undefined) + substring;
         };
         return {
             GetRandURL: GetRandURL,

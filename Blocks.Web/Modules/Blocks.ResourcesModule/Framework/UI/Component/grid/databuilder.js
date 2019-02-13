@@ -4,6 +4,8 @@ define(['./gridbase','blocks_utility','jquery','./extensions/checkboxPlugin'], f
         initReader(gridObj);
         initDataColumn(gridObj);
         initEditColumn(gridObj);
+        
+        initCellValidate(gridObj);
       //  gridObj._options.dialogParentSelector = "dia_jq" + gridObj._options.gridObj.attr('id') + ~~(Math.random() * 1000000);
     };
 
@@ -77,9 +79,40 @@ define(['./gridbase','blocks_utility','jquery','./extensions/checkboxPlugin'], f
                 editOptions[colModel[i].displayType.type][colModel[i].formatType.type],
                 {isRemote:colModel[i].isRemote,url:colModel[i].url },
                 colModel[i].editOptions);
-            colModel[i].editoptions = colModel[i].editOptions = editOpt;
+           colModel[i].editoptions =  colModel[i].editOptions = editOpt;
             colModel[i].edittype = colModel[i].editType = colModel[i].editType ?  colModel[i].editType : gridObj.config.body.editType[colModel[i].displayType.type];
         }
+    }
+    
+    function initCellValidate(gridObj){
+        var options = gridObj._options;
+        
+        options.validationCell = function(cellObj,msg,rowIndex,cellIndex){
+            var p = this;
+            var x= $.jgrid.getRegional(p, "errors");
+            var _= $.jgrid.getRegional(p, "edit");
+            var row = p.p.data[rowIndex - 1];
+            var rowId = row["ID"] ? row["ID"] : (row["id"] ? row["id"] : "") ;
+            var C =$(p).jqGrid("getGridRowById", rowId), F =$.jgrid.findPos(C);
+
+            var b = $(p).parents("*[role=dialog]").filter(":first").css("z-index");
+            
+            $.jgrid.info_dialog(x.errcap, msg, _.bClose, {
+                left: F[0],
+                top: F[1] + $(C).outerHeight(),
+                styleUI: p.p.styleUI,
+                zIndex:b ? parseInt(b, 10) + 2 : 950,
+                onClose: function() {
+                    cellIndex >= 0 && $(this).find("#" + rowId + "_" + p.p.colModel[cellIndex].name).focus()
+                }
+            })
+            
+            
+        };
+        
+        
+        
+        
     }
     grid.prototype.reloadGrid = function (option) {
         var defaults = {
