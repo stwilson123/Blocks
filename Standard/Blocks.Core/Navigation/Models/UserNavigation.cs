@@ -13,7 +13,7 @@ namespace Blocks.Core.Navigation.Models
         /// <summary>
         /// Sub items of this menu item. Optional.
         /// </summary>
-        public virtual IList<UserNavigationItem> Items { get; }
+        public virtual IList<UserNavigationItem> Items { get; internal set; }
         
         /// <summary>
         /// Unique name of the navigation in the application. Required.

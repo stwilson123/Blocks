@@ -73,6 +73,7 @@ namespace Blocks.Core.Navigation.Models
             DisplayName = _navItem.DisplayName;
             HasPermissions = navItem.HasPermissions != null ? navItem.HasPermissions : new Permission[] { };
             Items = new List<UserNavigationItem>();
+            IsVisible = navItem.IsVisible;
             Order = 0;
         }
 

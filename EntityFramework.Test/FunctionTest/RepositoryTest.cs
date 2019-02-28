@@ -112,6 +112,15 @@ namespace EntityFramework.Test.FunctionTest
         }
 
 
+        [Fact]
+        public void sqlQuery()
+        {
+            var rep = Resolve<TestRepository>();
+
+            var a = rep.SqlQueryPaging<TESTENTITY>(new Blocks.Framework.Data.Pager.Page() { page = 10, pageSize = 10 }, @"SELECT * FROM TESTENTITY " +
+            "WHERE ID = '1'"  );
+        }
+
 
         [Fact]
         public void DeleteByExpression()

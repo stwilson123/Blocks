@@ -9,7 +9,9 @@ using Abp.Dependency;
 using Blocks.Framework.AutoMapper;
 using Blocks.Framework.Collections;
 using Blocks.Framework.Environment.Extensions;
+using Blocks.Framework.Event;
 using Blocks.Framework.Localization;
+using Blocks.Framework.Navigation.Event;
 using Blocks.Framework.Navigation.Filters;
 using Blocks.Framework.Navigation.Provider;
 using Blocks.Framework.NullObject;
@@ -46,6 +48,8 @@ namespace Blocks.Framework.Navigation.Manager
             sourceMenus = new Dictionary<string, INavigationDefinition>();
         }
 
+             public IDomainEventBus EventBus { get; set; }
+
         public void Initialize()
         {
             var context = new NavigationProviderContext(this);
@@ -72,11 +76,21 @@ namespace Blocks.Framework.Navigation.Manager
             sourceMenus = Menus.AutoMapTo<IDictionary<string, INavigationDefinition>>();
             Menus =    Filter(Menus).Result;
 
+            if(_iocResolver.IsRegistered<IDomainEventBus>())
+            {
+                _iocResolver.Resolve<IDomainEventBus>().Trigger(new MenusInitEventData() {
+                    NavigationItems = Menus.SelectMany(t => t.Value.Items).ToArray()
+                });
+            }
+                
+           
 
             //TODO Menu Adapter
             {
             }
 
+
+            //Adapter abp
             var adpaterMenusModel = Menus.Values.FirstOrDefault().Items.Select(menuItem =>
                 funTransfter(menuItem));
             foreach (var menus in adpaterMenusModel)

@@ -84,9 +84,19 @@ namespace Blocks.Framework.Navigation.Builder
         public NavigationItemBuilder HasPermissions(params string[] permissionName)
         {
             var url = RouteHelper.GetUrl(_item.RouteValues);
+
+            
             _item.HasPermissions = permissionName?.Select(p => Permission.Create(p,
                 url, "Navigation", string.IsNullOrEmpty(url) ? null : url + "/" + p,
                new LocalizableString(_item.DisplayName.SourceName, p) )).ToArray();
+            return this;
+        }
+
+
+        public NavigationItemBuilder Visible(bool IsVisible)
+        {
+            _item.IsVisible = IsVisible;
+
             return this;
         }
     }

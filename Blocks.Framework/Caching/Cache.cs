@@ -23,6 +23,22 @@ namespace Blocks.Framework.Caching {
             return entry.Result;
         }
 
+        public bool Put(TKey key, TResult obj)
+        {
+            _entries.AddOrUpdate(key,
+                // "Add" lambda
+                k => AddEntry(k, (acquire) => obj),
+                // "Update" lambda
+                (k,result) => AddEntry(k, (acquire) => obj));
+
+            return true;
+        }
+
+        public bool Remove(TKey key)
+        {
+            return _entries.Remove(key);
+        }
+
         private CacheEntry AddEntry(TKey k, Func<AcquireContext<TKey>, TResult> acquire) {
             var entry = CreateEntry(k, acquire);
             PropagateTokens(entry);

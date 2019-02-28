@@ -25,12 +25,13 @@ namespace Blocks.Framework.Localization
     {
         public LocalizationModule()
         {
-           
+
         }
         public override void PreInitialize()
         {
-
-
+            
+         
+            
             Configuration.Localization.Sources.Add(
                new DictionaryBasedLocalizationSource(
                    BlocksFrameworkLocalizationSource.LocalizationSourceName,
@@ -40,6 +41,8 @@ namespace Blocks.Framework.Localization
                )
            );
 
+           
+
             Configuration.Modules.AbpAutoMapper().Configurators.Add((IMapperConfigurationExpression configuration) =>
             {
                 var localizationContext = IocManager.Resolve<ILocalizationContext>();
@@ -47,7 +50,6 @@ namespace Blocks.Framework.Localization
                 configuration.CreateMap<ILocalizableString, string>().ConvertUsing(ls => ls?.Localize(localizationContext));
                 configuration.CreateMap<LocalizableString, string>().ConvertUsing(ls => ls?.Localize(localizationContext));
             });
-
 
 
             IocManager.Register<ILanguagesManager, LanguageManager>(Abp.Dependency.DependencyLifeStyle.Transient);
@@ -103,7 +105,7 @@ namespace Blocks.Framework.Localization
             TypeInfo instanceType = instance.GetType().GetTypeInfo();
             if (instance is IProxyTargetAccessor)
             {
-                instanceType = instanceType;
+                instanceType = instanceType.BaseType.GetTypeInfo();
             }
             if (instanceType == null)
                 return;

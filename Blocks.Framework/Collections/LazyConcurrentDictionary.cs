@@ -42,5 +42,11 @@ namespace Blocks.Framework.Collections
 
             return lazyResult.Value;
         }
+
+        public bool Remove(TKey key)
+        {
+            return concurrentDictionary.TryRemove(key, out var value);
+            
+        }
     }
 }

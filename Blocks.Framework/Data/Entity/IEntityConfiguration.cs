@@ -1,4 +1,5 @@
-﻿using Blocks.Framework.Configurations;
+﻿using System;
+using Blocks.Framework.Configurations;
 
 namespace Blocks.Framework.Data.Entity
 {
@@ -8,5 +9,7 @@ namespace Blocks.Framework.Data.Entity
         /// Entity  assembly name,it will be not to register in blocks system if it is null or empty.
         /// </summary>
         string EntityModule  { get;   }
+
+
     }
 }

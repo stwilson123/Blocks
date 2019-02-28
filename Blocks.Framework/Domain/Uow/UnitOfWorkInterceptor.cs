@@ -13,7 +13,8 @@ namespace Blocks.Framework.Domain.Uow
         private readonly IUnitOfWorkManager _unitOfWorkManager;
         private readonly IUnitOfWorkDefaultOptions _unitOfWorkOptions;
 
-        public UnitOfWorkInterceptor(IUnitOfWorkManager unitOfWorkManager, IUnitOfWorkDefaultOptions unitOfWorkOptions)
+        public UnitOfWorkInterceptor(IUnitOfWorkManager unitOfWorkManager, 
+            IUnitOfWorkDefaultOptions unitOfWorkOptions)
         {
             _unitOfWorkManager = unitOfWorkManager;
             _unitOfWorkOptions = unitOfWorkOptions;

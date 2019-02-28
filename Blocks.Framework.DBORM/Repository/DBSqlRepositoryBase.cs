@@ -604,6 +604,7 @@ namespace Blocks.Framework.DBORM.Repository
 
 
             var sqlQuery = this.Context.Database.SqlQuery<TElement>(sql, paramters);
+
             var sqlQueryResult = sqlQuery.PageResult(page.page, page.pageSize);
              
             return new PageList<TElement>()

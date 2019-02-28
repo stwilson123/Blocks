@@ -12,6 +12,7 @@ using Abp.Web;
 using Abp.Web.Localization;
 using Blocks.Framework.FileSystems;
 using Blocks.Framework.FileSystems.VirtualPath;
+using Blocks.Framework.Logging;
 using Blocks.Framework.Web.Web.Localization;
 using Castle.Facilities.Logging;
 using Castle.Winsdor.Aspnet.Web;
@@ -26,7 +27,7 @@ namespace Blocks.Framework.Web
             get { return "log4net.config"; }
         }
 
-
+        private Stopwatch requestWatch = new Stopwatch();
         /// <summary>
         /// Gets a reference to the <see cref="P:Abp.Web.AbpWebApplication`1.AbpBootstrapper" /> instance.
         /// </summary>
@@ -34,6 +35,9 @@ namespace Blocks.Framework.Web
         public static AbpBootstrapper AbpBootstrapper { get { return abpBootstrapper; } }
         protected  virtual void Application_Start(object sender, EventArgs e)
         {
+            var stopwatch = new Stopwatch();
+            stopwatch.Start();
+            
             AbpBootstrapper.IocManager.IocContainer.AddFacility<LoggingFacility>(
                 f => f.UseAbpLog4Net().WithConfig(Server.MapPath(logConfigName))
             );
@@ -50,6 +54,10 @@ namespace Blocks.Framework.Web
                     SearchOption.AllDirectories);
             AbpBootstrapper.Initialize();
             PerWebRequestLifestyleModule.FuncHttpCache = (noInput) => { return HttpContext.Current.Items; };
+            
+            stopwatch.Stop();
+
+            LogHelper.Log(new LogModel(){ Message = "Framework Init time:" +stopwatch.ElapsedMilliseconds+"ms", LogSeverity = LogSeverity.Info});
         }
 
         protected virtual void Application_End(object sender, EventArgs e)
@@ -60,6 +68,7 @@ namespace Blocks.Framework.Web
 
         protected virtual void Session_Start(object sender, EventArgs e)
         {
+            
         }
 
         protected virtual void Session_End(object sender, EventArgs e)
@@ -68,6 +77,7 @@ namespace Blocks.Framework.Web
 
         protected virtual void Application_BeginRequest(object sender, EventArgs e)
         {
+            requestWatch.Restart();
         }
 
         protected virtual void Application_AuthenticateRequest(object sender, EventArgs e)
@@ -82,6 +92,9 @@ namespace Blocks.Framework.Web
         protected virtual void Application_EndRequest(object sender, EventArgs e)
         {
             PerWebRequestLifestyleModule.EndRequest(sender,e);
+            requestWatch.Stop();
+            LogHelper.Log(new LogModel(){ Message = "Framework request time:" +requestWatch.ElapsedMilliseconds+"ms", LogSeverity = LogSeverity.Info});
+
         }
 
         protected virtual void Application_Error(object sender, EventArgs e)

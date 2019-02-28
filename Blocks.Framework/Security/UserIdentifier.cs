@@ -23,7 +23,7 @@ namespace Blocks.Framework.Security
   
         public static UserIdentifier CreateNull()
         {
-            return new UserIdentifier("", "", "");
+            return new UserIdentifier("TestId", "", "TestName");
         }
     }
 }

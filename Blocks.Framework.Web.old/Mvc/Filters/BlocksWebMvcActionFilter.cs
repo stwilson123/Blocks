@@ -71,19 +71,23 @@ namespace Blocks.Framework.Web.Mvc.Filters
                         filterContext.Controller.ViewBag.subPageVirtualPath = viewPath;
 
                         var jsPath = viewPath + ".js";
-                        if (pathProvider.FileExists(jsPath))
-                            filterContext.Controller.ViewBag.subPageJsVirtualPath = jsPath;
 
+                        if (pathProvider.FileExists(jsPath))
+                        {
+                          //  filterContext.Controller.ViewBag.subPageJsVirtualPath = jsPath;
+                            filterContext.Controller.ViewBag.subPageJsVirtualPath = jsPath + "?v=" + Utility.SafeConvert.DateTimeHelper.ToDateTimeStringByFormat(pathProvider.GetFileLastWriteTimeUtc(jsPath),"yyMMDDHHmmssss");
+                        }
                         var cssPath = viewPath + ".css";
                         if (pathProvider.FileExists(cssPath))
-                            filterContext.Controller.ViewBag.subPageCssVirtualPath = cssPath;
+                            filterContext.Controller.ViewBag.subPageCssVirtualPath = cssPath + "?v=" + Utility.SafeConvert.DateTimeHelper.ToDateTimeWithMilliseconds(pathProvider.GetFileLastWriteTimeUtc(jsPath));
 
                         var extension = extensionManager.GetExtension(filterContext.Controller.GetType().Assembly.GetName().Name);
                         filterContext.Controller.ViewBag.extensionName = extension?.Name;
                         filterContext.Controller.ViewBag.permissions = getPermissions(filterContext);
                         filterContext.Controller.ViewBag.localization = getlocalization(filterContext);
+                        filterContext.Controller.ViewBag.absolutePath = viewPath;
 
-                        
+
                     }
 
                 }

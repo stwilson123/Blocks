@@ -99,9 +99,11 @@ namespace Blocks.Framework.Web.Modules
             //    )
             //);
             // var currentAssmeblyName = currentAssmebly.GetName().Name;
+
+            if (currentAssmebly == null)
+                throw new BlocksException(StringLocal.Format("currentAssmebly is null."));    
             var extensionName = extensionDescriptor.Name;
             IocManager.RegisterAssemblyByConvention(currentAssmebly);
-             
 
             var serviceTypes = IocManager.IocContainer.Kernel.GetHandlers().SelectMany(t => t.Services);
             IocManager.Resolve<MvcControllerBuilderFactory>().ForAll<BlocksWebMvcController>(extensionName,
@@ -114,6 +116,8 @@ namespace Blocks.Framework.Web.Modules
                     var AppModule = System.AppDomain.CurrentDomain.GetAssemblies()
                         .FirstOrDefault(t => string.Equals(t.GetName().Name, webModuleConfiguration.AppModule,
                             StringComparison.CurrentCultureIgnoreCase));
+                    if (AppModule == null)
+                        throw new BlocksException(StringLocal.Format("AppModule {0} is null.", webModuleConfiguration.AppModule));
                     IocManager.RegisterAssemblyByConvention(AppModule);
 
                     Configuration.Modules.AbpWebApi().DynamicApiControllerBuilder
@@ -134,6 +138,9 @@ namespace Blocks.Framework.Web.Modules
                     var DomainModule = System.AppDomain.CurrentDomain.GetAssemblies()
                         .FirstOrDefault(t => string.Equals(t.GetName().Name, webModuleConfiguration.DomainModule,
                             StringComparison.CurrentCultureIgnoreCase));
+
+                    if (DomainModule == null)
+                        throw new BlocksException(StringLocal.Format("DomainModule {0} is null.", webModuleConfiguration.DomainModule));
                     IocManager.RegisterAssemblyByConvention(DomainModule);
 
                     IocManager.Resolve<RPCApiManager>().Register(
@@ -160,6 +167,9 @@ namespace Blocks.Framework.Web.Modules
                         .FirstOrDefault(t => string.Equals(t.GetName().Name, webModuleConfiguration.RespositoryModule,
                             StringComparison.CurrentCultureIgnoreCase));
 
+                    if (RepModule == null)
+                        throw new BlocksException(StringLocal.Format("RespositoryModule {0} is null.", webModuleConfiguration.RespositoryModule));
+
                     var listAssemblies = IocManager.Resolve<AbpPlugInManager>()
                         .PlugInSources
                         .GetAllAssemblies()
@@ -168,7 +178,7 @@ namespace Blocks.Framework.Web.Modules
                     IocManager.RegisterAssemblyByConvention(RepModule);
 
                     featureDescriptor.SubAssembly.AddIfNotContains(RepModule.GetName().Name);
-
+                   
                     if (listAssemblies != null)
                     {
                         IocManager.RegisterAssemblyByConvention(listAssemblies);
