@@ -41,6 +41,9 @@ namespace Blocks.Core.Navigation.Services
             }
             var userMenu = new UserNavigation(navDefinition.Name,new List<UserNavigationItem>());
             await FilterUserNavigation(user,navDefinition.Items, userMenu.Items);
+            
+            userMenu.Items = userMenu.Items.Where<UserNavigationItem>( i => i.IsVisible).ToList();
+
             return userMenu;
         }
 

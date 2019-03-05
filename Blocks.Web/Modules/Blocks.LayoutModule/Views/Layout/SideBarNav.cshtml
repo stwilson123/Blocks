@@ -1,13 +1,10 @@
 ﻿@using Blocks.Framework.Collections.Extensions;
 @{
     Layout = null;
-    //keleyi.com
 
     var calUrl = new Func<dynamic, string>((dynamic menuItem) =>
     {
-
-
-        return menuItem.Url + "?ActiveMenu=" + menuItem.Name;
+        return menuItem.Url + "?ActiveMenu=" + menuItem.Name + "&Title="+L(menuItem.DisplayName);
     });
 }
     

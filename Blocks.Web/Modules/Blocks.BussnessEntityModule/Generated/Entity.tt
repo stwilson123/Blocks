@@ -13,7 +13,6 @@
 	ExplicitColumns = false;
 	ExcludePrefix = new string[] {}; // Exclude tables by prefix.
 	var IgnoreCommonColumns = new string[]{ "DATAVERSION","CREATEDATE","CREATER","UPDATEDATE","UPDATER" };
-
     MappingFile = @"..\Configuration\PocoMapping.xml";
     // Read schema
 	var tables = LoadTables();
@@ -26,10 +25,8 @@
 	tables["tablename"]["columnname"].Ignore = true;			// To ignore a column
 	tables["tablename"]["columnname"].PropertyName="newname";	// To change the property name of a column
 	tables["tablename"]["columnname"].PropertyType="bool";		// To change the property type of a column
-	
-	 
 */
-    foreach(var t in tables)
+	foreach(var t in tables)
 	{
         foreach(var c in t.Columns.Where(c => IgnoreCommonColumns.Contains(c.Name)))
         {

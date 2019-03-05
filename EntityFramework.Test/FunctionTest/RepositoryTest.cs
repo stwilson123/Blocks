@@ -86,7 +86,7 @@ namespace EntityFramework.Test.FunctionTest
         [Fact]
         public void UpdateByExpression()
         {
-            var rep = Resolve<TestRepository>();
+            var rep = Resolve<ITestRepository>();
             var keyId = "123";
             var id = rep.Update(t => t.Id == keyId, t => new TESTENTITY()
             {

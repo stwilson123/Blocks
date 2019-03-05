@@ -41,7 +41,7 @@
                             editable: true, displayTextCol: 'comboboxText'
                         },
                         {
-                            name:"comboboxText", hidden:true
+                            name:"comboboxText", editable: true, editrules: { requried: true, number: true }
                         },
                         {
                             name: 'registerTime', formatType: {type: 'date'}, displayType: {type: 'datepicker'},editable:true
@@ -61,11 +61,12 @@
                     idKey: "Id",
                     dynamicConditionQuery: {active: true},
                     rownumbers: true,
-                    showPager: true
+                    showPager: true,
+                    sortname:'city'
 
                 });
                 window.mainGrid = mainGrid;
-                mainGrid.reloadGrid({url: "/api/services/BussnessWebModule/MasterData/GetPageList"});
+            //    mainGrid.reloadGrid({url: "/api/services/BussnessWebModule/MasterData/GetPageList"});
 
             },
             'dispose': function () {

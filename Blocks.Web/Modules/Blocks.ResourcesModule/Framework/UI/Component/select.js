@@ -61,7 +61,9 @@ define(['jquery', 'blocks_utility', 'vueJS', 'select2', './dialog','./viewStruct
                                     for ( var dataIndex in datas)
                                     {
                                         var newOption = new Option(datas[dataIndex].text, datas[dataIndex].id, true, true);
-                                        $(currentEl).append(newOption).trigger('change');
+                                        if(!Id || datas[dataIndex].id === Id )
+                                            $(currentEl).append(newOption).trigger('change');
+                                        
                                     }
                                     console.log(datas);
                                 }).always(function () {

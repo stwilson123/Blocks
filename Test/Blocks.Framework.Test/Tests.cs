@@ -41,5 +41,15 @@ namespace Blocks.Framework.Test
             ILog log = new NullLog();
             var newLog = (NullLog)log;
         }
+
+
+        [Fact]
+        public void StringSplit()
+        {
+            
+            
+            
+            Assert.Equal(new string[]{ "aa","ab" },"aa||ab".Split("|",2));
+        }
     }
 }

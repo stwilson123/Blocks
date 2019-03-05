@@ -90,7 +90,8 @@
          
             if (blocks.pageContext.subPageJsVirtualPath)
             {
-                require([blockFramework.utility.url.pathToRelative(blocks.pageContext.subPageJsVirtualPath, blocks.pageContext.modulePrefix, '.js'), 'blocks'],function (containerModules,blocksJS) {
+                //require([blockFramework.utility.url.pathToRelative(blocks.pageContext.subPageJsVirtualPath, blocks.pageContext.modulePrefix, '.js'), 'blocks'],function (containerModules,blocksJS) {
+                require([blocks.pageContext.subPageJsVirtualPath, 'blocks'], function (containerModules, blocksJS) {
 
                     var localization = new blocksJS.localization();
                     localization.dictionary = blocks.localization;

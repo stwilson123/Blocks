@@ -10,17 +10,23 @@ namespace Blocks.BussnessApplicationModule.TestAppService
 {
     public class TestAppService : AppService,ITestAppService
     {
-        public TestAppService(TestDomain testDomain)
+        private Framework.Logging.ILog log;
+
+        public TestAppService(TestDomain testDomain, Framework.Utility.Encryption.EncryptionUtility encryptionUtility, Framework.Logging.ILog log)
         {
             this.testDomain = testDomain;
+            this.log = log;
         }
 
         private TestDomain testDomain { get; set; }
 
-
-        
         public string GetValue(string a)
         {
+            log.Logger(new Framework.Logging.LogModel()
+            {
+                Message = "123123"
+            });
+           // encryptionUtility.Hash("123123123");
             return testDomain.GetValue(a);
         }
 

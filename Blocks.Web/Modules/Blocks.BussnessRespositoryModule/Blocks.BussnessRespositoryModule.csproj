@@ -39,9 +39,8 @@
     <Reference Include="Blocks.Framework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>..\..\..\lib\Blocks.Framework.dll</HintPath>
     </Reference>
-    <Reference Include="Blocks.Framework.DBORM, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\lib\Blocks.Framework.DBORM.dll</HintPath>
+    <Reference Include="Blocks.Framework.DBORM, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\..\..\BlocksProjectNew\BlocksProject\lib\Blocks.Framework.DBORM.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

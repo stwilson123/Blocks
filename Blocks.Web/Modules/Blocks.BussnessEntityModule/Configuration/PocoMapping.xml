@@ -1,15 +1,123 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <poco-mapping>
-    <entities>
-        <entityClass table="TESTENTITY">
-            <generate-ones>
-                <!--<generate-one target_Entity="TestEntity2" property-ref="Id" />-->
-              <generate-one target_Entity="TESTENTITY2" foreign_key="TESTENTITY2ID" />
-            </generate-ones>
-          <generate-manys>
-            <!--<generate-one target_Entity="TestEntity2" property-ref="Id" />-->
-            <generate-many target_Entity="TESTENTITY3" target_Entity_foreign_key="TESTENTITYID"  />
-          </generate-manys>
-        </entityClass>
-    </entities>
+  <entities>
+    <entityClass table="TESTENTITY">
+      <generate-ones>
+        <!--<generate-one target_Entity="TestEntity2" property-ref="Id" />-->
+        <generate-one target_Entity="TESTENTITY2" foreign_key="TESTENTITY2ID" />
+      </generate-ones>
+      <generate-manys>
+        <!--<generate-one target_Entity="TestEntity2" property-ref="Id" />-->
+        <generate-many target_Entity="TESTENTITY3" target_Entity_foreign_key="TESTENTITYID"  />
+      </generate-manys>
+    </entityClass>
+    <entityClass table="BDTA_PRODUCTFORMAT_DETAIL">
+      <generate-ones>
+        <generate-one target_Entity="BDTA_PRODUCTELEMENT" foreign_key="PRODUCTELEMENTID" />
+      </generate-ones>
+    </entityClass>
+    <entityClass table="BDTA_PRODUCTELEMENT">
+      <generate-ones>
+        <generate-one target_Entity="BDTA_PRODUCTELEMENT_TYPE" foreign_key="BDTA_PRODUCTELEMENT_TYPE_ID" />
+      </generate-ones>
+    </entityClass>
+    <entityClass table="BDTA_ROUTING">
+      <generate-ones>
+        <generate-one target_Entity="BDTA_MACHING_CENTER" foreign_key="MACHING_CENTER_ID" />
+      </generate-ones>
+    </entityClass>
+    <entityClass table="BDTA_WORKTEAM">
+      <generate-ones>
+        <generate-one target_Entity="BDTA_WORK_CENTER" foreign_key="WORK_CENTER_ID" />
+      </generate-ones>
+    </entityClass>
+    <entityClass table="BDTA_WORKTEAM_MEMBER">
+      <generate-ones>
+        <generate-one target_Entity="BDTA_EMPLOYEE" foreign_key="EMPLOYEE_ID" />
+      </generate-ones>
+    </entityClass>
+    <entityClass table="BDTA_EMPLOYEE">
+      <generate-ones>
+        <generate-one target_Entity="BDTA_DEPARTMENT" foreign_key="DEPARTMENT_ID" />
+      </generate-ones>
+    </entityClass>
+    <entityClass table="WAREHOUSE_RECEIVE_DETAIL">
+      <generate-ones>
+        <!--<generate-one target_Entity="WAREHOUSE_RECEIVE" foreign_key="RECEIVE_ID" />-->
+        <!--<generate-one target_Entity="BDTA_MATERIAL" foreign_key="MATERIAL_ID" />-->
+        <generate-one target_Entity="BDTA_MAKER" foreign_key="MAKER_ID" />
+        <generate-one target_Entity="BDTA_UNIT" foreign_key="UNIT_ID" />
+      </generate-ones>
+    </entityClass>
+    <entityClass table="WAREHOUSE_RECEIVE">
+      <generate-ones>
+        <generate-one target_Entity="BDTA_SUPPLIER" foreign_key="SUPPLIERID" />
+        <generate-one target_Entity="SYS_USERINFO" foreign_key="RECEIVER" />
+        <generate-one target_Entity="BDTA_ORG_STOREROOM" foreign_key="RECEIVE_STOREROOMID" />
+      </generate-ones>
+    </entityClass>
+    <entityClass table="WAREHOUSE_IQC">
+      <generate-ones>
+        <generate-one target_Entity="BDTA_MATERIAL" foreign_key="MATERIAL_ID" />
+        <generate-one target_Entity="BDTA_SUPPLIER" foreign_key="SUPPLIER_ID" />
+
+      </generate-ones>
+    </entityClass>
+    <entityClass table="BDTA_MATERIAL">
+      <generate-ones>
+        <generate-one target_Entity="BDTA_MATERIAL_TYPE" foreign_key="MATERIAL_TYPE_ID" />
+        <generate-one target_Entity="BDTA_QA_CHECKITEMMANAGE" foreign_key="QA_CHECKMODEL_ID" />
+        <generate-one target_Entity="BDTA_UNIT" foreign_key="MATERIAL_UNIT" />
+        <generate-one target_Entity="BDTA_PRODUCTFORMAT" foreign_key="PRODUCTFORMAT_ID" />
+      </generate-ones>
+    </entityClass>
+    <entityClass table="WAREHOUSE_IN_STORAGE_DETAIL">
+      <generate-ones>
+        <generate-one target_Entity="BDTA_MATERIAL" foreign_key="MATERIAL_ID" />
+        <generate-one target_Entity="BDTA_SUPPLIER" foreign_key="SUPPLIER_ID" />
+      </generate-ones>
+    </entityClass>
+    <entityClass table="WAREHOUSE_OUT_STORAGE">
+      <generate-ones>
+        <generate-one target_Entity="BDTA_ORG_STOREROOM" foreign_key="STOREROM_ID" />
+      </generate-ones>
+    </entityClass>
+    <entityClass table="WAREHOUSE_OUT_STORAGE_DETAIL">
+      <generate-ones>
+        <generate-one target_Entity="BDTA_MATERIAL" foreign_key="MATERIAL_ID" />
+        <generate-one target_Entity="WAREHOUSE_STOCK" foreign_key="MATERIAL_ID" />
+      </generate-ones>
+    </entityClass>
+    <entityClass table="BDTA_QA_CHECKITEM">
+      <generate-ones>
+        <generate-one target_Entity="BDTA_DICTIONARY" foreign_key="CHECKITEMPARENT" />
+      </generate-ones>
+    </entityClass>
+    <entityClass table="BDTA_QA_CHECKMODE">
+      <generate-ones>
+        <generate-one target_Entity="BDTA_QA_CHECKITEMMANAGE" foreign_key="QA_CHECKITEMMANAGE_ID" />
+      </generate-ones>
+    </entityClass>
+    <entityClass table="SYS_PROGRAM">
+      <generate-ones>
+        <generate-one target_Entity="SYS_MENUS" foreign_key="PROGRAMPARENT" />
+      </generate-ones>
+    </entityClass>
+    <entityClass table="WAREHOUSE_STOCK_DETAIL">
+      <generate-ones>
+        <generate-one target_Entity="BDTA_SUPPLIER" foreign_key="SUPPLIER_ID" />
+      </generate-ones>
+    </entityClass>
+    <entityClass table="BDTA_LANGUAGETEXTS">
+      <generate-ones>
+        <generate-one target_Entity="BDTA_LANGUAGES" foreign_key="LANGUAGE_ID" />
+      </generate-ones>
+    </entityClass>
+    <entityClass table="WAREHOUSE_PO_DETAIL">
+      <generate-ones>
+        <generate-one target_Entity="BDTA_MATERIAL" foreign_key="MATERIAL_ID" />
+        <generate-one target_Entity="BDTA_UNIT" foreign_key="UNIT_ID" />
+      </generate-ones>
+    </entityClass>
+  </entities>
 </poco-mapping>

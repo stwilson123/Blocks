@@ -16,7 +16,8 @@
         //TODO save prepage context?
         blocks.pageContext.subPageJsVirtualPath = "@this.ViewBag.subPageJsVirtualPath";
         blocks.pageContext.subPageCssVirtualPath = "@this.ViewBag.subPageCssVirtualPath";
-        blocks.pageContext.permissions = @Html.ConvertToJsonObject(this.ViewBag.permissions as object)
+        blocks.pageContext.permissions = @Html.ConvertToJsonObject(this.ViewBag.permissions as object);
+       // blocks.localization = @Html.ConvertToJsonObject((this.ViewBag.localization as object));
     })(blocks);
 </script>
 @*@{*@

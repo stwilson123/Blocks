@@ -8,6 +8,7 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using Abp.Hangfire;
 using Abp.Hangfire.Configuration;
+using Abp.Localization.Dictionaries;
 using Abp.Zero.Configuration;
 using Abp.Modules;
 using Abp.Web.Mvc;
@@ -15,6 +16,7 @@ using Abp.Web.SignalR;
 using Blocks.Api;
 using Blocks.Framework.DBORM;
 using Blocks.Framework.FileSystems;
+using Blocks.Framework.Localization.Provider;
 using Castle.MicroKernel.Registration;
 using Hangfire;
 using Microsoft.Owin.Security;
@@ -71,6 +73,9 @@ namespace Blocks.Web
                     .For<IAuthenticationManager>()
                     .UsingFactoryMethod(() => HttpContext.Current.GetOwinContext().Authentication)
                     .LifestyleTransient()
+            );
+            Configuration.Localization.Sources.Add(
+                new DictionaryBasedLocalizationSource("Blocks.Web", new DbLocalizationDictionaryProvider(IocManager))
             );
            // RouteHandle();
             AreaRegistration.RegisterAllAreas();

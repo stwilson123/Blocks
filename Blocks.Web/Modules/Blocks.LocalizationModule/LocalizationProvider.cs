@@ -37,7 +37,7 @@ namespace Blocks.LocalizationModule
                     { "comment","备注"},
                     { "add","新增"},
                     { "query","查询"},
-                 
+
 
                 };
             }

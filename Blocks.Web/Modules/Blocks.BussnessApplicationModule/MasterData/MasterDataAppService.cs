@@ -15,16 +15,20 @@ namespace Blocks.BussnessApplicationModule.MasterData
 {
     public class MasterDataAppService : AppService,IMasterDataAppService
     {
+        private readonly ActualMasterData _actualMasterData;
         public IUserContext UserContext { get; set; }
         public Localizer L { get; set; }
 
-        public MasterDataAppService(MasterDataDomainEvent masterDataDomain)
+        public MasterDataAppService(MasterDataDomainEvent masterDataDomain,ActualMasterData actualMasterData)
         {
+            _actualMasterData = actualMasterData;
             this.masterDataDomain = masterDataDomain;
             //_userContext = userContext;
         }
 
         private MasterDataDomainEvent masterDataDomain { get; set; }
+        
+        
         
         public  PageList<PageResult>  GetPageList(SearchModel a)
         {
@@ -47,8 +51,10 @@ namespace Blocks.BussnessApplicationModule.MasterData
         public void TestException()
         {
             var lException = L("TestException").AutoMapTo<string>();
+            _actualMasterData.TestException();
             masterDataDomain.TestException();
 
+           
             throw new BlocksBussnessException("101", L("TestException"), null);
 
             // return result;

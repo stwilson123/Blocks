@@ -42,9 +42,11 @@ namespace Blocks.LayoutModule.Controllers
         public ActionResult SideBarNav(string activeMenu)
         {
             var model =  _userNavigationManager.GetMenuAsync("MainMenu", _userContext.GetCurrentUser()).Result;
+
             EventBus.Trigger<MenusSortEventData>(new MenusSortEventData() {  userNavigation = model});
             var viewModel = new Menus(model.Name,model.Items);
             viewModel.ActiveMenuItemName = activeMenu;
+            
             return PartialView(viewModel);
         }
 

@@ -10,6 +10,12 @@ using System.Linq;
 using Blocks.Framework.FileSystems;
 using Microsoft.AspNetCore.Hosting;
 using System;
+using System.Collections.Generic;
+using System.Security.Claims;
+using System.Threading;
+using Abp.Runtime.Security;
+using Blocks.Framework.Security;
+using Moq;
 
 namespace EntityFramework.Test
 {
@@ -29,6 +35,12 @@ namespace EntityFramework.Test
                 ContentRootPath = AppDomain.CurrentDomain.BaseDirectory //HostingEnvironment.ApplicationPhysicalPath
             });
             IocManager.Register<IHostingEnvironment>(a);
+            
+            var testUserContext = new Mock<ClaimsPrincipal>();
+            testUserContext.Setup(u => u.Claims)
+                .Returns(new List<Claim>{ new Claim(AbpClaimTypes.UserId,"testId"),new Claim(AbpClaimTypes.UserName,"testName") });
+
+            Thread.CurrentPrincipal = testUserContext.Object;
         }
 
 
@@ -36,6 +48,8 @@ namespace EntityFramework.Test
         {
             IocManager.RegisterAssemblyByConvention(Assembly.GetExecutingAssembly());
 
+         
+            
             IocManager.IocContainer.Register(
                 Classes.FromAssembly(Assembly.GetExecutingAssembly())
                     .BasedOn<IConfiguration>()

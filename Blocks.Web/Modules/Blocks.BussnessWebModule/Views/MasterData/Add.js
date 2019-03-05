@@ -12,7 +12,7 @@
         var mainGrid;
         var _Blocks = blocks;
         var formValidate;
-        
+        var moduleInstance = this;
         this.events = {
             'init': function (v, vm) {
                 view = v;
@@ -25,6 +25,8 @@
                     isCombobox:false
                   //  url:"/api/services/BussnessWebModule/Combobox/GetComboboxList"
                 });
+
+                var a = moduleInstance.L("city");
                 var comboboxSelect = new blocks.ui.select({
                     viewObj: view.find("#combobox"),
                     isRemote :true,
@@ -52,6 +54,10 @@
                     }
                 });
 
+                
+                //window.setTimeout(function () {
+                //    viewModel.combobox = '1';
+                //},1000);
 
             },
             'dispose': function () {

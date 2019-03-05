@@ -140,6 +140,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blocks.RedisCacheModule", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blocks.Framework.DBORM.Test", "Standard\Blocks.Framework.DBORM.Test\Blocks.Framework.DBORM.Test.csproj", "{DAF7AA32-C029-49BD-8953-FC115C5542C9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blocks.AsscessControlModelModule", "Blocks.AsscessControlModelModule\Blocks.AsscessControlModelModule.csproj", "{DD9021DB-1D01-4D4C-98BE-A5AC30848942}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -386,6 +388,10 @@ Global
 		{DAF7AA32-C029-49BD-8953-FC115C5542C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DAF7AA32-C029-49BD-8953-FC115C5542C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DAF7AA32-C029-49BD-8953-FC115C5542C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD9021DB-1D01-4D4C-98BE-A5AC30848942}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD9021DB-1D01-4D4C-98BE-A5AC30848942}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD9021DB-1D01-4D4C-98BE-A5AC30848942}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD9021DB-1D01-4D4C-98BE-A5AC30848942}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

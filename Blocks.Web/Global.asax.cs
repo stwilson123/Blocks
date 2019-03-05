@@ -3,6 +3,7 @@ using Castle.Facilities.Logging;
 using Abp.Castle.Logging.Log4Net;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -10,6 +11,7 @@ using System.Web.Security;
 using System.Web.SessionState;
 using Abp;
 using Abp.Dependency;
+using Abp.Logging;
 using Abp.PlugIns;
 using Abp.Threading;
 using Abp.Web;
@@ -24,9 +26,9 @@ namespace Blocks.Web
 
         protected  void Application_Start(object sender, EventArgs e)
         {
-     
+           
             base.Application_Start(sender, e);
-        
+          
         }
 
         protected  void Application_End(object sender, EventArgs e)

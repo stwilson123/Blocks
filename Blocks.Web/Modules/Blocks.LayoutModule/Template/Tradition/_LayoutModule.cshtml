@@ -74,7 +74,7 @@
 
     <link rel="shortcut icon" href="~/favicon.ico">
 
-    <title>Blocks</title>
+    <title>@(this.Request["Title"]??"Blocks")</title>
  
     @*    <link rel="stylesheet" type="text/css" href="/fonts/material-icons/materialicons.css" > *@
     @*    *@
@@ -119,10 +119,11 @@
         <!-- Top Bar -->
         <nav class="navbar">
             <div class="container-fluid">
-                <div class="navbar-header" >
+                <div class="navbar-header">
                     <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
-                
-                    <a class="navbar-brand" asp-controller="Home" asp-action="Index"><i class="fa fa-cubes"></i> Blocks</a>
+                    @Html.Action("NavbarBrand", "Layout")
+
+
                 </div>
                 <div class="navbar-collapse" id="navbar-collapse" >
                     <a href="javascript:void(0);" class="bars"></a>
@@ -155,12 +156,12 @@
 
                 <!-- Footer -->
                 <div class="legal">
-                    <div class="copyright">
-                        &copy; @DateTime.Now.Year <a href="javascript:void(0);">Blocks</a>.
-                    </div>
-                    <div class="version">
-                        <b>Version </b> @AppVersionHelper.Version [@AppVersionHelper.ReleaseDate.ToString("yyyyMMdd")]
-                    </div>
+
+                    @Html.Action("Copyright", "Layout")
+                   
+                    @*<div class="version">
+            <b>Version </b> @AppVersionHelper.Version [@AppVersionHelper.ReleaseDaate.ToString("yyyyMMdd")]
+        </div>*@
                 </div>
                 <!-- #Footer -->
             </aside>
@@ -182,8 +183,10 @@
 @section script
 {
     @{
-        ResourceManager.GetRegisteredDisplayNonoScripts().ForEach(t => { t.Src = t.Src.Substring(t.Src.IndexOf("/Modules") + "/Modules".Length+1, t.Src.LastIndexOf(".js") - "/Modules".Length-1); }
-            );
+        //ResourceManager.GetRegisteredDisplayNonoScripts().ForEach(t => { t.Src = t.Src.Substring(t.Src.IndexOf("/Modules") + "/Modules".Length + 1, t.Src.Length - "/Modules".Length - 1); }
+
+            //ResourceManager.GetRegisteredDisplayNonoScripts().ForEach(t => { t.Src = t.Src.Substring(t.Src.IndexOf("/Modules") + "/Modules".Length+1, t.Src.LastIndexOf(".js") - "/Modules".Length-1); }
+            //);
     }
     <script>
         var blocks = blocks || {};

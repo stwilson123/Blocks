@@ -84,5 +84,19 @@ namespace Blocks.Web.Controllers
 
             return PartialView("_RightSideBar", viewModel);
         }
+
+
+        [ChildActionOnly]
+        public PartialViewResult NavbarBrand()
+        {
+            return PartialView("NavbarBrand");
+        }
+
+        [ChildActionOnly]
+        public PartialViewResult Copyright()
+        {
+            return PartialView("Copyright");
+        }
+
     }
 }

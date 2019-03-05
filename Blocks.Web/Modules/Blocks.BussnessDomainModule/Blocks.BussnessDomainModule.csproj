@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MasterData\ActualMasterData.cs" />
     <Compile Include="MasterData\ComboboxDomainEvent.cs" />
     <Compile Include="MasterData\MasterData.cs" />
     <Compile Include="MasterData\MasterDataDomainEvent.cs" />
