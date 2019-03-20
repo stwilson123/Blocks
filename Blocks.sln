@@ -124,8 +124,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blocks.Framework.ORM", "Blo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blocks.Framework.DBORM", "Standard\Blocks.Framework.DBORM\Blocks.Framework.DBORM.csproj", "{2C7D4659-284F-466E-A2B9-0A9DF260AA8E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{D828F5D5-160C-4438-99E8-79765D9C913C}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blocks.Framework.DBORM.New.Test", "Standard\Blocks.Framework.DBORM.New.Test\Blocks.Framework.DBORM.New.Test.csproj", "{76310B3A-CA9D-4AC1-9970-B595DE895221}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blocks.Framework.TestAssembly1", "Test\Blocks.Framework.TestAssembly1\Blocks.Framework.TestAssembly1.csproj", "{9FE9A632-5ABE-492D-85F0-ADAAEDE417F7}"
@@ -354,10 +352,6 @@ Global
 		{2C7D4659-284F-466E-A2B9-0A9DF260AA8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C7D4659-284F-466E-A2B9-0A9DF260AA8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2C7D4659-284F-466E-A2B9-0A9DF260AA8E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D828F5D5-160C-4438-99E8-79765D9C913C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D828F5D5-160C-4438-99E8-79765D9C913C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D828F5D5-160C-4438-99E8-79765D9C913C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D828F5D5-160C-4438-99E8-79765D9C913C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{76310B3A-CA9D-4AC1-9970-B595DE895221}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{76310B3A-CA9D-4AC1-9970-B595DE895221}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{76310B3A-CA9D-4AC1-9970-B595DE895221}.Release|Any CPU.ActiveCfg = Release|Any CPU

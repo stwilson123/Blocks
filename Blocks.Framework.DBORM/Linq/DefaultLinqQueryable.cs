@@ -8,11 +8,12 @@ using Blocks.Framework.Exceptions.Helper;
 using System.Linq.Dynamic.Core;
 using System.Data.Entity;
 using Blocks.Framework.DBORM.Linq.Extends;
-using Blocks.Framework.Data.Paging;
 using System.Collections.ObjectModel;
 using System.Linq.Dynamic;
 using Blocks.Framework.Data.Pager;
+using Blocks.Framework.Data.Paging;
 using Blocks.Framework.Localization;
+using DynamicQueryableExtensions = System.Linq.Dynamic.Core.DynamicQueryableExtensions;
 
 namespace Blocks.Framework.DBORM.Linq
 {

@@ -80,8 +80,8 @@ namespace Blocks.Framework.Data.Pager
         {
             get
             {
-                if (string.IsNullOrEmpty(sortColumn))
-                    return "ID DESC";
+                if (string.IsNullOrEmpty(sortColumn) || string.IsNullOrEmpty(sortOrder))
+                    return "";
                 return sortColumn + " " + sortOrder;
             }
         }

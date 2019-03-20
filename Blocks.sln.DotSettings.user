@@ -360,5 +360,6 @@
 	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=E41A7336_002D941C_002D44AF_002D9FBD_002D6A85664CC957_002Fd_003AResourceManifestProviders_002Ff_003AUICommonResourceManifestProvider_002Ecs/@EntryIndexedValue">ForceIncluded</s:String>
 	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=E41A7336_002D941C_002D44AF_002D9FBD_002D6A85664CC957_002Ff_003AResourceName_002Ecs/@EntryIndexedValue">ForceIncluded</s:String>
 	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=FBD6250D_002DDC02_002D4917_002D9D35_002DC9864D102F21_002Fd_003ANavigation_002Fd_003ATestModels_002Ff_003ATestNavigationProvider_002Ecs/@EntryIndexedValue">ForceIncluded</s:String>
-	<s:Boolean x:Key="/Default/UnloadedProject/UnloadedProjects/=711c1c95_002D8b50_002D4900_002Da158_002D1b8b3429eb6d_0023OracleProvider/@EntryIndexedValue">True</s:Boolean>
+	
+	
 	<s:Boolean x:Key="/Default/UnloadedProject/UnloadedProjects/=daf7aa32_002Dc029_002D49bd_002D8953_002Dfc115c5542c9_0023Blocks_002EFramework_002EDBORM_002ETest/@EntryIndexedValue">True</s:Boolean></wpf:ResourceDictionary>

@@ -36,11 +36,11 @@ namespace EntityFramework.Test
             });
             IocManager.Register<IHostingEnvironment>(a);
             
-            var testUserContext = new Mock<ClaimsPrincipal>();
-            testUserContext.Setup(u => u.Claims)
-                .Returns(new List<Claim>{ new Claim(AbpClaimTypes.UserId,"testId"),new Claim(AbpClaimTypes.UserName,"testName") });
-
-            Thread.CurrentPrincipal = testUserContext.Object;
+            Thread.CurrentPrincipal = new ClaimsPrincipal(new List<ClaimsIdentity>
+            {
+                new ClaimsIdentity(new List<Claim>(){ new Claim(AbpClaimTypes.UserId,"testId"),new Claim(AbpClaimTypes.UserName,"testName")})
+               
+            }){ };
         }
 
 

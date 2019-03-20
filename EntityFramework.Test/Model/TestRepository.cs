@@ -4,6 +4,7 @@ using Blocks.Framework.DBORM.DBContext;
 using Blocks.Framework.DBORM.Repository;
 using System.Collections.Generic;
 using System.Linq;
+using Blocks.Framework.DBORM.Linq;
 
 namespace EntityFramework.Test.Model
 {
@@ -31,6 +32,28 @@ namespace EntityFramework.Test.Model
             //    TestEntity3s =  result.TestEntity3s.Select(aa => new {  aa.Id })
             //});
             return value;
+        }
+        
+        public List<TESTENTITY> GetTestEntity2Text()
+        {
+            return GetContextTable().SelectToDynamicList((TESTENTITY t) => new 
+            {
+                TESTENTITY2 = new 
+                {
+                    Text =  t.TESTENTITY2.Text
+                }
+                
+            });
+        }
+
+        public List<TESTENTITY> GetTESTENTITY3s()
+        {
+            return GetContextTable().SelectToDynamicList((TESTENTITY t) =>
+                new 
+                {
+                    TESTENTITY3s = t.TESTENTITY3s
+                    
+                });
         }
  
     }
