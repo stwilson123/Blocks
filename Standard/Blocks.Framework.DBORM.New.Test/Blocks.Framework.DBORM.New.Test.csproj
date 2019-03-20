@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net461</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Citms.EntityFrameworkCore.Oracle" Version="1.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.0" />
+    <PackageReference Include="Moq" Version="4.10.1" />
+    <PackageReference Include="Oracle.ManagedDataAccess" Version="12.2.1100" />
+    <PackageReference Include="xunit" Version="2.4.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Adp\Abp.TestBase\Abp.TestBase.csproj" />
+    <ProjectReference Include="..\..\Adp\Abp\Abp.csproj" />
+    <ProjectReference Include="..\..\Blocks.Framework\Blocks.Framework.csproj" />
+    <ProjectReference Include="..\Blocks.Framework.DBORM\Blocks.Framework.DBORM.csproj" />
+  </ItemGroup>
+
+</Project>
