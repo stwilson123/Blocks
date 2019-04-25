@@ -562,6 +562,11 @@ namespace Blocks.Framework.DBORM.Repository
         {
             return GetAllCode().Where(predicate).LongCount();
         }
+        
+        public bool Any(Expression<Func<TEntity, bool>> predicate)
+        {
+            return GetAllCode().Any(predicate);
+        }
 
         public List<TElement> SqlQuery<TElement>(string sql, params object[] paramters)
             where TElement : class, IQueryEntity

@@ -19,6 +19,7 @@ namespace EntityFramework.Test.FunctionTest
         {
             var rep = Resolve<ITestRepository>();
             Stopwatch stopwatch = new Stopwatch();
+          
             stopwatch.Start();
             //var trans = rep.Context.Database.BeginTransaction();执行时间
             var listTestEntity = new List<TESTENTITY>();
@@ -112,6 +113,31 @@ namespace EntityFramework.Test.FunctionTest
 
 
         }
+        
+        [Fact]
+        public void UpdateByExpressionFixbug()
+        {
+            var rep = Resolve<ITestRepository>();
+            var guid = Guid.NewGuid().ToString();
+
+            var now = DateTime.Now;
+            var initData =new TESTENTITY() {Id = guid, TESTENTITY2ID = "guid" + "2", COLNUMINT = 1, ISACTIVE = 1} ;
+            rep.Insert(initData);
+
+            var constValue = "123";
+            var id = rep.Update(rr => rr.Id == guid && rr.CREATEDATE <= now, RR => new TESTENTITY()
+            {
+                TESTENTITY2ID = RR.TESTENTITY2ID + initData.TESTENTITY2ID  ,
+                COMMENT = "123321"
+            });
+            var updatedData = rep.FirstOrDefault(t => t.Id == guid);
+            Assert.Equal(updatedData.TESTENTITY2ID,initData.TESTENTITY2ID + initData.TESTENTITY2ID  );
+            
+       
+
+
+        }
+
 
         [Fact]
         public void queryCombination()

@@ -277,6 +277,13 @@ namespace Blocks.Framework.Data
         #region Aggregates
 
         /// <summary>
+        /// Gets entity whether exsit in this repository.
+        /// </summary>
+        /// <returns>Count of entities</returns>
+        bool Any(Expression<Func<TEntity, bool>> predicate);
+        
+        
+        /// <summary>
         /// Gets count of all entities in this repository.
         /// </summary>
         /// <returns>Count of entities</returns>

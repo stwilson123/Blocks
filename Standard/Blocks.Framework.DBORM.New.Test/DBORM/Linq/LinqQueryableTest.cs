@@ -237,7 +237,7 @@ namespace Blocks.Framework.Test.DBORM.Linq
 
                 var testLeftJoin2Entity = defaultLinqQuery
                     .InnerJoin((TESTENTITY t) => t.TESTENTITY2ID_NULLABLE, (TESTENTITY2 t2) => t2.Id)
-                    .InnerJoin((TESTENTITY3 t3) => t3.Id,(TESTENTITY2 t2) => t2.Id)
+                    .InnerJoin((TESTENTITY2 t2) => t2.Id, (TESTENTITY3 t3) => t3.Id)
                     .SelectToList((TESTENTITY t, TESTENTITY2 t2, TESTENTITY3 t3) =>
                     new testDTO
                     {

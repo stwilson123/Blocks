@@ -520,6 +520,11 @@ namespace Blocks.Framework.DBORM.Repository
            return Task.FromResult(Delete(predicate));
         }
 
+        public bool Any(Expression<Func<TEntity, bool>> predicate)
+        {
+            return GetAllCode().Where(predicate).Any(predicate);
+        }
+
         public  int Count(Expression<Func<TEntity, bool>> predicate)
         {
             return GetAllCode().Where(predicate).Count();
