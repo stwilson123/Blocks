@@ -21,7 +21,7 @@ namespace Blocks.Framework.Web.Mvc.ViewEngines.Razor
         //        private Localizer _localizer = NullLocalizer.Instance;
         private object _display;
 
-        private object _layout;
+        private object _layout1;
 
         private IResourceManager _resourceManager;
         private ScriptRegister _scriptRegister;
@@ -135,9 +135,16 @@ namespace Blocks.Framework.Web.Mvc.ViewEngines.Razor
         public dynamic Display => _display;
 
         // review: (heskew) is it going to be a problem?
-        public new dynamic Layout1 => _layout;
+        public new dynamic Layout1 => _layout1;
 
-        
+        private dynamic _layout;
+
+        public override string Layout
+        {
+            get => _layout;
+            set { _layout = Context.Request.Params["layout"] ?? value; }
+        }
+
         protected virtual void SetAntiForgeryCookie()
         {
             SingletonDependency<IAbpAntiForgeryManager>.Instance.SetCookie(Context);
