@@ -48,5 +48,11 @@ namespace Blocks.Framework.Collections
             return concurrentDictionary.TryRemove(key, out var value);
             
         }
+
+        public bool Remove()
+        {
+             concurrentDictionary.Clear();
+            return true;
+        }
     }
 }

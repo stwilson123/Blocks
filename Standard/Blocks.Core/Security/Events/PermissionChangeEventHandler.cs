@@ -4,7 +4,7 @@ using Blocks.Framework.Event;
 
 namespace Blocks.Core.Security.Events
 {
-    public class PermissionChangeEventHandler : IDomainEventHandler<PermissionChangeEventData>
+    public class PermissionChangeEventHandler  
     {
         private readonly ICacheManager _cacheManager;
 
@@ -15,9 +15,16 @@ namespace Blocks.Core.Security.Events
 
         public void HandleEvent(PermissionChangeEventData eventData)
         {
+            bool isRemoveAll = eventData.UserId == "*" ;
+            
             var permissionCacheKey = DefaultUserManager.getPermissionKey(eventData.UserId);
             var permissionCache = _cacheManager.GetCache<string, List<PermissionItem>>();
 
+            if (isRemoveAll && eventData.ResourceKey == "*")
+            {
+                //TODO according to  ResourceKey to remove
+                permissionCache.Remove();
+            }
             if (eventData.ResourceKey == "*")
             {
                 permissionCache.Remove(permissionCacheKey);

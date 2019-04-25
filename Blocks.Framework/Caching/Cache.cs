@@ -39,6 +39,12 @@ namespace Blocks.Framework.Caching {
             return _entries.Remove(key);
         }
 
+        public bool Remove()
+        {
+            return _entries.Remove();
+        }
+        
+
         private CacheEntry AddEntry(TKey k, Func<AcquireContext<TKey>, TResult> acquire) {
             var entry = CreateEntry(k, acquire);
             PropagateTokens(entry);

@@ -13,9 +13,11 @@ using Blocks.Framework.Security.Authorization.User;
 
 namespace Blocks.Core.Security
 {
-    public class DefaultUserManager : IUserManager,IDomainEventHandler<PermissionChangeEventData>
+    public class DefaultUserManager : IUserManager , IDomainEventHandler<PermissionChangeEventData>
     {
         IIocManager _iocManager;
+        
+        //TODO single class cache can't move to other class
         private readonly ICacheManager _cacheManager;
 
         internal static string getPermissionKey(params object[] param)
@@ -36,7 +38,6 @@ namespace Blocks.Core.Security
         public Task<bool> IsGrantedAsync(IUserIdentifier user, Permission permission)
         {
             Task<bool> result = Task.FromResult(true);
-
 
             var permissionCache = _cacheManager.GetCache<string,List<PermissionItem>>();
             var permissionCacheKey = getPermissionKey(user.UserId);
@@ -70,15 +71,21 @@ namespace Blocks.Core.Security
 
         public void HandleEvent(PermissionChangeEventData eventData)
         {
+            bool isRemoveAll = eventData.UserId == "*" ;
+            
             var permissionCacheKey = DefaultUserManager.getPermissionKey(eventData.UserId);
             var permissionCache = _cacheManager.GetCache<string, List<PermissionItem>>();
 
+            if (isRemoveAll && eventData.ResourceKey == "*")
+            {
+                //TODO according to  ResourceKey to remove
+                permissionCache.Remove();
+            }
             if (eventData.ResourceKey == "*")
             {
                 permissionCache.Remove(permissionCacheKey);
                 return;
             }
-            
             var userPermissionList = permissionCache.Get(permissionCacheKey, (key) =>
             {
                 return  new List<PermissionItem>(){  };

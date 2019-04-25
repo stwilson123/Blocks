@@ -8,6 +8,7 @@ namespace Blocks.Framework.Caching {
 
 
         bool Remove(TKey key);
+        bool Remove();
 
 
     }
