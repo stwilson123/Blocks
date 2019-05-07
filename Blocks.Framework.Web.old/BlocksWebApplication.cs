@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Web;
 using Abp;
 using Abp.Castle.Logging.Log4Net;
@@ -28,47 +29,64 @@ namespace Blocks.Framework.Web
         }
 
         private Stopwatch requestWatch = new Stopwatch();
+
         /// <summary>
         /// Gets a reference to the <see cref="P:Abp.Web.AbpWebApplication`1.AbpBootstrapper" /> instance.
         /// </summary>
-        private static AbpBootstrapper abpBootstrapper = AbpBootstrapper.Create<TStartupModule>((Action<AbpBootstrapperOptions>)null);
-        public static AbpBootstrapper AbpBootstrapper { get { return abpBootstrapper; } }
-        protected  virtual void Application_Start(object sender, EventArgs e)
+        private static AbpBootstrapper abpBootstrapper =
+            AbpBootstrapper.Create<TStartupModule>((Action<AbpBootstrapperOptions>) null);
+
+        public static AbpBootstrapper AbpBootstrapper
+        {
+            get { return abpBootstrapper; }
+        }
+
+        protected virtual void Application_Start(object sender, EventArgs e)
         {
             var stopwatch = new Stopwatch();
             stopwatch.Start();
-            
+
             AbpBootstrapper.IocManager.IocContainer.AddFacility<LoggingFacility>(
                 f => f.UseAbpLog4Net().WithConfig(Server.MapPath(logConfigName))
             );
-            
+
             ThreadCultureSanitizer.Sanitize();
 
             var environment = WebHostingEnvironment.CreateHostingEnvironment(new WebHostingEnvironment()
             {
                 ContentRootPath = Server.MapPath("~")
-            });    
+            });
             IVirtualPathProvider pathProvider = new DefaultVirtualPathProvider(environment);
             if (pathProvider.DirectoryExists(@"~\Modules"))
-                AbpBootstrapper.PlugInSources.AddFolder(pathProvider.MapPath(@"~\Modules"),
-                    SearchOption.AllDirectories);
+            {
+                foreach (var modulePath in pathProvider.ListDirectories(@"~\Modules"))
+                {
+                    var moduleBin = pathProvider.ListDirectories(modulePath).FirstOrDefault(t => t.EndsWith("bin"));
+                    if (!string.IsNullOrEmpty(moduleBin))
+                        AbpBootstrapper.PlugInSources.AddFolder(pathProvider.MapPath(moduleBin),
+                            SearchOption.AllDirectories);
+                }
+            }
+
             AbpBootstrapper.Initialize();
             PerWebRequestLifestyleModule.FuncHttpCache = (noInput) => { return HttpContext.Current.Items; };
-            
+
             stopwatch.Stop();
 
-            LogHelper.Log(new LogModel(){ Message = "Framework Init time:" +stopwatch.ElapsedMilliseconds+"ms", LogSeverity = LogSeverity.Info});
+            LogHelper.Log(new LogModel()
+            {
+                Message = "Framework Init time:" + stopwatch.ElapsedMilliseconds + "ms", LogSeverity = LogSeverity.Info
+            });
         }
 
         protected virtual void Application_End(object sender, EventArgs e)
         {
             AbpBootstrapper.Dispose();
-          //  AbpWebApplication<TStartupModule>.AbpBootstrapper.Dispose();
+            //  AbpWebApplication<TStartupModule>.AbpBootstrapper.Dispose();
         }
 
         protected virtual void Session_Start(object sender, EventArgs e)
         {
-            
         }
 
         protected virtual void Session_End(object sender, EventArgs e)
@@ -91,10 +109,13 @@ namespace Blocks.Framework.Web
 
         protected virtual void Application_EndRequest(object sender, EventArgs e)
         {
-            PerWebRequestLifestyleModule.EndRequest(sender,e);
+            PerWebRequestLifestyleModule.EndRequest(sender, e);
             requestWatch.Stop();
-            LogHelper.Log(new LogModel(){ Message = "Framework request time:" +requestWatch.ElapsedMilliseconds+"ms", LogSeverity = LogSeverity.Info});
-
+            LogHelper.Log(new LogModel()
+            {
+                Message = "Framework request time:" + requestWatch.ElapsedMilliseconds + "ms",
+                LogSeverity = LogSeverity.Info
+            });
         }
 
         protected virtual void Application_Error(object sender, EventArgs e)
@@ -103,10 +124,10 @@ namespace Blocks.Framework.Web
 
         protected virtual void SetCurrentCulture()
         {
-            
-            AbpBootstrapper.IocManager.Using<ICurrentCultureSetter>((Action<ICurrentCultureSetter>) (cultureSetter => cultureSetter.SetCurrentCulture(this.Context)));
+            AbpBootstrapper.IocManager.Using<ICurrentCultureSetter>(
+                (Action<ICurrentCultureSetter>) (cultureSetter => cultureSetter.SetCurrentCulture(this.Context)));
 
-         //   AbpWebApplication<TStartupModule>.AbpBootstrapper.IocManager.Using<ICurrentCultureSetter>((Action<ICurrentCultureSetter>) (cultureSetter => cultureSetter.SetCurrentCulture(this.Context)));
+            //   AbpWebApplication<TStartupModule>.AbpBootstrapper.IocManager.Using<ICurrentCultureSetter>((Action<ICurrentCultureSetter>) (cultureSetter => cultureSetter.SetCurrentCulture(this.Context)));
         }
     }
 }
