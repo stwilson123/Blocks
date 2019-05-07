@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Blocks.Framework.Utility.Extensions
 {
@@ -37,5 +38,18 @@ namespace Blocks.Framework.Utility.Extensions
             return iEnumerable;
         }
 
+
+        public static void ForEach<TSource>(this IList<TSource> iEnumerable, Action<TSource,long> actions)
+        {
+            if (iEnumerable == null)
+                return;
+
+
+            var i = 0;
+            foreach (var item in iEnumerable)
+            {
+                actions(item, i++);
+            }
+        }
     }
 }

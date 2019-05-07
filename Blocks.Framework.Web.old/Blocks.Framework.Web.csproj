@@ -364,6 +364,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\Security\AntiForgery\AbpAntiForgeryApiFilter.cs" />
     <Compile Include="Api\WebApiModule.cs" />
     <Compile Include="Api\Configuration\AbpWebApiConfiguration.cs" />
     <Compile Include="Api\Configuration\IAbpWebApiConfiguration.cs" />

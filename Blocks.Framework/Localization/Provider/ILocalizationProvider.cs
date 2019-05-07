@@ -2,11 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Blocks.Framework.Localization.Provider
 {
     public interface ILocalizationProvider : ITransientDependency
     {
-        IDictionary<string,string> getLocalizationDicionary(string moduleName, string culture);
+        Task<IDictionary<string,string>> getLocalizationDicionary(string moduleName, string culture);
     }
 }

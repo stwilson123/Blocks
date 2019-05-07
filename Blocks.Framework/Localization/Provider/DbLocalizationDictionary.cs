@@ -7,6 +7,7 @@ using System.Globalization;
 using System.Text;
 using Blocks.Framework.Localization.Culture;
 using Blocks.Framework.Utility.Extensions;
+using System.Threading.Tasks;
 
 namespace Blocks.Framework.Localization.Provider
 {
@@ -21,7 +22,7 @@ namespace Blocks.Framework.Localization.Provider
             
         }
 
-        public static ILocalizationDictionary Create(string sourceName,string cultureCode, IIocManager iocManager)
+        public static async Task<ILocalizationDictionary> Create(string sourceName,string cultureCode, IIocManager iocManager)
         {
          
             var dictionary = new DbLocalizationDictionary(sourceName,CultureInfo.GetCultureInfo(cultureCode));
@@ -30,7 +31,7 @@ namespace Blocks.Framework.Localization.Provider
 
             foreach (var provider in providers)
             {
-                foreach (var item in provider.getLocalizationDicionary(sourceName,cultureCode))
+                foreach (var item in await provider.getLocalizationDicionary(sourceName,cultureCode))
                 {
                     if (string.IsNullOrEmpty(item.Key))
                     {

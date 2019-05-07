@@ -12,6 +12,7 @@ using Abp.Localization;
 using Abp.Runtime.Session;
 using Abp.Timing;
 using Blocks.Framework.Web.Web.Configuration;
+using LocalizationSettingNames = Blocks.Framework.Localization.Setting.LocalizationSettingNames;
 
 namespace Blocks.Framework.Web.Web.Localization
 {
@@ -174,7 +175,9 @@ namespace Blocks.Framework.Web.Web.Localization
 
         protected virtual string GetCultureFromQueryString(HttpContext httpContext)
         {
-            var culture = httpContext.Request.QueryString[_webLocalizationConfiguration.CookieName];
+           // var culture = httpContext.Request.QueryString[_webLocalizationConfiguration.CookieName];
+
+            var culture = httpContext.Request["cultureName"];
             if (culture.IsNullOrEmpty() || !GlobalizationHelper.IsValidCultureCode(culture))
             {
                 return null;

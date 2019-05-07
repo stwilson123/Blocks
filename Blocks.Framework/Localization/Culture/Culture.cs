@@ -6,19 +6,29 @@ namespace Blocks.Framework.Localization.Culture
 {
     public class Culture
     {
-        public static List<string> cultures;
+        private static List<string> cultures;
+        private static Dictionary<string,string> culturesDics;
+
         static Culture()
         {
             cultures = new List<string>() {
                 en,
                 zhCN
             }; 
+            culturesDics = new Dictionary<string, string>()
+            {
+                
+                { "en", "en"}, 
+                { "zh-CN", "简体中文"}
+
+            };
         }
         const string en = "en";
         const string zhCN = "zh-CN";
 
 
-
         public static string[] getCultures() => cultures.ToArray();
+
+        public static Dictionary<string, string> getCulturesDics() => culturesDics;
     }
 }

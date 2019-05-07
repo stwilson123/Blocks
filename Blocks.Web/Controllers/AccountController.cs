@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading;
@@ -23,6 +22,7 @@ using Abp.Web.Security.AntiForgery;
 using Blocks.Authorization;
 using Blocks.Authorization.Roles;
 using Blocks.Authorization.Users;
+using Blocks.Framework.Localization;
 using Blocks.MultiTenancy;
 using Blocks.Sessions;
 using Blocks.Web.Controllers.Results;
@@ -30,6 +30,7 @@ using Blocks.Web.Models;
 using Blocks.Web.Models.Account;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Owin.Security;
 using IdentityResult = Microsoft.AspNetCore.Identity.IdentityResult;
 
@@ -46,7 +47,7 @@ namespace Blocks.Web.Controllers
         private readonly LogInManager _logInManager;
         private readonly Framework.Web.Security.IdentityLogInManager _identityLogInManager;
         private readonly ISessionAppService _sessionAppService;
-        private readonly ILanguageManager _languageManager;
+        private readonly ILanguagesManager _languageManager;
         private readonly ITenantCache _tenantCache;
         private readonly IAuthenticationManager _authenticationManager;
         private readonly Framework.Web.Security.IdentityUserManager _identityUserManager;
@@ -60,7 +61,7 @@ namespace Blocks.Web.Controllers
             LogInManager logInManager,
             Framework.Web.Security.IdentityLogInManager identityLogInManager,
             ISessionAppService sessionAppService,
-            ILanguageManager languageManager,
+            ILanguagesManager languageManager,
             ITenantCache tenantCache,
             IAuthenticationManager authenticationManager)
         {
@@ -79,7 +80,7 @@ namespace Blocks.Web.Controllers
         }
 
         #region Login / Logout
-
+        [Blocks.Framework.Security.Authorization.DisableAuditing]
         public ActionResult Login(string returnUrl = "/BussnessWebModule/MasterData/Index")
         {
             if (string.IsNullOrWhiteSpace(returnUrl))
@@ -98,7 +99,7 @@ namespace Blocks.Web.Controllers
                     MultiTenancySide = AbpSession.MultiTenancySide
                 });
         }
-
+        [Blocks.Framework.Security.Authorization.DisableAuditing]
         public ActionResult MobileLogin(string returnUrl = "")
         {
             if (string.IsNullOrWhiteSpace(returnUrl))
@@ -118,7 +119,7 @@ namespace Blocks.Web.Controllers
                 });
         }
         [HttpPost]
-        [DisableAuditing]
+        [Blocks.Framework.Security.Authorization.DisableAuditing]
         public async Task<JsonResult> Login(LoginViewModel loginModel, string returnUrl = "", string returnUrlHash = "")
         {
             CheckModelState();
@@ -150,7 +151,7 @@ namespace Blocks.Web.Controllers
         }
 
         [HttpPost]
-        [DisableAuditing]
+        [Blocks.Framework.Security.Authorization.DisableAuditing]
         public async Task<JsonResult> MobileLogin(LoginViewModel loginModel, string returnUrl = "", string returnUrlHash = "")
         {
             CheckModelState();
@@ -629,10 +630,10 @@ namespace Blocks.Web.Controllers
         {
             var model = new LanguageSelectionViewModel
             {
-                CurrentLanguage = _languageManager.CurrentLanguage,
-                Languages = _languageManager.GetLanguages().Where(l => !l.IsDisabled).ToList()
-                    .Where(l => !l.IsDisabled)
-                    .ToList(),
+                CurrentLanguage = _languageManager.CurrentLanguage.MapTo<Abp.Localization.LanguageInfo>(),
+                Languages = _languageManager.GetLanguages().Where(l => !l.IsDisabled)
+                .MapTo<List<Abp.Localization.LanguageInfo>>()
+                    ,
                 CurrentUrl = Request.Path
             };
 

@@ -132,13 +132,21 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blocks.Framework.TestAssemb
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blocks.BussnessRespositoryModule.OracleModule", "Blocks.Web\Modules\Blocks.BussnessRespositoryModule.OracleModule\Blocks.BussnessRespositoryModule.OracleModule.csproj", "{6FC9477B-2C20-4D71-859B-594FE53474DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blocks.RedisCacheModule", "Blocks.RedisCacheModule\Blocks.RedisCacheModule.csproj", "{5DFC547E-A218-493A-B0B5-BA67D34F6AD6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blocks.RedisCacheModule", "Blocks.RedisCacheModule\Blocks.RedisCacheModule.csproj", "{5DFC547E-A218-493A-B0B5-BA67D34F6AD6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blocks.Framework.DBORM.Test", "Standard\Blocks.Framework.DBORM.Test\Blocks.Framework.DBORM.Test.csproj", "{DAF7AA32-C029-49BD-8953-FC115C5542C9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blocks.Framework.DBORM.Test", "Standard\Blocks.Framework.DBORM.Test\Blocks.Framework.DBORM.Test.csproj", "{DAF7AA32-C029-49BD-8953-FC115C5542C9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blocks.AsscessControlModelModule", "Blocks.AsscessControlModelModule\Blocks.AsscessControlModelModule.csproj", "{DD9021DB-1D01-4D4C-98BE-A5AC30848942}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blocks.AsscessControlModelModule", "Blocks.AsscessControlModelModule\Blocks.AsscessControlModelModule.csproj", "{DD9021DB-1D01-4D4C-98BE-A5AC30848942}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4A7CB238-06A2-48B9-842D-3A66ABF8EEF8}"
+	ProjectSection(SolutionItems) = preProject
+		Performance1.psess = Performance1.psess
+	EndProjectSection
 EndProject
 Global
+	GlobalSection(Performance) = preSolution
+		HasPerformanceSessions = true
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -432,5 +440,14 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DDBAC820-4861-4751-880D-917BF12E2C5D}
+	EndGlobalSection
+	GlobalSection(Performance) = preSolution
+		HasPerformanceSessions = true
+	EndGlobalSection
+	GlobalSection(Performance) = preSolution
+		HasPerformanceSessions = true
+	EndGlobalSection
+	GlobalSection(Performance) = preSolution
+		HasPerformanceSessions = true
 	EndGlobalSection
 EndGlobal

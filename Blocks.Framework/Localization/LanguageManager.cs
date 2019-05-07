@@ -1,11 +1,11 @@
-﻿using Abp;
-using Abp.Localization;
+﻿ 
 using Blocks.Framework.AutoMapper;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using Blocks.Framework.Localization.Provider;
 
 namespace Blocks.Framework.Localization
 {
@@ -30,7 +30,7 @@ namespace Blocks.Framework.Localization
             var languages = _languageProvider.GetLanguages();
             if (languages.Count <= 0)
             {
-                throw new AbpException("No language defined in this application.");
+                throw new LocalizationException(StringLocal.Format("No language defined in this application."));
             }
 
             var currentCultureName = CultureInfo.CurrentUICulture.Name;

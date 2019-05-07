@@ -2,18 +2,19 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 
 namespace Blocks.LocalizationModule
 {
     public class LocalizationProvider : ILocalizationProvider
     {
-        public IDictionary<string, string> getLocalizationDicionary(string moduleName, string culture)
+        public Task<IDictionary<string, string>> getLocalizationDicionary(string moduleName, string culture)
         {
-
+            var dicResult = default(IDictionary<string, string>);
             if (culture == "en")
             {
-                return new Dictionary<string, string>() { { "MasterData", "MasterData" },
+                dicResult = new Dictionary<string, string>() { { "MasterData", "MasterData" },
                     {"Tests","Tests" },
                 { "TestException", "TestException" },
                 { "Name", "TestException" },
@@ -27,7 +28,7 @@ namespace Blocks.LocalizationModule
             }
             else if (culture == "zh-CN")
             {
-                return new Dictionary<string, string>() { { "MasterData", "主数据" },
+                dicResult = new Dictionary<string, string>() { { "MasterData", "主数据" },
                 { "TestException", "测试异常" },
                  {"Tests","测试" },
                 { "Name", "名称" },
@@ -43,7 +44,7 @@ namespace Blocks.LocalizationModule
             }
 
 
-            return new Dictionary<string, string>();
+            return Task.FromResult(dicResult);
 
 
         }

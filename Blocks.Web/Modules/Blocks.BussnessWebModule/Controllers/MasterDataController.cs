@@ -29,5 +29,11 @@ namespace Blocks.BussnessWebModule.Controllers
         {
             return PartialView();
         }
+        
+        
+        public ActionResult JsonResult()
+        {
+            return Json(new { aa = 1 });
+        }
     }
 }

@@ -18,6 +18,7 @@ using Blocks.Framework.Types;
 using Castle.Core;
 using Castle.DynamicProxy;
 using Castle.MicroKernel;
+using ILanguageProvider = Blocks.Framework.Localization.Provider.ILanguageProvider;
 
 namespace Blocks.Framework.Localization
 {
@@ -29,7 +30,7 @@ namespace Blocks.Framework.Localization
         }
         public override void PreInitialize()
         {
-            
+            IocManager.Register<ILanguageProvider,LanguageProvider>();
          
             
             Configuration.Localization.Sources.Add(

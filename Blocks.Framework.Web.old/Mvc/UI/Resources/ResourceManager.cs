@@ -11,7 +11,6 @@ using System.Web.Mvc;
 using System.Web.UI.WebControls.WebParts;
 using Abp.Configuration;
 using Abp.Dependency;
-using Abp.Localization;
 using Blocks.Framework.AutoMapper;
 using Blocks.Framework.Configurations;
 using Blocks.Framework.Ioc.Dependency;
@@ -32,7 +31,7 @@ namespace Blocks.Framework.Web.Mvc.UI.Resources {
         private readonly ISettingManager _setttingManager;
 
 
-        private readonly ILanguageManager _languageManager;
+        private readonly ILanguagesManager _languageManager;
         private ResourceManifest _dynamicManifest;
         private List<ScriptEntry> _headScripts= new List<ScriptEntry>();
         private List<ScriptEntry> _footScripts = new List<ScriptEntry>();
@@ -105,7 +104,7 @@ namespace Blocks.Framework.Web.Mvc.UI.Resources {
 
         public Guid guid;
         public ResourceManager(IEnumerable<IResourceManifestProvider> resourceProviders, ISettingManager setttingManager,
-            ILanguageManager languageManager) {
+            ILanguagesManager languageManager) {
             _providers = resourceProviders;
             _setttingManager = setttingManager;
             _languageManager = languageManager;

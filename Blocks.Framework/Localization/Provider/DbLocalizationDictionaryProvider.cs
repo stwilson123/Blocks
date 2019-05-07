@@ -1,9 +1,12 @@
 ﻿using Abp.Dependency;
 using Abp.Localization.Dictionaries.Json;
 using Abp.Localization.Dictionaries.Xml;
+using Blocks.Framework.Utility.Extensions;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Blocks.Framework.Localization.Provider
 {
@@ -17,22 +20,22 @@ namespace Blocks.Framework.Localization.Provider
             this.iocManager = iocManager;
         }
 
-
         public override void Initialize(string sourceName)
         {
-
             var cultrues = Culture.Culture.getCultures();
-            foreach (var cultrue in cultrues)
-            {
-                var cultureDic = DbLocalizationDictionary.Create(sourceName, cultrue, iocManager);
-                if (cultureDic == null || cultrue.Length == 0)
-                    continue;
-                Dictionaries[cultrue] = cultureDic;
-                DefaultDictionary = cultureDic;
-            }
-             
+            Task.WhenAll(cultrues.Select(c => DbLocalizationDictionary.Create(sourceName, c, iocManager)))
+                .Result.ForEach((cultureDic, index) =>
+                {
+                    if (cultureDic == null)
+                        return;
+
+                    Dictionaries[cultrues[index]] = cultureDic;
+                    DefaultDictionary = cultureDic;
+                });
+
+
         }
 
-       
+
     }
 }
