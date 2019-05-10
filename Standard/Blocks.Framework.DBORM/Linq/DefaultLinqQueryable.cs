@@ -14,6 +14,7 @@ using System.Linq.Dynamic;
 using Blocks.Framework.Data.Pager;
 using Blocks.Framework.Localization;
 using DynamicQueryableExtensions = System.Linq.Dynamic.Core.DynamicQueryableExtensions;
+using System.Threading.Tasks;
 
 namespace Blocks.Framework.DBORM.Linq
 {
@@ -202,6 +203,11 @@ namespace Blocks.Framework.DBORM.Linq
                 iQuerable = iQuerable.Select(a);
             }
             return iQuerable.ToDynamicList();
+        }
+
+        public Task<List<dynamic>> SelectToListAsync(LambdaExpression selector)
+        {
+            return Task.Factory.StartNew((s) => SelectToList((LambdaExpression)s), selector);
         }
 
         public IDbLinqQueryable<TEntity> Take(int count)

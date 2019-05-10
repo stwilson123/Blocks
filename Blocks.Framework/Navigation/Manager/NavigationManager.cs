@@ -59,18 +59,6 @@ namespace Blocks.Framework.Navigation.Manager
             foreach (var provider in _iocResolver.ResolveAll<INavigationProvider>())
             {
                 provider.SetNavigation(context);
-                //foreach (var menu in context.Manager.Menus)
-                //{
-                //    menu.Value.Items.ForEach((navItemDefinition) =>
-                //    {
-                //        if (string.IsNullOrEmpty(navItemDefinition.ExtensionName))
-                //        {
-                //            navItemDefinition.ExtensionName = provider.Extension.Name;
-                             
-                //        }
-                //    });
-                //}
-                
             }
 
             sourceMenus = Menus.AutoMapTo<IDictionary<string, INavigationDefinition>>();
@@ -78,6 +66,7 @@ namespace Blocks.Framework.Navigation.Manager
 
             if(_iocResolver.IsRegistered<IDomainEventBus>())
             {
+                
                 _iocResolver.Resolve<IDomainEventBus>().Trigger(new MenusInitEventData() {
                     NavigationItems = Menus.SelectMany(t => t.Value.Items).ToArray()
                 });
@@ -91,12 +80,12 @@ namespace Blocks.Framework.Navigation.Manager
 
 
             //Adapter abp
-            var adpaterMenusModel = Menus.Values.FirstOrDefault().Items.Select(menuItem =>
-                funTransfter(menuItem));
-            foreach (var menus in adpaterMenusModel)
-            {
-                _iocResolver.Resolve<Abp.Application.Navigation.NavigationManager>().MainMenu.AddItem(menus);
-            }
+//            var adpaterMenusModel = Menus.Values.FirstOrDefault().Items.Select(menuItem =>
+//                funTransfter(menuItem));
+//            foreach (var menus in adpaterMenusModel)
+//            {
+//                _iocResolver.Resolve<Abp.Application.Navigation.NavigationManager>().MainMenu.AddItem(menus);
+//            }
         }
 
         private async Task<IDictionary<string, INavigationDefinition>> Filter(

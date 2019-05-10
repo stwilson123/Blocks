@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -26,8 +27,11 @@ using Abp.Configuration;
 using Blocks.Framework.Utility.Extensions;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System.Configuration;
+using System.Diagnostics;
 using System.Reflection;
 using Blocks.Framework.DBORM;
+using Blocks.Framework.Logging;
+using Microsoft.EntityFrameworkCore.Internal;
 
 namespace Blocks.Framework.DBORM.DBContext
 {
@@ -130,6 +134,10 @@ namespace Blocks.Framework.DBORM.DBContext
         private ISettingManager _settingManager { get; set; }
 
         protected string nameOrConnectionString { get; set; }
+    
+        Stopwatch sw = new Stopwatch();
+
+        static IDictionary<Type,ValueTuple<bool,object>> entityConfigsDictionary = new ConcurrentDictionary<Type, (bool, object)>();
         /// <summary>
         /// Constructor.
         /// Uses <see cref="IAbpStartupConfiguration.DefaultNameOrConnectionString"/> as connection string.
@@ -145,6 +153,7 @@ namespace Blocks.Framework.DBORM.DBContext
         {
             optionsBuilder.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
             
+             
             var dbType = _settingManager.GetSettingValueForApplication("DatabaseType");
 
             var connectionString = ConfigurationManager.ConnectionStrings[nameOrConnectionString].ConnectionString;
@@ -237,8 +246,11 @@ namespace Blocks.Framework.DBORM.DBContext
             //    AbpSession.TenantId);
         }
 
+        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            Logger.DebugFormat("Begin OnModelCreating");
+            sw.Restart();
             modelBuilder.HasDefaultSchema(_settingManager.GetSettingValueForApplication(Framework.DBORM.Configurations.ConfigKey.Schema));
             modelBuilder.RemovePluralizingTableNameConvention();
             // modelBuilder.Conventions.Remove<Microsoft.EntityFrameworkCore.ModelConfiguration.Conventions.PluralizingTableNameConvention>();
@@ -247,18 +259,79 @@ namespace Blocks.Framework.DBORM.DBContext
        
             var registerAssembly =  System.AppDomain.CurrentDomain.GetAssemblies().Where(t => 
                 _entityConfigurations.Any(config => string.Equals(t.GetName().Name,config.EntityModule,StringComparison.CurrentCultureIgnoreCase)));
-            
-            foreach (var assembly in registerAssembly.DistinctBy(t => t.FullName))
-            {
-                foreach (var queryType in assembly.GetTypes().Where(t => typeof(IQueryEntity).IsAssignableFrom(t)))
-                {
-                    modelBuilder.Query(queryType);
 
+            lock (entityConfigsDictionary)
+            {
+                if (!entityConfigsDictionary.Any())
+                {
+                    foreach (var assembly in registerAssembly.DistinctBy(t => t.FullName))
+                    {
+//                
+//                if (type.GetGenericTypeDefinition() == typeof (IEntityTypeConfiguration<>))
+//                    methodInfo1.MakeGenericMethod(type.GenericTypeArguments[0]).Invoke((object) this, new object[1]
+//                    {
+//                        Activator.CreateInstance((Type) constructibleType)
+//                    });
+                        
+                        foreach (var entityType in assembly.GetTypes())
+                        {
+                            if( typeof(IQueryEntity).IsAssignableFrom(entityType))
+                                 entityConfigsDictionary.Add(entityType,new ValueTuple<bool,object>(true,entityType));
+                            if( entityType.GetInterfaces().Any(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof (IEntityTypeConfiguration<>) ))
+                                entityConfigsDictionary.Add(entityType,new ValueTuple<bool,object>(false,Activator.CreateInstance(entityType)));
+                        }
+                        
+                       modelBuilder.ApplyConfiguration()
+//                        Stopwatch swAss = Stopwatch.StartNew();
+//                   
+//                        Logger.DebugFormat("ApplyConfigurationsFromAssembly cost time {0}ms",swAss.ElapsedMilliseconds);
+                        //modelBuilder.Configurations.AddFromAssembly(assembly);
+                    }
                 }
-                modelBuilder.ApplyConfigurationsFromAssembly(assembly);
-                //modelBuilder.Configurations.AddFromAssembly(assembly);
             }
 
+            var applyMethod = ((IEnumerable<MethodInfo>) typeof (ModelBuilder).GetMethods()).Single<MethodInfo>((Func<MethodInfo, bool>) (e =>
+            {
+                if (e.Name == "ApplyConfiguration" && e.ContainsGenericParameters)
+                    return ((IEnumerable<ParameterInfo>) e.GetParameters()).SingleOrDefault<ParameterInfo>()?.ParameterType.GetGenericTypeDefinition() == typeof (IEntityTypeConfiguration<>);
+                return false;
+            }));
+            foreach (var entityConfig in entityConfigsDictionary)
+            {
+                if (entityConfig.Value.Item1)
+                    modelBuilder.Query((Type) entityConfig.Value.Item2);
+                else
+                {
+                    applyMethod.MakeGenericMethod(entityConfig.Key.GetInterfaces().FirstOrDefault(t => t.IsGenericType).GetGenericArguments()[0]).Invoke(modelBuilder,
+                        new object[]
+                        {
+                            entityConfig.Value.Item2
+                        });
+                }
+            }
+            
+         
+//            foreach (var assembly in registerAssembly.DistinctBy(t => t.FullName))
+//            {
+////                
+////                if (type.GetGenericTypeDefinition() == typeof (IEntityTypeConfiguration<>))
+////                    methodInfo1.MakeGenericMethod(type.GenericTypeArguments[0]).Invoke((object) this, new object[1]
+////                    {
+////                        Activator.CreateInstance((Type) constructibleType)
+////                    });
+//                foreach (var queryType in assembly.GetTypes().Where(t => typeof(IQueryEntity).IsAssignableFrom(t)))
+//                {
+//                    modelBuilder.Query(queryType);
+//                }
+//          
+//                Stopwatch swAss = Stopwatch.StartNew();
+//                modelBuilder.ApplyConfigurationsFromAssembly(assembly);
+//                Logger.DebugFormat("ApplyConfigurationsFromAssembly cost time {0}ms",swAss.ElapsedMilliseconds);
+//                //modelBuilder.Configurations.AddFromAssembly(assembly);
+//            }
+            sw.Stop();
+            
+            Logger.DebugFormat("End OnModelCreating cost time {0}ms",sw.ElapsedMilliseconds);
             //TODO global filter extensions
             //modelBuilder.Filter(AbpDataFilters.SoftDelete, (ISoftDelete d) => d.IsDeleted, false);
             //modelBuilder.Filter(AbpDataFilters.MustHaveTenant,

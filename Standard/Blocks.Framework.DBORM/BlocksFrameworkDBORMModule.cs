@@ -58,6 +58,12 @@ namespace Blocks.Framework.DBORM
             RegisterGenericRepositoriesAndMatchDbContexes();
         }
 
+        public override void PostInitialize()
+        {
+            //pre hot entityframework
+            
+        }
+
         private void RegisterGenericRepositoriesAndMatchDbContexes()
         {
             var dbContextTypes =

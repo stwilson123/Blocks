@@ -24,16 +24,17 @@ namespace Blocks.Framework.Localization.Provider
         {
             var cultrues = Culture.Culture.getCultures();
             Task.WhenAll(cultrues.Select(c => DbLocalizationDictionary.Create(sourceName, c, iocManager)))
-                .Result.ForEach((cultureDic, index) =>
+                .ContinueWith(task =>
                 {
-                    if (cultureDic == null)
-                        return;
+                    task.Result.ForEach((cultureDic, index) =>
+                    {
+                        if (cultureDic == null)
+                            return;
 
-                    Dictionaries[cultrues[index]] = cultureDic;
-                    DefaultDictionary = cultureDic;
+                        Dictionaries[cultrues[index]] = cultureDic;
+                        DefaultDictionary = cultureDic;
+                    });
                 });
-
-
         }
 
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -10,21 +11,29 @@ using Abp.Events.Bus.Handlers.Internals;
 using Abp.Extensions;
 using Abp.Threading.Extensions;
 using Blocks.Framework.Ioc.Dependency;
+using Castle.Core.Logging;
 
 namespace Blocks.Framework.Event
 {
     public class DomainEventBus :  IDomainEventBus, ISingletonDependency
     {
         private IEventBus _eventBus;
+        public ILogger Logger { get; set; }
 
         public DomainEventBus(IEventBus eventBus)
         {
             _eventBus = eventBus;
+            Logger = NullLogger.Instance;
         }
         
         public void Trigger<TEventData>(TEventData eventData) where TEventData : IDomainEventData
         {
+            Stopwatch sw = Stopwatch.StartNew();
+            
             _eventBus.Trigger((object)null, eventData);
+            sw.Stop();
+            Logger.Debug($"DomainEvent Trigger {typeof(TEventData).FullName} cost time {sw.ElapsedMilliseconds}ms");
+
            
         }
     }

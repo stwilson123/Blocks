@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 
 namespace Blocks.Framework.DBORM.Linq
 {
@@ -14,6 +15,8 @@ namespace Blocks.Framework.DBORM.Linq
         IDbLinqQueryable<TEntity> Where(LambdaExpression predicate);
 
         List<dynamic> SelectToList(LambdaExpression selector);
+
+        Task<List<dynamic>> SelectToListAsync(LambdaExpression selector);
 
         IDbLinqQueryable<TEntity> InnerJoin<TOuter, TInner, TKey>(
             Expression<Func<TOuter, TKey>> outerKeySelector,
