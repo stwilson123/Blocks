@@ -29,10 +29,19 @@ using DynamicQueryableExtensions = System.Linq.Dynamic.Core.DynamicQueryableExte
 
 namespace Blocks.Framework.DBORM.Repository
 {
-    public class DBSqlRepositoryBase<TEntity> : DBSqlRepositoryBase<BlocksDbContext<TEntity>, TEntity, string>
+    public class DBSqlRepositoryBase<TEntity> : DBSqlRepositoryBase<BlocksDbContext, TEntity, string>
         where TEntity : Data.Entity.Entity
     {
-        protected readonly DbSetContext<BlocksDbContext<TEntity>> Tables;
+        protected DbSetContext<BlocksDbContext> Tables {
+            get {
+                if(tables == null)
+                    tables = new DbSetContext<BlocksDbContext>(this.Context);
+                return tables;
+            }
+        }
+
+        DbSetContext<BlocksDbContext> tables;
+
         public IUserContext UserContext { set; get; }
         public IClock Clock { set; get; }
 
@@ -42,11 +51,7 @@ namespace Blocks.Framework.DBORM.Repository
         /// <param name="dbContextProvider"></param>
         public DBSqlRepositoryBase(DBContext.IDbContextProvider dbContextProvider) : base(dbContextProvider)
         {
-            Tables = new DbSetContext<BlocksDbContext<TEntity>>(this.Context);
 
-            //Context.Configuration.AutoDetectChangesEnabled = false;
-            // Context.Configuration.LazyLoadingEnabled = false;
-            //   Context.Configuration.ProxyCreationEnabled = false;
         }
 
         public IDbLinqQueryable<TEntity> GetContextTable()

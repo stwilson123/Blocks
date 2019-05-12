@@ -24,7 +24,7 @@ namespace Blocks.Framework.DBORM
         private readonly IDbContextResolver _dbContextResolver;
         private readonly IDbContextTypeMatcher _dbContextTypeMatcher;
         private readonly IEfTransactionStrategy _transactionStrategy;
-
+        private readonly HttpContextModel _httpContextModel;
         /// <summary>
         /// Creates a new <see cref="EfUnitOfWork"/>.
         /// </summary>
@@ -35,7 +35,8 @@ namespace Blocks.Framework.DBORM
            // IEfUnitOfWorkFilterExecuter filterExecuter,
             IUnitOfWorkDefaultOptions defaultOptions,
             IDbContextTypeMatcher dbContextTypeMatcher,
-            IEfTransactionStrategy transactionStrategy)
+            IEfTransactionStrategy transactionStrategy
+            )
             : base(
                   connectionStringResolver,
                   defaultOptions)

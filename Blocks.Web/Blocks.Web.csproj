@@ -79,10 +79,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\Abp.Web.dll</HintPath>
     </Reference>
-    <Reference Include="Abp.Web.Api, Version=3.2.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\Abp.Web.Api.dll</HintPath>
-    </Reference>
     <Reference Include="Abp.Web.Common, Version=3.2.4.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\Abp.Web.Common.dll</HintPath>
@@ -122,14 +118,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\Blocks.Framework.dll</HintPath>
     </Reference>
-    <Reference Include="Blocks.Framework.DBORM, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\Blocks.Framework.DBORM.dll</HintPath>
-    </Reference>
-    <Reference Include="Blocks.Framework.Web, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\Blocks.Framework.Web.dll</HintPath>
-    </Reference>
     <Reference Include="Castle.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <HintPath>..\packages\Castle.Core.4.2.1\lib\net45\Castle.Core.dll</HintPath>
     </Reference>
@@ -142,18 +130,6 @@
     <Reference Include="Castle.Winsdor.Aspnet.Web, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\Castle.Winsdor.Aspnet.Web.dll</HintPath>
-    </Reference>
-    <Reference Include="Devart.Data, Version=5.0.2070.0, Culture=neutral, PublicKeyToken=09af7300eec23701, processorArchitecture=MSIL">
-      <HintPath>..\packages\Devart.Data.5.0.2070\lib\netstandard2.0\Devart.Data.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.DynamicFilters, Version=3.0.1.0, Culture=neutral, PublicKeyToken=59b66d028979105b, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.DynamicFilters.3.0.1\lib\net40\EntityFramework.DynamicFilters.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Hangfire.Core, Version=1.6.17.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Hangfire.Core.1.6.17\lib\net45\Hangfire.Core.dll</HintPath>
@@ -405,25 +381,12 @@
       <HintPath>..\packages\Oracle.ManagedDataAccess.12.2.1100\lib\net40\Oracle.ManagedDataAccess.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Oracle.ManagedDataAccess.EntityFramework, Version=6.122.1.0, Culture=neutral, PublicKeyToken=89b483f429c47342">
-      <HintPath>..\packages\Oracle.ManagedDataAccess.EntityFramework.12.2.1100\lib\net45\Oracle.ManagedDataAccess.EntityFramework.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Remotion.Linq, Version=2.2.0.0, Culture=neutral, PublicKeyToken=fee00910d6e5f53b, processorArchitecture=MSIL">
       <HintPath>..\packages\Remotion.Linq.2.2.0\lib\net45\Remotion.Linq.dll</HintPath>
-    </Reference>
-    <Reference Include="Simple.Data, Version=0.19.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Simple.Data.Core.0.19.0.0\lib\net40\Simple.Data.dll</HintPath>
-    </Reference>
-    <Reference Include="Simple.Data.Ado, Version=0.19.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Simple.Data.Ado.0.19.0.0\lib\net40\Simple.Data.Ado.dll</HintPath>
-    </Reference>
-    <Reference Include="Simple.Data.Oracle.Devart, Version=0.18.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Simple.Data.Oracle.Devart.0.19.0.0\lib\net40\Simple.Data.Oracle.Devart.dll</HintPath>
     </Reference>
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51">
       <HintPath>..\packages\System.Buffers.4.5.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
@@ -2977,9 +2940,6 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Results\ChallengeResult.cs" />
-    <Compile Include="Controllers\RolesController.cs" />
-    <Compile Include="Controllers\TenantsController.cs" />
-    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -3123,13 +3083,13 @@
     <Content Include="Scripts\jquery-3.2.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Adp\Abp.Zero.EntityFramework\Abp.Zero.EntityFramework.csproj">
-      <Project>{35263b8a-2f09-4ac6-8f5e-c02f15d5361e}</Project>
-      <Name>Abp.Zero.EntityFramework</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Blocks.Core\Block.Core.csproj">
       <Project>{17298ea0-af73-4f30-b6f1-2066100d7d74}</Project>
       <Name>Block.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Blocks.Framework.Web.old\Blocks.Framework.Web.csproj">
+      <Project>{4a40a2ee-57bc-48a4-abd5-36c7d3cbdd34}</Project>
+      <Name>Blocks.Framework.Web</Name>
     </ProjectReference>
     <ProjectReference Include="..\Blocks.WebApi\Blocks.WebApi.csproj">
       <Project>{5eb52d3d-09fd-463a-b02a-8d9856bd3724}</Project>
@@ -3142,6 +3102,10 @@
     <ProjectReference Include="..\Standard\Blocks.Core\Blocks.Core.csproj">
       <Project>{0adfb2db-e9f6-4345-a659-60cf03571453}</Project>
       <Name>Blocks.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Standard\Blocks.Framework.DBORM\Blocks.Framework.DBORM.csproj">
+      <Project>{2c7d4659-284f-466e-a2b9-0a9df260aa8e}</Project>
+      <Name>Blocks.Framework.DBORM</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Web;
@@ -13,7 +14,6 @@ using Abp.Zero.Configuration;
 using Abp.Modules;
 using Abp.Web.Mvc;
 using Abp.Web.SignalR;
-using Blocks.Api;
 using Blocks.Framework.DBORM;
 using Blocks.Framework.FileSystems;
 using Blocks.Framework.Localization.Provider;
@@ -29,7 +29,7 @@ namespace Blocks.Web
     [DependsOn(
         typeof(BlocksDataModule),
         typeof(BlocksApplicationModule),
-        typeof(BlocksWebApiModule),
+        //typeof(BlocksWebApiModule),
         typeof(AbpWebSignalRModule),
         //typeof(AbpHangfireModule), - ENABLE TO USE HANGFIRE INSTEAD OF DEFAULT JOB MANAGER
         typeof(AbpWebMvcModule),
@@ -78,7 +78,10 @@ namespace Blocks.Web
                 new DictionaryBasedLocalizationSource("Blocks.Web", new DbLocalizationDictionaryProvider(IocManager))
             );
            // RouteHandle();
+            System.Diagnostics.Stopwatch sw = new Stopwatch();
+            sw.Start();
             AreaRegistration.RegisterAllAreas();
+            sw.Stop();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }

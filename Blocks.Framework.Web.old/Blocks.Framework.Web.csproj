@@ -330,6 +330,7 @@
       <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.1\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
@@ -364,7 +365,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\Controllers\BlocksApiControllerActivator.cs" />
     <Compile Include="Api\Security\AntiForgery\AbpAntiForgeryApiFilter.cs" />
+    <Compile Include="Api\Uow\BlocksApiUowFilter.cs" />
+    <Compile Include="Api\Validation\ActionDescriptorExtensions.cs" />
     <Compile Include="Api\WebApiModule.cs" />
     <Compile Include="Api\Configuration\AbpWebApiConfiguration.cs" />
     <Compile Include="Api\Configuration\IAbpWebApiConfiguration.cs" />

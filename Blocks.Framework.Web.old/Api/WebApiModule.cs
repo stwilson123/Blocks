@@ -21,6 +21,7 @@ using Blocks.Framework.Web.Api.Controllers.Dynamic;
 using Blocks.Framework.Web.Api.Controllers.Dynamic.Builders;
 using Blocks.Framework.Web.Api.Controllers.Dynamic.Selectors;
 using Blocks.Framework.Web.Api.Filter;
+using Blocks.Framework.Web.Api.Uow;
 using Blocks.Framework.Web.Mvc.Controllers;
 using Blocks.Framework.Web.Mvc.Filters;
 using Blocks.Framework.Web.Route;
@@ -112,7 +113,7 @@ namespace Blocks.Framework.Web.Api
               httpConfiguration.Services.Replace(typeof(IHttpControllerSelector),  new BlocksHttpControllerSelector(httpConfiguration, IocManager.Resolve<DynamicApiControllerManager>(),
                   IocManager));
               httpConfiguration.Services.Replace(typeof(IHttpActionSelector), new AbpApiControllerActionSelector(IocManager.Resolve<IAbpWebApiConfiguration>()));
-//            httpConfiguration.Services.Replace(typeof(IHttpControllerActivator), new AbpApiControllerActivator(IocManager));
+              httpConfiguration.Services.Replace(typeof(IHttpControllerActivator), new BlocksApiControllerActivator(IocManager));
 //            httpConfiguration.Services.Replace(typeof(IApiExplorer), IocManager.Resolve<AbpApiExplorer>());
         }
 
@@ -126,7 +127,7 @@ namespace Blocks.Framework.Web.Api
 //            httpConfiguration.Filters.Add(IocManager.Resolve<AbpAntiForgeryApiFilter>());
 //            httpConfiguration.Filters.Add(IocManager.Resolve<AbpApiAuditFilter>());
 //            httpConfiguration.Filters.Add(IocManager.Resolve<AbpApiValidationFilter>());
-//            httpConfiguration.Filters.Add(IocManager.Resolve<AbpApiUowFilter>());
+              httpConfiguration.Filters.Add(IocManager.Resolve<BlocksApiUowFilter>());
 //            //TODO extensions
 //
 //            httpConfiguration.MessageHandlers.Add(IocManager.Resolve<ResultWrapperHandler>());

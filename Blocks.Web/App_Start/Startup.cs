@@ -1,9 +1,9 @@
 ﻿using Abp.Owin;
-using Blocks.Api.Controllers;
 using Blocks.Web;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
+using Microsoft.Owin.Security.OAuth;
 using Owin;
 
 [assembly: OwinStartup(typeof(Startup))]
@@ -16,7 +16,7 @@ namespace Blocks.Web
         {
             app.UseAbp();
            
-            app.UseOAuthBearerAuthentication(AccountController.OAuthBearerOptions);
+            app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions());
             
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
