@@ -12,7 +12,7 @@ using Blocks.MultiTenancy;
 
 namespace Blocks
 {
-    [DependsOn(typeof(AbpZeroCoreModule))]
+    //[DependsOn(typeof(AbpZeroCoreModule))]
     public class BlocksCoreModule : AbpModule
     {
         public override void PreInitialize()

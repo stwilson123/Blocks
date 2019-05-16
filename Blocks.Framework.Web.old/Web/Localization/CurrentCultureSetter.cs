@@ -18,12 +18,12 @@ namespace Blocks.Framework.Web.Web.Localization
 {
     public class CurrentCultureSetter : ICurrentCultureSetter, ITransientDependency
     {
-        private readonly IAbpWebLocalizationConfiguration _webLocalizationConfiguration;
+        private readonly IBlocksWebLocalizationConfiguration _webLocalizationConfiguration;
         private readonly ISettingManager _settingManager;
         private readonly IAbpSession _abpSession;
 
         public CurrentCultureSetter(
-            IAbpWebLocalizationConfiguration webLocalizationConfiguration,
+            IBlocksWebLocalizationConfiguration webLocalizationConfiguration,
             ISettingManager settingManager,
             IAbpSession abpSession)
         {

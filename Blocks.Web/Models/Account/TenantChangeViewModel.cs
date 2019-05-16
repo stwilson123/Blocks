@@ -1,4 +1,4 @@
-﻿using Abp.AutoMapper;
+﻿using Blocks.Framework.AutoMapper;
 using Blocks.Sessions.Dto;
 
 namespace Blocks.Web.Models.Account

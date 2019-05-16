@@ -19,7 +19,7 @@ namespace Blocks.Framework.Web.Web
         public override void PreInitialize()
         {
             IocManager.Register<IAbpAntiForgeryWebConfiguration, AbpAntiForgeryWebConfiguration>();
-            IocManager.Register<IAbpWebLocalizationConfiguration, AbpWebLocalizationConfiguration>();
+            IocManager.Register<IBlocksWebLocalizationConfiguration, BlocksWebLocalizationConfiguration>();
             //            IocManager.Register<IAbpWebModuleConfiguration, AbpWebModuleConfiguration>();
             //            
             //            Configuration.ReplaceService<IPrincipalAccessor, HttpContextPrincipalAccessor>(DependencyLifeStyle.Transient);

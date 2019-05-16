@@ -9,5 +9,7 @@ namespace Blocks.Framework.Logging
         public string  Message { get; set; }
 
         public LogSeverity LogSeverity { get; set; } = LogSeverity.Info;
+
+        public Exception ex { get; set; }
     }
 }

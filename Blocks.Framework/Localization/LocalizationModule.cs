@@ -2,11 +2,11 @@
 using System.Collections;
 using System.Linq;
 using System.Reflection;
-using Abp.AutoMapper;
 using Abp.Localization;
 using Abp.Localization.Dictionaries;
 using Abp.Localization.Dictionaries.Xml;
 using AutoMapper;
+using Blocks.Framework.AutoMapper;
 using Blocks.Framework.Collections;
 using Blocks.Framework.Environment.Configuration;
 using Blocks.Framework.Environment.Extensions;
@@ -44,12 +44,10 @@ namespace Blocks.Framework.Localization
 
            
 
-            Configuration.Modules.AbpAutoMapper().Configurators.Add((IMapperConfigurationExpression configuration) =>
+            Configuration.Modules.BlocksAutoMapper().Configurators.Add((IMapperConfigurationExpression configuration) =>
             {
-                var localizationContext = IocManager.Resolve<ILocalizationContext>();
-
-                configuration.CreateMap<ILocalizableString, string>().ConvertUsing(ls => ls?.Localize(localizationContext));
-                configuration.CreateMap<LocalizableString, string>().ConvertUsing(ls => ls?.Localize(localizationContext));
+                configuration.CreateMap<ILocalizableString, string>().ConvertUsing(ls => ls?.Localize(IocManager.Resolve<ILocalizationContext>()));
+                configuration.CreateMap<LocalizableString, string>().ConvertUsing(ls => ls?.Localize(IocManager.Resolve<ILocalizationContext>()));
             });
 
 
@@ -70,27 +68,6 @@ namespace Blocks.Framework.Localization
         public override void PostInitialize()
         {
             
-
-            //TODO Facecade validate avaliable features
-            #region MyRegion
-            //var availablFeatures = IocManager.Resolve<IExtensionManager>().AvailableFeatures().ToList();
-            //var allDependencies = availablFeatures.SelectMany(f => f.Dependencies);
-            //var notExistsDependcies = allDependencies.Where(d => !availablFeatures.Any(f => d == f.Name));
-            //if (notExistsDependcies.Any())
-            //{
-            //    throw new ExtensionNotFoundException($"These dependenies [{string.Join(",", notExistsDependcies)}] can't found it's feature");
-            //}
-            //var listAssemblies = IocManager.Resolve<AbpPlugInManager>()
-            //    .PlugInSources
-            //    .GetAllAssemblies()
-            //    .Where(t => allDependencies.Contains(t.GetName().Name)).Distinct();
-
-            //            foreach (var assembly in listAssemblies)
-            //            {
-            //                IocManager.RegisterAssemblyByConvention(assembly);
-            //            }
-            #endregion
-
         }
 
 

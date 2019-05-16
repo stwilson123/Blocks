@@ -17,20 +17,20 @@ namespace Blocks.Web.Controllers
     public class LayoutController : BlocksControllerBase
     {
         private readonly IUserNavigationManager _userNavigationManager;
-        private readonly ISessionAppService _sessionAppService;
+      //  private readonly ISessionAppService _sessionAppService;
         private readonly IMultiTenancyConfig _multiTenancyConfig;
         private readonly ILanguageManager _languageManager;
         private readonly INavigationManager _navigationManager;
 
         public LayoutController(
             IUserNavigationManager userNavigationManager,
-            ISessionAppService sessionAppService,
+         //   ISessionAppService sessionAppService,
             IMultiTenancyConfig multiTenancyConfig,
             ILanguageManager languageManager,
             INavigationManager navigationManager)
         {
             _userNavigationManager = userNavigationManager;
-            _sessionAppService = sessionAppService;
+           // _sessionAppService = sessionAppService;
             _multiTenancyConfig = multiTenancyConfig;
             _languageManager = languageManager;
             _navigationManager = navigationManager;
@@ -51,13 +51,13 @@ namespace Blocks.Web.Controllers
         [ChildActionOnly]
         public PartialViewResult SideBarUserArea()
         {
-            var model = new SideBarUserAreaViewModel
-            {
-                LoginInformations = AsyncHelper.RunSync(() => _sessionAppService.GetCurrentLoginInformations()),
-                IsMultiTenancyEnabled = _multiTenancyConfig.IsEnabled,
-            };
+            //var model = new SideBarUserAreaViewModel
+            //{
+            //    LoginInformations = AsyncHelper.RunSync(() => _sessionAppService.GetCurrentLoginInformations()),
+            //    IsMultiTenancyEnabled = _multiTenancyConfig.IsEnabled,
+            //};
 
-            return PartialView("_SideBarUserArea", model);
+            return PartialView("_SideBarUserArea", null);
         }
 
         [ChildActionOnly]

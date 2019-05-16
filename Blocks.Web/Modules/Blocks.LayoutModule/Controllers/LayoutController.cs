@@ -26,11 +26,11 @@ namespace Blocks.LayoutModule.Controllers
         private IUserContext _userContext;
         private ILanguagesManager _languageManager;
         public IDomainEventBus EventBus { get; set; }
-        private readonly IAbpWebLocalizationConfiguration _webLocalizationConfiguration;
+        private readonly IBlocksWebLocalizationConfiguration _webLocalizationConfiguration;
         public IClock Clock { get; set; }
         public IExtensionsWrapper extensionsWrapper { get; set; }
         public LayoutController(IUserNavigationManager userNavigationManager, IUserContext userContext, ILanguagesManager languageManager,
-            IAbpWebLocalizationConfiguration webLocalizationConfiguration)
+            IBlocksWebLocalizationConfiguration webLocalizationConfiguration)
         {
             _userNavigationManager = userNavigationManager;
             _userContext = userContext;

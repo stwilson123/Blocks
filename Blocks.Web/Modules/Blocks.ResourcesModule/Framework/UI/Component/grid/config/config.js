@@ -146,7 +146,7 @@ define(['jquery', '../../datepicker', 'blocks_utility', '../../dialog', '../../s
                     'default': {
                         sopt: ['eq', 'ne', 'cn']
                     },
-                    'number': {sopt: ['ge', 'le']}
+                    'number': { sopt: ['ge','gt', 'eq','le', 'lt']}
                 },
                 
                 'select': {

@@ -45,12 +45,13 @@ namespace Blocks.Framework.Web.Mvc.Controllers
         /// <returns></returns>
         protected override IController GetControllerInstance(RequestContext requestContext, Type controllerType)
         {
-            if (controllerType == null)
+            if (controllerType == null || !_iocManager.IsRegistered(controllerType))
             {
                 return base.GetControllerInstance(requestContext, controllerType);
             }
 
             return _iocManager.Resolve<IController>(controllerType);
+
         }
 
 

@@ -1,6 +1,7 @@
-﻿using System;
+﻿using Abp.Web.Models;
+using Blocks.Framework.Web.Web.Result;
+using System;
 using System.Runtime.Serialization;
-using Abp.Web.Models;
 
 namespace Blocks.Framework.Web.Result
 {
@@ -16,7 +17,12 @@ namespace Blocks.Framework.Web.Result
         public string msg { get; set; }
         [DataMember]
         public string code { get; set; }
-//        [DataMember]
-//        public string token { get; set; }
+
+
+        public bool success { get; set; }
+
+        public Web.Result.ErrorInfo error { get; set; }
+        //        [DataMember]
+        //        public string token { get; set; }
     }
 }

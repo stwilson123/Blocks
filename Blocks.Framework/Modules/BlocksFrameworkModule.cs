@@ -24,6 +24,7 @@ using Blocks.Framework.Domain;
 
 namespace Blocks.Framework.Modules
 {
+    [DependsOn(typeof(BlocksAutoMapperModule))]
     [DependsOn(typeof(CacheModule))]
 //    [DependsOn(typeof(EventModule))]
     [DependsOn(typeof(EnvironmentModule))]
@@ -55,8 +56,8 @@ namespace Blocks.Framework.Modules
         public override void Initialize()
         {
             IocManager.RegisterAssemblyByConvention(Assembly.GetExecutingAssembly());
-            
-            Configuration.Modules.AbpAutoMapper().Configurators.Add(FrameworkProfile.DefaultAutoMapperConfig());
+            Configuration.Modules.BlocksAutoMapper().Configurators.Add(FrameworkProfile.DefaultAutoMapperConfig());
+           // Configuration.Modules.AbpAutoMapper().Configurators.Add(FrameworkProfile.DefaultAutoMapperConfig());
         }
     }
 }

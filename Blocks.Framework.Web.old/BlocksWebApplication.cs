@@ -10,7 +10,6 @@ using Abp.Modules;
 using Abp.PlugIns;
 using Abp.Threading;
 using Abp.Web;
-using Abp.Web.Localization;
 using Blocks.Framework.FileSystems;
 using Blocks.Framework.FileSystems.VirtualPath;
 using Blocks.Framework.Logging;
@@ -104,7 +103,7 @@ namespace Blocks.Framework.Web
 
         protected virtual void Application_PostAuthenticateRequest(object sender, EventArgs e)
         {
-            this.SetCurrentCulture();
+             this.SetCurrentCulture();
         }
 
         protected virtual void Application_EndRequest(object sender, EventArgs e)
@@ -113,7 +112,7 @@ namespace Blocks.Framework.Web
             requestWatch.Stop();
             LogHelper.Log(new LogModel()
             {
-                Message = "Framework request time:" + requestWatch.ElapsedMilliseconds + "ms",
+                Message = $"Framework request url:{HttpContext.Current.Request.Url.AbsolutePath}  time:" + requestWatch.ElapsedMilliseconds + "ms",
                 LogSeverity = LogSeverity.Info
             });
         }

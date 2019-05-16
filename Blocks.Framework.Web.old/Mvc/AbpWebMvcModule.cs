@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Reflection;
 using System.Web.Hosting;
+using System.Web.Http;
 using System.Web.Mvc;
 using Abp.Configuration.Startup;
 using Abp.Modules;
@@ -63,10 +64,11 @@ namespace Blocks.Framework.Web.Mvc
             System.Web.Mvc.ViewEngines.Engines.Clear();
             System.Web.Mvc.ViewEngines.Engines.Add(new ThemeAwareViewEngineShim(IocManager));
 
+             
 
-          //  ControllerBuilder.Current.SetControllerFactory(new BlocksWebMvcControllerFactory(IocManager));
-          //  HostingEnvironment.RegisterVirtualPathProvider(IocManager.Resolve<EmbeddedResourceVirtualPathProvider>());
-          //  HostingEnvironment.RegisterVirtualPathProvider(IocManager.Resolve<EmbeddedResourceVirtualPathProvider>());
+            //  ControllerBuilder.Current.SetControllerFactory(new BlocksWebMvcControllerFactory(IocManager));
+            //  HostingEnvironment.RegisterVirtualPathProvider(IocManager.Resolve<EmbeddedResourceVirtualPathProvider>());
+            //  HostingEnvironment.RegisterVirtualPathProvider(IocManager.Resolve<EmbeddedResourceVirtualPathProvider>());
         }
 
         /// <inheritdoc/>
@@ -81,12 +83,13 @@ namespace Blocks.Framework.Web.Mvc
             GlobalFilters.Filters.Add(IocManager.Resolve<BlocksWebMvcAuthorizeFilter>());
             GlobalFilters.Filters.Add(IocManager.Resolve<BlocksWebMvcActionFilter>());
             GlobalFilters.Filters.Add(IocManager.Resolve<BlocksWebMvcResultFilter>());
-            
-//            var abpMvcDateTimeBinder = new AbpMvcDateTimeBinder();
-//            ModelBinders.Binders.Add(typeof(DateTime), abpMvcDateTimeBinder);
-//            ModelBinders.Binders.Add(typeof(DateTime?), abpMvcDateTimeBinder);
-            
-          
+            GlobalFilters.Filters.Add(IocManager.Resolve<BlocksWebMvcExceptionFilter>());
+
+            //            var abpMvcDateTimeBinder = new AbpMvcDateTimeBinder();
+            //            ModelBinders.Binders.Add(typeof(DateTime), abpMvcDateTimeBinder);
+            //            ModelBinders.Binders.Add(typeof(DateTime?), abpMvcDateTimeBinder);
+
+
         }
     }
 }

@@ -9,6 +9,7 @@ using Blocks.Framework.Environment.Exception;
 using Blocks.Framework.Environment.Extensions.Models;
 using Castle.MicroKernel.Registration;
 using Castle.Core.Logging;
+using Blocks.Framework.Ioc;
 
 namespace Blocks.Framework.Web.Mvc.Controllers
 {
@@ -44,7 +45,12 @@ namespace Blocks.Framework.Web.Mvc.Controllers
                 Classes.FromAssembly(context.Assembly)
                     .BasedOn<BlocksWebMvcController>()
                     .If(type => !type.GetTypeInfo().IsGenericTypeDefinition)
-                    .Configure(t => t.Named(GetControllerSerivceName(extensionDescriptor.Name ,t.Implementation.Name)))
+                    .Configure(t => {
+
+                        t.Named(GetControllerSerivceName(extensionDescriptor.Name, t.Implementation.Name));
+                        t.Activator<DefaultBlocksComponentActivator>();
+                        })
+                    
                     .LifestyleTransient()
                 );
         }

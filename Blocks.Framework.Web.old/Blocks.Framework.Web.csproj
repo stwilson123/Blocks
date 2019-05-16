@@ -482,13 +482,14 @@
     <Compile Include="Security\IdentityUserStore.cs" />
     <Compile Include="Security\IdentityLogInManager.cs" />
     <Compile Include="Web\AbpWebModule.cs" />
-    <Compile Include="Web\Configuration\AbpWebLocalizationConfiguration.cs" />
-    <Compile Include="Web\Configuration\IAbpWebLocalizationConfiguration.cs" />
+    <Compile Include="Web\Configuration\BlocksWebLocalizationConfiguration.cs" />
+    <Compile Include="Web\Configuration\IBlocksWebLocalizationConfiguration.cs" />
     <Compile Include="Web\Helper\ApiVerbHelper.cs" />
     <Compile Include="Web\HttpMethod\HttpMethodAttribute.cs" />
     <Compile Include="Web\HttpMethod\HttpVerb.cs" />
     <Compile Include="Web\Localization\CurrentCultureSetter.cs" />
     <Compile Include="Web\Localization\ICurrentCultureSetter.cs" />
+    <Compile Include="Web\Result\ErrorInfo.cs" />
     <Compile Include="Web\Security\AntiForgery\AbpAntiForgeryManagerWebExtensions.cs" />
     <Compile Include="Web\Security\AntiForgery\AbpAntiForgeryWebConfiguration.cs" />
     <Compile Include="Web\Security\AntiForgery\DisableAbpAntiForgeryTokenValidationAttribute.cs" />

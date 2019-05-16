@@ -27,8 +27,8 @@ using Microsoft.AspNetCore.Hosting;
 namespace Blocks.Web
 {
     [DependsOn(
-        typeof(BlocksDataModule),
-        typeof(BlocksApplicationModule),
+    //    typeof(BlocksDataModule),
+       // typeof(BlocksApplicationModule),
         //typeof(BlocksWebApiModule),
         typeof(AbpWebSignalRModule),
         //typeof(AbpHangfireModule), - ENABLE TO USE HANGFIRE INSTEAD OF DEFAULT JOB MANAGER

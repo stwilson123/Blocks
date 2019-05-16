@@ -3,8 +3,34 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
   </PropertyGroup>
+  <ItemGroup>
+    <None Remove="Localization\Source\Blocks-es.xml" />
+    <None Remove="Localization\Source\Blocks-fr.xml" />
+    <None Remove="Localization\Source\Blocks-it.xml" />
+    <None Remove="Localization\Source\Blocks-ja.xml" />
+    <None Remove="Localization\Source\Blocks-lt.xml" />
+    <None Remove="Localization\Source\Blocks-nl-NL.xml" />
+    <None Remove="Localization\Source\Blocks-pt-BR.xml" />
+    <None Remove="Localization\Source\Blocks-tr.xml" />
+    <None Remove="Localization\Source\Blocks-vi.xml" />
+    <None Remove="Localization\Source\Blocks-zh-CN.xml" />
+    <None Remove="Localization\Source\Blocks.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Localization\Source\Blocks-es.xml" />
+    <EmbeddedResource Include="Localization\Source\Blocks-fr.xml" />
+    <EmbeddedResource Include="Localization\Source\Blocks-it.xml" />
+    <EmbeddedResource Include="Localization\Source\Blocks-ja.xml" />
+    <EmbeddedResource Include="Localization\Source\Blocks-lt.xml" />
+    <EmbeddedResource Include="Localization\Source\Blocks-nl-NL.xml" />
+    <EmbeddedResource Include="Localization\Source\Blocks-pt-BR.xml" />
+    <EmbeddedResource Include="Localization\Source\Blocks-tr.xml" />
+    <EmbeddedResource Include="Localization\Source\Blocks-vi.xml" />
+    <EmbeddedResource Include="Localization\Source\Blocks-zh-CN.xml" />
+    <EmbeddedResource Include="Localization\Source\Blocks.xml" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Blocks.Framework.Web.old\Blocks.Framework.Web.csproj" />
     <ProjectReference Include="..\..\Blocks.Framework\Blocks.Framework.csproj" />

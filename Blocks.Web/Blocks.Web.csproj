@@ -51,10 +51,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\Abp.dll</HintPath>
     </Reference>
-    <Reference Include="Abp.AutoMapper, Version=3.2.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\Abp.AutoMapper.dll</HintPath>
-    </Reference>
     <Reference Include="Abp.Castle.Log4Net, Version=3.2.4.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\Abp.Castle.Log4Net.dll</HintPath>
@@ -105,14 +101,6 @@
     </Reference>
     <Reference Include="AutoMapper, Version=6.2.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <HintPath>..\packages\AutoMapper.6.2.1\lib\net45\AutoMapper.dll</HintPath>
-    </Reference>
-    <Reference Include="Blocks.Application, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\Blocks.Application.dll</HintPath>
-    </Reference>
-    <Reference Include="Blocks.EntityFramework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\Blocks.EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="Blocks.Framework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -3083,6 +3071,10 @@
     <Content Include="Scripts\jquery-3.2.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Blocks.Application\Blocks.Application.csproj">
+      <Project>{edf5d964-4c0f-4f19-b674-58a38a5e5401}</Project>
+      <Name>Blocks.Application</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Blocks.Core\Block.Core.csproj">
       <Project>{17298ea0-af73-4f30-b6f1-2066100d7d74}</Project>
       <Name>Block.Core</Name>
@@ -3090,10 +3082,6 @@
     <ProjectReference Include="..\Blocks.Framework.Web.old\Blocks.Framework.Web.csproj">
       <Project>{4a40a2ee-57bc-48a4-abd5-36c7d3cbdd34}</Project>
       <Name>Blocks.Framework.Web</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Blocks.WebApi\Blocks.WebApi.csproj">
-      <Project>{5eb52d3d-09fd-463a-b02a-8d9856bd3724}</Project>
-      <Name>Blocks.WebApi</Name>
     </ProjectReference>
     <ProjectReference Include="..\Standard\Blocks.Core\Blocks.Core.csproj">
       <Project>{0adfb2db-e9f6-4345-a659-60cf03571453}</Project>

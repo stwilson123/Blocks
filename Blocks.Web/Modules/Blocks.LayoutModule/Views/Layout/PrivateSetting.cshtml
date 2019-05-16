@@ -1,0 +1,15 @@
+﻿@*@model Blocks.LayoutModule.ViewModels.LanguageSelectionViewModel*@
+<li class="dropdown">
+    <a href="javascript:void(0);" class="dropdown-toggle" style="line-height: 24px;" data-toggle="dropdown" role="button">
+        <i class=""></i>
+        <span>@Model.UserAccount</span>
+        <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+
+        <li><a href="@Url.Action("Logout", "Account")">@L("LogOut")</a></li>
+        @Html.Action("LanguageSelection", "Layout", new { area = "LayoutModule" })
+
+
+    </ul>
+</li>

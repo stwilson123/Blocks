@@ -11,5 +11,11 @@ namespace Blocks.Framework.Web.Mvc.Helpers
             return typeof(JsonResult).IsAssignableFrom(method.ReturnType) ||
                    typeof(Task<JsonResult>).IsAssignableFrom(method.ReturnType);
         }
+
+        public static bool IsJsonResult(ActionResult action)
+        {
+            return typeof(JsonResult).IsAssignableFrom(action.GetType()) ||
+                   typeof(Task<JsonResult>).IsAssignableFrom(action.GetType());
+        }
     }
 }

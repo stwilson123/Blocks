@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Abp.AutoMapper;
+using Blocks.Framework.AutoMapper;
 using Blocks.MultiTenancy;
 
 namespace Blocks.Web.Models.Account
