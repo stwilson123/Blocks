@@ -36,7 +36,11 @@ namespace EntityFramework.Test.FunctionTest
         public void syncQueryMethod()
         { 
             var rep =  Resolve<ITestRepository>();
+            
+            Stopwatch sw = Stopwatch.StartNew();
             var firstData = rep.GetAllList().FirstOrDefault();
+            sw.Stop();
+            var a = sw.ElapsedMilliseconds;
             if(firstData != null )
             {
                 Assert.True(firstData.Id == rep.Get(firstData.Id).Id);

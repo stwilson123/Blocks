@@ -52,15 +52,15 @@ namespace Blocks.Framework.DBORM.DBContext
         /// Constructor.
         /// Uses <see cref="IAbpStartupConfiguration.DefaultNameOrConnectionString"/> as connection string.
         /// </summary>
-        public BlocksDbContext(IEnumerable<IEntityConfiguration> entityConfigurations, ISettingManager settingManager) : base(entityConfigurations, settingManager)
+        public BlocksDbContext(IEnumerable<IEntityConfiguration> entityConfigurations, ISettingManager settingManager,ILog log) : base(entityConfigurations, settingManager,log)
         {
         }
 
         /// <summary>
         /// Constructor.
         /// </summary>
-        public BlocksDbContext(string nameOrConnectionString,IEnumerable<IEntityConfiguration> entityConfigurations, ISettingManager settingManager)
-            : base(nameOrConnectionString,entityConfigurations, settingManager)
+        public BlocksDbContext(string nameOrConnectionString,IEnumerable<IEntityConfiguration> entityConfigurations, ISettingManager settingManager,ILog log)
+            : base(nameOrConnectionString,entityConfigurations,settingManager,log)
         {
            
         }
@@ -99,7 +99,7 @@ namespace Blocks.Framework.DBORM.DBContext
         /// <summary>
         /// Reference to the logger.
         /// </summary>
-        public ILogger Logger { get; set; }
+        public ILog Logger { get; set; }
 
         /// <summary>
         /// Reference to the event bus.
@@ -142,11 +142,12 @@ namespace Blocks.Framework.DBORM.DBContext
         /// Constructor.
         /// Uses <see cref="IAbpStartupConfiguration.DefaultNameOrConnectionString"/> as connection string.
         /// </summary>
-        protected BaseBlocksDbContext(IEnumerable<IEntityConfiguration> entityConfigurations, ISettingManager settingManager)
+        protected BaseBlocksDbContext(IEnumerable<IEntityConfiguration> entityConfigurations, ISettingManager settingManager,ILog log)
         {
             _entityConfigurations = entityConfigurations;
             _settingManager = settingManager;
             InitializeDbContext();
+            this.Logger = log;
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -168,13 +169,14 @@ namespace Blocks.Framework.DBORM.DBContext
         /// <summary>
         /// Constructor.
         /// </summary>
-        protected BaseBlocksDbContext(string nameOrConnectionString, IEnumerable<IEntityConfiguration> entityConfigurations, ISettingManager settingManager)
+        protected BaseBlocksDbContext(string nameOrConnectionString, IEnumerable<IEntityConfiguration> entityConfigurations, ISettingManager settingManager,ILog log)
           
         {
             _entityConfigurations = entityConfigurations;
             _settingManager = settingManager;
             this.nameOrConnectionString = nameOrConnectionString;
             InitializeDbContext();
+            this.Logger = log;
         }
  
  
@@ -230,7 +232,7 @@ namespace Blocks.Framework.DBORM.DBContext
 
         private void SetNullsForInjectedProperties()
         {
-            Logger = NullLogger.Instance;
+            
             AbpSession = NullAbpSession.Instance;
             EntityChangeEventHelper = NullEntityChangeEventHelper.Instance;
             GuidGenerator = SequentialGuidGenerator.Instance;
@@ -249,7 +251,7 @@ namespace Blocks.Framework.DBORM.DBContext
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            Logger.DebugFormat("Begin OnModelCreating");
+            Logger.Logger( new LogModel(){ LogSeverity = LogSeverity.Debug, Message = "Begin OnModelCreating"});
             sw.Restart();
             modelBuilder.HasDefaultSchema(_settingManager.GetSettingValueForApplication(Framework.DBORM.Configurations.ConfigKey.Schema));
             modelBuilder.RemovePluralizingTableNameConvention();
@@ -277,12 +279,13 @@ namespace Blocks.Framework.DBORM.DBContext
           
                 Stopwatch swAss = Stopwatch.StartNew();
                 modelBuilder.ApplyConfigurationsFromAssembly(assembly);
-                Logger.DebugFormat("ApplyConfigurationsFromAssembly cost time {0}ms",swAss.ElapsedMilliseconds);
+                Logger.Logger( new LogModel(){ LogSeverity = LogSeverity.Debug, Message = $"ApplyConfigurationsFromAssembly cost time {swAss.ElapsedMilliseconds}ms"});
+
                 //modelBuilder.Configurations.AddFromAssembly(assembly);
             }
             sw.Stop();
-            
-            Logger.DebugFormat("End OnModelCreating cost time {0}ms",sw.ElapsedMilliseconds);
+            Logger.Logger( new LogModel(){ LogSeverity = LogSeverity.Debug, Message = $"End OnModelCreating cost time {sw.ElapsedMilliseconds}ms"});
+
             //TODO global filter extensions
             //modelBuilder.Filter(AbpDataFilters.SoftDelete, (ISoftDelete d) => d.IsDeleted, false);
             //modelBuilder.Filter(AbpDataFilters.MustHaveTenant,
@@ -569,11 +572,12 @@ namespace Blocks.Framework.DBORM.DBContext
 
         protected virtual void LogDbEntityValidationException(DbUpdateException exception)
         {
-            Logger.Error("There are some validation errors while saving changes in EntityFramework:");
-            Logger.Error(exception.Message);
+            Logger.Logger( new LogModel(){ LogSeverity = LogSeverity.Error, Message = "There are some validation errors while saving changes in EntityFramework:"});
+
             foreach (var ve in exception.Entries.SelectMany(eve => eve.Properties))
             {
-                Logger.Error(" - " + ve.OriginalValue + ": " + ve.CurrentValue);
+                Logger.Logger( new LogModel(){ LogSeverity = LogSeverity.Error, Message = " - " + ve.OriginalValue + ": " + ve.CurrentValue});
+
             }
         }
 
