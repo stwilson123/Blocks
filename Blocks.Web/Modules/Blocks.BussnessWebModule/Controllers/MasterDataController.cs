@@ -19,7 +19,7 @@ namespace Blocks.BussnessWebModule.Controllers
         [BlocksAuthorize("index")]
         public ActionResult Index()
         {
-            throw new BlocksBussnessException("101", L("123123"), null);
+            
             return View();
         }
         [BlocksActionName("PDA")]

@@ -663,33 +663,6 @@ namespace Blocks.BussnessEntityModule
 	    	    public long? ACTIVITY { set; get; }
 		}
     
-    public partial class BDTA_ORG_FACTORY   : Entity   
-    {
- 
-    	    [Column("ID")]
-		public override string Id { set ; get ; }
-	    	    public string FACTORY_NO { set; get; }
-	    	    public string FACTORY_NAME { set; get; }
-	    	    public string FACTORY_DESC { set; get; }
-	    	    public string EXTENDFIELD { set; get; }
-	    	    public long? ISUSED { set; get; }
-	    	    public long? ACTIVITY { set; get; }
-		}
-    
-    public partial class BDTA_ORG_ORGRELATION   : Entity   
-    {
- 
-    	    public string ORGRELATIONID { set; get; }
-	    	    public string ORGRELATIONPID { set; get; }
-	    	    public long ORGRELATIONTYPE { set; get; }
-	    	    public string ORGRELATIONTABLE { set; get; }
-	    	    public string EXTENDFIELD { set; get; }
-	    	    public string ORGRELATIONNAME { set; get; }
-	    	    public long? ACTIVITY { set; get; }
-	    	    [Column("ID")]
-		public override string Id { set ; get ; }
-		}
-    
     public partial class BDTA_ORG_STOREROOM   : Entity   
     {
  
@@ -795,23 +768,6 @@ namespace Blocks.BussnessEntityModule
 	    	    public long? ACTIVITY { set; get; }
 	    	    public string MERGEBILL_TYPE { set; get; }
 	    	    public BDTA_MACHING_CENTER BDTA_MACHING_CENTER { set; get; }
-		}
-    
-    public partial class BDTA_SETUP   : Entity   
-    {
- 
-    	    [Column("ID")]
-		public override string Id { set ; get ; }
-	    	    public string SETUP_NO { set; get; }
-	    	    public string SETUP_CONTENTS { set; get; }
-	    	    public string SETUP_KEY { set; get; }
-	    	    public string SETUP_TYPE { set; get; }
-	    	    public string SETUP_PARAMETER { set; get; }
-	    	    public string SETUP_MAX { set; get; }
-	    	    public string SETUP_MIN { set; get; }
-	    	    public string EXTENDFIELD { set; get; }
-	    	    public long? ISUSED { set; get; }
-	    	    public long? ACTIVITY { set; get; }
 		}
     
     public partial class BDTA_STATION   : Entity   
@@ -1003,30 +959,6 @@ namespace Blocks.BussnessEntityModule
 	    	    public string EXTENDFIELD { set; get; }
 		}
     
-    public partial class SYS_PROGRAM   : Entity   
-    {
- 
-    	    [Column("ID")]
-		public override string Id { set ; get ; }
-	    	    public string PROGRAMCODE { set; get; }
-	    	    public string PROGRAMNAME { set; get; }
-	    	    public string PROGRAMPARENT { set; get; }
-	    	    public string PROGRAMCOMMENT { set; get; }
-	    	    public string PROGRAMDEFINITION { set; get; }
-	    	    public string PROGRAMICON { set; get; }
-	    	    public string PROGRAMPROPERTY { set; get; }
-	    	    public string PROGRAMSECURITY { set; get; }
-	    	    public DateTime? PROGRAMRELEASE { set; get; }
-	    	    public string PROGRAMVERSION { set; get; }
-	    	    public string PROGRAMDESCRIPTION { set; get; }
-	    	    public string PROGRAMTYPE { set; get; }
-	    	    public string PROGRAMEXTEND { set; get; }
-	    	    public string EXTENDFIELD { set; get; }
-	    	    public long? ACTIVITY { set; get; }
-	    	    public long? MENU_ORDER { set; get; }
-	    	    public SYS_MENUS SYS_MENUS { set; get; }
-		}
-    
     public partial class SYS_PROGRAM_OPERATION_WEB   : Entity   
     {
  
@@ -1078,8 +1010,7 @@ namespace Blocks.BussnessEntityModule
     public partial class SYS_ROLEINFO   : Entity   
     {
  
-    	    public string SYS_ROLEINFOID { set; get; }
-	    	    public string ROLECODE { set; get; }
+    	    public string ROLECODE { set; get; }
 	    	    public string CNAME { set; get; }
 	    	    public string MEMO { set; get; }
 	    	    public string EXTENDFIELD { set; get; }
@@ -1526,6 +1457,8 @@ namespace Blocks.BussnessEntityModule
 	    	    public long? ACTIVITY { set; get; }
 	    	    public string BDTA_PRODUCTELEMENT_TYPE_ID { set; get; }
 	    	    public string PRODUCTELEMENT_DEFAULT { set; get; }
+	    	    public long? AUTO_INCREMENT { set; get; }
+	    	    public string RESET_DATE { set; get; }
 	    	    public BDTA_PRODUCTELEMENT_TYPE BDTA_PRODUCTELEMENT_TYPE { set; get; }
 		}
     
@@ -1542,6 +1475,8 @@ namespace Blocks.BussnessEntityModule
 	    	    public long? PRODUCTFORMAT_DETAIL_END { set; get; }
 	    	    public long? PRODUCTFORMAT_DETAIL_LENTH { set; get; }
 	    	    public long? ACTIVITY { set; get; }
+	    	    public string PRODUCTFORMAT_START { set; get; }
+	    	    public string PRODUCTFORMAT_END { set; get; }
 	    	    public BDTA_PRODUCTELEMENT BDTA_PRODUCTELEMENT { set; get; }
 		}
     
@@ -1566,6 +1501,61 @@ namespace Blocks.BussnessEntityModule
 		public override string Id { set ; get ; }
 	    	    public string CODE { set; get; }
 	    	    public string NAME { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string ISVARIABLE { set; get; }
+		}
+    
+    public partial class BDTA_PRODUCT_ELEMENT_RULE_REL   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string PRODUCT_FUNC_ID { set; get; }
+	    	    public string PRODUCT_ELEMENT_RULE_ID { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+		}
+    
+    public partial class SYS_PROGRAM   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string PROGRAMCODE { set; get; }
+	    	    public string PROGRAMNAME { set; get; }
+	    	    public string PROGRAMPARENT { set; get; }
+	    	    public string PROGRAMCOMMENT { set; get; }
+	    	    public string PROGRAMDEFINITION { set; get; }
+	    	    public string PROGRAMICON { set; get; }
+	    	    public string PROGRAMPROPERTY { set; get; }
+	    	    public string PROGRAMSECURITY { set; get; }
+	    	    public DateTime? PROGRAMRELEASE { set; get; }
+	    	    public string PROGRAMVERSION { set; get; }
+	    	    public string PROGRAMDESCRIPTION { set; get; }
+	    	    public string PROGRAMTYPE { set; get; }
+	    	    public long? PROGRAMEXTEND { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public long? MENU_ORDER { set; get; }
+	    	    public SYS_MENUS SYS_MENUS { set; get; }
+		}
+    
+    public partial class BDTA_SETUP   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string SETUP_NO { set; get; }
+	    	    public string SETUP_CONTENTS { set; get; }
+	    	    public string SETUP_KEY { set; get; }
+	    	    public string SETUP_TYPE_ID { set; get; }
+	    	    public string SETUP_TYPE { set; get; }
+	    	    public string SETUP_PARAMETER { set; get; }
+	    	    public string SETUP_MAX { set; get; }
+	    	    public string SETUP_MIN { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ISUSED { set; get; }
 	    	    public long? ACTIVITY { set; get; }
 		}
     
@@ -1601,6 +1591,58 @@ namespace Blocks.BussnessEntityModule
 	    	    public string EXTENDFIELD { set; get; }
 	    	    public long? ISUSED { set; get; }
 	    	    public long? ACTIVITY { set; get; }
+		}
+    
+    public partial class BDTA_SETUP_TYPE   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string SETUP_TYPE_NO { set; get; }
+	    	    public string SETUP_TYPE_NAME { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string SETUP_TYPE_VALUE { set; get; }
+		}
+    
+    public partial class BDTA_PRODUCT_VARELEMENT_REL   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string PRODUCT_FUNC_ID { set; get; }
+	    	    public string PRODUCT_ELEMENT_TYPE_ID { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+		}
+    
+    public partial class BDTA_ORG_FACTORY   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string FACTORY_NO { set; get; }
+	    	    public string FACTORY_NAME { set; get; }
+	    	    public string FACTORY_DESC { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+		}
+    
+    public partial class BDTA_ORG_ORGRELATION   : Entity   
+    {
+ 
+    	    public string ORGRELATIONID { set; get; }
+	    	    public string ORGRELATIONPID { set; get; }
+	    	    public long ORGRELATIONTYPE { set; get; }
+	    	    public string ORGRELATIONTABLE { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public string ORGRELATIONNAME { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    [Column("ID")]
+		public override string Id { set ; get ; }
 		}
     
     public partial class BDTA_QA_CHECKMODE   : Entity   
@@ -1723,6 +1765,7 @@ namespace Blocks.BussnessEntityModule
 	    	    public string MATERIAL_ID { set; get; }
 	    	    public string OUT_STORAGE_NO { set; get; }
 	    	    public decimal? OUT_QTY { set; get; }
+	    	    public string OUT_STORAGE_DETAIL_ID { set; get; }
 		}
     
     public partial class BDTA_QA_SAMPLING_STANDARD   : Entity   
@@ -1884,6 +1927,8 @@ namespace Blocks.BussnessEntityModule
 	    	    public long? ACTIVITY { set; get; }
 	    	    public string DESC { set; get; }
 	    	    public string CODE { set; get; }
+	    	    public string PID { set; get; }
+	    	    public string TYPE { set; get; }
 		}
     
     public partial class WAREHOUSE_STOCK_BALANCE_DETAIL   : Entity   
@@ -2040,6 +2085,7 @@ namespace Blocks.BussnessEntityModule
 	    	    public string STOREROM_ID { set; get; }
 	    	    public string STOREROM_CODE { set; get; }
 	    	    public string LINE_NUMBER { set; get; }
+	    	    public string VOUCHERNO { set; get; }
 		}
     
     public partial class WAREHOUSE_STOCK_COUNT_SCAN   : Entity   
@@ -2142,6 +2188,10 @@ namespace Blocks.BussnessEntityModule
 	    	    public decimal? SUM_QTY { set; get; }
 	    	    public string PO { set; get; }
 	    	    public decimal? SAMPQTY { set; get; }
+	    	    public string INSPECT_TYPE { set; get; }
+	    	    public string INSPECT_EMPTY_TYPE { set; get; }
+	    	    public string CHECK_ITEM_MANAGE_ID { set; get; }
+	    	    public string INSPECTION_STANDARD { set; get; }
 	    	    public BDTA_MATERIAL BDTA_MATERIAL { set; get; }
 	    	    public BDTA_SUPPLIER BDTA_SUPPLIER { set; get; }
 		}
@@ -2175,12 +2225,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class BDTA_LANGUAGESConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_LANGUAGES> 
+    public partial class BDTA_LANGUAGESConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_LANGUAGES> 
     {
-		public BDTA_LANGUAGESConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_LANGUAGES> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																																				 
@@ -2190,15 +2240,15 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class BDTA_LANGUAGETEXTSConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_LANGUAGETEXTS> 
+    public partial class BDTA_LANGUAGETEXTSConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_LANGUAGETEXTS> 
     {
-		public BDTA_LANGUAGETEXTSConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_LANGUAGETEXTS> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
-			 																																																																								 HasOptional(t => t.BDTA_LANGUAGES).WithMany().HasForeignKey(t => t.LANGUAGE_ID);	
+			 																																																																								 builder.HasOne(t => t.BDTA_LANGUAGES).WithMany().HasForeignKey(t => t.LANGUAGE_ID);	
 										 
         }
 		 
@@ -2206,12 +2256,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class SYS_PROGRAMOPERATIONConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<SYS_PROGRAMOPERATION> 
+    public partial class SYS_PROGRAMOPERATIONConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<SYS_PROGRAMOPERATION> 
     {
-		public SYS_PROGRAMOPERATIONConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<SYS_PROGRAMOPERATION> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																						 
@@ -2221,12 +2271,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class PRINT_SERVICEConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<PRINT_SERVICE> 
+    public partial class PRINT_SERVICEConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<PRINT_SERVICE> 
     {
-		public PRINT_SERVICEConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<PRINT_SERVICE> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																																				 
@@ -2236,12 +2286,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class WAREHOUSE_POConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_PO> 
+    public partial class WAREHOUSE_POConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WAREHOUSE_PO> 
     {
-		public WAREHOUSE_POConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WAREHOUSE_PO> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																																											 
@@ -2251,16 +2301,16 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class WAREHOUSE_PO_DETAILConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_PO_DETAIL> 
+    public partial class WAREHOUSE_PO_DETAILConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WAREHOUSE_PO_DETAIL> 
     {
-		public WAREHOUSE_PO_DETAILConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WAREHOUSE_PO_DETAIL> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
-			 																																																																																																																																														 HasOptional(t => t.BDTA_MATERIAL).WithMany().HasForeignKey(t => t.MATERIAL_ID);	
-																 HasOptional(t => t.BDTA_UNIT).WithMany().HasForeignKey(t => t.UNIT_ID);	
+			 																																																																																																																																														 builder.HasOne(t => t.BDTA_MATERIAL).WithMany().HasForeignKey(t => t.MATERIAL_ID);	
+																 builder.HasOne(t => t.BDTA_UNIT).WithMany().HasForeignKey(t => t.UNIT_ID);	
 										 
         }
 		 
@@ -2268,12 +2318,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class BDTA_CALDETAILConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_CALDETAIL> 
+    public partial class BDTA_CALDETAILConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_CALDETAIL> 
     {
-		public BDTA_CALDETAILConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_CALDETAIL> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																																																																																					 
@@ -2283,12 +2333,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class BDTA_CALNUMBERConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_CALNUMBER> 
+    public partial class BDTA_CALNUMBERConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_CALNUMBER> 
     {
-		public BDTA_CALNUMBERConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_CALNUMBER> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																																																									 
@@ -2298,12 +2348,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class BDTA_CHECKTOOLConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_CHECKTOOL> 
+    public partial class BDTA_CHECKTOOLConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_CHECKTOOL> 
     {
-		public BDTA_CHECKTOOLConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_CHECKTOOL> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																																																																																																																																																																																																																			 
@@ -2313,12 +2363,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class BDTA_CODE_FORMATConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_CODE_FORMAT> 
+    public partial class BDTA_CODE_FORMATConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_CODE_FORMAT> 
     {
-		public BDTA_CODE_FORMATConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_CODE_FORMAT> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																																				 
@@ -2328,12 +2378,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class BDTA_CODE_FORMAT_DEFINEConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_CODE_FORMAT_DEFINE> 
+    public partial class BDTA_CODE_FORMAT_DEFINEConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_CODE_FORMAT_DEFINE> 
     {
-		public BDTA_CODE_FORMAT_DEFINEConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_CODE_FORMAT_DEFINE> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																																																									 
@@ -2343,12 +2393,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class BDTA_CODE_FORMAT_ELEMENTConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_CODE_FORMAT_ELEMENT> 
+    public partial class BDTA_CODE_FORMAT_ELEMENTConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_CODE_FORMAT_ELEMENT> 
     {
-		public BDTA_CODE_FORMAT_ELEMENTConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_CODE_FORMAT_ELEMENT> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																																																		 
@@ -2358,12 +2408,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class BDTA_COLLECT_STATIONConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_COLLECT_STATION> 
+    public partial class BDTA_COLLECT_STATIONConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_COLLECT_STATION> 
     {
-		public BDTA_COLLECT_STATIONConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_COLLECT_STATION> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																																																																																																										 
@@ -2373,12 +2423,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class BDTA_COLLECT_STATION_DETAILConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_COLLECT_STATION_DETAIL> 
+    public partial class BDTA_COLLECT_STATION_DETAILConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_COLLECT_STATION_DETAIL> 
     {
-		public BDTA_COLLECT_STATION_DETAILConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_COLLECT_STATION_DETAIL> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																																											 
@@ -2388,12 +2438,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class BDTA_COLLECT_STATION_SKILLConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_COLLECT_STATION_SKILL> 
+    public partial class BDTA_COLLECT_STATION_SKILLConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_COLLECT_STATION_SKILL> 
     {
-		public BDTA_COLLECT_STATION_SKILLConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_COLLECT_STATION_SKILL> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																													 
@@ -2403,12 +2453,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class BDTA_COMMON_EQUIPMENTConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_COMMON_EQUIPMENT> 
+    public partial class BDTA_COMMON_EQUIPMENTConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_COMMON_EQUIPMENT> 
     {
-		public BDTA_COMMON_EQUIPMENTConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_COMMON_EQUIPMENT> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																																																																																												 
@@ -2418,12 +2468,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class BDTA_DEPARTMENTConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_DEPARTMENT> 
+    public partial class BDTA_DEPARTMENTConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_DEPARTMENT> 
     {
-		public BDTA_DEPARTMENTConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_DEPARTMENT> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																																				 
@@ -2433,12 +2483,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class BDTA_DICTIONARYConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_DICTIONARY> 
+    public partial class BDTA_DICTIONARYConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_DICTIONARY> 
     {
-		public BDTA_DICTIONARYConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_DICTIONARY> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																																											 
@@ -2448,12 +2498,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class BDTA_DICTIONARY_TYPEConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_DICTIONARY_TYPE> 
+    public partial class BDTA_DICTIONARY_TYPEConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_DICTIONARY_TYPE> 
     {
-		public BDTA_DICTIONARY_TYPEConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_DICTIONARY_TYPE> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																																				 
@@ -2463,15 +2513,15 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class BDTA_EMPLOYEEConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_EMPLOYEE> 
+    public partial class BDTA_EMPLOYEEConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_EMPLOYEE> 
     {
-		public BDTA_EMPLOYEEConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_EMPLOYEE> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
-			 																																																																																						 HasOptional(t => t.BDTA_DEPARTMENT).WithMany().HasForeignKey(t => t.DEPARTMENT_ID);	
+			 																																																																																						 builder.HasOne(t => t.BDTA_DEPARTMENT).WithMany().HasForeignKey(t => t.DEPARTMENT_ID);	
 										 
         }
 		 
@@ -2479,12 +2529,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class BDTA_EMPLOYEE_SKILLConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_EMPLOYEE_SKILL> 
+    public partial class BDTA_EMPLOYEE_SKILLConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_EMPLOYEE_SKILL> 
     {
-		public BDTA_EMPLOYEE_SKILLConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_EMPLOYEE_SKILL> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																													 
@@ -2494,12 +2544,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class BDTA_FILEConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_FILE> 
+    public partial class BDTA_FILEConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_FILE> 
     {
-		public BDTA_FILEConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_FILE> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																																																																														 
@@ -2509,12 +2559,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class BDTA_FROCKConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_FROCK> 
+    public partial class BDTA_FROCKConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_FROCK> 
     {
-		public BDTA_FROCKConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_FROCK> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																																																																																																																																																																																														 
@@ -2524,12 +2574,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class BDTA_KEY_EQUIPMENTConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_KEY_EQUIPMENT> 
+    public partial class BDTA_KEY_EQUIPMENTConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_KEY_EQUIPMENT> 
     {
-		public BDTA_KEY_EQUIPMENTConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_KEY_EQUIPMENT> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																																																																														 
@@ -2539,12 +2589,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class BDTA_MACHING_CENTERConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_MACHING_CENTER> 
+    public partial class BDTA_MACHING_CENTERConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_MACHING_CENTER> 
     {
-		public BDTA_MACHING_CENTERConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_MACHING_CENTER> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																																																																																																																																													 
@@ -2554,12 +2604,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class BDTA_MAINTAIN_STATIONConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_MAINTAIN_STATION> 
+    public partial class BDTA_MAINTAIN_STATIONConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_MAINTAIN_STATION> 
     {
-		public BDTA_MAINTAIN_STATIONConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_MAINTAIN_STATION> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																																				 
@@ -2569,18 +2619,18 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class BDTA_MATERIALConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_MATERIAL> 
+    public partial class BDTA_MATERIALConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_MATERIAL> 
     {
-		public BDTA_MATERIALConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_MATERIAL> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
-			 																																																																																																																									 HasOptional(t => t.BDTA_MATERIAL_TYPE).WithMany().HasForeignKey(t => t.MATERIAL_TYPE_ID);	
-																 HasOptional(t => t.BDTA_QA_CHECKITEMMANAGE).WithMany().HasForeignKey(t => t.QA_CHECKMODEL_ID);	
-																 HasOptional(t => t.BDTA_UNIT).WithMany().HasForeignKey(t => t.MATERIAL_UNIT);	
-																 HasOptional(t => t.BDTA_PRODUCTFORMAT).WithMany().HasForeignKey(t => t.PRODUCTFORMAT_ID);	
+			 																																																																																																																									 builder.HasOne(t => t.BDTA_MATERIAL_TYPE).WithMany().HasForeignKey(t => t.MATERIAL_TYPE_ID);	
+																 builder.HasOne(t => t.BDTA_QA_CHECKITEMMANAGE).WithMany().HasForeignKey(t => t.QA_CHECKMODEL_ID);	
+																 builder.HasOne(t => t.BDTA_UNIT).WithMany().HasForeignKey(t => t.MATERIAL_UNIT);	
+																 builder.HasOne(t => t.BDTA_PRODUCTFORMAT).WithMany().HasForeignKey(t => t.PRODUCTFORMAT_ID);	
 										 
         }
 		 
@@ -2588,12 +2638,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class BDTA_MATERIAL_BOMConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_MATERIAL_BOM> 
+    public partial class BDTA_MATERIAL_BOMConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_MATERIAL_BOM> 
     {
-		public BDTA_MATERIAL_BOMConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_MATERIAL_BOM> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																																																																																					 
@@ -2603,12 +2653,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class BDTA_MATERIAL_CATEGORYConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_MATERIAL_CATEGORY> 
+    public partial class BDTA_MATERIAL_CATEGORYConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_MATERIAL_CATEGORY> 
     {
-		public BDTA_MATERIAL_CATEGORYConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_MATERIAL_CATEGORY> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																						 
@@ -2618,12 +2668,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class BDTA_MATERIAL_PACKAGEConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_MATERIAL_PACKAGE> 
+    public partial class BDTA_MATERIAL_PACKAGEConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_MATERIAL_PACKAGE> 
     {
-		public BDTA_MATERIAL_PACKAGEConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_MATERIAL_PACKAGE> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																													 
@@ -2633,12 +2683,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class BDTA_MATERIAL_TYPEConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_MATERIAL_TYPE> 
+    public partial class BDTA_MATERIAL_TYPEConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_MATERIAL_TYPE> 
     {
-		public BDTA_MATERIAL_TYPEConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_MATERIAL_TYPE> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																																				 
@@ -2648,12 +2698,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class BDTA_MATERIAL_WORKCENTERConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_MATERIAL_WORKCENTER> 
+    public partial class BDTA_MATERIAL_WORKCENTERConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_MATERIAL_WORKCENTER> 
     {
-		public BDTA_MATERIAL_WORKCENTERConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_MATERIAL_WORKCENTER> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																																																																 
@@ -2663,12 +2713,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class BDTA_MATERIAL_WORKINGConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_MATERIAL_WORKING> 
+    public partial class BDTA_MATERIAL_WORKINGConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_MATERIAL_WORKING> 
     {
-		public BDTA_MATERIAL_WORKINGConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_MATERIAL_WORKING> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																																											 
@@ -2678,12 +2728,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class BDTA_MATTYPEConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_MATTYPE> 
+    public partial class BDTA_MATTYPEConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_MATTYPE> 
     {
-		public BDTA_MATTYPEConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_MATTYPE> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																																																		 
@@ -2693,12 +2743,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class BDTA_MOLDConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_MOLD> 
+    public partial class BDTA_MOLDConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_MOLD> 
     {
-		public BDTA_MOLDConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_MOLD> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																																																																																																																															 
@@ -2708,12 +2758,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class BDTA_MOLD_ADDConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_MOLD_ADD> 
+    public partial class BDTA_MOLD_ADDConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_MOLD_ADD> 
     {
-		public BDTA_MOLD_ADDConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_MOLD_ADD> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																																																																														 
@@ -2723,42 +2773,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class BDTA_ORG_FACTORYConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_ORG_FACTORY> 
+    public partial class BDTA_ORG_STOREROOMConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_ORG_STOREROOM> 
     {
-		public BDTA_ORG_FACTORYConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_ORG_STOREROOM> builder)
         {
-			
-			            HasKey(x => x.Id);
-		 
-		 
-			 																																																				 
-        }
-		 
-	}
-    
- 
- 
-    public partial class BDTA_ORG_ORGRELATIONConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_ORG_ORGRELATION> 
-    {
-		public BDTA_ORG_ORGRELATIONConfiguration()
-        {
-			
-			            HasKey(x => x.Id);
-		 
-		 
-			 																																																											 
-        }
-		 
-	}
-    
- 
- 
-    public partial class BDTA_ORG_STOREROOMConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_ORG_STOREROOM> 
-    {
-		public BDTA_ORG_STOREROOMConfiguration()
-        {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																																																																																																																	 
@@ -2768,12 +2788,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class BDTA_ORG_STORESITEConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_ORG_STORESITE> 
+    public partial class BDTA_ORG_STORESITEConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_ORG_STORESITE> 
     {
-		public BDTA_ORG_STORESITEConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_ORG_STORESITE> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																																																																																																																																																																																							 
@@ -2783,12 +2803,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class BDTA_PROCESSPATHConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_PROCESSPATH> 
+    public partial class BDTA_PROCESSPATHConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_PROCESSPATH> 
     {
-		public BDTA_PROCESSPATHConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_PROCESSPATH> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																																																																 
@@ -2798,12 +2818,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class BDTA_QUEUEConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_QUEUE> 
+    public partial class BDTA_QUEUEConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_QUEUE> 
     {
-		public BDTA_QUEUEConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_QUEUE> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																																											 
@@ -2813,15 +2833,15 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class BDTA_ROUTINGConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_ROUTING> 
+    public partial class BDTA_ROUTINGConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_ROUTING> 
     {
-		public BDTA_ROUTINGConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_ROUTING> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
-			 																																																																																						 HasOptional(t => t.BDTA_MACHING_CENTER).WithMany().HasForeignKey(t => t.MACHING_CENTER_ID);	
+			 																																																																																						 builder.HasOne(t => t.BDTA_MACHING_CENTER).WithMany().HasForeignKey(t => t.MACHING_CENTER_ID);	
 										 
         }
 		 
@@ -2829,27 +2849,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class BDTA_SETUPConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_SETUP> 
+    public partial class BDTA_STATIONConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_STATION> 
     {
-		public BDTA_SETUPConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_STATION> builder)
         {
-			
-			            HasKey(x => x.Id);
-		 
-		 
-			 																																																																																 
-        }
-		 
-	}
-    
- 
- 
-    public partial class BDTA_STATIONConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_STATION> 
-    {
-		public BDTA_STATIONConfiguration()
-        {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																																																																							 
@@ -2859,12 +2864,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class BDTA_SUPPLIERConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_SUPPLIER> 
+    public partial class BDTA_SUPPLIERConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_SUPPLIER> 
     {
-		public BDTA_SUPPLIERConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_SUPPLIER> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																																																																																												 
@@ -2874,12 +2879,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class BDTA_WORKINGConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_WORKING> 
+    public partial class BDTA_WORKINGConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_WORKING> 
     {
-		public BDTA_WORKINGConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_WORKING> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																																																																																																																	 
@@ -2889,12 +2894,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class BDTA_WORKNUMBERConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_WORKNUMBER> 
+    public partial class BDTA_WORKNUMBERConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_WORKNUMBER> 
     {
-		public BDTA_WORKNUMBERConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_WORKNUMBER> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																																																		 
@@ -2904,12 +2909,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class BDTA_WORKPROCEDUREConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_WORKPROCEDURE> 
+    public partial class BDTA_WORKPROCEDUREConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_WORKPROCEDURE> 
     {
-		public BDTA_WORKPROCEDUREConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_WORKPROCEDURE> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																																																									 
@@ -2919,12 +2924,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class BDTA_WORKSECTIONConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_WORKSECTION> 
+    public partial class BDTA_WORKSECTIONConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_WORKSECTION> 
     {
-		public BDTA_WORKSECTIONConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_WORKSECTION> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																																											 
@@ -2934,12 +2939,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class BDTA_WORKSHOPConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_WORKSHOP> 
+    public partial class BDTA_WORKSHOPConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_WORKSHOP> 
     {
-		public BDTA_WORKSHOPConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_WORKSHOP> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																																																																																																			 
@@ -2949,15 +2954,15 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class BDTA_WORKTEAMConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_WORKTEAM> 
+    public partial class BDTA_WORKTEAMConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_WORKTEAM> 
     {
-		public BDTA_WORKTEAMConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_WORKTEAM> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
-			 																																																																																													 HasOptional(t => t.BDTA_WORK_CENTER).WithMany().HasForeignKey(t => t.WORK_CENTER_ID);	
+			 																																																																																													 builder.HasOne(t => t.BDTA_WORK_CENTER).WithMany().HasForeignKey(t => t.WORK_CENTER_ID);	
 										 
         }
 		 
@@ -2965,15 +2970,15 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class BDTA_WORKTEAM_MEMBERConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_WORKTEAM_MEMBER> 
+    public partial class BDTA_WORKTEAM_MEMBERConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_WORKTEAM_MEMBER> 
     {
-		public BDTA_WORKTEAM_MEMBERConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_WORKTEAM_MEMBER> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
-			 																																																										 HasOptional(t => t.BDTA_EMPLOYEE).WithMany().HasForeignKey(t => t.EMPLOYEE_ID);	
+			 																																																										 builder.HasOne(t => t.BDTA_EMPLOYEE).WithMany().HasForeignKey(t => t.EMPLOYEE_ID);	
 										 
         }
 		 
@@ -2981,12 +2986,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class SYS_LOGConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<SYS_LOG> 
+    public partial class SYS_LOGConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<SYS_LOG> 
     {
-		public SYS_LOGConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<SYS_LOG> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																																																									 
@@ -2996,12 +3001,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class SYS_POPEDOMPROGRAMConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<SYS_POPEDOMPROGRAM> 
+    public partial class SYS_POPEDOMPROGRAMConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<SYS_POPEDOMPROGRAM> 
     {
-		public SYS_POPEDOMPROGRAMConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<SYS_POPEDOMPROGRAM> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																													 
@@ -3011,28 +3016,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class SYS_PROGRAMConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<SYS_PROGRAM> 
+    public partial class SYS_PROGRAM_OPERATION_WEBConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<SYS_PROGRAM_OPERATION_WEB> 
     {
-		public SYS_PROGRAMConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<SYS_PROGRAM_OPERATION_WEB> builder)
         {
-			
-			            HasKey(x => x.Id);
-		 
-		 
-			 																																																																																																																																 HasOptional(t => t.SYS_MENUS).WithMany().HasForeignKey(t => t.PROGRAMPARENT);	
-										 
-        }
-		 
-	}
-    
- 
- 
-    public partial class SYS_PROGRAM_OPERATION_WEBConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<SYS_PROGRAM_OPERATION_WEB> 
-    {
-		public SYS_PROGRAM_OPERATION_WEBConfiguration()
-        {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																													 
@@ -3042,12 +3031,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class SYS_PROGRAM_WINFORMConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<SYS_PROGRAM_WINFORM> 
+    public partial class SYS_PROGRAM_WINFORMConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<SYS_PROGRAM_WINFORM> 
     {
-		public SYS_PROGRAM_WINFORMConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<SYS_PROGRAM_WINFORM> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																																																																																																			 
@@ -3057,12 +3046,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class SYS_ROLEAUTHORIZEConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<SYS_ROLEAUTHORIZE> 
+    public partial class SYS_ROLEAUTHORIZEConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<SYS_ROLEAUTHORIZE> 
     {
-		public SYS_ROLEAUTHORIZEConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<SYS_ROLEAUTHORIZE> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																																											 
@@ -3072,27 +3061,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class SYS_ROLEINFOConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<SYS_ROLEINFO> 
+    public partial class SYS_ROLEINFOConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<SYS_ROLEINFO> 
     {
-		public SYS_ROLEINFOConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<SYS_ROLEINFO> builder)
         {
-			
-			            HasKey(x => x.Id);
-		 
-		 
-			 																																													 
-        }
-		 
-	}
-    
- 
- 
-    public partial class SYS_ROLEUSERConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<SYS_ROLEUSER> 
-    {
-		public SYS_ROLEUSERConfiguration()
-        {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																						 
@@ -3102,12 +3076,27 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class SYS_SYSTEMINFOConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<SYS_SYSTEMINFO> 
+    public partial class SYS_ROLEUSERConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<SYS_ROLEUSER> 
     {
-		public SYS_SYSTEMINFOConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<SYS_ROLEUSER> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
+		 
+		 
+			 																																						 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class SYS_SYSTEMINFOConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<SYS_SYSTEMINFO> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<SYS_SYSTEMINFO> builder)
+        {
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																															 
@@ -3117,12 +3106,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class SYS_USERINFOConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<SYS_USERINFO> 
+    public partial class SYS_USERINFOConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<SYS_USERINFO> 
     {
-		public SYS_USERINFOConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<SYS_USERINFO> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																																											 
@@ -3132,16 +3121,16 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class TESTENTITYConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<TESTENTITY> 
+    public partial class TESTENTITYConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<TESTENTITY> 
     {
-		public TESTENTITYConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<TESTENTITY> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
-			 																																																																								 HasOptional(t => t.TESTENTITY2).WithMany().HasForeignKey(t => t.TESTENTITY2ID);	
-															     HasMany(t => t.TESTENTITY3s).WithOptional().HasForeignKey(t => t.TESTENTITYID);
+			 																																																																								 builder.HasOne(t => t.TESTENTITY2).WithMany().HasForeignKey(t => t.TESTENTITY2ID);	
+															     builder.HasMany(t => t.TESTENTITY3s).WithOne().HasForeignKey(t => t.TESTENTITYID);
 										 
         }
 		 
@@ -3149,12 +3138,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class TESTENTITY2Configuration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<TESTENTITY2> 
+    public partial class TESTENTITY2Configuration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<TESTENTITY2> 
     {
-		public TESTENTITY2Configuration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<TESTENTITY2> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																	 
@@ -3164,12 +3153,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class TESTENTITY3Configuration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<TESTENTITY3> 
+    public partial class TESTENTITY3Configuration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<TESTENTITY3> 
     {
-		public TESTENTITY3Configuration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<TESTENTITY3> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																								 
@@ -3179,12 +3168,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class MIGRATIONHISTORYConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<MIGRATIONHISTORY> 
+    public partial class MIGRATIONHISTORYConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<MIGRATIONHISTORY> 
     {
-		public MIGRATIONHISTORYConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<MIGRATIONHISTORY> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																															 
@@ -3194,12 +3183,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class BLOCKS_AUDITLOGSConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_AUDITLOGS> 
+    public partial class BLOCKS_AUDITLOGSConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BLOCKS_AUDITLOGS> 
     {
-		public BLOCKS_AUDITLOGSConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BLOCKS_AUDITLOGS> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																																																																																												 
@@ -3209,12 +3198,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class BLOCKS_BACKGROUNDJOBSConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_BACKGROUNDJOBS> 
+    public partial class BLOCKS_BACKGROUNDJOBSConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BLOCKS_BACKGROUNDJOBS> 
     {
-		public BLOCKS_BACKGROUNDJOBSConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BLOCKS_BACKGROUNDJOBS> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																																																									 
@@ -3224,12 +3213,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class BLOCKS_FEATURESConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_FEATURES> 
+    public partial class BLOCKS_FEATURESConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BLOCKS_FEATURES> 
     {
-		public BLOCKS_FEATURESConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BLOCKS_FEATURES> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																																											 
@@ -3239,12 +3228,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class BLOCKS_EDITIONSConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_EDITIONS> 
+    public partial class BLOCKS_EDITIONSConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BLOCKS_EDITIONS> 
     {
-		public BLOCKS_EDITIONSConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BLOCKS_EDITIONS> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																																																									 
@@ -3254,12 +3243,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class BLOCKS_LANGUAGESConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_LANGUAGES> 
+    public partial class BLOCKS_LANGUAGESConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BLOCKS_LANGUAGES> 
     {
-		public BLOCKS_LANGUAGESConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BLOCKS_LANGUAGES> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																																																																														 
@@ -3269,12 +3258,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class BLOCKS_LANGUAGETEXTSConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_LANGUAGETEXTS> 
+    public partial class BLOCKS_LANGUAGETEXTSConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BLOCKS_LANGUAGETEXTS> 
     {
-		public BLOCKS_LANGUAGETEXTSConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BLOCKS_LANGUAGETEXTS> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																																																									 
@@ -3284,12 +3273,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class BLOCKS_NOTIFICATIONSConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_NOTIFICATIONS> 
+    public partial class BLOCKS_NOTIFICATIONSConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BLOCKS_NOTIFICATIONS> 
     {
-		public BLOCKS_NOTIFICATIONSConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BLOCKS_NOTIFICATIONS> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																																																																														 
@@ -3299,12 +3288,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class BLOCKS_NOTIFY_SUBSCRIPTIONSConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_NOTIFY_SUBSCRIPTIONS> 
+    public partial class BLOCKS_NOTIFY_SUBSCRIPTIONSConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BLOCKS_NOTIFY_SUBSCRIPTIONS> 
     {
-		public BLOCKS_NOTIFY_SUBSCRIPTIONSConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BLOCKS_NOTIFY_SUBSCRIPTIONS> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																																																		 
@@ -3314,12 +3303,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class BLOCKS_ORGANIZATION_UNITSConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_ORGANIZATION_UNITS> 
+    public partial class BLOCKS_ORGANIZATION_UNITSConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BLOCKS_ORGANIZATION_UNITS> 
     {
-		public BLOCKS_ORGANIZATION_UNITSConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BLOCKS_ORGANIZATION_UNITS> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																																																																							 
@@ -3329,12 +3318,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class BLOCKS_PERMISSIONSConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_PERMISSIONS> 
+    public partial class BLOCKS_PERMISSIONSConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BLOCKS_PERMISSIONS> 
     {
-		public BLOCKS_PERMISSIONSConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BLOCKS_PERMISSIONS> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																																																		 
@@ -3344,12 +3333,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class BLOCKS_ROLESConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_ROLES> 
+    public partial class BLOCKS_ROLESConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BLOCKS_ROLES> 
     {
-		public BLOCKS_ROLESConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BLOCKS_ROLES> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																																																																																					 
@@ -3359,12 +3348,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class BLOCKS_USERSConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_USERS> 
+    public partial class BLOCKS_USERSConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BLOCKS_USERS> 
     {
-		public BLOCKS_USERSConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BLOCKS_USERS> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																																																																																																																																																																																 
@@ -3374,12 +3363,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class BLOCKS_USER_CLAIMSConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_USER_CLAIMS> 
+    public partial class BLOCKS_USER_CLAIMSConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BLOCKS_USER_CLAIMS> 
     {
-		public BLOCKS_USER_CLAIMSConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BLOCKS_USER_CLAIMS> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																																				 
@@ -3389,12 +3378,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class BLOCKS_USER_LOGINSConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_USER_LOGINS> 
+    public partial class BLOCKS_USER_LOGINSConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BLOCKS_USER_LOGINS> 
     {
-		public BLOCKS_USER_LOGINSConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BLOCKS_USER_LOGINS> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																						 
@@ -3404,12 +3393,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class BLOCKS_USER_ROLESConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_USER_ROLES> 
+    public partial class BLOCKS_USER_ROLESConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BLOCKS_USER_ROLES> 
     {
-		public BLOCKS_USER_ROLESConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BLOCKS_USER_ROLES> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																													 
@@ -3419,12 +3408,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class BLOCKS_SETTINGSConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_SETTINGS> 
+    public partial class BLOCKS_SETTINGSConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BLOCKS_SETTINGS> 
     {
-		public BLOCKS_SETTINGSConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BLOCKS_SETTINGS> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																																																		 
@@ -3434,12 +3423,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class BLOCKS_TENANT_NOTIFICATIONSConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_TENANT_NOTIFICATIONS> 
+    public partial class BLOCKS_TENANT_NOTIFICATIONSConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BLOCKS_TENANT_NOTIFICATIONS> 
     {
-		public BLOCKS_TENANT_NOTIFICATIONSConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BLOCKS_TENANT_NOTIFICATIONS> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																																																																 
@@ -3449,12 +3438,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class BLOCKS_TENANTSConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_TENANTS> 
+    public partial class BLOCKS_TENANTSConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BLOCKS_TENANTS> 
     {
-		public BLOCKS_TENANTSConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BLOCKS_TENANTS> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																																																																														 
@@ -3464,12 +3453,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class BLOCKS_USER_ACCOUNTSConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_USER_ACCOUNTS> 
+    public partial class BLOCKS_USER_ACCOUNTSConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BLOCKS_USER_ACCOUNTS> 
     {
-		public BLOCKS_USER_ACCOUNTSConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BLOCKS_USER_ACCOUNTS> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																																																																																					 
@@ -3479,12 +3468,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class BLOCKS_USER_LOGINATTEMPTSConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_USER_LOGINATTEMPTS> 
+    public partial class BLOCKS_USER_LOGINATTEMPTSConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BLOCKS_USER_LOGINATTEMPTS> 
     {
-		public BLOCKS_USER_LOGINATTEMPTSConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BLOCKS_USER_LOGINATTEMPTS> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																																																									 
@@ -3494,12 +3483,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class BLOCKS_USERNOTIFICATIONSConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_USERNOTIFICATIONS> 
+    public partial class BLOCKS_USERNOTIFICATIONSConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BLOCKS_USERNOTIFICATIONS> 
     {
-		public BLOCKS_USERNOTIFICATIONSConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BLOCKS_USERNOTIFICATIONS> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																													 
@@ -3509,12 +3498,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class BLOCKS_USERORGANIZATION_UNITSConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BLOCKS_USERORGANIZATION_UNITS> 
+    public partial class BLOCKS_USERORGANIZATION_UNITSConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BLOCKS_USERORGANIZATION_UNITS> 
     {
-		public BLOCKS_USERORGANIZATION_UNITSConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BLOCKS_USERORGANIZATION_UNITS> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																																				 
@@ -3524,12 +3513,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class SYS_ACTION_TYPEConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<SYS_ACTION_TYPE> 
+    public partial class SYS_ACTION_TYPEConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<SYS_ACTION_TYPE> 
     {
-		public SYS_ACTION_TYPEConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<SYS_ACTION_TYPE> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																															 
@@ -3539,12 +3528,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class BDTA_WORK_CENTERConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_WORK_CENTER> 
+    public partial class BDTA_WORK_CENTERConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_WORK_CENTER> 
     {
-		public BDTA_WORK_CENTERConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_WORK_CENTER> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																																											 
@@ -3554,15 +3543,15 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class BDTA_PRODUCTELEMENTConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_PRODUCTELEMENT> 
+    public partial class BDTA_PRODUCTELEMENTConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_PRODUCTELEMENT> 
     {
-		public BDTA_PRODUCTELEMENTConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_PRODUCTELEMENT> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
-			 																																																																	 HasOptional(t => t.BDTA_PRODUCTELEMENT_TYPE).WithMany().HasForeignKey(t => t.BDTA_PRODUCTELEMENT_TYPE_ID);	
+			 																																																																															 builder.HasOne(t => t.BDTA_PRODUCTELEMENT_TYPE).WithMany().HasForeignKey(t => t.BDTA_PRODUCTELEMENT_TYPE_ID);	
 										 
         }
 		 
@@ -3570,15 +3559,15 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class BDTA_PRODUCTFORMAT_DETAILConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_PRODUCTFORMAT_DETAIL> 
+    public partial class BDTA_PRODUCTFORMAT_DETAILConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_PRODUCTFORMAT_DETAIL> 
     {
-		public BDTA_PRODUCTFORMAT_DETAILConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_PRODUCTFORMAT_DETAIL> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
-			 																																																																								 HasOptional(t => t.BDTA_PRODUCTELEMENT).WithMany().HasForeignKey(t => t.PRODUCTELEMENTID);	
+			 																																																																																						 builder.HasOne(t => t.BDTA_PRODUCTELEMENT).WithMany().HasForeignKey(t => t.PRODUCTELEMENTID);	
 										 
         }
 		 
@@ -3586,12 +3575,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class BDTA_PRODUCTFORMATConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_PRODUCTFORMAT> 
+    public partial class BDTA_PRODUCTFORMATConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_PRODUCTFORMAT> 
     {
-		public BDTA_PRODUCTFORMATConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_PRODUCTFORMAT> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																																											 
@@ -3601,104 +3590,27 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class BDTA_PRODUCTELEMENT_TYPEConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_PRODUCTELEMENT_TYPE> 
+    public partial class BDTA_PRODUCTELEMENT_TYPEConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_PRODUCTELEMENT_TYPE> 
     {
-		public BDTA_PRODUCTELEMENT_TYPEConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_PRODUCTELEMENT_TYPE> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
-			 																															 
+			 																																						 
         }
 		 
 	}
     
  
  
-    public partial class BDTA_CUSTOMERConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_CUSTOMER> 
+    public partial class BDTA_PRODUCT_ELEMENT_RULE_RELConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_PRODUCT_ELEMENT_RULE_REL> 
     {
-		public BDTA_CUSTOMERConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_PRODUCT_ELEMENT_RULE_REL> builder)
         {
-			
-			            HasKey(x => x.Id);
-		 
-		 
-			 																																																																																																												 
-        }
-		 
-	}
-    
- 
- 
-    public partial class BDTA_OUT_IN_TYPEConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_OUT_IN_TYPE> 
-    {
-		public BDTA_OUT_IN_TYPEConfiguration()
-        {
-			
-			            HasKey(x => x.Id);
-		 
-		 
-			 																																																				 
-        }
-		 
-	}
-    
- 
- 
-    public partial class BDTA_QA_CHECKMODEConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_QA_CHECKMODE> 
-    {
-		public BDTA_QA_CHECKMODEConfiguration()
-        {
-			
-			            HasKey(x => x.Id);
-		 
-		 
-			 																																																																																																											 HasOptional(t => t.BDTA_QA_CHECKITEMMANAGE).WithMany().HasForeignKey(t => t.QA_CHECKITEMMANAGE_ID);	
-										 
-        }
-		 
-	}
-    
- 
- 
-    public partial class BDTA_QA_CHECKITEMConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_QA_CHECKITEM> 
-    {
-		public BDTA_QA_CHECKITEMConfiguration()
-        {
-			
-			            HasKey(x => x.Id);
-		 
-		 
-			 																																																																																																				 HasOptional(t => t.BDTA_DICTIONARY).WithMany().HasForeignKey(t => t.CHECKITEMPARENT);	
-										 
-        }
-		 
-	}
-    
- 
- 
-    public partial class BDTA_MAKERConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_MAKER> 
-    {
-		public BDTA_MAKERConfiguration()
-        {
-			
-			            HasKey(x => x.Id);
-		 
-		 
-			 																																																																																																												 
-        }
-		 
-	}
-    
- 
- 
-    public partial class BDTA_UNITConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_UNIT> 
-    {
-		public BDTA_UNITConfiguration()
-        {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																													 
@@ -3708,27 +3620,43 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class BDTA_QA_CHECKITEMMANAGEConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_QA_CHECKITEMMANAGE> 
+    public partial class SYS_PROGRAMConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<SYS_PROGRAM> 
     {
-		public BDTA_QA_CHECKITEMMANAGEConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<SYS_PROGRAM> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
-			 																																						 
+			 																																																																																																																																 builder.HasOne(t => t.SYS_MENUS).WithMany().HasForeignKey(t => t.PROGRAMPARENT);	
+										 
         }
 		 
 	}
     
  
  
-    public partial class BDTA_QA_CHECKITEMMANAGE_DETAILConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_QA_CHECKITEMMANAGE_DETAIL> 
+    public partial class BDTA_SETUPConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_SETUP> 
     {
-		public BDTA_QA_CHECKITEMMANAGE_DETAILConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_SETUP> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
+		 
+		 
+			 																																																																																							 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class BDTA_CUSTOMERConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_CUSTOMER> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_CUSTOMER> builder)
+        {
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																																																																																												 
@@ -3738,27 +3666,72 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class WAREHOUSE_STOCK_LOCKConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_STOCK_LOCK> 
+    public partial class BDTA_OUT_IN_TYPEConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_OUT_IN_TYPE> 
     {
-		public WAREHOUSE_STOCK_LOCKConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_OUT_IN_TYPE> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
-			 																																																																									 
+			 																																																				 
         }
 		 
 	}
     
  
  
-    public partial class BDTA_QA_SAMPLING_STANDARDConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<BDTA_QA_SAMPLING_STANDARD> 
+    public partial class BDTA_SETUP_TYPEConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_SETUP_TYPE> 
     {
-		public BDTA_QA_SAMPLING_STANDARDConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_SETUP_TYPE> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
+		 
+		 
+			 																																																				 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class BDTA_PRODUCT_VARELEMENT_RELConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_PRODUCT_VARELEMENT_REL> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_PRODUCT_VARELEMENT_REL> builder)
+        {
+			 
+			            builder.HasKey(x => x.Id);
+		 
+		 
+			 																																													 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class BDTA_ORG_FACTORYConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_ORG_FACTORY> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_ORG_FACTORY> builder)
+        {
+			 
+			            builder.HasKey(x => x.Id);
+		 
+		 
+			 																																																				 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class BDTA_ORG_ORGRELATIONConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_ORG_ORGRELATION> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_ORG_ORGRELATION> builder)
+        {
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																																											 
@@ -3768,12 +3741,74 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class WAREHOUSE_IN_STORAGEConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_IN_STORAGE> 
+    public partial class BDTA_QA_CHECKMODEConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_QA_CHECKMODE> 
     {
-		public WAREHOUSE_IN_STORAGEConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_QA_CHECKMODE> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
+		 
+		 
+			 																																																																																																											 builder.HasOne(t => t.BDTA_QA_CHECKITEMMANAGE).WithMany().HasForeignKey(t => t.QA_CHECKITEMMANAGE_ID);	
+										 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class BDTA_QA_CHECKITEMConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_QA_CHECKITEM> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_QA_CHECKITEM> builder)
+        {
+			 
+			            builder.HasKey(x => x.Id);
+		 
+		 
+			 																																																																																																				 builder.HasOne(t => t.BDTA_DICTIONARY).WithMany().HasForeignKey(t => t.CHECKITEMPARENT);	
+										 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class BDTA_MAKERConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_MAKER> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_MAKER> builder)
+        {
+			 
+			            builder.HasKey(x => x.Id);
+		 
+		 
+			 																																																																																																												 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class BDTA_UNITConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_UNIT> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_UNIT> builder)
+        {
+			 
+			            builder.HasKey(x => x.Id);
+		 
+		 
+			 																																													 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class BDTA_QA_CHECKITEMMANAGEConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_QA_CHECKITEMMANAGE> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_QA_CHECKITEMMANAGE> builder)
+        {
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																						 
@@ -3783,16 +3818,76 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class WAREHOUSE_IN_STORAGE_DETAILConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_IN_STORAGE_DETAIL> 
+    public partial class BDTA_QA_CHECKITEMMANAGE_DETAILConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_QA_CHECKITEMMANAGE_DETAIL> 
     {
-		public WAREHOUSE_IN_STORAGE_DETAILConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_QA_CHECKITEMMANAGE_DETAIL> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
-			 																																																																																																																																							 HasOptional(t => t.BDTA_MATERIAL).WithMany().HasForeignKey(t => t.MATERIAL_ID);	
-																 HasOptional(t => t.BDTA_SUPPLIER).WithMany().HasForeignKey(t => t.SUPPLIER_ID);	
+			 																																																																																																												 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class WAREHOUSE_STOCK_LOCKConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WAREHOUSE_STOCK_LOCK> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WAREHOUSE_STOCK_LOCK> builder)
+        {
+			 
+			            builder.HasKey(x => x.Id);
+		 
+		 
+			 																																																																																 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class BDTA_QA_SAMPLING_STANDARDConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_QA_SAMPLING_STANDARD> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_QA_SAMPLING_STANDARD> builder)
+        {
+			 
+			            builder.HasKey(x => x.Id);
+		 
+		 
+			 																																																											 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class WAREHOUSE_IN_STORAGEConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WAREHOUSE_IN_STORAGE> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WAREHOUSE_IN_STORAGE> builder)
+        {
+			 
+			            builder.HasKey(x => x.Id);
+		 
+		 
+			 																																						 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class WAREHOUSE_IN_STORAGE_DETAILConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WAREHOUSE_IN_STORAGE_DETAIL> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WAREHOUSE_IN_STORAGE_DETAIL> builder)
+        {
+			 
+			            builder.HasKey(x => x.Id);
+		 
+		 
+			 																																																																																																																																							 builder.HasOne(t => t.BDTA_MATERIAL).WithMany().HasForeignKey(t => t.MATERIAL_ID);	
+																 builder.HasOne(t => t.BDTA_SUPPLIER).WithMany().HasForeignKey(t => t.SUPPLIER_ID);	
 										 
         }
 		 
@@ -3800,12 +3895,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class WAREHOUSE_MOVESITEConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_MOVESITE> 
+    public partial class WAREHOUSE_MOVESITEConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WAREHOUSE_MOVESITE> 
     {
-		public WAREHOUSE_MOVESITEConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WAREHOUSE_MOVESITE> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																															 
@@ -3815,12 +3910,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class WAREHOUSE_MOVESITE_DETAILConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_MOVESITE_DETAIL> 
+    public partial class WAREHOUSE_MOVESITE_DETAILConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WAREHOUSE_MOVESITE_DETAIL> 
     {
-		public WAREHOUSE_MOVESITE_DETAILConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WAREHOUSE_MOVESITE_DETAIL> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																																																																														 
@@ -3830,15 +3925,15 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class WAREHOUSE_OUT_STORAGEConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_OUT_STORAGE> 
+    public partial class WAREHOUSE_OUT_STORAGEConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WAREHOUSE_OUT_STORAGE> 
     {
-		public WAREHOUSE_OUT_STORAGEConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WAREHOUSE_OUT_STORAGE> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
-			 																																																																															 HasOptional(t => t.BDTA_ORG_STOREROOM).WithMany().HasForeignKey(t => t.STOREROM_ID);	
+			 																																																																															 builder.HasOne(t => t.BDTA_ORG_STOREROOM).WithMany().HasForeignKey(t => t.STOREROM_ID);	
 										 
         }
 		 
@@ -3846,16 +3941,16 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class WAREHOUSE_OUT_STORAGE_DETAILConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_OUT_STORAGE_DETAIL> 
+    public partial class WAREHOUSE_OUT_STORAGE_DETAILConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WAREHOUSE_OUT_STORAGE_DETAIL> 
     {
-		public WAREHOUSE_OUT_STORAGE_DETAILConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WAREHOUSE_OUT_STORAGE_DETAIL> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
-			 																																																																	 HasOptional(t => t.BDTA_MATERIAL).WithMany().HasForeignKey(t => t.MATERIAL_ID);	
-																 HasOptional(t => t.WAREHOUSE_STOCK).WithMany().HasForeignKey(t => t.MATERIAL_ID);	
+			 																																																																	 builder.HasOne(t => t.BDTA_MATERIAL).WithMany().HasForeignKey(t => t.MATERIAL_ID);	
+																 builder.HasOne(t => t.WAREHOUSE_STOCK).WithMany().HasForeignKey(t => t.MATERIAL_ID);	
 										 
         }
 		 
@@ -3863,12 +3958,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class WAREHOUSE_OUT_STORAGE_ORDERConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_OUT_STORAGE_ORDER> 
+    public partial class WAREHOUSE_OUT_STORAGE_ORDERConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WAREHOUSE_OUT_STORAGE_ORDER> 
     {
-		public WAREHOUSE_OUT_STORAGE_ORDERConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WAREHOUSE_OUT_STORAGE_ORDER> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																																																									 
@@ -3878,12 +3973,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class SHEET1Configuration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<SHEET1> 
+    public partial class SHEET1Configuration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<SHEET1> 
     {
-		public SHEET1Configuration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<SHEET1> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																	 
@@ -3893,12 +3988,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class SYS_USER_STOREROOMConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<SYS_USER_STOREROOM> 
+    public partial class SYS_USER_STOREROOMConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<SYS_USER_STOREROOM> 
     {
-		public SYS_USER_STOREROOMConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<SYS_USER_STOREROOM> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																						 
@@ -3908,27 +4003,27 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class SYS_MENUSConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<SYS_MENUS> 
+    public partial class SYS_MENUSConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<SYS_MENUS> 
     {
-		public SYS_MENUSConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<SYS_MENUS> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
-			 																																																				 
+			 																																																																		 
         }
 		 
 	}
     
  
  
-    public partial class WAREHOUSE_STOCK_BALANCE_DETAILConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_STOCK_BALANCE_DETAIL> 
+    public partial class WAREHOUSE_STOCK_BALANCE_DETAILConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WAREHOUSE_STOCK_BALANCE_DETAIL> 
     {
-		public WAREHOUSE_STOCK_BALANCE_DETAILConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WAREHOUSE_STOCK_BALANCE_DETAIL> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																																																																																												 
@@ -3938,12 +4033,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class WAREHOUSE_STOCK_COUNT_STOCKConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_STOCK_COUNT_STOCK> 
+    public partial class WAREHOUSE_STOCK_COUNT_STOCKConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WAREHOUSE_STOCK_COUNT_STOCK> 
     {
-		public WAREHOUSE_STOCK_COUNT_STOCKConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WAREHOUSE_STOCK_COUNT_STOCK> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																																																																																																																								 
@@ -3953,12 +4048,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class WAREHOUSE_STOCK_BALANCEConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_STOCK_BALANCE> 
+    public partial class WAREHOUSE_STOCK_BALANCEConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WAREHOUSE_STOCK_BALANCE> 
     {
-		public WAREHOUSE_STOCK_BALANCEConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WAREHOUSE_STOCK_BALANCE> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																																																																																																			 
@@ -3968,12 +4063,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class WAREHOUSE_IQC_DETAILConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_IQC_DETAIL> 
+    public partial class WAREHOUSE_IQC_DETAILConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WAREHOUSE_IQC_DETAIL> 
     {
-		public WAREHOUSE_IQC_DETAILConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WAREHOUSE_IQC_DETAIL> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																																																																																																										 
@@ -3983,16 +4078,16 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class WAREHOUSE_RECEIVE_DETAILConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_RECEIVE_DETAIL> 
+    public partial class WAREHOUSE_RECEIVE_DETAILConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WAREHOUSE_RECEIVE_DETAIL> 
     {
-		public WAREHOUSE_RECEIVE_DETAILConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WAREHOUSE_RECEIVE_DETAIL> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
-			 																																																																																																																		 HasOptional(t => t.BDTA_MAKER).WithMany().HasForeignKey(t => t.MAKER_ID);	
-																 HasOptional(t => t.BDTA_UNIT).WithMany().HasForeignKey(t => t.UNIT_ID);	
+			 																																																																																																																		 builder.HasOne(t => t.BDTA_MAKER).WithMany().HasForeignKey(t => t.MAKER_ID);	
+																 builder.HasOne(t => t.BDTA_UNIT).WithMany().HasForeignKey(t => t.UNIT_ID);	
 										 
         }
 		 
@@ -4000,12 +4095,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class WAREHOUSE_STOCK_COUNTConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_STOCK_COUNT> 
+    public partial class WAREHOUSE_STOCK_COUNTConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WAREHOUSE_STOCK_COUNT> 
     {
-		public WAREHOUSE_STOCK_COUNTConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WAREHOUSE_STOCK_COUNT> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																																																																							 
@@ -4015,27 +4110,27 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class WAREHOUSE_STOCK_LOGConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_STOCK_LOG> 
+    public partial class WAREHOUSE_STOCK_LOGConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WAREHOUSE_STOCK_LOG> 
     {
-		public WAREHOUSE_STOCK_LOGConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WAREHOUSE_STOCK_LOG> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
-			 																																																																																																																																	 
+			 																																																																																																																																								 
         }
 		 
 	}
     
  
  
-    public partial class WAREHOUSE_STOCK_COUNT_SCANConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_STOCK_COUNT_SCAN> 
+    public partial class WAREHOUSE_STOCK_COUNT_SCANConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WAREHOUSE_STOCK_COUNT_SCAN> 
     {
-		public WAREHOUSE_STOCK_COUNT_SCANConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WAREHOUSE_STOCK_COUNT_SCAN> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																																																																																																			 
@@ -4045,12 +4140,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class WAREHOUSE_STOCKConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_STOCK> 
+    public partial class WAREHOUSE_STOCKConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WAREHOUSE_STOCK> 
     {
-		public WAREHOUSE_STOCKConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WAREHOUSE_STOCK> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																																				 
@@ -4060,12 +4155,12 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class WAREHOUSE_STOCK_COUNT_DETAILConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_STOCK_COUNT_DETAIL> 
+    public partial class WAREHOUSE_STOCK_COUNT_DETAILConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WAREHOUSE_STOCK_COUNT_DETAIL> 
     {
-		public WAREHOUSE_STOCK_COUNT_DETAILConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WAREHOUSE_STOCK_COUNT_DETAIL> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
 			 																																																																																							 
@@ -4075,17 +4170,17 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class WAREHOUSE_RECEIVEConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_RECEIVE> 
+    public partial class WAREHOUSE_RECEIVEConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WAREHOUSE_RECEIVE> 
     {
-		public WAREHOUSE_RECEIVEConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WAREHOUSE_RECEIVE> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
-			 																																																																																													 HasOptional(t => t.BDTA_SUPPLIER).WithMany().HasForeignKey(t => t.SUPPLIERID);	
-																 HasOptional(t => t.SYS_USERINFO).WithMany().HasForeignKey(t => t.RECEIVER);	
-																 HasOptional(t => t.BDTA_ORG_STOREROOM).WithMany().HasForeignKey(t => t.RECEIVE_STOREROOMID);	
+			 																																																																																													 builder.HasOne(t => t.BDTA_SUPPLIER).WithMany().HasForeignKey(t => t.SUPPLIERID);	
+																 builder.HasOne(t => t.SYS_USERINFO).WithMany().HasForeignKey(t => t.RECEIVER);	
+																 builder.HasOne(t => t.BDTA_ORG_STOREROOM).WithMany().HasForeignKey(t => t.RECEIVE_STOREROOMID);	
 										 
         }
 		 
@@ -4093,16 +4188,16 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class WAREHOUSE_IQCConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_IQC> 
+    public partial class WAREHOUSE_IQCConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WAREHOUSE_IQC> 
     {
-		public WAREHOUSE_IQCConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WAREHOUSE_IQC> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
-			 																																																																																																																																																																			 HasOptional(t => t.BDTA_MATERIAL).WithMany().HasForeignKey(t => t.MATERIAL_ID);	
-																 HasOptional(t => t.BDTA_SUPPLIER).WithMany().HasForeignKey(t => t.SUPPLIER_ID);	
+			 																																																																																																																																																																																															 builder.HasOne(t => t.BDTA_MATERIAL).WithMany().HasForeignKey(t => t.MATERIAL_ID);	
+																 builder.HasOne(t => t.BDTA_SUPPLIER).WithMany().HasForeignKey(t => t.SUPPLIER_ID);	
 										 
         }
 		 
@@ -4110,15 +4205,15 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class WAREHOUSE_STOCK_DETAILConfiguration : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<WAREHOUSE_STOCK_DETAIL> 
+    public partial class WAREHOUSE_STOCK_DETAILConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WAREHOUSE_STOCK_DETAIL> 
     {
-		public WAREHOUSE_STOCK_DETAILConfiguration()
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WAREHOUSE_STOCK_DETAIL> builder)
         {
-			
-			            HasKey(x => x.Id);
+			 
+			            builder.HasKey(x => x.Id);
 		 
 		 
-			 																																																																																																																																							 HasOptional(t => t.BDTA_SUPPLIER).WithMany().HasForeignKey(t => t.SUPPLIER_ID);	
+			 																																																																																																																																							 builder.HasOne(t => t.BDTA_SUPPLIER).WithMany().HasForeignKey(t => t.SUPPLIER_ID);	
 										 
         }
 		 

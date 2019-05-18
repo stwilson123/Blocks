@@ -69,6 +69,7 @@ namespace Blocks.BussnessDomainModule.MasterData
             EventBus.Trigger(new TaskEventData {id = "123123"});
 
             var a =  testRepository.GetPageList(search);
+            a.Rows.ForEach(r => r.localizableString = L("MasterData"));
             return a;
         }
 

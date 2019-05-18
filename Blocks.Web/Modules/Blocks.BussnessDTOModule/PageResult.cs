@@ -1,4 +1,5 @@
 ﻿using System;
+using Blocks.Framework.Localization;
 using Blocks.Framework.Services.DataTransfer;
 
 namespace Blocks.BussnessDTOModule
@@ -20,6 +21,8 @@ namespace Blocks.BussnessDTOModule
         public string comboboxText { get; set; }
         
         public DateTime registerTime { get; set; }
+
+        public ILocalizableString localizableString { get; set; }
 
     }
 }

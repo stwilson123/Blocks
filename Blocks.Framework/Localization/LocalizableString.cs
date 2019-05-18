@@ -1,5 +1,7 @@
 ﻿using Abp.Localization;
+using Blocks.Framework.Localization.Convert;
 using Blocks.Framework.Utility.Extensions;
+using Newtonsoft.Json;
 using System;
 using System.Globalization;
 
@@ -9,6 +11,7 @@ namespace Blocks.Framework.Localization
     /// Represents a string that can be localized.
     /// </summary>
     [Serializable]
+    [JsonConverter(typeof(LocalizedConvert))]
     public class LocalizableString : ILocalizableString
     {
         /// <summary>
