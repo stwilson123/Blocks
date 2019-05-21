@@ -63,10 +63,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\Abp.EntityFramework.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Abp.HangFire, Version=3.2.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\Abp.HangFire.dll</HintPath>
-    </Reference>
     <Reference Include="Abp.Owin, Version=3.2.4.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\Abp.Owin.dll</HintPath>
@@ -79,13 +75,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\Abp.Web.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Abp.Web.Mvc, Version=3.2.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Abp.Web.Mvc, Version=3.2.4.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>..\lib\Abp.Web.Mvc.dll</HintPath>
-    </Reference>
-    <Reference Include="Abp.Web.SignalR, Version=3.2.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\Abp.Web.SignalR.dll</HintPath>
     </Reference>
     <Reference Include="Abp.Zero, Version=3.2.4.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

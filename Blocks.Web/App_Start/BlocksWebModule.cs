@@ -7,13 +7,11 @@ using System.Web.Hosting;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using Abp.Hangfire;
-using Abp.Hangfire.Configuration;
 using Abp.Localization.Dictionaries;
 using Abp.Zero.Configuration;
 using Abp.Modules;
 using Abp.Web.Mvc;
-using Abp.Web.SignalR;
+//using Abp.Web.SignalR;
 using Blocks.Framework.DBORM;
 using Blocks.Framework.FileSystems;
 using Blocks.Framework.Localization.Provider;
@@ -30,7 +28,7 @@ namespace Blocks.Web
     //    typeof(BlocksDataModule),
        // typeof(BlocksApplicationModule),
         //typeof(BlocksWebApiModule),
-        typeof(AbpWebSignalRModule),
+//        typeof(AbpWebSignalRModule),
         //typeof(AbpHangfireModule), - ENABLE TO USE HANGFIRE INSTEAD OF DEFAULT JOB MANAGER
         typeof(AbpWebMvcModule),
         typeof(BlocksFrameworkWebModule),

@@ -10,7 +10,7 @@
         var source = (this.dictionary ? this.dictionary : {})[sourceName];
 
         if (!source) {
-            abp.log.warn('Could not find localization source: ' + sourceName);
+            blocks_utility.log.warn('Could not find localization source: ' + sourceName);
             return key;
         }
 

@@ -14,12 +14,11 @@ namespace Blocks.BussnessWebModule.Controllers
     public class MasterDataController : BlocksWebMvcController
     {
 
-        public Localizer L { get; set; }
         [BlocksActionName("Index")]
         [BlocksAuthorize("index")]
         public ActionResult Index()
         {
-            
+            var a = L("MasterData");
             return View();
         }
         [BlocksActionName("PDA")]

@@ -28,6 +28,7 @@ using Blocks.Framework.RPCProxy.Manager;
 using Blocks.Framework.RPCProxy;
 using Blocks.Framework.ApplicationServices;
 using System.Configuration;
+using Blocks.Framework.Data;
 
 namespace Blocks.Framework.Web.Modules
 {
@@ -185,7 +186,10 @@ namespace Blocks.Framework.Web.Modules
                         featureDescriptor.SubAssembly.AddIfNotContains(listAssemblies.GetName().Name);
                     }
 
-                 
+                    var nestTypes = RepModule.GetTypes().Where(t => typeof(IRepository<>).IsAssignableFrom(t))
+                        .SelectMany(t => t.GetNestedTypes()).ToList();
+                    featureDescriptor.Types.AddRange(nestTypes);
+
                 }
             }
 
