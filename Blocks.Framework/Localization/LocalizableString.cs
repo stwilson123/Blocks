@@ -1,5 +1,4 @@
-﻿using Abp.Localization;
-using Blocks.Framework.Localization.Convert;
+﻿using Blocks.Framework.Localization.Convert;
 using Blocks.Framework.Utility.Extensions;
 using Newtonsoft.Json;
 using System;
@@ -60,7 +59,7 @@ namespace Blocks.Framework.Localization
         public string Localize(ILocalizationContext context)
         {
             //return context.LocalizationManager.GetString(SourceName, Name);
-            return context.LocalizationManager.GetString(SourceName, Name).SafeFormat(this.args);
+            return context.LocalizationManager.GetString(SourceName,Name).SafeFormat(this.args);
 
         }
         //

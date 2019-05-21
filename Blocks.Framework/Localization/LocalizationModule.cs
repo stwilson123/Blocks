@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Linq;
 using System.Reflection;
-using Abp.Localization;
 using Abp.Localization.Dictionaries;
 using Abp.Localization.Dictionaries.Xml;
 using AutoMapper;
@@ -13,12 +12,14 @@ using Blocks.Framework.Environment.Extensions;
 using Blocks.Framework.Environment.Extensions.Folders;
 using Blocks.Framework.Environment.Extensions.Models;
 using Blocks.Framework.Ioc;
+using Blocks.Framework.Localization.Configuartions;
 using Blocks.Framework.Localization.Provider;
 using Blocks.Framework.Types;
 using Castle.Core;
 using Castle.DynamicProxy;
 using Castle.MicroKernel;
 using ILanguageProvider = Blocks.Framework.Localization.Provider.ILanguageProvider;
+using XmlEmbeddedFileLocalizationDictionaryProvider = Blocks.Framework.Localization.Dictionaries.Xml.XmlEmbeddedFileLocalizationDictionaryProvider;
 
 namespace Blocks.Framework.Localization
 {
@@ -31,16 +32,36 @@ namespace Blocks.Framework.Localization
         public override void PreInitialize()
         {
             IocManager.Register<ILanguageProvider,LanguageProvider>();
-         
+            IocManager.Register<ILocalizationConfiguration,LocalizationConfiguration>();
+            IocManager.Register<ILocalizationManager, LocalizationManager>();
+            IocManager.Resolve<ILocalizationConfiguration>().Providers.Add(new XmlEmbeddedFileLocalizationDictionaryProvider(
+                BlocksFrameworkLocalizationSource.LocalizationSourceName, Assembly.GetExecutingAssembly(), "Blocks.Framework.Localization.Source"
+            ));
             
-            Configuration.Localization.Sources.Add(
-               new DictionaryBasedLocalizationSource(
-                   BlocksFrameworkLocalizationSource.LocalizationSourceName,
-                   new XmlEmbeddedFileLocalizationDictionaryProvider(
-                       Assembly.GetExecutingAssembly(), "Blocks.Framework.Localization.Source"
-                   )
-               )
-           );
+       
+//            Configuration.Localization.Sources.Add(
+//                new DictionaryBasedLocalizationSource(
+//                    BlocksFrameworkLocalizationSource.LocalizationSourceName,
+//                    new XmlEmbeddedFileLocalizationDictionaryProvider(
+//                        Assembly.GetExecutingAssembly(), "Blocks.Framework.Localization.Source"
+//                    )
+//                )
+//            );
+
+  
+//   
+//                IocManager.Resolve<ILocalizationConfiguration>().Sources.Add(
+//                    new LocalizationSourceList()
+//                    {
+//                     
+//                    }
+//                new DictionaryBasedLocalizationSource(
+//                        BlocksFrameworkLocalizationSource.LocalizationSourceName,
+//                        new XmlEmbeddedFileLocalizationDictionaryProvider(
+//                            Assembly.GetExecutingAssembly(), "Blocks.Framework.Localization.Source"
+//                        )
+//                    )
+//                    );
 
            
 
@@ -58,11 +79,10 @@ namespace Blocks.Framework.Localization
         {
          
             IocManager.Resolve<IExtensionManager>().AvailableExtensions().ForEach(e =>
-               Configuration.Localization.Sources.Add(
-                  new DictionaryBasedLocalizationSource(e.Name, new DbLocalizationDictionaryProvider(IocManager))
-                )
+                IocManager.Resolve<ILocalizationConfiguration>().Providers.Add(
+                    new DbLocalizationDictionaryProvider(e.Name,IocManager))
              );
-
+            IocManager.Resolve<LocalizationManager>().Initialize();
         }
         
         public override void PostInitialize()

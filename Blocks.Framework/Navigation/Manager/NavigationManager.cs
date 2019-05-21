@@ -80,12 +80,12 @@ namespace Blocks.Framework.Navigation.Manager
 
 
             //Adapter abp
-//            var adpaterMenusModel = Menus.Values.FirstOrDefault().Items.Select(menuItem =>
-//                funTransfter(menuItem));
-//            foreach (var menus in adpaterMenusModel)
-//            {
-//                _iocResolver.Resolve<Abp.Application.Navigation.NavigationManager>().MainMenu.AddItem(menus);
-//            }
+            var adpaterMenusModel = Menus.Values.FirstOrDefault().Items.Select(menuItem =>
+                funTransfter(menuItem));
+            foreach (var menus in adpaterMenusModel)
+            {
+                _iocResolver.Resolve<Abp.Application.Navigation.NavigationManager>().MainMenu.AddItem(menus);
+            }
         }
 
         private async Task<IDictionary<string, INavigationDefinition>> Filter(

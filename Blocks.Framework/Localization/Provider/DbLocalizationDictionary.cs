@@ -1,13 +1,10 @@
 ﻿using Abp.Dependency;
-using Abp.Localization;
-using Abp.Localization.Dictionaries;
-using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Text;
-using Blocks.Framework.Localization.Culture;
 using Blocks.Framework.Utility.Extensions;
 using System.Threading.Tasks;
+using Blocks.Framework.Localization.Dictionaries;
+using ILocalizationDictionary = Blocks.Framework.Localization.Dictionaries.ILocalizationDictionary;
 
 namespace Blocks.Framework.Localization.Provider
 {

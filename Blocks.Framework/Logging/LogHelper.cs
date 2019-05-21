@@ -6,7 +6,7 @@ namespace Blocks.Framework.Logging
 {
     public static class LogHelper
     {
-        private static ILogger logger;
+        internal static ILogger logger;
         static LogHelper()
         {
             logger = IocManager.Instance.IsRegistered(typeof(ILoggerFactory))

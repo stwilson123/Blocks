@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Abp.Localization;
 using Blocks.Core.Navigation.Models;
 using Blocks.Framework.Collections.Extensions;
 using Blocks.Framework.Exceptions;

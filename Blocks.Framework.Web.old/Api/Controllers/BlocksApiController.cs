@@ -13,6 +13,7 @@ using Abp.ObjectMapping;
 using Abp.Runtime.Session;
 using Blocks.Framework.Localization;
 using Castle.Core.Logging;
+using ILocalizationManager = Abp.Localization.ILocalizationManager;
 
 namespace Blocks.Framework.Web.Api.Controllers
 {

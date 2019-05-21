@@ -77,13 +77,13 @@ namespace Blocks.Framework.Web.Mvc.ViewEngines.Razor
         {
             if (featureDescriptor == null)
                 return null;
-            return localizableString.Localize(WorkContext.Resolve<Abp.Localization.ILocalizationContext>());
+            return localizableString.Localize(WorkContext.Resolve<ILocalizationContext>());
         }
         public string L(string text, params object[] args)
         {
             if (featureDescriptor == null)
                 return null;
-            return new Localization.LocalizableString(featureDescriptor.Name, text, args).Localize(WorkContext.Resolve<Abp.Localization.ILocalizationContext>());
+            return new Localization.LocalizableString(featureDescriptor.Name, text, args).Localize(WorkContext.Resolve<ILocalizationContext>());
         }
 
         public string[] CommonLocations => _commonLocations ??

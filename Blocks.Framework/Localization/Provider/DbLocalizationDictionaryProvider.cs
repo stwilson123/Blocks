@@ -15,15 +15,15 @@ namespace Blocks.Framework.Localization.Provider
     {
         private readonly IIocManager iocManager;
 
-        public DbLocalizationDictionaryProvider(IIocManager iocManager)
+        public DbLocalizationDictionaryProvider(string sourceName,IIocManager iocManager) :base(sourceName)
         {
             this.iocManager = iocManager;
         }
 
-        public override void Initialize(string sourceName)
+        public override Task Initialize()
         {
             var cultrues = Culture.Culture.getCultures();
-            Task.WhenAll(cultrues.Select(c => DbLocalizationDictionary.Create(sourceName, c, iocManager)))
+            return Task.WhenAll(cultrues.Select(c => DbLocalizationDictionary.Create(SourceName, c, iocManager)))
                 .ContinueWith(task =>
                 {
                     task.Result.ForEach((cultureDic, index) =>

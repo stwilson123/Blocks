@@ -74,9 +74,9 @@ namespace Blocks.Web
                     .UsingFactoryMethod(() => HttpContext.Current.GetOwinContext().Authentication)
                     .LifestyleTransient()
             );
-            Configuration.Localization.Sources.Add(
-                new DictionaryBasedLocalizationSource("Blocks.Web", new DbLocalizationDictionaryProvider(IocManager))
-            );
+//            Configuration.Localization.Sources.Add(
+//                new DictionaryBasedLocalizationSource("Blocks.Web", new DbLocalizationDictionaryProvider(IocManager))
+//            );
            // RouteHandle();
             System.Diagnostics.Stopwatch sw = new Stopwatch();
             sw.Start();

@@ -21,9 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="Model\TestEntity.cs" />
-    <Compile Remove="Model\TestEntity2.cs" />
-    <Compile Remove="Model\TestEntity3.cs" />
+    <Compile Remove="Model\Entity.cs" />
   </ItemGroup>
 
 </Project>

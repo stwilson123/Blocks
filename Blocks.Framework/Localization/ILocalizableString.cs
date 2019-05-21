@@ -14,6 +14,8 @@ namespace Blocks.Framework.Localization
         string SourceName { get; }
 
 
+        string Name { get; }
+
         /// <summary>
         /// Localizes the string in current culture.
         /// </summary>

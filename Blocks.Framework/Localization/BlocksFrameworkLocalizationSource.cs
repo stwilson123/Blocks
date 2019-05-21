@@ -1,7 +1,7 @@
 ﻿using Abp;
-using Abp.Localization;
-using Abp.Localization.Sources;
+
 using Blocks.Framework.Ioc.Dependency;
+using Blocks.Framework.Localization.Source;
 
 namespace Blocks.Framework.Localization
 {
