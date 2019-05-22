@@ -67,10 +67,8 @@ namespace Blocks.Framework.Localization
             
             foreach (var provider in _configuration.Providers)
             {
-             
-
+                
                 _sources[provider.SourceName] = new DefaultLocalizationSource(provider.SourceName,provider,_configuration);  
-
 //                //Extending dictionaries
 //                if (source is IDictionaryBasedLocalizationSource)
 //                {
