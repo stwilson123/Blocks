@@ -65,7 +65,6 @@ namespace Blocks.Core.Security
             {
                 taskResult = _iocManager.Resolve<IPermissionCheck>().IsGrantedAsync(user, permission);
             }
-
             return taskResult;
         }
 

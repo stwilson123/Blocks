@@ -21,6 +21,7 @@ using Blocks.Framework.Navigation;
 using Blocks.Framework.Localization.Provider;
 using Blocks.Framework.RPCProxy;
 using Blocks.Framework.Domain;
+using Blocks.Framework.Security;
 
 namespace Blocks.Framework.Modules
 {
@@ -30,6 +31,7 @@ namespace Blocks.Framework.Modules
     [DependsOn(typeof(EnvironmentModule))]
     [DependsOn(typeof(LocalizationModule))]
     [DependsOn(typeof(NavigationModule))]
+    [DependsOn(typeof(SecurityModule))]
     [DependsOn(typeof(RPCProxyModule))]
 
     [DependsOn(typeof(DomianModule))]
@@ -47,10 +49,6 @@ namespace Blocks.Framework.Modules
             //
             //            var iocProvider = IocManager.Resolve<WindsorInstanceProvier>(IocManager);
             //            iocProvider.RegisterKernelCompoentEvnet();
-
-
-
-        
         }
 
         public override void Initialize()
