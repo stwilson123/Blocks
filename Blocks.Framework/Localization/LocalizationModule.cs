@@ -82,12 +82,12 @@ namespace Blocks.Framework.Localization
                 IocManager.Resolve<ILocalizationConfiguration>().Providers.Add(
                     new DbLocalizationDictionaryProvider(e.Name,IocManager))
              );
-            IocManager.Resolve<LocalizationManager>().Initialize();
+            
         }
         
         public override void PostInitialize()
         {
-            
+            IocManager.Resolve<LocalizationManager>().Initialize();
         }
 
 

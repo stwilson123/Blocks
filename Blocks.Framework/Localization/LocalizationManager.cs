@@ -58,14 +58,7 @@ namespace Blocks.Framework.Localization
                                   string.Join(",",doubleSourceNames) + "! Source name must be unique!");
 
             }
-
-             
-            Task.WhenAny(_configuration.Providers.Select(p => p.Initialize()).ToArray())
-                .ContinueWith(task =>
-                {
-                    
-
-                });
+           
             foreach (var provider in _configuration.Providers)
             {
              

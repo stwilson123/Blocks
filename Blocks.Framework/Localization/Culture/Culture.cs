@@ -18,7 +18,7 @@ namespace Blocks.Framework.Localization.Culture
             culturesDics = new Dictionary<string, string>()
             {
                 
-                { "en", "en"}, 
+                { "en", "English"}, 
                 { "zh-CN", "简体中文"}
 
             };

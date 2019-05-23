@@ -22,6 +22,8 @@ using Abp.Domain.Entities;
 using Newtonsoft.Json;
 using Abp.Web.Mvc.Models;
 using Blocks.Framework.Localization;
+using Blocks.Framework.Logging;
+using Castle.Core.Logging;
 
 namespace Blocks.Framework.Web.Mvc.Filters
 {
@@ -31,6 +33,8 @@ namespace Blocks.Framework.Web.Mvc.Filters
         private readonly IAuthorizationService _authorizationService;
         private readonly IUserContext _userContext;
         private IErrorInfoBuilder _errorInfoBuilder;
+
+        public ILogger Logger { get; set; }
         protected ILocalizationContext _localizationContext { get; }
 
         public BlocksWebMvcExceptionFilter(IErrorInfoBuilder errorInfoBuilder, IAuthorizationService authorizationService, IUserContext userContext, ILocalizationContext localizationContext
@@ -46,6 +50,8 @@ namespace Blocks.Framework.Web.Mvc.Filters
         public void OnException(ExceptionContext filterContext)
         {
             var context = filterContext;
+            
+            LogHelper.LogException(Logger, filterContext.Exception);
             if (context.Exception is HttpException)
             {
                 var httpException = context.Exception as HttpException;

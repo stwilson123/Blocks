@@ -30,8 +30,7 @@ namespace Blocks.Framework.Localization.Provider
                     {
                         if (cultureDic == null)
                             return;
-
-                        Dictionaries[cultrues[index]] = cultureDic;
+                        Dictionaries.Add(cultrues[index], cultureDic);
                         DefaultDictionary = cultureDic;
                     });
                 });

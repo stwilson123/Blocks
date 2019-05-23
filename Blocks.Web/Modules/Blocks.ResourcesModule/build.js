@@ -16,7 +16,7 @@
                 // 'blocks_utility',
                 'bootstrap',
                 'bootstrap_select',
-                'jqGrid',
+				'jqGrid',
                 'jquery',
                 'jquery_blockUI',
                 'jquery_spin',
@@ -33,7 +33,7 @@
                 'waves',
                 'magicsuggest',
                 'select2',
-                'my97DatePicker'
+				'my97DatePicker',
                 // 'Blocks.ResourcesModule/lib/abp-web-resources/Abp/Framework/scripts/abp',
                 // 'Blocks.ResourcesModule/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr',
                 // 'Blocks.ResourcesModule/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI',

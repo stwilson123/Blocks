@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using System.Linq;
 using System.Net;
 using System.Reflection;
 using System.Text;
@@ -10,11 +11,11 @@ using Abp;
 using Abp.Application.Features;
 using Abp.Authorization;
 using Abp.Configuration;
+using Abp.Dependency;
 using Abp.Domain.Entities;
 using Abp.Domain.Uow;
 using Abp.Events.Bus;
 using Abp.Events.Bus.Exceptions;
-using Abp.Localization;
 using Abp.Localization.Sources;
 using Abp.Logging;
 using Abp.ObjectMapping;
@@ -23,12 +24,16 @@ using Abp.Runtime.Session;
 using Abp.Runtime.Validation;
 using Abp.Web.Models;
 using Abp.Web.Mvc.Models;
+using Blocks.Framework.Environment.Extensions;
+using Blocks.Framework.Environment.Extensions.Models;
+using Blocks.Framework.Localization;
 using Blocks.Framework.Logging;
 using Blocks.Framework.Web.Mvc.Configuration;
 using Blocks.Framework.Web.Mvc.Controllers.Results;
 using Blocks.Framework.Web.Mvc.Extensions;
 using Blocks.Framework.Web.Mvc.Helpers;
 using Castle.Core.Logging;
+using ILocalizationManager = Abp.Localization.ILocalizationManager;
 using LogHelper = Blocks.Framework.Logging.LogHelper;
 
 namespace Blocks.Framework.Web.Mvc.Controllers
@@ -87,28 +92,7 @@ namespace Blocks.Framework.Web.Mvc.Controllers
         /// </summary>
         protected string LocalizationSourceName { get; set; }
 
-        /// <summary>
-        /// Gets localization source.
-        /// It's valid if <see cref="LocalizationSourceName"/> is set.
-        /// </summary>
-        protected ILocalizationSource LocalizationSource
-        {
-            get
-            {
-                if (LocalizationSourceName == null)
-                {
-                    throw new AbpException("Must set LocalizationSourceName before, in order to get LocalizationSource");
-                }
-
-                if (_localizationSource == null || _localizationSource.Name != LocalizationSourceName)
-                {
-                    _localizationSource = LocalizationManager.GetSource(LocalizationSourceName);
-                }
-
-                return _localizationSource;
-            }
-        }
-        private ILocalizationSource _localizationSource;
+        
 
         /// <summary>
         /// Reference to the logger to write logs.
@@ -155,6 +139,19 @@ namespace Blocks.Framework.Web.Mvc.Controllers
         /// </summary>
         private WrapResultAttribute _wrapResultAttribute;
 
+        public Lazy<FeatureDescriptor> Feature { get; set; }
+        
+        protected  Localizer L => (text, args) =>
+        {
+//            var AvailableExtensions = IocManager.Resolve<IExtensionManager>().AvailableFeatures();
+//            var ModuleName = AvailableExtensions.FirstOrDefault(f => f.Id == moduleId)?.Name;
+//            if (string.IsNullOrEmpty(ModuleName))
+//                ModuleName = AvailableExtensions.FirstOrDefault(t => t.SubAssembly.Contains(moduleId))?.Name;
+//                    
+//            Check.NotNull(ModuleName, $"Can't find [{moduleId}] in AvailableFeatures");
+            return new LocalizableString(Feature.Value.Name,text, args);
+                   
+        };
         /// <summary>
         /// Constructor.
         /// </summary>
@@ -162,7 +159,6 @@ namespace Blocks.Framework.Web.Mvc.Controllers
         {
             AbpSession = NullAbpSession.Instance;
             
-            LocalizationManager = NullLocalizationManager.Instance;
             PermissionChecker = NullPermissionChecker.Instance;
             EventBus = NullEventBus.Instance;
             ObjectMapper = NullObjectMapper.Instance;

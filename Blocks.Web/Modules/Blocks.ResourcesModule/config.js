@@ -6,7 +6,10 @@ require.config({
         'blocks_utility': "./Utility/utility",
         'bootstrap': "../Scripts/bootstrap",
         'bootstrap_select': "../lib/bootstrap-select/dist/js/bootstrap-select",
-        'jqGrid': "../lib/jqGrid/script/jquery.jqGrid.min",
+		'jqGrid': "../lib/jqGrid/script/jquery.jqGrid.min",
+ 
+        'jqGrid-zh-CN': "../lib/jqGrid/script/i18n/grid.locale-ZH-cn",
+
         //'jquery': "../Scripts/jquery-1.9.1",
         'jquery_blockUI': "../lib/blockUI/jquery.blockUI",
         'jquery_spin': "../lib/spin.js/jquery.spin",
@@ -23,12 +26,11 @@ require.config({
         'waves': "../lib/Waves/dist/waves",
         'magicsuggest': "../lib/combobox/magicsuggest",
         'select2': "../lib/select2-develop/dist/js/select2.full",
-        'my97DatePicker': "../lib/My97DatePicker/My97DatePicker/WdatePicker",
+		'my97DatePicker': "../lib/My97DatePicker/My97DatePicker/WdatePicker",
         'Blocks.ResourcesModule/lib/abp-web-resources/Abp/Framework/scripts/abp':'../lib/abp-web-resources/Abp/Framework/scripts/abp',
         'Blocks.ResourcesModule/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr':'../lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr',
         'Blocks.ResourcesModule/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI':'../lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI',
         'Blocks.ResourcesModule/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin':'../lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin',
         'Blocks.ResourcesModule/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert':'../lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert'
-        
     }
 });

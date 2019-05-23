@@ -6,7 +6,7 @@
 
         public BlocksWebLocalizationConfiguration()
         {
-            CookieName = "Abp.Localization.CultureName";
+            CookieName = "Blocks.Localization.CultureName";
         }
     }
 }

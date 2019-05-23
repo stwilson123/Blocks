@@ -1,11 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Web;
 using System.Web.Mvc;
 using Abp.Configuration.Startup;
 using Blocks.Framework.Environment.Extensions;
 using Blocks.Framework.FileSystems.VirtualPath;
 using Blocks.Framework.Ioc.Dependency;
+using Blocks.Framework.Localization;
 using Blocks.Framework.Navigation.Manager;
 using Blocks.Framework.Security;
 using Blocks.Framework.Security.Authorization;
@@ -43,9 +45,11 @@ namespace Blocks.Framework.Web.Mvc.Filters
         public IUserContext userContext { set; get; }
         public IAbpStartupConfiguration Configuration { get; internal set; }
 
-        public BlocksWebMvcResultFilter(IAbpStartupConfiguration configuration)
+        public ILocalizationManager _LocalizationManager;
+
+        public BlocksWebMvcResultFilter(ILocalizationManager localizationManager)
         {
-            Configuration = configuration;
+            _LocalizationManager = localizationManager;
         }
 
         public void OnResultExecuted(ResultExecutedContext filterContext)
@@ -119,7 +123,7 @@ namespace Blocks.Framework.Web.Mvc.Filters
         private object getlocalization(ResultExecutingContext filterContext)
         {
  
-            var dictonaryFilter = Configuration.Localization.Sources.Where(s => extensionManager.AvailableFeatures().Any(f => f.Name == s.Name));
+            var dictonaryFilter = _LocalizationManager.GetAllSources().Where(s => extensionManager.AvailableFeatures().Any(f => f.Name == s.Name));
 
      
              

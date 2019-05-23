@@ -36,7 +36,7 @@ namespace Blocks.Framework.Logging
         {
             // var severity = (ex as IHasLogSeverity)?.Severity ?? LogSeverity.Error;
 
-            Log(new LogModel() { LogSeverity = LogSeverity.Error, Message = ex.Message });
+            Log(new LogModel() { LogSeverity = LogSeverity.Error, Message = ex.Message , ex = ex});
 
 
            // LogValidationErrors(logger, ex);
