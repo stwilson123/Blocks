@@ -44,6 +44,7 @@ namespace Blocks.Framework.Web
         {
             var stopwatch = new Stopwatch();
             stopwatch.Start();
+            PerWebRequestLifestyleModule.FuncHttpCache = (noInput) => { return HttpContext.Current.Items; };
 
             AbpBootstrapper.IocManager.IocContainer.AddFacility<LoggingFacility>(
                 f => f.UseAbpLog4Net().WithConfig(Server.MapPath(logConfigName))
@@ -68,7 +69,6 @@ namespace Blocks.Framework.Web
             }
 
             AbpBootstrapper.Initialize();
-            PerWebRequestLifestyleModule.FuncHttpCache = (noInput) => { return HttpContext.Current.Items; };
 
             stopwatch.Stop();
 

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace Blocks.Framework.Security
 {
@@ -13,17 +15,20 @@ namespace Blocks.Framework.Security
 
         public string UserAccount { get; }
 
-        public UserIdentifier(string userId, string tenantId,string userAccount)
+        public IEnumerable<string> RoleIds { get; }
+
+        public UserIdentifier(string userId, string tenantId,string userAccount,IEnumerable<string> roleIds )
         {
             UserId = userId;
             TenantId = tenantId;
             UserAccount = userAccount;
+            RoleIds = roleIds;
         }
 
   
         public static UserIdentifier CreateNull()
         {
-            return new UserIdentifier("TestId", "", "TestName");
+            return new UserIdentifier("TestId", "", "TestName",new List<string>());
         }
     }
 }

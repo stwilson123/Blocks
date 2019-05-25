@@ -42,7 +42,7 @@ namespace Blocks.Framework.Web.Security
     {
         public static IdentityUser ToIdentity(this Framework.Security.UserIdentifier userIdentifier)
         {
-            return new IdentityUser(userIdentifier.UserId, userIdentifier.UserAccount);
+            return new IdentityUser(userIdentifier.UserId, userIdentifier.UserAccount,userIdentifier.RoleIds);
         }
     }
 

@@ -12,5 +12,7 @@ namespace Blocks.Framework.Web.Security
         public IdentityUserManager(IdentityUserStore store) : base(store)
         {
         }
+
+        
     }
 }

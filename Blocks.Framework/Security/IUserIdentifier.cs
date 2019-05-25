@@ -1,4 +1,6 @@
-﻿namespace Blocks.Framework.Security
+﻿using System.Collections.Generic;
+
+namespace Blocks.Framework.Security
 {
     public interface IUserIdentifier
     {
@@ -14,5 +16,8 @@
 
 
         string UserAccount { get; }
+        
+        IEnumerable<string> RoleIds { get; }
+
     }
 }

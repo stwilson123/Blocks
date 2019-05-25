@@ -48,12 +48,23 @@ namespace Blocks.Framework.Security.Authorization.Permission
                     if (!_rolePermissions.ContainsKey(rolePermission.Key))
                     {
                         _rolePermissions.Add(rolePermission.Key,
-                            rolePermission.Value.Select(v => _permissions[v]).ToList());
+                            ToList(rolePermission));
                         continue;
                     }
-                    _rolePermissions[rolePermission.Key] = rolePermission.Value.Select(v => _permissions[v]).ToList();
+                    _rolePermissions[rolePermission.Key] = ToList(rolePermission);
                 }
             }
+        }
+
+        private List<IPermission> ToList(KeyValuePair<string, IList<string>> rolePermission)
+        {
+            return rolePermission.Value.Select(v =>
+            {
+                var result = default(IPermission);
+                if (v != null)
+                    _permissions.TryGetValue(v, out result);
+                return  result;
+            }).Where(p => p != null).ToList();
         }
 
         public IDictionary<string, IList<IPermission>> GetAllPermissions()
