@@ -80,8 +80,10 @@ namespace Blocks.Framework.Environment
         public override void OnActivated(object instance)
         {
             TypeInfo instanceType = instance.GetType().GetTypeInfo();
- 
-            var moduleId = instanceType.Assembly.GetName().Name;
+
+            var moduleId = instanceType.Assembly.IsDynamic
+                ? instanceType.BaseType.Assembly.GetName().Name
+                : instanceType.Assembly.GetName().Name;
             var userProperty = FindFeatureProperty(instanceType);
             if (userProperty != null)
             {

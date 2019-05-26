@@ -63,14 +63,14 @@ namespace Blocks.Framework.Web.Mvc.Controllers
             }
             string area = requestContext.RouteData.GetAreaName();
          
-            var serviceKey = ControllerConventionalRegistrar.GetControllerSerivceName(area,controllerName) + "Controller";
+             var serviceKey = ControllerConventionalRegistrar.GetControllerSerivceName(area,controllerName) + "Controller";
             
             object instance = default(object);
-            if (!string.IsNullOrEmpty(area) && _iocManager.IsRegistered(serviceKey))
+            if (string.IsNullOrEmpty(area) ||  !_iocManager.IsRegistered(serviceKey))
             {
-                instance = _iocManager.Resolve<IController>(serviceKey);
+                return base.GetControllerType(requestContext, controllerName);
             }
-            return instance != null ? instance.GetType() : base.GetControllerType(requestContext, controllerName);
+            return _iocManager.GetHandlerType(serviceKey);
         } 
     }
 }

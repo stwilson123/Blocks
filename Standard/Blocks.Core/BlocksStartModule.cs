@@ -3,6 +3,8 @@ using Abp.Localization.Dictionaries.Xml;
 using Blocks.Framework.Ioc;
 using Blocks.Framework.Modules;
 using System.Reflection;
+using Abp;
+using Blocks.Framework.Web.Mvc.Controllers;
 using BlocksModule = Blocks.Framework.Ioc.BlocksModule;
 
 namespace Blocks.Core
@@ -12,6 +14,13 @@ namespace Blocks.Core
 
         public override void PreInitialize()
         {
+            
+            Configuration.Auditing.Selectors.Add(
+                new NamedTypeSelector(
+                    "Blocks.MvcController",
+                    type => typeof(BlocksWebMvcController).IsAssignableFrom(type)
+                )
+            );
             //Add/remove localization sources here
             Configuration.Localization.Sources.Add(
                 new DictionaryBasedLocalizationSource(

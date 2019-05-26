@@ -1,9 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.NetworkInformation;
+using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 using Abp.Configuration.Startup;
+using Abp.Reflection;
 using Blocks.Framework.Environment.Extensions;
 using Blocks.Framework.FileSystems.VirtualPath;
 using Blocks.Framework.Ioc.Dependency;
@@ -12,7 +16,10 @@ using Blocks.Framework.Navigation.Manager;
 using Blocks.Framework.Security;
 using Blocks.Framework.Security.Authorization;
 using Blocks.Framework.Security.Authorization.Permission;
+using Blocks.Framework.Web.Mvc.Configuration;
+using Blocks.Framework.Web.Mvc.Extensions;
 using Blocks.Framework.Web.Mvc.Route;
+using Castle.Core.Logging;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -30,6 +37,8 @@ namespace Blocks.Framework.Web.Mvc.Filters
             // throw new System.NotImplementedException();
             
         }
+        
+       
     }
 
 
@@ -47,20 +56,23 @@ namespace Blocks.Framework.Web.Mvc.Filters
 
         public ILocalizationManager _LocalizationManager;
 
+
+        public ILogger Logger { get; set; }
+
         public BlocksWebMvcResultFilter(ILocalizationManager localizationManager)
         {
             _LocalizationManager = localizationManager;
+           
         }
 
         public void OnResultExecuted(ResultExecutedContext filterContext)
-            {
-            //throw new System.NotImplementedException();
-          
-                ;
+        {
+      
         }
 
         public void OnResultExecuting(ResultExecutingContext filterContext)
         {
+         
             if (!filterContext.IsChildAction && isMvcViewResult(filterContext) )
             {
                 ViewResultBase viewResult = (ViewResultBase)filterContext.Result;

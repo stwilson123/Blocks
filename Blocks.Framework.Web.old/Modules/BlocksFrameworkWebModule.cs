@@ -4,6 +4,7 @@ using System.Reflection;
 using System.Web.Http;
 using System.Web.Http.Dispatcher;
 using System.Web.Mvc;
+using Abp;
 using Abp.Configuration.Startup;
 using Abp.Modules;
 using Abp.Web;
@@ -39,9 +40,28 @@ namespace Blocks.Framework.Web.Modules
         public override void PreInitialize()
         {
       
-
-
+            Configuration.Auditing.Selectors.Add(
+                new NamedTypeSelector(
+                    "Blocks.Mvc.Filter",
+                    type => typeof(IActionFilter).IsAssignableFrom(type) || typeof(IAuthorizationFilter).IsAssignableFrom(type) || 
+                            typeof(IExceptionFilter).IsAssignableFrom(type) || typeof(IResultFilter).IsAssignableFrom(type)
+                )
+            );
             
+            Configuration.Auditing.IgnoredTypes.AddRange(new Type[]
+            {
+                typeof(ResultExecutingContext),typeof(ResultExecutedContext),typeof(AuthorizationContext),typeof(ExceptionContext),
+                typeof(ActionExecutingContext),typeof(ActionExecutedContext) 
+
+            });
+
+            Configuration.Auditing.Selectors.Add(
+                new NamedTypeSelector(
+                    "Blocks.Mvc.Filter",
+                    type => typeof(IActionFilter).IsAssignableFrom(type) || typeof(IAuthorizationFilter).IsAssignableFrom(type) || 
+                            typeof(IExceptionFilter).IsAssignableFrom(type) || typeof(IResultFilter).IsAssignableFrom(type)
+                )
+            );
         }
 
         public override void Initialize()
