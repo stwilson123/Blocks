@@ -19,8 +19,9 @@ namespace Blocks.Framework.Web.Navigation
         public bool IsLeaf { get; }
         public object CustomData { get; }
         public bool IsVisible { get; set; }
-    
-        
+        public string Id => this.GetUniqueId();
+
+
         /// <summary>
         /// The URL to navigate when this menu item is selected. Optional.
         /// </summary>

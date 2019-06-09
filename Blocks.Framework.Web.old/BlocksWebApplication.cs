@@ -62,8 +62,8 @@ namespace Blocks.Framework.Web
                 foreach (var modulePath in pathProvider.ListDirectories(@"~\Modules"))
                 {
                     var moduleFileList = pathProvider.ListDirectories(modulePath);
-                    if (!moduleFileList.Any(t => string.Equals(t, "Module.txt", StringComparison.CurrentCultureIgnoreCase)))
-                        continue;
+//                    if (!moduleFileList.Any(t => string.Equals(t, "Module.txt", StringComparison.CurrentCultureIgnoreCase)))
+//                        continue;
                     var moduleBin = moduleFileList.FirstOrDefault(t => t.EndsWith("bin"));
                     if (!string.IsNullOrEmpty(moduleBin))
                         AbpBootstrapper.PlugInSources.AddFolder(pathProvider.MapPath(moduleBin),

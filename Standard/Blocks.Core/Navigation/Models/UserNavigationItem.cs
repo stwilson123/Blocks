@@ -53,6 +53,8 @@ namespace Blocks.Core.Navigation.Models
 
         public Permission[] RequirePermissions { get { return _navItem.RequirePermissions; }  }
 
+        public string Id => this.GetUniqueId();
+
         public UserNavigationItem()
         {
             

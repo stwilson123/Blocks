@@ -13,13 +13,7 @@ namespace Blocks.Framework.Navigation
         /// </summary>
         ILocalizableString DisplayName { get; }
  
-
-//        /// <summary>
-//        /// A feature dependency.
-//        /// Optional.
-//        /// </summary>
-//        IFeatureDependency FeatureDependency { get; }
-//        IPermissionDependency PermissionDependency { get;  }
+ 
         /// <summary>
         /// This can be set to true if only authenticated users should see this menu item.
         /// </summary>
@@ -53,5 +47,8 @@ namespace Blocks.Framework.Navigation
 //        /// <param name="navItem"><see cref="NavigationItemDefinition"/> to be added</param>
 //        /// <returns>This <see cref="NavigationItemDefinition"/> object</returns>
 //        INavigationItemDefinition AddItem(INavigationItemDefinition navItem);
+
+
+        string Id { get; }
     }
 }
