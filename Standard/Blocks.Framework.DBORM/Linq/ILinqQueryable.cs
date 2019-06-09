@@ -50,6 +50,7 @@ namespace Blocks.Framework.DBORM.Linq
 
         PageList<dynamic> Paging(LambdaExpression selector,Page page);
          
+        PageList<dynamic> Paging(LambdaExpression selector,Page page,bool distinct);
         
         long Count();
         string ToString(); 

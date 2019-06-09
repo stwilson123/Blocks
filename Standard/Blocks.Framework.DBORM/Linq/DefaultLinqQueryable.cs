@@ -151,6 +151,8 @@ namespace Blocks.Framework.DBORM.Linq
         }
 
 
+        
+
         public long Count()
         {
             return transferQuaryable().LongCount();
@@ -271,19 +273,18 @@ namespace Blocks.Framework.DBORM.Linq
 
         public PageList<dynamic> Paging(LambdaExpression selector, Page page)
         {
+            return Paging(selector, page);
+        }
+        
+        
+        public PageList<dynamic> Paging(LambdaExpression selector, Page page, bool distinct)
+        {
             ExceptionHelper.ThrowArgumentNullException(selector, "selector");
             ExceptionHelper.ThrowArgumentNullException(page, "page");
             //TODO check page property 
  
-
             validateParamter(selector.Parameters);
-
             var querable = transferQuaryable();
-            
-            
-           
-           
-            
             
             if (querable != null)
             {
@@ -296,6 +297,7 @@ namespace Blocks.Framework.DBORM.Linq
                 iQuerable = iQuerable.Select(a);
             }
 
+            iQuerable = distinct ? iQuerable.Distinct() : iQuerable;
                  
             if (page.filters != null && page.filters.rules != null && page.filters.rules.Any())
             {
@@ -310,7 +312,6 @@ namespace Blocks.Framework.DBORM.Linq
             var orderByQueryable = !string.IsNullOrEmpty(page.OrderBy) 
                 ? DynamicQueryableExtensions.OrderBy(iQuerable, page.OrderBy)
                 : iQuerable;
-            
             if (page.pageSize == -1)
             {
                 var rows = orderByQueryable.ToDynamicList();
@@ -349,9 +350,7 @@ namespace Blocks.Framework.DBORM.Linq
                 pageResult.PagerInfo.sortOrder = page.sortOrder;
                 return pageResult;
             }
-           
         }
-        
     
 
         public IDbLinqQueryable<TEntity> OrderByDescending<TSource, TKey>(Expression<Func<TSource, TKey>> keySelector)

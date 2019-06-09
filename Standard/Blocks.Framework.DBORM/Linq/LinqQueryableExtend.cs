@@ -177,54 +177,54 @@ namespace Blocks.Framework.DBORM.Linq
         }
         #endregion
         #region paging
-        public static PageList<TDto> Paging<TEntity, T1, TDto>(this IDbLinqQueryable<TEntity> dbLinqQueryable, Expression<Func<T1, TDto>> selector, Page page) where TEntity : Data.Entity.Entity
+        public static PageList<TDto> Paging<TEntity, T1, TDto>(this IDbLinqQueryable<TEntity> dbLinqQueryable, Expression<Func<T1, TDto>> selector, Page page, bool distinct = false) where TEntity : Data.Entity.Entity
         {
-            return dbLinqQueryable.Paging((LambdaExpression)selector, page).MapTo<PageList<TDto>>();
+            return dbLinqQueryable.Paging((LambdaExpression)selector, page, distinct).MapTo<PageList<TDto>>();
         }
 
-        public static PageList<TDto> Paging<TEntity, T1, T2, TDto>(this IDbLinqQueryable<TEntity> dbLinqQueryable, Expression<Func<T1, T2, TDto>> selector, Page page) where TEntity : Data.Entity.Entity
+        public static PageList<TDto> Paging<TEntity, T1, T2, TDto>(this IDbLinqQueryable<TEntity> dbLinqQueryable, Expression<Func<T1, T2, TDto>> selector, Page page, bool distinct = false) where TEntity : Data.Entity.Entity
         {
-            return dbLinqQueryable.Paging((LambdaExpression)selector, page).MapTo<PageList<TDto>>();
+            return dbLinqQueryable.Paging((LambdaExpression)selector,page, distinct).MapTo<PageList<TDto>>();
         }
 
-        public static PageList<TDto> Paging<TEntity, T1, T2, T3, TDto>(this IDbLinqQueryable<TEntity> dbLinqQueryable, Expression<Func<T1, T2, T3, TDto>> selector, Page page) where TEntity : Data.Entity.Entity
+        public static PageList<TDto> Paging<TEntity, T1, T2, T3, TDto>(this IDbLinqQueryable<TEntity> dbLinqQueryable, Expression<Func<T1, T2, T3, TDto>> selector, Page page, bool distinct = false) where TEntity : Data.Entity.Entity
         {
-            return dbLinqQueryable.Paging((LambdaExpression)selector, page).MapTo<PageList<TDto>>();
+            return dbLinqQueryable.Paging((LambdaExpression)selector,page, distinct).MapTo<PageList<TDto>>();
         }
 
-        public static PageList<TDto> Paging<TEntity, T1, T2, T3, T4, TDto>(this IDbLinqQueryable<TEntity> dbLinqQueryable, Expression<Func<T1, T2, T3, T4, TDto>> selector, Page page) where TEntity : Data.Entity.Entity
+        public static PageList<TDto> Paging<TEntity, T1, T2, T3, T4, TDto>(this IDbLinqQueryable<TEntity> dbLinqQueryable, Expression<Func<T1, T2, T3, T4, TDto>> selector, Page page, bool distinct = false) where TEntity : Data.Entity.Entity
         {
-            return dbLinqQueryable.Paging((LambdaExpression)selector, page).MapTo<PageList<TDto>>();
+            return dbLinqQueryable.Paging((LambdaExpression)selector,page, distinct).MapTo<PageList<TDto>>();
         }
 
-        public static PageList<TDto> Paging<TEntity, T1, T2, T3, T4, T5, TDto>(this IDbLinqQueryable<TEntity> dbLinqQueryable, Expression<Func<T1, T2, T3, T4, T5, TDto>> selector, Page page) where TEntity : Data.Entity.Entity
+        public static PageList<TDto> Paging<TEntity, T1, T2, T3, T4, T5, TDto>(this IDbLinqQueryable<TEntity> dbLinqQueryable, Expression<Func<T1, T2, T3, T4, T5, TDto>> selector, Page page, bool distinct = false) where TEntity : Data.Entity.Entity
         {
-            return dbLinqQueryable.Paging((LambdaExpression)selector, page).MapTo<PageList<TDto>>();
+            return dbLinqQueryable.Paging((LambdaExpression)selector,page, distinct).MapTo<PageList<TDto>>();
         }
 
-        public static PageList<TDto> Paging<TEntity, T1, T2, T3, T4, T5, T6, TDto>(this IDbLinqQueryable<TEntity> dbLinqQueryable, Expression<Func<T1, T2, T3, T4, T5, T6, TDto>> selector, Page page) where TEntity : Data.Entity.Entity
+        public static PageList<TDto> Paging<TEntity, T1, T2, T3, T4, T5, T6, TDto>(this IDbLinqQueryable<TEntity> dbLinqQueryable, Expression<Func<T1, T2, T3, T4, T5, T6, TDto>> selector, Page page, bool distinct = false) where TEntity : Data.Entity.Entity
         {
-            return dbLinqQueryable.Paging((LambdaExpression)selector, page).MapTo<PageList<TDto>>();
+            return dbLinqQueryable.Paging((LambdaExpression)selector,page, distinct).MapTo<PageList<TDto>>();
         }
 
-        public static PageList<TDto> Paging<TEntity, T1, T2, T3, T4, T5, T6, T7, TDto>(this IDbLinqQueryable<TEntity> dbLinqQueryable, Expression<Func<T1, T2, T3, T4, T5, T6, T7, TDto>> selector, Page page) where TEntity : Data.Entity.Entity
+        public static PageList<TDto> Paging<TEntity, T1, T2, T3, T4, T5, T6, T7, TDto>(this IDbLinqQueryable<TEntity> dbLinqQueryable, Expression<Func<T1, T2, T3, T4, T5, T6, T7, TDto>> selector, Page page, bool distinct = false) where TEntity : Data.Entity.Entity
         {
-            return dbLinqQueryable.Paging((LambdaExpression)selector, page).MapTo<PageList<TDto>>();
+            return dbLinqQueryable.Paging((LambdaExpression)selector,page, distinct).MapTo<PageList<TDto>>();
         }
 
-        public static PageList<TDto> Paging<TEntity, T1, T2, T3, T4, T5, T6, T7, T8, TDto>(this IDbLinqQueryable<TEntity> dbLinqQueryable, Expression<Func<T1, T2, T3, T4, T5, T6, T7, T8, TDto>> selector, Page page) where TEntity : Data.Entity.Entity
+        public static PageList<TDto> Paging<TEntity, T1, T2, T3, T4, T5, T6, T7, T8, TDto>(this IDbLinqQueryable<TEntity> dbLinqQueryable, Expression<Func<T1, T2, T3, T4, T5, T6, T7, T8, TDto>> selector, Page page, bool distinct = false) where TEntity : Data.Entity.Entity
         {
-            return dbLinqQueryable.Paging((LambdaExpression)selector, page).MapTo<PageList<TDto>>();
+            return dbLinqQueryable.Paging((LambdaExpression)selector,page, distinct).MapTo<PageList<TDto>>();
         }
 
-        public static PageList<TDto> Paging<TEntity, T1, T2, T3, T4, T5, T6, T7, T8, T9, TDto>(this IDbLinqQueryable<TEntity> dbLinqQueryable, Expression<Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, TDto>> selector, Page page) where TEntity : Data.Entity.Entity
+        public static PageList<TDto> Paging<TEntity, T1, T2, T3, T4, T5, T6, T7, T8, T9, TDto>(this IDbLinqQueryable<TEntity> dbLinqQueryable, Expression<Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, TDto>> selector, Page page, bool distinct = false) where TEntity : Data.Entity.Entity
         {
-            return dbLinqQueryable.Paging((LambdaExpression)selector, page).MapTo<PageList<TDto>>();
+            return dbLinqQueryable.Paging((LambdaExpression)selector,page, distinct).MapTo<PageList<TDto>>();
         }
 
-        public static PageList<TDto> Paging<TEntity, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, TDto>(this IDbLinqQueryable<TEntity> dbLinqQueryable, Expression<Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, TDto>> selector, Page page) where TEntity : Data.Entity.Entity
+        public static PageList<TDto> Paging<TEntity, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, TDto>(this IDbLinqQueryable<TEntity> dbLinqQueryable, Expression<Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, TDto>> selector, Page page, bool distinct = false) where TEntity : Data.Entity.Entity
         {
-            return dbLinqQueryable.Paging((LambdaExpression)selector, page).MapTo<PageList<TDto>>();
+            return dbLinqQueryable.Paging((LambdaExpression)selector,page, distinct).MapTo<PageList<TDto>>();
         }
 
 
