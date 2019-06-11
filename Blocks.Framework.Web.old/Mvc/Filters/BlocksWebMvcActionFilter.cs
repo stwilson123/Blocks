@@ -97,7 +97,8 @@ namespace Blocks.Framework.Web.Mvc.Filters
                         if (pathProvider.FileExists(cssPath))
                             filterContext.Controller.ViewBag.subPageCssVirtualPath = cssPath + "?v=" + Utility.SafeConvert.DateTimeHelper.ToDateTimeWithMilliseconds(pathProvider.GetFileLastWriteTimeUtc(jsPath));
 
-                        var extension = extensionManager.GetExtension(filterContext.Controller.GetType().Assembly.GetName().Name);
+                        var extension = extensionManager.GetExtension(filterContext.Controller.GetType().Assembly.IsDynamic? filterContext.Controller.GetType().BaseType.Assembly.GetName().Name :
+                            filterContext.Controller.GetType().Assembly.GetName().Name  );
                         filterContext.Controller.ViewBag.extensionName = extension?.Name;
                         filterContext.Controller.ViewBag.permissions = getPermissions(filterContext);
                         filterContext.Controller.ViewBag.localization = getlocalization(filterContext);

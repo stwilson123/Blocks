@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Abp.Dependency;
 using Blocks.Framework.Logging;
 using Blocks.Framework.Security.Authorization;
 using Blocks.Framework.Security.Claim;
@@ -12,15 +13,16 @@ namespace Blocks.Framework.Security
     public class DefaultUserContext : IUserContext
     {
         private IPrincipalAccessor _principalAccessor;
+        private readonly IocManager _iocManager;
         private readonly IDentityUserStore _dentityUserStore;
 
         private IEnumerable<string> roleIds;
         private object locker = new object();
         public readonly ILogger Log;
-        public DefaultUserContext(IPrincipalAccessor principalAccessor,IDentityUserStore dentityUserStore, ILogger log)
+        public DefaultUserContext(IPrincipalAccessor principalAccessor,IocManager iocManager, ILogger log)
         {
             _principalAccessor = principalAccessor;
-            _dentityUserStore = dentityUserStore;
+            _iocManager = iocManager;
             Log = log;
         }
 
@@ -39,7 +41,8 @@ namespace Blocks.Framework.Security
             {
                 if (roleIds == null)
                 {
-                    roleIds = _dentityUserStore.GetUser(userNameClaim.Value)?.RoleIds;
+                    roleIds = _iocManager.IsRegistered<IDentityUserStore>() ? _iocManager.Resolve<IDentityUserStore>().GetUser(userNameClaim.Value)?.RoleIds :
+                        new List<string>();
                     Log.Debug($"User {userIdClaim.Value} find roleIds {string.Join(",",roleIds)}");
                 }
             }

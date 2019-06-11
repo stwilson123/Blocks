@@ -99,7 +99,8 @@ namespace Blocks.Framework.Web.Mvc.Filters
         }
         protected virtual ActionResult GenerateJsonExceptionResult(ExceptionContext context)
         {
-            context.HttpContext.Items.Add("IgnoreJsonRequestBehaviorDenyGet", "true");
+            if(!context.HttpContext.Items.Contains("IgnoreJsonRequestBehaviorDenyGet"))
+                context.HttpContext.Items.Add("IgnoreJsonRequestBehaviorDenyGet", "true");
             var msg = context.Exception is BlocksException ?
                ((BlocksException)context.Exception)?.LMessage?.Localize(_localizationContext) : context.Exception.Message;
             var result = new DataResult()

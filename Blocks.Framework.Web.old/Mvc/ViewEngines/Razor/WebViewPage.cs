@@ -64,10 +64,10 @@ namespace Blocks.Framework.Web.Mvc.ViewEngines.Razor
 
 
         private Environment.Extensions.Models.FeatureDescriptor featureDescriptor {
-            get {
-                var AvailableExtensions = WorkContext.Resolve<Environment.Extensions.IExtensionManager>().AvailableFeatures();
-
-                return AvailableExtensions.FirstOrDefault(f => f.Id == ViewContext.Controller?.GetType().Assembly.GetName().Name);
+            get
+            {
+                return (ViewContext.Controller as Blocks.Framework.Web.Mvc.Controllers.BlocksWebMvcController).Feature
+                    ?.Value;
             }
         }
 

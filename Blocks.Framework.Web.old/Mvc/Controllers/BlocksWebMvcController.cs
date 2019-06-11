@@ -153,7 +153,7 @@ namespace Blocks.Framework.Web.Mvc.Controllers
                    
         };
         /// <summary>
-        /// Constructor.
+        /// Constructor.EnvironmentModule
         /// </summary>
         protected BlocksWebMvcController()
         {

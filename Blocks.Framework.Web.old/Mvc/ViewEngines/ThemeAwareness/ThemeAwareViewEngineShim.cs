@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Web.Mvc;
 using Abp.Dependency;
+using Abp.Logging;
 
 namespace Blocks.Framework.Web.Mvc.ViewEngines.ThemeAwareness
 {
@@ -55,15 +58,19 @@ namespace Blocks.Framework.Web.Mvc.ViewEngines.ThemeAwareness
 //                    return forwardAction(displayViewEngine);
 //                }
 //            }
-
+            Stopwatch sw = Stopwatch.StartNew();
             if (iIocManager != null)
             {
                 var displayViewEngine = iIocManager.Resolve<IThemeAwareViewEngine>();
                 if (displayViewEngine != null)
                 {
-                    return forwardAction(displayViewEngine);
+                    var fa= forwardAction(displayViewEngine);
+                    sw.Stop();
+                    LogHelper.Logger.Debug($"ThemeAwareViewEngineShim cost time {sw.ElapsedMilliseconds}ms");
+                    return fa;
                 }
             }
+           
             return defaultAction();
         }
 
