@@ -21,7 +21,7 @@ namespace Blocks.Framework.Navigation
         
         public static string GetUniqueId(this INavigationItemDefinition navItem)
         {
-            return navItem.Name + "_" + navItem.RouteValues[RouteConst.area];
+            return navItem.Name + "_" + navItem.RouteValues?[RouteConst.area];
         }
         
         

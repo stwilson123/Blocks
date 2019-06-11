@@ -49,6 +49,6 @@ namespace Blocks.Framework.Navigation
 //        INavigationItemDefinition AddItem(INavigationItemDefinition navItem);
 
 
-        string Id { get; }
+        string uId { get; }
     }
 }

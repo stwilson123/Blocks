@@ -19,7 +19,7 @@ namespace Blocks.Framework.Web.Navigation
         public bool IsLeaf { get; }
         public object CustomData { get; }
         public bool IsVisible { get; set; }
-        public string Id => this.GetUniqueId();
+        public string uId => this.GetUniqueId();
 
 
         /// <summary>
