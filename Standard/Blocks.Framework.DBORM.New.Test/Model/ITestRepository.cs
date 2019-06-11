@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Blocks.Framework.Data;
+using Blocks.Framework.Data.Paging;
 
 namespace EntityFramework.Test.Model
 {
@@ -8,6 +9,9 @@ namespace EntityFramework.Test.Model
         string GetValue(string value);
 
         List<TESTENTITY> GetTestEntity2Text();
+        
+        PageList<TESTENTITY> GetTestEntityDistinct();
+
 
         List<TESTENTITY> GetTESTENTITY3s();
         object FromSql();

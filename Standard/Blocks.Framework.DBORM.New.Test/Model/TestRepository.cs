@@ -9,6 +9,7 @@ using System.Linq.Expressions;
 using System.Reflection;
 using Blocks.Framework.Data.Entity;
 using Blocks.Framework.Data.Pager;
+using Blocks.Framework.Data.Paging;
 using Blocks.Framework.DBORM.Linq;
 using EntityFramework.Test.FunctionTest;
 using Microsoft.EntityFrameworkCore;
@@ -53,6 +54,17 @@ namespace EntityFramework.Test.Model
                     Text = t.TESTENTITY2.Text
                 }
             });
+        }
+
+        public PageList<TESTENTITY> GetTestEntityDistinct()
+        {
+            return GetContextTable().Paging((TESTENTITY t) => new TESTENTITY
+            {
+                TESTENTITY2 = new TESTENTITY2()
+                {
+                    Text = t.TESTENTITY2.Text
+                }
+            },new Page(){ page = 1,pageSize = 10},true);
         }
 
         public List<TESTENTITY> GetTESTENTITY3s()
