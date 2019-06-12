@@ -98,35 +98,19 @@ namespace Blocks.Framework.Localization
 
         public override void OnActivated(object instance)
         {
-
-
-            TypeInfo instanceType = instance.GetType().GetTypeInfo();
-            if (instance is IProxyTargetAccessor)
-            {
-                instanceType = instanceType.BaseType.GetTypeInfo();
-            }
-            if (instanceType == null)
-                return;
-            var moduleId = instanceType.Assembly.GetName().Name;
+            if (TypeHelper.GetActualType(instance.GetType().GetTypeInfo(), out var instanceType)) return;
             var userProperty = FindFeatureProperty(instanceType);
             if (userProperty != null)
             {
                 Localizer LocalizerDelegate = (text, args) =>
-                {
-                    var AvailableExtensions = IocManager.Resolve<IExtensionManager>().AvailableFeatures();
-                    var ModuleName = AvailableExtensions.FirstOrDefault(f => f.Id == moduleId)?.Name;
-                    if (string.IsNullOrEmpty(ModuleName))
-                        ModuleName = AvailableExtensions.FirstOrDefault(t => t.SubAssembly.Contains(moduleId))?.Name;
-                    
-                    Check.NotNull(ModuleName, $"Can't find [{moduleId}] in AvailableFeatures");
-                    return new LocalizableString(ModuleName,text, args);
-                   
-                };
+                    IocManager.Resolve<LocalzaionHelper>().CreateModuleLocalizableString(instanceType, text, args);
                 userProperty.SetValue(instance, LocalizerDelegate);
             }
                 
         }
-        
+
+     
+
         private static PropertyInfo FindFeatureProperty(TypeInfo type)
         {
             return type.GetProperty("L", typeof(Localizer));

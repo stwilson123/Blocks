@@ -23,13 +23,12 @@ namespace Blocks.BussnessApplicationModule.MasterData
         {
             _actualMasterData = actualMasterData;
             this.masterDataDomain = masterDataDomain;
-            //_userContext = userContext;
         }
 
         private MasterDataDomainEvent masterDataDomain { get; set; }
         
         
-        
+        [LocalizedDescription("query")]
         public  PageList<PageResult>  GetPageList(SearchModel a)
         {
             
