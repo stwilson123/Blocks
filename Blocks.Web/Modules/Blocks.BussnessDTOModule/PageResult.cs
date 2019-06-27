@@ -8,8 +8,10 @@ namespace Blocks.BussnessDTOModule
     {
         public string Id { get; set; }
         
+        [LocalizedDescription("tenancyName")]
         public string tenancyName { get; set; }
         
+        [LocalizedDescription("city")]
         public string city { get; set; }
         
         public long isActive { get; set; }

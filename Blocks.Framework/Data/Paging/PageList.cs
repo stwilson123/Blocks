@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Blocks.Framework.Localization;
 using Blocks.Framework.Services.DataTransfer;
 
 namespace Blocks.Framework.Data.Paging
@@ -16,6 +17,7 @@ namespace Blocks.Framework.Data.Paging
         public Page PagerInfo { get; set; }
         
         [DataTransfer("rows")]
+        [LocalizedDescription("grid")]
         public List<T> Rows { get; set; }
     }
 }

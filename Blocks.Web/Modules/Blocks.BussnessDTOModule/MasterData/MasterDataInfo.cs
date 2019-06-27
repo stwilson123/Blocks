@@ -5,6 +5,7 @@ namespace Blocks.BussnessDTOModule.MasterData
 {
     public class MasterDataInfo: IDataTransferObject
     {
+        
         public string tenancyName { get; set; }
         
         public string city { get; set; }

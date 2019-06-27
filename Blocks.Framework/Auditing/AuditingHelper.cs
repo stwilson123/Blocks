@@ -4,14 +4,16 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Transactions;
-using Abp.Collections.Extensions;
 using Abp.Dependency;
 using Abp.Domain.Uow;
 using Abp.Runtime.Session;
 using Abp.Timing;
 using Blocks.Framework.AutoMapper;
 using Blocks.Framework.Localization;
+using Blocks.Framework.Security;
+using Blocks.Framework.Utility.Extensions;
 using Castle.Core.Logging;
+using CollectionExtensions = Abp.Collections.Extensions.CollectionExtensions;
 
 namespace Blocks.Framework.Auditing
 {
@@ -26,19 +28,26 @@ namespace Blocks.Framework.Auditing
         private readonly IUnitOfWorkManager _unitOfWorkManager;
         private readonly IAuditSerializer _auditSerializer;
         private readonly LocalzaionHelper _localzaionHelper;
+        private readonly IUserContext _userContext;
+        private readonly LocalizedSerializer _localizedSerializer;
 
         public AuditingHelper(
             IAuditInfoProvider auditInfoProvider,
             IAuditingConfiguration configuration,
             IUnitOfWorkManager unitOfWorkManager,
             IAuditSerializer auditSerializer,
-            LocalzaionHelper localzaionHelper)
+            LocalzaionHelper localzaionHelper,
+            IUserContext userContext,
+            LocalizedSerializer localizedSerializer
+            )
         {
             _auditInfoProvider = auditInfoProvider;
             _configuration = configuration;
             _unitOfWorkManager = unitOfWorkManager;
             _auditSerializer = auditSerializer;
             _localzaionHelper = localzaionHelper;
+            _userContext = userContext;
+            _localizedSerializer = localizedSerializer;
 
             AbpSession = NullAbpSession.Instance;
             Logger = NullLogger.Instance;
@@ -104,21 +113,23 @@ namespace Blocks.Framework.Auditing
             return CreateAuditInfo(type, method, CreateArgumentsDictionary(method, arguments));
         }
 
-        public AuditInfo CreateAuditInfo(Type type, MethodInfo method, IDictionary<string, object> arguments)
+        public AuditInfo CreateAuditInfo(Type type, MethodInfo method, IDictionary<Tuple<string,IEnumerable<Attribute>>, object> arguments)
         {
             
             var auditInfo = new AuditInfo
             {
                 TenantId = AbpSession.TenantId,
                 UserId = AbpSession.UserId,
+                UserAccount = _userContext.GetCurrentUser()?.UserAccount,
                 ImpersonatorUserId = AbpSession.ImpersonatorUserId,
                 ImpersonatorTenantId = AbpSession.ImpersonatorTenantId,
                 ServiceName = type != null
                     ? type.FullName
                     : "",
                 MethodName = method.Name,
-                MethodDescription = _localzaionHelper.CreateModuleLocalizableString(type.GetTypeInfo(), method)?.AutoMapTo<string>(),
-                Parameters = ConvertArgumentsToJson(arguments),
+                MethodDescription = _localzaionHelper.CreateModuleLocalizableString(type.GetTypeInfo(), method)?.Name,
+                Parameters = ConvertArgumentsToJson(arguments.ToDictionary(k => k.Key.Item1,v => v.Value)),
+                ParametersDescription = ConvertLocalizedArgumentsToJson(arguments),
                 ExecutionTime = Clock.Now
             };
 
@@ -130,6 +141,15 @@ namespace Blocks.Framework.Auditing
             {
                 Logger.Warn(ex.ToString(), ex);
             }
+
+            return auditInfo;
+        }
+
+        public AuditInfo UpdateAuditInfo(AuditInfo auditInfo, Exception ex, object returnParams)
+        {
+            auditInfo.Exception = ex;
+            auditInfo.OutParameters = _auditSerializer.Serialize(returnParams);
+            auditInfo.OutParametersDescription = _localizedSerializer.Serialize(returnParams);
 
             return auditInfo;
         }
@@ -156,7 +176,7 @@ namespace Blocks.Framework.Auditing
         {
             try
             {
-                if (arguments.IsNullOrEmpty())
+                if (CollectionExtensions.IsNullOrEmpty(arguments))
                 {
                     return "{}";
                 }
@@ -188,15 +208,60 @@ namespace Blocks.Framework.Auditing
                 return "{}";
             }
         }
+        
+        
+        private string ConvertLocalizedArgumentsToJson(IDictionary<Tuple<string,IEnumerable<Attribute>>, object> arguments)
+        {
+            try
+            {
+                if (CollectionExtensions.IsNullOrEmpty(arguments))
+                {
+                    return "{}";
+                }
 
-        private static Dictionary<string, object> CreateArgumentsDictionary(MethodInfo method, object[] arguments)
+                var dictionary = new Dictionary<string, object>();
+
+                foreach (var argument in arguments)
+                {
+                    var key = ((LocalizedDescriptionAttribute) argument.Key.Item2.FirstOrDefault(i =>
+                        i is LocalizedDescriptionAttribute))?.Name;
+                    var value = argument.Value;
+                    if (key == null)
+                    {
+                        continue;
+                    }
+                    if (argument.Value != null && _configuration.IgnoredTypes.Any(t => t.IsInstanceOfType(argument.Value)))
+                    {
+                        dictionary[key] = null;
+                    }
+                    else
+                    {
+
+                        var typeConvert =
+                            _configuration.TypeConverts.FirstOrDefault(t => t.Key.IsInstanceOfType(argument.Value));
+                        
+                        dictionary[key] = typeConvert.Key == null ? value : 
+                            typeConvert.Value(value);
+                    }
+                }
+
+                return _localizedSerializer.Serialize(dictionary);
+            }
+            catch (Exception ex)
+            {
+                Logger.Warn(ex.ToString(), ex);
+                return "{}";
+            }
+        }
+
+        private static Dictionary<Tuple<string,IEnumerable<Attribute>>, object> CreateArgumentsDictionary(MethodInfo method, object[] arguments)
         {
             var parameters = method.GetParameters();
-            var dictionary = new Dictionary<string, object>();
+            var dictionary = new Dictionary<Tuple<string,IEnumerable<Attribute>>, object>();
 
             for (var i = 0; i < parameters.Length; i++)
             {
-                dictionary[parameters[i].Name] = arguments[i];
+                dictionary[new Tuple<string,IEnumerable<Attribute>>(parameters[i].Name,parameters[i].GetCustomAttributes())] = arguments[i];
             }
 
             return dictionary;

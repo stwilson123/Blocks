@@ -58,8 +58,10 @@ namespace Blocks.Framework.Auditing
             finally
             {
                 stopwatch.Stop();
-                auditInfo.ExecutionDuration = Convert.ToInt32(stopwatch.Elapsed.TotalMilliseconds);
-                _auditingHelper.Save(auditInfo);
+                //auditInfo.ExecutionDuration = Convert.ToInt32(stopwatch.Elapsed.TotalMilliseconds);
+
+                SaveAuditInfo(auditInfo, stopwatch, null, invocation.ReturnValue);
+                // _auditingHelper.Save(auditInfo);
             }
         }
 
@@ -73,7 +75,7 @@ namespace Blocks.Framework.Auditing
             {
                 invocation.ReturnValue = InternalAsyncHelper.AwaitTaskWithFinally(
                     (Task) invocation.ReturnValue,
-                    exception => SaveAuditInfo(auditInfo, stopwatch, exception)
+                    exception => SaveAuditInfo(auditInfo, stopwatch, exception,null)
                     );
             }
             else //Task<TResult>
@@ -81,17 +83,17 @@ namespace Blocks.Framework.Auditing
                 invocation.ReturnValue = InternalAsyncHelper.CallAwaitTaskWithFinallyAndGetResult(
                     invocation.Method.ReturnType.GenericTypeArguments[0],
                     invocation.ReturnValue,
-                    exception => SaveAuditInfo(auditInfo, stopwatch, exception)
+                    exception => SaveAuditInfo(auditInfo, stopwatch, exception,invocation.ReturnValue)
                     );
             }
         }
 
-        private void SaveAuditInfo(AuditInfo auditInfo, Stopwatch stopwatch, Exception exception)
+        private void SaveAuditInfo(AuditInfo auditInfo, Stopwatch stopwatch, Exception exception,object returnValue)
         {
             stopwatch.Stop();
-            auditInfo.Exception = exception;
             auditInfo.ExecutionDuration = Convert.ToInt32(stopwatch.Elapsed.TotalMilliseconds);
 
+            _auditingHelper.UpdateAuditInfo(auditInfo, exception, returnValue);
             _auditingHelper.Save(auditInfo);
         }
     }

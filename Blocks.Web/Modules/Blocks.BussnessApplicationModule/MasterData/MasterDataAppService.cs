@@ -29,7 +29,7 @@ namespace Blocks.BussnessApplicationModule.MasterData
         
         
         [LocalizedDescription("query")]
-        public  PageList<PageResult>  GetPageList(SearchModel a)
+        public  PageList<PageResult>  GetPageList([LocalizedDescription("queryParam")]SearchModel a)
         {
             
 

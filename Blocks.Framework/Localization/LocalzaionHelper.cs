@@ -38,5 +38,6 @@ namespace Blocks.Framework.Localization
             
             return attribute != null ? CreateModuleLocalizableString(type, attribute.Name,args) : null;
         }
+        
     }
 }

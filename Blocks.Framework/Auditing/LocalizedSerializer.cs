@@ -1,22 +1,20 @@
-using Abp.Dependency;
 using Newtonsoft.Json;
 
 namespace Blocks.Framework.Auditing
 {
-    public class JsonNetAuditSerializer : IAuditSerializer, ITransientDependency
+    public class LocalizedSerializer : JsonNetAuditSerializer
     {
         private readonly IAuditingConfiguration _configuration;
-
-        public JsonNetAuditSerializer(IAuditingConfiguration configuration)
+        public LocalizedSerializer(IAuditingConfiguration configuration) : base(configuration)
         {
             _configuration = configuration;
         }
-
-        public virtual string Serialize(object obj)
+        
+        public override string Serialize(object obj)
         {
             var options = new JsonSerializerSettings
             {
-                ContractResolver = new AuditingContractResolver(_configuration.IgnoredTypes,_configuration.TypeConverts),
+                ContractResolver = new LocalizedContractResolver(_configuration.IgnoredTypes,_configuration.TypeConverts),
             };
 
             return JsonConvert.SerializeObject(obj, options);

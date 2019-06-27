@@ -17,6 +17,8 @@ namespace Blocks.Framework.Auditing
         /// </summary>
         public long? UserId { get; set; }
 
+        public string UserAccount { get; set; }
+
         /// <summary>
         /// ImpersonatorUserId.
         /// </summary>
@@ -47,7 +49,23 @@ namespace Blocks.Framework.Auditing
         /// Calling parameters.
         /// </summary>
         public string Parameters { get; set; }
+        
+        
+        /// <summary>
+        /// Calling parameters.
+        /// </summary>
+        public string ParametersDescription { get; set; }
 
+        /// <summary>
+        /// Returning parameters
+        /// </summary>
+        public string OutParameters { get; set; }
+
+        
+        /// <summary>
+        /// Returning parameters
+        /// </summary>
+        public string OutParametersDescription  { get; set; }
         /// <summary>
         /// Start time of the method execution.
         /// </summary>

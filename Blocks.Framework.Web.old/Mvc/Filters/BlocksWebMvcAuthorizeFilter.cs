@@ -47,8 +47,8 @@ namespace Blocks.Framework.Web.Mvc.Filters
                 return;
             }
 
-            if (_userContext.GetCurrentUser() == null &&
-                _auditingHelper.ShouldSaveAudit(methodInfo))
+            if ( _auditingHelper.ShouldSaveAudit(methodInfo) && _userContext.GetCurrentUser() == null
+               )
                 HandleUnauthorizedRequest(filterContext, methodInfo)
                     ;
         }

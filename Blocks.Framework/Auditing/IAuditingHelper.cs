@@ -11,8 +11,10 @@ namespace Blocks.Framework.Auditing
 
         AuditInfo CreateAuditInfo(Type type, MethodInfo method, object[] arguments);
 
-        AuditInfo CreateAuditInfo(Type type, MethodInfo method, IDictionary<string, object> arguments);
+        AuditInfo CreateAuditInfo(Type type, MethodInfo method, IDictionary<Tuple<string,IEnumerable<Attribute>>, object> arguments);
 
+        AuditInfo UpdateAuditInfo(AuditInfo auditInfo,Exception ex,object returnParams);
+        
         void Save(AuditInfo auditInfo);
 
         Task SaveAsync(AuditInfo auditInfo);
