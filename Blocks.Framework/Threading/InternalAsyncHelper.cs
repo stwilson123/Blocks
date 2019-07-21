@@ -79,13 +79,14 @@ namespace Blocks.Framework.Threading
             }
         }
 
-        public static async Task<T> AwaitTaskWithFinallyAndGetResult<T>(Task<T> actualReturnValue, Action<Exception> finalAction)
+        public static async Task<T> AwaitTaskWithFinallyAndGetResult<T>(Task<T> actualReturnValue, Action<object, Exception> finalAction)
         {
             Exception exception = null;
-
+            var result = default(T);
             try
             {
-                return await actualReturnValue;
+                result = await actualReturnValue;
+                return result;
             }
             catch (Exception ex)
             {
@@ -94,11 +95,11 @@ namespace Blocks.Framework.Threading
             }
             finally
             {
-                finalAction(exception);
+                finalAction(result, exception);
             }
         }
 
-        public static object CallAwaitTaskWithFinallyAndGetResult(Type taskReturnType, object actualReturnValue, Action<Exception> finalAction)
+        public static object CallAwaitTaskWithFinallyAndGetResult(Type taskReturnType, object actualReturnValue, Action<object,Exception> finalAction)
         {
             return typeof(InternalAsyncHelper)
                 .GetMethod("AwaitTaskWithFinallyAndGetResult", BindingFlags.Public | BindingFlags.Static)

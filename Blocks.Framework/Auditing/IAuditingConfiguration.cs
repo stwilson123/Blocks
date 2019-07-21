@@ -31,8 +31,6 @@ namespace Blocks.Framework.Auditing
         /// </summary>
         List<Type> IgnoredTypes { get; }
         
-        
-        List<Func<object,bool>> IgnoredFunc { get; }
 
         Dictionary<Type, Func<object, string>> TypeConverts { get; }
     }

@@ -19,6 +19,8 @@ namespace Blocks.Core.Auditing
         
         
         /// <summary>
+        ///
+        /// 
         /// Creates  a new <see cref="AuditingStore"/>.
         /// </summary>
         public virtual Task SaveAsync(AuditInfo auditInfo)

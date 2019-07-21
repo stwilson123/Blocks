@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Threading.Tasks;
 using Abp.Aspects;
-using Abp.Threading;
+using Blocks.Framework.Threading;
 using Castle.DynamicProxy;
 
 namespace Blocks.Framework.Auditing
@@ -80,10 +80,10 @@ namespace Blocks.Framework.Auditing
             }
             else //Task<TResult>
             {
-                invocation.ReturnValue = InternalAsyncHelper.CallAwaitTaskWithFinallyAndGetResult(
+                 invocation.ReturnValue = InternalAsyncHelper.CallAwaitTaskWithFinallyAndGetResult(
                     invocation.Method.ReturnType.GenericTypeArguments[0],
                     invocation.ReturnValue,
-                    exception => SaveAuditInfo(auditInfo, stopwatch, exception,invocation.ReturnValue)
+                    (result,exception) => SaveAuditInfo(auditInfo, stopwatch, exception,result)
                     );
             }
         }
