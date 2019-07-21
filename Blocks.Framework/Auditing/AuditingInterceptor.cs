@@ -2,6 +2,10 @@
 using System.Diagnostics;
 using System.Threading.Tasks;
 using Abp.Aspects;
+using Abp.Dependency;
+using Blocks.Framework.Exceptions;
+using Blocks.Framework.Localization;
+using Blocks.Framework.RPCProxy;
 using Blocks.Framework.Threading;
 using Castle.DynamicProxy;
 
@@ -10,10 +14,11 @@ namespace Blocks.Framework.Auditing
     internal class AuditingInterceptor : IInterceptor
     {
         private readonly IAuditingHelper _auditingHelper;
-
-        public AuditingInterceptor(IAuditingHelper auditingHelper)
+        protected ILocalizationContext _localizationContext { get; }
+        public AuditingInterceptor(IAuditingHelper auditingHelper, ILocalizationContext localizationContext)
         {
             _auditingHelper = auditingHelper;
+            _localizationContext = localizationContext;
         }
 
         public void Intercept(IInvocation invocation)
@@ -60,7 +65,7 @@ namespace Blocks.Framework.Auditing
                 stopwatch.Stop();
                 //auditInfo.ExecutionDuration = Convert.ToInt32(stopwatch.Elapsed.TotalMilliseconds);
 
-                SaveAuditInfo(auditInfo, stopwatch, null, invocation.ReturnValue);
+                SaveAuditInfo(auditInfo, stopwatch,  auditInfo.Exception, invocation.ReturnValue);
                 // _auditingHelper.Save(auditInfo);
             }
         }
@@ -92,9 +97,40 @@ namespace Blocks.Framework.Auditing
         {
             stopwatch.Stop();
             auditInfo.ExecutionDuration = Convert.ToInt32(stopwatch.Elapsed.TotalMilliseconds);
-
-            _auditingHelper.UpdateAuditInfo(auditInfo, exception, returnValue);
+    
+            
+            _auditingHelper.UpdateAuditInfo(auditInfo, exception, genReturnValue(exception, returnValue));
+            auditInfo.SystemException = auditInfo.Exception is BlocksException ? null: auditInfo.Exception;
             _auditingHelper.Save(auditInfo);
         }
+
+        private object genReturnValue(Exception exception,object returnValue)
+        {
+            var bEx = exception is BlocksException ? (BlocksException) exception: null;
+
+            if (bEx == null)
+                return new DataResult()
+                {
+                    code = ResultCode.Success,
+                    content = returnValue,
+                    //   msg = string.Format(bEx?.Message.FormatStr,bEx?.Message.FormatArgs),
+                };
+            return new DataResult()
+            {
+                code = bEx?.Code ?? ResultCode.Fail,
+                content = bEx?.Content,
+                msg = bEx?.Message?.ToString() ??
+                      bEx?.LMessage?.Localize(_localizationContext) ?? exception.Message,
+            };
+        }
+    }
+    
+    public static class ResultCode
+    {
+        public static readonly string Success = "200";
+        
+        
+        public static readonly string Fail = "101";
+
     }
 }

@@ -54,10 +54,12 @@ namespace Blocks.Framework.RPCProxy
 
     public class DataResult
     {
-        
+        [LocalizedDescription("AuditContent")]
         public dynamic content { get; set; }
         public string logID { get; set; }
+        [LocalizedDescription("AuditMsg")]
         public string msg { get; set; }
+        [LocalizedDescription("AuditCode")]
         public string code { get; set; }
     }
 }

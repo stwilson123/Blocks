@@ -100,6 +100,11 @@ namespace Blocks.Framework.Auditing
         /// Exception object, if an exception occurred during execution of the method.
         /// </summary>
         public Exception Exception { get; set; }
+        
+        /// <summary>
+        /// Exception object, if an exception occurred during execution of the method.
+        /// </summary>
+        public Exception SystemException { get; set; }
 
         public override string ToString()
         {
