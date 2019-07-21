@@ -95,6 +95,12 @@ namespace EntityFramework.Test.FunctionTest
             var initData =new TESTENTITY() {Id = guid, TESTENTITY2ID = "guid" + "2", COLNUMINT = 1, ISACTIVE = 1} ;
             rep.Insert(initData);
 
+            rep.Update(rr => rr.Id == guid, RR => new TESTENTITY()
+            {
+                TESTENTITY2ID ="guid" + "2"  ,
+
+            });
+            
             var constValue = "123";
             var id = rep.Update(rr => rr.Id == guid && rr.CREATEDATE <= now, RR => new TESTENTITY()
             {
@@ -204,7 +210,20 @@ namespace EntityFramework.Test.FunctionTest
 
 
         }
-        
+
+
+        [Fact]
+        public void InsertOrUpdateTest()
+        {
+
+            var rep = Resolve<ITestRepository>();
+            rep.InsertOrUpdate(new TESTENTITY() { Id = "123" });
+
+            
+
+
+        }
+
     }
 
    

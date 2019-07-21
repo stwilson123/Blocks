@@ -34,8 +34,8 @@ namespace EntityFramework.Test.Cache
                 Guid id = Guid.NewGuid();
          
 
-                context.TestEntity.Find(id);
-                context.TestEntity.Find(id);
+                context.TestEntity.Find(id.ToString());
+                context.TestEntity.Find(id.ToString());
 
             }
         }

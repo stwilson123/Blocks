@@ -3,6 +3,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
+using System.Diagnostics;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Linq.Dynamic.Core;
@@ -80,15 +81,27 @@ namespace Blocks.Framework.DBORM.Repository
         {
             var EntityObj = (Data.Entity.Entity) entity;
             EntityObj.CREATER = string.IsNullOrEmpty(EntityObj.CREATER)
-                ? UserContext.GetCurrentUser().UserId
+                ? UserContext.GetCurrentUser()?.UserId
                 : EntityObj.CREATER;
             EntityObj.UPDATER = string.IsNullOrEmpty(EntityObj.UPDATER)
-                ? UserContext.GetCurrentUser().UserId
+                ? UserContext.GetCurrentUser()?.UserId
                 : EntityObj.UPDATER;
             EntityObj.CREATEDATE = Clock.Now;
             EntityObj.UPDATEDATE = Clock.Now;
 
             return base.Insert(entity);
+        }
+
+        public override TEntity Update(TEntity entity)
+        {
+            var EntityObj = (Data.Entity.Entity)entity;
+       
+            EntityObj.UPDATER = string.IsNullOrEmpty(EntityObj.UPDATER)
+                ? UserContext.GetCurrentUser()?.UserId
+                : EntityObj.UPDATER;
+            EntityObj.UPDATEDATE = Clock.Now;
+
+            return base.Update(entity);
         }
 
         public override IList<TEntity> Insert(IList<TEntity> entities)
@@ -208,7 +221,14 @@ namespace Blocks.Framework.DBORM.Repository
         /// Gets DbSet for given entity.
         /// </summary>
 
-        public virtual DbSet<TEntity> Table => Context.Set<TEntity>();
+        public virtual DbSet<TEntity> Table
+        {
+            get
+            {
+                Trace.TraceInformation($"Thread ID {Thread.CurrentThread.ManagedThreadId}, ContextObject {Context.GetHashCode()}");
+                return Context.Set<TEntity>();
+            }
+        }
 
         public virtual DbTransaction Transaction
         {
@@ -338,8 +358,8 @@ namespace Blocks.Framework.DBORM.Repository
 
         public TEntity FirstOrDefault(Expression<Func<TEntity, bool>> predicate)
         {
-            // return GetAllCode().FirstOrDefault(predicate);
-            return GetAllCode().Where(predicate).Skip(0).Take(1).ToArray().FirstOrDefault();
+            return GetAllCode().FirstOrDefault(predicate);
+            //return GetAllCode().Where(predicate).Skip(0).Take(1).ToArray().FirstOrDefault();
         }
 
         public virtual Task<TEntity> FirstOrDefaultAsync(TPrimaryKey id)

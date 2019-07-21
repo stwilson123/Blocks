@@ -39,7 +39,7 @@ namespace Blocks.Framework.DBORM.Intercepter
 
                 
                
-                Trace.TraceInformation("\r\n执行时间:{0} 毫秒 \r\n -->ReaderExecuted.Command:\r\n{1}\r\nParamter:{2}", _stopwatch.ElapsedMilliseconds, command.CommandText,
+                Trace.TraceInformation("\r\n执行时间:{0} 毫秒 \r\n -->CommandExecuted.Command:\r\n{1}\r\nParamter:{2}", _stopwatch.ElapsedMilliseconds, command.CommandText,
                     string.Join(",",command.Parameters.Cast<IDbDataParameter>().Select(t => string.Format("{0}:{1};" ,t.ParameterName,t.Value)))
                     );
                 //var command = ((CommandEventData)value.Value).Command;
@@ -63,7 +63,7 @@ namespace Blocks.Framework.DBORM.Intercepter
             {
                 _stopwatch.Stop();
                 var command = ((CommandEventData)value.Value).Command;
-                Trace.TraceInformation("\r\n执行时间:{0} 毫秒 \r\n -->ReaderExecuted.Command:\r\n{1}\r\nParamter:{2}", _stopwatch.ElapsedMilliseconds, command.CommandText,
+                Trace.TraceInformation("\r\n执行时间:{0} 毫秒 \r\n -->CommandError.Command:\r\n{1}\r\nParamter:{2}", _stopwatch.ElapsedMilliseconds, command.CommandText,
                     string.Join(",",command.Parameters.Cast<IDbDataParameter>().Select(t => string.Format("{0}:{1};" ,t.ParameterName,t.Value)))
                     );
             }

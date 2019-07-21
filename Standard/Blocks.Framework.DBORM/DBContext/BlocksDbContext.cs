@@ -156,13 +156,14 @@ namespace Blocks.Framework.DBORM.DBContext
             
              
             var dbType = _settingManager.GetSettingValueForApplication("DatabaseType");
-
             var connectionString = ConfigurationManager.ConnectionStrings[nameOrConnectionString].ConnectionString;
             switch (dbType)
             {
                 case "Sqlserver":optionsBuilder.UseSqlServer(connectionString: connectionString, sqlServerOptionsAction:b => b.UseRowNumberForPaging() );break;
                 case "Oracle":
-                    optionsBuilder.UseOracle(connectionString: connectionString, oracleOptionsAction:b => b.UseRowNumberForPaging()); break;
+                    optionsBuilder.UseOracle(connectionString: connectionString, oracleOptionsAction:(option) => option.UseOracleSQLCompatibility("11")); break;
+
+//                    optionsBuilder.UseOracle(connectionString: connectionString, oracleOptionsAction:b => b.UseRowNumberForPaging()); break;
             }
 
         }

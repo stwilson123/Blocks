@@ -35,7 +35,7 @@ namespace EntityFramework.Test
             {
                 case "Sqlserver": optionsBuilder.UseSqlServer(connectionString: connectionString, sqlServerOptionsAction:option => option.UseRowNumberForPaging()); break;
                 case "Oracle.ManagedDataAccess.Client":
-                    optionsBuilder.UseOracle(connectionString: connectionString); break;
+                    optionsBuilder.UseOracle(connectionString,o => o.UseOracleSQLCompatibility("11")); break;
             }
 
             if (!autoDetectChangesEnabled)
