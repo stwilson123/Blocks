@@ -9,7 +9,7 @@ namespace Blocks.Framework.Auditing
     /// <summary>
     /// Decides which properties of auditing class to be serialized
     /// </summary>
-    public class AuditingContractResolver : CamelCasePropertyNamesContractResolver
+    public class AuditingContractResolver : DefaultContractResolver
     {
         private readonly List<Type> _ignoredTypes;
         private readonly IDictionary<Type, Func<object, string>> _typeConverts;
