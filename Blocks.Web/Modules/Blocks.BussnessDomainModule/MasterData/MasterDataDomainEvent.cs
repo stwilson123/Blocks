@@ -38,6 +38,7 @@ namespace Blocks.BussnessDomainModule.MasterData
         {
             var newMasterData = new TESTENTITY()
             {
+                Id="123",
                 STRING = data.city,
                 ISACTIVE = SafeConvert.ToInt64(data.isActive),
                 COMMENT = data.comment,
@@ -45,7 +46,9 @@ namespace Blocks.BussnessDomainModule.MasterData
                 REGISTERTIME =data.registerTime,
                 
             };
+            
             var Id = testRepository.Insert(newMasterData).Id;
+         //   testRepository.InsertOrUpdate(newMasterData);
             return Id;
 //            testRepository.Update(t => t.Id == "57627fde-0332-4db0-9036-ce3ec5e48496", t => 
 //                new TESTENTITY()

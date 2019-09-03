@@ -64,7 +64,7 @@ namespace Blocks.BussnessRespositoryModule
                   isActive = testEntity.ISACTIVE,
                   comment = testEntity.COMMENT,
                   registerTime = testEntity.REGISTERTIME
-              },search.page,true);
+              },search.page);
             //return GetContextTable()
             //     //.InnerJoin((TESTENTITY2 testEntity2) => testEntity2.Id,(TESTENTITY testEntity) => testEntity.TESTENTITY2ID)
             //    .Paging((TESTENTITY testEntity) => new PageResult

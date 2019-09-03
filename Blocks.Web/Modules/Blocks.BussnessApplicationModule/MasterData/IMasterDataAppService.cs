@@ -1,4 +1,5 @@
-﻿using System.Web.Http;
+﻿using System.Threading.Tasks;
+using System.Web.Http;
 using Blocks.BussnessDTOModule;
 using Blocks.BussnessDTOModule.MasterData;
 using Blocks.Framework.ApplicationServices;
@@ -12,7 +13,7 @@ namespace Blocks.BussnessApplicationModule.MasterData
     {
 
         [HttpMethod(HttpVerb.Delete)]
-        PageList<PageResult>  GetPageList(SearchModel a);
+        Task<PageList<PageResult>>  GetPageList(SearchModel a);
 
         void Add(MasterDataInfo masterDataInfo);
 

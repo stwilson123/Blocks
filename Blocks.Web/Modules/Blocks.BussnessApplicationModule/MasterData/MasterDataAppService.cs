@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Abp.Events.Bus;
 using Blocks.BussnessDomainModule;
 using Blocks.BussnessDomainModule.MasterData;
@@ -29,11 +30,11 @@ namespace Blocks.BussnessApplicationModule.MasterData
         
         
         [LocalizedDescription("query")]
-        public  PageList<PageResult>  GetPageList([LocalizedDescription("queryParam")]SearchModel a)
+        public  Task<PageList<PageResult>>  GetPageList([LocalizedDescription("START_ABP")]SearchModel a)
         {
             
 
-            return masterDataDomain.GetPageList(a);
+            return Task.FromResult(masterDataDomain.GetPageList(a));
             //return testDomain.GetValue(a);
         }
 
