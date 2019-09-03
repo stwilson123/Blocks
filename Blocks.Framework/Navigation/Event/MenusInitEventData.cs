@@ -7,7 +7,7 @@ namespace Blocks.Framework.Navigation.Event
 {
     public class MenusInitEventData : DomainEventData
     {
-        public INavigationItemDefinition[] NavigationItems { get; set; }
+        public IDictionary<string, INavigationItemDefinition[]>  NavigationItems { get; set; }
     }
 
      

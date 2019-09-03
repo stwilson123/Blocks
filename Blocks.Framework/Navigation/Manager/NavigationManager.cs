@@ -32,7 +32,7 @@ namespace Blocks.Framework.Navigation.Manager
         }
 
         private readonly IIocResolver _iocResolver;
- 
+
         private readonly INavigationConfiguration _configuration;
 
         public NavigationManager(IIocResolver iocResolver)
@@ -42,37 +42,43 @@ namespace Blocks.Framework.Navigation.Manager
             Menus = new Dictionary<string, INavigationDefinition>
             {
                 {
-                    "MainMenu", new NavigationDefinition("MainMenu",new LocalizableString(AbpConsts.LocalizationSourceName,"MainMenu"))
+                    "MainMenu",
+                    new NavigationDefinition("MainMenu",
+                        new LocalizableString(AbpConsts.LocalizationSourceName, "MainMenu"))
+                },
+                {
+                    "Mobile",
+                    new NavigationDefinition("Mobile",
+                        new LocalizableString(AbpConsts.LocalizationSourceName, "Mobile"))
                 }
             };
             sourceMenus = new Dictionary<string, INavigationDefinition>();
         }
 
-             public IDomainEventBus EventBus { get; set; }
+        public IDomainEventBus EventBus { get; set; }
 
         public void Initialize()
         {
             var context = new NavigationProviderContext(this);
 
             //should be register thought LocalizsableModeule
-             
+
             foreach (var provider in _iocResolver.ResolveAll<INavigationProvider>())
             {
                 provider.SetNavigation(context);
             }
 
             sourceMenus = Menus.AutoMapTo<IDictionary<string, INavigationDefinition>>();
-            Menus =    Filter(Menus).Result;
+            Menus = Filter(Menus).Result;
 
-            if(_iocResolver.IsRegistered<IDomainEventBus>())
+            if (_iocResolver.IsRegistered<IDomainEventBus>())
             {
-                
-                _iocResolver.Resolve<IDomainEventBus>().Trigger(new MenusInitEventData() {
-                    NavigationItems = Menus.SelectMany(t => t.Value.Items).ToArray()
+                _iocResolver.Resolve<IDomainEventBus>().Trigger(new MenusInitEventData()
+                {
+                    NavigationItems = Menus.ToDictionary(d => d.Key, d => d.Value.Items.ToArray())
                 });
             }
-                
-           
+
 
             //TODO Menu Adapter
             {
@@ -102,6 +108,7 @@ namespace Blocks.Framework.Navigation.Manager
                     {
                         result = await filter.Filter(result);
                     }
+
                     navResult.Add(nav.Key, result.FirstOrDefault());
                 }
 
@@ -113,11 +120,11 @@ namespace Blocks.Framework.Navigation.Manager
 
         private MenuItemDefinition funTransfter(INavigationItemDefinition menuItem)
         {
-            
             var localizableString = (LocalizableString) (menuItem.DisplayName);
             var menuDefinition = new MenuItemDefinition(
                 menuItem.Name,
-                new Abp.Localization.LocalizableString(localizableString.Name, localizableString.SourceName), null, RouteHelper.GetUrl(menuItem.RouteValues));
+                new Abp.Localization.LocalizableString(localizableString.Name, localizableString.SourceName), null,
+                RouteHelper.GetUrl(menuItem.RouteValues));
 //            menuItem.Items?.ForEach(navigationItemDefinition =>
 //            {
 //                menuDefinition.AddItem(funTransfter(navigationItemDefinition));
@@ -134,15 +141,15 @@ namespace Blocks.Framework.Navigation.Manager
                 if (routeValue == null || !routeValue.Any())
                     return "";
                 var controllerServiceName = routeValue["area"]?.ToString() + "/" + routeValue["controller"]?.ToString()
-                                           + "/" + routeValue["action"]?.ToString();
+                                            + "/" + routeValue["action"]?.ToString();
                 return controllerServiceName;
             }
+
             public static string GetControllerPath(IDictionary<string, object> routeValue)
             {
                 var controllerServiceName = routeValue["area"]?.ToString() + "/" + routeValue["controller"]?.ToString();
                 return controllerServiceName;
             }
         }
-
     }
 }
