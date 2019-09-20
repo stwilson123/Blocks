@@ -21,6 +21,8 @@ namespace Blocks.BussnessDomainModule.MasterData
 
         public TestRPC testRPC { get; set; }
 
+        public ITest2Rpc Test2Rpc { get; set; }
+
         public ActualMasterData(ITestRepository testRepository, ITest2Repository test2Repository)
         {
 

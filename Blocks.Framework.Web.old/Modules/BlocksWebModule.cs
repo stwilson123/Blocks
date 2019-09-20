@@ -123,7 +123,9 @@ namespace Blocks.Framework.Web.Modules
                     IocManager.Resolve<RPCApiManager>().Register(
                         AppModule.GetTypes().Where(t => t.BaseType == typeof(IRPCProxy)).ToArray()
                         );
- 
+                    IocManager.Resolve<RPCApiManager>().Register(
+                        AppModule.GetTypes().Where(t =>!t.IsAbstract && t.IsClass && typeof(IRPCClientProxy).IsAssignableFrom(t)).ToArray()
+                    );
 
                     featureDescriptor.SubAssembly.AddIfNotContains(AppModule.GetName().Name);
 
@@ -142,7 +144,9 @@ namespace Blocks.Framework.Web.Modules
                     IocManager.Resolve<RPCApiManager>().Register(
                         DomainModule.GetTypes().Where(t => t.BaseType == typeof(IRPCProxy)).ToArray()
                         );
-
+                    IocManager.Resolve<RPCApiManager>().Register(
+                        DomainModule.GetTypes().Where(t =>!t.IsAbstract && t.IsClass && typeof(IRPCClientProxy).IsAssignableFrom(t)).ToArray()
+                    );
                     featureDescriptor.SubAssembly.AddIfNotContains(DomainModule.GetName().Name);
                 }
 

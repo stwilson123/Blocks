@@ -22,6 +22,8 @@ namespace Blocks.BussnessDomainModule.MasterData
 
         public TestRPC testRPC { get; set; }
 
+        public ITest2Rpc[] Test2Rpc { get; set; }
+
         public MasterDataDomainEvent(ITestRepository testRepository, ITest2Repository test2Repository)
         {
 
@@ -85,6 +87,18 @@ namespace Blocks.BussnessDomainModule.MasterData
 
         public virtual string ProxTest(string input)
         {
+            foreach (var test2Rpc in Test2Rpc)
+            {
+                var result = test2Rpc.ProxFunction(new RPC.ProxModel()
+                {
+                    dic = new Dictionary<string, string>()
+                    {
+
+                        {input, input}
+                    }
+                });
+            }
+
             return testRPC.ProxFunction(new RPC.ProxModel() { dic = new Dictionary<string, string>() {
 
                 { input,input}

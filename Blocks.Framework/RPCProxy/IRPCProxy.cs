@@ -7,4 +7,9 @@ namespace Blocks.Framework.RPCProxy
     public abstract class IRPCProxy
     {
     }
+
+    public interface IRPCClientProxy
+    {
+        
+    }
 }
