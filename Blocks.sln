@@ -143,6 +143,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Performance1.psess = Performance1.psess
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplicationTest", "WebApplicationTest\WebApplicationTest.csproj", "{50F33B8E-F149-4E26-850E-1FF9557898C0}"
+EndProject
 Global
 	GlobalSection(Performance) = preSolution
 		HasPerformanceSessions = true
@@ -388,6 +390,10 @@ Global
 		{DD9021DB-1D01-4D4C-98BE-A5AC30848942}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD9021DB-1D01-4D4C-98BE-A5AC30848942}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DD9021DB-1D01-4D4C-98BE-A5AC30848942}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50F33B8E-F149-4E26-850E-1FF9557898C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50F33B8E-F149-4E26-850E-1FF9557898C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50F33B8E-F149-4E26-850E-1FF9557898C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50F33B8E-F149-4E26-850E-1FF9557898C0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -41,6 +41,11 @@ namespace Blocks.LayoutModule.Controllers
         [ChildActionOnly]
         public ActionResult SideBarNav(string activeMenu)
         {
+            
+            //TODO
+            var mobileModel =  _userNavigationManager.GetMenuAsync("Mobile", _userContext.GetCurrentUser()).Result;
+
+            
             var model =  _userNavigationManager.GetMenuAsync("MainMenu", _userContext.GetCurrentUser()).Result;
 
             EventBus.Trigger<MenusSortEventData>(new MenusSortEventData() {  userNavigation = model});

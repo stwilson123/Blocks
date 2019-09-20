@@ -105,6 +105,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\丹顶鹤.png" />
+    <Content Include="Module_Start\Config\MobileNavigation.json" />
     <Content Include="Styles\IndexCss.css" />
     <Content Include="Module.txt" />
     <Content Include="packages.config">
@@ -118,6 +119,7 @@
     <Compile Include="Controllers\MasterDataController.cs" />
     <Compile Include="Controllers\TestsMvcController.cs" />
     <Compile Include="Module_Start\BussnesWebModuleNavigationProvider.cs" />
+    <Compile Include="Module_Start\MobileNavigationProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\MasterData\Add.cshtml" />
@@ -155,6 +157,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Standard\Blocks.Core\Blocks.Core.csproj">
+      <Project>{0adfb2db-e9f6-4345-a659-60cf03571453}</Project>
+      <Name>Blocks.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Blocks.BussnessDomainModule\Blocks.BussnessDomainModule.csproj">
       <Project>{515b2afd-abe4-4d33-8332-8d900ed947f1}</Project>
       <Name>Blocks.BussnessDomainModule</Name>

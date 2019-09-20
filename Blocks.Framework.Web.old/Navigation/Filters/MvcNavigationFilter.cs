@@ -61,16 +61,33 @@ namespace Blocks.Framework.Web.Navigation.Filters
             var navItem = navDefinitionItem;
             var controllerPath = Mvc.Route.RouteHelper.GetControllerPath(navItem.RouteValues);
             var controllerActionKv = _defaultControllerManager.FindOrNull(controllerPath)?.Actions.FirstOrDefault(a => a.Key == navItem.RouteValues["action"]?.ToString());
+            if (navItem.NavigationType == 1)
+            {
+                var p = navItem.Name;
+                var navigationUrl = Mvc.Route.RouteHelper.GetUrl(navItem.RouteValues);
+                var permissons = new List<Permission>();
+                 
+//                var navigationRequirePermission = Permission.Create(p, navigationUrl, "navigation",
+//                    navigationUrl + "/" + p, new LocalizableString(navItem.DisplayName.SourceName, p));
+                if(navItem.RouteValues.Values.Count() < 3)
+                   throw new BlocksException(StringLocal.Format("Navigation controller or action {0} can't null",navigationUrl));
+
+                return new WebNavigationItemDefinition(navItem.Name,
+                    navItem.DisplayName, Mvc.Route.RouteHelper.GetUrl(navItem.RouteValues), navItem.RequiresAuthentication,null
+                    , navItem.CustomData, navItem.IsVisible, navItem.HasPermissions,navItem.RouteValues, navItem.NavigationType
+                );
+            }
             if (controllerActionKv?.Key == null)
             {
                 throw new BlocksException(StringLocal.Format("Navigation or action {0} can't found",controllerPath));
             }
+          
             var controllerAction = controllerActionKv.Value.Value;
             var url = Mvc.Route.RouteHelper.GetUrl(navItem.RouteValues);
             var requirePermission = controllerAction.GetAuthorize()?.Select(p => Permission.Create(p, url, "navigation", url+"/" + p, new LocalizableString(navItem.DisplayName.SourceName,p))).ToArray();
             return new WebNavigationItemDefinition(navItem.Name,
                 navItem.DisplayName, Mvc.Route.RouteHelper.GetUrl(navItem.RouteValues), navItem.RequiresAuthentication, requirePermission
-                , navItem.CustomData, navItem.IsVisible, navItem.HasPermissions,navItem.RouteValues
+                , navItem.CustomData, navItem.IsVisible, navItem.HasPermissions,navItem.RouteValues, navItem.NavigationType
             );
         }
     }

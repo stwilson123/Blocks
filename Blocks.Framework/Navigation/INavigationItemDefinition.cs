@@ -50,5 +50,10 @@ namespace Blocks.Framework.Navigation
 
 
         string uId { get; }
+
+        /// <summary>
+        /// 0 is backend navigation,1 is fontend navigation
+        /// </summary>
+        int NavigationType { get; set; }
     }
 }

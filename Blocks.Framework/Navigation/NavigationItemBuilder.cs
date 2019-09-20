@@ -99,6 +99,13 @@ namespace Blocks.Framework.Navigation.Builder
 
             return this;
         }
+
+        public NavigationItemBuilder SetNavigationType(int type)
+        {
+           // _item
+            _item.NavigationType = type;
+            return this;
+        }
     }
 
 }

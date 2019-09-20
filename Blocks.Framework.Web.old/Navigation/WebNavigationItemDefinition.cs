@@ -20,6 +20,7 @@ namespace Blocks.Framework.Web.Navigation
         public object CustomData { get; }
         public bool IsVisible { get; set; }
         public string uId => this.GetUniqueId();
+        public int NavigationType { get; set; }
 
 
         /// <summary>
@@ -35,7 +36,9 @@ namespace Blocks.Framework.Web.Navigation
             
         }
         
-        public WebNavigationItemDefinition(string name, ILocalizableString displayName,string url, bool requiresAuthentication = false, Permission[] requiredPermissionName = null, object customData = null,  bool isVisible = true,Permission[] hasPermissions = null, IDictionary<string, object> routeValues = null)  
+        public WebNavigationItemDefinition(string name, ILocalizableString displayName,string url, bool requiresAuthentication = false, 
+            Permission[] requiredPermissionName = null, object customData = null,  bool isVisible = true,Permission[] hasPermissions = null,
+            IDictionary<string, object> routeValues = null,int navigationType = 1)  
         {
             Check.NotNull(name, nameof(name));
             Check.NotNull(displayName, nameof(displayName));
@@ -54,6 +57,7 @@ namespace Blocks.Framework.Web.Navigation
             Url = url;
             HasPermissions = hasPermissions;
             RouteValues = routeValues;
+            NavigationType = navigationType;
         }
 
        

@@ -54,6 +54,7 @@ namespace Blocks.Core.Navigation.Models
         public Permission[] RequirePermissions { get { return _navItem.RequirePermissions; }  }
 
         public string uId => this.GetUniqueId();
+        public int NavigationType { get; set; }
 
         public UserNavigationItem()
         {
@@ -77,6 +78,7 @@ namespace Blocks.Core.Navigation.Models
             Items = new List<UserNavigationItem>();
             IsVisible = navItem.IsVisible;
             Order = 0;
+            NavigationType = navItem.NavigationType;
         }
 
       

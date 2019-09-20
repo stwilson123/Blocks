@@ -68,6 +68,8 @@ namespace Blocks.Framework.Navigation
         public bool IsVisible { get; set; }
 
         public string uId => this.GetUniqueId();
+
+        public int NavigationType { get; set; }
         //   public string ExtensionName { get; set; }
 
         //        /// <summary>
