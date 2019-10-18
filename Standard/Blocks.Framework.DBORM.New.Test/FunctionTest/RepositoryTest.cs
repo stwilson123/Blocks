@@ -106,6 +106,7 @@ namespace EntityFramework.Test.FunctionTest
             {
                 TESTENTITY2ID = RR.TESTENTITY2ID + constValue  ,
                 COMMENT = "123321"
+              
             });
             var updatedData = rep.FirstOrDefault(t => t.Id == guid);
             Assert.Equal(updatedData.TESTENTITY2ID,initData.TESTENTITY2ID + "123"  );
@@ -135,12 +136,20 @@ namespace EntityFramework.Test.FunctionTest
             rep.Insert(initData);
 
             var constValue = "123";
+            
+            
+            var rowIds = rep.Update(rr => rr.Id == "1231232132132132132131233213123" && rr.CREATEDATE <= now, RR => new TESTENTITY()
+            {
+                TESTENTITY2ID = RR.TESTENTITY2ID + initData.TESTENTITY2ID  ,
+                COMMENT = "123321"
+            });
             var id = rep.Update(rr => rr.Id == guid && rr.CREATEDATE <= now, RR => new TESTENTITY()
             {
                 TESTENTITY2ID = RR.TESTENTITY2ID + initData.TESTENTITY2ID  ,
                 COMMENT = "123321"
             });
             var updatedData = rep.FirstOrDefault(t => t.Id == guid);
+            
             Assert.Equal(updatedData.TESTENTITY2ID,initData.TESTENTITY2ID + initData.TESTENTITY2ID  );
             
        
@@ -223,6 +232,8 @@ namespace EntityFramework.Test.FunctionTest
 
 
         }
+        
+        
 
     }
 

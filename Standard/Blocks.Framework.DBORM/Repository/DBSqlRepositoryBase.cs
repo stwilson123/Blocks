@@ -159,13 +159,12 @@ namespace Blocks.Framework.DBORM.Repository
                     Expression.Constant(Clock.Now)));
             }
 
-//            if (MemberBindings.Any(t => t.Member.Name == "DATAVERSION"))
-//            {
-//                MemberBindings.Add(Expression.Bind(typeof(TEntity).GetMember("DATAVERSION")[0],
-//                    Expression.Add()
-//                    
-//                    Expression.Constant(Clock.UtcNow)));
-//            }
+            if (!MemberBindings.Any(t => t.Member.Name == "DATAVERSION") && updateFactory.Parameters.Any())
+            {
+                var lambdaParam = updateFactory.Parameters.FirstOrDefault();
+                MemberBindings.Add(Expression.Bind(typeof(TEntity).GetMember("DATAVERSION")[0],
+                    Expression.Add( Expression.PropertyOrField(lambdaParam,"DATAVERSION"), Expression.Constant((long)1))));
+            }
             var updateMemberInit = memberInitExpression.Update(memberInitExpression.NewExpression, MemberBindings);
 
             Expression<Func<TEntity, TEntity>> UpdateExpression = Expression.Lambda<Func<TEntity, TEntity>>(
