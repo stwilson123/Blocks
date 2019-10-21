@@ -115,12 +115,13 @@ namespace Blocks.Framework.Auditing
 
         public AuditInfo CreateAuditInfo(Type type, MethodInfo method, IDictionary<Tuple<string,IEnumerable<Attribute>>, object> arguments)
         {
+            var userAccount  = _userContext.GetCurrentUser()?.UserAccount;
             
             var auditInfo = new AuditInfo
             {
                 TenantId = AbpSession.TenantId,
                 UserId = AbpSession.UserId,
-                UserAccount = _userContext.GetCurrentUser()?.UserAccount,
+                UserAccount = userAccount,
                 ImpersonatorUserId = AbpSession.ImpersonatorUserId,
                 ImpersonatorTenantId = AbpSession.ImpersonatorTenantId,
                 ServiceName = type != null

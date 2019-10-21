@@ -11,6 +11,9 @@ namespace Blocks.Framework.Security.Authorization.User
         /// <param name="user">User</param>
         /// <param name="permission">Permission</param>
         Task<bool> IsGrantedAsync(IUserIdentifier user, Blocks.Framework.Security.Authorization.Permission.Permission permission);
-        
+
+
+
+        Task CheckUserStatus(IUserIdentifier user);
     }
 }

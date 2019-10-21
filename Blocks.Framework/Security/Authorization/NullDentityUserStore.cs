@@ -10,5 +10,10 @@ namespace Blocks.Framework.Security.Authorization
         {
             return UserIdentifier.CreateNull();
         }
+
+        public void CheckUserStatus(IUserIdentifier userIdentifier)
+        {
+            
+        }
     }
 }

@@ -41,8 +41,16 @@ namespace Blocks.Framework.Security
             {
                 if (roleIds == null)
                 {
-                    roleIds = _iocManager.IsRegistered<IDentityUserStore>() ? _iocManager.Resolve<IDentityUserStore>().GetUser(userNameClaim.Value)?.RoleIds :
-                        new List<string>();
+                    try
+                    {
+                        roleIds = _iocManager.IsRegistered<IDentityUserStore>() ? _iocManager.Resolve<IDentityUserStore>().GetUser(userNameClaim.Value)?.RoleIds :
+                            new List<string>();
+                    }
+                    catch (Exception e)
+                    {
+                        roleIds = new List<string>();
+                    }
+                  
                     Log.Debug($"User {userIdClaim.Value} find roleIds {string.Join(",",roleIds)}");
                 }
             }

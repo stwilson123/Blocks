@@ -8,5 +8,7 @@ namespace Blocks.Framework.Security.Authorization
     {
         UserIdentifier GetUser(string UserAccount);
 
+        void CheckUserStatus(IUserIdentifier userIdentifier);
+
     }
 }

@@ -19,15 +19,18 @@ namespace Blocks.Framework.Web.Security
 
         public Task<LogInResult> LoginAsync(string usernameOrEmailAddress, string password, string tenancyName)
         {
+            var userIdentity = dentityUserStore.GetUser(usernameOrEmailAddress);
             var logInResult = new LogInResult()
             {
                     Result = LoginResultType.Success,
-                     User = dentityUserStore.GetUser(usernameOrEmailAddress).ToIdentity()
+                     User = userIdentity.ToIdentity()
             };
             if(!userPassword.validate(usernameOrEmailAddress, password))
             {
                 logInResult.Result = LoginResultType.InvalidPassword;
             }
+
+            dentityUserStore.CheckUserStatus(userIdentity);
             if(string.IsNullOrEmpty(logInResult.User.Id))
             {
                 logInResult.Result = LoginResultType.InvalidUserNameOrEmailAddress;
