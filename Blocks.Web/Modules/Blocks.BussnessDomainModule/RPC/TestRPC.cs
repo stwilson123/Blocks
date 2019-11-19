@@ -18,7 +18,7 @@ namespace Blocks.BussnessDomainModule.RPC
 
     public interface ITest2Rpc : IRPCClientProxy
     {
-        [RequestMappingAttribute("/BussnessWebModule/Test/ProxFunction")]
+       // [RequestMappingAttribute("/BussnessWebModule/Test/ProxFunction")]
         List<string> ProxFunction(ProxModel id);
     }
 
@@ -32,7 +32,7 @@ namespace Blocks.BussnessDomainModule.RPC
     }
     public class SecondTest2RPC : ITest2Rpc
     {
-        [RequestMappingAttribute("/BussnessWebModule/Test/ProxFunction")]
+        [RequestMappingAttribute("/BussnessWebModule/Test/ProxFunction1")]
         public virtual List<string> ProxFunction(ProxModel id)
         {
             throw new NotImplementedException();

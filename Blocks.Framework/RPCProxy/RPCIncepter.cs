@@ -29,8 +29,8 @@ namespace Blocks.Framework.RPCProxy
 
         public void Intercept(IInvocation invocation)
         {
-
-            var requestAttribute = invocation.Method.GetSingleAttributeOrNull<RequestMappingAttribute>();
+            
+            var requestAttribute = invocation.MethodInvocationTarget.GetSingleAttributeOrNull<RequestMappingAttribute>();
             if(requestAttribute == null || requestAttribute.Path.IsNullOrEmpty())
             {
                 throw new BlocksException(StringLocal.Format("Request Attribute is null or empty!"));
