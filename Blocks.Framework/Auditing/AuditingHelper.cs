@@ -157,7 +157,7 @@ namespace Blocks.Framework.Auditing
 
         public void Save(AuditInfo auditInfo)
         {
-            using (var uow = _unitOfWorkManager.Begin(TransactionScopeOption.Suppress))
+            using (var uow = _unitOfWorkManager.Begin(TransactionScopeOption.RequiresNew))
             {
                 AuditingStore.Save(auditInfo);
                 uow.Complete();

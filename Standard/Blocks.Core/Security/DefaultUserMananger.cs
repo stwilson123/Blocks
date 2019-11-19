@@ -34,30 +34,19 @@ namespace Blocks.Core.Security
         //{
         //    return Task.FromResult(true);
         //}
+        
+        
 
         public Task<bool> IsGrantedAsync(IUserIdentifier user, Permission permission)
         {
             Task<bool> result = Task.FromResult(true);
 
-//            var permissionCache = _cacheManager.GetCache<string,List<PermissionItem>>();
-//            var permissionCacheKey = getPermissionKey(user.UserId);
-//            var userPermissionList = permissionCache.Get(permissionCacheKey, (key) =>
-//            {
-//                return  (TaskResult(user, permission).Result ) ? new List<PermissionItem>()
-//                {
-//                    new PermissionItem(permission.ResourceKey,true)
-//                } : new List<PermissionItem>(){  };
-//            });
-//            var curResourcePermission = userPermissionList.FirstOrDefault(p => p.ResourceKey == permission.ResourceKey);
-//            if(curResourcePermission != null )
-//                return curResourcePermission.IsGranted ? Task.FromResult<bool>(true) : Task.FromResult(false);
-//
-//            var isGranted = TaskResult(user, permission).Result;
-//            userPermissionList.Add(new PermissionItem(permission.ResourceKey, isGranted));
-//            permissionCache.Put(permissionCacheKey, userPermissionList);
-            //return Task.FromResult(isGranted);
-
             return TaskResult(user, permission);
+        }
+
+        public Task CheckUserStatus(IUserIdentifier user)
+        {
+            throw new System.NotImplementedException();
         }
 
         private Task<bool> TaskResult(IUserIdentifier user, Permission permission)
@@ -94,6 +83,11 @@ namespace Blocks.Core.Security
 
             userPermissionList.RemoveAll(p => p.ResourceKey == eventData.ResourceKey);
             permissionCache.Put(permissionCacheKey, userPermissionList);
+        }
+
+        public void testc()
+        {
+            throw new System.NotImplementedException();
         }
     }
 

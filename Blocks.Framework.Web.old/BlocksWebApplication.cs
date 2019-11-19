@@ -65,6 +65,7 @@ namespace Blocks.Framework.Web
 //                    if (!moduleFileList.Any(t => string.Equals(t, "Module.txt", StringComparison.CurrentCultureIgnoreCase)))
 //                        continue;
                     var moduleBin = moduleFileList.FirstOrDefault(t => t.EndsWith("bin"));
+                    moduleBin = moduleBin??moduleFileList.FirstOrDefault(t => t.EndsWith("Release"));
                     if (!string.IsNullOrEmpty(moduleBin))
                         AbpBootstrapper.PlugInSources.AddFolder(pathProvider.MapPath(moduleBin),
                             SearchOption.AllDirectories);
