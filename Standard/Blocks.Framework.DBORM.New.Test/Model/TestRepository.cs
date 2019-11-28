@@ -96,6 +96,11 @@ namespace EntityFramework.Test.Model
 //                .Skip(10).Take(10).ToList();
         }
 
+        public int ExecuteSqlCommand(string id)
+        {
+            return this.ExecuteSqlCommand("DELETE FROM TESTENTITY WHERE ID = {0}", id);
+        }
+
         public object GetLongIdetifier()
         {
             return GetContextTable().OrderBy(qwertyuioasdfghjklzxcvbnmqwertyuioasdfghjklzxcvbnm =>

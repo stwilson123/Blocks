@@ -66,6 +66,7 @@ namespace EntityFramework.Test.FunctionTest
         public async void queryNotToThrowLongIdetifier()
         {
             var rep = Resolve<ITestRepository>();
+          
             var qwertyuioasdfghjklzxcvbnmqwertyuioasdfghjklzxcvbnm = "123";
             rep.FirstOrDefault(t => t.Id == qwertyuioasdfghjklzxcvbnmqwertyuioasdfghjklzxcvbnm);
 
@@ -233,6 +234,22 @@ namespace EntityFramework.Test.FunctionTest
 
         }
         
+        
+        
+        [Fact]
+        public  void ExcuteSql()
+        {
+            var rep = Resolve<ITestRepository>();
+            Assert.Equal(0,rep.ExecuteSqlCommand(Guid.NewGuid().ToString()));
+            var newId = Guid.NewGuid().ToString();
+            rep.Insert(new TESTENTITY()
+            {
+                Id = newId
+            });
+            Assert.Equal(1,rep.ExecuteSqlCommand(newId));
+
+
+        }
         
 
     }

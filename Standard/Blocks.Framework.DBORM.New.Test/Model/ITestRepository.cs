@@ -16,6 +16,8 @@ namespace EntityFramework.Test.Model
         List<TESTENTITY> GetTESTENTITY3s();
         object FromSql();
 
+        int ExecuteSqlCommand(string id);
+
         object GetLongIdetifier();
 
         object SkipAndTake(int page, int pageSize);

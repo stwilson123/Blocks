@@ -595,10 +595,17 @@ namespace Blocks.Framework.DBORM.Repository
         public List<TElement> SqlQuery<TElement>(string sql, params object[] paramters)
             where TElement : class, IQueryEntity
         {
+           
             return this.Context.Query<TElement>()
                 .FromSql(sql, paramters).ToList();
         }
 
+        public  int ExecuteSqlCommand(string sql, params object[] paramters)
+        {
+            return  this.Context.Database.ExecuteSqlCommand(sql, paramters);
+        }
+        
+       
         public PageList<TElement> SqlQueryPaging<TElement>(Page page, string sql, params object[] paramters)
             where TElement : class, IQueryEntity
         {
