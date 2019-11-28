@@ -5,6 +5,7 @@ using Blocks.Framework.DBORM.Repository;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Dynamic;
+using System.Linq.Dynamic.Core;
 using System.Linq.Expressions;
 using System.Reflection;
 using Blocks.Framework.Data.Entity;
@@ -64,7 +65,7 @@ namespace EntityFramework.Test.Model
                 {
                     Text = t.TESTENTITY2.Text
                 }
-            },new Page(){ page = 1,pageSize = 10},true);
+            }, new Page() {page = 1, pageSize = 10}, true);
         }
 
         public List<TESTENTITY> GetTESTENTITY3s()
@@ -108,29 +109,57 @@ namespace EntityFramework.Test.Model
 
         public object SkipAndTake(int page, int pageSize)
         {
-            return GetContextTable().Paging((TESTENTITY t) => new TESTENTITY(){ Id = t.Id}, new Page()
+            return GetContextTable().Paging((TESTENTITY t) => new TESTENTITY() {Id = t.Id}, new Page()
             {
-                  page = page,
-                  pageSize = pageSize
-                
-            } );
+                page = page,
+                pageSize = pageSize
+            });
         }
-        
+
         public object SkipAndTakeFromSql(int page, int pageSize)
         {
-
-
             return SqlQueryPaging<TestDto>(new Page()
                 {
-                     pageSize = pageSize,
+                    pageSize = pageSize,
                     page = page
-                    
-                },"SELECT TESTENTITY.ID FROM TESTENTITY  INNER JOIN TESTENTITY2  " +
-                                           "ON TESTENTITY.TESTENTITY2ID = TESTENTITY2.ID ");
+                }, "SELECT TESTENTITY.ID FROM TESTENTITY  INNER JOIN TESTENTITY2  " +
+                   "ON TESTENTITY.TESTENTITY2ID = TESTENTITY2.ID ");
         }
-        
 
-         
+        public List<TESTENTITY> GetMultLeftJoin()
+        {
+            return GetContextTable()
+                .InnerJoin((TESTENTITY t) => t.Id, (TESTENTITY3 testEntity3) => testEntity3.TESTENTITYID)
+                .LeftJoin((TESTENTITY t) => t.TESTENTITY2ID, (TESTENTITY2 testEntity2) => testEntity2.Id)
+                .SelectToList((TESTENTITY t,TESTENTITY2 testEntity2,TESTENTITY3 testEntity3) => new TESTENTITY()
+                {
+                    Id = t.Id, 
+                    COLNUMINT = t.COLNUMINT,
+                    TESTENTITY2 = new TESTENTITY2()
+                    {
+                        Id = testEntity2.Id,
+                        CREATER = testEntity2.CREATER
+                    } ,
+                    TESTENTITY3s = new List<TESTENTITY3>()
+                    {
+                        new TESTENTITY3()
+                        {
+                            Id = testEntity3.Id,
+                            CREATER = testEntity3.CREATER
+                        }
+                    }
+//                    dtoModel3s = new List<DtoModel3>()
+//                    {
+//                        new DtoModel3()
+//                        {
+//                            Id = testEntity3.Id,
+//                            CREATER = testEntity3.CREATER
+//                        }
+//                    }
+                });
+        }
+
+
         private IQueryable<TEntity> FromSqlTemp<TEntity>(IQueryable q, RawSqlString sql,
             params object[] parameters) where TEntity : class
         {

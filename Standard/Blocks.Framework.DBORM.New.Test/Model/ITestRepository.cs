@@ -21,6 +21,8 @@ namespace EntityFramework.Test.Model
         object SkipAndTake(int page, int pageSize);
 
         object SkipAndTakeFromSql(int page, int pageSize);
+        
+        List<TESTENTITY> GetMultLeftJoin();
     }
     
     
