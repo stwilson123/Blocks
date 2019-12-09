@@ -1,5 +1,5 @@
 using System;
-using Abp.Web;
+using Blocks.Framework.Web.Web.HttpMethod;
 
 namespace Blocks.Framework.Web.Api.Controllers.Dynamic.Builders
 {

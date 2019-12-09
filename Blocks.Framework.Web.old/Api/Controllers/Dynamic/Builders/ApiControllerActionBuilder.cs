@@ -6,8 +6,8 @@ using Abp.Dependency;
 using Abp.Extensions;
 using Abp.Reflection;
 using Abp.Threading;
-using Abp.Web;
 using Abp.Web.Api.ProxyScripting.Configuration;
+using Blocks.Framework.Web.Web.HttpMethod;
 
 namespace Blocks.Framework.Web.Api.Controllers.Dynamic.Builders
 {
@@ -218,6 +218,12 @@ namespace Blocks.Framework.Web.Api.Controllers.Dynamic.Builders
                 return conventionalVerb;
             }
 
+             var httpMethod = Method.GetCustomAttribute<HttpMethodAttribute>();
+             if (httpMethod != null)
+             {
+                 return httpMethod.HttpMethod;
+             }
+            
             return DynamicApiVerbHelper.GetDefaultHttpVerb();
         }
 

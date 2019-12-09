@@ -1,11 +1,12 @@
 using System;
 using System.Net.Http;
-using Abp.Web;
+using Blocks.Framework.Web.Web.Helper;
+using HttpVerb = Blocks.Framework.Web.Web.HttpMethod.HttpVerb;
 
 namespace Blocks.Framework.Web.Api.Controllers.Dynamic.Selectors
 {
     /// <summary>
-    /// Extension methods for <see cref="HttpVerb"/>.
+    /// Extension methods for <see cref="Web.HttpMethod.HttpVerb"/>.
     /// </summary>
     public static class HttpVerbExtensions
     {

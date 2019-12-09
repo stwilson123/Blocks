@@ -1,6 +1,6 @@
 using System.Reflection;
 using System.Web.Http.Filters;
-using Abp.Web;
+using Blocks.Framework.Web.Web.HttpMethod;
 
 namespace Blocks.Framework.Web.Api.Controllers.Dynamic
 {

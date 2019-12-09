@@ -485,6 +485,7 @@
     <Compile Include="Web\Configuration\BlocksWebLocalizationConfiguration.cs" />
     <Compile Include="Web\Configuration\IBlocksWebLocalizationConfiguration.cs" />
     <Compile Include="Web\Helper\ApiVerbHelper.cs" />
+    <Compile Include="Web\Helper\HttpVerbHelper.cs" />
     <Compile Include="Web\HttpMethod\HttpMethodAttribute.cs" />
     <Compile Include="Web\HttpMethod\HttpVerb.cs" />
     <Compile Include="Web\Localization\CurrentCultureSetter.cs" />

@@ -8,8 +8,8 @@ using System.Web.Http.Filters;
 using Abp.Collections.Extensions;
 using Abp.Extensions;
 using Abp.Reflection;
-using Abp.Web;
 using Blocks.Framework.Web.Api.Configuration;
+using Blocks.Framework.Web.Web.HttpMethod;
 
 namespace Blocks.Framework.Web.Api.Controllers.Dynamic.Selectors
 {
