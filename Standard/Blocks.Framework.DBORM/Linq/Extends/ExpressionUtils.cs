@@ -46,6 +46,7 @@ namespace Blocks.Framework.DBORM.Linq.Extends
                 if (paramNode != null)
                 {
                     var newMember = Expression.PropertyOrField(target, paramNode.Name);
+                    
                     var newMember1 = Expression.PropertyOrField(newMember, node.Member.Name);
                     return newMember1;
                 }

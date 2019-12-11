@@ -12,5 +12,14 @@ namespace EntityFramework.Test.FunctionTest
 
             var firstData = rep.GetTestEntityDistinct();
         }
+        
+        
+        [Fact]
+        public void SingleEntity_Fix_without_where_expression_Test()
+        {
+            var rep =  Resolve<ITestRepository>();
+
+            var firstData = rep.GetTestPageContainsEmptyString();
+        }
     }
 }

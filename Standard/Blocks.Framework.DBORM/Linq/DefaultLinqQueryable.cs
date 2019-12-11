@@ -75,7 +75,9 @@ namespace Blocks.Framework.DBORM.Linq
             var querable = transferQuaryable();
             if (querable != null)
             {
-                iQuerable = DynamicQueryableExtensions.Join(iQuerable, dbContext.Set<TInner>(),
+                iQuerable = DynamicQueryableExtensions.Join(iQuerable, 
+                    dbContext.Set<TInner>(),
+                    
                     $"{((MemberExpression) outerKeySelector.Body).Member.Name}",
                     $"{((MemberExpression) innerKeySelector.Body).Member.Name}", tableAlias.CreateResultSelector());
             }
@@ -85,7 +87,8 @@ namespace Blocks.Framework.DBORM.Linq
                     throw new BlocksDBORMException(StringLocal.Format(
                         "Can't find table alias in the history join expression.Please check Touter join expression."));
 
-                iQuerable = DynamicQueryableExtensions.Join(iQuerable, dbContext.Set<TInner>(),
+                iQuerable = DynamicQueryableExtensions.Join(iQuerable, 
+                    dbContext.Set<TInner>(),
                     $"{outerParam.Name}.{((MemberExpression) outerKeySelector.Body).Member.Name}",
                     $"{((MemberExpression) innerKeySelector.Body).Member.Name}", tableAlias.CreateResultSelector());
             }
@@ -220,7 +223,7 @@ namespace Blocks.Framework.DBORM.Linq
 
         public long Count()
         {
-            return transferQuaryable().LongCount();
+            return DynamicQueryableExtensions.Count(iQuerable);
         }
 
         public override string ToString()
@@ -512,13 +515,13 @@ namespace Blocks.Framework.DBORM.Linq
             listTableAlias.Add(item);
         }
 
-        public string CreateResultSelector(bool isJoin = false)
+        public string CreateResultSelector(bool isLeftJoin = false)
         {
             if (!listTableAlias.Any())
                 throw new Exception("Can't generate resultSelector because listTableAlias is Empty!");
             if (listTableAlias.Count == 2)
             {
-                if (!isJoin)
+                if (!isLeftJoin)
                     return $"new(inner as {listTableAlias[1].TableAlias}, outer as {listTableAlias[0].TableAlias})";
                 else
                 {
@@ -528,11 +531,14 @@ namespace Blocks.Framework.DBORM.Linq
             }
 
 
-            var outerAlias = listTableAlias.Take(listTableAlias.Count - 1).Select(t => "outer.outer." + t.TableAlias);
-            if (!isJoin)
+            if (!isLeftJoin)
+            {
+                var outerAlias = listTableAlias.Take(listTableAlias.Count - 1).Select(t => "outer." + t.TableAlias + " as " +t.TableAlias );
                 return $"new(inner as {listTableAlias.Last().TableAlias}, {string.Join(",", outerAlias)})";
+            }
             else
             {
+                var outerAlias = listTableAlias.Take(listTableAlias.Count - 1).Select(t => "outer.outer." + t.TableAlias + " as " +t.TableAlias );
                 return $"new(inner as {listTableAlias.Last().TableAlias}, {string.Join(",", outerAlias)})";
             }
         }

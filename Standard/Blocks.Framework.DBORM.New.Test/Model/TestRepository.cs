@@ -67,6 +67,15 @@ namespace EntityFramework.Test.Model
                 }
             }, new Page() {page = 1, pageSize = 10}, true);
         }
+        
+        public PageList<DtoModel> GetTestPageContainsEmptyString()
+        {
+            return GetContextTable().Paging((TESTENTITY t) => new DtoModel
+            {
+                 Id =  t.Id,
+                  COLNUMINT = t.COLNUMINT
+            }, new Page() {page = 2, pageSize = 10,filters = new Group(){ groupOp = "And",rules = new List<Rule>(){ new Rule(){ field = "Id", data = "", op = "cn"}} }});
+        }
 
         public List<TESTENTITY> GetTESTENTITY3s()
         {
@@ -153,8 +162,7 @@ namespace EntityFramework.Test.Model
                             CREATER = testEntity3.CREATER
                         }
                     }
-//                    dtoModel3s = new List<DtoModel3>()
-//                    {
+//                    dtoModel3s = new List<DtoModel3>(){
 //                        new DtoModel3()
 //                        {
 //                            Id = testEntity3.Id,

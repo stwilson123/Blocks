@@ -227,9 +227,8 @@ namespace EntityFramework.Test.FunctionTest
         {
 
             var rep = Resolve<ITestRepository>();
-            rep.InsertOrUpdate(new TESTENTITY() { Id = "123" });
+            Assert.Throws<NotImplementedException>(() => { rep.InsertOrUpdate(new TESTENTITY() {Id = "123"}); });
 
-            
 
 
         }
@@ -247,6 +246,23 @@ namespace EntityFramework.Test.FunctionTest
                 Id = newId
             });
             Assert.Equal(1,rep.ExecuteSqlCommand(newId));
+
+
+        }
+        
+        
+          
+        [Fact]
+        public void TestUpdateMethodWhereExpression_listContainsExpression_throw_exception()
+        {
+        
+            var rep = Resolve<ITestRepository>();
+            var list = new List<string>(){ "123"};
+            rep.Update(t => list.Contains(t.Id) && t.COMMENT == null, testentity => new TESTENTITY()
+            {
+                COLNUMINT = 1
+
+            });
 
 
         }

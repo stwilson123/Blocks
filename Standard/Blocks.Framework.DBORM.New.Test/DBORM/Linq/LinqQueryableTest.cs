@@ -30,6 +30,7 @@ namespace Blocks.Framework.Test.DBORM.Linq
                 var default2Sql = defaultLinqQuery.ToString();
                 //Assert.NotEqual(testEntity.TESTENTITY2ID, newGuid);
                 
+                defaultLinqQuery = new DefaultLinqQueryable<TESTENTITY>(context.TestEntity.AsQueryable(), context);
                 var testLeftJoin2Entity = defaultLinqQuery
                     .LeftJoin((TESTENTITY t) => t.TESTENTITY2ID_NULLABLE, (TESTENTITY2 b) => b.Id);
                 var default3Sql = defaultLinqQuery.ToString();
@@ -68,6 +69,12 @@ namespace Blocks.Framework.Test.DBORM.Linq
                     .Where((TESTENTITY t, TESTENTITY2 b) => (t.Id == constKeyId) ||(b.Id == constKeyId));
                 var default2Sql = defaultLinqQuery.ToString();
                 //Assert.NotEqual(testEntity.TESTENTITY2ID, newGuid);
+                
+                var defaultLinqQuery1 = new DefaultLinqQueryable<TESTENTITY>(context.TestEntity.AsQueryable(), context);
+                var testLeftJoinEntity1 = defaultLinqQuery
+                    .InnerJoin((TESTENTITY t) => t.TESTENTITY2ID_NULLABLE, (TESTENTITY2 b) => b.Id)
+                    .Where((TESTENTITY t, TESTENTITY2 b) => (t.Id == constKeyId) ||(b.Id == constKeyId));
+                var default2Sql1 = defaultLinqQuery.ToString();
             }
         }
 

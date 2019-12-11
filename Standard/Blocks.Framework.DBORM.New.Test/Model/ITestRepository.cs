@@ -24,7 +24,10 @@ namespace EntityFramework.Test.Model
 
         object SkipAndTakeFromSql(int page, int pageSize);
         
+        
         List<TESTENTITY> GetMultLeftJoin();
+
+        PageList<DtoModel> GetTestPageContainsEmptyString();
     }
     
     
