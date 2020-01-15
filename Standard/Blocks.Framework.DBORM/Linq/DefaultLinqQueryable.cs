@@ -378,7 +378,7 @@ namespace Blocks.Framework.DBORM.Linq
             var orderByQueryable = !string.IsNullOrEmpty(page.OrderBy)
                 ? DynamicQueryableExtensions.OrderBy(iQuerable, page.OrderBy)
                 : iQuerable;
-            if (page.pageSize == -1)
+            if (!page.pageSize.HasValue || page.pageSize <= 0)
             {
                 var rows = orderByQueryable.ToDynamicList();
                 var pagelist = new PageList<dynamic>()
@@ -400,7 +400,7 @@ namespace Blocks.Framework.DBORM.Linq
             {
                 var pageResult =
                     Blocks.Framework.Data.Paging.DynamicQueryableExtensions.PageResult<dynamic>(orderByQueryable,
-                        page.page, page.pageSize);
+                        page.page, page.pageSize.Value);
 
 //                var pagelist = new PageList<dynamic>()
 //                {

@@ -633,7 +633,7 @@ namespace Blocks.Framework.DBORM.Repository
             if (!string.IsNullOrEmpty(page.OrderBy))
                 sqlQuery = DynamicQueryableExtensions.OrderBy(sqlQuery, page.OrderBy);
 
-            if (page.pageSize == -1)
+            if (!page.pageSize.HasValue  || page.pageSize.Value <= 0)
             {
                 var rows = sqlQuery.ToList();
                 var pagelist = new PageList<TElement>()
@@ -654,7 +654,7 @@ namespace Blocks.Framework.DBORM.Repository
             else
             {
 
-                var pageResult = DynamicQueryableExtensions.PageResult<TElement>(sqlQuery, page.page, page.pageSize);
+                var pageResult = DynamicQueryableExtensions.PageResult<TElement>(sqlQuery, page.page, page.pageSize.Value);
                 var pagelist = new PageList<TElement>()
                 {
                     Rows = pageResult.Queryable.ToList(),

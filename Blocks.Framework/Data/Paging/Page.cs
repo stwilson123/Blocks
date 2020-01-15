@@ -19,7 +19,7 @@ namespace Blocks.Framework.Data.Pager
         ///     每页数据条数
         /// </summary>
         [DataTransfer("pageSize")]
-        public int pageSize
+        public int? pageSize
         {
             get
             {
@@ -32,7 +32,7 @@ namespace Blocks.Framework.Data.Pager
             }
         }
 
-        private int _pageSize { get; set; } = 10;
+        private int? _pageSize { get; set; } 
 
         /// <summary>
         ///     页码
@@ -68,8 +68,10 @@ namespace Blocks.Framework.Data.Pager
         {
             get
             {
-                if (pageSize == 0) return 0;
-                return records % pageSize == 0 ? records / pageSize : records / pageSize + 1;
+                
+                if (!pageSize.HasValue || pageSize <= 0) return 0;
+                var pageSizeTmp = pageSize.Value;
+                return records % pageSizeTmp == 0 ? records / pageSizeTmp : records / pageSizeTmp + 1;
                 //}
             }
         }
@@ -93,13 +95,12 @@ namespace Blocks.Framework.Data.Pager
         {
             get
             {
-                if (pageSize == 0)
-                    pageSize = 10;
+                if (!pageSize.HasValue || pageSize <= 0) return 1;
 
                 // int size = this.pageSize * this.page;
                 int prePage = page - 1;
                 if (prePage < 0) prePage = 0;
-                int start = pageSize * prePage;
+                int start = pageSize.Value * prePage;
                 return start + 1;
             }
         }
@@ -111,12 +112,11 @@ namespace Blocks.Framework.Data.Pager
         {
             get
             {
-                if (pageSize == 0)
-                    pageSize = 10;
+                if (!pageSize.HasValue || pageSize <= 0) return records;
 
                 // int size = this.pageSize * this.page;
-                int end = pageSize * page;
-                if (end <= 0) end = pageSize;
+                int end = pageSize.Value * page;
+                if (end <= 0) end = pageSize.Value;
                 return end;
             }
         }

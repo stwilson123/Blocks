@@ -256,15 +256,27 @@ namespace EntityFramework.Test.FunctionTest
         public void TestUpdateMethodWhereExpression_listContainsExpression_throw_exception()
         {
         
-            var rep = Resolve<ITestRepository>();
-            var list = new List<string>(){ "123"};
-            rep.Update(t => list.Contains(t.Id) && t.COMMENT == null, testentity => new TESTENTITY()
+//            var rep = Resolve<ITestRepository>();
+//            var list = new List<string>(){ "123"};
+//            rep.Update(t => list.Contains(t.Id) && t.COMMENT == null, testentity => new TESTENTITY()
+//            {
+//                COLNUMINT = 1
+//
+//            });
+
+            var rep = Resolve<IWhMaterialBatchRespository>();
+            var lotNos = new List<string>(){ "2019112000001-LX150001","TTT51877T" }.Distinct();
+            rep.Update(t =>lotNos.Contains(t.MATERIAL_BATCH) && t.DATE_INSTORAGE == null, testentity => new WH_MATERIAL_BATCH()
             {
-                COLNUMINT = 1
-
+                DATE_INSTORAGE = DateTime.Now
             });
-
-
+            
+            
+            lotNos = new List<string>(){ "2019112000001-LX150001","TTT51877T" };
+            rep.Update(t =>lotNos.Contains(t.MATERIAL_BATCH) && t.DATE_INSTORAGE == null, testentity => new WH_MATERIAL_BATCH()
+            {
+                DATE_INSTORAGE = DateTime.Now
+            });
         }
         
 

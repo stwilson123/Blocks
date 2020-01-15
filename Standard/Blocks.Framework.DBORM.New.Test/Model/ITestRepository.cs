@@ -38,4 +38,8 @@ namespace EntityFramework.Test.Model
     public interface ITestRepository3 : IRepository<TESTENTITY3>
     {
     }
+    
+    public interface IWhMaterialBatchRespository : IRepository<WH_MATERIAL_BATCH>
+    {}
+    
 }

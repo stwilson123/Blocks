@@ -88,5 +88,7 @@ namespace EntityFramework.Test
         public virtual DbSet<TESTENTITY> TestEntity { get; set; }
         public virtual DbSet<TESTENTITY2> TestEntity2 { get; set; }
         public virtual DbSet<TESTENTITY3> TestEntity3 { get; set; }
+
+        public virtual DbSet<WH_MATERIAL_BATCH> WH_MATERIAL_BATCH { get; set; }
     }
 }

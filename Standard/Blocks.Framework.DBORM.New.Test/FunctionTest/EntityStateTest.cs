@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections;
 using System.Linq;
 using Xunit;
 
@@ -10,6 +11,8 @@ namespace EntityFramework.Test.FunctionTest
         [Fact]
         public void DefaultConfigIsDetectChanges()
         {
+            
+            
             using (var context = new BlocksEntities())
             {
                var testEntity = context.TestEntity.Skip(0).Take(1).FirstOrDefault();
