@@ -21,23 +21,25 @@ namespace Blocks.Framework.DBORM.DBContext
             _dbContextTypeMatcher = dbContextTypeMatcher;
         }
 
-        public TDbContext Resolve<TDbContext>(string connectionString)
+        public TDbContext Resolve<TDbContext>(string connectionString,string moduleName)
             where TDbContext : DbContext
         {
             var dbContextType = GetConcreteType<TDbContext>();
             return (TDbContext)_iocResolver.Resolve(dbContextType, new
             {
-                nameOrConnectionString = connectionString
+                nameOrConnectionString = connectionString,
+                moduleName = moduleName
             });
         }
 
-        public TDbContext Resolve<TDbContext>(DbConnection existingConnection, bool contextOwnsConnection)
+        public TDbContext Resolve<TDbContext>(DbConnection existingConnection, string moduleName,bool contextOwnsConnection)
             where TDbContext : DbContext
         {
             var dbContextType = GetConcreteType<TDbContext>();
             return (TDbContext)_iocResolver.Resolve(dbContextType, new
             {
                 existingConnection = existingConnection,
+                moduleName = moduleName,
                 contextOwnsConnection = contextOwnsConnection
             });
         }

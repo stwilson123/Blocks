@@ -11,7 +11,7 @@ using System.Transactions;
 
 namespace Blocks.Framework.DBORM.TransactionStrategy
 {
-    public class TransactionScopeEfTransactionStrategy : IEfTransactionStrategy, ITransientDependency
+    public class TransactionScopeEfTransactionStrategy : IEfTransactionStrategy
     {
         protected UnitOfWorkOptions Options { get; private set; }
 
@@ -49,10 +49,10 @@ namespace Blocks.Framework.DBORM.TransactionStrategy
             CurrentTransaction = null;
         }
 
-        public virtual DbContext CreateDbContext<TDbContext>(string connectionString, IDbContextResolver dbContextResolver)
+        public virtual DbContext CreateDbContext<TDbContext>(string connectionString, IDbContextResolver dbContextResolver,string moduleName)
             where TDbContext : DbContext
         {
-            var dbContext = dbContextResolver.Resolve<TDbContext>(connectionString);
+            var dbContext = dbContextResolver.Resolve<TDbContext>(connectionString, moduleName);
             DbContexts.Add(dbContext);
             return dbContext;
         }

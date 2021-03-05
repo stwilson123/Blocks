@@ -10,7 +10,6 @@ using Abp;
 using Abp.Configuration.Startup;
 using Abp.Modules;
 using Abp.Web;
-using Abp.Web.Mvc;
 using Blocks.Framework.Configurations;
 using Blocks.Framework.Environment.Extensions;
 using Blocks.Framework.Json.Convert;
@@ -36,7 +35,7 @@ using Newtonsoft.Json.Converters;
 namespace Blocks.Framework.Web.Modules
 {
     [DependsOn(typeof(BlocksFrameworkModule))]
-    [DependsOn(typeof(AbpWebMvcModule))]
+    [DependsOn(typeof(BlocksWebMvcModule))]
     [DependsOn(typeof(WebApiModule))]
    public class BlocksFrameworkWebModule : AbpModule
     {

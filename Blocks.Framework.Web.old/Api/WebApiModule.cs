@@ -35,7 +35,7 @@ namespace Blocks.Framework.Web.Api
     /// <summary>
     /// This module provides Abp features for ASP.NET Web API.
     /// </summary>
-    [DependsOn(typeof(AbpWebModule))]
+    [DependsOn(typeof(BlocksWebModule))]
     public class WebApiModule : AbpModule
     {
         /// <inheritdoc/>

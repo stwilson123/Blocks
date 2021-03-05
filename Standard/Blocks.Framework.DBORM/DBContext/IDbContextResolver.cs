@@ -10,10 +10,10 @@ namespace Blocks.Framework.DBORM.DBContext
 {
     public interface IDbContextResolver
     {
-        TDbContext Resolve<TDbContext>(string connectionString)
+        TDbContext Resolve<TDbContext>(string connectionString,string moduleName)
             where TDbContext : DbContext;
 
-        TDbContext Resolve<TDbContext>(DbConnection existingConnection, bool contextOwnsConnection)
+        TDbContext Resolve<TDbContext>(DbConnection existingConnection, string moduleName, bool contextOwnsConnection)
             where TDbContext : DbContext;
     }
 }

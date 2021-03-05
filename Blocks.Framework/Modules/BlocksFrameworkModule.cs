@@ -6,7 +6,6 @@ using Castle.MicroKernel.Resolvers.SpecializedResolvers;
 using Blocks.Framework.Environment.Extensions.Folders;
 using Castle.MicroKernel;
 using System.Collections;
-using Abp.AutoMapper;
 using Abp.Localization.Dictionaries;
 using Blocks.Framework.Environment;
 using Blocks.Framework.Environment.Configuration;

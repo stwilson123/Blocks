@@ -22,13 +22,5 @@ namespace Blocks.Framework.Localization
         /// <param name="context">Localization context</param>
         /// <returns>Localized string</returns>
         string Localize(ILocalizationContext context);
-        //
-        //        /// <summary>
-        //        /// Localizes the string in given culture.
-        //        /// </summary>
-        //        /// <param name="context">Localization context</param>
-        //        /// <param name="culture">culture</param>
-        //        /// <returns>Localized string</returns>
-        //        string Localize(ILocalizationContext context, CultureInfo culture);
     }
 }

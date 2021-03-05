@@ -71,7 +71,7 @@ namespace Blocks.Framework.Test.DBORM.Linq
                 //Assert.NotEqual(testEntity.TESTENTITY2ID, newGuid);
                 
                 var defaultLinqQuery1 = new DefaultLinqQueryable<TESTENTITY>(context.TestEntity.AsQueryable(), context);
-                var testLeftJoinEntity1 = defaultLinqQuery
+                var testLeftJoinEntity1 = defaultLinqQuery1
                     .InnerJoin((TESTENTITY t) => t.TESTENTITY2ID_NULLABLE, (TESTENTITY2 b) => b.Id)
                     .Where((TESTENTITY t, TESTENTITY2 b) => (t.Id == constKeyId) ||(b.Id == constKeyId));
                 var default2Sql1 = defaultLinqQuery.ToString();
@@ -220,7 +220,8 @@ namespace Blocks.Framework.Test.DBORM.Linq
 
                 var entityCount = testEntityLinq.Count();
 
-                var entityCount2 = testEntityLinq.SelectToDynamicList((TESTENTITY t,TESTENTITY2 b) => new{ t.TESTENTITY2ID, b.Id});
+                var entityCount2 = testEntityLinq.SelectToList((TESTENTITY t,TESTENTITY2 b) => new { b.Id,t.TESTENTITY2ID});
+                
             }
         }
 

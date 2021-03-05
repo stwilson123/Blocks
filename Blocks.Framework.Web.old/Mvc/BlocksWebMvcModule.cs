@@ -7,7 +7,6 @@ using System.Web.Mvc;
 using Abp.Configuration.Startup;
 using Abp.Modules;
 using Abp.Web;
-using Abp.Web.Security.AntiForgery;
 using Blocks.Framework.Configurations;
 using Blocks.Framework.Environment.Extensions;
 using Blocks.Framework.Web.Mvc.Configuration;
@@ -19,14 +18,15 @@ using Blocks.Framework.Web.Mvc.Security.AntiForgery;
 using Blocks.Framework.Web.Mvc.ViewEngines.ThemeAwareness;
 using Blocks.Framework.Web.Route;
 using Blocks.Framework.Web.Web;
+using Blocks.Web.Security.AntiForgery;
 
 namespace Blocks.Framework.Web.Mvc
 {
     /// <summary>
     /// This module is used to build ASP.NET MVC web sites using Abp.
     /// </summary>
-   [DependsOn(typeof(AbpWebModule))]
-    public class AbpWebMvcModule : AbpModule
+   [DependsOn(typeof(BlocksWebModule))]
+    public class BlocksWebMvcModule : AbpModule
     {
         /// <inheritdoc/>
         public override void PreInitialize()
@@ -39,7 +39,7 @@ namespace Blocks.Framework.Web.Mvc
 
             IocManager.Register<IAbpMvcConfiguration, AbpMvcConfiguration>();
 
-            Configuration.ReplaceService<IAbpAntiForgeryManager, AbpMvcAntiForgeryManager>();
+            Configuration.ReplaceService<IBlocksAntiForgeryManager, BlocksMvcAntiForgeryManager>();
 //            IocManager.AddConventionalRegistrar(
 //                new ControllerConventionalRegistrar(IocManager.Resolve<IExtensionManager>().AvailableExtensions()));
 
@@ -75,7 +75,7 @@ namespace Blocks.Framework.Web.Mvc
         public override void PostInitialize()
         {
 //            GlobalFilters.Filters.Add(IocManager.Resolve<AbpMvcAuthorizeFilter>());
-            GlobalFilters.Filters.Add(IocManager.Resolve<AbpAntiForgeryMvcFilter>());
+            GlobalFilters.Filters.Add(IocManager.Resolve<BlocksAntiForgeryMvcFilter>());
             //            GlobalFilters.Filters.Add(IocManager.Resolve<AbpMvcAuditFilter>());
             //            GlobalFilters.Filters.Add(IocManager.Resolve<AbpMvcValidationFilter>());
             //            GlobalFilters.Filters.Add(IocManager.Resolve<AbpMvcUowFilter>());

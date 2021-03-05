@@ -6,9 +6,9 @@ namespace Blocks.Framework.Web.Mvc.Route
     {
         public static string GetUrl(IDictionary<string,object> routeValue)
         {
-            var controllerServiceName = routeValue["area"]?.ToString() + "/" +routeValue["controller"]?.ToString() 
+            var finalUrl = routeValue["area"]?.ToString() + "/" +routeValue["controller"]?.ToString() 
                                        + "/" + routeValue["action"]?.ToString();
-            return controllerServiceName;
+            return finalUrl.ToLower();
         }
 
 

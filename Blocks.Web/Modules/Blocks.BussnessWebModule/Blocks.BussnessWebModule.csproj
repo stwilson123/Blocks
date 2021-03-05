@@ -161,6 +161,10 @@
       <Project>{0adfb2db-e9f6-4345-a659-60cf03571453}</Project>
       <Name>Blocks.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Blocks.BussnessApplicationModule\Blocks.BussnessApplicationModule.csproj">
+      <Project>{7bf3125e-d15f-43a9-9735-e7bc8527bf63}</Project>
+      <Name>Blocks.BussnessApplicationModule</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Blocks.BussnessDomainModule\Blocks.BussnessDomainModule.csproj">
       <Project>{515b2afd-abe4-4d33-8332-8d900ed947f1}</Project>
       <Name>Blocks.BussnessDomainModule</Name>

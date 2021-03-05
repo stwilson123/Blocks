@@ -86,6 +86,35 @@ namespace EntityFramework.Test.FunctionTest
         }
 
 
+        [Fact]
+        public void update_lostParams()
+        {
+            var unitOfWorkManager = Resolve<IUnitOfWorkManager>();
+            var rep = Resolve<ITestRepository>();
+
+
+            decimal value = 600.001M;
+
+            var list = new List<decimal>() { 1M, 2M };
+            if(1==1)
+            {
+                list.ForEach(a =>
+                {
+                    value += a;
+                });
+                //var trans = rep.Context.Database.BeginTransaction();执行时间
+
+                var rows = rep.Update(t => t.Id == "109649d7-f0b1-4518-8991-9fe3c1dde6ce" && t.COLNUMINT - t.COLNUMINT_NULLABLE > value, t => new TESTENTITY()
+                {
+
+                    COLNUMINT = t.COLNUMINT - value
+
+                });
+            }
+            
+           
+            //trans.Commit();
+        }
     }
 
     class inputData

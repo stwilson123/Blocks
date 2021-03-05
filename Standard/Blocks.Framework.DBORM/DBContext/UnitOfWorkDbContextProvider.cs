@@ -25,16 +25,17 @@ namespace Blocks.Framework.DBORM.DBContext
 
         
 
-        public TDbContext GetDbContext<TDbContext>() where TDbContext : DbContext
+        public TDbContext GetDbContext<TDbContext, TEntity>() where TDbContext : DbContext
         {
-            return GetDbContext<TDbContext>(null);
+            return GetDbContext<TDbContext, TEntity>(null);
 
         }
 
-        public TDbContext GetDbContext<TDbContext>(MultiTenancySides? multiTenancySide) where TDbContext : DbContext
+        public TDbContext GetDbContext<TDbContext, TEntity>(MultiTenancySides? multiTenancySide) where TDbContext : DbContext
         {
-            return _currentUnitOfWorkProvider.Current.GetDbContext<TDbContext>(multiTenancySide);
+            return _currentUnitOfWorkProvider.Current.GetDbContext<TDbContext, TEntity>(multiTenancySide);
 
         }
+
     }
 }

@@ -27,7 +27,7 @@ namespace EntityFramework.Test.Model
         public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<TESTENTITY> builder)
         {
 
-            builder.HasKey(x => x.Id);
+          //  builder.HasKey(x => x.Id);
 
 
             builder.HasOne(t => t.TESTENTITY2).WithMany().HasForeignKey(t => t.TESTENTITY2ID);

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using EntityFramework.Test.Model;
 using Xunit;
@@ -7,7 +8,7 @@ namespace EntityFramework.Test.FunctionTest
 {
     public class RelationShipTest: BlocksTestBase
     {
-        [Fact]
+       [Fact]
         public void OneToOneMethod()
         {
 
@@ -23,20 +24,63 @@ namespace EntityFramework.Test.FunctionTest
 //                       b
 //            }
 //            )
-                var rep =  Resolve<ITestRepository>();
 
-            var firstData2 = rep.GetMultLeftJoin();
+
+            var rep =  Resolve<ITestRepository>();
+            var rep2 = Resolve<ITest2Repository>();
+            var rep3 = Resolve<ITestRepository3>();
+
+            var relationStr = "testEntityStr";
+            var testEntity2 = new TESTENTITY2()
+            {
+                Id = System.Guid.NewGuid().ToString(),
+                CREATEDATE = DateTime.Now,
+                CREATER = "testEntity2",
+                UPDATER = relationStr
+            };
+           
+            var testEntity = new TESTENTITY() {
+                Id = System.Guid.NewGuid().ToString(),
+                TESTENTITY2ID = testEntity2.Id,
+                STRING = relationStr,
+                CREATEDATE = DateTime.Now,
+            };
+            var testEntity3 = new TESTENTITY3()
+            {
+                Id = System.Guid.NewGuid().ToString(),
+                TESTENTITYID = testEntity.Id,
+                TESTENTITYID1 = "2",
+                CREATER = relationStr,
+                CREATEDATE = DateTime.Now,
+            };
+            var testEntity31 = new TESTENTITY3()
+            {
+                Id = System.Guid.NewGuid().ToString(),
+                TESTENTITYID = testEntity.Id,
+                TESTENTITYID1 = "1",
+                CREATER = relationStr,
+                CREATEDATE = DateTime.Now,
+            };
+            rep.Insert(testEntity);
+            rep2.Insert(testEntity2);
+            rep3.Insert(testEntity3);
+            rep3.Insert(testEntity31);
+
+             var firstData2 = rep.GetMultLeftJoin();
 
             
             
             var firstData = rep.GetTestEntity2Text();
 
             var firstData1 = rep.GetTESTENTITY3s();
-            
-         
+
+            rep.Delete(testEntity);
+            rep2.Delete(testEntity2);
+            rep3.Delete(testEntity3);
 
 
-           // var firstData2 = Resolve<TestRepository3>().GetContextTable().SelectToDynamicList((TESTENTITY3 t) => t.TESTENTITY);
+
+            // var firstData2 = Resolve<TestRepository3>().GetContextTable().SelectToDynamicList((TESTENTITY3 t) => t.TESTENTITY);
         }
 
     }

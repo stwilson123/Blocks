@@ -12,6 +12,9 @@ using Blocks.Framework.DBORM.Test;
 using EntityFramework.Test.Model;
 using Microsoft.EntityFrameworkCore;
 using Blocks.Framework.DBORM;
+using System.Data.SqlClient;
+using System.Data.OracleClient;
+
 namespace EntityFramework.Test
 {
     public partial class BlocksEntities : DbContext
@@ -31,6 +34,8 @@ namespace EntityFramework.Test
         {
             var connection = ConfigurationManagerWrapper.ConnectionStrings[nameOrConnectionString];
             var connectionString = connection.ConnectionString;
+
+             var builder = new OracleConnectionStringBuilder(connectionString);
             switch (connection.ProviderName)
             {
                 case "Sqlserver": optionsBuilder.UseSqlServer(connectionString: connectionString, sqlServerOptionsAction:option => option.UseRowNumberForPaging()); break;

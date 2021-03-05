@@ -4,13 +4,13 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.WebPages;
 using Abp.Dependency;
-using Abp.Web.Security.AntiForgery;
 using Blocks.Framework.Environment.Configuration;
 using Blocks.Framework.Localization;
 using Blocks.Framework.Web.Mvc.Security.AntiForgery;
 using Blocks.Framework.Web.Mvc.Spooling;
 using Blocks.Framework.Web.Mvc.UI.Extensions;
 using Blocks.Framework.Web.Mvc.UI.Resources;
+using Blocks.Web.Security.AntiForgery;
 
 namespace Blocks.Framework.Web.Mvc.ViewEngines.Razor
 {
@@ -147,7 +147,7 @@ namespace Blocks.Framework.Web.Mvc.ViewEngines.Razor
 
         protected virtual void SetAntiForgeryCookie()
         {
-            SingletonDependency<IAbpAntiForgeryManager>.Instance.SetCookie(Context);
+            SingletonDependency<IBlocksAntiForgeryManager>.Instance.SetCookie(Context);
         }
 //        public dynamic New { get { return ShapeFactory; } }
 

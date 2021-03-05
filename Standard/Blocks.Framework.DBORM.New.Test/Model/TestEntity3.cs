@@ -18,7 +18,7 @@ namespace EntityFramework.Test.Model
         public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<TESTENTITY3> builder)
         {
 
-            builder.HasKey(x => x.Id);
+           // builder.HasKey(x => x.Id);
 
 
 

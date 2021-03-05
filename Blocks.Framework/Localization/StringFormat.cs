@@ -1,4 +1,6 @@
 ﻿using System;
+using Abp.Extensions;
+using Blocks.Framework.Utility.Extensions;
 
 namespace Blocks.Framework.Localization
 {
@@ -25,7 +27,7 @@ namespace Blocks.Framework.Localization
 
         public override string ToString()
         {
-            return FormatArgs == null ? FormatStr : string.Format(FormatStr, FormatArgs);
+            return FormatArgs.IsNullOrEmpty() ? FormatStr : string.Format(FormatStr, FormatArgs);
         }
     }
 }

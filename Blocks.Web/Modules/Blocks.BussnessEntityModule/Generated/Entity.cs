@@ -7,7 +7,7 @@
 // 
 //     Connection String Name: `MyDbContext`
 //     Provider:               `Oracle.ManagedDataAccess.Client`
-//     Connection String:      `Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.1.215)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=devserver)));User ID=R2E4MOD;password=**zapped**;Enlist=false`
+//     Connection String:      `Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.0.92)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=orcl)));User ID=R2E4MOD;password=**zapped**;Enlist=false`
 //     Schema:                 ``
 //     Include Views:          `False`
 
@@ -18,105 +18,11 @@ using System.Web;
 using Blocks.Framework.Data.Entity;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-
+using Microsoft.EntityFrameworkCore;
 namespace Blocks.BussnessEntityModule
 {
 	
 
-    
-    public partial class BDTA_LANGUAGES   : Entity   
-    {
- 
-    	    [Column("ID")]
-		public override string Id { set ; get ; }
-	    	    public string LANGUAGE_CODE { set; get; }
-	    	    public string LANGUAGE_NAME { set; get; }
-	    	    public string LANGUAGE_ICON { set; get; }
-	    	    public string EXTENDFIELD { set; get; }
-	    	    public long? ISUSED { set; get; }
-	    	    public long? ACTIVITY { set; get; }
-		}
-    
-    public partial class BDTA_LANGUAGETEXTS   : Entity   
-    {
- 
-    	    [Column("ID")]
-		public override string Id { set ; get ; }
-	    	    public string LANGUAGE_MODULE { set; get; }
-	    	    public string LANGUAGE_CODE { set; get; }
-	    	    public string LANGUAGE_KEY { set; get; }
-	    	    public string LANGUAGE_VALUE { set; get; }
-	    	    public string EXTENDFIELD { set; get; }
-	    	    public long? ISUSED { set; get; }
-	    	    public long? ACTIVITY { set; get; }
-	    	    public string LANGUAGE_ID { set; get; }
-	    	    public BDTA_LANGUAGES BDTA_LANGUAGES { set; get; }
-		}
-    
-    public partial class SYS_PROGRAMOPERATION   : Entity   
-    {
- 
-    	    [Column("ID")]
-		public override string Id { set ; get ; }
-	    	    public string OPERATION_NAME { set; get; }
-	    	    public string SYS_POPEDOMPROGRAM_ID { set; get; }
-	    	    public string OPERATION_URL { set; get; }
-	    	    public string EXTENDFIELD { set; get; }
-		}
-    
-    public partial class PRINT_SERVICE   : Entity   
-    {
- 
-    	    [Column("ID")]
-		public override string Id { set ; get ; }
-	    	    public string PRINTTEMPLATE_PATH { set; get; }
-	    	    public long? PRINT_FLAG { set; get; }
-	    	    public string EXTENDFIELD { set; get; }
-	    	    public string PRINT_TYPE { set; get; }
-	    	    public string PRINT_NAME { set; get; }
-	    	    public string PRINT_CONTENT_JSONTXT { set; get; }
-		}
-    
-    public partial class WAREHOUSE_PO   : Entity   
-    {
- 
-    	    [Column("ID")]
-		public override string Id { set ; get ; }
-	    	    public string PONO { set; get; }
-	    	    public string SUPPLIER_ID { set; get; }
-	    	    public string SUPPLIER_CODE { set; get; }
-	    	    public string CONTRACTNO { set; get; }
-	    	    public string POEMP { set; get; }
-	    	    public string EXTENDFIELD { set; get; }
-	    	    public long? ACTIVITY { set; get; }
-		}
-    
-    public partial class WAREHOUSE_PO_DETAIL   : Entity   
-    {
- 
-    	    [Column("ID")]
-		public override string Id { set ; get ; }
-	    	    public string POID { set; get; }
-	    	    public string PONO { set; get; }
-	    	    public string MATERIAL_ID { set; get; }
-	    	    public string MATERIAL_CODE { set; get; }
-	    	    public decimal? POQTY { set; get; }
-	    	    public decimal RECEIVE_QTY { set; get; }
-	    	    public string STATE { set; get; }
-	    	    public string ISCHECK { set; get; }
-	    	    public string UNIT_ID { set; get; }
-	    	    public DateTime? RECEIVE_DATE_ASK { set; get; }
-	    	    public DateTime? RECEIVE_DATE_PROMISE { set; get; }
-	    	    public string RECEIVE_PLACE { set; get; }
-	    	    public long? POLINENO { set; get; }
-	    	    public decimal? PRICE { set; get; }
-	    	    public string EXTENDFIELD { set; get; }
-	    	    public long? ACTIVITY { set; get; }
-	    	    public decimal FREEZING_QTY { set; get; }
-	    	    public decimal RETURNED_QTY { set; get; }
-	    	    public BDTA_MATERIAL BDTA_MATERIAL { set; get; }
-	    	    public BDTA_UNIT BDTA_UNIT { set; get; }
-		}
     
     public partial class BDTA_CALDETAIL   : Entity   
     {
@@ -306,6 +212,27 @@ namespace Blocks.BussnessEntityModule
 	    	    public string NEXT_CARE_WARNING_DATE { set; get; }
 		}
     
+    public partial class BDTA_CUSTOMER   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string CUSTOMER_NO { set; get; }
+	    	    public string CUSTOMER_NAME { set; get; }
+	    	    public string CUSTOMER_CHARGER { set; get; }
+	    	    public string CUSTOMER_TELEPHONE { set; get; }
+	    	    public string CUSTOMER_TAX { set; get; }
+	    	    public string CUSTOMER_MAIL { set; get; }
+	    	    public string CUSTOMER_ADDRESS { set; get; }
+	    	    public string CUSTOMER_PROVINCE { set; get; }
+	    	    public string CUSTOMER_POSTCODE { set; get; }
+	    	    public string CUSTOMER_DESC { set; get; }
+	    	    public string CUSTOMER_ABBREVIATION { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+		}
+    
     public partial class BDTA_DEPARTMENT   : Entity   
     {
  
@@ -395,6 +322,29 @@ namespace Blocks.BussnessEntityModule
 	    	    public string FILE_PATH { set; get; }
 		}
     
+    public partial class BDTA_FREEZE_REASON   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string FREEZE_REASON_NO { set; get; }
+	    	    public string FREEZE_REASON_NAME { set; get; }
+	    	    public decimal? FREEZE_REASON_STATE { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string ISUSED { set; get; }
+		}
+    
+    public partial class BDTA_FREEZE_SHELF_TYPE   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string BDTA_FREEZE_REASON_ID { set; get; }
+	    	    public string SHELF_TYPE_ID { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string ISUSED { set; get; }
+		}
+    
     public partial class BDTA_FROCK   : Entity   
     {
  
@@ -449,6 +399,35 @@ namespace Blocks.BussnessEntityModule
 	    	    public string NEXT_CARE_WARNING_DATE { set; get; }
 		}
     
+    public partial class BDTA_LANGUAGES   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string LANGUAGE_CODE { set; get; }
+	    	    public string LANGUAGE_NAME { set; get; }
+	    	    public string LANGUAGE_ICON { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+		}
+    
+    public partial class BDTA_LANGUAGETEXTS   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string LANGUAGE_MODULE { set; get; }
+	    	    public string LANGUAGE_CODE { set; get; }
+	    	    public string LANGUAGE_KEY { set; get; }
+	    	    public string LANGUAGE_VALUE { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string LANGUAGE_ID { set; get; }
+	    	    public BDTA_LANGUAGES BDTA_LANGUAGES { set; get; }
+		}
+    
     public partial class BDTA_MACHING_CENTER   : Entity   
     {
  
@@ -490,6 +469,27 @@ namespace Blocks.BussnessEntityModule
 	    	    public long? ACTIVITY { set; get; }
 		}
     
+    public partial class BDTA_MAKER   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string MAKER_NO { set; get; }
+	    	    public string MAKER_NAME { set; get; }
+	    	    public string MAKER_CHARGER { set; get; }
+	    	    public string MAKER_TELEPHONE { set; get; }
+	    	    public string MAKER_TAX { set; get; }
+	    	    public string MAKER_MAIL { set; get; }
+	    	    public string MAKER_ADDRESS { set; get; }
+	    	    public string MAKER_PROVINCE { set; get; }
+	    	    public string MAKER_POSTCODE { set; get; }
+	    	    public string MAKER_DESC { set; get; }
+	    	    public string MAKER_ABBREVIATION { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+		}
+    
     public partial class BDTA_MATERIAL   : Entity   
     {
  
@@ -510,6 +510,13 @@ namespace Blocks.BussnessEntityModule
 	    	    public string QA_CHECKMODEL_ID { set; get; }
 	    	    public string PRODUCTFORMAT_ID { set; get; }
 	    	    public string QA_CHECKMODEL_ORIGINAL { set; get; }
+	    	    public decimal? MATERIAL_WEIGHT { set; get; }
+	    	    public decimal? MATERIAL_VOLUME { set; get; }
+	    	    public decimal? MATERIAL_LENGTH { set; get; }
+	    	    public decimal? MATERIAL_WIDTH { set; get; }
+	    	    public decimal? MATERIAL_HEIGHT { set; get; }
+	    	    public decimal? OPEN_VOLUME_SIZE { set; get; }
+	    	    public decimal REPEATED_CHECK { set; get; }
 	    	    public BDTA_MATERIAL_TYPE BDTA_MATERIAL_TYPE { set; get; }
 	    	    public BDTA_QA_CHECKITEMMANAGE BDTA_QA_CHECKITEMMANAGE { set; get; }
 	    	    public BDTA_UNIT BDTA_UNIT { set; get; }
@@ -663,6 +670,33 @@ namespace Blocks.BussnessEntityModule
 	    	    public long? ACTIVITY { set; get; }
 		}
     
+    public partial class BDTA_ORG_FACTORY   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string FACTORY_NO { set; get; }
+	    	    public string FACTORY_NAME { set; get; }
+	    	    public string FACTORY_DESC { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+		}
+    
+    public partial class BDTA_ORG_ORGRELATION   : Entity   
+    {
+ 
+    	    public string ORGRELATIONID { set; get; }
+	    	    public string ORGRELATIONPID { set; get; }
+	    	    public long ORGRELATIONTYPE { set; get; }
+	    	    public string ORGRELATIONTABLE { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public string ORGRELATIONNAME { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    [Column("ID")]
+		public override string Id { set ; get ; }
+		}
+    
     public partial class BDTA_ORG_STOREROOM   : Entity   
     {
  
@@ -719,6 +753,25 @@ namespace Blocks.BussnessEntityModule
 	    	    public long? ACTIVITY { set; get; }
 	    	    public long? ISUSED { set; get; }
 	    	    public string INSTORAGE_AREA { set; get; }
+	    	    public decimal? LIMITEDVOLUME { set; get; }
+	    	    public decimal? OPEN_WEIGHT { set; get; }
+	    	    public decimal? OPEN_VOLUME { set; get; }
+	    	    public decimal TEMPSITE { set; get; }
+	    	    public decimal OCCUPY_WEIGHT { set; get; }
+	    	    public decimal OCCUPY_VOLUME { set; get; }
+		}
+    
+    public partial class BDTA_OUT_IN_TYPE   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string OUT_IN_NO { set; get; }
+	    	    public string OUT_IN_NAME { set; get; }
+	    	    public string OUT_IN_DESC { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public long? ACTIVITY { set; get; }
 		}
     
     public partial class BDTA_PROCESSPATH   : Entity   
@@ -736,6 +789,177 @@ namespace Blocks.BussnessEntityModule
 	    	    public long? ISUSED { set; get; }
 	    	    public long? ACTIVITY { set; get; }
 	    	    public string MERGEBILL_TYPE { set; get; }
+		}
+    
+    public partial class BDTA_PRODUCTELEMENT   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string PRODUCTELEMENT_CODE { set; get; }
+	    	    public string PRODUCTELEMENT_LENGTH { set; get; }
+	    	    public string PRODUCTELEMENT_NAME { set; get; }
+	    	    public string PRODUCTELEMENT_DESCRIPTION { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string BDTA_PRODUCTELEMENT_TYPE_ID { set; get; }
+	    	    public string PRODUCTELEMENT_DEFAULT { set; get; }
+	    	    public long? AUTO_INCREMENT { set; get; }
+	    	    public string RESET_DATE { set; get; }
+	    	    public BDTA_PRODUCTELEMENT_TYPE BDTA_PRODUCTELEMENT_TYPE { set; get; }
+		}
+    
+    public partial class BDTA_PRODUCTELEMENT_TYPE   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string CODE { set; get; }
+	    	    public string NAME { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string ISVARIABLE { set; get; }
+		}
+    
+    public partial class BDTA_PRODUCTFORMAT   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string PRODUCTFORMAT_CODE { set; get; }
+	    	    public long? PRODUCTFORMAT_LENGTH { set; get; }
+	    	    public string PRODUCTFORMAT_NAME { set; get; }
+	    	    public string PRODUCTFORMAT_DESCRIPTION { set; get; }
+	    	    public DateTime? PRODUCTFORMAT_UTIME { set; get; }
+	    	    public string PRODUCTFORMAT_UUSER { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+		}
+    
+    public partial class BDTA_PRODUCTFORMAT_DETAIL   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string PRODUCTFORMATID { set; get; }
+	    	    public string PRODUCTELEMENTID { set; get; }
+	    	    public long? PRODUCTFORMAT_DETAIL_SEQ { set; get; }
+	    	    public string PRODUCTFORMAT_DETAIL_NAME { set; get; }
+	    	    public long? PRODUCTFORMAT_DETAIL_BEGIN { set; get; }
+	    	    public long? PRODUCTFORMAT_DETAIL_END { set; get; }
+	    	    public long? PRODUCTFORMAT_DETAIL_LENTH { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string PRODUCTFORMAT_START { set; get; }
+	    	    public string PRODUCTFORMAT_END { set; get; }
+	    	    public BDTA_PRODUCTELEMENT BDTA_PRODUCTELEMENT { set; get; }
+		}
+    
+    public partial class BDTA_PRODUCT_ELEMENT_RULE_REL   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string PRODUCT_FUNC_ID { set; get; }
+	    	    public string PRODUCT_ELEMENT_RULE_ID { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+		}
+    
+    public partial class BDTA_PRODUCT_VARELEMENT_REL   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string PRODUCT_FUNC_ID { set; get; }
+	    	    public string PRODUCT_ELEMENT_TYPE_ID { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+		}
+    
+    public partial class BDTA_QA_CHECKITEM   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string CHECKITEMCODE { set; get; }
+	    	    public string CHECKITEMNAME { set; get; }
+	    	    public string CHECKITEMCONTENT { set; get; }
+	    	    public string CHECKTYPE { set; get; }
+	    	    public string CHECKCLASS { set; get; }
+	    	    public string CHECKMETHOD { set; get; }
+	    	    public decimal? CHECKSTANDARD { set; get; }
+	    	    public decimal? CHECK_UPPERLIMIT { set; get; }
+	    	    public decimal? CHECK_LOWERLIMIT { set; get; }
+	    	    public string REMARK { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public string CHECKITEMPARENT { set; get; }
+	    	    public BDTA_DICTIONARY BDTA_DICTIONARY { set; get; }
+		}
+    
+    public partial class BDTA_QA_CHECKITEMMANAGE   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string CHECKCODE { set; get; }
+	    	    public string CHECKNAME { set; get; }
+	    	    public string REMARK { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+		}
+    
+    public partial class BDTA_QA_CHECKITEMMANAGE_DETAIL   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string CHECKITEMMANAGEID { set; get; }
+	    	    public string CHECKCODE { set; get; }
+	    	    public string CHECKITEMCODE { set; get; }
+	    	    public string CHECKITEMNAME { set; get; }
+	    	    public string CHECKITEMCONTENT { set; get; }
+	    	    public string CHECKTYPE { set; get; }
+	    	    public string CHECKMETHOD { set; get; }
+	    	    public decimal? CHECKSTANDARD { set; get; }
+	    	    public decimal? CHECK_UPPERLIMIT { set; get; }
+	    	    public decimal? CHECK_LOWERLIMIT { set; get; }
+	    	    public string REMARK { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public string CHECKITEMPARENTCODE { set; get; }
+	    	    public string CHECKITEMPARENTNAME { set; get; }
+		}
+    
+    public partial class BDTA_QA_CHECKMODE   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string MATERIALID { set; get; }
+	    	    public string MATERIAL_CODE { set; get; }
+	    	    public string MATERIAL_NAME { set; get; }
+	    	    public string SUPPLIERID { set; get; }
+	    	    public string SUPPLIER_NO { set; get; }
+	    	    public string SUPPLIER_NAME { set; get; }
+	    	    public string CHECKMODE { set; get; }
+	    	    public string REMARK { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string INSPECTION_STANDARD { set; get; }
+	    	    public string QA_CHECKITEMMANAGE_ID { set; get; }
+	    	    public BDTA_QA_CHECKITEMMANAGE BDTA_QA_CHECKITEMMANAGE { set; get; }
+		}
+    
+    public partial class BDTA_QA_SAMPLING_STANDARD   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string INSPECTION_STANDARD { set; get; }
+	    	    public long STARTQTY { set; get; }
+	    	    public long ENDQTY { set; get; }
+	    	    public long SAMPLINGQTY { set; get; }
+	    	    public long QUALIFIEDQTY { set; get; }
+	    	    public string REMARK { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
 		}
     
     public partial class BDTA_QUEUE   : Entity   
@@ -770,6 +994,65 @@ namespace Blocks.BussnessEntityModule
 	    	    public BDTA_MACHING_CENTER BDTA_MACHING_CENTER { set; get; }
 		}
     
+    public partial class BDTA_SETUP   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string SETUP_NO { set; get; }
+	    	    public string SETUP_CONTENTS { set; get; }
+	    	    public string SETUP_KEY { set; get; }
+	    	    public string SETUP_TYPE_ID { set; get; }
+	    	    public string SETUP_TYPE { set; get; }
+	    	    public string SETUP_PARAMETER { set; get; }
+	    	    public string SETUP_MAX { set; get; }
+	    	    public string SETUP_MIN { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+		}
+    
+    public partial class BDTA_SETUP_TYPE   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string SETUP_TYPE_NO { set; get; }
+	    	    public string SETUP_TYPE_NAME { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string SETUP_TYPE_VALUE { set; get; }
+		}
+    
+    public partial class BDTA_SHELF_STRATEGY   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string SHELF_STRATEGY_NO { set; get; }
+	    	    public string SHELF_STRATEGY_NAME { set; get; }
+	    	    public string SHELF_STRATEGY_TYPE { set; get; }
+	    	    public string SHELF_STRATEGY_STATE { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public string PROGRAM_FUNCTION_CODE { set; get; }
+		}
+    
+    public partial class BDTA_SHELF_TYPE   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string SHELF_TYPE_NO { set; get; }
+	    	    public string SHELF_TYPE_NAME { set; get; }
+	    	    public decimal? SHELF_TYPE_STATE { set; get; }
+	    	    public decimal? SHELF_TYPE { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string ISUSED { set; get; }
+	    	    public decimal? STRATEGY_CONTROL { set; get; }
+		}
+    
     public partial class BDTA_STATION   : Entity   
     {
  
@@ -786,6 +1069,50 @@ namespace Blocks.BussnessEntityModule
 	    	    public string EXTENDFIELD { set; get; }
 	    	    public long? ISUSED { set; get; }
 	    	    public long? ACTIVITY { set; get; }
+		}
+    
+    public partial class BDTA_STRATEGY_GROUP   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string STRATEGY_GROUP_NO { set; get; }
+	    	    public string STRATEGY_GROUP_NAME { set; get; }
+	    	    public decimal? STRATEGY_GROUP_PRIORITY { set; get; }
+	    	    public decimal? STRATEGY_GROUP_STATE { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public long? ISUSED { set; get; }
+		}
+    
+    public partial class BDTA_STRATEGY_GROUP_D   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string STRATEGY_GROUP_ID { set; get; }
+	    	    public string STRATEGY_GROUP_NO { set; get; }
+	    	    public string STRATEGY_GROUP_NAME { set; get; }
+	    	    public string ELEMENT_ID { set; get; }
+	    	    public string ELEMENT_CODE { set; get; }
+	    	    public string ELEMENT_NAME { set; get; }
+	    	    public string SHELF_TYPE_ID { set; get; }
+	    	    public string SHELF_STRATEGY_ID { set; get; }
+	    	    public decimal? PRIORITY { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public long? ISUSED { set; get; }
+		}
+    
+    public partial class BDTA_STRATEGY_LOCATION   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string STRATEGY_GROUP_D_ID { set; get; }
+	    	    public string LOCATION_ID { set; get; }
+	    	    public decimal? PRIORITY { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public string LOCATION_CODE { set; get; }
 		}
     
     public partial class BDTA_SUPPLIER   : Entity   
@@ -807,6 +1134,19 @@ namespace Blocks.BussnessEntityModule
 	    	    public string EXTENDFIELD { set; get; }
 	    	    public long? ISUSED { set; get; }
 	    	    public long? ACTIVITY { set; get; }
+		}
+    
+    public partial class BDTA_UNIT   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string UNIT_NO { set; get; }
+	    	    public string UNIT_NAME { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public decimal? TEST11 { set; get; }
 		}
     
     public partial class BDTA_WORKING   : Entity   
@@ -933,166 +1273,18 @@ namespace Blocks.BussnessEntityModule
 	    	    public BDTA_EMPLOYEE BDTA_EMPLOYEE { set; get; }
 		}
     
-    public partial class SYS_LOG   : Entity   
-    {
- 
-    	    public DateTime? LOGDATE { set; get; }
-	    	    public string THREADID { set; get; }
-	    	    public string LOGLEVEL { set; get; }
-	    	    public string MODULENAME { set; get; }
-	    	    public string CLASSNAME { set; get; }
-	    	    public string METHODNAME { set; get; }
-	    	    public string CUSTOMMESSAGE { set; get; }
-	    	    public string USERID { set; get; }
-	    	    public string LOGEXCEPTION { set; get; }
-	    	    public string LOGID { set; get; }
-		}
-    
-    public partial class SYS_POPEDOMPROGRAM   : Entity   
-    {
- 
-    	    public string SYS_POPEDOMPROGRAMID { set; get; }
-	    	    public string SYS_SYSTEMINFOID { set; get; }
-	    	    public string SYS_PROGRAMID { set; get; }
-	    	    public string PARENTPROGRAMID { set; get; }
-	    	    public string MEMO { set; get; }
-	    	    public string EXTENDFIELD { set; get; }
-		}
-    
-    public partial class SYS_PROGRAM_OPERATION_WEB   : Entity   
+    public partial class BDTA_WORK_CENTER   : Entity   
     {
  
     	    [Column("ID")]
 		public override string Id { set ; get ; }
-	    	    public string OPERATION_NAME { set; get; }
-	    	    public string OPERATION_CONTENT { set; get; }
-	    	    public long? OPERATION_TYPE { set; get; }
+	    	    public string WORK_CENTER_NO { set; get; }
+	    	    public string WORK_CENTER_NAME { set; get; }
+	    	    public string WORK_CENTER_DESC { set; get; }
 	    	    public string EXTENDFIELD { set; get; }
-	    	    public string OPERATION_CODE { set; get; }
-		}
-    
-    public partial class SYS_PROGRAM_WINFORM   : Entity   
-    {
- 
-    	    [Column("ID")]
-		public override string Id { set ; get ; }
-	    	    public string PROGRAMCODE { set; get; }
-	    	    public string PROGRAMNAME { set; get; }
-	    	    public string PROGRAMPARENT { set; get; }
-	    	    public string PROGRAMCOMMENT { set; get; }
-	    	    public string PROGRAMDEFINITION { set; get; }
-	    	    public string PROGRAMICON { set; get; }
-	    	    public string PROGRAMPROPERTY { set; get; }
-	    	    public string PROGRAMSECURITY { set; get; }
-	    	    public DateTime? PROGRAMRELEASE { set; get; }
-	    	    public string PROGRAMVERSION { set; get; }
-	    	    public string PROGRAMDESCRIPTION { set; get; }
-	    	    public string PROGRAMTYPE { set; get; }
-	    	    public string PROGRAMEXTEND { set; get; }
-	    	    public string EXTENDFIELD { set; get; }
-	    	    public long? MENU_ORDER { set; get; }
-		}
-    
-    public partial class SYS_ROLEAUTHORIZE   : Entity   
-    {
- 
-    	    public string SYS_POPEDOMPROGRAMID { set; get; }
-	    	    public string SYS_PROGRAMOPERATION_ID { set; get; }
-	    	    public string SYS_ROLEORUSERID { set; get; }
-	    	    public long? POPEDOM { set; get; }
-	    	    public string EXTENDFIELD { set; get; }
-	    	    public string TYPE { set; get; }
-	    	    [Column("ID")]
-		public override string Id { set ; get ; }
-	    	    public string RESOURCE_KEY { set; get; }
-		}
-    
-    public partial class SYS_ROLEINFO   : Entity   
-    {
- 
-    	    public string ROLECODE { set; get; }
-	    	    public string CNAME { set; get; }
-	    	    public string MEMO { set; get; }
-	    	    public string EXTENDFIELD { set; get; }
-	    	    [Column("ID")]
-		public override string Id { set ; get ; }
-		}
-    
-    public partial class SYS_ROLEUSER   : Entity   
-    {
- 
-    	    [Column("ID")]
-		public override string Id { set ; get ; }
-	    	    public string SYS_ROLEINFOID { set; get; }
-	    	    public string SYS_USERINFOID { set; get; }
-	    	    public string MEMO { set; get; }
-	    	    public string EXTENDFIELD { set; get; }
-		}
-    
-    public partial class SYS_SYSTEMINFO   : Entity   
-    {
- 
-    	    public string SYS_SYSTEMINFOID { set; get; }
-	    	    public string SYSTEMID { set; get; }
-	    	    public string MEMO { set; get; }
-	    	    public string EXTENDFIELD { set; get; }
-		}
-    
-    public partial class SYS_USERINFO   : Entity   
-    {
- 
-    	    public string USERCODE { set; get; }
-	    	    public string CNAME { set; get; }
-	    	    public string PASSWORD { set; get; }
-	    	    public long STATE { set; get; }
-	    	    public string LOGSCRIPT { set; get; }
-	    	    public string MEMO { set; get; }
-	    	    public string EXTENDFIELD { set; get; }
-	    	    [Column("ID")]
-		public override string Id { set ; get ; }
-		}
-    
-    public partial class TESTENTITY   : Entity   
-    {
- 
-    	    [Column("ID")]
-		public override string Id { set ; get ; }
-	    	    public string TESTENTITY2ID { set; get; }
-	    	    public decimal COLNUMINT { set; get; }
-	    	    public string TESTENTITY2ID_NULLABLE { set; get; }
-	    	    public decimal? COLNUMINT_NULLABLE { set; get; }
-	    	    public string STRING { set; get; }
-	    	    public long ISACTIVE { set; get; }
-	    	    public string COMMENT { set; get; }
-	    	    public DateTime REGISTERTIME { set; get; }
-	    	    public TESTENTITY2 TESTENTITY2 { set; get; }
-	    	    public ICollection<TESTENTITY3> TESTENTITY3s { set; get; }
-		}
-    
-    public partial class TESTENTITY2   : Entity   
-    {
- 
-    	    [Column("ID")]
-		public override string Id { set ; get ; }
-	    	    public string Text { set; get; }
-		}
-    
-    public partial class TESTENTITY3   : Entity   
-    {
- 
-    	    [Column("ID")]
-		public override string Id { set ; get ; }
-	    	    public string TESTENTITYID { set; get; }
-	    	    public string TESTENTITYID1 { set; get; }
-		}
-    
-    public partial class MIGRATIONHISTORY   : Entity   
-    {
- 
-    	    public string MIGRATIONID { set; get; }
-	    	    public string CONTEXTKEY { set; get; }
-	    	    public string MODEL { set; get; }
-	    	    public string PRODUCTVERSION { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string FACTORY_ID { set; get; }
 		}
     
     public partial class BLOCKS_AUDITLOGS   : Entity   
@@ -1102,16 +1294,22 @@ namespace Blocks.BussnessEntityModule
 	    	    public long? UserId { set; get; }
 	    	    public string ServiceName { set; get; }
 	    	    public string MethodName { set; get; }
-	    	    public string Parameters { set; get; }
-	    	    public DateTime ExecutionTime { set; get; }
-	    	    public long ExecutionDuration { set; get; }
+	    	    public DateTime? ExecutionTime { set; get; }
+	    	    public long? ExecutionDuration { set; get; }
 	    	    public string ClientIpAddress { set; get; }
 	    	    public string ClientName { set; get; }
 	    	    public string BrowserInfo { set; get; }
-	    	    public string Exception { set; get; }
 	    	    public long? ImpersonatorUserId { set; get; }
 	    	    public long? ImpersonatorTenantId { set; get; }
 	    	    public string CustomData { set; get; }
+	    	    public string METHODDESCRIPTION { set; get; }
+	    	    public string OUTPARAMETERS { set; get; }
+	    	    public string PARAMETERS { set; get; }
+	    	    public string USERACCOUNT { set; get; }
+	    	    public string OUTPARAMETERSDESCRIPTION { set; get; }
+	    	    public string PARAMETERSDESCRIPTION { set; get; }
+	    	    public string SYSTEMEXCEPTION { set; get; }
+	    	    public string EXCEPTION { set; get; }
 		}
     
     public partial class BLOCKS_BACKGROUNDJOBS   : Entity   
@@ -1128,18 +1326,6 @@ namespace Blocks.BussnessEntityModule
 	    	    public long? CreatorUserId { set; get; }
 		}
     
-    public partial class BLOCKS_FEATURES   : Entity   
-    {
- 
-    	    public string Name { set; get; }
-	    	    public string Value { set; get; }
-	    	    public DateTime CreationTime { set; get; }
-	    	    public long? CreatorUserId { set; get; }
-	    	    public long? EditionId { set; get; }
-	    	    public long? TenantId { set; get; }
-	    	    public string Discriminator { set; get; }
-		}
-    
     public partial class BLOCKS_EDITIONS   : Entity   
     {
  
@@ -1152,6 +1338,18 @@ namespace Blocks.BussnessEntityModule
 	    	    public long? LastModifierUserId { set; get; }
 	    	    public DateTime CreationTime { set; get; }
 	    	    public long? CreatorUserId { set; get; }
+		}
+    
+    public partial class BLOCKS_FEATURES   : Entity   
+    {
+ 
+    	    public string Name { set; get; }
+	    	    public string Value { set; get; }
+	    	    public DateTime CreationTime { set; get; }
+	    	    public long? CreatorUserId { set; get; }
+	    	    public long? EditionId { set; get; }
+	    	    public long? TenantId { set; get; }
+	    	    public string Discriminator { set; get; }
 		}
     
     public partial class BLOCKS_LANGUAGES   : Entity   
@@ -1262,6 +1460,72 @@ namespace Blocks.BussnessEntityModule
 	    	    public long? CreatorUserId { set; get; }
 		}
     
+    public partial class BLOCKS_SETTINGS   : Entity   
+    {
+ 
+    	    public long? TenantId { set; get; }
+	    	    public long? UserId { set; get; }
+	    	    public string Name { set; get; }
+	    	    public string Value { set; get; }
+	    	    public DateTime? LastModificationTime { set; get; }
+	    	    public long? LastModifierUserId { set; get; }
+	    	    public DateTime CreationTime { set; get; }
+	    	    public long? CreatorUserId { set; get; }
+		}
+    
+    public partial class BLOCKS_TENANTS   : Entity   
+    {
+ 
+    	    public long? EditionId { set; get; }
+	    	    public string Name { set; get; }
+	    	    public string TenancyName { set; get; }
+	    	    public string ConnectionString { set; get; }
+	    	    public long IsActive { set; get; }
+	    	    public long IsDeleted { set; get; }
+	    	    public long? DeleterUserId { set; get; }
+	    	    public DateTime? DeletionTime { set; get; }
+	    	    public DateTime? LastModificationTime { set; get; }
+	    	    public long? LastModifierUserId { set; get; }
+	    	    public DateTime CreationTime { set; get; }
+	    	    public long? CreatorUserId { set; get; }
+		}
+    
+    public partial class BLOCKS_TENANT_NOTIFICATIONS   : Entity   
+    {
+ 
+    	    public long? TenantId { set; get; }
+	    	    public string NotificationName { set; get; }
+	    	    public string Data { set; get; }
+	    	    public string DataTypeName { set; get; }
+	    	    public string EntityTypeName { set; get; }
+	    	    public string EntityTypeQualifiedName { set; get; }
+	    	    public string EntityId { set; get; }
+	    	    public long Severity { set; get; }
+	    	    public DateTime CreationTime { set; get; }
+	    	    public long? CreatorUserId { set; get; }
+		}
+    
+    public partial class BLOCKS_USERNOTIFICATIONS   : Entity   
+    {
+ 
+    	    public long? TenantId { set; get; }
+	    	    public long UserId { set; get; }
+	    	    public string TenantNotificationId { set; get; }
+	    	    public long State { set; get; }
+	    	    public DateTime CreationTime { set; get; }
+		}
+    
+    public partial class BLOCKS_USERORGANIZATION_UNITS   : Entity   
+    {
+ 
+    	    public long? TenantId { set; get; }
+	    	    public long UserId { set; get; }
+	    	    public long OrganizationUnitId { set; get; }
+	    	    public long IsDeleted { set; get; }
+	    	    public DateTime CreationTime { set; get; }
+	    	    public long? CreatorUserId { set; get; }
+		}
+    
     public partial class BLOCKS_USERS   : Entity   
     {
  
@@ -1293,6 +1557,24 @@ namespace Blocks.BussnessEntityModule
 	    	    public long? CreatorUserId { set; get; }
 		}
     
+    public partial class BLOCKS_USER_ACCOUNTS   : Entity   
+    {
+ 
+    	    public long? TenantId { set; get; }
+	    	    public long UserId { set; get; }
+	    	    public long? UserLinkId { set; get; }
+	    	    public string UserName { set; get; }
+	    	    public string EmailAddress { set; get; }
+	    	    public DateTime? LastLoginTime { set; get; }
+	    	    public long IsDeleted { set; get; }
+	    	    public long? DeleterUserId { set; get; }
+	    	    public DateTime? DeletionTime { set; get; }
+	    	    public DateTime? LastModificationTime { set; get; }
+	    	    public long? LastModifierUserId { set; get; }
+	    	    public DateTime CreationTime { set; get; }
+	    	    public long? CreatorUserId { set; get; }
+		}
+    
     public partial class BLOCKS_USER_CLAIMS   : Entity   
     {
  
@@ -1302,6 +1584,20 @@ namespace Blocks.BussnessEntityModule
 	    	    public string ClaimValue { set; get; }
 	    	    public DateTime CreationTime { set; get; }
 	    	    public long? CreatorUserId { set; get; }
+		}
+    
+    public partial class BLOCKS_USER_LOGINATTEMPTS   : Entity   
+    {
+ 
+    	    public long? TenantId { set; get; }
+	    	    public string TenancyName { set; get; }
+	    	    public long? UserId { set; get; }
+	    	    public string UserNameOrEmailAddress { set; get; }
+	    	    public string ClientIpAddress { set; get; }
+	    	    public string ClientName { set; get; }
+	    	    public string BrowserInfo { set; get; }
+	    	    public long Result { set; get; }
+	    	    public DateTime CreationTime { set; get; }
 		}
     
     public partial class BLOCKS_USER_LOGINS   : Entity   
@@ -1323,102 +1619,34 @@ namespace Blocks.BussnessEntityModule
 	    	    public long? CreatorUserId { set; get; }
 		}
     
-    public partial class BLOCKS_SETTINGS   : Entity   
+    public partial class MIGRATIONHISTORY   : Entity   
     {
  
-    	    public long? TenantId { set; get; }
-	    	    public long? UserId { set; get; }
-	    	    public string Name { set; get; }
-	    	    public string Value { set; get; }
-	    	    public DateTime? LastModificationTime { set; get; }
-	    	    public long? LastModifierUserId { set; get; }
-	    	    public DateTime CreationTime { set; get; }
-	    	    public long? CreatorUserId { set; get; }
+    	    public string MIGRATIONID { set; get; }
+	    	    public string CONTEXTKEY { set; get; }
+	    	    public string MODEL { set; get; }
+	    	    public string PRODUCTVERSION { set; get; }
 		}
     
-    public partial class BLOCKS_TENANT_NOTIFICATIONS   : Entity   
+    public partial class PRINT_SERVICE   : Entity   
     {
  
-    	    public long? TenantId { set; get; }
-	    	    public string NotificationName { set; get; }
-	    	    public string Data { set; get; }
-	    	    public string DataTypeName { set; get; }
-	    	    public string EntityTypeName { set; get; }
-	    	    public string EntityTypeQualifiedName { set; get; }
-	    	    public string EntityId { set; get; }
-	    	    public long Severity { set; get; }
-	    	    public DateTime CreationTime { set; get; }
-	    	    public long? CreatorUserId { set; get; }
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string PRINTTEMPLATE_PATH { set; get; }
+	    	    public long? PRINT_FLAG { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public string PRINT_TYPE { set; get; }
+	    	    public string PRINT_NAME { set; get; }
+	    	    public string PRINT_CONTENT_JSONTXT { set; get; }
 		}
     
-    public partial class BLOCKS_TENANTS   : Entity   
+    public partial class SHEET1   : Entity   
     {
  
-    	    public long? EditionId { set; get; }
-	    	    public string Name { set; get; }
-	    	    public string TenancyName { set; get; }
-	    	    public string ConnectionString { set; get; }
-	    	    public long IsActive { set; get; }
-	    	    public long IsDeleted { set; get; }
-	    	    public long? DeleterUserId { set; get; }
-	    	    public DateTime? DeletionTime { set; get; }
-	    	    public DateTime? LastModificationTime { set; get; }
-	    	    public long? LastModifierUserId { set; get; }
-	    	    public DateTime CreationTime { set; get; }
-	    	    public long? CreatorUserId { set; get; }
-		}
-    
-    public partial class BLOCKS_USER_ACCOUNTS   : Entity   
-    {
- 
-    	    public long? TenantId { set; get; }
-	    	    public long UserId { set; get; }
-	    	    public long? UserLinkId { set; get; }
-	    	    public string UserName { set; get; }
-	    	    public string EmailAddress { set; get; }
-	    	    public DateTime? LastLoginTime { set; get; }
-	    	    public long IsDeleted { set; get; }
-	    	    public long? DeleterUserId { set; get; }
-	    	    public DateTime? DeletionTime { set; get; }
-	    	    public DateTime? LastModificationTime { set; get; }
-	    	    public long? LastModifierUserId { set; get; }
-	    	    public DateTime CreationTime { set; get; }
-	    	    public long? CreatorUserId { set; get; }
-		}
-    
-    public partial class BLOCKS_USER_LOGINATTEMPTS   : Entity   
-    {
- 
-    	    public long? TenantId { set; get; }
-	    	    public string TenancyName { set; get; }
-	    	    public long? UserId { set; get; }
-	    	    public string UserNameOrEmailAddress { set; get; }
-	    	    public string ClientIpAddress { set; get; }
-	    	    public string ClientName { set; get; }
-	    	    public string BrowserInfo { set; get; }
-	    	    public long Result { set; get; }
-	    	    public DateTime CreationTime { set; get; }
-		}
-    
-    public partial class BLOCKS_USERNOTIFICATIONS   : Entity   
-    {
- 
-    	    public long? TenantId { set; get; }
-	    	    public long UserId { set; get; }
-	    	    public string TenantNotificationId { set; get; }
-	    	    public long State { set; get; }
-	    	    public DateTime CreationTime { set; get; }
-		}
-    
-    public partial class BLOCKS_USERORGANIZATION_UNITS   : Entity   
-    {
- 
-    	    public long? TenantId { set; get; }
-	    	    public long UserId { set; get; }
-	    	    public long OrganizationUnitId { set; get; }
-	    	    public long IsDeleted { set; get; }
-	    	    public DateTime CreationTime { set; get; }
-	    	    public long? CreatorUserId { set; get; }
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public DateTime? CREATETIME { set; get; }
 		}
     
     public partial class SYS_ACTION_TYPE   : Entity   
@@ -1431,90 +1659,99 @@ namespace Blocks.BussnessEntityModule
 	    	    public string EXTENDFIELD { set; get; }
 		}
     
-    public partial class BDTA_WORK_CENTER   : Entity   
+    public partial class SYS_CALL_THIRD_SYSTEM_INFO   : Entity   
     {
  
     	    [Column("ID")]
 		public override string Id { set ; get ; }
-	    	    public string WORK_CENTER_NO { set; get; }
-	    	    public string WORK_CENTER_NAME { set; get; }
-	    	    public string WORK_CENTER_DESC { set; get; }
-	    	    public string EXTENDFIELD { set; get; }
+	    	    public string SYSTEM_ID { set; get; }
+	    	    public string SYSTEM_NO { set; get; }
+	    	    public string SYSTEM_NAME { set; get; }
+	    	    public string FUNCTION_NAME { set; get; }
+	    	    public string PARAMETER_IN { set; get; }
+	    	    public string RESPONSE_VALUE { set; get; }
+	    	    public string EXCEPTION_MSG { set; get; }
+	    	    public DateTime PROCESS_TIME_BEGIN { set; get; }
+	    	    public DateTime? PROCESS_TIME_END { set; get; }
+	    	    public long REQUEST_TIMES { set; get; }
+	    	    public long PROCESS_RESULT { set; get; }
+	    	    public long? ACTIVITY { set; get; }
 	    	    public long? ISUSED { set; get; }
-	    	    public long? ACTIVITY { set; get; }
-	    	    public string FACTORY_ID { set; get; }
 		}
     
-    public partial class BDTA_PRODUCTELEMENT   : Entity   
+    public partial class SYS_CALL_THIRD_SYSTEM_LOG   : Entity   
     {
  
     	    [Column("ID")]
 		public override string Id { set ; get ; }
-	    	    public string PRODUCTELEMENT_CODE { set; get; }
-	    	    public string PRODUCTELEMENT_LENGTH { set; get; }
-	    	    public string PRODUCTELEMENT_NAME { set; get; }
-	    	    public string PRODUCTELEMENT_DESCRIPTION { set; get; }
+	    	    public string CALL_ID { set; get; }
+	    	    public string SYSTEM_ID { set; get; }
+	    	    public string SYSTEM_NO { set; get; }
+	    	    public string SYSTEM_NAME { set; get; }
+	    	    public string FUNCTION_NAME { set; get; }
+	    	    public string PARAMETER_IN { set; get; }
+	    	    public string RESPONSE_VALUE { set; get; }
 	    	    public long? ACTIVITY { set; get; }
-	    	    public string BDTA_PRODUCTELEMENT_TYPE_ID { set; get; }
-	    	    public string PRODUCTELEMENT_DEFAULT { set; get; }
-	    	    public long? AUTO_INCREMENT { set; get; }
-	    	    public string RESET_DATE { set; get; }
-	    	    public BDTA_PRODUCTELEMENT_TYPE BDTA_PRODUCTELEMENT_TYPE { set; get; }
+	    	    public long? ISUSED { set; get; }
 		}
     
-    public partial class BDTA_PRODUCTFORMAT_DETAIL   : Entity   
+    public partial class SYS_COLLECT   : Entity   
     {
  
     	    [Column("ID")]
 		public override string Id { set ; get ; }
-	    	    public string PRODUCTFORMATID { set; get; }
-	    	    public string PRODUCTELEMENTID { set; get; }
-	    	    public long? PRODUCTFORMAT_DETAIL_SEQ { set; get; }
-	    	    public string PRODUCTFORMAT_DETAIL_NAME { set; get; }
-	    	    public long? PRODUCTFORMAT_DETAIL_BEGIN { set; get; }
-	    	    public long? PRODUCTFORMAT_DETAIL_END { set; get; }
-	    	    public long? PRODUCTFORMAT_DETAIL_LENTH { set; get; }
-	    	    public long? ACTIVITY { set; get; }
-	    	    public string PRODUCTFORMAT_START { set; get; }
-	    	    public string PRODUCTFORMAT_END { set; get; }
-	    	    public BDTA_PRODUCTELEMENT BDTA_PRODUCTELEMENT { set; get; }
+	    	    public string USERACCOUNT { set; get; }
+	    	    public string COLLECTJSON { set; get; }
 		}
     
-    public partial class BDTA_PRODUCTFORMAT   : Entity   
+    public partial class SYS_LOG   : Entity   
+    {
+ 
+    	    public DateTime LOGDATE { set; get; }
+	    	    public string THREADID { set; get; }
+	    	    public string LOGLEVEL { set; get; }
+	    	    public string MODULENAME { set; get; }
+	    	    public string CLASSNAME { set; get; }
+	    	    public string METHODNAME { set; get; }
+	    	    public string CUSTOMMESSAGE { set; get; }
+	    	    public string USERID { set; get; }
+	    	    public string LOGEXCEPTION { set; get; }
+	    	    public string LOGID { set; get; }
+	    	    public decimal TAKETIME { set; get; }
+	    	    public string IPADDRESS { set; get; }
+	    	    public string COMPUTERNAME { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string ISUSED { set; get; }
+		}
+    
+    public partial class SYS_MENUS   : Entity   
     {
  
     	    [Column("ID")]
 		public override string Id { set ; get ; }
-	    	    public string PRODUCTFORMAT_CODE { set; get; }
-	    	    public long? PRODUCTFORMAT_LENGTH { set; get; }
-	    	    public string PRODUCTFORMAT_NAME { set; get; }
-	    	    public string PRODUCTFORMAT_DESCRIPTION { set; get; }
-	    	    public DateTime? PRODUCTFORMAT_UTIME { set; get; }
-	    	    public string PRODUCTFORMAT_UUSER { set; get; }
-	    	    public long? ACTIVITY { set; get; }
-		}
-    
-    public partial class BDTA_PRODUCTELEMENT_TYPE   : Entity   
-    {
- 
-    	    [Column("ID")]
-		public override string Id { set ; get ; }
-	    	    public string CODE { set; get; }
 	    	    public string NAME { set; get; }
+	    	    public long SORT { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
 	    	    public long? ACTIVITY { set; get; }
-	    	    public string ISVARIABLE { set; get; }
+	    	    public string DESC { set; get; }
+	    	    public string CODE { set; get; }
+	    	    public string PID { set; get; }
+	    	    public string TYPE { set; get; }
+	    	    public string ICON { set; get; }
+	    	    public string INDEXICON { set; get; }
+	    	    public long? PLATFORM { set; get; }
 		}
     
-    public partial class BDTA_PRODUCT_ELEMENT_RULE_REL   : Entity   
+    public partial class SYS_POPEDOMPROGRAM   : Entity   
     {
  
-    	    [Column("ID")]
-		public override string Id { set ; get ; }
-	    	    public string PRODUCT_FUNC_ID { set; get; }
-	    	    public string PRODUCT_ELEMENT_RULE_ID { set; get; }
+    	    public string SYS_POPEDOMPROGRAMID { set; get; }
+	    	    public string SYS_SYSTEMINFOID { set; get; }
+	    	    public string SYS_PROGRAMID { set; get; }
+	    	    public string PARENTPROGRAMID { set; get; }
+	    	    public string MEMO { set; get; }
 	    	    public string EXTENDFIELD { set; get; }
-	    	    public long? ISUSED { set; get; }
-	    	    public long? ACTIVITY { set; get; }
 		}
     
     public partial class SYS_PROGRAM   : Entity   
@@ -1538,248 +1775,196 @@ namespace Blocks.BussnessEntityModule
 	    	    public string EXTENDFIELD { set; get; }
 	    	    public long? ACTIVITY { set; get; }
 	    	    public long? MENU_ORDER { set; get; }
+	    	    public long? PLATFORM { set; get; }
 	    	    public SYS_MENUS SYS_MENUS { set; get; }
 		}
     
-    public partial class BDTA_SETUP   : Entity   
+    public partial class SYS_PROGRAMOPERATION   : Entity   
     {
  
     	    [Column("ID")]
 		public override string Id { set ; get ; }
-	    	    public string SETUP_NO { set; get; }
-	    	    public string SETUP_CONTENTS { set; get; }
-	    	    public string SETUP_KEY { set; get; }
-	    	    public string SETUP_TYPE_ID { set; get; }
-	    	    public string SETUP_TYPE { set; get; }
-	    	    public string SETUP_PARAMETER { set; get; }
-	    	    public string SETUP_MAX { set; get; }
-	    	    public string SETUP_MIN { set; get; }
+	    	    public string OPERATION_NAME { set; get; }
+	    	    public string SYS_POPEDOMPROGRAM_ID { set; get; }
+	    	    public string OPERATION_URL { set; get; }
 	    	    public string EXTENDFIELD { set; get; }
-	    	    public long? ISUSED { set; get; }
-	    	    public long? ACTIVITY { set; get; }
 		}
     
-    public partial class BDTA_CUSTOMER   : Entity   
+    public partial class SYS_PROGRAM_OPERATION_WEB   : Entity   
     {
  
     	    [Column("ID")]
 		public override string Id { set ; get ; }
-	    	    public string CUSTOMER_NO { set; get; }
-	    	    public string CUSTOMER_NAME { set; get; }
-	    	    public string CUSTOMER_CHARGER { set; get; }
-	    	    public string CUSTOMER_TELEPHONE { set; get; }
-	    	    public string CUSTOMER_TAX { set; get; }
-	    	    public string CUSTOMER_MAIL { set; get; }
-	    	    public string CUSTOMER_ADDRESS { set; get; }
-	    	    public string CUSTOMER_PROVINCE { set; get; }
-	    	    public string CUSTOMER_POSTCODE { set; get; }
-	    	    public string CUSTOMER_DESC { set; get; }
-	    	    public string CUSTOMER_ABBREVIATION { set; get; }
+	    	    public string OPERATION_NAME { set; get; }
+	    	    public string OPERATION_CONTENT { set; get; }
+	    	    public long? OPERATION_TYPE { set; get; }
 	    	    public string EXTENDFIELD { set; get; }
-	    	    public long? ISUSED { set; get; }
-	    	    public long? ACTIVITY { set; get; }
+	    	    public string OPERATION_CODE { set; get; }
 		}
     
-    public partial class BDTA_OUT_IN_TYPE   : Entity   
+    public partial class SYS_PROGRAM_WINFORM   : Entity   
     {
  
     	    [Column("ID")]
 		public override string Id { set ; get ; }
-	    	    public string OUT_IN_NO { set; get; }
-	    	    public string OUT_IN_NAME { set; get; }
-	    	    public string OUT_IN_DESC { set; get; }
+	    	    public string PROGRAMCODE { set; get; }
+	    	    public string PROGRAMNAME { set; get; }
+	    	    public string PROGRAMPARENT { set; get; }
+	    	    public string PROGRAMCOMMENT { set; get; }
+	    	    public string PROGRAMDEFINITION { set; get; }
+	    	    public string PROGRAMICON { set; get; }
+	    	    public string PROGRAMPROPERTY { set; get; }
+	    	    public string PROGRAMSECURITY { set; get; }
+	    	    public DateTime? PROGRAMRELEASE { set; get; }
+	    	    public string PROGRAMVERSION { set; get; }
+	    	    public string PROGRAMDESCRIPTION { set; get; }
+	    	    public string PROGRAMTYPE { set; get; }
+	    	    public string PROGRAMEXTEND { set; get; }
 	    	    public string EXTENDFIELD { set; get; }
-	    	    public long? ISUSED { set; get; }
-	    	    public long? ACTIVITY { set; get; }
+	    	    public long? MENU_ORDER { set; get; }
 		}
     
-    public partial class BDTA_SETUP_TYPE   : Entity   
+    public partial class SYS_QUESTION_FEEDBACK   : Entity   
     {
  
     	    [Column("ID")]
 		public override string Id { set ; get ; }
-	    	    public string SETUP_TYPE_NO { set; get; }
-	    	    public string SETUP_TYPE_NAME { set; get; }
-	    	    public string EXTENDFIELD { set; get; }
-	    	    public long? ISUSED { set; get; }
+	    	    public string FEEDBACK_TYPE { set; get; }
+	    	    public string FEEDBACK_TITLE { set; get; }
+	    	    public string FEEDBACK_CONTENT { set; get; }
 	    	    public long? ACTIVITY { set; get; }
-	    	    public string SETUP_TYPE_VALUE { set; get; }
+	    	    public string ISUSED { set; get; }
 		}
     
-    public partial class BDTA_PRODUCT_VARELEMENT_REL   : Entity   
+    public partial class SYS_ROLEAUTHORIZE   : Entity   
     {
  
-    	    [Column("ID")]
+    	    public string SYS_POPEDOMPROGRAMID { set; get; }
+	    	    public string SYS_PROGRAMOPERATION_ID { set; get; }
+	    	    public string SYS_ROLEORUSERID { set; get; }
+	    	    public long? POPEDOM { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public string TYPE { set; get; }
+	    	    [Column("ID")]
 		public override string Id { set ; get ; }
-	    	    public string PRODUCT_FUNC_ID { set; get; }
-	    	    public string PRODUCT_ELEMENT_TYPE_ID { set; get; }
-	    	    public string EXTENDFIELD { set; get; }
-	    	    public long? ISUSED { set; get; }
-	    	    public long? ACTIVITY { set; get; }
+	    	    public string RESOURCE_KEY { set; get; }
 		}
     
-    public partial class BDTA_ORG_FACTORY   : Entity   
+    public partial class SYS_ROLEINFO   : Entity   
     {
  
-    	    [Column("ID")]
-		public override string Id { set ; get ; }
-	    	    public string FACTORY_NO { set; get; }
-	    	    public string FACTORY_NAME { set; get; }
-	    	    public string FACTORY_DESC { set; get; }
+    	    public string ROLECODE { set; get; }
+	    	    public string CNAME { set; get; }
+	    	    public string MEMO { set; get; }
 	    	    public string EXTENDFIELD { set; get; }
-	    	    public long? ISUSED { set; get; }
-	    	    public long? ACTIVITY { set; get; }
-		}
-    
-    public partial class BDTA_ORG_ORGRELATION   : Entity   
-    {
- 
-    	    public string ORGRELATIONID { set; get; }
-	    	    public string ORGRELATIONPID { set; get; }
-	    	    public long ORGRELATIONTYPE { set; get; }
-	    	    public string ORGRELATIONTABLE { set; get; }
-	    	    public string EXTENDFIELD { set; get; }
-	    	    public string ORGRELATIONNAME { set; get; }
-	    	    public long? ACTIVITY { set; get; }
 	    	    [Column("ID")]
 		public override string Id { set ; get ; }
 		}
     
-    public partial class BDTA_QA_CHECKMODE   : Entity   
+    public partial class SYS_ROLEUSER   : Entity   
     {
  
     	    [Column("ID")]
 		public override string Id { set ; get ; }
-	    	    public string MATERIALID { set; get; }
-	    	    public string MATERIAL_CODE { set; get; }
-	    	    public string MATERIAL_NAME { set; get; }
-	    	    public string SUPPLIERID { set; get; }
-	    	    public string SUPPLIER_NO { set; get; }
-	    	    public string SUPPLIER_NAME { set; get; }
-	    	    public string CHECKMODE { set; get; }
-	    	    public string REMARK { set; get; }
+	    	    public string SYS_ROLEINFOID { set; get; }
+	    	    public string SYS_USERINFOID { set; get; }
+	    	    public string MEMO { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+		}
+    
+    public partial class SYS_SYSTEMINFO   : Entity   
+    {
+ 
+    	    public string SYS_SYSTEMINFOID { set; get; }
+	    	    public string SYSTEMID { set; get; }
+	    	    public string MEMO { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+		}
+    
+    public partial class SYS_THIRD_SYSTEM_TYPE   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string SYSTEM_NO { set; get; }
+	    	    public string SYSTEM_NAME { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public long? ISUSED { set; get; }
+		}
+    
+    public partial class SYS_USERINFO   : Entity   
+    {
+ 
+    	    public string USERCODE { set; get; }
+	    	    public string CNAME { set; get; }
+	    	    public string PASSWORD { set; get; }
+	    	    public string LOGSCRIPT { set; get; }
+	    	    public string MEMO { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public long? STATE { set; get; }
+		}
+    
+    public partial class SYS_USER_STOREROOM   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string USER_ID { set; get; }
+	    	    public string STOREROOM_ID { set; get; }
 	    	    public string EXTENDFIELD { set; get; }
 	    	    public long? ISUSED { set; get; }
-	    	    public long? ACTIVITY { set; get; }
-	    	    public string INSPECTION_STANDARD { set; get; }
-	    	    public string QA_CHECKITEMMANAGE_ID { set; get; }
-	    	    public BDTA_QA_CHECKITEMMANAGE BDTA_QA_CHECKITEMMANAGE { set; get; }
 		}
     
-    public partial class BDTA_QA_CHECKITEM   : Entity   
+    public partial class SYS_USER_VISIT_STATISTIC   : Entity   
     {
  
     	    [Column("ID")]
 		public override string Id { set ; get ; }
-	    	    public string CHECKITEMCODE { set; get; }
-	    	    public string CHECKITEMNAME { set; get; }
-	    	    public string CHECKITEMCONTENT { set; get; }
-	    	    public string CHECKTYPE { set; get; }
-	    	    public string CHECKCLASS { set; get; }
-	    	    public string CHECKMETHOD { set; get; }
-	    	    public decimal? CHECKSTANDARD { set; get; }
-	    	    public decimal? CHECK_UPPERLIMIT { set; get; }
-	    	    public decimal? CHECK_LOWERLIMIT { set; get; }
-	    	    public string REMARK { set; get; }
-	    	    public string EXTENDFIELD { set; get; }
-	    	    public string CHECKITEMPARENT { set; get; }
-	    	    public BDTA_DICTIONARY BDTA_DICTIONARY { set; get; }
-		}
-    
-    public partial class BDTA_MAKER   : Entity   
-    {
- 
-    	    [Column("ID")]
-		public override string Id { set ; get ; }
-	    	    public string MAKER_NO { set; get; }
-	    	    public string MAKER_NAME { set; get; }
-	    	    public string MAKER_CHARGER { set; get; }
-	    	    public string MAKER_TELEPHONE { set; get; }
-	    	    public string MAKER_TAX { set; get; }
-	    	    public string MAKER_MAIL { set; get; }
-	    	    public string MAKER_ADDRESS { set; get; }
-	    	    public string MAKER_PROVINCE { set; get; }
-	    	    public string MAKER_POSTCODE { set; get; }
-	    	    public string MAKER_DESC { set; get; }
-	    	    public string MAKER_ABBREVIATION { set; get; }
-	    	    public string EXTENDFIELD { set; get; }
-	    	    public long? ISUSED { set; get; }
-	    	    public long? ACTIVITY { set; get; }
-		}
-    
-    public partial class BDTA_UNIT   : Entity   
-    {
- 
-    	    [Column("ID")]
-		public override string Id { set ; get ; }
-	    	    public string UNIT_NO { set; get; }
-	    	    public string UNIT_NAME { set; get; }
-	    	    public string EXTENDFIELD { set; get; }
-	    	    public long? ISUSED { set; get; }
-	    	    public long? ACTIVITY { set; get; }
-		}
-    
-    public partial class BDTA_QA_CHECKITEMMANAGE   : Entity   
-    {
- 
-    	    [Column("ID")]
-		public override string Id { set ; get ; }
-	    	    public string CHECKCODE { set; get; }
-	    	    public string CHECKNAME { set; get; }
-	    	    public string REMARK { set; get; }
-	    	    public string EXTENDFIELD { set; get; }
-		}
-    
-    public partial class BDTA_QA_CHECKITEMMANAGE_DETAIL   : Entity   
-    {
- 
-    	    [Column("ID")]
-		public override string Id { set ; get ; }
-	    	    public string CHECKITEMMANAGEID { set; get; }
-	    	    public string CHECKCODE { set; get; }
-	    	    public string CHECKITEMCODE { set; get; }
-	    	    public string CHECKITEMNAME { set; get; }
-	    	    public string CHECKITEMCONTENT { set; get; }
-	    	    public string CHECKTYPE { set; get; }
-	    	    public string CHECKMETHOD { set; get; }
-	    	    public decimal? CHECKSTANDARD { set; get; }
-	    	    public decimal? CHECK_UPPERLIMIT { set; get; }
-	    	    public decimal? CHECK_LOWERLIMIT { set; get; }
-	    	    public string REMARK { set; get; }
-	    	    public string EXTENDFIELD { set; get; }
-	    	    public string CHECKITEMPARENTCODE { set; get; }
-	    	    public string CHECKITEMPARENTNAME { set; get; }
-		}
-    
-    public partial class WAREHOUSE_STOCK_LOCK   : Entity   
-    {
- 
-    	    [Column("ID")]
-		public override string Id { set ; get ; }
-	    	    public string LOCK_GUID { set; get; }
-	    	    public string LOTNO { set; get; }
-	    	    public string SITE_CODE { set; get; }
-	    	    public string OPERATE_TPYE { set; get; }
+	    	    public string MENU_ID { set; get; }
+	    	    public string MENU_CODE { set; get; }
+	    	    public string MENU_URL { set; get; }
+	    	    public string USER_ID { set; get; }
+	    	    public string USER_CODE { set; get; }
+	    	    public decimal? VISIT_NUMBERS { set; get; }
 	    	    public string EXTENDFIELD { set; get; }
 	    	    public long? ACTIVITY { set; get; }
-	    	    public string MATERIAL_ID { set; get; }
-	    	    public string OUT_STORAGE_NO { set; get; }
-	    	    public decimal? OUT_QTY { set; get; }
-	    	    public string OUT_STORAGE_DETAIL_ID { set; get; }
+	    	    public string ISUSED { set; get; }
 		}
     
-    public partial class BDTA_QA_SAMPLING_STANDARD   : Entity   
+    public partial class TESTENTITY   : Entity   
     {
  
     	    [Column("ID")]
 		public override string Id { set ; get ; }
-	    	    public string INSPECTION_STANDARD { set; get; }
-	    	    public long STARTQTY { set; get; }
-	    	    public long ENDQTY { set; get; }
-	    	    public long SAMPLINGQTY { set; get; }
-	    	    public long QUALIFIEDQTY { set; get; }
-	    	    public string REMARK { set; get; }
-	    	    public string EXTENDFIELD { set; get; }
+	    	    public string TESTENTITY2ID { set; get; }
+	    	    public decimal COLNUMINT { set; get; }
+	    	    public string TESTENTITY2ID_NULLABLE { set; get; }
+	    	    public decimal? COLNUMINT_NULLABLE { set; get; }
+	    	    public string STRING { set; get; }
+	    	    public long ISACTIVE { set; get; }
+	    	    public string COMMENT { set; get; }
+	    	    public DateTime REGISTERTIME { set; get; }
+	    	    public TESTENTITY2 TESTENTITY2 { set; get; }
+	    	    public ICollection<TESTENTITY3> TESTENTITY3s { set; get; }
+		}
+    
+    public partial class TESTENTITY2   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string Text { set; get; }
+		}
+    
+    public partial class TESTENTITY3   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string TESTENTITYID { set; get; }
+	    	    public string TESTENTITYID1 { set; get; }
 		}
     
     public partial class WAREHOUSE_IN_STORAGE   : Entity   
@@ -1819,6 +2004,63 @@ namespace Blocks.BussnessEntityModule
 	    	    public BDTA_SUPPLIER BDTA_SUPPLIER { set; get; }
 		}
     
+    public partial class WAREHOUSE_IQC   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string RECEIVE_ID { set; get; }
+	    	    public string RECEIVE_NO { set; get; }
+	    	    public string MATERIAL_ID { set; get; }
+	    	    public string MATERIAL_CODE { set; get; }
+	    	    public string LOTNO { set; get; }
+	    	    public decimal? QUALIFIED_QTY { set; get; }
+	    	    public decimal? UNQUALIFIED_QTY { set; get; }
+	    	    public decimal? IN_STORAGE_QTY { set; get; }
+	    	    public string STATE { set; get; }
+	    	    public string SUPPLIER_ID { set; get; }
+	    	    public string INSPECT_NO { set; get; }
+	    	    public string INSPECT_MODE { set; get; }
+	    	    public decimal? MI_QTY { set; get; }
+	    	    public decimal? MA_QTY { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string REMAEK { set; get; }
+	    	    public string STOREROOM_ID { set; get; }
+	    	    public decimal? SUM_QTY { set; get; }
+	    	    public string PO { set; get; }
+	    	    public decimal? SAMPQTY { set; get; }
+	    	    public string INSPECT_TYPE { set; get; }
+	    	    public string INSPECT_EMPTY_TYPE { set; get; }
+	    	    public string CHECK_ITEM_MANAGE_ID { set; get; }
+	    	    public string INSPECTION_STANDARD { set; get; }
+	    	    public BDTA_MATERIAL BDTA_MATERIAL { set; get; }
+	    	    public BDTA_SUPPLIER BDTA_SUPPLIER { set; get; }
+		}
+    
+    public partial class WAREHOUSE_IQC_DETAIL   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string WAREHOUSE_IQC_ID { set; get; }
+	    	    public string CHECKCODE { set; get; }
+	    	    public string CHECKITEMCODE { set; get; }
+	    	    public string CHECKITEMNAME { set; get; }
+	    	    public string CHECKITEMCONTENT { set; get; }
+	    	    public string CHECKTYPE { set; get; }
+	    	    public string CHECKMETHOD { set; get; }
+	    	    public decimal? CHECKSTANDARD { set; get; }
+	    	    public decimal? CHECK_UPPERLIMIT { set; get; }
+	    	    public decimal? CHECK_LOWERLIMIT { set; get; }
+	    	    public string REMARK { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public string CHECKITEMPARENTCODE { set; get; }
+	    	    public string CHECKITEMPARENTNAME { set; get; }
+	    	    public string RESULT { set; get; }
+	    	    public string MEASUREDVALUE { set; get; }
+		}
+    
     public partial class WAREHOUSE_MOVESITE   : Entity   
     {
  
@@ -1827,6 +2069,10 @@ namespace Blocks.BussnessEntityModule
 	    	    public string MOVESITE_NO { set; get; }
 	    	    public string EXTENDFIELD { set; get; }
 	    	    public long? ACTIVITY { set; get; }
+	    	    public decimal? MOVETYPE { set; get; }
+	    	    public decimal? STATE { set; get; }
+	    	    public string STOREROOM_ID { set; get; }
+	    	    public string STOREROOM_CODE { set; get; }
 		}
     
     public partial class WAREHOUSE_MOVESITE_DETAIL   : Entity   
@@ -1897,129 +2143,67 @@ namespace Blocks.BussnessEntityModule
 	    	    public string STATE { set; get; }
 		}
     
-    public partial class SHEET1   : Entity   
+    public partial class WAREHOUSE_PO   : Entity   
     {
  
     	    [Column("ID")]
 		public override string Id { set ; get ; }
-	    	    public DateTime? CREATETIME { set; get; }
-		}
-    
-    public partial class SYS_USER_STOREROOM   : Entity   
-    {
- 
-    	    [Column("ID")]
-		public override string Id { set ; get ; }
-	    	    public string USER_ID { set; get; }
-	    	    public string STOREROOM_ID { set; get; }
-	    	    public string EXTENDFIELD { set; get; }
-	    	    public long? ISUSED { set; get; }
-		}
-    
-    public partial class SYS_MENUS   : Entity   
-    {
- 
-    	    [Column("ID")]
-		public override string Id { set ; get ; }
-	    	    public string NAME { set; get; }
-	    	    public long SORT { set; get; }
-	    	    public string EXTENDFIELD { set; get; }
-	    	    public long? ACTIVITY { set; get; }
-	    	    public string DESC { set; get; }
-	    	    public string CODE { set; get; }
-	    	    public string PID { set; get; }
-	    	    public string TYPE { set; get; }
-		}
-    
-    public partial class WAREHOUSE_STOCK_BALANCE_DETAIL   : Entity   
-    {
- 
-    	    [Column("ID")]
-		public override string Id { set ; get ; }
-	    	    public string STOCK_BALANCE_ID { set; get; }
-	    	    public string STOCK_BALANCE_CODE { set; get; }
-	    	    public string MATERIAL_ID { set; get; }
-	    	    public string MATERIAL_CODE { set; get; }
-	    	    public string MATERIAL_NAME { set; get; }
-	    	    public string LOTNO { set; get; }
-	    	    public string SITE_ID { set; get; }
-	    	    public string SITE_CODE { set; get; }
-	    	    public string BALANCE_TYPE { set; get; }
-	    	    public decimal? ADJUST_NUM { set; get; }
-	    	    public string EXTENDFIELD { set; get; }
-	    	    public long? ACTIVITY { set; get; }
-	    	    public string ISUSED { set; get; }
-	    	    public string STATE { set; get; }
-		}
-    
-    public partial class WAREHOUSE_STOCK_COUNT_STOCK   : Entity   
-    {
- 
-    	    [Column("ID")]
-		public override string Id { set ; get ; }
-	    	    public string LOTNO { set; get; }
-	    	    public string SITE_ID { set; get; }
-	    	    public string MATERIAL_ID { set; get; }
-	    	    public string WAREHOUSE_STOCK_COUNT_ID { set; get; }
-	    	    public string WAREHOUSE_STOCK_COUNT_CODE { set; get; }
-	    	    public string EXTENDFIELD { set; get; }
-	    	    public long? ACTIVITY { set; get; }
-	    	    public decimal? QTY { set; get; }
+	    	    public string PONO { set; get; }
 	    	    public string SUPPLIER_ID { set; get; }
-	    	    public string STOREROM_ID { set; get; }
-	    	    public string MATERIAL_CODE { set; get; }
-	    	    public string MATERIAL_NAME { set; get; }
-	    	    public string SITE_CODE { set; get; }
-	    	    public string STOREROM_CODE { set; get; }
 	    	    public string SUPPLIER_CODE { set; get; }
-	    	    public string SOURCE_CODE { set; get; }
-	    	    public decimal? SCANQTY { set; get; }
-	    	    public decimal? SUBQTY { set; get; }
+	    	    public string CONTRACTNO { set; get; }
+	    	    public string POEMP { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
 		}
     
-    public partial class WAREHOUSE_STOCK_BALANCE   : Entity   
+    public partial class WAREHOUSE_PO_DETAIL   : Entity   
     {
  
     	    [Column("ID")]
 		public override string Id { set ; get ; }
-	    	    public string STOCK_BALANCE_CODE { set; get; }
-	    	    public string STOREROOM_ID { set; get; }
-	    	    public string STOREROOM_CODE { set; get; }
-	    	    public string STOCK_COUNT_CODE { set; get; }
-	    	    public DateTime? SUBBMITDATE { set; get; }
-	    	    public string SUBBMITER { set; get; }
-	    	    public DateTime? REVIEWDATE { set; get; }
-	    	    public string REVIEWER { set; get; }
+	    	    public string POID { set; get; }
+	    	    public string PONO { set; get; }
+	    	    public string MATERIAL_ID { set; get; }
+	    	    public string MATERIAL_CODE { set; get; }
+	    	    public decimal? POQTY { set; get; }
+	    	    public decimal RECEIVE_QTY { set; get; }
+	    	    public string STATE { set; get; }
+	    	    public string ISCHECK { set; get; }
+	    	    public string UNIT_ID { set; get; }
+	    	    public DateTime? RECEIVE_DATE_ASK { set; get; }
+	    	    public DateTime? RECEIVE_DATE_PROMISE { set; get; }
+	    	    public string RECEIVE_PLACE { set; get; }
+	    	    public long? POLINENO { set; get; }
+	    	    public decimal? PRICE { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public decimal FREEZING_QTY { set; get; }
+	    	    public decimal RETURNED_QTY { set; get; }
+	    	    public BDTA_MATERIAL BDTA_MATERIAL { set; get; }
+	    	    public BDTA_UNIT BDTA_UNIT { set; get; }
+		}
+    
+    public partial class WAREHOUSE_RECEIVE   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string RECEIVE_NO { set; get; }
+	    	    public string SUPPLIERID { set; get; }
+	    	    public DateTime? RECEIVE_DATE { set; get; }
+	    	    public string RECEIVER { set; get; }
+	    	    public DateTime? DELIVERY_DATE { set; get; }
+	    	    public string PO { set; get; }
+	    	    public string DELIVERY_ORDER { set; get; }
+	    	    public string RECEIVE_STOREROOMID { set; get; }
 	    	    public string STATE { set; get; }
 	    	    public string REMARK { set; get; }
 	    	    public string EXTENDFIELD { set; get; }
-	    	    public long? ACTIVITY { set; get; }
-	    	    public string ISUSED { set; get; }
-	    	    public string SOURCE_TYPE { set; get; }
-	    	    public string REASON { set; get; }
-		}
-    
-    public partial class WAREHOUSE_IQC_DETAIL   : Entity   
-    {
- 
-    	    [Column("ID")]
-		public override string Id { set ; get ; }
-	    	    public string WAREHOUSE_IQC_ID { set; get; }
-	    	    public string CHECKCODE { set; get; }
-	    	    public string CHECKITEMCODE { set; get; }
-	    	    public string CHECKITEMNAME { set; get; }
-	    	    public string CHECKITEMCONTENT { set; get; }
-	    	    public string CHECKTYPE { set; get; }
-	    	    public string CHECKMETHOD { set; get; }
-	    	    public decimal? CHECKSTANDARD { set; get; }
-	    	    public decimal? CHECK_UPPERLIMIT { set; get; }
-	    	    public decimal? CHECK_LOWERLIMIT { set; get; }
-	    	    public string REMARK { set; get; }
-	    	    public string EXTENDFIELD { set; get; }
-	    	    public string CHECKITEMPARENTCODE { set; get; }
-	    	    public string CHECKITEMPARENTNAME { set; get; }
-	    	    public string RESULT { set; get; }
-	    	    public string MEASUREDVALUE { set; get; }
+	    	    public string RECEIVE_TYPE { set; get; }
+	    	    public BDTA_SUPPLIER BDTA_SUPPLIER { set; get; }
+	    	    public SYS_USERINFO SYS_USERINFO { set; get; }
+	    	    public BDTA_ORG_STOREROOM BDTA_ORG_STOREROOM { set; get; }
 		}
     
     public partial class WAREHOUSE_RECEIVE_DETAIL   : Entity   
@@ -2045,6 +2229,63 @@ namespace Blocks.BussnessEntityModule
 	    	    public BDTA_UNIT BDTA_UNIT { set; get; }
 		}
     
+    public partial class WAREHOUSE_STOCK   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string MATERIAL_ID { set; get; }
+	    	    public string MATERIAL_CODE { set; get; }
+	    	    public decimal? QTY { set; get; }
+	    	    public decimal? OUT_LOCK_QTY { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public decimal? FREEZE_QTY { set; get; }
+		}
+    
+    public partial class WAREHOUSE_STOCK_BALANCE   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string STOCK_BALANCE_CODE { set; get; }
+	    	    public string STOREROOM_ID { set; get; }
+	    	    public string STOREROOM_CODE { set; get; }
+	    	    public string STOCK_COUNT_CODE { set; get; }
+	    	    public DateTime? SUBBMITDATE { set; get; }
+	    	    public string SUBBMITER { set; get; }
+	    	    public DateTime? REVIEWDATE { set; get; }
+	    	    public string REVIEWER { set; get; }
+	    	    public string STATE { set; get; }
+	    	    public string REMARK { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string ISUSED { set; get; }
+	    	    public string SOURCE_TYPE { set; get; }
+	    	    public string REASON { set; get; }
+		}
+    
+    public partial class WAREHOUSE_STOCK_BALANCE_DETAIL   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string STOCK_BALANCE_ID { set; get; }
+	    	    public string STOCK_BALANCE_CODE { set; get; }
+	    	    public string MATERIAL_ID { set; get; }
+	    	    public string MATERIAL_CODE { set; get; }
+	    	    public string MATERIAL_NAME { set; get; }
+	    	    public string LOTNO { set; get; }
+	    	    public string SITE_ID { set; get; }
+	    	    public string SITE_CODE { set; get; }
+	    	    public string BALANCE_TYPE { set; get; }
+	    	    public decimal ADJUST_NUM { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string ISUSED { set; get; }
+	    	    public string STATE { set; get; }
+		}
+    
     public partial class WAREHOUSE_STOCK_COUNT   : Entity   
     {
  
@@ -2061,34 +2302,36 @@ namespace Blocks.BussnessEntityModule
 	    	    public long? ACTIVITY { set; get; }
 	    	    public string ISUSED { set; get; }
 	    	    public string ISCREATED { set; get; }
+	    	    public string PREPARATION_CONDITIONS { set; get; }
+	    	    public string INVENTORY_REQUIREMENTS { set; get; }
+	    	    public string PLAN_M_ID { set; get; }
+	    	    public string PLAN_D_ID { set; get; }
+	    	    public string SOURCE_CODE { set; get; }
+	    	    public long COUNT_TIMES { set; get; }
+	    	    public decimal ISCONFIRM { set; get; }
+	    	    public decimal STOCKTAKING_MODE { set; get; }
 		}
     
-    public partial class WAREHOUSE_STOCK_LOG   : Entity   
+    public partial class WAREHOUSE_STOCK_COUNT_DETAIL   : Entity   
     {
  
     	    [Column("ID")]
 		public override string Id { set ; get ; }
-	    	    public string MATERIAL_ID { set; get; }
-	    	    public string MATERIAL_CODE { set; get; }
-	    	    public string LOTNO { set; get; }
-	    	    public decimal? QTY { set; get; }
-	    	    public string OPERATE_TPYE { set; get; }
-	    	    public string SITE_ID { set; get; }
-	    	    public string SITE_CODE { set; get; }
-	    	    public string SOURCE_ID { set; get; }
-	    	    public string SOURCE_CODE { set; get; }
-	    	    public string SOURCE_TYPE { set; get; }
-	    	    public string SUPPLIER_ID { set; get; }
-	    	    public string SUPPLIER_CODE { set; get; }
+	    	    public string STOCK_COUNT_ID { set; get; }
+	    	    public string STOCK_COUNT_CODE { set; get; }
+	    	    public string STOCK_COUNT_TYPE { set; get; }
+	    	    public string DETAIL_ID { set; get; }
+	    	    public string DETAIL_CODE { set; get; }
+	    	    public string DETAIL_NAME { set; get; }
+	    	    public string STOREROOM_ID { set; get; }
+	    	    public string STOREROOM_CODE { set; get; }
 	    	    public string EXTENDFIELD { set; get; }
 	    	    public long? ACTIVITY { set; get; }
-	    	    public string STOREROM_ID { set; get; }
-	    	    public string STOREROM_CODE { set; get; }
-	    	    public string LINE_NUMBER { set; get; }
-	    	    public string VOUCHERNO { set; get; }
+	    	    public string ISUSED { set; get; }
+	    	    public decimal? DETAIL_STAGE { set; get; }
 		}
     
-    public partial class WAREHOUSE_STOCK_COUNT_SCAN   : Entity   
+    public partial class WAREHOUSE_STOCK_COUNT_LOG   : Entity   
     {
  
     	    [Column("ID")]
@@ -2108,92 +2351,67 @@ namespace Blocks.BussnessEntityModule
 	    	    public string EXTENDFIELD { set; get; }
 	    	    public long? ACTIVITY { set; get; }
 	    	    public string ISUSED { set; get; }
+	    	    public long? COUNT_TIMES { set; get; }
 		}
     
-    public partial class WAREHOUSE_STOCK   : Entity   
-    {
- 
-    	    [Column("ID")]
-		public override string Id { set ; get ; }
-	    	    public string MATERIAL_ID { set; get; }
-	    	    public string MATERIAL_CODE { set; get; }
-	    	    public decimal? QTY { set; get; }
-	    	    public decimal? OUT_LOCK_QTY { set; get; }
-	    	    public string EXTENDFIELD { set; get; }
-	    	    public long? ACTIVITY { set; get; }
-		}
-    
-    public partial class WAREHOUSE_STOCK_COUNT_DETAIL   : Entity   
+    public partial class WAREHOUSE_STOCK_COUNT_SCAN   : Entity   
     {
  
     	    [Column("ID")]
 		public override string Id { set ; get ; }
 	    	    public string STOCK_COUNT_ID { set; get; }
 	    	    public string STOCK_COUNT_CODE { set; get; }
-	    	    public string STOCK_COUNT_TYPE { set; get; }
-	    	    public string DETAIL_ID { set; get; }
-	    	    public string DETAIL_CODE { set; get; }
-	    	    public string DETAIL_NAME { set; get; }
+	    	    public string STOCK_COUNT_DETAIL_ID { set; get; }
+	    	    public string MATERIAL_ID { set; get; }
+	    	    public string MATERIAL_CODE { set; get; }
+	    	    public string MATERIAL_NAME { set; get; }
+	    	    public string LOTNO { set; get; }
+	    	    public string SITE_ID { set; get; }
+	    	    public string SITE_CODE { set; get; }
 	    	    public string STOREROOM_ID { set; get; }
 	    	    public string STOREROOM_CODE { set; get; }
+	    	    public decimal QTY { set; get; }
 	    	    public string EXTENDFIELD { set; get; }
 	    	    public long? ACTIVITY { set; get; }
 	    	    public string ISUSED { set; get; }
+	    	    public long COUNT_TIMES { set; get; }
+	    	    public decimal? SYS_QTY { set; get; }
 		}
     
-    public partial class WAREHOUSE_RECEIVE   : Entity   
+    public partial class WAREHOUSE_STOCK_COUNT_STOCK   : Entity   
     {
  
     	    [Column("ID")]
 		public override string Id { set ; get ; }
-	    	    public string RECEIVE_NO { set; get; }
-	    	    public string SUPPLIERID { set; get; }
-	    	    public DateTime? RECEIVE_DATE { set; get; }
-	    	    public string RECEIVER { set; get; }
-	    	    public DateTime? DELIVERY_DATE { set; get; }
-	    	    public string PO { set; get; }
-	    	    public string DELIVERY_ORDER { set; get; }
-	    	    public string RECEIVE_STOREROOMID { set; get; }
-	    	    public string STATE { set; get; }
-	    	    public string REMARK { set; get; }
-	    	    public string EXTENDFIELD { set; get; }
-	    	    public BDTA_SUPPLIER BDTA_SUPPLIER { set; get; }
-	    	    public SYS_USERINFO SYS_USERINFO { set; get; }
-	    	    public BDTA_ORG_STOREROOM BDTA_ORG_STOREROOM { set; get; }
-		}
-    
-    public partial class WAREHOUSE_IQC   : Entity   
-    {
- 
-    	    [Column("ID")]
-		public override string Id { set ; get ; }
-	    	    public string RECEIVE_ID { set; get; }
-	    	    public string RECEIVE_NO { set; get; }
-	    	    public string MATERIAL_ID { set; get; }
-	    	    public string MATERIAL_CODE { set; get; }
 	    	    public string LOTNO { set; get; }
-	    	    public decimal? QUALIFIED_QTY { set; get; }
-	    	    public decimal? UNQUALIFIED_QTY { set; get; }
-	    	    public decimal? IN_STORAGE_QTY { set; get; }
-	    	    public string STATE { set; get; }
-	    	    public string SUPPLIER_ID { set; get; }
-	    	    public string INSPECT_NO { set; get; }
-	    	    public string INSPECT_MODE { set; get; }
-	    	    public decimal? MI_QTY { set; get; }
-	    	    public decimal? MA_QTY { set; get; }
+	    	    public string SITE_ID { set; get; }
+	    	    public string MATERIAL_ID { set; get; }
+	    	    public string WAREHOUSE_STOCK_COUNT_ID { set; get; }
+	    	    public string WAREHOUSE_STOCK_COUNT_CODE { set; get; }
 	    	    public string EXTENDFIELD { set; get; }
 	    	    public long? ACTIVITY { set; get; }
-	    	    public string REMAEK { set; get; }
-	    	    public string STOREROOM_ID { set; get; }
-	    	    public decimal? SUM_QTY { set; get; }
-	    	    public string PO { set; get; }
-	    	    public decimal? SAMPQTY { set; get; }
-	    	    public string INSPECT_TYPE { set; get; }
-	    	    public string INSPECT_EMPTY_TYPE { set; get; }
-	    	    public string CHECK_ITEM_MANAGE_ID { set; get; }
-	    	    public string INSPECTION_STANDARD { set; get; }
-	    	    public BDTA_MATERIAL BDTA_MATERIAL { set; get; }
-	    	    public BDTA_SUPPLIER BDTA_SUPPLIER { set; get; }
+	    	    public decimal QTY { set; get; }
+	    	    public string SUPPLIER_ID { set; get; }
+	    	    public string STOREROM_ID { set; get; }
+	    	    public string MATERIAL_CODE { set; get; }
+	    	    public string MATERIAL_NAME { set; get; }
+	    	    public string SITE_CODE { set; get; }
+	    	    public string STOREROM_CODE { set; get; }
+	    	    public string SUPPLIER_CODE { set; get; }
+	    	    public string SOURCE_CODE { set; get; }
+	    	    public decimal SCANQTY { set; get; }
+	    	    public decimal SUBQTY { set; get; }
+	    	    public decimal SCANQTY2 { set; get; }
+	    	    public decimal SCANQTY3 { set; get; }
+	    	    public long CONFIRM_TIME { set; get; }
+	    	    public long PROCESSING_METHODS { set; get; }
+	    	    public long STATE { set; get; }
+	    	    public decimal SUBQTY_REPLAY { set; get; }
+	    	    public decimal SUBQTY_FINAL { set; get; }
+	    	    public decimal STAGEQTY_REPLAY { set; get; }
+	    	    public decimal STAGEQTY_FINAL { set; get; }
+	    	    public decimal TAG_REPLAY { set; get; }
+	    	    public decimal TAG_FINAL { set; get; }
 		}
     
     public partial class WAREHOUSE_STOCK_DETAIL   : Entity   
@@ -2204,7 +2422,7 @@ namespace Blocks.BussnessEntityModule
 	    	    public string MATERIAL_ID { set; get; }
 	    	    public string MATERIAL_CODE { set; get; }
 	    	    public string LOTNO { set; get; }
-	    	    public decimal? QTY { set; get; }
+	    	    public decimal QTY { set; get; }
 	    	    public decimal? OUT_LOCK_QTY { set; get; }
 	    	    public string SITE_ID { set; get; }
 	    	    public string SITE_CODE { set; get; }
@@ -2218,103 +2436,644 @@ namespace Blocks.BussnessEntityModule
 	    	    public string SOURCE_TYPE { set; get; }
 	    	    public string LOCK_STOCK { set; get; }
 	    	    public string LINE_NUMBER { set; get; }
+	    	    public decimal? FREEZE_QTY { set; get; }
 	    	    public BDTA_SUPPLIER BDTA_SUPPLIER { set; get; }
+		}
+    
+    public partial class WAREHOUSE_STOCK_LOCK   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string LOCK_GUID { set; get; }
+	    	    public string LOTNO { set; get; }
+	    	    public string SITE_CODE { set; get; }
+	    	    public string OPERATE_TPYE { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string MATERIAL_ID { set; get; }
+	    	    public string OUT_STORAGE_NO { set; get; }
+	    	    public decimal OUT_QTY { set; get; }
+	    	    public string OUT_STORAGE_DETAIL_ID { set; get; }
+		}
+    
+    public partial class WAREHOUSE_STOCK_LOG   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string MATERIAL_ID { set; get; }
+	    	    public string MATERIAL_CODE { set; get; }
+	    	    public string LOTNO { set; get; }
+	    	    public decimal QTY { set; get; }
+	    	    public string OPERATE_TPYE { set; get; }
+	    	    public string SITE_ID { set; get; }
+	    	    public string SITE_CODE { set; get; }
+	    	    public string SOURCE_ID { set; get; }
+	    	    public string SOURCE_CODE { set; get; }
+	    	    public string SOURCE_TYPE { set; get; }
+	    	    public string SUPPLIER_ID { set; get; }
+	    	    public string SUPPLIER_CODE { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string STOREROM_ID { set; get; }
+	    	    public string STOREROM_CODE { set; get; }
+	    	    public string LINE_NUMBER { set; get; }
+	    	    public string VOUCHERNO { set; get; }
+	    	    public decimal? INITIALQTY { set; get; }
+	    	    public decimal? ENDQTY { set; get; }
+		}
+    
+    public partial class WH_INBOUND_D   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string INBOUND_M_ID { set; get; }
+	    	    public string INBOUND_M_NO { set; get; }
+	    	    public string MATERIAL_ID { set; get; }
+	    	    public string MATERIAL_CODE { set; get; }
+	    	    public string LOTNO { set; get; }
+	    	    public decimal PLAN_QTY { set; get; }
+	    	    public decimal COLLECT_QTY { set; get; }
+	    	    public string INBOUND_D_STATE { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public decimal GUIDE_QTY { set; get; }
+	    	    public string NOTE { set; get; }
+	    	    public decimal SELF_QTY { set; get; }
+		}
+    
+    public partial class WH_INBOUND_GUIDE   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string INBOUND_M_ID { set; get; }
+	    	    public string INBOUND_M_NO { set; get; }
+	    	    public string INBOUND_D_ID { set; get; }
+	    	    public string MATERIAL_ID { set; get; }
+	    	    public string MATERIAL_CODE { set; get; }
+	    	    public string LOTNO { set; get; }
+	    	    public string SHELF_STRATEGY_ID { set; get; }
+	    	    public string SITE_ID { set; get; }
+	    	    public string SITE_CODE { set; get; }
+	    	    public decimal? QTY { set; get; }
+	    	    public decimal? QTY_IN { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public long? ISSELF { set; get; }
+		}
+    
+    public partial class WH_INBOUND_M   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string INBOUND_M_NO { set; get; }
+	    	    public string INBOUND_M_TYPE { set; get; }
+	    	    public string STOREROM_ID { set; get; }
+	    	    public string STOREROM_CODE { set; get; }
+	    	    public string INBOUND_M_STATE { set; get; }
+	    	    public decimal? STRATEGY_CONTROL { set; get; }
+	    	    public string INBOUND_DESC { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public long? ISUSED { set; get; }
+		}
+    
+    public partial class WH_INBOUND_ORDER   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string INBOUND_M_ID { set; get; }
+	    	    public string INBOUND_D_ID { set; get; }
+	    	    public string INBOUND_M_NO { set; get; }
+	    	    public string MATERIAL_ID { set; get; }
+	    	    public string MATERIAL_CODE { set; get; }
+	    	    public string LOTNO { set; get; }
+	    	    public decimal? QTY { set; get; }
+	    	    public string SITE_ID { set; get; }
+	    	    public string SITE_CODE { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public long? ISUSED { set; get; }
+		}
+    
+    public partial class WH_IQC_INSPECT_ITEM   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string ITEM_NO { set; get; }
+	    	    public string ITEM_NAME { set; get; }
+	    	    public string ITEM_METHOD { set; get; }
+	    	    public string ITEM_DETAIL { set; get; }
+	    	    public string ITEM_TOOL { set; get; }
+	    	    public string ITEM_TYPE { set; get; }
+	    	    public string ITEM_CATEGORY { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string ISUSED { set; get; }
+	    	    public string UNIT_ID { set; get; }
+	    	    public string DEFECT_GRADE { set; get; }
+		}
+    
+    public partial class WH_IQC_INSPECT_STANDARD_D   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string MAIN_ID { set; get; }
+	    	    public string ITEM_NO { set; get; }
+	    	    public decimal? STANDARD_VALUE { set; get; }
+	    	    public decimal? DIVIATION_UPPER { set; get; }
+	    	    public decimal? DIVIATION_LOWER { set; get; }
+	    	    public string INSPECT_ROLE { set; get; }
+	    	    public decimal? AQL { set; get; }
+	    	    public string STANDARD_CATEGORY { set; get; }
+	    	    public string SAMPLING_PLAN { set; get; }
+	    	    public string INSPECT_DEGREE { set; get; }
+	    	    public string INSPECT_LEVEL { set; get; }
+	    	    public string SWITCHING_RULE_ID { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public string ISUSED { set; get; }
+	    	    public string ITEM_ID { set; get; }
+	    	    public string ITEM_DETAIL { set; get; }
+	    	    public string DEFECT_GRADE { set; get; }
+		}
+    
+    public partial class WH_IQC_INSPECT_STANDARD_M   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string STANDARD_NO { set; get; }
+	    	    public string STANDARD_NAME { set; get; }
+	    	    public string STANDARD_REMARK { set; get; }
+	    	    public string INSPECT_ROLE { set; get; }
+	    	    public decimal? AQL { set; get; }
+	    	    public string INSPECT_LEVEL { set; get; }
+	    	    public string INSPECT_DEGREE { set; get; }
+	    	    public string SAMPLING_PLAN { set; get; }
+	    	    public string STANDARD_CATEGORY { set; get; }
+	    	    public string SWITCHING_RULE_ID { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string ISUSED { set; get; }
+	    	    public decimal? AQL_CR { set; get; }
+	    	    public decimal? AQL_MA { set; get; }
+	    	    public decimal? AQL_MI { set; get; }
+		}
+    
+    public partial class WH_IQC_MAT_INSPECT_D   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string MAIN_ID { set; get; }
+	    	    public string INSPECT_NO { set; get; }
+	    	    public string ITEM_NO { set; get; }
+	    	    public string ITEM_NAME { set; get; }
+	    	    public string ITEM_METHOD { set; get; }
+	    	    public string ITEM_TOOL { set; get; }
+	    	    public string ITEM_TYPE { set; get; }
+	    	    public string ITEM_CATEGORY { set; get; }
+	    	    public decimal? STANDARD_VALUE { set; get; }
+	    	    public decimal? DIVIATION_UPPER { set; get; }
+	    	    public decimal? DIVIATION_LOWER { set; get; }
+	    	    public string INSPECT_ROLE { set; get; }
+	    	    public decimal? AQL { set; get; }
+	    	    public decimal? AC_QTY { set; get; }
+	    	    public decimal? RE_QTY { set; get; }
+	    	    public string INSPECT_LEVEL { set; get; }
+	    	    public string INSPECT_DEGREE { set; get; }
+	    	    public string MEASURE_RESULT { set; get; }
+	    	    public decimal? OK_QTY { set; get; }
+	    	    public decimal? NG_QTY { set; get; }
+	    	    public decimal? CR_QTY { set; get; }
+	    	    public decimal? MA_QTY { set; get; }
+	    	    public decimal? MI_QTY { set; get; }
+	    	    public string ITEM_REMARK { set; get; }
+	    	    public string SAMPLING_PLAN { set; get; }
+	    	    public string STANDARD_CATEGORY { set; get; }
+	    	    public string SWITCHING_RULE_ID { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string ISUSED { set; get; }
+	    	    public string UNIT_ID { set; get; }
+	    	    public decimal? SAMPLE_QTY { set; get; }
+	    	    public string INSPECT_USER { set; get; }
+		}
+    
+    public partial class WH_IQC_MAT_INSPECT_M   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string INSPECT_NO { set; get; }
+	    	    public string RECEIVE_NO { set; get; }
+	    	    public string MATERIAL_ID { set; get; }
+	    	    public string MATERIAL_NO { set; get; }
+	    	    public string MATERIAL_NAME { set; get; }
+	    	    public string SUPPLIER_ID { set; get; }
+	    	    public string SUPPLIER_NO { set; get; }
+	    	    public string SUPPLIER_NAME { set; get; }
+	    	    public string LOT_NO { set; get; }
+	    	    public decimal? RECEIVE_QTY { set; get; }
+	    	    public string MAT_INSPECT_MODE { set; get; }
+	    	    public decimal? SAMPLE_QTY { set; get; }
+	    	    public string INSPECT_STATUS { set; get; }
+	    	    public string INSPECT_RESULT { set; get; }
+	    	    public string INSPECT_TYPE { set; get; }
+	    	    public decimal? OK_QTY { set; get; }
+	    	    public decimal? NG_QTY { set; get; }
+	    	    public decimal? CR_QTY { set; get; }
+	    	    public decimal? MA_QTY { set; get; }
+	    	    public decimal? MI_QTY { set; get; }
+	    	    public decimal? CONCESSION_QTY { set; get; }
+	    	    public decimal? RETURN_QTY { set; get; }
+	    	    public string MAIN_ID { set; get; }
+	    	    public string INSPECT_REMARK { set; get; }
+	    	    public decimal? AQL { set; get; }
+	    	    public string INSPECT_LEVEL { set; get; }
+	    	    public string INSPECT_DEGREE { set; get; }
+	    	    public string INSPECT_ROLE { set; get; }
+	    	    public string SAMPLING_PLAN { set; get; }
+	    	    public string STANDARD_CATEGORY { set; get; }
+	    	    public string SWITCHING_RULE_ID { set; get; }
+	    	    public DateTime? PRODUCT_DATE { set; get; }
+	    	    public DateTime? EXPIRE_DATE { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string ISUSED { set; get; }
+	    	    public decimal? IN_STORAGE_QTY { set; get; }
+		}
+    
+    public partial class WH_IQC_MAT_INSPECT_SAMPLE   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string MAIN_ID { set; get; }
+	    	    public string DETAIL_ID { set; get; }
+	    	    public string INSPECT_NO { set; get; }
+	    	    public string ITEM_NO { set; get; }
+	    	    public string ITEM_NAME { set; get; }
+	    	    public string SAMPLE_NO { set; get; }
+	    	    public long? SAMPLING_TIMES { set; get; }
+	    	    public string MEASURE_VALUE { set; get; }
+	    	    public string SAMPLE_REMARK { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string ISUSED { set; get; }
+	    	    public string ORDERID { set; get; }
+	    	    public string MEASURE_RESULT { set; get; }
+		}
+    
+    public partial class WH_IQC_MAT_INSPECT_STANDARD_D   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string MAIN_ID { set; get; }
+	    	    public string ITEM_NO { set; get; }
+	    	    public string ITEM_NAME { set; get; }
+	    	    public string ITEM_METHOD { set; get; }
+	    	    public string ITEM_TOOL { set; get; }
+	    	    public string ITEM_TYPE { set; get; }
+	    	    public string ITEM_CATEGORY { set; get; }
+	    	    public decimal? STANDARD_VALUE { set; get; }
+	    	    public decimal? DIVIATION_UPPER { set; get; }
+	    	    public decimal? DIVIATION_LOWER { set; get; }
+	    	    public string INSPECT_ROLE { set; get; }
+	    	    public decimal? AQL { set; get; }
+	    	    public string INSPECT_LEVEL { set; get; }
+	    	    public string INSPECT_DEGREE { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string ISUSED { set; get; }
+	    	    public string ITEM_ID { set; get; }
+	    	    public string UNIT_ID { set; get; }
+	    	    public string DEFECT_GRADE { set; get; }
+		}
+    
+    public partial class WH_IQC_MAT_INSPECT_STANDARD_M   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string MATERIAL_ID { set; get; }
+	    	    public string MATERIAL_NO { set; get; }
+	    	    public string MATERIAL_NAME { set; get; }
+	    	    public string SUPPLIER_ID { set; get; }
+	    	    public string SUPPLIER_NO { set; get; }
+	    	    public string SUPPLIER_NAME { set; get; }
+	    	    public string MAT_INSPECT_MODE { set; get; }
+	    	    public string INSPECT_STANDARD_ID { set; get; }
+	    	    public decimal? AQL { set; get; }
+	    	    public string INSPECT_LEVEL { set; get; }
+	    	    public string INSPECT_DEGREE { set; get; }
+	    	    public string INSPECT_ROLE { set; get; }
+	    	    public string SAMPLING_PLAN { set; get; }
+	    	    public string STANDARD_CATEGORY { set; get; }
+	    	    public string SWITCHING_RULE_ID { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string ISUSED { set; get; }
+	    	    public decimal? AQL_CR { set; get; }
+	    	    public decimal? AQL_MA { set; get; }
+	    	    public decimal? AQL_MI { set; get; }
+		}
+    
+    public partial class WH_IQC_SAMPLE_CHARACTER   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public decimal? LOT_SIZE_UPPER { set; get; }
+	    	    public decimal? LOT_SIZE_LOWER { set; get; }
+	    	    public string INSPECT_LEVEL { set; get; }
+	    	    public string INSPECT_LEVEL_CATE { set; get; }
+	    	    public string CHARACTER_NO { set; get; }
+	    	    public string STANDARD_CATEGORY { set; get; }
+	    	    public string REMARKS { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string ISUSED { set; get; }
+		}
+    
+    public partial class WH_IQC_SAMPLING_PLAN   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string CHARACTER_NO { set; get; }
+	    	    public decimal? SAMPLE_SIZE { set; get; }
+	    	    public decimal? AQL { set; get; }
+	    	    public long? AC_QTY { set; get; }
+	    	    public long? RE_QTY { set; get; }
+	    	    public string SAMPLING_PLAN { set; get; }
+	    	    public long? SAMPLING_TIMES { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string ISUSED { set; get; }
+	    	    public string STANDARD_CATEGORY { set; get; }
+	    	    public string INSPECT_DEGREE { set; get; }
+		}
+    
+    public partial class WH_IQC_SWITCHING_RULE_D   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string SR_D_NO { set; get; }
+	    	    public string SR_SOURCE_INSPECT_DEGREE { set; get; }
+	    	    public string SR_TARGET_INSPECT_DEGREE { set; get; }
+	    	    public string SR_USE_MODE { set; get; }
+	    	    public decimal SR_LOT_OR_SCORE { set; get; }
+	    	    public string SR_D_REMARK { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public string ISUSED { set; get; }
+	    	    public string INSPECT_RESULT { set; get; }
+		}
+    
+    public partial class WH_IQC_SWITCHING_RULE_M   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string SR_NO { set; get; }
+	    	    public string SR_NAME { set; get; }
+	    	    public string SR_REMARK { set; get; }
+	    	    public string SR_STATUS { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string ISUSED { set; get; }
+		}
+    
+    public partial class WH_IQC_SWITCHING_RULE_R   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string MAIN_ID { set; get; }
+	    	    public string DETAIL_ID { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string ISUSED { set; get; }
+		}
+    
+    public partial class WH_IQC_SWITCHING_RULE_S   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string MATERIAL_ID { set; get; }
+	    	    public string SUPPLIER_ID { set; get; }
+	    	    public string INSPECT_DEGREE { set; get; }
+	    	    public decimal? SUM_LOT_SIZE { set; get; }
+	    	    public decimal? SUM_SWITCHING_SCORE { set; get; }
+	    	    public string EXTENDFIELD { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string ISUSED { set; get; }
+	    	    public string INSPECT_RESULT { set; get; }
+		}
+    
+    public partial class WH_MATERIAL_BATCH   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string MATERIAL_BATCH { set; get; }
+	    	    public string MATERIAL_ID { set; get; }
+	    	    public string MATERIAL_CODE { set; get; }
+	    	    public string MATERIAL_NAME { set; get; }
+	    	    public string SUPPLIER_ID { set; get; }
+	    	    public string SUPPLIER_CODE { set; get; }
+	    	    public string SUPPLIER_NAME { set; get; }
+	    	    public DateTime? DATE_RECEIVE { set; get; }
+	    	    public DateTime? DATE_INSPECT { set; get; }
+	    	    public DateTime? DATE_PRODUCT { set; get; }
+	    	    public DateTime? DATE_INSTORAGE { set; get; }
+	    	    public decimal? MATERIAL_WEIGHT { set; get; }
+	    	    public string WEIGHT_UNIT_ID { set; get; }
+	    	    public decimal? MATERIAL_VOLUME { set; get; }
+	    	    public string VOLUME_UNIT_ID { set; get; }
+	    	    public decimal? SHELF_LIFE { set; get; }
+	    	    public decimal? MATERIAL_BATCH_TYPE { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public string SOURCE_CODE { set; get; }
+		}
+    
+    public partial class WH_OUTBOUND_D   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string OUTBOUND_M_ID { set; get; }
+	    	    public string OUTBOUND_M_NO { set; get; }
+	    	    public string MATERIAL_ID { set; get; }
+	    	    public string MATERIAL_CODE { set; get; }
+	    	    public decimal PLAN_QTY { set; get; }
+	    	    public decimal COLLECT_QTY { set; get; }
+	    	    public string OUTBOUND_D_STATE { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public string LOTNO { set; get; }
+	    	    public decimal GUIDE_QTY { set; get; }
+	    	    public string NOTE { set; get; }
+		}
+    
+    public partial class WH_OUTBOUND_GUIDE   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string OUTBOUND_M_ID { set; get; }
+	    	    public string OUTBOUND_M_NO { set; get; }
+	    	    public string OUTBOUND_D_ID { set; get; }
+	    	    public string MATERIAL_ID { set; get; }
+	    	    public string MATERIAL_CODE { set; get; }
+	    	    public string LOTNO { set; get; }
+	    	    public string SHELF_STRATEGY_ID { set; get; }
+	    	    public string SITE_ID { set; get; }
+	    	    public string SITE_CODE { set; get; }
+	    	    public decimal QTY { set; get; }
+	    	    public decimal QTY_OUT { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public long? ISUSED { set; get; }
+		}
+    
+    public partial class WH_OUTBOUND_M   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string OUTBOUND_M_NO { set; get; }
+	    	    public string OUTBOUND_M_TYPE { set; get; }
+	    	    public string STOREROM_ID { set; get; }
+	    	    public string STOREROM_CODE { set; get; }
+	    	    public string OUTBOUND_DESC { set; get; }
+	    	    public string OUTBOUND_M_STATE { set; get; }
+	    	    public decimal? STRATEGY_CONTROL { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public long? ISUSED { set; get; }
+		}
+    
+    public partial class WH_OUTBOUND_ORDER   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string OUTBOUND_M_ID { set; get; }
+	    	    public string OUTBOUND_M_NO { set; get; }
+	    	    public string OUTBOUND_D_ID { set; get; }
+	    	    public string MATERIAL_ID { set; get; }
+	    	    public string MATERIAL_CODE { set; get; }
+	    	    public string LOTNO { set; get; }
+	    	    public decimal OUT_QTY { set; get; }
+	    	    public string SITE_ID { set; get; }
+	    	    public string SITE_CODE { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public long? ISUSED { set; get; }
+		}
+    
+    public partial class WH_STOCK_COUNT_PLAN_D   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string MAIN_ID { set; get; }
+	    	    public string STOREROOM_ID { set; get; }
+	    	    public string STOREROOM_CODE { set; get; }
+	    	    public DateTime? PLAN_D_STARTDATE { set; get; }
+	    	    public DateTime? PLAN_D_ENDDATE { set; get; }
+	    	    public string PREPARATION_CONDITIONS { set; get; }
+	    	    public string INVENTORY_REQUIREMENTS { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string ISUSED { set; get; }
+		}
+    
+    public partial class WH_STOCK_COUNT_PLAN_M   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string PLAN_M_NO { set; get; }
+	    	    public long? PLAN_M_TYPE { set; get; }
+	    	    public DateTime? PLAN_M_STARTDATE { set; get; }
+	    	    public DateTime? PLAN_M_ENDDATE { set; get; }
+	    	    public long? PLAN_M_STATE { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string ISUSED { set; get; }
+		}
+    
+    public partial class WH_STOCK_FREEZE_PLAN_D   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string MAIN_ID { set; get; }
+	    	    public string STOREROOM_ID { set; get; }
+	    	    public string STOREROOM_CODE { set; get; }
+	    	    public string SITE_ID { set; get; }
+	    	    public string SITE_CODE { set; get; }
+	    	    public string MATERIAL_ID { set; get; }
+	    	    public string MATERIAL_CODE { set; get; }
+	    	    public string MATERIAL_NAME { set; get; }
+	    	    public string LOTNO { set; get; }
+	    	    public decimal? PLAN_D_STATE { set; get; }
+	    	    public decimal? FREEZE_QTY { set; get; }
+	    	    public DateTime? FREEZE_DATE { set; get; }
+	    	    public DateTime? UNFREEZE_DATE { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string ISUSED { set; get; }
+		}
+    
+    public partial class WH_STOCK_FREEZE_PLAN_M   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string PLAN_M_NO { set; get; }
+	    	    public string FREEZE_REASON { set; get; }
+	    	    public decimal? PLAN_M_TYPE { set; get; }
+	    	    public decimal? PLAN_M_STATE { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public string ISUSED { set; get; }
+		}
+    
+    public partial class BDTA_CONFIGFILES   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string FILE_TYPE { set; get; }
+	    	    public string FILE_NAME { set; get; }
+	    	    public string FILE_PATH { set; get; }
+	    	    public long? ACTIVITY { set; get; }
+	    	    public long? ISUSED { set; get; }
+	    	    public string FILE_FUNCTION { set; get; }
+	    	    public long ISDELETE { set; get; }
+		}
+    
+    public partial class BLOCKS_IMAGE   : Entity   
+    {
+ 
+    	    [Column("ID")]
+		public override string Id { set ; get ; }
+	    	    public string FILENAME { set; get; }
+	    	    public string FILEPATH { set; get; }
+	    	    public string FILEWRAPNAME { set; get; }
+	    	    public DateTime? FILECREATEDATE { set; get; }
+	    	    public DateTime? FILEUPDATEDATE { set; get; }
+	    	    public decimal? ISUSED { set; get; }
 		}
 
 
-    
- 
- 
-    public partial class BDTA_LANGUAGESConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_LANGUAGES> 
-    {
-		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_LANGUAGES> builder)
-        {
-			 
-			            builder.HasKey(x => x.Id);
-		 
-		 
-			 																																																				 
-        }
-		 
-	}
-    
- 
- 
-    public partial class BDTA_LANGUAGETEXTSConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_LANGUAGETEXTS> 
-    {
-		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_LANGUAGETEXTS> builder)
-        {
-			 
-			            builder.HasKey(x => x.Id);
-		 
-		 
-			 																																																																								 builder.HasOne(t => t.BDTA_LANGUAGES).WithMany().HasForeignKey(t => t.LANGUAGE_ID);	
-										 
-        }
-		 
-	}
-    
- 
- 
-    public partial class SYS_PROGRAMOPERATIONConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<SYS_PROGRAMOPERATION> 
-    {
-		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<SYS_PROGRAMOPERATION> builder)
-        {
-			 
-			            builder.HasKey(x => x.Id);
-		 
-		 
-			 																																						 
-        }
-		 
-	}
-    
- 
- 
-    public partial class PRINT_SERVICEConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<PRINT_SERVICE> 
-    {
-		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<PRINT_SERVICE> builder)
-        {
-			 
-			            builder.HasKey(x => x.Id);
-		 
-		 
-			 																																																				 
-        }
-		 
-	}
-    
- 
- 
-    public partial class WAREHOUSE_POConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WAREHOUSE_PO> 
-    {
-		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WAREHOUSE_PO> builder)
-        {
-			 
-			            builder.HasKey(x => x.Id);
-		 
-		 
-			 																																																											 
-        }
-		 
-	}
-    
- 
- 
-    public partial class WAREHOUSE_PO_DETAILConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WAREHOUSE_PO_DETAIL> 
-    {
-		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WAREHOUSE_PO_DETAIL> builder)
-        {
-			 
-			            builder.HasKey(x => x.Id);
-		 
-		 
-			 																																																																																																																																														 builder.HasOne(t => t.BDTA_MATERIAL).WithMany().HasForeignKey(t => t.MATERIAL_ID);	
-																 builder.HasOne(t => t.BDTA_UNIT).WithMany().HasForeignKey(t => t.UNIT_ID);	
-										 
-        }
-		 
-	}
     
  
  
@@ -2323,8 +3082,8 @@ namespace Blocks.BussnessEntityModule
 		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_CALDETAIL> builder)
         {
 			 
-			            builder.HasKey(x => x.Id);
-		 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BDTA_CALDETAIL");
 		 
 			 																																																																																																					 
         }
@@ -2338,8 +3097,8 @@ namespace Blocks.BussnessEntityModule
 		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_CALNUMBER> builder)
         {
 			 
-			            builder.HasKey(x => x.Id);
-		 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BDTA_CALNUMBER");
 		 
 			 																																																																									 
         }
@@ -2353,8 +3112,8 @@ namespace Blocks.BussnessEntityModule
 		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_CHECKTOOL> builder)
         {
 			 
-			            builder.HasKey(x => x.Id);
-		 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BDTA_CHECKTOOL");
 		 
 			 																																																																																																																																																																																																																																			 
         }
@@ -2368,8 +3127,8 @@ namespace Blocks.BussnessEntityModule
 		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_CODE_FORMAT> builder)
         {
 			 
-			            builder.HasKey(x => x.Id);
-		 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BDTA_CODE_FORMAT");
 		 
 			 																																																				 
         }
@@ -2383,8 +3142,8 @@ namespace Blocks.BussnessEntityModule
 		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_CODE_FORMAT_DEFINE> builder)
         {
 			 
-			            builder.HasKey(x => x.Id);
-		 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BDTA_CODE_FORMAT_DEFINE");
 		 
 			 																																																																									 
         }
@@ -2398,8 +3157,8 @@ namespace Blocks.BussnessEntityModule
 		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_CODE_FORMAT_ELEMENT> builder)
         {
 			 
-			            builder.HasKey(x => x.Id);
-		 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BDTA_CODE_FORMAT_ELEMENT");
 		 
 			 																																																																		 
         }
@@ -2413,8 +3172,8 @@ namespace Blocks.BussnessEntityModule
 		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_COLLECT_STATION> builder)
         {
 			 
-			            builder.HasKey(x => x.Id);
-		 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BDTA_COLLECT_STATION");
 		 
 			 																																																																																																																										 
         }
@@ -2428,8 +3187,8 @@ namespace Blocks.BussnessEntityModule
 		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_COLLECT_STATION_DETAIL> builder)
         {
 			 
-			            builder.HasKey(x => x.Id);
-		 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BDTA_COLLECT_STATION_DETAIL");
 		 
 			 																																																											 
         }
@@ -2443,8 +3202,8 @@ namespace Blocks.BussnessEntityModule
 		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_COLLECT_STATION_SKILL> builder)
         {
 			 
-			            builder.HasKey(x => x.Id);
-		 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BDTA_COLLECT_STATION_SKILL");
 		 
 			 																																													 
         }
@@ -2458,8 +3217,23 @@ namespace Blocks.BussnessEntityModule
 		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_COMMON_EQUIPMENT> builder)
         {
 			 
-			            builder.HasKey(x => x.Id);
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BDTA_COMMON_EQUIPMENT");
 		 
+			 																																																																																																												 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class BDTA_CUSTOMERConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_CUSTOMER> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_CUSTOMER> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BDTA_CUSTOMER");
 		 
 			 																																																																																																												 
         }
@@ -2473,8 +3247,8 @@ namespace Blocks.BussnessEntityModule
 		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_DEPARTMENT> builder)
         {
 			 
-			            builder.HasKey(x => x.Id);
-		 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BDTA_DEPARTMENT");
 		 
 			 																																																				 
         }
@@ -2488,8 +3262,8 @@ namespace Blocks.BussnessEntityModule
 		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_DICTIONARY> builder)
         {
 			 
-			            builder.HasKey(x => x.Id);
-		 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BDTA_DICTIONARY");
 		 
 			 																																																											 
         }
@@ -2503,8 +3277,8 @@ namespace Blocks.BussnessEntityModule
 		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_DICTIONARY_TYPE> builder)
         {
 			 
-			            builder.HasKey(x => x.Id);
-		 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BDTA_DICTIONARY_TYPE");
 		 
 			 																																																				 
         }
@@ -2518,8 +3292,8 @@ namespace Blocks.BussnessEntityModule
 		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_EMPLOYEE> builder)
         {
 			 
-			            builder.HasKey(x => x.Id);
-		 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BDTA_EMPLOYEE");
 		 
 			 																																																																																						 builder.HasOne(t => t.BDTA_DEPARTMENT).WithMany().HasForeignKey(t => t.DEPARTMENT_ID);	
 										 
@@ -2534,8 +3308,8 @@ namespace Blocks.BussnessEntityModule
 		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_EMPLOYEE_SKILL> builder)
         {
 			 
-			            builder.HasKey(x => x.Id);
-		 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BDTA_EMPLOYEE_SKILL");
 		 
 			 																																													 
         }
@@ -2549,10 +3323,40 @@ namespace Blocks.BussnessEntityModule
 		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_FILE> builder)
         {
 			 
-			            builder.HasKey(x => x.Id);
-		 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BDTA_FILE");
 		 
 			 																																																																																														 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class BDTA_FREEZE_REASONConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_FREEZE_REASON> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_FREEZE_REASON> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BDTA_FREEZE_REASON");
+		 
+			 																																													 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class BDTA_FREEZE_SHELF_TYPEConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_FREEZE_SHELF_TYPE> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_FREEZE_SHELF_TYPE> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BDTA_FREEZE_SHELF_TYPE");
+		 
+			 																																						 
         }
 		 
 	}
@@ -2564,8 +3368,8 @@ namespace Blocks.BussnessEntityModule
 		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_FROCK> builder)
         {
 			 
-			            builder.HasKey(x => x.Id);
-		 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BDTA_FROCK");
 		 
 			 																																																																																																																																																																																																														 
         }
@@ -2579,10 +3383,41 @@ namespace Blocks.BussnessEntityModule
 		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_KEY_EQUIPMENT> builder)
         {
 			 
-			            builder.HasKey(x => x.Id);
-		 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BDTA_KEY_EQUIPMENT");
 		 
 			 																																																																																														 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class BDTA_LANGUAGESConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_LANGUAGES> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_LANGUAGES> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BDTA_LANGUAGES");
+		 
+			 																																																				 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class BDTA_LANGUAGETEXTSConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_LANGUAGETEXTS> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_LANGUAGETEXTS> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BDTA_LANGUAGETEXTS");
+		 
+			 																																																																								 builder.HasOne(t => t.BDTA_LANGUAGES).WithMany().HasForeignKey(t => t.LANGUAGE_ID);	
+										 
         }
 		 
 	}
@@ -2594,8 +3429,8 @@ namespace Blocks.BussnessEntityModule
 		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_MACHING_CENTER> builder)
         {
 			 
-			            builder.HasKey(x => x.Id);
-		 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BDTA_MACHING_CENTER");
 		 
 			 																																																																																																																																																													 
         }
@@ -2609,10 +3444,25 @@ namespace Blocks.BussnessEntityModule
 		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_MAINTAIN_STATION> builder)
         {
 			 
-			            builder.HasKey(x => x.Id);
-		 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BDTA_MAINTAIN_STATION");
 		 
 			 																																																				 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class BDTA_MAKERConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_MAKER> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_MAKER> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BDTA_MAKER");
+		 
+			 																																																																																																												 
         }
 		 
 	}
@@ -2624,10 +3474,10 @@ namespace Blocks.BussnessEntityModule
 		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_MATERIAL> builder)
         {
 			 
-			            builder.HasKey(x => x.Id);
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BDTA_MATERIAL");
 		 
-		 
-			 																																																																																																																									 builder.HasOne(t => t.BDTA_MATERIAL_TYPE).WithMany().HasForeignKey(t => t.MATERIAL_TYPE_ID);	
+			 																																																																																																																																																																										 builder.HasOne(t => t.BDTA_MATERIAL_TYPE).WithMany().HasForeignKey(t => t.MATERIAL_TYPE_ID);	
 																 builder.HasOne(t => t.BDTA_QA_CHECKITEMMANAGE).WithMany().HasForeignKey(t => t.QA_CHECKMODEL_ID);	
 																 builder.HasOne(t => t.BDTA_UNIT).WithMany().HasForeignKey(t => t.MATERIAL_UNIT);	
 																 builder.HasOne(t => t.BDTA_PRODUCTFORMAT).WithMany().HasForeignKey(t => t.PRODUCTFORMAT_ID);	
@@ -2643,8 +3493,8 @@ namespace Blocks.BussnessEntityModule
 		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_MATERIAL_BOM> builder)
         {
 			 
-			            builder.HasKey(x => x.Id);
-		 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BDTA_MATERIAL_BOM");
 		 
 			 																																																																																																					 
         }
@@ -2658,8 +3508,8 @@ namespace Blocks.BussnessEntityModule
 		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_MATERIAL_CATEGORY> builder)
         {
 			 
-			            builder.HasKey(x => x.Id);
-		 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BDTA_MATERIAL_CATEGORY");
 		 
 			 																																						 
         }
@@ -2673,8 +3523,8 @@ namespace Blocks.BussnessEntityModule
 		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_MATERIAL_PACKAGE> builder)
         {
 			 
-			            builder.HasKey(x => x.Id);
-		 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BDTA_MATERIAL_PACKAGE");
 		 
 			 																																													 
         }
@@ -2688,8 +3538,8 @@ namespace Blocks.BussnessEntityModule
 		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_MATERIAL_TYPE> builder)
         {
 			 
-			            builder.HasKey(x => x.Id);
-		 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BDTA_MATERIAL_TYPE");
 		 
 			 																																																				 
         }
@@ -2703,8 +3553,8 @@ namespace Blocks.BussnessEntityModule
 		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_MATERIAL_WORKCENTER> builder)
         {
 			 
-			            builder.HasKey(x => x.Id);
-		 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BDTA_MATERIAL_WORKCENTER");
 		 
 			 																																																																																 
         }
@@ -2718,8 +3568,8 @@ namespace Blocks.BussnessEntityModule
 		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_MATERIAL_WORKING> builder)
         {
 			 
-			            builder.HasKey(x => x.Id);
-		 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BDTA_MATERIAL_WORKING");
 		 
 			 																																																											 
         }
@@ -2733,8 +3583,8 @@ namespace Blocks.BussnessEntityModule
 		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_MATTYPE> builder)
         {
 			 
-			            builder.HasKey(x => x.Id);
-		 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BDTA_MATTYPE");
 		 
 			 																																																																		 
         }
@@ -2748,8 +3598,8 @@ namespace Blocks.BussnessEntityModule
 		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_MOLD> builder)
         {
 			 
-			            builder.HasKey(x => x.Id);
-		 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BDTA_MOLD");
 		 
 			 																																																																																																																																															 
         }
@@ -2763,10 +3613,40 @@ namespace Blocks.BussnessEntityModule
 		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_MOLD_ADD> builder)
         {
 			 
-			            builder.HasKey(x => x.Id);
-		 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BDTA_MOLD_ADD");
 		 
 			 																																																																																														 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class BDTA_ORG_FACTORYConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_ORG_FACTORY> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_ORG_FACTORY> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BDTA_ORG_FACTORY");
+		 
+			 																																																				 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class BDTA_ORG_ORGRELATIONConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_ORG_ORGRELATION> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_ORG_ORGRELATION> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BDTA_ORG_ORGRELATION");
+		 
+			 																																																											 
         }
 		 
 	}
@@ -2778,8 +3658,8 @@ namespace Blocks.BussnessEntityModule
 		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_ORG_STOREROOM> builder)
         {
 			 
-			            builder.HasKey(x => x.Id);
-		 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BDTA_ORG_STOREROOM");
 		 
 			 																																																																																																																																	 
         }
@@ -2793,10 +3673,25 @@ namespace Blocks.BussnessEntityModule
 		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_ORG_STORESITE> builder)
         {
 			 
-			            builder.HasKey(x => x.Id);
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BDTA_ORG_STORESITE");
 		 
+			 																																																																																																																																																																																																																																																	 
+        }
 		 
-			 																																																																																																																																																																																																							 
+	}
+    
+ 
+ 
+    public partial class BDTA_OUT_IN_TYPEConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_OUT_IN_TYPE> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_OUT_IN_TYPE> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BDTA_OUT_IN_TYPE");
+		 
+			 																																																				 
         }
 		 
 	}
@@ -2808,10 +3703,179 @@ namespace Blocks.BussnessEntityModule
 		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_PROCESSPATH> builder)
         {
 			 
-			            builder.HasKey(x => x.Id);
-		 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BDTA_PROCESSPATH");
 		 
 			 																																																																																 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class BDTA_PRODUCTELEMENTConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_PRODUCTELEMENT> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_PRODUCTELEMENT> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BDTA_PRODUCTELEMENT");
+		 
+			 																																																																															 builder.HasOne(t => t.BDTA_PRODUCTELEMENT_TYPE).WithMany().HasForeignKey(t => t.BDTA_PRODUCTELEMENT_TYPE_ID);	
+										 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class BDTA_PRODUCTELEMENT_TYPEConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_PRODUCTELEMENT_TYPE> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_PRODUCTELEMENT_TYPE> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BDTA_PRODUCTELEMENT_TYPE");
+		 
+			 																																						 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class BDTA_PRODUCTFORMATConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_PRODUCTFORMAT> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_PRODUCTFORMAT> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BDTA_PRODUCTFORMAT");
+		 
+			 																																																											 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class BDTA_PRODUCTFORMAT_DETAILConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_PRODUCTFORMAT_DETAIL> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_PRODUCTFORMAT_DETAIL> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BDTA_PRODUCTFORMAT_DETAIL");
+		 
+			 																																																																																						 builder.HasOne(t => t.BDTA_PRODUCTELEMENT).WithMany().HasForeignKey(t => t.PRODUCTELEMENTID);	
+										 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class BDTA_PRODUCT_ELEMENT_RULE_RELConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_PRODUCT_ELEMENT_RULE_REL> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_PRODUCT_ELEMENT_RULE_REL> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BDTA_PRODUCT_ELEMENT_RULE_REL");
+		 
+			 																																													 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class BDTA_PRODUCT_VARELEMENT_RELConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_PRODUCT_VARELEMENT_REL> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_PRODUCT_VARELEMENT_REL> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BDTA_PRODUCT_VARELEMENT_REL");
+		 
+			 																																													 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class BDTA_QA_CHECKITEMConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_QA_CHECKITEM> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_QA_CHECKITEM> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BDTA_QA_CHECKITEM");
+		 
+			 																																																																																																				 builder.HasOne(t => t.BDTA_DICTIONARY).WithMany().HasForeignKey(t => t.CHECKITEMPARENT);	
+										 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class BDTA_QA_CHECKITEMMANAGEConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_QA_CHECKITEMMANAGE> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_QA_CHECKITEMMANAGE> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BDTA_QA_CHECKITEMMANAGE");
+		 
+			 																																						 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class BDTA_QA_CHECKITEMMANAGE_DETAILConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_QA_CHECKITEMMANAGE_DETAIL> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_QA_CHECKITEMMANAGE_DETAIL> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BDTA_QA_CHECKITEMMANAGE_DETAIL");
+		 
+			 																																																																																																												 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class BDTA_QA_CHECKMODEConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_QA_CHECKMODE> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_QA_CHECKMODE> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BDTA_QA_CHECKMODE");
+		 
+			 																																																																																																											 builder.HasOne(t => t.BDTA_QA_CHECKITEMMANAGE).WithMany().HasForeignKey(t => t.QA_CHECKITEMMANAGE_ID);	
+										 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class BDTA_QA_SAMPLING_STANDARDConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_QA_SAMPLING_STANDARD> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_QA_SAMPLING_STANDARD> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BDTA_QA_SAMPLING_STANDARD");
+		 
+			 																																																											 
         }
 		 
 	}
@@ -2823,8 +3887,8 @@ namespace Blocks.BussnessEntityModule
 		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_QUEUE> builder)
         {
 			 
-			            builder.HasKey(x => x.Id);
-		 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BDTA_QUEUE");
 		 
 			 																																																											 
         }
@@ -2838,11 +3902,71 @@ namespace Blocks.BussnessEntityModule
 		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_ROUTING> builder)
         {
 			 
-			            builder.HasKey(x => x.Id);
-		 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BDTA_ROUTING");
 		 
 			 																																																																																						 builder.HasOne(t => t.BDTA_MACHING_CENTER).WithMany().HasForeignKey(t => t.MACHING_CENTER_ID);	
 										 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class BDTA_SETUPConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_SETUP> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_SETUP> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BDTA_SETUP");
+		 
+			 																																																																																							 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class BDTA_SETUP_TYPEConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_SETUP_TYPE> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_SETUP_TYPE> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BDTA_SETUP_TYPE");
+		 
+			 																																																				 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class BDTA_SHELF_STRATEGYConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_SHELF_STRATEGY> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_SHELF_STRATEGY> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BDTA_SHELF_STRATEGY");
+		 
+			 																																																											 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class BDTA_SHELF_TYPEConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_SHELF_TYPE> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_SHELF_TYPE> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BDTA_SHELF_TYPE");
+		 
+			 																																																											 
         }
 		 
 	}
@@ -2854,10 +3978,55 @@ namespace Blocks.BussnessEntityModule
 		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_STATION> builder)
         {
 			 
-			            builder.HasKey(x => x.Id);
-		 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BDTA_STATION");
 		 
 			 																																																																																							 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class BDTA_STRATEGY_GROUPConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_STRATEGY_GROUP> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_STRATEGY_GROUP> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BDTA_STRATEGY_GROUP");
+		 
+			 																																																				 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class BDTA_STRATEGY_GROUP_DConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_STRATEGY_GROUP_D> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_STRATEGY_GROUP_D> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BDTA_STRATEGY_GROUP_D");
+		 
+			 																																																																																							 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class BDTA_STRATEGY_LOCATIONConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_STRATEGY_LOCATION> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_STRATEGY_LOCATION> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BDTA_STRATEGY_LOCATION");
+		 
+			 																																																				 
         }
 		 
 	}
@@ -2869,10 +4038,25 @@ namespace Blocks.BussnessEntityModule
 		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_SUPPLIER> builder)
         {
 			 
-			            builder.HasKey(x => x.Id);
-		 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BDTA_SUPPLIER");
 		 
 			 																																																																																																												 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class BDTA_UNITConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_UNIT> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_UNIT> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BDTA_UNIT");
+		 
+			 																																																				 
         }
 		 
 	}
@@ -2884,8 +4068,8 @@ namespace Blocks.BussnessEntityModule
 		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_WORKING> builder)
         {
 			 
-			            builder.HasKey(x => x.Id);
-		 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BDTA_WORKING");
 		 
 			 																																																																																																																																	 
         }
@@ -2899,8 +4083,8 @@ namespace Blocks.BussnessEntityModule
 		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_WORKNUMBER> builder)
         {
 			 
-			            builder.HasKey(x => x.Id);
-		 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BDTA_WORKNUMBER");
 		 
 			 																																																																		 
         }
@@ -2914,8 +4098,8 @@ namespace Blocks.BussnessEntityModule
 		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_WORKPROCEDURE> builder)
         {
 			 
-			            builder.HasKey(x => x.Id);
-		 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BDTA_WORKPROCEDURE");
 		 
 			 																																																																									 
         }
@@ -2929,8 +4113,8 @@ namespace Blocks.BussnessEntityModule
 		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_WORKSECTION> builder)
         {
 			 
-			            builder.HasKey(x => x.Id);
-		 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BDTA_WORKSECTION");
 		 
 			 																																																											 
         }
@@ -2944,8 +4128,8 @@ namespace Blocks.BussnessEntityModule
 		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_WORKSHOP> builder)
         {
 			 
-			            builder.HasKey(x => x.Id);
-		 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BDTA_WORKSHOP");
 		 
 			 																																																																																																																			 
         }
@@ -2959,8 +4143,8 @@ namespace Blocks.BussnessEntityModule
 		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_WORKTEAM> builder)
         {
 			 
-			            builder.HasKey(x => x.Id);
-		 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BDTA_WORKTEAM");
 		 
 			 																																																																																													 builder.HasOne(t => t.BDTA_WORK_CENTER).WithMany().HasForeignKey(t => t.WORK_CENTER_ID);	
 										 
@@ -2975,11 +4159,461 @@ namespace Blocks.BussnessEntityModule
 		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_WORKTEAM_MEMBER> builder)
         {
 			 
-			            builder.HasKey(x => x.Id);
-		 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BDTA_WORKTEAM_MEMBER");
 		 
 			 																																																										 builder.HasOne(t => t.BDTA_EMPLOYEE).WithMany().HasForeignKey(t => t.EMPLOYEE_ID);	
 										 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class BDTA_WORK_CENTERConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_WORK_CENTER> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_WORK_CENTER> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BDTA_WORK_CENTER");
+		 
+			 																																																											 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class BLOCKS_AUDITLOGSConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BLOCKS_AUDITLOGS> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BLOCKS_AUDITLOGS> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BLOCKS_AUDITLOGS");
+		 
+			 																																																																																																																																																						 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class BLOCKS_BACKGROUNDJOBSConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BLOCKS_BACKGROUNDJOBS> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BLOCKS_BACKGROUNDJOBS> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BLOCKS_BACKGROUNDJOBS");
+		 
+			 																																																																									 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class BLOCKS_EDITIONSConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BLOCKS_EDITIONS> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BLOCKS_EDITIONS> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BLOCKS_EDITIONS");
+		 
+			 																																																																									 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class BLOCKS_FEATURESConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BLOCKS_FEATURES> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BLOCKS_FEATURES> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BLOCKS_FEATURES");
+		 
+			 																																																											 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class BLOCKS_LANGUAGESConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BLOCKS_LANGUAGES> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BLOCKS_LANGUAGES> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BLOCKS_LANGUAGES");
+		 
+			 																																																																																														 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class BLOCKS_LANGUAGETEXTSConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BLOCKS_LANGUAGETEXTS> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BLOCKS_LANGUAGETEXTS> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BLOCKS_LANGUAGETEXTS");
+		 
+			 																																																																									 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class BLOCKS_NOTIFICATIONSConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BLOCKS_NOTIFICATIONS> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BLOCKS_NOTIFICATIONS> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BLOCKS_NOTIFICATIONS");
+		 
+			 																																																																																														 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class BLOCKS_NOTIFY_SUBSCRIPTIONSConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BLOCKS_NOTIFY_SUBSCRIPTIONS> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BLOCKS_NOTIFY_SUBSCRIPTIONS> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BLOCKS_NOTIFY_SUBSCRIPTIONS");
+		 
+			 																																																																		 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class BLOCKS_ORGANIZATION_UNITSConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BLOCKS_ORGANIZATION_UNITS> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BLOCKS_ORGANIZATION_UNITS> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BLOCKS_ORGANIZATION_UNITS");
+		 
+			 																																																																																							 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class BLOCKS_PERMISSIONSConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BLOCKS_PERMISSIONS> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BLOCKS_PERMISSIONS> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BLOCKS_PERMISSIONS");
+		 
+			 																																																																		 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class BLOCKS_ROLESConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BLOCKS_ROLES> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BLOCKS_ROLES> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BLOCKS_ROLES");
+		 
+			 																																																																																																					 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class BLOCKS_SETTINGSConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BLOCKS_SETTINGS> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BLOCKS_SETTINGS> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BLOCKS_SETTINGS");
+		 
+			 																																																																		 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class BLOCKS_TENANTSConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BLOCKS_TENANTS> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BLOCKS_TENANTS> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BLOCKS_TENANTS");
+		 
+			 																																																																																														 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class BLOCKS_TENANT_NOTIFICATIONSConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BLOCKS_TENANT_NOTIFICATIONS> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BLOCKS_TENANT_NOTIFICATIONS> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BLOCKS_TENANT_NOTIFICATIONS");
+		 
+			 																																																																																 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class BLOCKS_USERNOTIFICATIONSConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BLOCKS_USERNOTIFICATIONS> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BLOCKS_USERNOTIFICATIONS> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BLOCKS_USERNOTIFICATIONS");
+		 
+			 																																													 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class BLOCKS_USERORGANIZATION_UNITSConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BLOCKS_USERORGANIZATION_UNITS> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BLOCKS_USERORGANIZATION_UNITS> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BLOCKS_USERORGANIZATION_UNITS");
+		 
+			 																																																				 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class BLOCKS_USERSConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BLOCKS_USERS> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BLOCKS_USERS> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BLOCKS_USERS");
+		 
+			 																																																																																																																																																																																																 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class BLOCKS_USER_ACCOUNTSConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BLOCKS_USER_ACCOUNTS> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BLOCKS_USER_ACCOUNTS> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BLOCKS_USER_ACCOUNTS");
+		 
+			 																																																																																																					 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class BLOCKS_USER_CLAIMSConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BLOCKS_USER_CLAIMS> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BLOCKS_USER_CLAIMS> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BLOCKS_USER_CLAIMS");
+		 
+			 																																																				 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class BLOCKS_USER_LOGINATTEMPTSConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BLOCKS_USER_LOGINATTEMPTS> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BLOCKS_USER_LOGINATTEMPTS> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BLOCKS_USER_LOGINATTEMPTS");
+		 
+			 																																																																									 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class BLOCKS_USER_LOGINSConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BLOCKS_USER_LOGINS> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BLOCKS_USER_LOGINS> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BLOCKS_USER_LOGINS");
+		 
+			 																																						 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class BLOCKS_USER_ROLESConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BLOCKS_USER_ROLES> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BLOCKS_USER_ROLES> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BLOCKS_USER_ROLES");
+		 
+			 																																													 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class MIGRATIONHISTORYConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<MIGRATIONHISTORY> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<MIGRATIONHISTORY> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("MIGRATIONHISTORY");
+		 
+			 																															 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class PRINT_SERVICEConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<PRINT_SERVICE> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<PRINT_SERVICE> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("PRINT_SERVICE");
+		 
+			 																																																				 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class SHEET1Configuration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<SHEET1> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<SHEET1> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("SHEET1");
+		 
+			 																	 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class SYS_ACTION_TYPEConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<SYS_ACTION_TYPE> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<SYS_ACTION_TYPE> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("SYS_ACTION_TYPE");
+		 
+			 																															 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class SYS_CALL_THIRD_SYSTEM_INFOConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<SYS_CALL_THIRD_SYSTEM_INFO> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<SYS_CALL_THIRD_SYSTEM_INFO> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("SYS_CALL_THIRD_SYSTEM_INFO");
+		 
+			 																																																																																																					 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class SYS_CALL_THIRD_SYSTEM_LOGConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<SYS_CALL_THIRD_SYSTEM_LOG> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<SYS_CALL_THIRD_SYSTEM_LOG> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("SYS_CALL_THIRD_SYSTEM_LOG");
+		 
+			 																																																																									 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class SYS_COLLECTConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<SYS_COLLECT> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<SYS_COLLECT> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("SYS_COLLECT");
+		 
+			 																								 
         }
 		 
 	}
@@ -2991,10 +4625,25 @@ namespace Blocks.BussnessEntityModule
 		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<SYS_LOG> builder)
         {
 			 
-			            builder.HasKey(x => x.Id);
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("SYS_LOG");
 		 
+			 																																																																																																																			 
+        }
 		 
-			 																																																																									 
+	}
+    
+ 
+ 
+    public partial class SYS_MENUSConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<SYS_MENUS> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<SYS_MENUS> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("SYS_MENUS");
+		 
+			 																																																																																							 
         }
 		 
 	}
@@ -3006,10 +4655,41 @@ namespace Blocks.BussnessEntityModule
 		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<SYS_POPEDOMPROGRAM> builder)
         {
 			 
-			            builder.HasKey(x => x.Id);
-		 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("SYS_POPEDOMPROGRAM");
 		 
 			 																																													 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class SYS_PROGRAMConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<SYS_PROGRAM> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<SYS_PROGRAM> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("SYS_PROGRAM");
+		 
+			 																																																																																																																																							 builder.HasOne(t => t.SYS_MENUS).WithMany().HasForeignKey(t => t.PROGRAMPARENT);	
+										 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class SYS_PROGRAMOPERATIONConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<SYS_PROGRAMOPERATION> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<SYS_PROGRAMOPERATION> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("SYS_PROGRAMOPERATION");
+		 
+			 																																						 
         }
 		 
 	}
@@ -3021,8 +4701,8 @@ namespace Blocks.BussnessEntityModule
 		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<SYS_PROGRAM_OPERATION_WEB> builder)
         {
 			 
-			            builder.HasKey(x => x.Id);
-		 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("SYS_PROGRAM_OPERATION_WEB");
 		 
 			 																																													 
         }
@@ -3036,10 +4716,25 @@ namespace Blocks.BussnessEntityModule
 		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<SYS_PROGRAM_WINFORM> builder)
         {
 			 
-			            builder.HasKey(x => x.Id);
-		 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("SYS_PROGRAM_WINFORM");
 		 
 			 																																																																																																																			 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class SYS_QUESTION_FEEDBACKConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<SYS_QUESTION_FEEDBACK> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<SYS_QUESTION_FEEDBACK> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("SYS_QUESTION_FEEDBACK");
+		 
+			 																																													 
         }
 		 
 	}
@@ -3051,8 +4746,8 @@ namespace Blocks.BussnessEntityModule
 		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<SYS_ROLEAUTHORIZE> builder)
         {
 			 
-			            builder.HasKey(x => x.Id);
-		 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("SYS_ROLEAUTHORIZE");
 		 
 			 																																																											 
         }
@@ -3066,8 +4761,8 @@ namespace Blocks.BussnessEntityModule
 		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<SYS_ROLEINFO> builder)
         {
 			 
-			            builder.HasKey(x => x.Id);
-		 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("SYS_ROLEINFO");
 		 
 			 																																						 
         }
@@ -3081,8 +4776,8 @@ namespace Blocks.BussnessEntityModule
 		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<SYS_ROLEUSER> builder)
         {
 			 
-			            builder.HasKey(x => x.Id);
-		 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("SYS_ROLEUSER");
 		 
 			 																																						 
         }
@@ -3096,10 +4791,25 @@ namespace Blocks.BussnessEntityModule
 		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<SYS_SYSTEMINFO> builder)
         {
 			 
-			            builder.HasKey(x => x.Id);
-		 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("SYS_SYSTEMINFO");
 		 
 			 																															 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class SYS_THIRD_SYSTEM_TYPEConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<SYS_THIRD_SYSTEM_TYPE> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<SYS_THIRD_SYSTEM_TYPE> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("SYS_THIRD_SYSTEM_TYPE");
+		 
+			 																																						 
         }
 		 
 	}
@@ -3111,10 +4821,40 @@ namespace Blocks.BussnessEntityModule
 		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<SYS_USERINFO> builder)
         {
 			 
-			            builder.HasKey(x => x.Id);
-		 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("SYS_USERINFO");
 		 
 			 																																																											 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class SYS_USER_STOREROOMConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<SYS_USER_STOREROOM> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<SYS_USER_STOREROOM> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("SYS_USER_STOREROOM");
+		 
+			 																																						 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class SYS_USER_VISIT_STATISTICConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<SYS_USER_VISIT_STATISTIC> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<SYS_USER_VISIT_STATISTIC> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("SYS_USER_VISIT_STATISTIC");
+		 
+			 																																																																									 
         }
 		 
 	}
@@ -3126,8 +4866,8 @@ namespace Blocks.BussnessEntityModule
 		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<TESTENTITY> builder)
         {
 			 
-			            builder.HasKey(x => x.Id);
-		 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("TESTENTITY");
 		 
 			 																																																																								 builder.HasOne(t => t.TESTENTITY2).WithMany().HasForeignKey(t => t.TESTENTITY2ID);	
 															     builder.HasMany(t => t.TESTENTITY3s).WithOne().HasForeignKey(t => t.TESTENTITYID);
@@ -3143,8 +4883,8 @@ namespace Blocks.BussnessEntityModule
 		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<TESTENTITY2> builder)
         {
 			 
-			            builder.HasKey(x => x.Id);
-		 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("TESTENTITY2");
 		 
 			 																	 
         }
@@ -3158,705 +4898,10 @@ namespace Blocks.BussnessEntityModule
 		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<TESTENTITY3> builder)
         {
 			 
-			            builder.HasKey(x => x.Id);
-		 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("TESTENTITY3");
 		 
 			 																								 
-        }
-		 
-	}
-    
- 
- 
-    public partial class MIGRATIONHISTORYConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<MIGRATIONHISTORY> 
-    {
-		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<MIGRATIONHISTORY> builder)
-        {
-			 
-			            builder.HasKey(x => x.Id);
-		 
-		 
-			 																															 
-        }
-		 
-	}
-    
- 
- 
-    public partial class BLOCKS_AUDITLOGSConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BLOCKS_AUDITLOGS> 
-    {
-		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BLOCKS_AUDITLOGS> builder)
-        {
-			 
-			            builder.HasKey(x => x.Id);
-		 
-		 
-			 																																																																																																												 
-        }
-		 
-	}
-    
- 
- 
-    public partial class BLOCKS_BACKGROUNDJOBSConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BLOCKS_BACKGROUNDJOBS> 
-    {
-		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BLOCKS_BACKGROUNDJOBS> builder)
-        {
-			 
-			            builder.HasKey(x => x.Id);
-		 
-		 
-			 																																																																									 
-        }
-		 
-	}
-    
- 
- 
-    public partial class BLOCKS_FEATURESConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BLOCKS_FEATURES> 
-    {
-		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BLOCKS_FEATURES> builder)
-        {
-			 
-			            builder.HasKey(x => x.Id);
-		 
-		 
-			 																																																											 
-        }
-		 
-	}
-    
- 
- 
-    public partial class BLOCKS_EDITIONSConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BLOCKS_EDITIONS> 
-    {
-		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BLOCKS_EDITIONS> builder)
-        {
-			 
-			            builder.HasKey(x => x.Id);
-		 
-		 
-			 																																																																									 
-        }
-		 
-	}
-    
- 
- 
-    public partial class BLOCKS_LANGUAGESConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BLOCKS_LANGUAGES> 
-    {
-		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BLOCKS_LANGUAGES> builder)
-        {
-			 
-			            builder.HasKey(x => x.Id);
-		 
-		 
-			 																																																																																														 
-        }
-		 
-	}
-    
- 
- 
-    public partial class BLOCKS_LANGUAGETEXTSConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BLOCKS_LANGUAGETEXTS> 
-    {
-		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BLOCKS_LANGUAGETEXTS> builder)
-        {
-			 
-			            builder.HasKey(x => x.Id);
-		 
-		 
-			 																																																																									 
-        }
-		 
-	}
-    
- 
- 
-    public partial class BLOCKS_NOTIFICATIONSConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BLOCKS_NOTIFICATIONS> 
-    {
-		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BLOCKS_NOTIFICATIONS> builder)
-        {
-			 
-			            builder.HasKey(x => x.Id);
-		 
-		 
-			 																																																																																														 
-        }
-		 
-	}
-    
- 
- 
-    public partial class BLOCKS_NOTIFY_SUBSCRIPTIONSConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BLOCKS_NOTIFY_SUBSCRIPTIONS> 
-    {
-		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BLOCKS_NOTIFY_SUBSCRIPTIONS> builder)
-        {
-			 
-			            builder.HasKey(x => x.Id);
-		 
-		 
-			 																																																																		 
-        }
-		 
-	}
-    
- 
- 
-    public partial class BLOCKS_ORGANIZATION_UNITSConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BLOCKS_ORGANIZATION_UNITS> 
-    {
-		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BLOCKS_ORGANIZATION_UNITS> builder)
-        {
-			 
-			            builder.HasKey(x => x.Id);
-		 
-		 
-			 																																																																																							 
-        }
-		 
-	}
-    
- 
- 
-    public partial class BLOCKS_PERMISSIONSConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BLOCKS_PERMISSIONS> 
-    {
-		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BLOCKS_PERMISSIONS> builder)
-        {
-			 
-			            builder.HasKey(x => x.Id);
-		 
-		 
-			 																																																																		 
-        }
-		 
-	}
-    
- 
- 
-    public partial class BLOCKS_ROLESConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BLOCKS_ROLES> 
-    {
-		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BLOCKS_ROLES> builder)
-        {
-			 
-			            builder.HasKey(x => x.Id);
-		 
-		 
-			 																																																																																																					 
-        }
-		 
-	}
-    
- 
- 
-    public partial class BLOCKS_USERSConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BLOCKS_USERS> 
-    {
-		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BLOCKS_USERS> builder)
-        {
-			 
-			            builder.HasKey(x => x.Id);
-		 
-		 
-			 																																																																																																																																																																																																 
-        }
-		 
-	}
-    
- 
- 
-    public partial class BLOCKS_USER_CLAIMSConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BLOCKS_USER_CLAIMS> 
-    {
-		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BLOCKS_USER_CLAIMS> builder)
-        {
-			 
-			            builder.HasKey(x => x.Id);
-		 
-		 
-			 																																																				 
-        }
-		 
-	}
-    
- 
- 
-    public partial class BLOCKS_USER_LOGINSConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BLOCKS_USER_LOGINS> 
-    {
-		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BLOCKS_USER_LOGINS> builder)
-        {
-			 
-			            builder.HasKey(x => x.Id);
-		 
-		 
-			 																																						 
-        }
-		 
-	}
-    
- 
- 
-    public partial class BLOCKS_USER_ROLESConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BLOCKS_USER_ROLES> 
-    {
-		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BLOCKS_USER_ROLES> builder)
-        {
-			 
-			            builder.HasKey(x => x.Id);
-		 
-		 
-			 																																													 
-        }
-		 
-	}
-    
- 
- 
-    public partial class BLOCKS_SETTINGSConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BLOCKS_SETTINGS> 
-    {
-		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BLOCKS_SETTINGS> builder)
-        {
-			 
-			            builder.HasKey(x => x.Id);
-		 
-		 
-			 																																																																		 
-        }
-		 
-	}
-    
- 
- 
-    public partial class BLOCKS_TENANT_NOTIFICATIONSConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BLOCKS_TENANT_NOTIFICATIONS> 
-    {
-		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BLOCKS_TENANT_NOTIFICATIONS> builder)
-        {
-			 
-			            builder.HasKey(x => x.Id);
-		 
-		 
-			 																																																																																 
-        }
-		 
-	}
-    
- 
- 
-    public partial class BLOCKS_TENANTSConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BLOCKS_TENANTS> 
-    {
-		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BLOCKS_TENANTS> builder)
-        {
-			 
-			            builder.HasKey(x => x.Id);
-		 
-		 
-			 																																																																																														 
-        }
-		 
-	}
-    
- 
- 
-    public partial class BLOCKS_USER_ACCOUNTSConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BLOCKS_USER_ACCOUNTS> 
-    {
-		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BLOCKS_USER_ACCOUNTS> builder)
-        {
-			 
-			            builder.HasKey(x => x.Id);
-		 
-		 
-			 																																																																																																					 
-        }
-		 
-	}
-    
- 
- 
-    public partial class BLOCKS_USER_LOGINATTEMPTSConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BLOCKS_USER_LOGINATTEMPTS> 
-    {
-		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BLOCKS_USER_LOGINATTEMPTS> builder)
-        {
-			 
-			            builder.HasKey(x => x.Id);
-		 
-		 
-			 																																																																									 
-        }
-		 
-	}
-    
- 
- 
-    public partial class BLOCKS_USERNOTIFICATIONSConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BLOCKS_USERNOTIFICATIONS> 
-    {
-		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BLOCKS_USERNOTIFICATIONS> builder)
-        {
-			 
-			            builder.HasKey(x => x.Id);
-		 
-		 
-			 																																													 
-        }
-		 
-	}
-    
- 
- 
-    public partial class BLOCKS_USERORGANIZATION_UNITSConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BLOCKS_USERORGANIZATION_UNITS> 
-    {
-		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BLOCKS_USERORGANIZATION_UNITS> builder)
-        {
-			 
-			            builder.HasKey(x => x.Id);
-		 
-		 
-			 																																																				 
-        }
-		 
-	}
-    
- 
- 
-    public partial class SYS_ACTION_TYPEConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<SYS_ACTION_TYPE> 
-    {
-		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<SYS_ACTION_TYPE> builder)
-        {
-			 
-			            builder.HasKey(x => x.Id);
-		 
-		 
-			 																															 
-        }
-		 
-	}
-    
- 
- 
-    public partial class BDTA_WORK_CENTERConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_WORK_CENTER> 
-    {
-		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_WORK_CENTER> builder)
-        {
-			 
-			            builder.HasKey(x => x.Id);
-		 
-		 
-			 																																																											 
-        }
-		 
-	}
-    
- 
- 
-    public partial class BDTA_PRODUCTELEMENTConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_PRODUCTELEMENT> 
-    {
-		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_PRODUCTELEMENT> builder)
-        {
-			 
-			            builder.HasKey(x => x.Id);
-		 
-		 
-			 																																																																															 builder.HasOne(t => t.BDTA_PRODUCTELEMENT_TYPE).WithMany().HasForeignKey(t => t.BDTA_PRODUCTELEMENT_TYPE_ID);	
-										 
-        }
-		 
-	}
-    
- 
- 
-    public partial class BDTA_PRODUCTFORMAT_DETAILConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_PRODUCTFORMAT_DETAIL> 
-    {
-		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_PRODUCTFORMAT_DETAIL> builder)
-        {
-			 
-			            builder.HasKey(x => x.Id);
-		 
-		 
-			 																																																																																						 builder.HasOne(t => t.BDTA_PRODUCTELEMENT).WithMany().HasForeignKey(t => t.PRODUCTELEMENTID);	
-										 
-        }
-		 
-	}
-    
- 
- 
-    public partial class BDTA_PRODUCTFORMATConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_PRODUCTFORMAT> 
-    {
-		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_PRODUCTFORMAT> builder)
-        {
-			 
-			            builder.HasKey(x => x.Id);
-		 
-		 
-			 																																																											 
-        }
-		 
-	}
-    
- 
- 
-    public partial class BDTA_PRODUCTELEMENT_TYPEConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_PRODUCTELEMENT_TYPE> 
-    {
-		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_PRODUCTELEMENT_TYPE> builder)
-        {
-			 
-			            builder.HasKey(x => x.Id);
-		 
-		 
-			 																																						 
-        }
-		 
-	}
-    
- 
- 
-    public partial class BDTA_PRODUCT_ELEMENT_RULE_RELConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_PRODUCT_ELEMENT_RULE_REL> 
-    {
-		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_PRODUCT_ELEMENT_RULE_REL> builder)
-        {
-			 
-			            builder.HasKey(x => x.Id);
-		 
-		 
-			 																																													 
-        }
-		 
-	}
-    
- 
- 
-    public partial class SYS_PROGRAMConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<SYS_PROGRAM> 
-    {
-		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<SYS_PROGRAM> builder)
-        {
-			 
-			            builder.HasKey(x => x.Id);
-		 
-		 
-			 																																																																																																																																 builder.HasOne(t => t.SYS_MENUS).WithMany().HasForeignKey(t => t.PROGRAMPARENT);	
-										 
-        }
-		 
-	}
-    
- 
- 
-    public partial class BDTA_SETUPConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_SETUP> 
-    {
-		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_SETUP> builder)
-        {
-			 
-			            builder.HasKey(x => x.Id);
-		 
-		 
-			 																																																																																							 
-        }
-		 
-	}
-    
- 
- 
-    public partial class BDTA_CUSTOMERConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_CUSTOMER> 
-    {
-		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_CUSTOMER> builder)
-        {
-			 
-			            builder.HasKey(x => x.Id);
-		 
-		 
-			 																																																																																																												 
-        }
-		 
-	}
-    
- 
- 
-    public partial class BDTA_OUT_IN_TYPEConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_OUT_IN_TYPE> 
-    {
-		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_OUT_IN_TYPE> builder)
-        {
-			 
-			            builder.HasKey(x => x.Id);
-		 
-		 
-			 																																																				 
-        }
-		 
-	}
-    
- 
- 
-    public partial class BDTA_SETUP_TYPEConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_SETUP_TYPE> 
-    {
-		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_SETUP_TYPE> builder)
-        {
-			 
-			            builder.HasKey(x => x.Id);
-		 
-		 
-			 																																																				 
-        }
-		 
-	}
-    
- 
- 
-    public partial class BDTA_PRODUCT_VARELEMENT_RELConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_PRODUCT_VARELEMENT_REL> 
-    {
-		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_PRODUCT_VARELEMENT_REL> builder)
-        {
-			 
-			            builder.HasKey(x => x.Id);
-		 
-		 
-			 																																													 
-        }
-		 
-	}
-    
- 
- 
-    public partial class BDTA_ORG_FACTORYConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_ORG_FACTORY> 
-    {
-		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_ORG_FACTORY> builder)
-        {
-			 
-			            builder.HasKey(x => x.Id);
-		 
-		 
-			 																																																				 
-        }
-		 
-	}
-    
- 
- 
-    public partial class BDTA_ORG_ORGRELATIONConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_ORG_ORGRELATION> 
-    {
-		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_ORG_ORGRELATION> builder)
-        {
-			 
-			            builder.HasKey(x => x.Id);
-		 
-		 
-			 																																																											 
-        }
-		 
-	}
-    
- 
- 
-    public partial class BDTA_QA_CHECKMODEConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_QA_CHECKMODE> 
-    {
-		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_QA_CHECKMODE> builder)
-        {
-			 
-			            builder.HasKey(x => x.Id);
-		 
-		 
-			 																																																																																																											 builder.HasOne(t => t.BDTA_QA_CHECKITEMMANAGE).WithMany().HasForeignKey(t => t.QA_CHECKITEMMANAGE_ID);	
-										 
-        }
-		 
-	}
-    
- 
- 
-    public partial class BDTA_QA_CHECKITEMConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_QA_CHECKITEM> 
-    {
-		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_QA_CHECKITEM> builder)
-        {
-			 
-			            builder.HasKey(x => x.Id);
-		 
-		 
-			 																																																																																																				 builder.HasOne(t => t.BDTA_DICTIONARY).WithMany().HasForeignKey(t => t.CHECKITEMPARENT);	
-										 
-        }
-		 
-	}
-    
- 
- 
-    public partial class BDTA_MAKERConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_MAKER> 
-    {
-		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_MAKER> builder)
-        {
-			 
-			            builder.HasKey(x => x.Id);
-		 
-		 
-			 																																																																																																												 
-        }
-		 
-	}
-    
- 
- 
-    public partial class BDTA_UNITConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_UNIT> 
-    {
-		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_UNIT> builder)
-        {
-			 
-			            builder.HasKey(x => x.Id);
-		 
-		 
-			 																																													 
-        }
-		 
-	}
-    
- 
- 
-    public partial class BDTA_QA_CHECKITEMMANAGEConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_QA_CHECKITEMMANAGE> 
-    {
-		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_QA_CHECKITEMMANAGE> builder)
-        {
-			 
-			            builder.HasKey(x => x.Id);
-		 
-		 
-			 																																						 
-        }
-		 
-	}
-    
- 
- 
-    public partial class BDTA_QA_CHECKITEMMANAGE_DETAILConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_QA_CHECKITEMMANAGE_DETAIL> 
-    {
-		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_QA_CHECKITEMMANAGE_DETAIL> builder)
-        {
-			 
-			            builder.HasKey(x => x.Id);
-		 
-		 
-			 																																																																																																												 
-        }
-		 
-	}
-    
- 
- 
-    public partial class WAREHOUSE_STOCK_LOCKConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WAREHOUSE_STOCK_LOCK> 
-    {
-		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WAREHOUSE_STOCK_LOCK> builder)
-        {
-			 
-			            builder.HasKey(x => x.Id);
-		 
-		 
-			 																																																																																 
-        }
-		 
-	}
-    
- 
- 
-    public partial class BDTA_QA_SAMPLING_STANDARDConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_QA_SAMPLING_STANDARD> 
-    {
-		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_QA_SAMPLING_STANDARD> builder)
-        {
-			 
-			            builder.HasKey(x => x.Id);
-		 
-		 
-			 																																																											 
         }
 		 
 	}
@@ -3868,8 +4913,8 @@ namespace Blocks.BussnessEntityModule
 		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WAREHOUSE_IN_STORAGE> builder)
         {
 			 
-			            builder.HasKey(x => x.Id);
-		 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("WAREHOUSE_IN_STORAGE");
 		 
 			 																																						 
         }
@@ -3883,12 +4928,44 @@ namespace Blocks.BussnessEntityModule
 		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WAREHOUSE_IN_STORAGE_DETAIL> builder)
         {
 			 
-			            builder.HasKey(x => x.Id);
-		 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("WAREHOUSE_IN_STORAGE_DETAIL");
 		 
 			 																																																																																																																																							 builder.HasOne(t => t.BDTA_MATERIAL).WithMany().HasForeignKey(t => t.MATERIAL_ID);	
 																 builder.HasOne(t => t.BDTA_SUPPLIER).WithMany().HasForeignKey(t => t.SUPPLIER_ID);	
 										 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class WAREHOUSE_IQCConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WAREHOUSE_IQC> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WAREHOUSE_IQC> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("WAREHOUSE_IQC");
+		 
+			 																																																																																																																																																																																															 builder.HasOne(t => t.BDTA_MATERIAL).WithMany().HasForeignKey(t => t.MATERIAL_ID);	
+																 builder.HasOne(t => t.BDTA_SUPPLIER).WithMany().HasForeignKey(t => t.SUPPLIER_ID);	
+										 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class WAREHOUSE_IQC_DETAILConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WAREHOUSE_IQC_DETAIL> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WAREHOUSE_IQC_DETAIL> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("WAREHOUSE_IQC_DETAIL");
+		 
+			 																																																																																																																										 
         }
 		 
 	}
@@ -3900,10 +4977,10 @@ namespace Blocks.BussnessEntityModule
 		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WAREHOUSE_MOVESITE> builder)
         {
 			 
-			            builder.HasKey(x => x.Id);
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("WAREHOUSE_MOVESITE");
 		 
-		 
-			 																															 
+			 																																																											 
         }
 		 
 	}
@@ -3915,8 +4992,8 @@ namespace Blocks.BussnessEntityModule
 		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WAREHOUSE_MOVESITE_DETAIL> builder)
         {
 			 
-			            builder.HasKey(x => x.Id);
-		 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("WAREHOUSE_MOVESITE_DETAIL");
 		 
 			 																																																																																														 
         }
@@ -3930,8 +5007,8 @@ namespace Blocks.BussnessEntityModule
 		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WAREHOUSE_OUT_STORAGE> builder)
         {
 			 
-			            builder.HasKey(x => x.Id);
-		 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("WAREHOUSE_OUT_STORAGE");
 		 
 			 																																																																															 builder.HasOne(t => t.BDTA_ORG_STOREROOM).WithMany().HasForeignKey(t => t.STOREROM_ID);	
 										 
@@ -3946,8 +5023,8 @@ namespace Blocks.BussnessEntityModule
 		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WAREHOUSE_OUT_STORAGE_DETAIL> builder)
         {
 			 
-			            builder.HasKey(x => x.Id);
-		 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("WAREHOUSE_OUT_STORAGE_DETAIL");
 		 
 			 																																																																	 builder.HasOne(t => t.BDTA_MATERIAL).WithMany().HasForeignKey(t => t.MATERIAL_ID);	
 																 builder.HasOne(t => t.WAREHOUSE_STOCK).WithMany().HasForeignKey(t => t.MATERIAL_ID);	
@@ -3963,8 +5040,8 @@ namespace Blocks.BussnessEntityModule
 		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WAREHOUSE_OUT_STORAGE_ORDER> builder)
         {
 			 
-			            builder.HasKey(x => x.Id);
-		 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("WAREHOUSE_OUT_STORAGE_ORDER");
 		 
 			 																																																																									 
         }
@@ -3973,197 +5050,32 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class SHEET1Configuration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<SHEET1> 
+    public partial class WAREHOUSE_POConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WAREHOUSE_PO> 
     {
-		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<SHEET1> builder)
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WAREHOUSE_PO> builder)
         {
 			 
-			            builder.HasKey(x => x.Id);
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("WAREHOUSE_PO");
 		 
-		 
-			 																	 
+			 																																																											 
         }
 		 
 	}
     
  
  
-    public partial class SYS_USER_STOREROOMConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<SYS_USER_STOREROOM> 
+    public partial class WAREHOUSE_PO_DETAILConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WAREHOUSE_PO_DETAIL> 
     {
-		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<SYS_USER_STOREROOM> builder)
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WAREHOUSE_PO_DETAIL> builder)
         {
 			 
-			            builder.HasKey(x => x.Id);
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("WAREHOUSE_PO_DETAIL");
 		 
-		 
-			 																																						 
-        }
-		 
-	}
-    
- 
- 
-    public partial class SYS_MENUSConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<SYS_MENUS> 
-    {
-		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<SYS_MENUS> builder)
-        {
-			 
-			            builder.HasKey(x => x.Id);
-		 
-		 
-			 																																																																		 
-        }
-		 
-	}
-    
- 
- 
-    public partial class WAREHOUSE_STOCK_BALANCE_DETAILConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WAREHOUSE_STOCK_BALANCE_DETAIL> 
-    {
-		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WAREHOUSE_STOCK_BALANCE_DETAIL> builder)
-        {
-			 
-			            builder.HasKey(x => x.Id);
-		 
-		 
-			 																																																																																																												 
-        }
-		 
-	}
-    
- 
- 
-    public partial class WAREHOUSE_STOCK_COUNT_STOCKConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WAREHOUSE_STOCK_COUNT_STOCK> 
-    {
-		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WAREHOUSE_STOCK_COUNT_STOCK> builder)
-        {
-			 
-			            builder.HasKey(x => x.Id);
-		 
-		 
-			 																																																																																																																																								 
-        }
-		 
-	}
-    
- 
- 
-    public partial class WAREHOUSE_STOCK_BALANCEConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WAREHOUSE_STOCK_BALANCE> 
-    {
-		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WAREHOUSE_STOCK_BALANCE> builder)
-        {
-			 
-			            builder.HasKey(x => x.Id);
-		 
-		 
-			 																																																																																																																			 
-        }
-		 
-	}
-    
- 
- 
-    public partial class WAREHOUSE_IQC_DETAILConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WAREHOUSE_IQC_DETAIL> 
-    {
-		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WAREHOUSE_IQC_DETAIL> builder)
-        {
-			 
-			            builder.HasKey(x => x.Id);
-		 
-		 
-			 																																																																																																																										 
-        }
-		 
-	}
-    
- 
- 
-    public partial class WAREHOUSE_RECEIVE_DETAILConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WAREHOUSE_RECEIVE_DETAIL> 
-    {
-		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WAREHOUSE_RECEIVE_DETAIL> builder)
-        {
-			 
-			            builder.HasKey(x => x.Id);
-		 
-		 
-			 																																																																																																																		 builder.HasOne(t => t.BDTA_MAKER).WithMany().HasForeignKey(t => t.MAKER_ID);	
+			 																																																																																																																																														 builder.HasOne(t => t.BDTA_MATERIAL).WithMany().HasForeignKey(t => t.MATERIAL_ID);	
 																 builder.HasOne(t => t.BDTA_UNIT).WithMany().HasForeignKey(t => t.UNIT_ID);	
 										 
-        }
-		 
-	}
-    
- 
- 
-    public partial class WAREHOUSE_STOCK_COUNTConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WAREHOUSE_STOCK_COUNT> 
-    {
-		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WAREHOUSE_STOCK_COUNT> builder)
-        {
-			 
-			            builder.HasKey(x => x.Id);
-		 
-		 
-			 																																																																																							 
-        }
-		 
-	}
-    
- 
- 
-    public partial class WAREHOUSE_STOCK_LOGConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WAREHOUSE_STOCK_LOG> 
-    {
-		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WAREHOUSE_STOCK_LOG> builder)
-        {
-			 
-			            builder.HasKey(x => x.Id);
-		 
-		 
-			 																																																																																																																																								 
-        }
-		 
-	}
-    
- 
- 
-    public partial class WAREHOUSE_STOCK_COUNT_SCANConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WAREHOUSE_STOCK_COUNT_SCAN> 
-    {
-		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WAREHOUSE_STOCK_COUNT_SCAN> builder)
-        {
-			 
-			            builder.HasKey(x => x.Id);
-		 
-		 
-			 																																																																																																																			 
-        }
-		 
-	}
-    
- 
- 
-    public partial class WAREHOUSE_STOCKConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WAREHOUSE_STOCK> 
-    {
-		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WAREHOUSE_STOCK> builder)
-        {
-			 
-			            builder.HasKey(x => x.Id);
-		 
-		 
-			 																																																				 
-        }
-		 
-	}
-    
- 
- 
-    public partial class WAREHOUSE_STOCK_COUNT_DETAILConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WAREHOUSE_STOCK_COUNT_DETAIL> 
-    {
-		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WAREHOUSE_STOCK_COUNT_DETAIL> builder)
-        {
-			 
-			            builder.HasKey(x => x.Id);
-		 
-		 
-			 																																																																																							 
         }
 		 
 	}
@@ -4175,10 +5087,10 @@ namespace Blocks.BussnessEntityModule
 		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WAREHOUSE_RECEIVE> builder)
         {
 			 
-			            builder.HasKey(x => x.Id);
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("WAREHOUSE_RECEIVE");
 		 
-		 
-			 																																																																																													 builder.HasOne(t => t.BDTA_SUPPLIER).WithMany().HasForeignKey(t => t.SUPPLIERID);	
+			 																																																																																																				 builder.HasOne(t => t.BDTA_SUPPLIER).WithMany().HasForeignKey(t => t.SUPPLIERID);	
 																 builder.HasOne(t => t.SYS_USERINFO).WithMany().HasForeignKey(t => t.RECEIVER);	
 																 builder.HasOne(t => t.BDTA_ORG_STOREROOM).WithMany().HasForeignKey(t => t.RECEIVE_STOREROOMID);	
 										 
@@ -4188,17 +5100,137 @@ namespace Blocks.BussnessEntityModule
     
  
  
-    public partial class WAREHOUSE_IQCConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WAREHOUSE_IQC> 
+    public partial class WAREHOUSE_RECEIVE_DETAILConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WAREHOUSE_RECEIVE_DETAIL> 
     {
-		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WAREHOUSE_IQC> builder)
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WAREHOUSE_RECEIVE_DETAIL> builder)
         {
 			 
-			            builder.HasKey(x => x.Id);
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("WAREHOUSE_RECEIVE_DETAIL");
 		 
-		 
-			 																																																																																																																																																																																															 builder.HasOne(t => t.BDTA_MATERIAL).WithMany().HasForeignKey(t => t.MATERIAL_ID);	
-																 builder.HasOne(t => t.BDTA_SUPPLIER).WithMany().HasForeignKey(t => t.SUPPLIER_ID);	
+			 																																																																																																																		 builder.HasOne(t => t.BDTA_MAKER).WithMany().HasForeignKey(t => t.MAKER_ID);	
+																 builder.HasOne(t => t.BDTA_UNIT).WithMany().HasForeignKey(t => t.UNIT_ID);	
 										 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class WAREHOUSE_STOCKConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WAREHOUSE_STOCK> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WAREHOUSE_STOCK> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("WAREHOUSE_STOCK");
+		 
+			 																																																											 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class WAREHOUSE_STOCK_BALANCEConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WAREHOUSE_STOCK_BALANCE> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WAREHOUSE_STOCK_BALANCE> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("WAREHOUSE_STOCK_BALANCE");
+		 
+			 																																																																																																																			 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class WAREHOUSE_STOCK_BALANCE_DETAILConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WAREHOUSE_STOCK_BALANCE_DETAIL> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WAREHOUSE_STOCK_BALANCE_DETAIL> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("WAREHOUSE_STOCK_BALANCE_DETAIL");
+		 
+			 																																																																																																												 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class WAREHOUSE_STOCK_COUNTConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WAREHOUSE_STOCK_COUNT> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WAREHOUSE_STOCK_COUNT> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("WAREHOUSE_STOCK_COUNT");
+		 
+			 																																																																																																																																															 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class WAREHOUSE_STOCK_COUNT_DETAILConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WAREHOUSE_STOCK_COUNT_DETAIL> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WAREHOUSE_STOCK_COUNT_DETAIL> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("WAREHOUSE_STOCK_COUNT_DETAIL");
+		 
+			 																																																																																														 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class WAREHOUSE_STOCK_COUNT_LOGConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WAREHOUSE_STOCK_COUNT_LOG> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WAREHOUSE_STOCK_COUNT_LOG> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("WAREHOUSE_STOCK_COUNT_LOG");
+		 
+			 																																																																																																																										 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class WAREHOUSE_STOCK_COUNT_SCANConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WAREHOUSE_STOCK_COUNT_SCAN> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WAREHOUSE_STOCK_COUNT_SCAN> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("WAREHOUSE_STOCK_COUNT_SCAN");
+		 
+			 																																																																																																																																	 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class WAREHOUSE_STOCK_COUNT_STOCKConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WAREHOUSE_STOCK_COUNT_STOCK> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WAREHOUSE_STOCK_COUNT_STOCK> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("WAREHOUSE_STOCK_COUNT_STOCK");
+		 
+			 																																																																																																																																																																																																																					 
         }
 		 
 	}
@@ -4210,11 +5242,476 @@ namespace Blocks.BussnessEntityModule
 		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WAREHOUSE_STOCK_DETAIL> builder)
         {
 			 
-			            builder.HasKey(x => x.Id);
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("WAREHOUSE_STOCK_DETAIL");
 		 
-		 
-			 																																																																																																																																							 builder.HasOne(t => t.BDTA_SUPPLIER).WithMany().HasForeignKey(t => t.SUPPLIER_ID);	
+			 																																																																																																																																														 builder.HasOne(t => t.BDTA_SUPPLIER).WithMany().HasForeignKey(t => t.SUPPLIER_ID);	
 										 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class WAREHOUSE_STOCK_LOCKConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WAREHOUSE_STOCK_LOCK> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WAREHOUSE_STOCK_LOCK> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("WAREHOUSE_STOCK_LOCK");
+		 
+			 																																																																																 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class WAREHOUSE_STOCK_LOGConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WAREHOUSE_STOCK_LOG> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WAREHOUSE_STOCK_LOG> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("WAREHOUSE_STOCK_LOG");
+		 
+			 																																																																																																																																																						 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class WH_INBOUND_DConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WH_INBOUND_D> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WH_INBOUND_D> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("WH_INBOUND_D");
+		 
+			 																																																																																																					 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class WH_INBOUND_GUIDEConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WH_INBOUND_GUIDE> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WH_INBOUND_GUIDE> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("WH_INBOUND_GUIDE");
+		 
+			 																																																																																																												 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class WH_INBOUND_MConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WH_INBOUND_M> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WH_INBOUND_M> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("WH_INBOUND_M");
+		 
+			 																																																																									 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class WH_INBOUND_ORDERConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WH_INBOUND_ORDER> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WH_INBOUND_ORDER> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("WH_INBOUND_ORDER");
+		 
+			 																																																																																							 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class WH_IQC_INSPECT_ITEMConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WH_IQC_INSPECT_ITEM> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WH_IQC_INSPECT_ITEM> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("WH_IQC_INSPECT_ITEM");
+		 
+			 																																																																																														 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class WH_IQC_INSPECT_STANDARD_DConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WH_IQC_INSPECT_STANDARD_D> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WH_IQC_INSPECT_STANDARD_D> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("WH_IQC_INSPECT_STANDARD_D");
+		 
+			 																																																																																																																																								 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class WH_IQC_INSPECT_STANDARD_MConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WH_IQC_INSPECT_STANDARD_M> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WH_IQC_INSPECT_STANDARD_M> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("WH_IQC_INSPECT_STANDARD_M");
+		 
+			 																																																																																																																										 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class WH_IQC_MAT_INSPECT_DConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WH_IQC_MAT_INSPECT_D> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WH_IQC_MAT_INSPECT_D> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("WH_IQC_MAT_INSPECT_D");
+		 
+			 																																																																																																																																																																																																																																																	 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class WH_IQC_MAT_INSPECT_MConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WH_IQC_MAT_INSPECT_M> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WH_IQC_MAT_INSPECT_M> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("WH_IQC_MAT_INSPECT_M");
+		 
+			 																																																																																																																																																																																																																																																																													 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class WH_IQC_MAT_INSPECT_SAMPLEConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WH_IQC_MAT_INSPECT_SAMPLE> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WH_IQC_MAT_INSPECT_SAMPLE> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("WH_IQC_MAT_INSPECT_SAMPLE");
+		 
+			 																																																																																																												 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class WH_IQC_MAT_INSPECT_STANDARD_DConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WH_IQC_MAT_INSPECT_STANDARD_D> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WH_IQC_MAT_INSPECT_STANDARD_D> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("WH_IQC_MAT_INSPECT_STANDARD_D");
+		 
+			 																																																																																																																																																						 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class WH_IQC_MAT_INSPECT_STANDARD_MConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WH_IQC_MAT_INSPECT_STANDARD_M> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WH_IQC_MAT_INSPECT_STANDARD_M> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("WH_IQC_MAT_INSPECT_STANDARD_M");
+		 
+			 																																																																																																																																																													 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class WH_IQC_SAMPLE_CHARACTERConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WH_IQC_SAMPLE_CHARACTER> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WH_IQC_SAMPLE_CHARACTER> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("WH_IQC_SAMPLE_CHARACTER");
+		 
+			 																																																																																 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class WH_IQC_SAMPLING_PLANConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WH_IQC_SAMPLING_PLAN> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WH_IQC_SAMPLING_PLAN> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("WH_IQC_SAMPLING_PLAN");
+		 
+			 																																																																																														 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class WH_IQC_SWITCHING_RULE_DConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WH_IQC_SWITCHING_RULE_D> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WH_IQC_SWITCHING_RULE_D> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("WH_IQC_SWITCHING_RULE_D");
+		 
+			 																																																																																 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class WH_IQC_SWITCHING_RULE_MConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WH_IQC_SWITCHING_RULE_M> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WH_IQC_SWITCHING_RULE_M> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("WH_IQC_SWITCHING_RULE_M");
+		 
+			 																																																											 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class WH_IQC_SWITCHING_RULE_RConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WH_IQC_SWITCHING_RULE_R> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WH_IQC_SWITCHING_RULE_R> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("WH_IQC_SWITCHING_RULE_R");
+		 
+			 																																													 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class WH_IQC_SWITCHING_RULE_SConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WH_IQC_SWITCHING_RULE_S> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WH_IQC_SWITCHING_RULE_S> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("WH_IQC_SWITCHING_RULE_S");
+		 
+			 																																																																									 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class WH_MATERIAL_BATCHConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WH_MATERIAL_BATCH> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WH_MATERIAL_BATCH> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("WH_MATERIAL_BATCH");
+		 
+			 																																																																																																																																																						 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class WH_OUTBOUND_DConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WH_OUTBOUND_D> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WH_OUTBOUND_D> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("WH_OUTBOUND_D");
+		 
+			 																																																																																														 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class WH_OUTBOUND_GUIDEConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WH_OUTBOUND_GUIDE> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WH_OUTBOUND_GUIDE> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("WH_OUTBOUND_GUIDE");
+		 
+			 																																																																																																					 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class WH_OUTBOUND_MConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WH_OUTBOUND_M> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WH_OUTBOUND_M> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("WH_OUTBOUND_M");
+		 
+			 																																																																									 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class WH_OUTBOUND_ORDERConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WH_OUTBOUND_ORDER> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WH_OUTBOUND_ORDER> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("WH_OUTBOUND_ORDER");
+		 
+			 																																																																																							 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class WH_STOCK_COUNT_PLAN_DConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WH_STOCK_COUNT_PLAN_D> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WH_STOCK_COUNT_PLAN_D> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("WH_STOCK_COUNT_PLAN_D");
+		 
+			 																																																																									 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class WH_STOCK_COUNT_PLAN_MConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WH_STOCK_COUNT_PLAN_M> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WH_STOCK_COUNT_PLAN_M> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("WH_STOCK_COUNT_PLAN_M");
+		 
+			 																																																											 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class WH_STOCK_FREEZE_PLAN_DConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WH_STOCK_FREEZE_PLAN_D> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WH_STOCK_FREEZE_PLAN_D> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("WH_STOCK_FREEZE_PLAN_D");
+		 
+			 																																																																																																																			 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class WH_STOCK_FREEZE_PLAN_MConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<WH_STOCK_FREEZE_PLAN_M> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<WH_STOCK_FREEZE_PLAN_M> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("WH_STOCK_FREEZE_PLAN_M");
+		 
+			 																																																				 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class BDTA_CONFIGFILESConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BDTA_CONFIGFILES> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BDTA_CONFIGFILES> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BDTA_CONFIGFILES");
+		 
+			 																																																											 
+        }
+		 
+	}
+    
+ 
+ 
+    public partial class BLOCKS_IMAGEConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<BLOCKS_IMAGE> 
+    {
+		public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<BLOCKS_IMAGE> builder)
+        {
+			 
+			            if(!builder.Metadata.GetKeys().Any()) builder.HasKey(x => x.Id);
+		    builder.ToTable("BLOCKS_IMAGE");
+		 
+			 																																																				 
         }
 		 
 	}

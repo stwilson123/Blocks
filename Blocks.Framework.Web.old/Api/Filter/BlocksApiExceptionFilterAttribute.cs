@@ -17,6 +17,8 @@ using Blocks.Framework.Localization;
 using Blocks.Framework.Web.Api.Configuration;
 using Blocks.Framework.Web.Api.Controllers;
 using Blocks.Framework.Web.Result;
+using Blocks.Framework.Web.Web.Result;
+using Blocks.Web.Models;
 using Castle.Core.Logging;
 using ITransientDependency = Blocks.Framework.Ioc.Dependency.ITransientDependency;
 

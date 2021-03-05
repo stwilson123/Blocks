@@ -13,6 +13,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Blocks.Framework.Web.old\Blocks.Framework.Web.csproj" />
     <ProjectReference Include="..\..\Blocks.Framework\Blocks.Framework.csproj" />
+    <ProjectReference Include="..\..\Standard\Blocks.Core\Blocks.Core.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Mvc\Authorization" />
@@ -22,5 +23,10 @@
     <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
       <HintPath>..\..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Navigation\TestModels\Config\MobileNavigation.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 </Project>

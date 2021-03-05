@@ -27,6 +27,7 @@ using Blocks.Framework.Data.Entity;
 using Blocks.Framework.Data.Pager;
 using Blocks.Framework.Data.Paging;
 using DynamicQueryableExtensions = System.Linq.Dynamic.Core.DynamicQueryableExtensions;
+using Blocks.Framework.Environment.Extensions;
 
 namespace Blocks.Framework.DBORM.Repository
 {
@@ -212,7 +213,7 @@ namespace Blocks.Framework.DBORM.Repository
         /// <summary>
         /// Gets EF DbContext object.
         /// </summary>
-        public virtual TDbContext Context => _dbContextProvider.GetDbContext<TDbContext>(MultiTenancySide);
+        public virtual TDbContext Context => _dbContextProvider.GetDbContext<TDbContext, TEntity>(MultiTenancySide);
 
         public static MultiTenancySides? MultiTenancySide { get; private set; }
 
@@ -260,6 +261,8 @@ namespace Blocks.Framework.DBORM.Repository
 
         private readonly DBContext.IDbContextProvider _dbContextProvider;
 
+        private string moduleName;
+
         /// <summary>
         /// Constructor
         /// </summary>
@@ -269,6 +272,7 @@ namespace Blocks.Framework.DBORM.Repository
             _dbContextProvider = dbContextProvider;
             Type type = typeof(TEntity);
             var attr = type.GetSingleAttributeOfTypeOrBaseTypesOrNull<MultiTenancySideAttribute>();
+        
             if (attr != null)
             {
                 MultiTenancySide = attr.Side;

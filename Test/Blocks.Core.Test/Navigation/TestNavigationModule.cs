@@ -20,6 +20,7 @@ namespace Blocks.Core.Test.Navigation
         public override void Initialize()
         {
             IocManager.Register<INavigationFilter,MvcNavigationFilter>();
+            IocManager.Register<INavigationFilter,FrontNavigationFilter>();
             IocManager.Register<MvcControllerManager>();
             IDefaultControllerBuilderFactory factory = new MvcControllerBuilderFactory(IocManager);
             var servicePrefix = TestModule.ModuleName.ToCamelCase();

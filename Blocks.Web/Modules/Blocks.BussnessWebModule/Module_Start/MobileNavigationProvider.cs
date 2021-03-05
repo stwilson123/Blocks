@@ -18,6 +18,8 @@ namespace Blocks.BussnessWebModule.Module_Start
             filePaths = new Dictionary<Platform, string>()
             {
                 {Platform.Mobile, "Module_Start/Config/MobileNavigation.json"},
+                {Platform.MainMenu, "Module_Start/Config/MobileNavigation.json"},
+
             };
         }
     }

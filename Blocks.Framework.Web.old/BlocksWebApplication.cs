@@ -4,7 +4,6 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using Abp;
-using Abp.Castle.Logging.Log4Net;
 using Abp.Dependency;
 using Abp.Modules;
 using Abp.PlugIns;
@@ -14,9 +13,8 @@ using Blocks.Framework.FileSystems;
 using Blocks.Framework.FileSystems.VirtualPath;
 using Blocks.Framework.Logging;
 using Blocks.Framework.Web.Web.Localization;
-using Castle.Facilities.Logging;
 using Castle.Winsdor.Aspnet.Web;
-
+using Blocks.Framework.Logging.Log4Net;
 namespace Blocks.Framework.Web
 {
     public abstract class BlocksWebApplication<TStartupModule> : HttpApplication
@@ -46,8 +44,8 @@ namespace Blocks.Framework.Web
             stopwatch.Start();
             PerWebRequestLifestyleModule.FuncHttpCache = (noInput) => { return HttpContext.Current.Items; };
 
-            AbpBootstrapper.IocManager.IocContainer.AddFacility<LoggingFacility>(
-                f => f.UseAbpLog4Net().WithConfig(Server.MapPath(logConfigName))
+            AbpBootstrapper.IocManager.IocContainer.AddFacility<Castle.Facilities.Logging.LoggingFacility>(
+                f => Blocks.Framework.Logging.Log4Net.LoggingFacilityExtensions.UseLog4Net(f).WithConfig(Server.MapPath(logConfigName))
             );
 
             ThreadCultureSanitizer.Sanitize();

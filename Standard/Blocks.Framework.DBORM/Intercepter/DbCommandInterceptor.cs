@@ -40,7 +40,7 @@ namespace Blocks.Framework.DBORM.Intercepter
                 
                
                 Trace.TraceInformation("\r\n执行时间:{0} 毫秒 \r\n -->CommandExecuted.Command:\r\n{1}\r\nParamter:{2}", _stopwatch.ElapsedMilliseconds, command.CommandText,
-                    string.Join(",",command.Parameters.Cast<IDbDataParameter>().Select(t => string.Format("{0}:{1};" ,t.ParameterName,t.Value)))
+                    string.Join(",",command.Parameters.Cast<IDbDataParameter>().Select(t => string.Format("{0}:{1}:{2};" ,t.ParameterName, t.DbType,t.Value)))
                     );
                 //var command = ((CommandEventData)value.Value).Command;
                 //var executeMethod = ((CommandEventData)value.Value).ExecuteMethod;

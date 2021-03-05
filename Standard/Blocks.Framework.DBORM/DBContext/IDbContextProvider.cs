@@ -11,8 +11,8 @@ namespace Blocks.Framework.DBORM.DBContext
     public interface IDbContextProvider 
        
     {
-        TDbContext GetDbContext<TDbContext>()  where TDbContext : DbContext;
+        TDbContext GetDbContext<TDbContext, TEntity>()  where TDbContext : DbContext;
 
-        TDbContext GetDbContext<TDbContext>(MultiTenancySides? multiTenancySide ) where TDbContext : DbContext;
+        TDbContext GetDbContext<TDbContext, TEntity>(MultiTenancySides? multiTenancySide) where TDbContext : DbContext;
     }
 }

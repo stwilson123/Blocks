@@ -6,7 +6,7 @@ using Abp.Dependency;
 using Abp.Extensions;
 using Abp.Reflection;
 using Abp.Threading;
-using Abp.Web.Api.ProxyScripting.Configuration;
+//using Abp.Web.Api.ProxyScripting.Configuration;
 using Blocks.Framework.Web.Web.HttpMethod;
 
 namespace Blocks.Framework.Web.Api.Controllers.Dynamic.Builders
@@ -74,13 +74,13 @@ namespace Blocks.Framework.Web.Api.Controllers.Dynamic.Builders
 
         private string GetNormalizedActionName()
         {
-            using (var config = _iocResolver.ResolveAsDisposable<IApiProxyScriptingConfiguration>())
-            {
-                if (!config.Object.RemoveAsyncPostfixOnProxyGeneration)
-                {
-                    return Method.Name;
-                }
-            }
+            //using (var config = _iocResolver.ResolveAsDisposable<IApiProxyScriptingConfiguration>())
+            //{
+            //    if (!config.Object.RemoveAsyncPostfixOnProxyGeneration)
+            //    {
+            //        return Method.Name;
+            //    }
+            //}
 
             if (!Method.IsAsync())
             {

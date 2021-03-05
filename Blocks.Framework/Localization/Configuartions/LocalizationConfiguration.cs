@@ -45,7 +45,7 @@ namespace Blocks.Framework.Localization.Configuartions
             IsEnabled = true;
             ReturnGivenTextIfNotFound = true;
             WrapGivenTextIfNotFound = true;
-            HumanizeTextIfNotFound = true;
+            HumanizeTextIfNotFound = false;
             LogWarnMessageIfNotFound = true;
         }
     }

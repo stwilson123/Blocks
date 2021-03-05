@@ -276,6 +276,7 @@
     <Reference Include="System.ComponentModel.Annotations, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <HintPath>..\packages\System.ComponentModel.Annotations.4.4.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
     </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Configuration.ConfigurationManager, Version=4.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51">
       <HintPath>..\packages\System.Configuration.ConfigurationManager.4.4.0\lib\net461\System.Configuration.ConfigurationManager.dll</HintPath>
@@ -408,7 +409,7 @@
     <Compile Include="Configuartions\IWebFrameworkConfiguration.cs" />
     <Compile Include="Modules\BlocksFrameworkWebModule.cs" />
     <Compile Include="Modules\BlocksWebModule.cs" />
-    <Compile Include="Mvc\AbpWebMvcModule.cs" />
+    <Compile Include="Mvc\BlocksWebMvcModule.cs" />
     <Compile Include="Mvc\Configuration\AbpMvcConfiguration.cs" />
     <Compile Include="Mvc\Configuration\AbpMvcConfigurationExtensions.cs" />
     <Compile Include="Mvc\Configuration\IAbpMvcConfiguration.cs" />
@@ -432,6 +433,7 @@
     <Compile Include="Mvc\Helpers\MethodInfoHelper.cs" />
     <Compile Include="Mvc\IBlocksViewPage.cs" />
     <Compile Include="Mvc\ModelBinding\Binders\AbpMvcDateTimeBinder.cs" />
+    <Compile Include="Mvc\Models\ErrorViewModel.cs" />
     <Compile Include="Mvc\Route\RouteExtension.cs" />
     <Compile Include="Mvc\Route\RouteHelper.cs" />
     <Compile Include="Mvc\Security\AntiForgery\AbpAntiForgeryManagerMvcExtensions.cs" />
@@ -464,6 +466,7 @@
     <Compile Include="Mvc\ViewEngines\ThemeAwareness\ThemeAwareViewEngineShim.cs" />
     <Compile Include="Mvc\ViewEngines\ThemeAwareness\ThemeViewLocationCache.cs" />
     <Compile Include="Mvc\ViewEngines\ThemeAwareness\ViewEngineCollectionWrapper.cs" />
+    <Compile Include="Navigation\Filters\FrontNavigationFilter.cs" />
     <Compile Include="Navigation\Filters\MvcNavigationFilter.cs" />
     <Compile Include="Navigation\WebNavigationItemDefinition.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -481,32 +484,41 @@
     <Compile Include="Security\IdentityUserManager.cs" />
     <Compile Include="Security\IdentityUserStore.cs" />
     <Compile Include="Security\IdentityLogInManager.cs" />
-    <Compile Include="Web\AbpWebModule.cs" />
+    <Compile Include="Web\BlocksWebModule.cs" />
+    <Compile Include="Web\Configuration\BlocksWebModuleConfiguration.cs" />
     <Compile Include="Web\Configuration\BlocksWebLocalizationConfiguration.cs" />
+    <Compile Include="Web\Configuration\IBlocksWebModuleConfiguration.cs" />
     <Compile Include="Web\Configuration\IBlocksWebLocalizationConfiguration.cs" />
+    <Compile Include="Web\Configuration\IWebEmbeddedResourcesConfiguration.cs" />
+    <Compile Include="Web\Configuration\WebEmbeddedResourcesConfiguration.cs" />
     <Compile Include="Web\Helper\ApiVerbHelper.cs" />
     <Compile Include="Web\Helper\HttpVerbHelper.cs" />
     <Compile Include="Web\HttpMethod\HttpMethodAttribute.cs" />
     <Compile Include="Web\HttpMethod\HttpVerb.cs" />
     <Compile Include="Web\Localization\CurrentCultureSetter.cs" />
     <Compile Include="Web\Localization\ICurrentCultureSetter.cs" />
+    <Compile Include="Web\Result\AjaxResponse.cs" />
+    <Compile Include="Web\Result\AjaxResponseBase.cs" />
+    <Compile Include="Web\Result\AjaxResponseOfTResult.cs" />
+    <Compile Include="Web\Result\DefaultErrorInfoConverter.cs" />
     <Compile Include="Web\Result\ErrorInfo.cs" />
-    <Compile Include="Web\Security\AntiForgery\AbpAntiForgeryManagerWebExtensions.cs" />
-    <Compile Include="Web\Security\AntiForgery\AbpAntiForgeryWebConfiguration.cs" />
+    <Compile Include="Web\Result\ErrorInfoBuilder.cs" />
+    <Compile Include="Web\Result\IErrorInfoBuilder.cs" />
+    <Compile Include="Web\Result\IExceptionToErrorInfoConverter.cs" />
+    <Compile Include="Web\Result\ValidationErrorInfo.cs" />
+    <Compile Include="Web\Security\AntiForgery\BlocksAntiForgeryConfiguration.cs" />
+    <Compile Include="Web\Security\AntiForgery\BlocksAntiForgeryManager.cs" />
+    <Compile Include="Web\Security\AntiForgery\BlocksAntiForgeryManagerWebExtensions.cs" />
+    <Compile Include="Web\Security\AntiForgery\BlocksAntiForgeryWebConfiguration.cs" />
     <Compile Include="Web\Security\AntiForgery\DisableAbpAntiForgeryTokenValidationAttribute.cs" />
-    <Compile Include="Web\Security\AntiForgery\IAbpAntiForgeryWebConfiguration.cs" />
+    <Compile Include="Web\Security\AntiForgery\IBlocksAntiForgeryValidator.cs" />
+    <Compile Include="Web\Security\AntiForgery\IBlocksAntiForgeryConfiguration.cs" />
+    <Compile Include="Web\Security\AntiForgery\IBlocksAntiForgeryManager.cs" />
+    <Compile Include="Web\Security\AntiForgery\IBlocksAntiForgeryWebConfiguration.cs" />
     <Compile Include="Web\Security\AntiForgery\ValidateAbpAntiForgeryTokenAttribute.cs" />
     <Compile Include="WorkContextExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Adp\Abp.Castle.Log4Net\Abp.Castle.Log4Net.csproj">
-      <Project>{2f287607-7f51-476e-9bbf-feb8131951aa}</Project>
-      <Name>Abp.Castle.Log4Net</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Adp\Abp.Web.Common\Abp.Web.Common.csproj">
-      <Project>{e8fde65c-63ab-4b45-aca4-3369a9411236}</Project>
-      <Name>Abp.Web.Common</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Adp\Abp\Abp.csproj">
       <Project>{0f98c63c-d019-4f38-9ac3-f5d7bcad9107}</Project>
       <Name>Abp</Name>

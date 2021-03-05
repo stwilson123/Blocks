@@ -74,7 +74,7 @@ namespace EntityFramework.Test.Model
             {
                  Id =  t.Id,
                   COLNUMINT = t.COLNUMINT
-            }, new Page() {page = 2, pageSize = 10,filters = new Group(){ groupOp = "And",rules = new List<Rule>(){ new Rule(){ field = "Id", data = "", op = "cn"}} }});
+            }, new Page() {page = 2, pageSize = 10,filters = new Group(){ groupOp = "And",rules = new List<Rule>(){ new Rule(){ field = "Id", data = "['1','2']", op = "in"}} }});
         }
 
         public List<TESTENTITY> GetTESTENTITY3s()
@@ -107,6 +107,7 @@ namespace EntityFramework.Test.Model
 
         public int ExecuteSqlCommand(string id)
         {
+            var a=  this.SqlQuery<TestDto>("SELECt TO_CHAR(count(*)) as ID  FROM TESTENTITY ");
             return this.ExecuteSqlCommand("DELETE FROM TESTENTITY WHERE ID = {0}", id);
         }
 
@@ -142,9 +143,17 @@ namespace EntityFramework.Test.Model
 
         public List<TESTENTITY> GetMultLeftJoin()
         {
+            var testEntities = new List<TESTENTITY>();
+            var testEntitiy3s = new List<TESTENTITY3>();
+           // testEntities.Join(testEntitiy3s, t => new { testEntityId = t.Id }, testEntity3 => new { testEntityId = testEntity3.TESTENTITYID },(a,b) => new {b })
+
+         
             return GetContextTable()
-                .InnerJoin((TESTENTITY t) => t.Id, (TESTENTITY3 testEntity3) => testEntity3.TESTENTITYID)
-                .LeftJoin((TESTENTITY t) => t.TESTENTITY2ID, (TESTENTITY2 testEntity2) => testEntity2.Id)
+                //.InnerJoin((TESTENTITY t) => t.Id , (TESTENTITY3 testEntity3) => testEntity3.TESTENTITYID )
+                //.InnerJoin((TESTENTITY t) => t.TESTENTITY2ID, (TESTENTITY2 testEntity2) => testEntity2.Id)
+                .InnerJoin((TESTENTITY t) => new { testEntityId = t.Id, no = t.STRING }, (TESTENTITY3 testEntity3) => new { testEntityId = testEntity3.TESTENTITYID, no = testEntity3.CREATER })
+                .LeftJoin((TESTENTITY t) => new { testEntityId = t.TESTENTITY2ID, no1 = t.STRING }, (TESTENTITY2 testEntity2) => new { testEntityId = testEntity2.Id, no1 = testEntity2.UPDATER })
+
                 .SelectToList((TESTENTITY t,TESTENTITY2 testEntity2,TESTENTITY3 testEntity3) => new TESTENTITY()
                 {
                     Id = t.Id, 
@@ -191,6 +200,13 @@ namespace EntityFramework.Test.Model
                 .Single(mi => mi.GetParameters().Length == 3);
     }
 
+
+    public class Test2Repository : DBSqlRepositoryBase<TESTENTITY2>, ITest2Repository
+    {
+        public Test2Repository(IDbContextProvider dbContextProvider) : base(dbContextProvider)
+        {
+        }
+    }
     public class TestRepository3 : DBSqlRepositoryBase<TESTENTITY3>, ITestRepository3
     {
         public TestRepository3(IDbContextProvider dbContextProvider) : base(dbContextProvider)

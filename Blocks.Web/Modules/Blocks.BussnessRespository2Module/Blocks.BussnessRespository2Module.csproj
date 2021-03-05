@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Standard\Blocks.Framework.DBORM\Blocks.Framework.DBORM.csproj" />
+    <ProjectReference Include="..\Blocks.BussnessEntity2Module\Blocks.BussnessEntity2Module.csproj" />
+  </ItemGroup>
+
+</Project>

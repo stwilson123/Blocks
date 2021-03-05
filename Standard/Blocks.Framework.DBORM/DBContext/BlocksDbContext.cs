@@ -59,14 +59,18 @@ namespace Blocks.Framework.DBORM.DBContext
         /// <summary>
         /// Constructor.
         /// </summary>
-        public BlocksDbContext(string nameOrConnectionString,IEnumerable<IEntityConfiguration> entityConfigurations, ISettingManager settingManager,ILog log)
-            : base(nameOrConnectionString,entityConfigurations,settingManager,log)
+        public BlocksDbContext(string nameOrConnectionString,string moduleName,IEnumerable<IEntityConfiguration> entityConfigurations, ISettingManager settingManager,ILog log)
+            : base(nameOrConnectionString, moduleName, entityConfigurations, settingManager,log)
         {
            
         }
- 
 
-      
+        public BlocksDbContext(DbConnection existingConnection, string moduleName, IEnumerable<IEntityConfiguration> entityConfigurations, ISettingManager settingManager, ILog log)
+           : base(existingConnection, moduleName, entityConfigurations, settingManager, log)
+        {
+
+        }
+
         //protected override void Dispose(bool disposing)
         //{
         //    base.Dispose(disposing);
@@ -127,14 +131,17 @@ namespace Blocks.Framework.DBORM.DBContext
         /// </summary>
         public bool SuppressAutoSetTenantId { get; set; }
 
-        
+        private readonly DbConnection existingConnection;
         private readonly IEnumerable<IEntityConfiguration> _entityConfigurations;
 
         
         private ISettingManager _settingManager { get; set; }
 
+        public IEnumerable<Type> EntityTypes { get; private set; }
+
         protected string nameOrConnectionString { get; set; }
-    
+        public string ModuleName { get; }
+
         Stopwatch sw = new Stopwatch();
 
         static IDictionary<Type,ValueTuple<bool,object>> entityConfigsDictionary = new ConcurrentDictionary<Type, (bool, object)>();
@@ -153,9 +160,21 @@ namespace Blocks.Framework.DBORM.DBContext
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
+            optionsBuilder.ReplaceService<IModelCacheKeyFactory, DynamicModelCacheKeyFactory>();
             
-             
             var dbType = _settingManager.GetSettingValueForApplication("DatabaseType");
+            if(this.existingConnection != null)
+            {
+                switch (dbType)
+                {
+                    case "Sqlserver": optionsBuilder.UseSqlServer(existingConnection, sqlServerOptionsAction: b => b.UseRowNumberForPaging()); break;
+                    case "Oracle":
+                        optionsBuilder.UseOracle(existingConnection, oracleOptionsAction: (option) => option.UseOracleSQLCompatibility("11")); break;
+
+                        //                    optionsBuilder.UseOracle(connectionString: connectionString, oracleOptionsAction:b => b.UseRowNumberForPaging()); break;
+                }
+                return;
+            }
             var connectionString = ConfigurationManager.ConnectionStrings[nameOrConnectionString].ConnectionString;
             switch (dbType)
             {
@@ -165,25 +184,34 @@ namespace Blocks.Framework.DBORM.DBContext
 
 //                    optionsBuilder.UseOracle(connectionString: connectionString, oracleOptionsAction:b => b.UseRowNumberForPaging()); break;
             }
-
         }
         /// <summary>
         /// Constructor.
         /// </summary>
-        protected BaseBlocksDbContext(string nameOrConnectionString, IEnumerable<IEntityConfiguration> entityConfigurations, ISettingManager settingManager,ILog log)
+        protected BaseBlocksDbContext(string nameOrConnectionString,string moduleName, IEnumerable<IEntityConfiguration> entityConfigurations, ISettingManager settingManager,ILog log)
           
         {
             _entityConfigurations = entityConfigurations;
             _settingManager = settingManager;
             this.nameOrConnectionString = nameOrConnectionString;
+            ModuleName = moduleName;
             InitializeDbContext();
             this.Logger = log;
         }
- 
- 
+        protected BaseBlocksDbContext(DbConnection existingConnection, string moduleName, IEnumerable<IEntityConfiguration> entityConfigurations, ISettingManager settingManager, ILog log)
 
-        
-//        /// <summary>
+        {
+            _entityConfigurations = entityConfigurations;
+            _settingManager = settingManager;
+            this.existingConnection = existingConnection;
+            ModuleName = moduleName;
+            InitializeDbContext();
+            this.Logger = log;
+        }
+
+
+
+        //        /// <summary>
         //        /// Constructor.
         //        /// </summary>
         //        protected BaseBlocksDbContext(ObjectContext objectContext, bool dbContextOwnsObjectContext)
@@ -259,12 +287,13 @@ namespace Blocks.Framework.DBORM.DBContext
             // modelBuilder.Conventions.Remove<Microsoft.EntityFrameworkCore.ModelConfiguration.Conventions.PluralizingTableNameConvention>();
             base.OnModelCreating(modelBuilder);
 
-       
-            var registerAssembly =  System.AppDomain.CurrentDomain.GetAssemblies().Where(t => 
-                _entityConfigurations.Any(config => string.Equals(t.GetName().Name,config.EntityModule,StringComparison.CurrentCultureIgnoreCase)));
- 
-            
-         
+
+            //var registerAssembly =  System.AppDomain.CurrentDomain.GetAssemblies().Where(t => 
+            //    _entityConfigurations.Any(config => string.Equals(t.GetName().Name,config.EntityModule,StringComparison.CurrentCultureIgnoreCase)));
+            var registerAssembly = System.AppDomain.CurrentDomain.GetAssemblies().Where(t =>
+                       string.Equals(t.GetName().Name, ModuleName, StringComparison.OrdinalIgnoreCase));
+
+
             foreach (var assembly in registerAssembly.DistinctBy(t => t.FullName))
             {
 //                

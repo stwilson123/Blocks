@@ -142,7 +142,7 @@ namespace Blocks.Framework.Navigation.Manager
                     return "";
                 var controllerServiceName = routeValue["area"]?.ToString() + "/" + routeValue["controller"]?.ToString()
                                             + "/" + routeValue["action"]?.ToString();
-                return controllerServiceName;
+                return controllerServiceName.ToLower();
             }
 
             public static string GetControllerPath(IDictionary<string, object> routeValue)

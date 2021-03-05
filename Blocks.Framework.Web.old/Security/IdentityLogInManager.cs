@@ -22,7 +22,7 @@ namespace Blocks.Framework.Web.Security
             var userIdentity = dentityUserStore.GetUser(usernameOrEmailAddress);
             var logInResult = new LogInResult()
             {
-                    Result = LoginResultType.Success,
+                     Result = LoginResultType.Success,
                      User = userIdentity.ToIdentity()
             };
             if(!userPassword.validate(usernameOrEmailAddress, password))

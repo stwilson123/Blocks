@@ -14,7 +14,7 @@ namespace Blocks.Framework.DBORM.TransactionStrategy
     {
         void InitOptions(UnitOfWorkOptions options);
 
-        DbContext CreateDbContext<TDbContext>(string connectionString, IDbContextResolver dbContextResolver)
+        DbContext CreateDbContext<TDbContext>(string connectionString, IDbContextResolver dbContextResolver,string moduleName)
             where TDbContext : DbContext;
 
         void Commit();

@@ -4,30 +4,33 @@ using System.Web.Mvc;
 using Abp.Dependency;
 using Abp.Web;
 using Abp.Web.Models;
-using Abp.Web.Security.AntiForgery;
 using Blocks.Framework.Web.Mvc.Configuration;
 using Blocks.Framework.Web.Mvc.Controllers.Results;
 using Blocks.Framework.Web.Mvc.Extensions;
 using Blocks.Framework.Web.Mvc.Helpers;
+using Blocks.Framework.Web.Web.Helper;
+using Blocks.Framework.Web.Web.Result;
 using Blocks.Framework.Web.Web.Security.AntiForgery;
+using Blocks.Web.Models;
+using Blocks.Web.Security.AntiForgery;
 using Castle.Core.Logging;
 
 namespace Blocks.Framework.Web.Mvc.Security.AntiForgery
 {
-    public class AbpAntiForgeryMvcFilter: IAuthorizationFilter, ITransientDependency
+    public class BlocksAntiForgeryMvcFilter: IAuthorizationFilter, ITransientDependency
     {
         public ILogger Logger { get; set; }
 
-        private readonly IAbpAntiForgeryManager _abpAntiForgeryManager;
+        private readonly IBlocksAntiForgeryManager _blocksAntiForgeryManager;
         private readonly IAbpMvcConfiguration _mvcConfiguration;
-        private readonly IAbpAntiForgeryWebConfiguration _antiForgeryWebConfiguration;
+        private readonly IBlocksAntiForgeryWebConfiguration _antiForgeryWebConfiguration;
 
-        public AbpAntiForgeryMvcFilter(
-            IAbpAntiForgeryManager abpAntiForgeryManager, 
+        public BlocksAntiForgeryMvcFilter(
+            IBlocksAntiForgeryManager abpAntiForgeryManager, 
             IAbpMvcConfiguration mvcConfiguration,
-            IAbpAntiForgeryWebConfiguration antiForgeryWebConfiguration)
+            IBlocksAntiForgeryWebConfiguration antiForgeryWebConfiguration)
         {
-            _abpAntiForgeryManager = abpAntiForgeryManager;
+            _blocksAntiForgeryManager = abpAntiForgeryManager;
             _mvcConfiguration = mvcConfiguration;
             _antiForgeryWebConfiguration = antiForgeryWebConfiguration;
             Logger = NullLogger.Instance;
@@ -42,12 +45,12 @@ namespace Blocks.Framework.Web.Mvc.Security.AntiForgery
             }
 
             var httpVerb = HttpVerbHelper.Create(context.HttpContext.Request.HttpMethod);
-            if (!_abpAntiForgeryManager.ShouldValidate(_antiForgeryWebConfiguration, methodInfo, httpVerb, _mvcConfiguration.IsAutomaticAntiForgeryValidationEnabled))
+            if (!_blocksAntiForgeryManager.ShouldValidate(_antiForgeryWebConfiguration, methodInfo, httpVerb, _mvcConfiguration.IsAutomaticAntiForgeryValidationEnabled))
             {
                 return;
             }
 
-            if (!_abpAntiForgeryManager.IsValid(context.HttpContext))
+            if (!_blocksAntiForgeryManager.IsValid(context.HttpContext))
             {
                 CreateErrorResponse(context, methodInfo, "Empty or invalid anti forgery header token.");
             }

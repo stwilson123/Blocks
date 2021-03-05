@@ -1,5 +1,5 @@
-﻿using Abp.Web.Models;
-using Blocks.Framework.Web.Web.Result;
+﻿using Blocks.Framework.Web.Web.Result;
+using Blocks.Web.Models;
 using System;
 using System.Runtime.Serialization;
 

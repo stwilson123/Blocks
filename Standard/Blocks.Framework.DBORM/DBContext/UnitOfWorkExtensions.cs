@@ -17,13 +17,13 @@ namespace Blocks.Framework.DBORM.DBContext
         /// </summary>
         /// <typeparam name="TDbContext">Type of the DbContext</typeparam>
         /// <param name="unitOfWork">Current (active) unit of work</param>
-        public static TDbContext GetDbContext<TDbContext>(this IActiveUnitOfWork unitOfWork)
+        public static TDbContext GetDbContext<TDbContext, TEntity>(this IActiveUnitOfWork unitOfWork)
             where TDbContext : DbContext
         {
-            return GetDbContext<TDbContext>(unitOfWork, null);
+            return GetDbContext<TDbContext, TEntity>(unitOfWork, null);
         }
 
-        public static TDbContext GetDbContext<TDbContext>(this IActiveUnitOfWork unitOfWork, MultiTenancySides? multiTenancySide)
+        public static TDbContext GetDbContext<TDbContext, TEntity>(this IActiveUnitOfWork unitOfWork, MultiTenancySides? multiTenancySide)
             where TDbContext : DbContext
         {
             if (unitOfWork == null)
@@ -36,7 +36,7 @@ namespace Blocks.Framework.DBORM.DBContext
                 throw new ArgumentException("unitOfWork is not type of " + typeof(EfUnitOfWork).FullName, nameof(unitOfWork));
             }
 
-            return (unitOfWork as EfUnitOfWork).GetOrCreateDbContext<TDbContext>(multiTenancySide);
+            return (unitOfWork as EfUnitOfWork).GetOrCreateDbContext<TDbContext, TEntity>(multiTenancySide);
         }
     }
 }

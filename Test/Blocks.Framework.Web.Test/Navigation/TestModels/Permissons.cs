@@ -5,6 +5,6 @@ namespace Blocks.Framework.Web.Test.Navigation.TestModels
     {
         public const string Add = "Add";
         public const string Edit = "Edit";
-
+        public const string Index = "Index";
     }
 }

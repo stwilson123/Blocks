@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Runtime.InteropServices;
-using Abp.AutoMapper;
 using Blocks.Framework.Exceptions.Helper;
 using System.Linq.Dynamic.Core;
 using Microsoft.EntityFrameworkCore;
@@ -53,9 +52,34 @@ namespace Blocks.Framework.DBORM.Linq
 
         private IQueryable<Dictionary<(Type TableType, string TableAlias), Data.Entity.Entity>> iQueryContext;
 
+        private string JoinExpressionGenernateKey<TInput, TKey>(Expression<Func<TInput, TKey>> selector,string prefixName = "")
+        {
+            var prefix = string.IsNullOrEmpty(prefixName) ? "" : prefixName + ".";
+            if (selector.Body is MemberExpression memberExpression)
+            {
+                return $"{prefix + memberExpression.Member.Name }";
+            }
+            else if(selector.Body is NewExpression newExpression)
+            {
+                var paramsExpressions = new List<string>();
+                for (int i = 0; i < newExpression.Arguments.Count; i++)
+                {
+                    var a = newExpression.Arguments[i];
+                    if (a is MemberExpression member)
+                    {
+                       
+                        paramsExpressions.Add($"{prefix + member.Member.Name} as {newExpression.Members[i].Name}");
+                    }
+                }
+                    
+               return $"new ({ string.Join(", ", paramsExpressions)})";
+            }
+
+            throw new Exception("Not supported expression " + selector.Body);
+        }
         public IDbLinqQueryable<TEntity> InnerJoin<TOuter, TInner, TKey>(
             Expression<Func<TOuter, TKey>> outerKeySelector,
-            Expression<Func<TInner, TKey>> innerKeySelector) where TKey : IComparable, IConvertible
+            Expression<Func<TInner, TKey>> innerKeySelector)  
             where TOuter : class
             where TInner : class
         {
@@ -71,15 +95,15 @@ namespace Blocks.Framework.DBORM.Linq
                 outerParamIsNotExist = true;
             tableAlias.Add((typeof(TOuter), outerParam.Name));
             tableAlias.Add((typeof(TInner), innerParam.Name));
-
+            var parsingConfig = new ParsingConfig() { EvaluateGroupByAtDatabase = true, };
             var querable = transferQuaryable();
             if (querable != null)
             {
-                iQuerable = DynamicQueryableExtensions.Join(iQuerable, 
+                iQuerable = DynamicQueryableExtensions.Join(iQuerable,
+                    parsingConfig,
                     dbContext.Set<TInner>(),
-                    
-                    $"{((MemberExpression) outerKeySelector.Body).Member.Name}",
-                    $"{((MemberExpression) innerKeySelector.Body).Member.Name}", tableAlias.CreateResultSelector());
+                    JoinExpressionGenernateKey(outerKeySelector),
+                    JoinExpressionGenernateKey(innerKeySelector), tableAlias.CreateResultSelector());
             }
             else
             {
@@ -87,10 +111,11 @@ namespace Blocks.Framework.DBORM.Linq
                     throw new BlocksDBORMException(StringLocal.Format(
                         "Can't find table alias in the history join expression.Please check Touter join expression."));
 
-                iQuerable = DynamicQueryableExtensions.Join(iQuerable, 
+                iQuerable = DynamicQueryableExtensions.Join(iQuerable,
+                    parsingConfig,
                     dbContext.Set<TInner>(),
-                    $"{outerParam.Name}.{((MemberExpression) outerKeySelector.Body).Member.Name}",
-                    $"{((MemberExpression) innerKeySelector.Body).Member.Name}", tableAlias.CreateResultSelector());
+                    JoinExpressionGenernateKey(outerKeySelector, outerParam.Name),
+                    JoinExpressionGenernateKey(innerKeySelector), tableAlias.CreateResultSelector());
             }
 
 
@@ -109,12 +134,13 @@ namespace Blocks.Framework.DBORM.Linq
 //                });
             return this;
         }
+         
 
         public IDbLinqQueryable<TEntity> LeftJoin<TOuter, TInner, TKey>(
-            Expression<Func<TOuter, TKey>> outerKeySelector,
-            Expression<Func<TInner, TKey>> innerKeySelector) where TKey : IComparable, IConvertible
-            where TOuter : class
-            where TInner : class
+           Expression<Func<TOuter, TKey>> outerKeySelector,
+           Expression<Func<TInner, TKey>> innerKeySelector)  
+           where TOuter : class
+           where TInner : class
         {
             var outerParam = outerKeySelector.Parameters.FirstOrDefault();
             var innerParam = innerKeySelector.Parameters.FirstOrDefault();
@@ -126,16 +152,16 @@ namespace Blocks.Framework.DBORM.Linq
 
             tableAlias.Add((typeof(TOuter), outerParam.Name));
             tableAlias.Add((typeof(TInner), innerParam.Name));
-
+            var parsingConfig = new ParsingConfig() { RenameParameterExpression = true, EvaluateGroupByAtDatabase = true, };
             var querable = transferQuaryable();
             if (querable != null)
             {
-                iQuerable = DynamicQueryableExtensions.GroupJoin(iQuerable, 
-                    new ParsingConfig(){RenameParameterExpression = true, },
+                iQuerable = DynamicQueryableExtensions.GroupJoin(iQuerable,
+                    parsingConfig,
                     dbContext.Set<TInner>(),
-                    
-                    $"{((MemberExpression) outerKeySelector.Body).Member.Name}",
-                    $"{((MemberExpression) innerKeySelector.Body).Member.Name}",
+
+                   JoinExpressionGenernateKey(outerKeySelector),
+                   JoinExpressionGenernateKey(innerKeySelector),
                     "new(inner as inner,outer as outer)"
                 );
                 iQuerable = DynamicQueryableExtensions.SelectMany(iQuerable,
@@ -147,11 +173,11 @@ namespace Blocks.Framework.DBORM.Linq
             }
             else
             {
-                iQuerable = DynamicQueryableExtensions.GroupJoin(iQuerable, 
-                    new ParsingConfig(){RenameParameterExpression = true, },
+                iQuerable = DynamicQueryableExtensions.GroupJoin(iQuerable,
+                    parsingConfig,
                     dbContext.Set<TInner>(),
-                    $"{outerParam.Name}.{((MemberExpression) outerKeySelector.Body).Member.Name}",
-                    $"{((MemberExpression) innerKeySelector.Body).Member.Name}",
+                   JoinExpressionGenernateKey(outerKeySelector, outerParam.Name),
+                    JoinExpressionGenernateKey(innerKeySelector),
                     "new(inner as inner,outer as outer)");
                 iQuerable = DynamicQueryableExtensions.SelectMany(iQuerable,
                     "inner.DefaultIfEmpty()",
@@ -159,47 +185,47 @@ namespace Blocks.Framework.DBORM.Linq
                     "outer",
                     "inner"
                 );
-//                iQuerable = DynamicQueryableExtensions.Join(iQuerable, dbContext.Set<TInner>(),
-//                        $"{outerParam.Name}.{((MemberExpression) outerKeySelector.Body).Member.Name}",
-//                        $"{((MemberExpression) innerKeySelector.Body).Member.Name}", tableAlias.CreateResultSelector())
-//                    .DefaultIfEmpty();
+                //                iQuerable = DynamicQueryableExtensions.Join(iQuerable, dbContext.Set<TInner>(),
+                //                        $"{outerParam.Name}.{((MemberExpression) outerKeySelector.Body).Member.Name}",
+                //                        $"{((MemberExpression) innerKeySelector.Body).Member.Name}", tableAlias.CreateResultSelector())
+                //                    .DefaultIfEmpty();
             }
 
 
             return this;
         }
 
-//         public IDbLinqQueryable<TEntity> LeftJoin<TOuter, TInner, TKey>(
-//            Expression<Func<TOuter, TKey>> outerKeySelector,
-//            Expression<Func<TInner, TKey>> innerKeySelector) where TKey : IComparable, IConvertible where TOuter : class where TInner : class
-//        {
-//          
-//            var outerParam = outerKeySelector.Parameters.FirstOrDefault();
-//            var innerParam = innerKeySelector.Parameters.FirstOrDefault();
-//            ExceptionHelper.ThrowArgumentNullException(outerParam, "outerKeySelector.Parameters");
-//            ExceptionHelper.ThrowArgumentNullException(innerParam, "innerKeySelector.Parameters");
-//
-//
-//            //TODO validate table alias;
-//
-//            tableAlias.Add((typeof(TOuter), outerParam.Name));
-//            tableAlias.Add((typeof(TInner), innerParam.Name));
-//
-//            var querable = transferQuaryable();
-//            if (querable != null)
-//            {
-//                iQuerable = DynamicQueryableExtensions.Join(iQuerable, dbContext.Set<TInner>(), $"{((MemberExpression)outerKeySelector.Body).Member.Name}",
-//                       $"{((MemberExpression)innerKeySelector.Body).Member.Name}", tableAlias.CreateResultSelector()).DefaultIfEmpty();
-//            }
-//            else
-//            {
-//                iQuerable = DynamicQueryableExtensions.Join(iQuerable, dbContext.Set<TInner>(), $"{outerParam.Name}.{((MemberExpression)outerKeySelector.Body).Member.Name}",
-//                    $"{((MemberExpression)innerKeySelector.Body).Member.Name}", tableAlias.CreateResultSelector()).DefaultIfEmpty();
-//            }
-//           
-//              
-//            return this;
-//        }
+        //         public IDbLinqQueryable<TEntity> LeftJoin<TOuter, TInner, TKey>(
+        //            Expression<Func<TOuter, TKey>> outerKeySelector,
+        //            Expression<Func<TInner, TKey>> innerKeySelector) where TKey : IComparable, IConvertible where TOuter : class where TInner : class
+        //        {
+        //          
+        //            var outerParam = outerKeySelector.Parameters.FirstOrDefault();
+        //            var innerParam = innerKeySelector.Parameters.FirstOrDefault();
+        //            ExceptionHelper.ThrowArgumentNullException(outerParam, "outerKeySelector.Parameters");
+        //            ExceptionHelper.ThrowArgumentNullException(innerParam, "innerKeySelector.Parameters");
+        //
+        //
+        //            //TODO validate table alias;
+        //
+        //            tableAlias.Add((typeof(TOuter), outerParam.Name));
+        //            tableAlias.Add((typeof(TInner), innerParam.Name));
+        //
+        //            var querable = transferQuaryable();
+        //            if (querable != null)
+        //            {
+        //                iQuerable = DynamicQueryableExtensions.Join(iQuerable, dbContext.Set<TInner>(), $"{((MemberExpression)outerKeySelector.Body).Member.Name}",
+        //                       $"{((MemberExpression)innerKeySelector.Body).Member.Name}", tableAlias.CreateResultSelector()).DefaultIfEmpty();
+        //            }
+        //            else
+        //            {
+        //                iQuerable = DynamicQueryableExtensions.Join(iQuerable, dbContext.Set<TInner>(), $"{outerParam.Name}.{((MemberExpression)outerKeySelector.Body).Member.Name}",
+        //                    $"{((MemberExpression)innerKeySelector.Body).Member.Name}", tableAlias.CreateResultSelector()).DefaultIfEmpty();
+        //            }
+        //           
+        //              
+        //            return this;
+        //        }
         public IDbLinqQueryable<TEntity> Where(LambdaExpression predicate)
         {
             ExceptionHelper.ThrowArgumentNullException(predicate, "predicate");

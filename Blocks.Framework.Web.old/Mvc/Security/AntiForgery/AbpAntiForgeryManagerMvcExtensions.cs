@@ -4,13 +4,13 @@ using System.Security.Principal;
 using System.Web;
 using System.Web.Helpers;
 using Abp.Extensions;
-using Abp.Web.Security.AntiForgery;
+using Blocks.Web.Security.AntiForgery;
 
 namespace Blocks.Framework.Web.Mvc.Security.AntiForgery
 {
     public static class AbpAntiForgeryManagerMvcExtensions
     {
-        public static void SetCookie(this IAbpAntiForgeryManager manager, HttpContextBase context, IIdentity identity = null)
+        public static void SetCookie(this IBlocksAntiForgeryManager manager, HttpContextBase context, IIdentity identity = null)
         {
             if (identity != null)
             {
@@ -20,7 +20,7 @@ namespace Blocks.Framework.Web.Mvc.Security.AntiForgery
             context.Response.Cookies.Add(new HttpCookie(manager.Configuration.TokenCookieName, manager.GenerateToken()));
         }
 
-        public static bool IsValid(this IAbpAntiForgeryManager manager, HttpContextBase context)
+        public static bool IsValid(this IBlocksAntiForgeryManager manager, HttpContextBase context)
         {
             var cookieValue = GetCookieValue(context);
             if (cookieValue.IsNullOrEmpty())
@@ -34,7 +34,7 @@ namespace Blocks.Framework.Web.Mvc.Security.AntiForgery
                 return false;
             }
 
-            return manager.As<IAbpAntiForgeryValidator>().IsValid(cookieValue, formOrHeaderValue);
+            return manager.As<IBlocksAntiForgeryValidator>().IsValid(cookieValue, formOrHeaderValue);
         }
 
         private static string GetCookieValue(HttpContextBase context)
@@ -43,7 +43,7 @@ namespace Blocks.Framework.Web.Mvc.Security.AntiForgery
             return cookie?.Value;
         }
 
-        private static string GetFormOrHeaderValue(this IAbpAntiForgeryConfiguration configuration, HttpContextBase context)
+        private static string GetFormOrHeaderValue(this IBlocksAntiForgeryConfiguration configuration, HttpContextBase context)
         {
             var formValue = context.Request.Form["__RequestVerificationToken"];
             if (!formValue.IsNullOrEmpty())

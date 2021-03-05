@@ -29,6 +29,7 @@ namespace EntityFramework.Test.FunctionTest
             }
             rep.Insert(listTestEntity);
             stopwatch.Stop();
+          
             Assert.True(false, "Total Milliseconds:" + stopwatch.ElapsedMilliseconds);
             //trans.Commit();
         }
@@ -51,9 +52,7 @@ namespace EntityFramework.Test.FunctionTest
 
                 Assert.True(1 == rep.Count(t => t.Id == firstData.Id));
 
-                Assert.True(1 == rep.LongCount(t => t.Id == firstData.Id));
-
-                
+                Assert.True(1 == rep.LongCount(t => t.Id == firstData.Id));          
 
             }
 
@@ -139,11 +138,7 @@ namespace EntityFramework.Test.FunctionTest
             var constValue = "123";
             
             
-            var rowIds = rep.Update(rr => rr.Id == "1231232132132132132131233213123" && rr.CREATEDATE <= now, RR => new TESTENTITY()
-            {
-                TESTENTITY2ID = RR.TESTENTITY2ID + initData.TESTENTITY2ID  ,
-                COMMENT = "123321"
-            });
+          
             var id = rep.Update(rr => rr.Id == guid && rr.CREATEDATE <= now, RR => new TESTENTITY()
             {
                 TESTENTITY2ID = RR.TESTENTITY2ID + initData.TESTENTITY2ID  ,
@@ -245,6 +240,9 @@ namespace EntityFramework.Test.FunctionTest
             {
                 Id = newId
             });
+            //var a = rep.FirstOrDefault(t => t.Id == newId);
+            //var rb =  rep.Delete(t => t.Id == newId);
+           
             Assert.Equal(1,rep.ExecuteSqlCommand(newId));
 
 
@@ -255,15 +253,17 @@ namespace EntityFramework.Test.FunctionTest
         [Fact]
         public void TestUpdateMethodWhereExpression_listContainsExpression_throw_exception()
         {
-        
-//            var rep = Resolve<ITestRepository>();
-//            var list = new List<string>(){ "123"};
-//            rep.Update(t => list.Contains(t.Id) && t.COMMENT == null, testentity => new TESTENTITY()
-//            {
-//                COLNUMINT = 1
-//
-//            });
 
+            //            var rep = Resolve<ITestRepository>();
+            //            var list = new List<string>(){ "123"};
+            //            rep.Update(t => list.Contains(t.Id) && t.COMMENT == null, testentity => new TESTENTITY()
+            //            {
+            //                COLNUMINT = 1
+            //
+            //            });
+
+            var a = "";
+          
             var rep = Resolve<IWhMaterialBatchRespository>();
             var lotNos = new List<string>(){ "2019112000001-LX150001","TTT51877T" }.Distinct();
             rep.Update(t =>lotNos.Contains(t.MATERIAL_BATCH) && t.DATE_INSTORAGE == null, testentity => new WH_MATERIAL_BATCH()

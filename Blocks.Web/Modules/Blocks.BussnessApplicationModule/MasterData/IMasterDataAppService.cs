@@ -12,7 +12,6 @@ namespace Blocks.BussnessApplicationModule.MasterData
     public interface IMasterDataAppService : IAppService
     {
 
-        [HttpMethod(HttpVerb.Delete)]
         Task<PageList<PageResult>>  GetPageList(SearchModel a);
 
         void Add(MasterDataInfo masterDataInfo);

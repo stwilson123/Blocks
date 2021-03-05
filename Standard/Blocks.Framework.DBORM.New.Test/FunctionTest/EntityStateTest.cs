@@ -36,9 +36,13 @@ namespace EntityFramework.Test.FunctionTest
                 var newGuid = Guid.NewGuid().ToString();
                 testEntities[0].TESTENTITY2ID = newGuid;
                 var dbEntry = context.Entry(testEntities[0]);
-                Assert.Equal(EntityState.Unchanged, dbEntry.State);
-              
- 
+                Assert.Equal(EntityState.Detached, dbEntry.State);
+
+                context.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.TrackAll;
+                testEntities = context.TestEntity.Skip(0).Take(2).ToList();
+                Assert.Equal(EntityState.Unchanged, context.Entry(testEntities[0]).State);
+
+                testEntities[0].COMMENT = "123";
                 context.ChangeTracker.DetectChanges();
                 Assert.Equal(EntityState.Modified, context.Entry(testEntities[0]).State);
        

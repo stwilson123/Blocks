@@ -4,11 +4,11 @@ using System.Web;
 using System.Web.Helpers;
 using System.Web.Mvc;
 using Abp;
-using Abp.Web.Security.AntiForgery;
+using Blocks.Web.Security.AntiForgery;
 
 namespace Blocks.Framework.Web.Mvc.Security.AntiForgery
 {
-    public class AbpMvcAntiForgeryManager : AbpAntiForgeryManager
+    public class BlocksMvcAntiForgeryManager : BlocksAntiForgeryManager
     {
         private static readonly Lazy<object> AntiForgeryWorkerObject = new Lazy<object>(() =>
         {
@@ -28,7 +28,7 @@ namespace Blocks.Framework.Web.Mvc.Security.AntiForgery
                 .GetMethod("GetFormInputElement", BindingFlags.Public | BindingFlags.Instance);
         });
 
-        public AbpMvcAntiForgeryManager(IAbpAntiForgeryConfiguration configuration)
+        public BlocksMvcAntiForgeryManager(IBlocksAntiForgeryConfiguration configuration)
             : base(configuration)
         {
 

@@ -13,6 +13,9 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Blocks.Framework.Environment.Extensions;
+using Blocks.Framework.Data.Entity;
+using Blocks.Framework.Localization;
 
 namespace Blocks.Framework.DBORM
 {
@@ -24,18 +27,20 @@ namespace Blocks.Framework.DBORM
         private readonly IDbContextResolver _dbContextResolver;
         private readonly IDbContextTypeMatcher _dbContextTypeMatcher;
         private readonly IEfTransactionStrategy _transactionStrategy;
+        private readonly IEnumerable<IEntityConfiguration> entityConfigurations;
         private readonly HttpContextModel _httpContextModel;
         /// <summary>
         /// Creates a new <see cref="EfUnitOfWork"/>.
         /// </summary>
-        public EfUnitOfWork(
+        public EfUnitOfWork( 
             IIocResolver iocResolver,
             IConnectionStringResolver connectionStringResolver,
             IDbContextResolver dbContextResolver,
            // IEfUnitOfWorkFilterExecuter filterExecuter,
             IUnitOfWorkDefaultOptions defaultOptions,
             IDbContextTypeMatcher dbContextTypeMatcher,
-            IEfTransactionStrategy transactionStrategy
+            IEfTransactionStrategy transactionStrategy,
+            IEnumerable<IEntityConfiguration> entityConfigurations
             )
             : base(
                   connectionStringResolver,
@@ -46,7 +51,7 @@ namespace Blocks.Framework.DBORM
             _dbContextResolver = dbContextResolver;
             _dbContextTypeMatcher = dbContextTypeMatcher;
             _transactionStrategy = transactionStrategy;
-
+            this.entityConfigurations = entityConfigurations;
             ActiveDbContexts = new Dictionary<string, DbContext>();
         }
 
@@ -99,7 +104,7 @@ namespace Blocks.Framework.DBORM
             }
         }
 
-        public virtual TDbContext GetOrCreateDbContext<TDbContext>(MultiTenancySides? multiTenancySide = null)
+        public virtual TDbContext GetOrCreateDbContext<TDbContext, TEntity>(MultiTenancySides? multiTenancySide = null)
             where TDbContext : DbContext
         {
             var concreteDbContextType = _dbContextTypeMatcher.GetConcreteType(typeof(TDbContext));
@@ -108,19 +113,22 @@ namespace Blocks.Framework.DBORM
             connectionStringResolveArgs["DbContextType"] = typeof(TDbContext);
             connectionStringResolveArgs["DbContextConcreteType"] = concreteDbContextType;
             var connectionString = ResolveConnectionString(connectionStringResolveArgs);
-
-            var dbContextKey = concreteDbContextType.FullName + "#" + connectionString;
+            var entityAssemblyId = typeof(TEntity).Assembly.GetName().Name;
+            if(!entityConfigurations.Any(e => string.Equals(e.EntityModule, entityAssemblyId, StringComparison.OrdinalIgnoreCase)))
+                throw new BlocksDBORMException(StringLocal.Format($"{entityAssemblyId} not found in EntityConfigurations."));
+            var moduleName = entityAssemblyId; //extensionManager.GetExtension(typeof(TEntity).Assembly.GetName().Name).Name;
+            var dbContextKey = moduleName + "#" +concreteDbContextType.FullName + "#" + connectionString;
 
             DbContext dbContext;
             if (!ActiveDbContexts.TryGetValue(dbContextKey, out dbContext))
             {
                 if (Options.IsTransactional == true)
                 {
-                    dbContext = _transactionStrategy.CreateDbContext<TDbContext>(connectionString, _dbContextResolver);
+                    dbContext = _transactionStrategy.CreateDbContext<TDbContext>(connectionString, _dbContextResolver, moduleName);
                 }
                 else
                 {
-                    dbContext = _dbContextResolver.Resolve<TDbContext>(connectionString);
+                    dbContext = _dbContextResolver.Resolve<TDbContext>(connectionString, moduleName);
                 }
 
                 if (Options.Timeout.HasValue && !dbContext.Database.GetCommandTimeout().HasValue)

@@ -1,0 +1,45 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Configuration\PocoMapping.xml" />
+    <None Remove="Generated\Entity.tt" />
+    <None Remove="Generated\Poco.Core.ttinclude" />
+    <None Remove="Generated\Poco.Generator.ttinclude" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Configuration\PocoMapping.xml" />
+    <Content Include="Generated\Entity.tt">
+      <LastGenOutput>Entity.cs</LastGenOutput>
+      <Generator>TextTemplatingFileGenerator</Generator>
+    </Content>
+    <Content Include="Generated\Poco.Core.ttinclude" />
+    <Content Include="Generated\Poco.Generator.ttinclude" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Blocks.Framework\Blocks.Framework.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Generated\Entity.cs">
+      <DependentUpon>Entity.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+</Project>

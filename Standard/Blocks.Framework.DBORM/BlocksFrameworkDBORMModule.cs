@@ -17,6 +17,7 @@ using Castle.MicroKernel.Registration;
 using Blocks.Framework.DBORM.Intercepter;
 using Abp.Configuration.Startup;
 using Blocks.Framework.DBORM.Repository;
+using Blocks.Framework.DBORM.TransactionStrategy;
 
 namespace Blocks.Framework.DBORM
 {
@@ -52,9 +53,9 @@ namespace Blocks.Framework.DBORM
                     .ImplementedBy(typeof(UnitOfWorkDbContextProvider))
                     .LifestyleTransient()
             );
-          //  IocManager.IocContainer.Register(Component.For(typeof(BlocksDbContext)).LifestyleTransient());
+            //  IocManager.IocContainer.Register(Component.For(typeof(BlocksDbContext)).LifestyleTransient());
 
-
+            //IocManager.Register<IEfTransactionStrategy, DefaultEfTransactionStrategy>(DependencyLifeStyle.Transient);
             RegisterGenericRepositoriesAndMatchDbContexes();
         }
 
