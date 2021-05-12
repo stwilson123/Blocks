@@ -4,12 +4,12 @@ using System.Linq;
 using System.Reflection;
 using System.Web.Mvc;
 using Abp.Dependency;
-using Abp.Logging;
 using Blocks.Framework.Environment.Exception;
 using Blocks.Framework.Environment.Extensions.Models;
 using Castle.MicroKernel.Registration;
 using Castle.Core.Logging;
 using Blocks.Framework.Ioc;
+using Blocks.Framework.Logging;
 
 namespace Blocks.Framework.Web.Mvc.Controllers
 {
@@ -37,7 +37,7 @@ namespace Blocks.Framework.Web.Mvc.Controllers
             var extensionDescriptor = _extensionDescriptors.FirstOrDefault(t => t.Id == currentAssmeblyName);
             if(extensionDescriptor == null)
             {
-                LogHelper.Logger.WarnFormat($"{currentAssmeblyName} can't found extension depond on it.so ignore to register BlockWebController");
+                LogHelper.logger.WarnFormat($"{currentAssmeblyName} can't found extension depond on it.so ignore to register BlockWebController");
                 return;
             }
 

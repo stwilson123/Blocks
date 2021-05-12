@@ -40,8 +40,11 @@ namespace Blocks.Core.Security
         public Task<bool> IsGrantedAsync(IUserIdentifier user, Permission permission)
         {
             Task<bool> result = Task.FromResult(true);
-
-            return TaskResult(user, permission);
+            if (_iocManager.IsRegistered<IPermissionCheck>())
+            {
+                result = _iocManager.Resolve<IPermissionCheck>().IsGrantedAsync(user, permission);
+            }
+            return result;
         }
 
         public Task CheckUserStatus(IUserIdentifier user)
@@ -49,15 +52,6 @@ namespace Blocks.Core.Security
             throw new System.NotImplementedException();
         }
 
-        private Task<bool> TaskResult(IUserIdentifier user, Permission permission)
-        {
-            var taskResult = Task.FromResult(true);
-            if (_iocManager.IsRegistered<IPermissionCheck>())
-            {
-                taskResult = _iocManager.Resolve<IPermissionCheck>().IsGrantedAsync(user, permission);
-            }
-            return taskResult;
-        }
 
         public void HandleEvent(PermissionChangeEventData eventData)
         {

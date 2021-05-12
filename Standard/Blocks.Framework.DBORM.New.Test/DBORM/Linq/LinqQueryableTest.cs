@@ -8,6 +8,7 @@ using EntityFramework.Test.Model;
 using Xunit;
 using Blocks.Framework.DBORM.Linq;
 using Blocks.Framework.Services.DataTransfer;
+using Microsoft.EntityFrameworkCore;
 
 namespace Blocks.Framework.Test.DBORM.Linq
 {
@@ -66,7 +67,7 @@ namespace Blocks.Framework.Test.DBORM.Linq
                 var defaultLinqQuery = new DefaultLinqQueryable<TESTENTITY>(context.TestEntity.AsQueryable(), context);
                 var testLeftJoinEntity = defaultLinqQuery
                     .InnerJoin((TESTENTITY t) => t.TESTENTITY2ID_NULLABLE, (TESTENTITY2 b) => b.Id)
-                    .Where((TESTENTITY t, TESTENTITY2 b) => (t.Id == constKeyId) ||(b.Id == constKeyId));
+                    .Where((TESTENTITY t, TESTENTITY2 b) => (t.Id == constKeyId) || (b.Id == constKeyId));
                 var default2Sql = defaultLinqQuery.ToString();
                 //Assert.NotEqual(testEntity.TESTENTITY2ID, newGuid);
                 
@@ -185,9 +186,9 @@ namespace Blocks.Framework.Test.DBORM.Linq
                    {
                        page = 2,
                        pageSize = 10,
-                        sortColumn = "Id",
-                         sortOrder = "asc"
-                         
+                       sortColumn = "Id",
+                       sortOrder = "asc"
+
                    });
 
                 var default1Sql = defaultLinqQuery.ToString();
@@ -205,9 +206,47 @@ namespace Blocks.Framework.Test.DBORM.Linq
                     .Where((TESTENTITY2 t) => t.Id == constKeyId);
                 var default2Sql = defaultLinqQuery.ToString();
                 //Assert.NotEqual(testEntity.TESTENTITY2ID, newGuid);
+
+                var testEntity1111 = defaultLinqQuery.InnerJoin((TESTENTITY t) => t.TESTENTITY2ID_NULLABLE, (TESTENTITY2 b) => b.Id)
+                   .Paging((TESTENTITY t) => new { Id = t.Id, TESTENTITY2ID = t.TESTENTITY2ID, TestEntity2 = new { Id = t.TESTENTITY2ID } }, new Data.Pager.Page()
+                   {
+                       page = 2,
+                       pageSize = 10,
+                       sortColumn = "Id Asc,TESTENTITY2ID esc"
+                     //  sortOrder = "asc"
+                   });
             }
         }
         
+        [Fact]
+        public async void selectToListAsync()
+        {
+            using (var context = new BlocksEntities())
+            {
+                
+
+                var testEntity = await new DefaultLinqQueryable<TESTENTITY>(context.TestEntity.AsQueryable(), context).InnerJoin((TESTENTITY t) => t.TESTENTITY2ID_NULLABLE, (TESTENTITY2 b) => b.Id)
+                   .SelectToListAsync((TESTENTITY t) => new { Id = t.Id, TestEntity2 = new { Id = t.TESTENTITY2ID } });
+                IList<Task<object>> list = new List<Task<object>>();
+                for (int i = 0; i < 10; i++)
+                {
+                    list.Add(testMethod(context));
+                }
+                foreach (var task in list)
+                {
+                    var bbbb = await testMethod(context);
+                }
+            }
+        }
+
+
+        public async Task<object> testMethod(BlocksEntities context)
+        {
+            var obj = await new DefaultLinqQueryable<TESTENTITY>(context.TestEntity.AsQueryable(), context).InnerJoin((TESTENTITY t) => t.TESTENTITY2ID_NULLABLE, (TESTENTITY2 b) => b.Id)
+                   .SelectToListAsync((TESTENTITY t) => new { Id = t.Id, TestEntity2 = new { Id = t.TESTENTITY2ID } });
+            return obj;
+           // return await context.TestEntity.Select(t => t.Id).ToListAsync();
+        }
         
         [Fact]
         public void countGenSql()

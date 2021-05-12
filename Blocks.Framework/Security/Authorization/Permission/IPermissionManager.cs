@@ -1,8 +1,9 @@
+using Blocks.Framework.Ioc.Dependency;
 using System.Collections.Generic;
 
 namespace Blocks.Framework.Security.Authorization.Permission
 {
-    public interface IPermissionManager
+    public interface IPermissionManager  
     {
 
 
@@ -11,6 +12,10 @@ namespace Blocks.Framework.Security.Authorization.Permission
         void InitializeRolePermission(string RoleId);
 
         IDictionary<string,IList<IPermission>> GetAllPermissions();
+
+        IList<IPermission> GetPermissions(string RoleId);
+
+       
 
     }
 }

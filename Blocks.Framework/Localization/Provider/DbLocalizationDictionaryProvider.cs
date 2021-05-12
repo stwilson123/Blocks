@@ -20,20 +20,17 @@ namespace Blocks.Framework.Localization.Provider
             this.iocManager = iocManager;
         }
 
-        public override Task Initialize()
+        public override async Task Initialize()
         {
             var cultrues = Culture.Culture.getCultures();
-            return Task.WhenAll(cultrues.Select(c => DbLocalizationDictionary.Create(SourceName, c, iocManager)))
-                .ContinueWith(task =>
-                {
-                    task.Result.ForEach((cultureDic, index) =>
-                    {
-                        if (cultureDic == null)
-                            return;
-                        Dictionaries.Add(cultrues[index], cultureDic);
-                        DefaultDictionary = cultureDic;
-                    });
-                });
+            foreach (var cultrueTask in cultrues.Select(c => new { localizationTask = DbLocalizationDictionary.Create(SourceName, c, iocManager),c}))
+            {
+                var localization = await cultrueTask.localizationTask;
+                if(!Dictionaries.ContainsKey(cultrueTask.c))
+                    Dictionaries.Add(cultrueTask.c, localization);
+                Dictionaries[cultrueTask.c] = localization;
+                DefaultDictionary = localization;
+            }
         }
 
 

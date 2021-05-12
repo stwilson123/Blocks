@@ -14,6 +14,8 @@ using Blocks.Framework.Data.Pager;
 using Blocks.Framework.Localization;
 using DynamicQueryableExtensions = System.Linq.Dynamic.Core.DynamicQueryableExtensions;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore.Query.Internal;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 
 namespace Blocks.Framework.DBORM.Linq
 {
@@ -280,7 +282,7 @@ namespace Blocks.Framework.DBORM.Linq
         //    throw new NotImplementedException();
         //}
 
-        public List<dynamic> SelectToList(LambdaExpression selector)
+        private IQueryable  SelectToListCore(LambdaExpression selector)
         {
             ExceptionHelper.ThrowArgumentNullException(selector, "selector");
             validateParamter(selector.Parameters);
@@ -297,13 +299,34 @@ namespace Blocks.Framework.DBORM.Linq
                 var a = ExpressionUtils.Convert(selector, iQuerable.ElementType);
                 iQuerable = iQuerable.Select(a);
             }
-
-            return iQuerable.ToDynamicList();
+            return iQuerable;
+        }
+        public List<dynamic> SelectToList(LambdaExpression selector)
+        {
+  
+            return SelectToListCore(selector).ToDynamicList();
         }
 
         public Task<List<dynamic>> SelectToListAsync(LambdaExpression selector)
         {
-            return Task.Factory.StartNew((s) => SelectToList((LambdaExpression) s), selector);
+
+            var list = new List<dynamic>();
+            //var queryCompiler = dbContext.GetService<IQueryCompiler>();
+            //var compiledQuery = queryCompiler.CreateCompiledAsyncEnumerableQuery<dynamic>(SelectToListCore(selector));
+
+            //return qc => new AsyncEnumerable<TResult>(compiledQuery(qc));
+            //using ()
+            //{
+            //    while (await asyncEnumerator.MoveNext(cancellationToken))
+            //    {
+            //        list.Add(asyncEnumerator.Current);
+            //    }
+            //}
+
+            var sl = SelectToListCore(selector);//.AsAsyncEnumerable().ToList(cancellationToken)
+
+            return (sl as IAsyncEnumerable<dynamic>).ToList();
+            //return Task.Factory.StartNew((s) => SelectToList((LambdaExpression) s), selector);
         }
 
         public IDbLinqQueryable<TEntity> Take(int count)

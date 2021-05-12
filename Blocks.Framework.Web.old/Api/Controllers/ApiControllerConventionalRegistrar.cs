@@ -5,9 +5,9 @@ using System.Web.Http;
 using Abp.Dependency;
 using Blocks.Framework.Environment.Exception;
 using Blocks.Framework.Environment.Extensions.Models;
+using Blocks.Framework.Logging;
 using Castle.Core.Logging;
 using Castle.MicroKernel.Registration;
-using Abp.Logging;
 
 namespace Blocks.Framework.Web.Api.Controllers
 {
@@ -35,7 +35,7 @@ namespace Blocks.Framework.Web.Api.Controllers
             var extensionDescriptor = _extensionDescriptors.FirstOrDefault(t => t.Id == currentAssmeblyName);
             if (extensionDescriptor == null)
             {
-                LogHelper.Logger.WarnFormat($"{currentAssmeblyName} can't found extension depond on it.so ignore to register BlockWebController");
+                LogHelper.logger.WarnFormat($"{currentAssmeblyName} can't found extension depond on it.so ignore to register BlockWebController");
                 return;
             }
 

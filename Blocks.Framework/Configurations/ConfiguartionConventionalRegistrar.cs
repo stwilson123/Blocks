@@ -2,8 +2,8 @@
 using System.Linq;
 using System.Reflection;
 using Abp.Dependency;
-using Abp.Logging;
 using Blocks.Framework.Environment.Extensions.Models;
+using Blocks.Framework.Logging;
 using Castle.MicroKernel.Registration;
 
 namespace Blocks.Framework.Configurations
@@ -28,7 +28,7 @@ namespace Blocks.Framework.Configurations
             var extensionDescriptor = _extensionDescriptors.FirstOrDefault(t => t.Id == currentAssmeblyName);
             if (extensionDescriptor == null)
             {
-                LogHelper.Logger.WarnFormat(
+                LogHelper.logger.WarnFormat(
                     $"{currentAssmeblyName} can't found extension depond on it.so ignore to register BlocksConfiguration");
                 return;
             }

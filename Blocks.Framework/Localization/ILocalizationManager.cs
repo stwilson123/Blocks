@@ -20,5 +20,8 @@ namespace Blocks.Framework.Localization
         /// </summary>
         /// <returns>List of sources</returns>
         IReadOnlyList<ILocalizationSource> GetAllSources();
+
+
+        void Initialize();
     }
 }

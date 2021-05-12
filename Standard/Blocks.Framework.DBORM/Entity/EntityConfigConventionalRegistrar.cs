@@ -2,8 +2,8 @@
 using System.Linq;
 using System.Reflection;
 using Abp.Dependency;
-using Abp.Logging;
 using Blocks.Framework.Environment.Extensions.Models;
+using Blocks.Framework.Logging;
 using Castle.MicroKernel.Registration;
 using Microsoft.EntityFrameworkCore;
 
@@ -33,8 +33,10 @@ namespace Blocks.Framework.DBORM.Entity
             var extensionDescriptor = _extensionDescriptors.FirstOrDefault(t => t.Id == currentAssmeblyName);
             if (extensionDescriptor == null)
             {
-                LogHelper.Logger.WarnFormat(
-                    $"{currentAssmeblyName} can't found extension depond on it.so ignore to register BlockWebController");
+                LogHelper.Log(new LogModel() {
+                     LogSeverity = LogSeverity.Warn,
+                     Message = $"{currentAssmeblyName} can't found extension depond on it.so ignore to register BlockWebController"
+                });
                 return;
             }
 

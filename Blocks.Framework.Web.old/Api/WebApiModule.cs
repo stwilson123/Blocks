@@ -7,11 +7,11 @@ using System.Web.Http.Dispatcher;
 using System.Web.Http.ModelBinding;
 using System.Web.Mvc;
 using Abp.Json;
-using Abp.Logging;
 using Abp.Modules;
 using Abp.Web;
 using Blocks.Framework.Environment.Extensions;
 using Blocks.Framework.Ioc;
+using Blocks.Framework.Logging;
 using Blocks.Framework.Services.DataTransfer;
 using Blocks.Framework.Utility.SafeConvert;
 using Blocks.Framework.Web.Api.Configuration;
@@ -100,7 +100,7 @@ namespace Blocks.Framework.Web.Api
                         
                 );
 
-                LogHelper.Logger.DebugFormat(
+                LogHelper.logger.DebugFormat(
                     "Dynamic web api controller is created for type '{0}' with service name '{1}'.",
                     controllerInfo.ServiceInterfaceType.FullName, controllerInfo.ServiceName);
             }

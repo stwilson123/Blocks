@@ -7,9 +7,9 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
-using Abp.Logging;
 using Blocks.Framework.Collections;
 using Blocks.Framework.Json;
+using Blocks.Framework.Logging;
 using Blocks.Framework.Web.Mvc.UI.Resources;
 using Newtonsoft.Json;
 
@@ -153,7 +153,7 @@ namespace Blocks.Framework.Web.Mvc.Extensions
                 }
                 catch (Exception ex)
                 {
-                    LogHelper.Logger.Error("Can not find file for: " + path + "! " + ex.ToString());
+                    LogHelper.logger.Error("Can not find file for: " + path + "! " + ex.ToString());
                     result = path;
                 }
 
@@ -196,7 +196,7 @@ namespace Blocks.Framework.Web.Mvc.Extensions
                 }
                 catch (Exception ex)
                 {
-                    LogHelper.Logger.Error("Can not find file for: " + path + "! " + ex.ToString());
+                    LogHelper.logger.Error("Can not find file for: " + path + "! " + ex.ToString());
                     result = path;
                 }
 

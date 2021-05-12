@@ -19,6 +19,7 @@ using Blocks.Framework.Security;
 using Castle.Core.Logging;
 using EntityFramework.Test.Model;
 using Moq;
+using Castle.Winsdor.Aspnet.Web;
 
 namespace EntityFramework.Test
 {
@@ -38,16 +39,16 @@ namespace EntityFramework.Test
                 ContentRootPath = AppDomain.CurrentDomain.BaseDirectory //HostingEnvironment.ApplicationPhysicalPath
             });
             IocManager.Register<IHostingEnvironment>(a);
-
+            PerWebRequestLifestyleModule.FuncHttpCache = (noInput) => { return new Dictionary<object, object>(); };
 
             //TODO unit test can't read config from appconfig.
-             
-//            var testUserContext = new Mock<ClaimsPrincipal>();
-//                testUserContext.Setup(u => u.Claims)
-//                .Returns(new List<Claim>{ new Claim(AbpClaimTypes.UserId,"testId"),new Claim(AbpClaimTypes.UserName,"testName") });
 
-            
-            
+            //            var testUserContext = new Mock<ClaimsPrincipal>();
+            //                testUserContext.Setup(u => u.Claims)
+            //                .Returns(new List<Claim>{ new Claim(AbpClaimTypes.UserId,"testId"),new Claim(AbpClaimTypes.UserName,"testName") });
+
+
+
             Thread.CurrentPrincipal = new ClaimsPrincipal(new List<ClaimsIdentity>
             {
                 new ClaimsIdentity(new List<Claim>(){ new Claim(AbpClaimTypes.UserId,"testId"),new Claim(AbpClaimTypes.UserName,"testName")})

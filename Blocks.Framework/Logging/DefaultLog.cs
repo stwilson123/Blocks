@@ -17,11 +17,11 @@ namespace Blocks.Framework.Logging
         {
             switch(logModel.LogSeverity)
             {
-                case LogSeverity.Debug: logger.Debug(logModel.Message); break;
-                case LogSeverity.Info: logger.Info(logModel.Message); break;
-                case LogSeverity.Warn: logger.Warn(logModel.Message); break;
-                case LogSeverity.Error: logger.Error(logModel.Message); break;
-                case LogSeverity.Fatal: logger.Fatal(logModel.Message); break;
+                case LogSeverity.Debug: logger.Debug(logModel.Message,logModel.ex); break;
+                case LogSeverity.Info: logger.Info(logModel.Message, logModel.ex); break;
+                case LogSeverity.Warn: logger.Warn(logModel.Message, logModel.ex); break;
+                case LogSeverity.Error: logger.Error(logModel.Message, logModel.ex); break;
+                case LogSeverity.Fatal: logger.Fatal(logModel.Message, logModel.ex); break;
 
             }
         }

@@ -17,7 +17,6 @@ using Abp.Domain.Uow;
 using Abp.Events.Bus;
 using Abp.Events.Bus.Exceptions;
 using Abp.Localization.Sources;
-using Abp.Logging;
 using Abp.ObjectMapping;
 using Abp.Reflection;
 using Abp.Runtime.Session;

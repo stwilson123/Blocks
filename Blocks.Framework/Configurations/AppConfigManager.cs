@@ -1,7 +1,6 @@
 ﻿using System;
 using Abp.Configuration.Startup;
 using Abp.Dependency;
-using Abp.Logging;
 using Blocks.Framework.Environment.Configuration;
 using Blocks.Framework.Ioc.Dependency;
 using Blocks.Framework.Localization;

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Web.Mvc;
 using Abp.Dependency;
-using Abp.Logging;
+using Blocks.Framework.Logging;
 
 namespace Blocks.Framework.Web.Mvc.ViewEngines.ThemeAwareness
 {
@@ -66,7 +66,7 @@ namespace Blocks.Framework.Web.Mvc.ViewEngines.ThemeAwareness
                 {
                     var fa= forwardAction(displayViewEngine);
                     sw.Stop();
-                    LogHelper.Logger.Debug($"ThemeAwareViewEngineShim cost time {sw.ElapsedMilliseconds}ms");
+                    LogHelper.logger.Debug($"ThemeAwareViewEngineShim cost time {sw.ElapsedMilliseconds}ms");
                     return fa;
                 }
             }

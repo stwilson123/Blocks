@@ -101,13 +101,16 @@ namespace Blocks.Framework.DBORM.Linq
 
 
         #region select async
-        static Task<T> SelectEntityToAsync<TEntity, T>(IDbLinqQueryable<TEntity> dbLinqQueryable, LambdaExpression selector) where TEntity : Data.Entity.Entity
+        static async Task<T> SelectEntityToAsync<TEntity, T>(IDbLinqQueryable<TEntity> dbLinqQueryable, LambdaExpression selector) where TEntity : Data.Entity.Entity
         {
-            return Task.Factory.StartNew((s) =>
-            {
-                Trace.TraceInformation("ThreadId:" + System.Threading.Thread.CurrentThread.ManagedThreadId);
-                return dbLinqQueryable.SelectToList((LambdaExpression)s).AutoMapTo<T>();
-            }, selector);
+            var result = await dbLinqQueryable.SelectToListAsync((LambdaExpression)selector);
+
+            return result.AutoMapTo<T>();
+            //return Task.Factory.StartNew((s) =>
+            //{
+            //    Trace.TraceInformation("ThreadId:" + System.Threading.Thread.CurrentThread.ManagedThreadId);
+            //    return dbLinqQueryable.SelectToList((LambdaExpression)s).AutoMapTo<T>();
+            //}, selector);
         }
 
 

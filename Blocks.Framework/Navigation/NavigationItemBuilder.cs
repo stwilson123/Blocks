@@ -91,7 +91,16 @@ namespace Blocks.Framework.Navigation.Builder
                new LocalizableString(_item.DisplayName.SourceName, p) )).ToArray();
             return this;
         }
+        public NavigationItemBuilder HasPermissions(string menuType,params string[] permissionName)
+        {
+            var url = RouteHelper.GetUrl(_item.RouteValues);
 
+
+            _item.HasPermissions = permissionName?.Select(p => Permission.Create(p,
+                url, "Navigation", string.IsNullOrEmpty(url) ? null : menuType + "/" +url + "/" + p,
+               new LocalizableString(_item.DisplayName.SourceName, p))).ToArray();
+            return this;
+        }
 
         public NavigationItemBuilder Visible(bool IsVisible)
         {

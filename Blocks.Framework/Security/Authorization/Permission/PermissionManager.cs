@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using Blocks.Framework.Ioc.Dependency;
+using Blocks.Framework.Localization;
 using Blocks.Framework.Navigation;
 using Blocks.Framework.Security.Authorization.Permission.Provider;
 using Blocks.Framework.Utility.Extensions;
 
 namespace Blocks.Framework.Security.Authorization.Permission
 {
-    internal class PermissionManager : IPermissionManager 
+    public class PermissionManager : IPermissionManager
     {
         private readonly IEnumerable<IRolePermissionProvider> _rolePermissionProviders;
         private readonly IEnumerable<IPermissionProvider> _providers;
@@ -28,12 +29,14 @@ namespace Blocks.Framework.Security.Authorization.Permission
 
         public void Initialize()
         {
+            if (_permissions.Any())
+                _permissions.Clear();
             foreach (var provider in _providers)
             {
                 foreach (var permission in provider.GetPermissions())
                 {
                     if (_permissions.ContainsKey(permission.ResourceKey))
-                        throw new Exception($"Double permission resourceKey {permission.ResourceKey}");
+                        throw new PermissionException(StringLocal.Format($"Double permission resourceKey {permission.ResourceKey}"));
                     _permissions.Add(permission.ResourceKey, permission);
                 }
             }
@@ -69,7 +72,27 @@ namespace Blocks.Framework.Security.Authorization.Permission
 
         public IDictionary<string, IList<IPermission>> GetAllPermissions()
         {
+            if(!_rolePermissions.Any())
+            {
+                Initialize();
+                InitializeRolePermission("*");
+            }
             return _rolePermissions;
+        }
+
+        public IList<IPermission> GetPermissions(string RoleId)
+        {
+            if (!_rolePermissions.Any())
+            {
+                Initialize();
+            }
+
+            if (!_rolePermissions.Any(p => p.Key == RoleId))
+            {
+                InitializeRolePermission(RoleId);
+            }
+
+            return _rolePermissions.ContainsKey(RoleId) ? _rolePermissions[RoleId] : new List<IPermission>();
         }
     }
 }

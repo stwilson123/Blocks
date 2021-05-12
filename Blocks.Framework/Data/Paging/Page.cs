@@ -82,8 +82,13 @@ namespace Blocks.Framework.Data.Pager
         {
             get
             {
-                if (string.IsNullOrEmpty(sortColumn) || string.IsNullOrEmpty(sortOrder))
+                if (string.IsNullOrEmpty(sortColumn))
                     return "";
+
+                if (sortColumn.IndexOf("asc", StringComparison.OrdinalIgnoreCase) > -1 ||
+                    sortColumn.IndexOf("desc", StringComparison.OrdinalIgnoreCase) > -1)
+                    return sortColumn;
+
                 return sortColumn + " " + sortOrder;
             }
         }

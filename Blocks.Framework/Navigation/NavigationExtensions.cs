@@ -13,8 +13,8 @@ namespace Blocks.Framework.Navigation
             var navigationItemBuilder = new NavigationItemBuilder();
             builderAction(navigationItemBuilder);
             var navigationItem =  navigationItemBuilder.Build();
-            if (navItem.Items.Any(i => i.Name == navigationItem.Name))
-                throw new BlocksException(StringLocal.Format("System find navigatiomItems has same Name \"{0}\"",navigationItem.Name));
+            if (navItem.Items.Any(i => i.GetUniqueId() == navigationItem.GetUniqueId()))
+                throw new BlocksException(StringLocal.Format("System find navigatiomItems has same Id \"{0}\"",navigationItem.GetUniqueId()));
             navItem.AddItem(navigationItem);
             return navItem;
         }

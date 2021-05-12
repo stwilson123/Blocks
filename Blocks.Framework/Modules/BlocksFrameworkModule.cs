@@ -22,9 +22,11 @@ using Blocks.Framework.Localization.Provider;
 using Blocks.Framework.RPCProxy;
 using Blocks.Framework.Domain;
 using Blocks.Framework.Security;
+using Blocks.Framework.License;
 
 namespace Blocks.Framework.Modules
 {
+    [DependsOn(typeof(LicenseModule))]
     [DependsOn(typeof(BlocksAutoMapperModule))]
     [DependsOn(typeof(CacheModule))]
     
@@ -40,6 +42,7 @@ namespace Blocks.Framework.Modules
     [DependsOn(typeof(RPCProxyModule))]
 
     [DependsOn(typeof(DomianModule))]
+
     public class BlocksFrameworkModule: AbpModule
     {
          
@@ -61,6 +64,8 @@ namespace Blocks.Framework.Modules
 
         public override void Initialize()
         {
+
+
             IocManager.RegisterAssemblyByConvention(Assembly.GetExecutingAssembly());
             Configuration.Modules.BlocksAutoMapper().Configurators.Add(FrameworkProfile.DefaultAutoMapperConfig());
            // Configuration.Modules.AbpAutoMapper().Configurators.Add(FrameworkProfile.DefaultAutoMapperConfig());

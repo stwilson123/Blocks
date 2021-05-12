@@ -39,7 +39,7 @@ namespace Blocks.Framework.Utility.Extensions
         }
 
 
-        public static void ForEach<TSource>(this IList<TSource> iEnumerable, Action<TSource,long> actions)
+        public static void ForEach<TSource>(this IEnumerable<TSource> iEnumerable, Action<TSource,long> actions)
         {
             if (iEnumerable == null)
                 return;
