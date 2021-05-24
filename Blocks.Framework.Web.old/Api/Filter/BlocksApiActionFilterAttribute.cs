@@ -14,19 +14,23 @@ namespace Blocks.Framework.Web.Api.Filter
         {
             var response = actionExecutedContext.Response;
             object resultObject;
-           
+
+
+            if (actionExecutedContext.ActionContext.ActionDescriptor.ReturnType == typeof(HttpResponseMessage))
+                return;
             if (response != null && actionExecutedContext.Exception == null )
             {
                 response.TryGetContentValue(out resultObject);
                 actionExecutedContext.Response = actionExecutedContext.Request.CreateResponse(
-                    HttpStatusCode.OK,
+                    response.StatusCode == HttpStatusCode.NoContent && resultObject == null ? HttpStatusCode.OK : response.StatusCode,
                     new DataResult()
                     {
-                        code = ResultCode.Success,
+                        code = Result.ResultCode.Success,
                         content = resultObject,
-                        //   msg = string.Format(bEx?.Message.FormatStr,bEx?.Message.FormatArgs),
+                        //   msg = string.format(bex?.message.formatstr,bex?.message.formatargs),
                     }
                 );
+
             }
             base.OnActionExecuted(actionExecutedContext);
         }
