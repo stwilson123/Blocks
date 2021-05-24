@@ -30,6 +30,7 @@ namespace Blocks.Framework.Web.Navigation
 
         public Permission[] RequirePermissions { get; }
         public string ExtensionName { get ; set; }
+        public string MenuType { get; set; }
 
         internal WebNavigationItemDefinition() : base()
         {

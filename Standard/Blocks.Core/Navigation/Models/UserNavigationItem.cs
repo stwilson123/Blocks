@@ -79,11 +79,13 @@ namespace Blocks.Core.Navigation.Models
             IsVisible = navItem.IsVisible;
             Order = 0;
             NavigationType = navItem.NavigationType;
+            MenuType = navItem.MenuType;
         }
 
       
         
         public IList<UserNavigationItem> Items { get; set; }
         public string ExtensionName { get ; set; }
+        public string MenuType { get ; set ; }
     }
 }

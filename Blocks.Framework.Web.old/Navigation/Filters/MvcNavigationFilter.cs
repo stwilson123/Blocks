@@ -99,7 +99,7 @@ namespace Blocks.Framework.Web.Navigation.Filters
                 Permission.Create(p, url, "navigation", url + "/" + p,
                     new LocalizableString(navItem.DisplayName.SourceName, p))).ToArray();
             return new WebNavigationItemDefinition(navItem.Name,
-                navItem.DisplayName, Mvc.Route.RouteHelper.GetUrl(navItem.RouteValues), navItem.RequiresAuthentication,
+                navItem.DisplayName, Mvc.Route.RouteHelper.GetUrl(navItem.RouteValues),  navItem.RequiresAuthentication,
                 requirePermission
                 , navItem.CustomData, navItem.IsVisible, navItem.HasPermissions, navItem.RouteValues,
                 navItem.NavigationType

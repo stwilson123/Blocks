@@ -15,12 +15,7 @@ namespace Blocks.Framework.Security.Authorization.Permission.Provider
         }
         public IList<Permission> GetPermissions()
         {
-            var permissions = new List<Permission>();
-            foreach (var menu in _navigationManager.Menus)
-            {
-                permissions.AddRange(menu.Value?.Items?.SelectMany((i => i.HasPermissions != null ? i.HasPermissions : new Permission[0])));
-            }
-            return permissions;
+            return _navigationManager.Menus.Select(m => m.Value).SelectMany(n => n.Items?.SelectMany((i => i.HasPermissions != null ? i.HasPermissions : new Permission[0]))).ToList();
         }
     }
 }
