@@ -99,7 +99,7 @@ namespace EntityFramework.Test
 
         public void Debug(string message, Exception exception)
         {
-            throw new NotImplementedException();
+            Trace.TraceInformation(message);
         }
 
         public void DebugFormat(string format, params object[] args)

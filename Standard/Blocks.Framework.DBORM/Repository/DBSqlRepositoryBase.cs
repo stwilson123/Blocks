@@ -20,7 +20,6 @@ using Blocks.Framework.DBORM.Entity;
 using Blocks.Framework.DBORM.Linq;
 using Blocks.Framework.Security;
 using Blocks.Framework.Services;
-using Z.EntityFramework.Plus;
 using Blocks.Framework.Reflection.Extensions;
 using Blocks.Framework.Data;
 using Blocks.Framework.Data.Entity;
@@ -28,6 +27,10 @@ using Blocks.Framework.Data.Pager;
 using Blocks.Framework.Data.Paging;
 using DynamicQueryableExtensions = System.Linq.Dynamic.Core.DynamicQueryableExtensions;
 using Blocks.Framework.Environment.Extensions;
+using LinqToDB.EntityFrameworkCore;
+using LinqToDB;
+using LinqToDB.Data;
+using LinqToDB.DataProvider.Oracle;
 
 namespace Blocks.Framework.DBORM.Repository
 {
@@ -172,7 +175,7 @@ namespace Blocks.Framework.DBORM.Repository
                 updateMemberInit, updateFactory.Parameters
             );
 
-            return GetAllCode().Where(wherePredicate).Update(UpdateExpression);
+            return GetAllCode().Where(wherePredicate).ToLinqToDB().Update(UpdateExpression);
         }
     }
 
@@ -406,8 +409,10 @@ namespace Blocks.Framework.DBORM.Repository
         /// <param name="entitites">Inserted entitites</param>
         public virtual IList<TEntity> Insert(IList<TEntity> entitites)
         {
-            Table.AddRange(entitites);
-            Context.SaveChanges();
+            //Table.AddRange(entitites);
+           // OracleTools.DefaultBulkCopyType = BulkCopyType.ProviderSpecific; 
+            Context.BulkCopy( entitites);
+           // Context.SaveChanges();
 
             return entitites;
         }
@@ -571,7 +576,7 @@ namespace Blocks.Framework.DBORM.Repository
 
         public long Delete(Expression<Func<TEntity, bool>> predicate)
         {
-            return GetAllCode().Where(predicate).Delete();
+            return GetAllCode().Where(predicate).ToLinqToDB().Delete();
         }
 
 
@@ -599,9 +604,9 @@ namespace Blocks.Framework.DBORM.Repository
         public List<TElement> SqlQuery<TElement>(string sql, params object[] paramters)
             where TElement : class, IQueryEntity
         {
-           
-            return this.Context.Query<TElement>()
-                .FromSql(sql, paramters).ToList();
+
+            return this.Context.Set<TElement>()
+                .FromSqlRaw(sql, paramters).ToList();
         }
 
         public  int ExecuteSqlCommand(string sql, params object[] paramters)
@@ -625,8 +630,8 @@ namespace Blocks.Framework.DBORM.Repository
             //}).ToList();
 
 
-            var sqlQuery = this.Context.Query<TElement>()
-                .FromSql(sql, paramters);
+            var sqlQuery = this.Context.Set<TElement>()
+                .FromSqlRaw(sql, paramters);
 
 
             if (page.filters != null && page.filters.rules != null && page.filters.rules.Any())

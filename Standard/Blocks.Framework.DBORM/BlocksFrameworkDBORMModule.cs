@@ -18,6 +18,10 @@ using Blocks.Framework.DBORM.Intercepter;
 using Abp.Configuration.Startup;
 using Blocks.Framework.DBORM.Repository;
 using Blocks.Framework.DBORM.TransactionStrategy;
+using System.Diagnostics;
+using System.Data;
+using System.Linq;
+using LinqToDB.EntityFrameworkCore;
 
 namespace Blocks.Framework.DBORM
 {
@@ -33,8 +37,18 @@ namespace Blocks.Framework.DBORM
 
         public override void PreInitialize()
         {
+            //System.Diagnostics.DiagnosticListener.AllListeners.Subscribe(new CommandListener());
+            LinqToDBForEFTools.Initialize();
+            //BatchUpdateManager.BatchUpdateBuilder = builder =>
+            //{
+            //    builder.Executing = (command) =>
+            //    {
+            //        Trace.TraceInformation("\r\n执行时间:{0} 毫秒 \r\n -->CommandExecuted.Command:\r\n{1}\r\nParamter:{2}", "", command.CommandText,
+            //           string.Join(",", command.Parameters.Cast<IDbDataParameter>().Select(t => string.Format("{0}:{1}:{2};", t.ParameterName, t.DbType, t.Value)))
+            //           );
+            //    };
 
-            System.Diagnostics.DiagnosticListener.AllListeners.Subscribe(new CommandListener());
+            //};
 
             // Database.SetInitializer<BaseBlocksDbContext>(null);
             // Configuration.ReplaceService<IEfTransactionStrategy, DefaultTransactionStrategy>(DependencyLifeStyle.Transient);

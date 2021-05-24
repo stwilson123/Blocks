@@ -20,6 +20,8 @@ namespace EntityFramework.Test.Model
         public DateTime REGISTERTIME { set; get; }
         public TESTENTITY2 TESTENTITY2 { set; get; }
         public ICollection<TESTENTITY3> TESTENTITY3s { set; get; }
+
+
     }
 
     public partial class TESTENTITYConfiguration : Microsoft.EntityFrameworkCore.IEntityTypeConfiguration<TESTENTITY>

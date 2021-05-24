@@ -14,6 +14,9 @@ using Blocks.Framework.Data.Paging;
 using Blocks.Framework.DBORM.Linq;
 using EntityFramework.Test.FunctionTest;
 using Microsoft.EntityFrameworkCore;
+using Blocks.Framework.DBORM.New.Test.Model;
+using System.ComponentModel.DataAnnotations.Schema;
+using Blocks.Framework.Services.DataTransfer;
 
 namespace EntityFramework.Test.Model
 {
@@ -74,7 +77,21 @@ namespace EntityFramework.Test.Model
             {
                  Id =  t.Id,
                   COLNUMINT = t.COLNUMINT
-            }, new Page() {page = 2, pageSize = 10,filters = new Group(){ groupOp = "And",rules = new List<Rule>(){ new Rule(){ field = "Id", data = "['1','2']", op = "in"}} }});
+            }, new Page() {page = 2, pageSize = 10,filters = new Group(){ groupOp = "And",rules = new List<Rule>(){ new Rule(){ field = "Id", data = "['1','2']", op = "cn"}} }});
+        }
+
+        public PageList<ProcessPageResult> GetTestPageOrderBy()
+        {
+            return GetContextTable()
+                //.OrderBy(process => process.COLNUMINT_NULLABLE)
+                .Paging((TESTENTITY process) => new ProcessPageResult
+                {
+                    Id = process.Id,
+                    OP_NO = process.STRING,
+        
+                    IS_CHECK = process.ISACTIVE,
+            
+                }, new Page() { page = 2, pageSize = 10, sortColumn = "OP_NO", sortOrder = "asc" });
         }
 
         public List<TESTENTITY> GetTESTENTITY3s()
@@ -87,27 +104,68 @@ namespace EntityFramework.Test.Model
         }
 
 
+        public class WorkHourItemPageResult : IDataTransferObject
+        {
+            /// <summary>
+            /// 主键
+            /// </summary>
+            public string Id { set; get; }
+            /// <summary>
+            /// 主档表GUID
+            /// </summary>
+            public string FROM_ID { set; get; }
+            /// <summary>
+            /// 设备编号
+            /// </summary>
+            public string EQP_NO { set; get; }
+            /// <summary>
+            /// 固定工时
+            /// </summary>
+            public decimal SETUP_TIME { set; get; }
+            /// <summary>
+            /// 单位数量
+            /// </summary>
+            public decimal? BATCH_QTY { set; get; }
+            /// <summary>
+            /// 加工工时
+            /// </summary>
+            public decimal? PROCESS_TIME { set; get; }
+            /// <summary>
+            /// 是否删除(软删除)
+            /// </summary>
+            public long ACTIVITY { set; get; }
+            /// <summary>
+            /// 设备名称
+            /// </summary>
+            public string EQP_NAME { get; set; }
+        }
         public object FromSql()
         {
+          
             var takeNum = 1;
             var skipNum = 0;
 
-            return Context.Query<TestDto>()
-                .FromSql("SELECT TESTENTITY.ID FROM TESTENTITY  INNER JOIN TESTENTITY2  " +
+            return Context.Set<TestDto>()
+                .FromSqlRaw("SELECT TESTENTITY.ID FROM TESTENTITY  INNER JOIN TESTENTITY2  " +
                          "ON TESTENTITY.TESTENTITY2ID = TESTENTITY2.ID ")
                 .Skip(skipNum).Take(takeNum)
                 .ToList();
 
+        }
 
-//            return FromSqlTemp<TestDto>(this.Table,"SELECT * FROM TESTENTITY  INNER JOIN TESTENTITY2 t2 " +
-//                                      "ON TESTENTITY.TESTENTITY2ID = TESTENTITY2.ID WHERE TESTENTITY.ID = '12'")
-//               
-//                .Skip(10).Take(10).ToList();
+        public object GetQueryAliasWithKeyword()
+        {
+            return GetContextTable()
+               .SelectToList((TESTENTITY item) =>
+                   new TESTENTITY()
+                   {
+                       Id = item.Id
+                   });
         }
 
         public int ExecuteSqlCommand(string id)
         {
-            var a=  this.SqlQuery<TestDto>("SELECt TO_CHAR(count(*)) as ID  FROM TESTENTITY ");
+            var a=  this.SqlQuery<TestDto>("SELECt TO_CHAR(count(*)) as ID  FROM TESTENTITY WHERE ID = {0}",id);
             return this.ExecuteSqlCommand("DELETE FROM TESTENTITY WHERE ID = {0}", id);
         }
 

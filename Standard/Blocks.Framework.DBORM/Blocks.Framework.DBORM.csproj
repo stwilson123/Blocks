@@ -2,6 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>2.0.0.0</FileVersion>
+    <Version>2.0.0</Version>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -10,25 +14,21 @@
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <OutputPath>bin\</OutputPath>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.6" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="2.2.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.0" />
-    <PackageReference Include="Oracle.EntityFrameworkCore" Version="2.19.90" />
-    <PackageReference Include="System.Diagnostics.DiagnosticSource" Version="4.5.1" />
+    <PackageReference Include="linq2db.EntityFrameworkCore" Version="3.10.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.15" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="3.1.15" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.15" />
+    <PackageReference Include="Oracle.EntityFrameworkCore" Version="3.19.110" />
+    <PackageReference Include="System.Diagnostics.DiagnosticSource" Version="4.7.1" />
     <PackageReference Include="System.Linq.Dynamic.Core" Version="1.1.8" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\Blocks.Framework\Blocks.Framework.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="Z.EntityFramework.Plus.EFCore, Version=1.6.11.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\..\..\EntityFramework-Plus\src\Z.EntityFramework.Plus.EFCore.NETStandard20\bin\Debug\netstandard2.0\Z.EntityFramework.Plus.EFCore.dll</HintPath>
-    </Reference>
   </ItemGroup>
 
 </Project>

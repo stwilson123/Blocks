@@ -14,6 +14,8 @@ using Microsoft.EntityFrameworkCore;
 using Blocks.Framework.DBORM;
 using System.Data.SqlClient;
 using System.Data.OracleClient;
+using Microsoft.Extensions.Logging;
+using Blocks.Framework.DBORM.Logger;
 
 namespace EntityFramework.Test
 {
@@ -45,13 +47,15 @@ namespace EntityFramework.Test
 
             if (!autoDetectChangesEnabled)
                 optionsBuilder.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
-          
+            var loggerFactory = new LoggerFactory();
+            loggerFactory.AddProvider(new EFLoggerProvider());
+            optionsBuilder.UseLoggerFactory(loggerFactory);
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             
             modelBuilder.RemovePluralizingTableNameConvention();
-            var schema = ConfigurationManager.AppSettings.Get("Schema");
+            var schema = ConfigurationManager.AppSettings.Get("Schema").ToUpper();
             modelBuilder.HasDefaultSchema(schema);
            // modelBuilder.Conventions.Remove<System.Data.Entity.ModelConfiguration.Conventions.PluralizingTableNameConvention>();
             

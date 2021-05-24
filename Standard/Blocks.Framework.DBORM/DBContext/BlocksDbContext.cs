@@ -32,6 +32,8 @@ using System.Reflection;
 using Blocks.Framework.DBORM;
 using Blocks.Framework.Logging;
 using Microsoft.EntityFrameworkCore.Internal;
+using Microsoft.Extensions.Logging;
+using Blocks.Framework.DBORM.Logger;
 
 namespace Blocks.Framework.DBORM.DBContext
 {
@@ -184,6 +186,10 @@ namespace Blocks.Framework.DBORM.DBContext
 
 //                    optionsBuilder.UseOracle(connectionString: connectionString, oracleOptionsAction:b => b.UseRowNumberForPaging()); break;
             }
+
+            var loggerFactory = new LoggerFactory();
+            loggerFactory.AddProvider(new EFLoggerProvider());
+            optionsBuilder.UseLoggerFactory(loggerFactory);
         }
         /// <summary>
         /// Constructor.
@@ -304,7 +310,7 @@ namespace Blocks.Framework.DBORM.DBContext
 //                    });
                 foreach (var queryType in assembly.GetTypes().Where(t => typeof(IQueryEntity).IsAssignableFrom(t)))
                 {
-                    modelBuilder.Query(queryType);
+                    modelBuilder.Entity(queryType).HasNoKey();
                 }
           
                 Stopwatch swAss = Stopwatch.StartNew();

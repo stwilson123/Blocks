@@ -1,6 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Blocks.Framework.DBORM.Intercepter;
+using EntityFramework.Test.Model;
+using LinqToDB;
+using LinqToDB.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections;
+using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using Xunit;
 
@@ -8,15 +14,39 @@ namespace EntityFramework.Test.FunctionTest
 {
     public class EntityUpdateTest
     {
+        public EntityUpdateTest()
+        {
+     //       System.Diagnostics.DiagnosticListener.AllListeners.Subscribe(new CommandListener());
+            LinqToDBForEFTools.Initialize();
+
+            //BatchUpdateManager.BatchUpdateBuilder = builder =>
+            //{
+            //    builder.Executing = (command) =>
+            //    {
+            //        Trace.TraceInformation("\r\n执行时间:{0} 毫秒 \r\n -->CommandExecuted.Command:\r\n{1}\r\nParamter:{2}", "", command.CommandText,
+            //           string.Join(",", command.Parameters.Cast<IDbDataParameter>().Select(t => string.Format("{0}:{1}:{2};", t.ParameterName, t.DbType, t.Value)))
+            //           );
+            //    };
+
+            //};
+        }
         [Fact]
         public void DefaultConfigIsDetectChanges()
         {
-            
-            
+
+
             using (var context = new BlocksEntities())
             {
-               var testEntity = context.TestEntity.Skip(0).Take(1).FirstOrDefault();
-                
+
+                //   var ttt = context.TestEntity.GroupBy(t => new { t.ACTIVITY }).Where(t => t.Count() > 0).Select(a =>  new { a.Key.ACTIVITY, c = a.Count() }).ToList();
+
+                // var ttt = context.TestEntity.Join(context.TestEntity2,t => t.Id, t =>  t.Text,(t, t1) => new { t, t1 }).GroupBy(t => new { t.t.Id, t.t1.Text }).Where(t => t.Count() > 0).Select(a => new { a.Key.Id, c = a.Sum(s => s.t.IS_CHECK) }).ToList();
+                //var a = context.TestEntity.Where(t => t.Id == "61a8c4ca-7f3f-4688-834c-8524a817e046").OrderBy(t => new { t.Id, t.ISACTIVE }).ToArray();
+
+                //var b = context.TestEntity.Where(t => t.Id == "61a8c4ca-7f3f-4688-834c-8524a817e046").ToLinqToDB().Update(t1 => new TESTENTITY{ COLNUMINT = t1.COLNUMINT + 1 });
+
+                var testEntity = context.TestEntity.Skip(0).Take(1).FirstOrDefault();
+
                 testEntity.TESTENTITY2ID = Guid.NewGuid().ToString();
                 Assert.Equal(context.Entry(testEntity).State, EntityState.Modified);
             }

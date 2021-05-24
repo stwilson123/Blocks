@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Diagnostics;
 using Microsoft.EntityFrameworkCore;
+using Blocks.Framework.DBORM;
 
 namespace EntityFramework.Test.FunctionTest
 {
@@ -25,7 +26,7 @@ namespace EntityFramework.Test.FunctionTest
             var listTestEntity = new List<TESTENTITY>();
             for (int i = 0; i < 10000; i++)
             {
-                listTestEntity.Add(new TESTENTITY() { COLNUMINT = i, UPDATER = "1", CREATER = "1", TESTENTITY2ID = "11" });
+                listTestEntity.Add(new TESTENTITY() { Id = Guid.NewGuid().ToString(),  COLNUMINT = i, UPDATER = "1", CREATER = "1", TESTENTITY2ID = "11",COMMENT = "112312321" });
             }
             rep.Insert(listTestEntity);
             stopwatch.Stop();
@@ -170,10 +171,15 @@ namespace EntityFramework.Test.FunctionTest
             var rep = Resolve<ITestRepository>();
 
             var a = rep.FromSql();
-
-
         }
-        
+
+        [Fact]
+        public void GetQueryAliasWithKeyword()
+        {
+            var rep = Resolve<ITestRepository>();
+
+            Assert.Throws<BlocksDBORMException>(() => rep.GetQueryAliasWithKeyword());
+        }
 
         [Fact]
         public void DeleteByExpression()
@@ -278,7 +284,25 @@ namespace EntityFramework.Test.FunctionTest
                 DATE_INSTORAGE = DateTime.Now
             });
         }
-        
+
+
+
+        [Fact]
+        public void TestPageOrderBy()
+        {
+
+            //            var rep = Resolve<ITestRepository>();
+            //            var list = new List<string>(){ "123"};
+            //            rep.Update(t => list.Contains(t.Id) && t.COMMENT == null, testentity => new TESTENTITY()
+            //            {
+            //                COLNUMINT = 1
+            //
+            //            });
+
+            var rep = Resolve<ITestRepository>();
+
+            var a =  rep.GetTestPageOrderBy();
+        }
 
     }
 

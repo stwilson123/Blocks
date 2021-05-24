@@ -3,7 +3,7 @@ using AutoMapper.QueryableExtensions;
 using Blocks.Framework.Domain.Uow;
 using EntityFramework.Test.Model;
 using Xunit;
-
+using System.Linq;
 namespace EntityFramework.Test.FunctionTest
 {
     public class UpdateBugFixTest: BlocksTestBase
@@ -111,8 +111,9 @@ namespace EntityFramework.Test.FunctionTest
 
                 });
             }
-            
-           
+
+
+
             //trans.Commit();
         }
     }

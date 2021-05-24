@@ -14,8 +14,7 @@ using Blocks.Framework.Data.Pager;
 using Blocks.Framework.Localization;
 using DynamicQueryableExtensions = System.Linq.Dynamic.Core.DynamicQueryableExtensions;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore.Query.Internal;
-using Microsoft.EntityFrameworkCore.Infrastructure;
+using System.Threading;
 
 namespace Blocks.Framework.DBORM.Linq
 {
@@ -52,8 +51,35 @@ namespace Blocks.Framework.DBORM.Linq
         public IQueryable iQuerable { get; private set; }
         public DbContext dbContext { get; }
 
-        private IQueryable<Dictionary<(Type TableType, string TableAlias), Data.Entity.Entity>> iQueryContext;
-
+   
+        private string valueTransfer(object obj,Type valueType)
+        {
+            if(valueType == typeof(string))
+            {
+                return $"\"{obj ?? ""}\""; 
+            }
+            else if(valueType == typeof(DateTime))
+            {
+                return $"DateTime.parse(\"{obj ?? ""}\")";
+            }
+            else if(valueType == typeof(decimal))
+            {
+                return $"decimal({obj ?? ""})";
+            }
+            else if (valueType == typeof(float))
+            {
+                return $"float({obj ?? ""})";
+            }
+            else if (valueType == typeof(double))
+            {
+                return $"double({obj ?? ""})";
+            }
+            else if (valueType == typeof(long))
+            {
+                return $"long({obj ?? ""})";
+            }
+            return obj.ToString();
+        }
         private string JoinExpressionGenernateKey<TInput, TKey>(Expression<Func<TInput, TKey>> selector,string prefixName = "")
         {
             var prefix = string.IsNullOrEmpty(prefixName) ? "" : prefixName + ".";
@@ -66,11 +92,14 @@ namespace Blocks.Framework.DBORM.Linq
                 var paramsExpressions = new List<string>();
                 for (int i = 0; i < newExpression.Arguments.Count; i++)
                 {
-                    var a = newExpression.Arguments[i];
-                    if (a is MemberExpression member)
+                    var arg = newExpression.Arguments[i];
+                    if (arg is MemberExpression member)
                     {
-                       
                         paramsExpressions.Add($"{prefix + member.Member.Name} as {newExpression.Members[i].Name}");
+                    }
+                    if (arg is ConstantExpression constant)
+                    {
+                        paramsExpressions.Add($"{valueTransfer(constant.Value,constant.Type)} as {newExpression.Members[i].Name}");
                     }
                 }
                     
@@ -231,7 +260,7 @@ namespace Blocks.Framework.DBORM.Linq
         public IDbLinqQueryable<TEntity> Where(LambdaExpression predicate)
         {
             ExceptionHelper.ThrowArgumentNullException(predicate, "predicate");
-            validateParamter(predicate.Parameters);
+            tableAlias.ValidateParameter(predicate.Parameters);
 
             var querable = transferQuaryable();
 
@@ -249,6 +278,50 @@ namespace Blocks.Framework.DBORM.Linq
         }
 
 
+        public IDbLinqQueryable<TEntity> GroupBy(LambdaExpression keySelector)
+        {
+            ExceptionHelper.ThrowArgumentNullException(keySelector, "keySelector");
+            tableAlias.ValidateParameter(keySelector.Parameters);
+
+            var querable = transferQuaryable();
+
+
+            if (querable != null)
+            {
+                iQuerable = querable.GroupBy(keySelector);
+            }
+            else
+            {
+                var source = iQuerable;
+                var a = ExpressionUtils.Convert(keySelector, iQuerable.ElementType);
+                iQuerable = iQuerable.GroupBy(a);
+            }
+           iQuerable = iQuerable.Select("new ( key.ACTIVITY,Sum(ISACTIVE) as Id1 )");
+            return this;
+        }
+
+
+        public ILinqGroupQueryable<TKey> GroupBy<TKey>(LambdaExpression keySelector)
+        {
+            ExceptionHelper.ThrowArgumentNullException(keySelector, "keySelector");
+            tableAlias.ValidateParameter(keySelector.Parameters);
+
+            var querable = transferQuaryable();
+
+
+            if (querable != null)
+            {
+                iQuerable = querable.GroupBy(keySelector);
+            }
+            else
+            {
+                var source = iQuerable;
+                var a = ExpressionUtils.Convert(keySelector, iQuerable.ElementType);
+                iQuerable = iQuerable.GroupBy(a);
+            }
+            //iQuerable = iQuerable.Select("new ( key.ACTIVITY,Sum(ISACTIVE) as Id1 )");
+            return new DefaultLinqGroupQueryable<TEntity,TKey>(this.iQuerable, dbContext, tableAlias);
+        }
         public long Count()
         {
             return DynamicQueryableExtensions.Count(iQuerable);
@@ -282,10 +355,16 @@ namespace Blocks.Framework.DBORM.Linq
         //    throw new NotImplementedException();
         //}
 
+        public List<dynamic> SelectToList()
+        {
+
+            return iQuerable.ToDynamicList();
+        }
+
         private IQueryable  SelectToListCore(LambdaExpression selector)
         {
             ExceptionHelper.ThrowArgumentNullException(selector, "selector");
-            validateParamter(selector.Parameters);
+            tableAlias.ValidateParameter(selector.Parameters);
 
             var querable = transferQuaryable();
 
@@ -307,7 +386,7 @@ namespace Blocks.Framework.DBORM.Linq
             return SelectToListCore(selector).ToDynamicList();
         }
 
-        public Task<List<dynamic>> SelectToListAsync(LambdaExpression selector)
+        public  Task<List<dynamic>> SelectToListAsync(LambdaExpression selector)
         {
 
             var list = new List<dynamic>();
@@ -323,12 +402,25 @@ namespace Blocks.Framework.DBORM.Linq
             //    }
             //}
 
-            var sl = SelectToListCore(selector);//.AsAsyncEnumerable().ToList(cancellationToken)
-
-            return (sl as IAsyncEnumerable<dynamic>).ToList();
+            var sl = SelectToListCore(selector) as IAsyncEnumerable<dynamic>;//.AsAsyncEnumerable().ToList(cancellationToken)
+            return ToListAsync(sl);
             //return Task.Factory.StartNew((s) => SelectToList((LambdaExpression) s), selector);
         }
+        private async  Task<List<TSource>> ToListAsync<TSource>(IAsyncEnumerable<TSource> sources)
+        {
+            var result = new List<TSource>();
+            if (sources == null)
+                return result;
 
+            await foreach (var source in  sources.ConfigureAwait(false))
+            {
+                result.Add(source);
+            }
+
+
+
+            return result;
+        }
         public IDbLinqQueryable<TEntity> Take(int count)
         {
             iQuerable = DynamicQueryableExtensions.Take(iQuerable, count);
@@ -349,7 +441,7 @@ namespace Blocks.Framework.DBORM.Linq
             return this;
         }
 
-        public IDbLinqQueryable<TEntity> OrderBy<TSource, TKey>(Expression<Func<TSource, TKey>> keySelector)
+        public IDbLinqQueryable<TEntity> OrderBy<TSource, TKey>(Expression<Func<TSource, TKey>> keySelector) where TSource : Data.Entity.Entity
         {
             var querable = transferQuaryable();
 
@@ -377,21 +469,11 @@ namespace Blocks.Framework.DBORM.Linq
         }
 
 
-        private void validateParamter(ReadOnlyCollection<ParameterExpression> parameterCollection)
-        {
-            ExceptionHelper.ThrowArgumentNullException(parameterCollection, "parameterCollection");
-            foreach (var item in parameterCollection)
-            {
-                if (tableAlias.Any() && !tableAlias.Any(t => t.TableAlias == item.Name))
-                    throw new BlocksDBORMException(
-                        StringLocal.Format(
-                            "Can't find table alias in the join expression.Please check join expression."));
-            }
-        }
+       
 
         public PageList<dynamic> Paging(LambdaExpression selector, Page page)
         {
-            return Paging(selector, page);
+            return Paging(selector, page, false);
         }
 
 
@@ -401,7 +483,7 @@ namespace Blocks.Framework.DBORM.Linq
             ExceptionHelper.ThrowArgumentNullException(page, "page");
             //TODO check page property 
 
-            validateParamter(selector.Parameters);
+            tableAlias.ValidateParameter(selector.Parameters);
             var querable = transferQuaryable();
 
             if (querable != null)
@@ -470,7 +552,7 @@ namespace Blocks.Framework.DBORM.Linq
         }
 
 
-        public IDbLinqQueryable<TEntity> OrderByDescending<TSource, TKey>(Expression<Func<TSource, TKey>> keySelector)
+        public IDbLinqQueryable<TEntity> OrderByDescending<TSource, TKey>(Expression<Func<TSource, TKey>> keySelector) where TSource : Data.Entity.Entity
         {
             var querable = transferQuaryable();
 
@@ -538,10 +620,10 @@ namespace Blocks.Framework.DBORM.Linq
     }
 
 
-    class TableAlias
+    internal class TableAlias
     {
         private List<(Type TableType, string TableAlias)> listTableAlias;
-
+        static string[] keywords = new[] { "item" };
         public TableAlias()
         {
             listTableAlias = new List<(Type TableType, string TableAlias)>();
@@ -561,6 +643,10 @@ namespace Blocks.Framework.DBORM.Linq
         {
             if (listTableAlias.Contains(item))
                 return;
+
+            if (keywords.Any(k => k.Equals(item.TableAlias,StringComparison.OrdinalIgnoreCase)))
+                throw new BlocksDBORMException(StringLocal.Format($"alias name [{item.TableAlias}] is keyword."));
+
             listTableAlias.Add(item);
         }
 
@@ -591,5 +677,38 @@ namespace Blocks.Framework.DBORM.Linq
                 return $"new(inner as {listTableAlias.Last().TableAlias}, {string.Join(",", outerAlias)})";
             }
         }
+
+        public void ValidateParameter(IEnumerable<ParameterExpression> parameterCollection)
+        {
+            ExceptionHelper.ThrowArgumentNullException(parameterCollection, "parameterCollection");
+            foreach (var item in parameterCollection)
+            {
+                if (keywords.Any(k => k.Equals(item.Name, StringComparison.OrdinalIgnoreCase)))
+                    throw new BlocksDBORMException(StringLocal.Format($"alias name [{item.Name}] is keyword."));
+                if (!listTableAlias.Any())
+                    continue;
+                if(!listTableAlias.Any(t => t.TableAlias == item.Name))
+                    throw new BlocksDBORMException(
+                        StringLocal.Format(
+                            "Can't find table alias in the expression.Please check expression."));
+                var tableAlias = listTableAlias.FirstOrDefault(t => t.TableAlias == item.Name && t.TableType != item.Type);
+                if (tableAlias != default((Type TableType, string TableAlias)))
+                    throw new BlocksDBORMException(
+                        StringLocal.Format(
+                            $"Table alias is exist name [{tableAlias.TableAlias}] but type is [{tableAlias.TableType}]"));
+            }
+        }
+
+        //public void ValidateParameter(IEnumerable<ParameterExpression> parameterCollection)
+        //{
+        //    ExceptionHelper.ThrowArgumentNullException(parameterCollection, "parameterCollection");
+        //    foreach (var item in parameterCollection)
+        //    {
+        //        if (listTableAlias.Any() && !listTableAlias.Any(t => t.TableType == item.Type))
+        //            throw new BlocksDBORMException(
+        //                StringLocal.Format(
+        //                    "Can't find table alias in the join expression.Please check join expression."));
+        //    }
+        //}
     }
 }

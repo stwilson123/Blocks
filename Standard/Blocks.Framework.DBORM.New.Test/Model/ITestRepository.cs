@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Blocks.Framework.Data;
 using Blocks.Framework.Data.Paging;
+using Blocks.Framework.DBORM.New.Test.Model;
 
 namespace EntityFramework.Test.Model
 {
@@ -28,6 +29,10 @@ namespace EntityFramework.Test.Model
         List<TESTENTITY> GetMultLeftJoin();
 
         PageList<DtoModel> GetTestPageContainsEmptyString();
+
+        PageList<ProcessPageResult> GetTestPageOrderBy();
+
+        object GetQueryAliasWithKeyword();
     }
     
     
